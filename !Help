@@ -1,114 +1,69 @@
+   ____            _    _     _ _
+  |  _ \  ___  ___| | _| |   (_) |__
+  | | | |/ _ \/ __| |/ / |   | | '_ \
+  | |_| |  __/\__ \   <| |___| | |_) |
+  |____/ \___||___/_|\_\_____|_|_.__/
+  The general-purpose freeware C library for RISC OS
 
-    ####             #    #     # #
-    #   #            #    #       #          
-    #   #  ##   ###  #  # #     # ###             
-    #   # #  # #     # #  #     # #  #
-    #   # ####  ###  ##   #     # #  #                                      
-    #   # #        # # #  #     # #  #    
-    ####   ### ####  #  # ##### # ###    
-
-    The FreeWare Desktop C library for
-             RISC OS machines
-
-              Release 2.40
-              17 Nov 2002
-
-  If you have used previous version(s) of
-  DeskLib, please consult 'DeskLib.Docs.Updates' 
-  to see what has changed.
+  Release 2.40: 17 Nov 2002
 
 
-DeskLib
--------
+About
+-----
 
-DeskLib is a set of fully sourced C libraries for for writing desktop
-applications for Acorn RISC OS. The aim of DeskLib is to collect
-together useful little snippets of code to help the desktop programmer. 
-In this area, DeskLib already provides a full set of WIMP SWI veneers in
-assembler, a whole set of useful icon manipulation functions, etc. 
-Higher-level event managers, etc. are also provided but trade off
-efficiency and compactness to provide genericity.
+DeskLib is a set of fully sourced C libraries for for writing desktop applications for RISC OS. The aim of DeskLib is to collect together useful little snippets of code to help the desktop programmer.
 
+In this area, DeskLib already provides a full set of WIMP SWI veneers in assembler, a whole set of useful icon manipulation functions, etc. Higher-level event managers, etc. are also provided but trade off efficiency and compactness to provide genericity.
 
 The completely installed DeskLib distribution looks something like:
 
+ * DeskLib.!Help       This file.
+ * DeskLib.!DeskLib    Header files, the main DeskLib library, documentation
+ * DeskLib.!DLSources  All source code, makefiles, scripts, etc.
+ * DeskLib.!DLUser     Directory for user's extra sub-libraries.
+ * DeskLib.Docs        Documentation files.
+ * DeskLib.Examples    Example applications.
 
-DeskLib.!Help		This file.
-DeskLib.!DeskLib...	Header files, the main DeskLib library,
-			DeskLib's StrongHelp file, dynamic-linking
-			libraries.
-DeskLib.!DLSources...	All source code, makefiles, scripts, etc.
-DeskLib.!DLUser...	Directory for user's extra sub-libraries.
-DeskLib.Docs...		Documentation files.
-DeskLib.Examples...	Example applications.
-
+If you have used previous version(s) of DeskLib, please consult 'DeskLib.Docs.Updates' to see what has changed.
 
 
+(Re)compiling DeskLib
+---------------------
 
-
-Recompiling DeskLib
--------------------
-
-See !DLSources.!Help for more information.
-
+See !DLSources.!Help for information about compiling/recompiling DeskLib, the layout of the sources, etc.
 
 
 DeskLib distribution information
 --------------------------------
 
-DeskLib is now rather large, so it has been split up to allow people to
-download just the parts they require.
+DeskLib is now rather large, so it has been split up to allow people to download just the parts they require.
 
-The separate parts of DeskLib are in zip files in this directory. These
-can be extracted using Spark.
+The separate parts of DeskLib are in zip files in this directory. These can be extracted using Spark.
 
-Each of the Zip files contains just those parts of the DeskLib directory
-structure needed to contain the zip file's particular selection of
-DeskLib's files. This allows you to simply extract the zip files into
-the same place to get the parts of the DeskLib tree that you require.
+Each of the Zip files contains just those parts of the DeskLib directory structure needed to contain the zip file's particular selection of DeskLib's files. This allows you to simply extract the zip files into the same place to get the parts of the DeskLib tree that you require.
 
-Here is which parts of the complete distribution each zip file in this
-directory contains:
+The "Core" zipfile contains everything need to compile and link programs which use DeskLib (ie. the header files and library file !DeskLib.o.DeskLib), plus the documentation files and release notes.
 
+This includes the files:
 
-Zip File	What it contains
-------------------------------------------------------------------------
+	DeskLib.!DeskLib...*
+	DeskLib.Docs...*
+	DeskLib.!DLUser...*
 
-Core		Everything need to compile and link programs which use
-		DeskLib (ie the header files and library file
-		!DeskLib.o.DeskLib), plus the documentation files and
-		release notes.
-		
-		DeskLib.!DeskLib...* except dynamic linking files.
-		DeskLib.Docs...*
-		DeskLib.!DLUser...*
-	
+The "Sources" zipfile contains all the source code for DeskLib, plus makefiles and scripts needed to compile DeskLib.  This does not include any object files.
 
-Sources		All the source code for DeskLib, plus makefiles and
-		scripts needed to make DeskLib. No .o files.
-		
-		DeskLib.!DLSources...* except *.o.* .
+This includes the files:
 
+	DeskLib.!DLSources...* (except *.o.*)
 
-Examples	A few example programs with source, plus some random
-		source code.
-		
-		DeskLib.Examples...* except
+The "Examples" zipfile contains a few example programs with source, plus some random source code.
 
+This includes the files:
 
-StrongHelp	This is a StrongHelp file which documents every
-		function, variable, typedef, macro etc in the DeskLib
-		header files.
-		Note that this needs version 2 of StrongHelp.
-		Also note that the extracted StrongHelp file is nearly
-		1Mb.
-		
-		DeskLib.!DeskLib.DeskLib
+	DeskLib.Examples...*
 
+The "StrongHelp" zipfile contains just the one file, which is a StrongHelp manual which documents the DeskLib library.  Note that this is just a nicely-formatted version of the h_doc files in the "Core" distribution, and also that the extracted file is quite large (~1MB).
 
-
-
-
--------------------------------------------------------
-
-
+--
+The DeskLib team
+http://www.riscos.info/desklib/
