@@ -1,17 +1,20 @@
 ;
-;       Title                  : Wimp Command Window
+;       Title                  : Wimp Open Window
 ;       System                 : Wimp Library
-;       Version                : 1.01
-;       Copyright              : (C) John Winters
-;       Date                   : 12th January, 1990
+;       Version                : 1.0
+;       Copyright              : (C) Peter Naulls
+;       Date                   : 20th November, 2002
 ;       Author                 : John H. Winters
 ;
-;       Function               : Opens a command window.
+;       Function               : Opens a window in a parent
 ;
 ;
 ;       Modification history.
-;       Date                   :  03 Apr 1993
-;       Author                 :  Shaun Blackmore
+;
+;       Version                : (Reflect in header IDENT)
+;       Date                   :
+;       Author                 :
+;       Changes                :
 ;
 ;
 ;============================================================================
@@ -31,13 +34,20 @@
 ;============================================================================
 ;
         PREAMBLE
-        STARTCODE Wimp_CommandWindow
+        STARTCODE Wimp_OpenWindowNest
 ;
         MOV     ip, lr
 
-        SWI     SWI_Wimp_CommandWindow + XOS_Bit
+        MOV     a2, a1
+        MOV     v1, a3
+        LDR     a3, |task|
+        SWI     SWI_Wimp_OpenWindow + XOS_Bit
         MOVVC   a1, #0
 
+        MOV     a2, #0  ; Prevent R2 retaining value
         MOV     pc, ip
+
+|task|
+        DCB    "TASK"
 ;
         END
