@@ -1,16 +1,10 @@
 /*
-    ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
-    #   #  ##   ###  #  # #     # ###             RISC OS machines
-    #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
-    #   # #        # # #  #     # #  #    Please refer to the accompanying
-    ####   ### ####  #  # ##### # ###    documentation for conditions of use
-    ________________________________________________________________________
-
-    File:    <filename.c>
-    Author:  Copyright © 1994 <your name in lights here>
-    Version: 1.00 (01 Jan 1994)
-    Purpose: <place pen at left end. move pen towards right while making
-              wobbly scratchy loopy movements with the tip of the pen>
-*/
+ * File: <filename>
+ * Author: <your name>, <date file was created>
+ *
+ * Abstract: <description of file>
+ *
+ * This file is part of DeskLib, the general-purpose freeware C library for
+ * RISC OS.  Please refer to the accompanying documentation for conditions
+ * of use.
+ */
