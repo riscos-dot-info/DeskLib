@@ -28,10 +28,10 @@
 
 #include "DeskLib:Url.h"
 
-/* ANT url broadcast wimp message number */  
+/* ANT URL broadcast wimp message number */  
 #define message_ANTOPENURL (message_action) 0x4AF80
 
-/* Acorn URO messages */
+/* Acorn URI messages */
 #define message_URI_MPROCESS (message_action) 0x4E382
 #define message_URI_MRETURNRESULT (message_action) 0x4E383
 
@@ -175,7 +175,7 @@ static BOOL Url_ANTLoad(const char *url)
  * --------------------------------------------------------------------- */
 static void Url_URIDispatch(const char *url)
 {
-    int flags;
+	int flags;
 
 	/* Dispatch the SWI, asking to be notified of the result with a message */ 
 	if (SWI(3, 1, SWI_URI_Dispatch, 1, url, event_taskhandle, &flags) != NULL || flags & 1)
@@ -193,7 +193,7 @@ static void Url_URIDispatch(const char *url)
  * --------------------------------------------------------------------- */
 static BOOL Url_ReturnMessage_h(event_pollblock *event, void *param)
 {
-	url_info_blk 	 *block = (url_info_blk *) param;
+	url_info_blk *block = (url_info_blk *) param;
 
 	/* This has come back from the Acorn system */
 	if (event->data.message.header.action == message_URI_MRETURNRESULT)
@@ -201,7 +201,7 @@ static BOOL Url_ReturnMessage_h(event_pollblock *event, void *param)
 		/* Check the flags to see if the URL was claimed */
 		if ((event->data.message.data.words[0] & 0x01) == 0)
 		{
-			 /* url was claimed - we can stop now */
+			/* The URL was claimed - we can stop now */
 			Url_Succeeded(NULL, param);
 			return (TRUE);
 		}
@@ -216,8 +216,10 @@ static BOOL Url_ReturnMessage_h(event_pollblock *event, void *param)
 			Url_Succeeded(NULL, block);
 		}
 
-		/* we haven't acknowledged the returnresult message, so the URI
-		 * handler task will automatically free the URI */
+		/*
+		 * We haven't acknowledged the returnresult message, so the URI
+		 * handler task will automatically free the URI
+		 */
 	}
 	else if (event->data.message.header.action == message_ANTOPENURL)
 	{
@@ -257,7 +259,7 @@ extern void Url_Launch(const char *url, urllaunch_handler *failure, urllaunch_ha
 	if (block->url == NULL)
 	{
 		Url_Failed(block);
-        return;
+		return;
 	}
 	else
 	{
