@@ -1,7 +1,9 @@
 # GNU Make makefile for DeskLib
 
-# CC = cc
-# CFLAGS = -ffahi -throwback -IDeskLib:
+AR = libfile
+
+CC = cc
+CFLAGS = -ffahi -throwback -IDeskLib:
 AS = objasm
 ASFLAGS = -I$(@D)/s
 
@@ -9,8 +11,9 @@ WARNINGS = -ansi -pedantic -Wall -Wundef -Wpointer-arith \
            -Wcast-align -Wwrite-strings -Wstrict-prototypes \
            -Wmissing-prototypes -Wmissing-declarations -Wnested-externs \
            -Winline -Wno-unused -Wno-long-long -W -Wcast-qual -Wshadow
-CC = gcc -mlibscl
-CFLAGS = -I. -IDeskLib: -mthrowback $(WARNINGS) -O2
+
+#CC = gcc -mlibscl
+#CFLAGS = -IDeskLib: -mthrowback $(WARNINGS) -O2
 #AS = gcc
 
 DESKLIB = <DeskLib$$Dir>.o.DeskLib
