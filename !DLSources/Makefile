@@ -1,51 +1,78 @@
+# GNU Make makefile for DeskLib
 #
-# GNU make makefile for Desklib.  It simply finds all the .c and .s files in
-# the various Libraries directories and calls the standard rules to compile
-# them, and then whacks the whole lot together with libfile.
+# Where appropriate, this calls make again to enter the correct subdirectory
+# for the part of the library you are making, so that it can work with
+# gcc which otherwise gets confused by the #include "DeskLib:xxx.h" lines.
 #
-# Headers for IMTIA
-# -----------------
-# Project:   DeskLib
-# Make:		 make
-# Wimpslot:  15000k
+# - To make the whole library again from scratch
+#   make clean all
+# - To make one part of the library: (eg. Url)
+#   make library="Url" one
+# - To make one part of the library from scratch:
+#   make library="Url" cleanone one
+# - To make a new library from the current object files:
+#   make link
 
-# Choice of compilers
-CC = cc -c -ffahi -throwback -IC:
-# CC = gcc -c -mthrowback -mlibscl -IC:
+CC = cc -c -ffahi -throwback -IDeskLib: -IC: -o $@ $<
+AS = objasm -from $< -to $@
 
-AS = objasm
+# CC = gcc -c -ansi -IDeskLib: -mthrowback -o $@ $<
+# CC = gcc -apcs32 -c -ansi -IDeskLib: -mthrowback -o $@ $<
+# AS = gcc -Wa,-objasm,-throwback -c -o $@ $<
 
-LIB = libfile -c -l $@
+LIB = libfile -c -l DeskLib
+MKDIR = CDir
 
-# Get all .c and .s files from the directories in "Libraries", and
-# convert the endings to .o instead
-all_objects = $(patsubst %.s,%.o,$(patsubst %.c,%.o,$(filter %.c %.s,$(wildcard Libraries/*/*))))
+# The location of this makefile
+makefile = <DeskLib_Sources$$Dir>.Makefile
 
-#
-# For RISC OS use
-#
-# Gets all object directories in Libraries
-library_dirs = $(subst /,.,$(filter-out Libraries/CVS, $(wildcard Libraries/*)))
-# (adds .o.* to each directory for libfile to use)
-libfile_objects = $(addsuffix .o.*, $(library_dirs))
-# (creates o directories) 
-discard = $(foreach dir, $(library_dirs), $(shell cdir $(dir).o))
+libraries := $(notdir $(filter-out Libraries/CVS, $(wildcard Libraries/*)))
 
-#
-# For GCC-SDK use (make filenames like filename.o) (?)
-#                        
-# libfile_objects = $(addsuffix *.o, $(filter-out Libraries/CVS, $(wildcard Libraries/*)))
+lib_objects = $(addprefix Libraries.,$(addsuffix .o.*, $(libraries)))
 
-DeskLib: $(all_objects)
-	$(LIB) $(libfile_objects)
+# Make the library
+all: makelibs link
 
-makedirs: $(discard)
+# Set the
 
-# Static dependencies:
-.SUFFIXES: .s .c .o
+# Link the objects together to make a new library
+link:
+	$(LIB) $(lib_objects)
+	-@Echo Made DeskLib
 
-.c.o:
-        $(CC) -o $@ $<
-.s.o:
-		$(AS) -from $< -to $@
+# Clean the whole library out in one go
+clean:
+	-@$(cleanlibs)
+	-@X Wipe DeskLib ~CF~R~V
+	-@Echo Wipe DeskLib ~CF~R~V
+
+# Make a single sublibrary
+one: $(addsuffix .library, $(library))
+
+# Clean a single sublibrary
+cleanone:; -X Wipe Libraries.$(library).o.* ~C~VF~R
+
+# To empty the 'o' directories for each library
+# This a hack, we'd be much better off with a "rm" command that could take
+# a list of things to delete.  
+define cleanlib                     
+$(shell Echo Wipe Libraries.$(library).o.* ~C~VF~R)
+$(shell X Wipe Libraries.$(library).o.* ~C~VF~R)
+endef
+cleanlibs = $(foreach library, $(libraries), $(cleanlib))
+              
+# Make all the object files for the current sublibrary
+makelib:  $(patsubst %.s,%.o,$(patsubst %.c,%.o,$(filter %.c %.s,$(wildcard *))))
+
+# We make makelibs depend on phony .library files to invoke make recursively for
+# each sublibrary
+makelibs: $(addsuffix .library, $(libraries))
+
+%.library:
+	$(MKDIR) Libraries.$*.o
+	@$(MAKE) sublib=$* --directory Libraries.$* -f $(makefile) makelib
+
+%.o: %.c ;$(CC)
+	
+%.o: %.s; $(AS)
 
