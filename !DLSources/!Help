@@ -37,14 +37,8 @@ http://hard-mofo.dsvr.net/gcc/
 
 The rest of the system will build with tools from Castle's 32-bit release.
 Don't try and rebuild DeskLib with a 26-bit compiler - you'll just end up
-with a broken library.
-
-At time of writing, DeskLib cannot be fully built with GCC, due to minor
-problems with the assembler, but these will be fixed soon.  A GCC build will
-still require you to use objasm, but otherwise you should not have any
-problems.   Again, you'll require a 32-bit version of GCC - in principle, you could add suitable flags to current 26-bit GCC to output 32-bit code, but
-this is likely to be of limited value if you don't have a 32-bit compiler
-for any programs you want to compile.
+with a broken library. GCC should be able to build it fine too. Again, you'll
+require a 32-bit version of GCC.
 
 In general, using libraries such as DeskLib between UnixLib and
 SharedCLibrary programs isn't a good idea, as they have some
@@ -71,11 +65,7 @@ Here is what is where:
 
 
 !Boot		Sets the system variable DeskLib_Source$Dir to point to
-		this directory. Also sets DeskLib_Run$Path to point to the
-		Bin subdirectory, and adds DeskLib_Run: to your
-		Run$Path.
-		Sets 'DeskLib_Commands:' to point to
-		'!DLSources.Scripts.Commands.'.
+		this directory.
 
 !Run		Simply runs !Boot.
 
@@ -83,31 +73,6 @@ Here is what is where:
 
 !Sprites	The !DLSources sprite - a green version of the normal
 		DeskLib sprite.
-
-Bin.		Some general utilities used by some of the scripts described
-		below. They might be useful for non-DeskLib things as well.
-		This 'Bin' directory is added to Run$Path.
-	
-	Every		Runs a command on every file/dir in a directory.
-			Just type 'Every' to get help.
-	
-	CTrim		Strips comments from a C source file. Only
-			overwrites the destination file if the new file
-			differs. This is to allow modification of
-			comments in h_doc headers, without forcing
-			recompilation of hundreds of C files.
-		
-	TrimCRs		Removes all CR characters from a file. 
-	
-	Makatic		Used to make makefiles suitable for a particular 
-			project directory, using a template makefile.
-	
-	IfExist		Runs a command only of the specified file/dir
-			exists.
-	
-	IfNotExist	Runs a command only of the specified file/dir
-			doesn't exist.
-
 
 Libraries.	Every DeskLib sub-library's source, makefiles etc.
 	
@@ -145,4 +110,4 @@ OtherLibs.	A few libraries which aren't part of the main DeskLib
 			aren't available as a DLL.
 
 
-- Julian Smith
+- DeskLib Developers
