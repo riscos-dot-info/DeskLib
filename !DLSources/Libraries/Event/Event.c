@@ -804,7 +804,7 @@ extern void Event_Process(event_pollblock *event)
 
   if (event->type < event_MAXEVENTS) {
     handler = (event_handler) (event_handlers[event->type]);
-    handler(event, NULL);
+    if (handler) handler(event, NULL);
   }
 }
 
