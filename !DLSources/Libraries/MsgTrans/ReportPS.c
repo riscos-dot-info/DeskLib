@@ -20,7 +20,10 @@
 
 os_error *MsgTrans_ReportPS(msgtrans_filedesc *filedesc, char *token,
                             BOOL fatal,
-                            char *p0, char *p1, char *p2, char *p3)
+                            const char *p0,
+                            const char *p1,
+                            const char *p2,
+                            const char *p3)
 {
   os_error *swierr;
   char buffer[252];
