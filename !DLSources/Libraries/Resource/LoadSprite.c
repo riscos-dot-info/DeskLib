@@ -69,6 +69,11 @@ extern void Resource_LoadSprites(void)
   }
 
   resource_sprites = malloc(filesize + 16);
+  if (resource_sprites == NULL)
+  {   
+    Error_ReportFatal(1, "Couldn't allocate memory to load 'Sprites'.");
+  }
+  
   resource_sprites->areasize = filesize + 16;
   resource_sprites->firstoffset = 16;
   Sprite_InitArea(resource_sprites);
