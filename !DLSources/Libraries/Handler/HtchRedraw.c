@@ -17,7 +17,7 @@
 */
 
 
-#include "DeskLib:WimpSWIS.h"
+#include "DeskLib:WimpSWIs.h"
 #include "DeskLib:GFX.h"
 #include "DeskLib:Handler.h"
 

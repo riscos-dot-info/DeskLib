@@ -30,7 +30,7 @@
 #include "DeskLib:Event.h"
 #include "DeskLib:WimpSWIs.h"
 #include "DeskLib:Icon.h"
-#include "DeskLib:Keycodes.h"
+#include "DeskLib:KeyCodes.h"
 #include "DeskLib:Error.h"
 #include "DeskLib:Save.h"
 #include "DeskLib:Str.h"

@@ -19,7 +19,7 @@
 #include <string.h>
 
 #include "DeskLib:Wimp.h"
-#include "DeskLib:WimpSWIS.h"
+#include "DeskLib:WimpSWIs.h"
 #include "DeskLib:Sprite.h"
 #include "DeskLib:Screen.h"
 #include "DeskLib:SWI.h"
