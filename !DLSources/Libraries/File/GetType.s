@@ -11,7 +11,7 @@
 ;   File:    File.s.GetType
 ;   Author:  Ben Summers, but only because Jason Williams
 ;            forgot to write the damn thing
-;   Version: 1.01 (25 Sep 2002)
+;   Version: 1.02 (25 Sep 2002)
 ;   Purpose: SWI veneer for file operations - get the type of a file
 
         GET     ^.h.regdefs
@@ -21,7 +21,7 @@
         PREAMBLE
         STARTCODE File_GetType
 ;
-; extern int File_GetType(char *filename);
+; extern int File_GetType(const char *filename);
 ;
         STMFD   sp!, {v1, v2, lr}
 
@@ -30,10 +30,8 @@
 
         SWI     SWI_OS_File + XOS_Bit
         BVS     err
-        CMP     a1,#0	   ; We return an error if it is not found
-        BEQ     err 
-        CMP     a1,#2      ; Or if it is a directory
-        BEQ     err
+        TST     a1,#1      ; Success for file or image file
+        BNE     err
 
         MOV     a1,a3,LSL#12
         MOV     a1,a1,LSR#12+8
