@@ -19,7 +19,7 @@
 #include "DeskLib:File.h"
 #include "DeskLib:SWI.h"
 
-extern BOOL File_IsDirectory(char *pathname)
+extern BOOL File_IsDirectory(const char *pathname)
 {
   unsigned type;
   

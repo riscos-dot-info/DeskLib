@@ -19,7 +19,7 @@
 
 #include "DeskLib:File.h"
 
-extern int File_printf(file_handle file, char *format, ...)
+extern int File_printf(file_handle file, const char *format, ...)
 {
   va_list argp;
   char    buff[512];
