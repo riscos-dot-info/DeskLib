@@ -357,6 +357,16 @@ extern os_error *Sprite_UnRedirect(sprite_outputstate *oldstate);
 */
 
 
+extern os_error *Sprite_RedirectMask(sprite_area area, const char *name,
+                                     void *savearea, sprite_outputstate *oldstate);
+/*
+  This is a veneer for OS_SpriteOp 61.
+
+  This acts identically to Sprite_Redirect, except the output is to the
+  mask.
+*/
+
+
 extern os_error *Sprite_ReadSaveAreaSize(sprite_area area, const char *name,
                                          int *saveareasize);
 /*
@@ -579,7 +589,7 @@ extern os_error *Sprite_PlotMaskScaled(sprite_area area, const char *name,
 
 extern os_error *Sprite_PlotScaled(sprite_area area, const char *name,
                                    wimp_point *pos, sprite_scalefactors *scale,
-                                   void *pixtrans);
+                                   unsigned int plot_action, void *pixtrans);
 /*
   This is a veneer to OS_SpriteOp 52.
 
