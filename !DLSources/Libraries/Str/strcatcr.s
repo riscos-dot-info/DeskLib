@@ -32,7 +32,7 @@ strcat_findend
 strcat_copy
         LDRB      ip, [a2], #1      ; a2 = post-incrementing  ptr to source
         CMP       ip, #31
-        STRGTB    ip, [a3], #1      ; if char > 31, append to dest
+        STRHIB    ip, [a3], #1      ; if char > 31, append to dest
         BGT       strcat_copy       ;   and loop
 
         MOV       ip, #0            ; NULL terminate
