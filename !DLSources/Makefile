@@ -22,8 +22,8 @@ WARNINGS = -ansi -pedantic -Wall -Wundef -Wpointer-arith \
            -Wcast-align -Wwrite-strings -Wstrict-prototypes \
            -Wmissing-prototypes -Wmissing-declarations -Wnested-externs \
            -Winline -Wno-unused -Wno-long-long -W -Wcast-qual -Wshadow
-CC = gcc
-CFLAGS = -IDeskLib: -mthrowback $(WARNINGS) #-O2
+#CC = gcc
+#CFLAGS = -IDeskLib: -mthrowback $(WARNINGS) #-O2
 
 LIB = libfile -c DeskLib
 MKDIR = CDir
@@ -76,4 +76,12 @@ makelibs: $(addsuffix .library, $(libraries))
 %.library:
 	$(MKDIR) Libraries.$*.o
 	@$(MAKE) sublib=$* --directory Libraries.$* -f $(makefile) makelib
+
+.c.o:
+	@mkdir -p $(@D)/o
+	$(CC) $(CFLAGS) -c $< -o $@
+
+.s.o:
+	@mkdir -p $(@D)/o
+	$(AS) $(ASFLAGS) -c $< -o $@
 
