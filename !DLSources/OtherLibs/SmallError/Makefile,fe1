@@ -1,34 +1,11 @@
-#	Library-making makefile
+# Sub-makefile for making SmError
 
-CC		=	cc
-LIBFILE		=	LibFile
+OtherDir	=	<DeskLib$$Dir>.o.Other
 
-CCFlags		=	-c -fahif -depend !Depend -throwback -I,C:
-LibFileFlags	=	-c -o
-
-Target		=	<DeskLib$Dir>.o.Other.SmError
-
-ObjectFiles	=			\
-			o.Error		\
-
-
-# path(s) to source files:
 VPATH = @ @.^
 
-# Don't change the following
+smerror: $(OtherDir).SmError
 
-.SUFFIXES:	.o .c
-
-$(Target):	$(ObjectFiles)
-	$(LIBFILE) $(LibFileFlags) $@ $(ObjectFiles)
-
-.c.o:
-	$(CC) $(CCFlags) -o $@ $<
-
-
-# Dynamic dependencies:
-o.Error:	c.Error
-o.Error:	DeskLib:h.Error
-o.Error:	DeskLib:h.Core
-o.Error:	DeskLib:h.Event
-o.Error:	DeskLib:h.Wimp
+$(OtherDir).SmError: OtherLibs/SmallError/Error.o
+	@mkdir -p $(OtherDir)
+	$(AR) -c $@ $(AFLAFS) OtherLibs.SmallError.o.Error
