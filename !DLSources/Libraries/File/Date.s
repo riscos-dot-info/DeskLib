@@ -20,7 +20,7 @@
         PREAMBLE
         STARTCODE File_Date
 ;
-; extern void File_Date(char *filename, char *fivebyteblock);
+; extern void File_Date(char *filename, unsigned char *fivebyteblock);
 ;
         STMFD   sp!, {a2,v1,v2,lr}
 
