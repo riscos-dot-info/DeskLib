@@ -28,5 +28,10 @@ char *Icon_GetTextPtr(window_handle window, icon_handle icon)
 
   Wimp_GetIconState(window, icon, &iconblk);
 
-  return iconblk.data.indirecttext.buffer;
+  if (iconblk.flags.value & icon_INDIRECTED)
+  {
+    return iconblk.data.indirecttext.buffer;
+  }
+
+  return NULL;
 }
