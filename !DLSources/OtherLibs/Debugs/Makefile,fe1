@@ -1,96 +1,55 @@
-#	Library-making makefile
+# Sub-makefile for the Debugging libraries
 
-CC		=	cc
-LIBFILE		=	LibFile
+DebugsDir	=	<DeskLib$$Dir>.o.Debug
 
-CCFlags		=	-c -fahi -depend !Depend -throwback -I,C: -D_DeskLib_Debug
-LibFileFlags	=	-c -o
+debugs:				\
+	$(DebugsDir).stderr	\
+	$(DebugsDir).uniquepipe	\
+	$(DebugsDir).pipetype	\
+	$(DebugsDir).uniquefile	\
+	$(DebugsDir).Signal
+#	$(DebugsDir).heapgraph
 
-TargetDir	=	<DeskLib$Dir>.o.Debug
+$(DebugsDir).Signal:	OtherLibs/Debugs/Signal.o OtherLibs/Debugs/Debug.o
+	@mkdir -p $(DebugsDir)
+	$(AR) -c $@ $(AFLAFS) OtherLibs.Debugs.o.Signal OtherLibs.Debugs.o.Debug 
 
+$(DebugsDir).pipetype:	OtherLibs/Debugs/pipetype.o OtherLibs/Debugs/Debug.o
+	@mkdir -p $(DebugsDir)
+	$(AR) -c $@ $(AFLAFS) OtherLibs.Debugs.o.pipetype OtherLibs.Debugs.o.Debug
 
+$(DebugsDir).uniquepipe: OtherLibs/Debugs/uniquepipe.o OtherLibs/Debugs/Debug.o
+	@mkdir -p $(DebugsDir)
+	$(AR) -c $@ $(AFLAFS) OtherLibs.Debugs.o.uniquepipe OtherLibs.Debugs.o.Debug
 
-VPATH = @ @.^
+$(DebugsDir).stderr:	OtherLibs/Debugs/stderr.o OtherLibs/Debugs/Debug.o
+	@mkdir -p $(DebugsDir)
+	$(AR) -c $@ $(AFLAFS) OtherLibs.Debugs.o.stderr OtherLibs.Debugs.o.Debug
 
+$(DebugsDir).uniquefile: OtherLibs/Debugs/uniquefile.o OtherLibs/Debugs/Debug.o
+	@mkdir -p $(DebugsDir)
+	$(AR) -c $@ $(AFLAFS) OtherLibs.Debugs.o.uniquefile OtherLibs.Debugs.o.Debug
 
+OtherLibs/Debugs/Debug.o:
+	@mkdir -p $(@D)/o
+	$(CC) $(CFLAGS) -D_DeskLib_Debug -c OtherLibs/Debugs/Debug.c -o $@
 
-ALL:				\
-	$(TargetDir).stderr	\
-	$(TargetDir).uniquepipe	\
-	$(TargetDir).heapgraph	\
-	$(TargetDir).pipetype	\
-	$(TargetDir).Signal	\
-	$(TargetDir).uniquefile	\
+OtherLibs/Debugs/pipetype.o:  
+	@mkdir -p $(@D)/o
+	$(CC) $(CFLAGS) -D_DeskLib_Debug -c OtherLibs/Debugs/pipetype.c -o $@
+	
+OtherLibs/Debugs/uniquepipe.o: 
+	@mkdir -p $(@D)/o
+	$(CC) $(CFLAGS) -D_DeskLib_Debug -c OtherLibs/Debugs/uniquepipe.c -o $@
+                             
+OtherLibs/Debugs/stderr.o: 
+	@mkdir -p $(@D)/o
+	$(CC) $(CFLAGS) -D_DeskLib_Debug -c OtherLibs/Debugs/stderr.c -o $@
+	
+OtherLibs/Debugs/uniquefile.o: 
+	@mkdir -p $(@D)/o
+	$(CC) $(CFLAGS) -D_DeskLib_Debug -c OtherLibs/Debugs/uniquefile.c -o $@
 
+# $(DebugsDir).heapgraph:	o.heapgraph o.Debug
+# 	$(LIBFILE) $(LibFileFlags) $@ o.heapgraph o.Debug
 
-# If anyone knows how to automate these, please let me know!
-
-
-$(TargetDir).Signal:	o.Signal
-	$(LIBFILE) $(LibFileFlags) $@ o.Signal
-
-$(TargetDir).pipetype:	o.pipetype o.Debug
-	$(LIBFILE) $(LibFileFlags) $@ o.pipetype o.Debug
-
-$(TargetDir).uniquepipe:	o.uniquepipe o.Debug
-	$(LIBFILE) $(LibFileFlags) $@ o.uniquepipe o.Debug
-
-$(TargetDir).stderr:	o.stderr o.Debug
-	$(LIBFILE) $(LibFileFlags) $@ o.stderr o.Debug
-
-$(TargetDir).heapgraph:	o.heapgraph o.Debug
-	$(LIBFILE) $(LibFileFlags) $@ o.heapgraph o.Debug
-
-$(TargetDir).uniquefile:	o.uniquefile o.Debug
-	$(LIBFILE) $(LibFileFlags) $@ o.uniquefile o.Debug
-
-
-
-
-.SUFFIXES:	.o .c
-.c.o:
-	$(CC) $(CCFlags) -o $@ $<
-
-
-# Dynamic dependencies:
-o.Level:	c.Level
-o.Level:	DeskLib:h.Debug
-o.Level:	DeskLib:h.Core
-o.stderr:	c.stderr
-o.stderr:	DeskLib:h.Debug
-o.stderr:	DeskLib:h.Core
-o.stderr:	DeskLib:h.Error
-o.uniquepipe:	c.uniquepipe
-o.uniquepipe:	DeskLib:h.Error
-o.uniquepipe:	DeskLib:h.Core
-o.uniquepipe:	DeskLib:h.Debug
-o.uniquepipe:	DeskLib:h.Str
-o.heapgraph:	c.heapgraph
-o.heapgraph:	DeskLib:h.Debug
-o.heapgraph:	DeskLib:h.Core
-o.heapgraph:	DeskLib:h.Error
-o.heapgraph:	C:HeapGraph.h.Debug
-o.heapgraph:	C:HeapGraph.h.Sendf
-o.pipetype:	c.pipetype
-o.pipetype:	DeskLib:h.Error
-o.pipetype:	DeskLib:h.Core
-o.pipetype:	DeskLib:h.WimpSWIs
-o.pipetype:	DeskLib:h.Wimp
-o.pipetype:	DeskLib:h.Debug
-o.pipetype:	DeskLib:h.Str
-o.Signal:	c.Signal
-o.Signal:	DeskLib:h.Debug
-o.Signal:	DeskLib:h.Core
-o.Signal:	DeskLib:h.Error
-o.Signal:	DeskLib:h.Event
-o.Signal:	DeskLib:h.Wimp
-o.Signal:	DeskLib:h.Error
-o.uniquefile:	c.uniquefile
-o.uniquefile:	DeskLib:h.Error
-o.uniquefile:	DeskLib:h.Core
-o.uniquefile:	DeskLib:h.Str
-o.uniquefile:	DeskLib:h.Debug
-o.Debug:	c.Debug
-o.Debug:	DeskLib:h.Debug
-o.Debug:	DeskLib:h.Core
-o.Debug:	DeskLib:h.Error
