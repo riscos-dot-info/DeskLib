@@ -1,12 +1,12 @@
 ;
-;       Title                  : Wimp Start Task (RISC OS 3)
+;       Title                  : Wimp Force Redraw Title
 ;       System                 : Wimp Library
 ;       Version                : 1.0
-;       Copyright              : (C) Sergio Monesi
-;       Date                   : 21 Jan 1995
-;       Author                 : Sergio Monesi
+;       Copyright              : (C) Peter Naulls
+;       Date                   : 21st November 2002
+;       Author                 : Peter Naulls
 ;
-;       Function               : Starts a task and return his task handle.
+;       Function               : Forces a redraw of the title
 ;
 ;
 ;       Modification history.
@@ -34,14 +34,17 @@
 ;============================================================================
 ;
         PREAMBLE
-        STARTCODE Wimp_StartTask3
+        STARTCODE Wimp_RedrawTitle
 ;
-        MOV     ip, lr
-        SWI     SWI_Wimp_StartTask + XOS_Bit
-        MOVVS   pc, ip
-        TEQ     a2, #0
-        STRNE   a1, [a2]
-        MOV     a1, #0
-        MOV     pc, ip
+        LDR     a2, |task|
+        MOV     a3, #3        
+
+        SWI     SWI_Wimp_ForceRedraw + XOS_Bit
+        MOVVC   a1, #0
+
+        MOV     a2, #0  ; Prevent R2 retaining value
+        MOV     pc, lr
+|task|
+        DCB    "TASK"
 ;
         END

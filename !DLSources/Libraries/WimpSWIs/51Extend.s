@@ -1,12 +1,12 @@
 ;
-;       Title                  : Wimp Start Task (RISC OS 3)
+;       Title                  : Wimp Extend
 ;       System                 : Wimp Library
 ;       Version                : 1.0
-;       Copyright              : (C) Sergio Monesi
-;       Date                   : 21 Jan 1995
-;       Author                 : Sergio Monesi
+;       Copyright              : (C) Peter Naulls
+;       Date                   : 21st November 2002
+;       Author                 : Peter Naulls
 ;
-;       Function               : Starts a task and return his task handle.
+;       Function               : Enumerate windows
 ;
 ;
 ;       Modification history.
@@ -34,14 +34,15 @@
 ;============================================================================
 ;
         PREAMBLE
-        STARTCODE Wimp_StartTask3
+        STARTCODE Wimp_Enumerate
 ;
-        MOV     ip, lr
-        SWI     SWI_Wimp_StartTask + XOS_Bit
-        MOVVS   pc, ip
-        TEQ     a2, #0
-        STRNE   a1, [a2]
-        MOV     a1, #0
-        MOV     pc, ip
+        MOV     a3, a2
+        LDR     a2, [a3]
+
+        SWI     SWI_Wimp_Extend + XOS_Bit
+        MOVVC   a1, #0
+        STRVC   a2, [a3]
+
+        MOV     pc, lr
 ;
         END
