@@ -45,7 +45,7 @@ msgdefptr msgs_grouplist = NULL;
 
 
 
-extern BOOL Msgs__MatchToken(char *tag1, char *tag2, BOOL wcallowed)
+extern BOOL Msgs__MatchToken(const char *tag1, const char *tag2, BOOL wcallowed)
 {
   int loop = 0;
 
@@ -73,7 +73,7 @@ extern BOOL Msgs__MatchToken(char *tag1, char *tag2, BOOL wcallowed)
 
 
 
-extern msgdefptr Msgs__Find(msgdefptr *liststart, char *tag,
+extern msgdefptr Msgs__Find(msgdefptr *liststart, const char *tag,
                             BOOL create, BOOL wcallowed)
 /* Find the given tag in either the group list or a message list (list header
  * passed in as *liststart). If not found, possibly create a new record
@@ -111,7 +111,7 @@ extern msgdefptr Msgs__Find(msgdefptr *liststart, char *tag,
 
 static void CopyMessage(char *s1, char *s2, int maxlength);
 
-extern BOOL Msgs_Lookup(char *tag, char *result, int maxlength)
+extern BOOL Msgs_Lookup(const char *tag, char *result, int maxlength)
 {
   msgdefptr    ptr;
   char         grouptag[10], msgtag[10];

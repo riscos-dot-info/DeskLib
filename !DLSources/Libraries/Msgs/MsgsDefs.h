@@ -17,9 +17,9 @@ typedef struct msg_def
 } msg_def;
 
 extern msgdefptr msgs_grouplist;
-extern BOOL Msgs__MatchToken(char *tag1, char *tag2, BOOL wcallowed);
+extern BOOL Msgs__MatchToken(const char *tag1, const char *tag2, BOOL wcallowed);
 
-extern msgdefptr Msgs__Find(msgdefptr *liststart, char *tag,
+extern msgdefptr Msgs__Find(msgdefptr *liststart, const char *tag,
                             BOOL create, BOOL wcallowed);
 
-#define MatchTokenI(t1, t2) (((int*)(void*)t1)[0]==((int*)(void*)t2)[0] && ((int*)(void*)t1)[1]==((int*)(void*)t2)[1])
+#define MatchTokenI(t1, t2) (((const int*)(const void*)t1)[0]==((const int*)(const void*)t2)[0] && ((const int*)(const void*)t1)[1]==((const int*)(const void*)t2)[1])

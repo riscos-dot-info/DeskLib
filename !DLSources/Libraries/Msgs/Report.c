@@ -21,7 +21,7 @@
 #include "DeskLib:Msgs.h"
 
 
-extern void Msgs_Report(int errornum, char *tag, ...)
+extern void Msgs_Report(int errornum, const char *tag, ...)
 {
   va_list va;
   char buffer[256];
@@ -40,7 +40,7 @@ extern void Msgs_Report(int errornum, char *tag, ...)
 }
 
 
-extern void Msgs_ReportFatal(int errornum, char *tag, ...)
+extern void Msgs_ReportFatal(int errornum, const char *tag, ...)
 {
   va_list va;
   char buffer[256];

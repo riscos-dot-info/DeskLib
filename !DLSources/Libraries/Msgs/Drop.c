@@ -24,7 +24,7 @@
 
 
 
-extern void Msgs_DropGroup(char *grouptag)
+extern void Msgs_DropGroup(const char *grouptag)
 {
   msgdefptr ptr, next, last = NULL;
 
