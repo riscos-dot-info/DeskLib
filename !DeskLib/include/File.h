@@ -398,7 +398,7 @@ extern os_error *File_LoadTo(const char *filename, void *address, int *size);
 */
 
 
-extern void File_Date(const char *filename, char *fivebytedate);
+extern void File_Date(const char *filename, unsigned char *fivebytedate);
 /*
   This reads the datestamp of a file into a five byte block suitable for
   use with, for example, Time_ConvertDateAndTime.

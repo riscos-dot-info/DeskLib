@@ -63,7 +63,7 @@ typedef struct
 */
 
 
-os_error *Time_ReadClock(char *fivebyteblock);
+os_error *Time_ReadClock(unsigned char *fivebyteblock);
 /*
   This gets a copy of the CMOS clock as a five-byte integer, suitable for
   passing to Time_ConvertDateAndTime and similar functions.
@@ -81,7 +81,7 @@ extern unsigned int Time_Monotonic(void);
 */
 
 
-os_error *Time_ConvertTimeToOrdinals(char *fivebyteblock, time_ordinals *ord);
+os_error *Time_ConvertTimeToOrdinals(unsigned char *fivebyteblock, time_ordinals *ord);
 /*
   This converts the five byte system clock value into time ordinals (ie.
   it breaks it down into minutes, hours, etc.) for the current Territory.
@@ -91,7 +91,7 @@ os_error *Time_ConvertTimeToOrdinals(char *fivebyteblock, time_ordinals *ord);
 */
 
 
-os_error *Time_ConvertTimeToUTCOrdinals(char *fivebyteblock,
+os_error *Time_ConvertTimeToUTCOrdinals(unsigned char *fivebyteblock,
                                         time_ordinals *ord);
 /*
   This converts the five byte system clock value into time ordinals (ie.
@@ -103,7 +103,7 @@ os_error *Time_ConvertTimeToUTCOrdinals(char *fivebyteblock,
 */
 
 
-extern os_error *Time_ConvertDateAndTime(char *fivebyteblock, char *buffer,
+extern os_error *Time_ConvertDateAndTime(unsigned char *fivebyteblock, char *buffer,
                                          int bufflen, char *format);
 /*
   This is a veneer for the OS_ConvertDateAndTime SWI.  It converts the
@@ -175,7 +175,7 @@ extern os_error *Time_ConvertDateAndTime(char *fivebyteblock, char *buffer,
 */
 
 
-extern os_error *Time_ConvertStandardDateAndTime(char *fivebyteblock,
+extern os_error *Time_ConvertStandardDateAndTime(unsigned char *fivebyteblock,
                                                  char *buffer, int bufflen);
 /*
   This is a veneer for the OS_ConvertStandardDateAndTime SWI.  It converts
