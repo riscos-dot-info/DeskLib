@@ -8,4 +8,4 @@ smerror: $(OtherDir).SmError
 
 $(OtherDir).SmError: OtherLibs/SmallError/Error.o
 	@mkdir -p $(OtherDir)
-	$(AR) -c $@ $(AFLAFS) OtherLibs.SmallError.o.Error
+	$(AR) -c $@ $(ARFLAGS) OtherLibs.SmallError.o.Error
