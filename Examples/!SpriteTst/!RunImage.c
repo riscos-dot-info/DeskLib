@@ -37,7 +37,7 @@ sprite_areainfo *sblock = (sprite_areainfo *) sblck;
 BOOL CloseWin(event_pollblock *, void *);
 BOOL Redraw(event_pollblock *, void *);
 
-int main()
+int main(void)
 {
   Resource_Initialise("SpriteTest");
   Event_Initialise("Sprite Test");
