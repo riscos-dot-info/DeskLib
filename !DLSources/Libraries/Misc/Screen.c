@@ -18,38 +18,38 @@
 #include "DeskLib:SWI.h"
 #include "DeskLib:Screen.h"
 
-int        screen_mode  = -1;
-wimp_point screen_size;
-wimp_point screen_eig;
-wimp_point screen_delta;
-int        screen_bpp;
+screen_modeval screen_mode  = -1;
+wimp_point     screen_size;
+wimp_point     screen_eig;
+wimp_point     screen_delta;
+int            screen_bpp;
 
 
-#define ReadModeVar(m, v, r) SWI(3, 3, 0x20035, (m), (v), 0,   0, 0, (r))
-#define SWI_XOS_Byte 0x20006
+#define ReadModeVar(m, v, r) \
+  SWI(3, 3, SWI_OS_ReadModeVariable, (m), (v), 0,   0, 0, (r))
 
 extern BOOL Screen_CacheModeInfo(void)
 {
-  int oldmode = screen_mode;
+  screen_modeval oldmode = screen_mode;
 
-  SWI(1, 3, SWI_XOS_Byte, 135,   NULL, NULL, &screen_mode);
+  SWI(1, 3, SWI_OS_Byte, 135, NULL, NULL, &screen_mode);
 
-  if (oldmode == screen_mode)
+  if (oldmode.screen_mode == screen_mode.screen_mode)
     return(FALSE);
 
-  ReadModeVar(-1, 9, &screen_bpp);
+  ReadModeVar(-1, SCREEN_VAR_Log2BPP, &screen_bpp);
   screen_bpp = 1 << screen_bpp;
 
-  ReadModeVar(-1, 4, &screen_eig.x);
-  ReadModeVar(-1, 5, &screen_eig.y);
+  ReadModeVar(-1, SCREEN_VAR_XEigFactor, &screen_eig.x);
+  ReadModeVar(-1, SCREEN_VAR_YEigFactor, &screen_eig.y);
 
   screen_delta.x = 1 << screen_eig.x;
   screen_delta.y = 1 << screen_eig.y;
 
-  ReadModeVar(-1, 11, &screen_size.x);
+  ReadModeVar(-1, SCREEN_VAR_XWindLimit, &screen_size.x);
   screen_size.x = (screen_size.x + 1) << screen_eig.x;
 
-  ReadModeVar(-1, 12, &screen_size.y);
+  ReadModeVar(-1, SCREEN_VAR_YWindLimit, &screen_size.y);
   screen_size.y = (screen_size.y + 1) << screen_eig.y;
 
   return(TRUE);
