@@ -21,7 +21,7 @@
 
 
 
-extern window_block *Template_Clone(char *name, int maxtitlesize)
+extern window_block *Template_Clone(const char *name, int maxtitlesize)
 {
   template_record *t;
   window_block    *window;

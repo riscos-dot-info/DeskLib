@@ -19,7 +19,7 @@
 #include "TempDefs.h"
 
 
-extern void Template_Delete(char *name)
+extern void Template_Delete(const char *name)
 /* Attempts to delete the named template, and deallocate its memory */
 {
   template_record *t;

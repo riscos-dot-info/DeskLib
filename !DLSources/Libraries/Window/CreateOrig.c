@@ -40,7 +40,7 @@
 extern linklist_header window_listanchor;
 
 
-extern window_handle Window_CreateOrig(char *windowname)
+extern window_handle Window_CreateOrig(const char *windowname)
 {
   windowrec     *record;
   window_block  *windowptr;
