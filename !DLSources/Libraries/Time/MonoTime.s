@@ -22,6 +22,6 @@
 ;
         MOV  ip, lr
         SWI  SWI_OS_ReadMonotonicTime + XOS_Bit
-        MOVS pc, ip
+        MOV  pc, ip
 ;
         END

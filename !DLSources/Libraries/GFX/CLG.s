@@ -11,6 +11,6 @@
 ;
         STMFD   sp!,{lr}
         SWI     XSWI_OS_WriteI + 16
-        LDMFD   sp!,{pc}^
+        LDMFD   sp!,{pc}
 ;
         END

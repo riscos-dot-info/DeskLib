@@ -12,6 +12,6 @@
         STMFD   sp!,{lr}
         MOV     a1, #19
         SWI     XSWI_OS_Byte
-        LDMFD   sp!,{pc}^
+        LDMFD   sp!,{pc}
 ;
         END

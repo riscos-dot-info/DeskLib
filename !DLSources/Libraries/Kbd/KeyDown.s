@@ -27,6 +27,6 @@
         MOVEQ  r0, #1                   ; return(TRUE);
         MOVNE  r0, #0                   ; return(FALSE);
 
-        LDMFD  sp!, {pc}^
+        LDMFD  sp!, {pc}
 
         END

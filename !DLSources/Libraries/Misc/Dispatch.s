@@ -56,6 +56,6 @@ Cont
         MOV     lr,pc           ; Return after 2 instructions
         MOV     pc,r7
 Exit
-        LDMEA   fp, {r4,r5,r6,r7,fp,sp,pc}^
+        LDMEA   fp, {r4,r5,r6,r7,fp,sp,pc}
 ;
         END

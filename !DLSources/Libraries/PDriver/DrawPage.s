@@ -34,6 +34,6 @@
         CMP     a2, #0
         STRNE   a3, [a2, #0]
         MOV     a1, #0
-        LDMFD   sp!, {pc}^
+        LDMFD   sp!, {pc}
 ;
         END

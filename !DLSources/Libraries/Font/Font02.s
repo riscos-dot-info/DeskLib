@@ -15,6 +15,6 @@
         STMFD   sp!, {lr}
         SWI     SWI_Font_LoseFont + XOS_Bit
         MOVVC   r0,#0
-        LDMFD   sp!, {pc}^
+        LDMFD   sp!, {pc}
 ;
         END

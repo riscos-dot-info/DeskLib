@@ -16,6 +16,6 @@
 
         STMFD  sp!, {lr}
         SWI    SWI_OS_ReadC + XOS_Bit
-        LDMFD  sp!, {pc}^
+        LDMFD  sp!, {pc}
 
         END

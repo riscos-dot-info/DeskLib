@@ -50,6 +50,6 @@
         LDR       ip, [sp], #4
         CMP       ip, #0
         STRNE     v2, [ip]
-        LDMFD     sp!, {v1-v6, pc}^
+        LDMFD     sp!, {v1-v6, pc}
 ;
 	END

@@ -12,6 +12,6 @@
         STMFD   sp!,{lr}
         SWI     XSWI_ColourTrans_InvalidateCache
         MOVVC   r0, #0
-        LDMFD   sp!,{pc}^
+        LDMFD   sp!,{pc}
 ;
         END

@@ -42,10 +42,10 @@
         MOV       a3, a2
         MOV       a2, a1
         MOV       a1, #256
-        ADD	  a1, a1, #13
+        ADD       a1, a1, #13
         SWI       OS_SpriteOp + XOS_Bit
         MOV       a1, a4
         MOVVS     a1, #0
-        LDMFD     sp!, {v1,pc}^
+        LDMFD     sp!, {v1,pc}
 ;
 	END

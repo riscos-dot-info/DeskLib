@@ -26,12 +26,12 @@
         MOV     v1, a3
         MOV     a2, a1
         SWI     SWI_PDriver_GetRectangle + XOS_Bit
-        LDMVSFD sp!, {v1,pc}^
+        LDMVSFD sp!, {v1,pc}
         CMP     a4, #0
         STRNE   r0, [a4, #0]
         CMP     v1, #0
         STRNE   r2, [v1, #0]
         MOV     a1, #0
-        LDMFD   sp!, {v1,pc}^
+        LDMFD   sp!, {v1,pc}
 ;
         END

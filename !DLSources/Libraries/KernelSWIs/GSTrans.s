@@ -24,11 +24,11 @@
 
         MOV     ip, lr
         SWI     SWI_OS_GSTrans + XOS_Bit
-        MOVVSS  pc, ip
+        MOVVS   pc, ip
         TEQ     r3, #0
         STRNE   r0, [r3]
         MOV     r0, #0
-        MOVS    pc, ip
+        MOV     pc, ip
 
 
         END

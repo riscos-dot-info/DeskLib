@@ -13,6 +13,6 @@
         STMFD   sp!,{lr}
         SWI     XSWI_ColourTrans_ReturnColourNumberForMode
         MOVVS   r0, #-1
-        LDMFD   sp!,{pc}^
+        LDMFD   sp!,{pc}
 ;
         END

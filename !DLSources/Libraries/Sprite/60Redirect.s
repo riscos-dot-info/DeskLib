@@ -42,6 +42,6 @@
         SWI     OS_SpriteOp + XOS_Bit
         STMVCIA ip, {a1, a2, a3, a4}
         MOVVC   a1, #0
-        LDMFD   sp!, {pc}^
+        LDMFD   sp!, {pc}
 ;
         END

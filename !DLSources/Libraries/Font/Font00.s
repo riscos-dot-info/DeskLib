@@ -18,6 +18,6 @@
         STR     r3,[v2]
         STR     r2,[v3]
         MOVVC   a1,#0
-        LDMFD   sp!, {v1,v2,v3,pc}^
+        LDMFD   sp!, {v1,v2,v3,pc}
 ;
         END

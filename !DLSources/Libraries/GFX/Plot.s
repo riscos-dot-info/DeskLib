@@ -11,6 +11,6 @@
 ;
         STMFD   sp!,{lr}
         SWI     XSWI_OS_Plot
-        LDMFD   sp!,{pc}^
+        LDMFD   sp!,{pc}
 ;
         END

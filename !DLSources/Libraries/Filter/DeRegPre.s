@@ -11,6 +11,6 @@
 ;
         STMFD   sp!, {lr}
         SWI     SWI_Filter_DeRegisterPreFilter
-        LDMFD   sp!, {pc}^
+        LDMFD   sp!, {pc}
 ;
         END

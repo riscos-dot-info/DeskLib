@@ -12,5 +12,5 @@
         STMFD   sp!, {lr}
         SWI     SWI_Font_SetFontColours + XOS_Bit
         MOVVC   r0,#0
-        LDMFD   sp!, {pc}^
+        LDMFD   sp!, {pc}
         END

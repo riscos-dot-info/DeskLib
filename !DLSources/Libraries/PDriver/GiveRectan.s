@@ -28,6 +28,6 @@
         LDR     v1, [ip, #0]
         SWI     SWI_PDriver_GiveRectangle + XOS_Bit
         MOVVC   a1, #0
-        LDMFD   sp!, {v1,pc}^
+        LDMFD   sp!, {v1,pc}
 ;
         END

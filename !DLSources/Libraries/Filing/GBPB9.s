@@ -34,11 +34,11 @@
         MOV     r1, r0
         MOV     r0, #9
         SWI     SWI_OS_GBPB + XOS_Bit
-        LDMVSFD sp!, {r2-r6,pc}^
+        LDMVSFD sp!, {r2-r6,pc}
         MOV     r0,#0
         LDMFD   sp, {r5,r6}
         STR     r3, [r5]
         STR     r4, [r6]
-        LDMFD   sp!, {r2-r6,pc}^
+        LDMFD   sp!, {r2-r6,pc}
 ;
         END

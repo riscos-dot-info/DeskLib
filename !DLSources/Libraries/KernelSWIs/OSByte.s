@@ -31,6 +31,6 @@
         LDR     r3, [ip]
         CMP     r3, #0
         STRNE   r2, [r3]
-        LDMFD   sp!, {pc}^
+        LDMFD   sp!, {pc}
 ;
         END

@@ -31,6 +31,6 @@
 
         MOVVC   a1, #0
 
-        LDMFD   sp!, {v1, v2, pc}^
+        LDMFD   sp!, {v1, v2, pc}
 ;
         END

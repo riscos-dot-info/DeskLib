@@ -14,6 +14,6 @@
         MOV     r1,r0
         SWI     SWI_Font_SetScaleFactor + XOS_Bit
         MOVVC   r0,#0
-        LDMFD   sp!, {pc}^
+        LDMFD   sp!, {pc}
 ;
         END

@@ -25,7 +25,7 @@
         MOV     ip, lr
         SWI     SWI_OS_CLI + XOS_Bit
         MOVVC   r0, #0
-        MOVS    pc, ip
+        MOV     pc, ip
 
 
         END

@@ -41,6 +41,6 @@
         LDMIA   ip, {a1, a2, a3, a4}
         SWI     OS_SpriteOp + XOS_Bit
         MOVVC   a1, #0
-        LDMFD   sp!, {pc}^
+        LDMFD   sp!, {pc}
 ;
         END

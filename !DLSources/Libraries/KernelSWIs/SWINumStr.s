@@ -36,11 +36,11 @@
         MOV     r2, r1
         MOV     r1, r0
         SWI     SWI_OS_SWINumberFromString + XOS_Bit
-        MOVVSS  pc, ip
+        MOVVS   pc, ip
         TEQ     r2, #0
         STRNE   r0, [r2]
         MOV     r0, #0
-        MOVS    pc, ip
+        MOV     pc, ip
 
 
         END

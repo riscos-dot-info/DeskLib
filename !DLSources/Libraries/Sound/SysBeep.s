@@ -22,6 +22,6 @@
 
     STMFD   sp!, {lr}
     SWI     OS_WriteI + 7 + XOS_Bit
-    LDMFD   sp!, {pc}^
+    LDMFD   sp!, {pc}
 
   END

@@ -44,6 +44,6 @@
         ADD     a1, a1, #34
         SWI     OS_SpriteOp + XOS_Bit
         MOVVC   a1, #0
-        LDMFD   sp!, {v1, v2, pc}^
+        LDMFD   sp!, {v1, v2, pc}
 ;
         END
