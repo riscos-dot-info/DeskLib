@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>DeskLib documentation: !Help</title>
-	<meta http-equiv="charset" content="UTF-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 
@@ -60,9 +60,11 @@
 <p>The "StrongHelp" zipfile contains just the one file, which is a StrongHelp manual which documents the DeskLib library.  Note that this is just a nicely-formatted version of the h_doc files in the "Core" distribution, and also that the extracted file is quite large.</p>
 
 
-<hr noshade="yes" />
+<hr noshade="noshade" />
 
 <p class="note">
 <b>The DeskLib team</b><br />
 <a href="http://www.riscos.info/desklib/">http://www.riscos.info/desklib/</a>
 </p>
+
+</body></html>
