@@ -13,7 +13,7 @@
 ;   Purpose: Alter the percentage displayed under the hourglass
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; void Hourglass_Percentage(int percent);

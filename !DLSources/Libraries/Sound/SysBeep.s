@@ -13,7 +13,7 @@
 ;   Purpose: Does a VDU 7 in order to sound a system beep
 
   GET     RegDefs.h
-  GET     swinos.h
+  GET     SwiNos.h
   GET     Macros.h
 
 

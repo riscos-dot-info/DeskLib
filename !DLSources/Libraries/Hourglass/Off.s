@@ -13,7 +13,7 @@
 ;   Purpose: Off
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; void Hourglass_Off(void);

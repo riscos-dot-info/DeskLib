@@ -14,7 +14,7 @@
 ;            if appropriate.
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; os_error *PDriver_CheckFeatures(print_features mask, print_features value);

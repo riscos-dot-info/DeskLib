@@ -13,7 +13,7 @@
 ;   Purpose: Converts five-byte time block to local time ordinals
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; os_error *Time_ConvertTimeToOrdinals(char *fivebyteblock, time_ordinals *ord);

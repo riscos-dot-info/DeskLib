@@ -13,7 +13,7 @@
 ;   Purpose: Initiates printing after rectangles have been specified.
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; os_error *PDriver_DrawPage(int copies, wimp_rect *rectangle_to_print, int sequence_no, char *page,

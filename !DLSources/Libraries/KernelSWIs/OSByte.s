@@ -13,7 +13,7 @@
 ;   Purpose: Generic veneer to the OS_Byte SWI.
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; os_error *OS_Byte(osbyte_number reason, int r1in, int r2in,

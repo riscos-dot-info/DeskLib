@@ -14,7 +14,7 @@
 ;            received on the serial line.
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; int Serial_GetFormat(void);

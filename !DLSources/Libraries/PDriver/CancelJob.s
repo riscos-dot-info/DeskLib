@@ -13,7 +13,7 @@
 ;   Purpose: Stop the print job from printing.
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; os_error *PDriver_CancelJob(print_job job);

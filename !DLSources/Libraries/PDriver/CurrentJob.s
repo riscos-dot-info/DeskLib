@@ -13,7 +13,7 @@
 ;   Purpose: Returns the handle of the current job.
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; os_error *PDriver_CurrentJob(print_job *current);

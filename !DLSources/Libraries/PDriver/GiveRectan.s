@@ -13,7 +13,7 @@
 ;   Purpose: Specify a rectangle to be printed.
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; os_error *PDriver_GiveRectangle(int rectangle_id, wimp_rect *rectangle,

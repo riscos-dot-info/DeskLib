@@ -13,7 +13,7 @@
 ;   Purpose: Generic veneer to the OS_Word SWI.
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; os_error *OS_Word(osword_number reason, void *param_block);

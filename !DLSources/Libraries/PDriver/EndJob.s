@@ -13,7 +13,7 @@
 ;   Purpose: End a print job normally.
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; os_error *PDriver_EndJob(print_job job);

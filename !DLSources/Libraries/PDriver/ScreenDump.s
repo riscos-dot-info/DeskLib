@@ -13,7 +13,7 @@
 ;   Purpose: Output a screen dump to the printer.
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; os_error *PDriver_ScreenDump(print_job job);

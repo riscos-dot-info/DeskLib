@@ -13,7 +13,7 @@
 ;   Purpose: Sends a byte to the serial port.
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; BOOL Serial_PutByte(int c);

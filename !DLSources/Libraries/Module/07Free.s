@@ -13,7 +13,7 @@
 ;   Purpose: Deallocate a block of the RMA.
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; os_error *Module_Free(void *block);

@@ -14,7 +14,7 @@
 ;   Purpose: SWI veneer for file operations - delete a file
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 ;
         PREAMBLE

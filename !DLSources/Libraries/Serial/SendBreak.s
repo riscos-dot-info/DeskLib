@@ -13,7 +13,7 @@
 ;   Purpose: Transmit a break on the serial port.
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; os_error *Serial_SendBreak(int length);

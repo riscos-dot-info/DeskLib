@@ -14,7 +14,7 @@
 ;   Purpose: Read the size of a sprite save area (veneer to SpriteOp 62)
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 ;
         PREAMBLE

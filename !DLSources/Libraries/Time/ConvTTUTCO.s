@@ -13,7 +13,7 @@
 ;   Purpose: Converts five-byte time block to UTC  time ordinals
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; os_error *Time_ConvertTimeToUTCOrdinals(char *fivebyteblock,

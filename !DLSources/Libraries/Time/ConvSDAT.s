@@ -13,7 +13,7 @@
 ;   Purpose: Convert given time to text using standard format string.
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
         PREAMBLE

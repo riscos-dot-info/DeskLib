@@ -1,7 +1,7 @@
 ; Author: Copyright 1993 Shaun Blackmore
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ;os_error *Font_CharBBox(FontHandle font, char c, int flags, FontInfo *info);

@@ -13,7 +13,7 @@
 ;   Purpose: Converts a pathname to a canonicalised path
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; os_error *Filing_CanonicalisePath(char *pathname, char *buffer,
