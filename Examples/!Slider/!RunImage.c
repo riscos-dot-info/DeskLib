@@ -47,7 +47,7 @@ static BOOL ByeBye(event_pollblock *event,void *ref)
 
 
 
-BOOL RedrawWindow(event_pollblock *event, void *reference)
+static BOOL RedrawWindow(event_pollblock *event, void *reference)
 /*  Called to redraw our window. We don't have anything to draw
  *  except the slider, which we do by calling Slider_Redraw
  */
@@ -68,7 +68,7 @@ BOOL RedrawWindow(event_pollblock *event, void *reference)
 }
 
 
-int SliderHasBeenUpdated(slider_info *info, void *reference)
+static int SliderHasBeenUpdated(slider_info *info, void *reference)
 /* Called whenever the slider is updated during a drag. This provides
  * an active display as you drag.
  */
@@ -82,7 +82,7 @@ int SliderHasBeenUpdated(slider_info *info, void *reference)
 
 
 
-BOOL IconClicked(event_pollblock *event, void *reference)
+static BOOL IconClicked(event_pollblock *event, void *reference)
 {
   if (!event->data.mouse.button.data.menu)               /* Not a MENU click */
   {
@@ -137,11 +137,11 @@ int main(void)
  MySliderInfo.flags.reserved = 0;
  MySliderInfo.update = (slider_updateproc) SliderHasBeenUpdated;
  MySliderInfo.reference = NULL;
-
- Slider_SetValue(&MySliderInfo, 375, NULL, NULL);
-
+                             
  Icon_SetText(window, 3, "-");
  Icon_SetText(window, 4, "-");
+ 
+ Slider_SetValue(&MySliderInfo, 375, NULL, NULL);
 
  Event_Claim(event_CLOSE,window,event_ANY,ByeBye,            NULL);
  Event_Claim(event_OPEN, window,event_ANY,Handler_OpenWindow,NULL);
