@@ -54,7 +54,7 @@ cleanlibs = $(foreach library, $(libraries), $(cleanlib))
 zip:
 	dir ^.^
 	zip -9r RAM::RamDisc0.$$.sources/zip DeskLib.!DLSources -x *.CVS.* -x *.o.*
-	zip -9r RAM::RamDisc0.$$.core/zip DeskLib.!DeskLib DeskLib.!DLUser DeskLib.!Help  -x *.CVS.* -x *cvsignore
+	zip -9r RAM::RamDisc0.$$.core/zip DeskLib.!DeskLib DeskLib.!DLUser DeskLib.!Help DeskLib.Docs  -x *.CVS.* -x *cvsignore
 	zip -9r RAM::RamDisc0.$$.examples/zip DeskLib.Examples -x *.CVS.* 
 
 .c.o:
