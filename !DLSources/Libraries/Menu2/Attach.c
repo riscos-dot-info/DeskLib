@@ -23,7 +23,7 @@
 static BOOL	Menu2__OpenFromClick( 
 	event_pollblock	*event, 
 	menu2_handle	menu, 
-	int		button
+	unsigned int	button
 	)
 {
 if ( event->data.mouse.button.value != button)	return FALSE;

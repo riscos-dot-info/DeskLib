@@ -372,6 +372,7 @@ static void Save__DefaultResultHandler(save_result result, void *ref)
 
     case save_RAMSAVERFAILED:
       Error_Report(0, "RAM-saver failed");
+    default:  
       break;
   }
 }

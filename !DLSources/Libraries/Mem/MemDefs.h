@@ -28,7 +28,7 @@ typedef struct
 } mem_header;
 
 
-#ifndef __dl_mem_c
+#ifdef __dl_mem_c
   extern mem_header *mem__lastchunk;
   extern int        mem__heap;
   extern int        mem__heapsize;
@@ -41,7 +41,7 @@ typedef struct
 #define WORDALIGN(ADDR) (((ADDR) + 3) & (~3))
 
 /* Rounds a datasize up to the smallest realsize that fits it */
-#define CHUNKSIZE(DATA) (((DATA) + 3 + sizeof(mem_header)) & (~3))
+#define CHUNKSIZE(DATA) ((int)((DATA) + 3 + sizeof(mem_header)) & (~3))
 
 /* Returns TRUE if the given chunk is free */
 #define ISFREE(CHUNK) ((CHUNK)->datasize == 0)

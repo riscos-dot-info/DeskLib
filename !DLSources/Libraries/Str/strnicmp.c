@@ -18,7 +18,7 @@
 
 #include "DeskLib:Str.h"
 
-int strnicmp(char *s1, char *s2, size_t n)
+int strnicmp(const char *s1, const char *s2, size_t n)
 {
   char ch1 = 0, 
        ch2 = 0;

@@ -25,7 +25,7 @@ typedef enum	{
 
 typedef struct	{
 
-	print_block	public;
+	print_block	ppublic;
 	
 	int			message_ref;	/* id of the last event_SENDWANTACK we sent.	*/
 	print__progress	progress;
@@ -55,28 +55,28 @@ os_error	*error;
 
 Print__ReleaseMessages( print);
 
-error =  PDriver_Info( &print->public.printerinfo);
+error =  PDriver_Info( &print->ppublic.printerinfo);
 if (error)	{
 	Print__Finish( print, FALSE, (print_result) error);
 	return;
 	}
 
-print->public.job = File_Open( "Printer:", file_WRITE);
-if ( !print->public.job)	{
+print->ppublic.job = File_Open( "Printer:", file_WRITE);
+if ( !print->ppublic.job)	{
 	Print__Finish( print, FALSE, print_result_CANTOPENPRINTER);
 	return;
 	}
 
-error = PDriver_SelectJob( print->public.job, print->public.jobtitle, &print->public.oldjob);
+error = PDriver_SelectJob( print->ppublic.job, print->ppublic.jobtitle, &print->ppublic.oldjob);
 if (error)	{
 	Print__Finish( print, FALSE, (print_result) error);
 	return;
 	}
 
-print->printfn( &print->public);
+print->printfn( &print->ppublic);
 
-PDriver_EndJob( print->public.job);
-File_Close( print->public.job);
+PDriver_EndJob( print->ppublic.job);
+File_Close( print->ppublic.job);
 
 Print__Finish( print, FALSE, print_result_OK);
 
@@ -193,7 +193,7 @@ if ( print->progress == print__progress_4_5)	{
 			BOOL		error;
 			
 			error = print->savefn( 
-				&print->public, &event->data.message.data.datasaveack
+				&print->ppublic, &event->data.message.data.datasaveack
 				);
 			if (error)	{
 				/* Couldn't save file.	*/
@@ -283,8 +283,8 @@ if ( !print)	{
 print->printfn	= printfn;
 print->savefn	= savefn;
 print->resultfn	= resultfn;
-print->public.reference	= reference;
-print->public.jobtitle	= jobtitle;
+print->ppublic.reference	= reference;
+print->ppublic.jobtitle	= jobtitle;
 
 message.header.action		= message_PRINTSAVE;
 message.header.size		= 256;
@@ -329,7 +329,7 @@ static void	Print__Finish(
 	print_result	result
 	)
 {
-if ( print->resultfn)	print->resultfn( &print->public, result);
+if ( print->resultfn)	print->resultfn( &print->ppublic, result);
 if ( releasemsgs)	Print__ReleaseMessages( print);
 free( print);
 }

@@ -15,6 +15,7 @@
 */
 
 #include "Desklib:Error.h"
+#define __dl_mem_c
 #include "MemDefs.h"
 
 #include <string.h> 
@@ -104,11 +105,11 @@ extern BOOL Mem_MidExtend(mem_anchor *anchor, int at, int by)
   mem_header *chunk,
              *bestfit = NULL,
              *start, *end,
-             *best_start = NULL, *best_end,
+             *best_start = NULL, *best_end = NULL,
              *scan_start, *scan_end,
              *end_of_heap;
-  int         bestfit_size,
-              best_move, best_free,
+  int         bestfit_size = 0,
+              best_move = 0, best_free,
               move_count, free_count,
               needed,
               newdatasize, extchunksize;

@@ -14,6 +14,8 @@
     Purpose: Dynamic memory manager - heap compaction
 */
 
+
+#define __dl_mem_c
 #include "MemDefs.h"
 
 extern void Mem_Compact(void)

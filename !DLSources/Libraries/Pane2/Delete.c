@@ -29,7 +29,7 @@
 extern void Pane2_Delete(window_handle mainwindow)
 {
  /*
-  * This hides and deletes the window 'mainwindow' and all it's panes
+  * This hides and deletes the window 'mainwindow' and all its panes
   * Use in the same manner to Window_Delete
   */
   main_listelement *mainelement;

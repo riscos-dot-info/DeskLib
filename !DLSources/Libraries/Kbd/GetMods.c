@@ -19,8 +19,8 @@
 
 extern kbd_modifiers Kbd_GetModifiers(BOOL detailed)
 {
-  kbd_modifiers mods;
-  
+  kbd_modifiers mods = { 0 };
+
   mods.alt   = Kbd_KeyDown(inkey_ALT);
   mods.ctrl  = Kbd_KeyDown(inkey_CTRL);
   mods.shift = Kbd_KeyDown(inkey_SHIFT);
@@ -37,6 +37,5 @@ extern kbd_modifiers Kbd_GetModifiers(BOOL detailed)
   }
   
   return mods;
-  /* cc warns that 'mods' may be used before being set	*/
 }
 

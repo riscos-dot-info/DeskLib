@@ -25,7 +25,7 @@ extern window_block *Template_Clone(char *name, int maxtitlesize)
 {
   template_record *t;
   window_block    *window;
-  int             icon;
+  unsigned int     icon;
   icon_block      *icons;
 
   t = Template__FindTemplate(name);

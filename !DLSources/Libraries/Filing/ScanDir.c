@@ -32,7 +32,7 @@ static os_error *Filing__ScanDirRec(char *dirname, filing_fulldirentry *dirdata,
  int readnum=0, offset=0;
  char direntries[BUF__SIZE];
  os_error *er;
- filing_fulldirentry *actptr;
+ filing_fulldirentry *actptr = NULL;
 
  if (funcs->startdir!=NULL) {
    if (er=funcs->startdir(dirname,dirdata),er!=NULL)

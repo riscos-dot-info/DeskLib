@@ -20,7 +20,7 @@
 
 
 extern void Template_Delete(char *name)
-/* Attempts to delete the named template, and deallocate it's memory */
+/* Attempts to delete the named template, and deallocate its memory */
 {
   template_record *t;
 

@@ -29,7 +29,7 @@
 extern void Pane2_Hide(window_handle mainwindow)
 {
  /*
-  * Closes the window 'mainwindow' (removes it from screen) and all it's panes
+  * Closes the window 'mainwindow' (removes it from screen) and all its panes
   * Use in the same manner to Window_Hide
   */
   main_listelement *mainelement;

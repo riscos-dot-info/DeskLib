@@ -22,6 +22,8 @@
 
 linklist_header msgtrans__list = {NULL,NULL};
 
+static os_error error;
+
 
 os_error *MsgTrans_LoadFile(msgtrans_filedesc **filedesc,char *filename)
 {
@@ -33,7 +35,6 @@ os_error *MsgTrans_LoadFile(msgtrans_filedesc **filedesc,char *filename)
   block = malloc(sizeof(msgtrans_file));
   if (!block)
   {
-    os_error error;
     
     MsgTrans_Lookup(0,"NoStore",error.errmess,252);
     return &error;
@@ -45,8 +46,6 @@ os_error *MsgTrans_LoadFile(msgtrans_filedesc **filedesc,char *filename)
   block->data = malloc(size);
   if (!block->data)
   {
-    os_error error;
-    
     MsgTrans_Lookup(0,"NoStore",error.errmess,252);
     free(block);
     return &error;
@@ -55,8 +54,6 @@ os_error *MsgTrans_LoadFile(msgtrans_filedesc **filedesc,char *filename)
   swierr = MessageTrans_OpenFile(&block->filedesc, filename, block->data);
   if (swierr)
   {
-    os_error error;
-    
     MsgTrans_Lookup(0,"NoStore",error.errmess,252);
     free(block->data);
     free(block);

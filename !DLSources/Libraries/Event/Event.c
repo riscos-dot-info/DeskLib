@@ -66,7 +66,7 @@ application start-time is correctly set so that the correct instance
 data is returned.
 */
 
-event_pollmask  event_mask = 0;
+event_pollmask  event_mask = { 0 };
 event_pollblock event_lastevent;
 task_handle     event_taskhandle  = 0;
 unsigned int    event_wimpversion = 0;
@@ -781,14 +781,14 @@ _DeskLib_SDLS_PtrFn( static, void, Event__ExitFunction( void))
  * for... I give you... the amazing Eventi brothers...
  */
 
-extern void Event_Initialise(char *taskname)
+extern void Event_Initialise(const char *taskname)
 {
   Event_Initialise3(taskname, 200, NULL);
 }
 
 
 
-extern void Event_Initialise3(char *taskname, int version, int *messages)
+extern void Event_Initialise3(const char *taskname, int version, int *messages)
 {
   int index;
 
