@@ -34,7 +34,7 @@ all: $(DESKLIB) debugs smerror
 # Link the objects together to make a new library
 $(DESKLIB): $(all_objects)
 	@mkdir -p $(basename $@)
-	$(AR) -c $@ $(AFLAFS) $(lib_objects)
+	$(AR) -c $@ $(ARFLAGS) $(lib_objects)
 
 # Insert all the Makefiles in the Otherlibs directory as well.
 # This provides the targets debugs and smerror                  
