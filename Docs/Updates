@@ -1,10 +1,33 @@
 This file documents changes made between released versions of DeskLib.
 
+Desklib 2.60 (2 Dec 2004)
+==========================
+
+Speed improvements to Wimp_Poll
+Some missed non 32-bit code now fixed
+Removed RISC OS 2 compatiblity code for Window_GetInfo which was
+causing problems
+Corrected Nested Wimp API
+Added extra wimp flag colours - this make require canges in your code
+Import Backtrace functionality from Desk
+
+
+Desklib 2.52 (7 Mar 2004)
+==========================
+
+Misc type handling improvements
+Additonal GFX functions for clipping and colour setting
+Various new Sprite functions
+
+
+
 Desklib 2.51 (31 Dec 2003)
 ==========================
 
 Misc warning fixes in the build
 Fix register handing in Sprite_GetUser
+Fix font macro precendence
+
 
 
 Desklib 2.50 (15 Oct 2003)
