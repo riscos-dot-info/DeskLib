@@ -35,7 +35,7 @@ static void Icon__ResetCaret(const window_handle window, const icon_handle icon)
   caret_block caret;
   Wimp_GetCaretPosition(&caret);
   if (caret.window == window && caret.icon == icon)
-  { 
+  {
     Icon_SetCaret(window,icon);
   }
 }

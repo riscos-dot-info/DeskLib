@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -25,7 +25,7 @@ static void Template_ExitHandler(void)
 {
   if ((int) template_fontarray > 0)
     Font_LoseAllFonts(template_fontarray);
-} 
+}
 
 
 extern void Template_UseOutlineFonts(void)

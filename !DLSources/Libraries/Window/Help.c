@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -32,7 +32,7 @@ extern BOOL Window_HelpHandler(event_pollblock *event, void *reference)
   message_destinee replyto;
 
   UNUSED( reference);
-  
+
   if (event->data.message.header.action == message_HELPREQUEST)
   {
     Window_ParentName(event->data.message.data.helprequest.where.window,

@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -36,5 +36,5 @@ extern void Resource_Initialise(const char *respath)
   strncat(resource_pathname, respath, 23);
   resource_pathname[24] = '\0';               /* Ensure string is terminated */
   strcat(resource_pathname, "$Dir>.");
-  
+
 }

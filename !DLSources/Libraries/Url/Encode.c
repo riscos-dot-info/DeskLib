@@ -3,12 +3,12 @@
  * Author: Andrew Sidwell, 23rd December 2002
  *
  * Abstract: Encode a string so it's ready for inclusion into an URL.
- * 
+ *
  * This file is part of DeskLib, the general-purpose freeware C library for
  * RISC OS.  Please refer to the accompanying documentation for conditions
  * of use.
  */
-#include "DeskLib:Core.h"    
+#include "DeskLib:Core.h"
 #include "DeskLib:Url.h"
 
 /* -------------------------------------------- takkaria, 2002-09-09 ---

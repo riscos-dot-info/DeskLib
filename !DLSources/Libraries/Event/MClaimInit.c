@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -17,7 +17,7 @@
 
 
 #include "EMsgDefs.h"
- 
+
 #include "DeskLib:WimpSWIs.h"
 
 #define ERRBASE 1
@@ -38,7 +38,7 @@ static BOOL EventMsg_DispatchMessage(event_pollblock *event, void *reference)
   eventmsg_windowrecord *wptr, *nextwptr;
 
   UNUSED( reference);
-  
+
   action = event->data.message.header.action;
   switch(action)
   {
@@ -104,17 +104,17 @@ extern BOOL EventMsg_Claim(message_action messagetype, window_handle window,
   if (ptr == NULL)                /* No current claims, so add new claimlist */
   {
     int messagelist[2];
-            
+
     /* Add the new message code to the list of those we receive from the Wimp */
     messagelist[0] = messagetype;
     messagelist[1] = 0;
-    
+
     if (Wimp_AddMessages(messagelist) != NULL)
     {
       Error_ReportInternal(ERR2, ERRMESS2);
       return(FALSE);
     }
-    
+
     ptr = (eventmsg_claimrecord *) malloc(sizeof(eventmsg_claimrecord));
     if (ptr == NULL)
     {
@@ -165,6 +165,6 @@ extern void EventMsg_Initialise(void)
                 EventMsg_DispatchMessage, NULL);
     Event_Claim(event_USERMESSAGEACK, event_ANY, event_ANY,
                 EventMsg_DispatchMessage, NULL);
-    initialised = TRUE;            
+    initialised = TRUE;
   }
 }

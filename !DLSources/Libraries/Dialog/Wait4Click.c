@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -45,7 +45,7 @@ extern icon_handle Dialog_WaitForClick(dialog dbox)
   do
   {
     Event_Poll();
-    
+
     /*  If user has clicked outside window, hit return, or clicked the close
      *  box, causing it to close, we take that as a 'Cancel': dialog_CLOSE.
      */

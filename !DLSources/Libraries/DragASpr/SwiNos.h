@@ -11,5 +11,4 @@ SWI_Wimp_DragBox                EQU &0400d0
 SWI_DragASprite_Start           EQU &042400
 SWI_DragASprite_Stop            EQU &042401
 
-         END 
-  
+         END

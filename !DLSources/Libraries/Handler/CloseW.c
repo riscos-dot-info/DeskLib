@@ -5,7 +5,7 @@
 extern BOOL Handler_CloseWindow(event_pollblock *event, void *reference)
 {
   UNUSED( reference);
-  
+
   Wimp_CloseWindow(event->data.openblock.window);
   return(TRUE);
 }

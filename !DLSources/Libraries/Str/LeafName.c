@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -38,8 +38,8 @@ extern char *Str_LeafName(char *path)
   {
     if (ch == '.' || ch == ':')
       leaf = path ;
-  } 
+  }
   while ( (ch = *(path++)) != '\0') ;
-  
+
   return(leaf) ;
 }

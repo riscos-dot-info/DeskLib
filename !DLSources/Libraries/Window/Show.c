@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -35,14 +35,14 @@ extern void Window_Show(window_handle window, window_openpos openpos)
 
   w = wstate.openblock.screenrect.max.x - wstate.openblock.screenrect.min.x;
   h = wstate.openblock.screenrect.max.y - wstate.openblock.screenrect.min.y;
-                                        
+
   switch(openpos)
   {
     case open_CENTERED:
       moveto.x = (screen_size.x - w) / 2;
       moveto.y = (screen_size.y + h) / 2;
       break;
-      
+
     case open_CENTEREDUNDERPOINTER:
       {
         mouse_block ptr;
@@ -99,7 +99,7 @@ extern void Window_Show(window_handle window, window_openpos openpos)
         moveto.x = (screen_size.x - w) / 2;
         moveto.y = (screen_size.y + h) / 2;
       }
-      
+
       if (moveto.x > ((screen_size.x / 2) + 128))
         moveto.x = (screen_size.x / 2) - 128;
 

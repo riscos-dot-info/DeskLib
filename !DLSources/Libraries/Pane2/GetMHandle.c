@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -47,7 +47,7 @@ extern window_handle Pane2_GetMainHandle(window_handle panewindow)
            return(paneelement->mainwindow);
 
         paneelement = LinkList_NextItem(&(paneelement->header));
-        
+
      }
 
      mainelement = LinkList_NextItem(&(mainelement->header));

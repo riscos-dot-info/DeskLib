@@ -22,7 +22,7 @@
 void	Dialog2_EnsureWindowHandle( dialog2_block *dialog2)
 {
 if ( !dialog2->window)
-	dialog2->window = Window_Create( 
+	dialog2->window = Window_Create(
 		dialog2->templatename, dialog2->flags.data.maxtitlesize
 		);
 }

@@ -10,7 +10,7 @@ extern BOOL Handler_ModeChange(event_pollblock *event, void *reference)
 
   UNUSED( reference);
   UNUSED( event);
-  
+
   Screen_CacheModeInfo();
 
   /*  If the screen resolution in pixels/inch has changed, then re-get all

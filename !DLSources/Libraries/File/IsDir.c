@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -22,11 +22,11 @@
 extern BOOL File_IsDirectory(const char *pathname)
 {
   unsigned type;
-  
+
   /* Get the file information */
-  
+
   SWI(2, 1, SWI_OS_File, 17, pathname, &type);
-  
+
   return ( (type & 2) ? TRUE : FALSE); /* 2 => directory found, 3 => image */
 }
 

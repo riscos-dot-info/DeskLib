@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -25,7 +25,7 @@
 
 
   /* minimum version to use font manager font menus * 100 */
-#define MIN_NEW_FONT_VERSION 307 
+#define MIN_NEW_FONT_VERSION 307
 
 #define NEW     0
 #define OLD     1
@@ -76,7 +76,7 @@ menu_ptr Menu_FontMenu(BOOL sysfont, char *tick)
           char text[128];
           if(sysfont) {
             sprintf(text, "System font,%s", name);
-            entries++; 
+            entries++;
           }
 
           if((font_menu = Menu_New("Fonts", sysfont?text:name)) == 0)

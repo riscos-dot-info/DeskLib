@@ -165,10 +165,10 @@ extern BOOL Menu__Create(menu_item *item, const char *description, int numitems)
 
       while (*s != 0 && *s != ',' && *s != '|')
         *(*cst_t)++ = *s++;
-  
+
       if (index != wimp_MAXNAME)    /* Only terminate if not exactly 12 chars */
         *(*cst_t) = 0;
-  
+
       if (*s++ == '|')                       /* Step over separator...        */
         it->menuflags.data.dotted = TRUE;    /* ...setting 'dotted' if needed */
     }

@@ -8,7 +8,7 @@ extern BOOL Handler_NullRedraw(event_pollblock *event, void *reference)
   BOOL more;
 
   UNUSED( reference);
-  
+
   redraw.window = event->data.openblock.window;
   Wimp_RedrawWindow(&redraw, &more);
 

@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -23,7 +23,7 @@
 
 extern void Menu_Warn(menu_ptr menu, int entry, BOOL yesno,
                       event_handler handler, void *reference)
-{       
+{
   /* The array of menu items directly follows the menu_block */
   menu_item *items = (menu_item *)  &(menu[1]);
 

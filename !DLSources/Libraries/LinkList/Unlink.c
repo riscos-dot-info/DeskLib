@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -27,7 +27,7 @@ extern void LinkList_Unlink(linklist_header *anchor, linklist_header *item)
   next = item->next;
   prev = item->previous;
 
-  if (next == NULL)  
+  if (next == NULL)
     anchor->previous = prev;                            /* was last in list  */
   else
     next->previous   = prev;                            /* was in middle     */

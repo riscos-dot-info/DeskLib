@@ -13,7 +13,7 @@
 #include <stdlib.h>
 
 #include "DeskLib:Menu.h"
-#include "DeskLib:Wimp.h"    
+#include "DeskLib:Wimp.h"
 
 /* -------------------------------------------------- ajps, 01/01/03 ---
  * This creates an empty menu with the given title and number of entries.
@@ -80,7 +80,7 @@ menu_ptr Menu_NewEmpty(const char *title, int numitems)
     /* We now treat the menu title as a text icon block */
     titleicon = (icon_data *)(void *)&menu->title;
     titleicon->indirecttext.buffer = titletext;
-    titleicon->indirecttext.validstring = (char *) -1;  
+    titleicon->indirecttext.validstring = (char *) -1;
     titleicon->indirecttext.bufflen = titlelen + 1;
 
     /* Copy the text */

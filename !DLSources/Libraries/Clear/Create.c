@@ -23,7 +23,7 @@ clear_picture *Clear_Create(unsigned width, unsigned height, unsigned bpp)
 {
   clear_picture *temp;
   unsigned      bitmap_size;
-  
+
 
   if((temp = malloc(sizeof(clear_picture))) == NULL)
     return NULL;

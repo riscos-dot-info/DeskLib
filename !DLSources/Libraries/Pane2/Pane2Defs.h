@@ -33,7 +33,7 @@ typedef struct{
 } pane_listelement;
 
 /* width of window tools in OS units */
-#define tool_SIZE 40                  
+#define tool_SIZE 40
 
 extern linklist_header main_anchor;
 

@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -40,12 +40,12 @@ extern void Pane2_ReadIcon(window_handle window, icon_handle icon, char *panewin
   */
   icon_block iconinfo;
   window_block *block;
- 
+
   Wimp_GetIconState(window, icon, &iconinfo);
 
   panesize->x = iconinfo.workarearect.max.x - iconinfo.workarearect.min.x;
   panesize->y = iconinfo.workarearect.max.y - iconinfo.workarearect.min.y;
-  
+
   paneoffset->x = iconinfo.workarearect.min.x;
   paneoffset->y = -iconinfo.workarearect.max.y;
 
@@ -54,7 +54,7 @@ extern void Pane2_ReadIcon(window_handle window, icon_handle icon, char *panewin
   * Should use difference between window outline and window openpos to find
   * tool size but this requires the window to be already open.
   */
-  if(panewindow != NULL){ 
+  if(panewindow != NULL){
 
      block = Template_Find(panewindow);
 

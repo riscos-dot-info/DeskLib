@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -93,7 +93,7 @@ extern BOOL Pane2_AddPane(window_handle mainwindow, window_handle panewindow,
 
      else /* pane fixed using bottom of pane */
         paneelement->paneoffset.y -= panestate.openblock.screenrect.min.y;
- 
+
   }
 
   if(panesize != NULL) /* if pane size is provided */
@@ -103,7 +103,7 @@ extern BOOL Pane2_AddPane(window_handle mainwindow, window_handle panewindow,
 
      paneelement->panesize.x = panestate.openblock.screenrect.max.x -
                                panestate.openblock.screenrect.min.x;
-                               
+
      paneelement->panesize.y = panestate.openblock.screenrect.max.y -
                                panestate.openblock.screenrect.min.y;
   }

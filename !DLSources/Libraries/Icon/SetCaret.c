@@ -44,7 +44,7 @@ extern void Icon_SetCaret(window_handle window, icon_handle icon)
   }
   else
     caret.index = 0;
- 
+
   caret.offset.y = caret.offset.x = 0;
   caret.height = -1;
   Wimp_SetCaretPosition(&caret);

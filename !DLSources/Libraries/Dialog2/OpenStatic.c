@@ -25,7 +25,7 @@ if ( !dialog2)	return ERROR;
 
 if ( dialog2->flags.data.type == dialog2_type_MENULEAF)
 	Dialog2__CloseDialogInternal( dialog2, FALSE, FALSE/*dontdeletewindow*/);
-	
+
 else if ( dialog2->flags.data.type == dialog2_type_STATIC)
 	Dialog2__CloseDialogInternal( dialog2, FALSE/*dontclosemenu*/, FALSE/*dontdeletewindow*/);
 	/* This dialog2 is already open as a static dialog, so close it,	*/

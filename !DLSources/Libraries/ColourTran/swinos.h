@@ -1,6 +1,6 @@
 
 XOS_Bit                      EQU &020000
-                                               
+
 SWI_ColourTrans_SelectTable                    EQU &40740
 SWI_ColourTrans_SelectGCOLTable                EQU &40741
 SWI_ColourTrans_ReturnGCOL                     EQU &40742

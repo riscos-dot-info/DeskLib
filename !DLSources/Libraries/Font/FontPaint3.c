@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -23,9 +23,9 @@
 #define SWI_Font_Paint	0x40086
 #endif
 
-os_error	*Font_Paint3( 
-			font_handle		font, 
-			const char		*string, 
+os_error	*Font_Paint3(
+			font_handle		font,
+			const char		*string,
 			unsigned int		plottype,
 			int			x,
 			int			y,

@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -27,15 +27,15 @@ int Icon_GetBgCol(icon_block *icon)
   /* Straightforward case first...*/
   if (!icon->flags.data.font)
     return icon->flags.data.background;
-  
+
   /* Icon is anti-aliased - read font validation string colours */
-  colour = Validation_ScanString(icon->data.indirecttext.validstring, 
+  colour = Validation_ScanString(icon->data.indirecttext.validstring,
                                  iconvalid_FONTCOLOURS);
 
   /* No colours specified - use default */
   if (colour == 0)
     return colour_WHITE;
-  
+
   /* Decode first colour digit */
   colour = Str_DecodeHex(icon->data.indirecttext.validstring[colour]);
 

@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -24,5 +24,5 @@ void Menu_SetFlags(menu_ptr menu, int entry, int ticked, int shaded)
 
   item = &item[entry];
   item->menuflags.data.ticked = ticked;
-  item->iconflags.data.shaded = shaded; 
+  item->iconflags.data.shaded = shaded;
 }

@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -36,7 +36,7 @@ os_error *MsgTrans_LoadFile(msgtrans_filedesc **filedesc,
   block = malloc(sizeof(msgtrans_file));
   if (!block)
   {
-    
+
     MsgTrans_Lookup(0,"NoStore",error.errmess,252);
     return &error;
   }

@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -76,7 +76,7 @@ extern BOOL OpenWindow(window_openblock *openblock, main_listelement *mainelemen
       (openblock->screenrect.min.y < 100) ||
        mainstate.flags.data.istoggling ||
        mainelement->invalideventdata ){
-     
+
     /*
      * set window level in openblock to old value and remember new value
      */
@@ -93,7 +93,7 @@ extern BOOL OpenWindow(window_openblock *openblock, main_listelement *mainelemen
   }
   else
      mainstate.openblock = *openblock;
-     
+
   if(mainstate.flags.data.istoggling || mainelement->invalideventdata)
      mainelement->invalideventdata = FALSE;
 
@@ -188,7 +188,7 @@ extern BOOL OpenWindow(window_openblock *openblock, main_listelement *mainelemen
      panestate.openblock.behind = lastbehind;
      Wimp_OpenWindow(&panestate.openblock);
      lastbehind = paneelement->panewindow;
-     
+
     /*
      * find next pane window
      */
@@ -213,7 +213,7 @@ extern BOOL ModeChangeMessageHandler(event_pollblock *event, void *reference)
   * sets flag on mode change so that main window is opened before window state
   * is read
   */
-  
+
   main_listelement *mainelement = reference;
 
   UNUSED( event);

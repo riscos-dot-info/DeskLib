@@ -42,7 +42,7 @@ dialog2_block	**Dialog2__Ref_menublock( void)	{ return &dialog2_menublock;	}
 
 
 static void	Dialog2__ClaimOrReleaseStandardHandlers(
-	event_claimorreleasefn	fn, 
+	event_claimorreleasefn	fn,
 	dialog2_block		*dialog2
 	);
 	/* The actual function is later on...	*/
@@ -51,8 +51,8 @@ static void	Dialog2__ClaimOrReleaseStandardHandlers(
 
 
 
-BOOL	Dialog2__CloseDialogInternal( 
-	dialog2_block	*dialog2, 
+BOOL	Dialog2__CloseDialogInternal(
+	dialog2_block	*dialog2,
 	BOOL		closemenu,	/* If TRUE, close the current menu if dialog is a menu	*/
 	BOOL		deletewindow	/* If TRUE, delete the window if dialog2 allows.	*/
 	)
@@ -71,7 +71,7 @@ if ( dialog2->window)	{
 		if (closemenu)	Wimp_CreateMenu( (menu_block *) -1, 0, 0);
 		}
 	else	Wimp_CloseWindow( dialog2->window);
-	
+
 	if ( !dialog2->flags.data.keepwindow)	{
 		if ( deletewindow)	{
 			Window_Delete( dialog2->window);
@@ -97,8 +97,8 @@ return NOERROR;
 
 BOOL	Dialog2_CloseDialog( dialog2_block *dialog2)
 {
-return Dialog2__CloseDialogInternal( 
-	dialog2, 
+return Dialog2__CloseDialogInternal(
+	dialog2,
 	TRUE,	/* close menu if dialog2 is part of a menu;		*/
 	TRUE	/* delete window if !dialog2->flags.data.keepwindow	*/
 	);
@@ -107,9 +107,9 @@ return Dialog2__CloseDialogInternal(
 
 
 
-_DeskLib_SDLS_PtrFn( 
+_DeskLib_SDLS_PtrFn(
 	static,
-	BOOL, 
+	BOOL,
 	Dialog2__MenusDeletedHandler( event_pollblock *event, void *reference)
 	)
 /* static BOOL	Dialog2__MenusDeletedHandler( event_pollblock *event, void *reference)*/
@@ -119,8 +119,8 @@ _DeskLib_SDLS_PtrFn(
 UNUSED( reference);
 
 if ( event->data.message.header.action == message_MENUSDELETED && dialog2_menublock)	{
-	
-	if	( 
+
+	if	(
 		dialog2_menublock->flags.data.type == dialog2_type_MENU
 		&&
 		(window_handle) event->data.message.data.words[0] != dialog2_menublock->window
@@ -130,7 +130,7 @@ if ( event->data.message.header.action == message_MENUSDELETED && dialog2_menubl
 		/* has opened the dialog2_menublock from another menu for which	*/
 		/* we are now getting a message_MENUSDELETED, *after* we've 	*/
 		/* opened our dialog2 as a menu-window.				*/
-		
+
 	Dialog2_CloseDialog( dialog2_menublock);
 	}
 return FALSE;
@@ -143,7 +143,7 @@ return FALSE;
 
 _DeskLib_SDLS_PtrFn(
 	static,
-	BOOL, 
+	BOOL,
 	Dialog2__OKCancelHandler( event_pollblock *event, void *reference)
 	)
 /*static BOOL	Dialog2__OKCancelHandler( event_pollblock *event, void *reference)*/
@@ -158,9 +158,9 @@ if ( dialog2->flags.data.type == dialog2_type_CLOSED)	{
 
 if ( dialog2->okfn && event->data.mouse.icon == dialog2->flags.data.okbutton)
 	dialog2->okfn( dialog2);
-	
 
-if	( 
+
+if	(
 	event->data.mouse.button.data.select
 	&&
 		(
@@ -178,7 +178,7 @@ return FALSE;
 
 _DeskLib_SDLS_PtrFn(
 	static,
-	BOOL, 
+	BOOL,
 	Dialog2__CloseHandler( event_pollblock *event, void *reference)
 	)
 /*static BOOL	Dialog2__CloseHandler( event_pollblock *event, void *reference)*/
@@ -199,7 +199,7 @@ return FALSE;
 
 _DeskLib_SDLS_PtrFn(
 	static,
-	BOOL, 
+	BOOL,
 	Dialog2__KeyHandler( event_pollblock *event, void *reference)
 	)
 /*static BOOL	Dialog2__KeyHandler( event_pollblock *event, void *reference)*/
@@ -221,9 +221,9 @@ if ( event->data.key.code == keycode_RETURN && dialog2->flags.data.okbutton != -
 	clickeventdata.mouse.button.data.select	= TRUE;
 	clickeventdata.mouse.window		= dialog2->window;
 	clickeventdata.mouse.icon		= dialog2->flags.data.okbutton;
-	Wimp_SendMessage( 
-		event_CLICK, 
-		(message_block *) &clickeventdata, 
+	Wimp_SendMessage(
+		event_CLICK,
+		(message_block *) &clickeventdata,
 		event_taskhandle, 			/* Us	*/
 		dialog2->flags.data.okbutton
 		);
@@ -236,9 +236,9 @@ else if ( event->data.key.code == keycode_ESCAPE && dialog2->flags.data.cancelbu
 	clickeventdata.mouse.button.data.select	= TRUE;
 	clickeventdata.mouse.window		= dialog2->window;
 	clickeventdata.mouse.icon		= dialog2->flags.data.cancelbutton;
-	Wimp_SendMessage( 
-		event_CLICK, 
-		(message_block *) &clickeventdata, 
+	Wimp_SendMessage(
+		event_CLICK,
+		(message_block *) &clickeventdata,
 		event_taskhandle, 			/* Us	*/
 		dialog2->flags.data.cancelbutton
 		);
@@ -257,8 +257,8 @@ return FALSE;
 
 
 
-static void	Dialog2__ClaimOrReleaseStandardHandlers( 
-	event_claimorreleasefn	fn, 
+static void	Dialog2__ClaimOrReleaseStandardHandlers(
+	event_claimorreleasefn	fn,
 	dialog2_block		*dialog2
 	)
 	/* This calls Event_Claim/Release for all the 	*/
@@ -268,18 +268,18 @@ static void	Dialog2__ClaimOrReleaseStandardHandlers(
 	/* claims active that we don't use.		*/
 {
 fn( event_OPEN,  dialog2->window, event_ANY, Handler_OpenWindow,    dialog2);
-fn(	event_CLOSE, dialog2->window, event_ANY, 
-	_DeskLib_SDLS_dllEntry( Dialog2__CloseHandler), 
+fn(	event_CLOSE, dialog2->window, event_ANY,
+	_DeskLib_SDLS_dllEntry( Dialog2__CloseHandler),
 	dialog2
 	);
 
 if ( dialog2->flags.data.okbutton != -1 || dialog2->flags.data.cancelbutton != -1)	{
-	fn(	event_KEY, dialog2->window, event_ANY, 
-		_DeskLib_SDLS_dllEntry( Dialog2__KeyHandler),   
+	fn(	event_KEY, dialog2->window, event_ANY,
+		_DeskLib_SDLS_dllEntry( Dialog2__KeyHandler),
 		dialog2
 		);
-	fn(	event_CLICK, dialog2->window, event_ANY, 
-		_DeskLib_SDLS_dllEntry( Dialog2__OKCancelHandler), 
+	fn(	event_CLICK, dialog2->window, event_ANY,
+		_DeskLib_SDLS_dllEntry( Dialog2__OKCancelHandler),
 		dialog2
 		);
 	/* Make this icon-unspecific so that the application will get clicks first.	*/
@@ -288,9 +288,9 @@ if ( dialog2->flags.data.okbutton != -1 || dialog2->flags.data.cancelbutton != -
 if ( dialog2->flags.data.type == dialog2_type_MENU
 ||   dialog2->flags.data.type == dialog2_type_MENULEAF
 )	{
-	fn(	event_USERMESSAGE, event_ANY, event_ANY, 
-		_DeskLib_SDLS_dllEntry( Dialog2__MenusDeletedHandler), 
-		NULL	  
+	fn(	event_USERMESSAGE, event_ANY, event_ANY,
+		_DeskLib_SDLS_dllEntry( Dialog2__MenusDeletedHandler),
+		NULL
 		);
 		/* Closes the dialog2 if the menu is closed by Escape or a 	*/
 		/* click outside the menu.					*/
@@ -314,7 +314,7 @@ Dialog2_EnsureWindowHandle( dialog2);
 Dialog2__ClaimOrReleaseStandardHandlers( Event_Claim, dialog2);
 
 if (dialog2->openfn)	dialog2->openfn( dialog2);
-	/* Call this after 'Dialog2__ClaimOrReleaseStandardHandlers' 
+	/* Call this after 'Dialog2__ClaimOrReleaseStandardHandlers'
 	so that any events claimed inside 'openfn' will
 	get sent to the application's code first.
 	*/
@@ -330,7 +330,7 @@ if ( dialog2_menublock)	{	/* Need to close the existing menu-dialog box.	*/
 		Dialog2__CloseDialogInternal( dialog2_menublock, FALSE, FALSE);
 			/* This dialog is being re-opened, so don't delete the	*/
 			/* window as we will only re-open it anyway.		*/
-			
+
 	else	Dialog2__CloseDialogInternal( dialog2_menublock, FALSE, TRUE);
 	}
 

@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -12,7 +12,7 @@
     Author:  Copyright © 1993 Tim Browse and Jason Williams
              (Original code by Tim, massive changes and rewriting by Jason ;-)
     Version: 1.02 (28 Jun 1993)
-    Purpose: High-level window management functions: 
+    Purpose: High-level window management functions:
              Fix windows to use new font handles after a mode change.
              (This even works with open windows, so long as they were created
              with Window_ calls)
@@ -112,7 +112,7 @@ extern void Window_ModeChange(void)
    *    b) the font usage is probably now 0, so if the cache fills up,
    *       the font may be lost/replaced, and NASTY things will happen!
    */
- 
+
   record = LinkList_FirstItem(&window_listanchor);
   while (record != NULL)
   {
@@ -121,7 +121,7 @@ extern void Window_ModeChange(void)
 
     record = LinkList_NextItem(&record->header);
   }
- 
+
   /*  Now do the template definitions themselves (otherwise the next time
    *  you open a window all the font handles will be wrong and won't you
    *  look silly?)
@@ -132,7 +132,7 @@ extern void Window_ModeChange(void)
     MapFontHandles(tptr->windowdef, (window_handle) 0, &fontconvert);
     tptr = (template_record *) tptr->header.next;
   }
- 
+
   /*  Lose all the old fonts and install new font list into Template module
    *  so that we know which fonts to lose next time, or when we quit.
    *  We Font_FindFont'd each font in the conversion table

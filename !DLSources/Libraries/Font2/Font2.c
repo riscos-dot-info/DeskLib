@@ -31,7 +31,7 @@ longer - if a block is no longer used, it is left with usage=0. When a
 new block is required though, such unused blocks are reused (see
 Font2__GetOrMakeBlankFont2Block.
 
-*/ 
+*/
 
 
 static font2__block	*Font2__MakeNewFont2Block( void)
@@ -84,27 +84,27 @@ if ( event->data.message.header.action != message_MODECHANGE)	return FALSE;
 for ( f=font2__first; f; f=f->next)	{
 
 	font_defn	defn;
-	
+
 	if ( f->usage==0)	continue;
-	
+
 	Font_ReadDefn( f->pub.handle, &defn);
-	
+
 	/* Lose all previous occurencies of this font...	*/
 	for ( j=0; j<f->usage; j++)	{
 		Font_LoseFont( f->pub.handle);
 		}
-	
+
 	/* ... and find them again	*/
 	for ( j=0; j<f->usage; j++)	{
 		/*
 		Each of these calls to Font_FindFont will put the
 		same font handle into font2__fonts[i].handle
 		*/
-		Font_FindFont( 
-			&f->pub.handle, 
-			defn.name, 
-			defn.xsize, 
-			defn.ysize, 
+		Font_FindFont(
+			&f->pub.handle,
+			defn.name,
+			defn.xsize,
+			defn.ysize,
 			0,	/* Current mode	*/
 			0	/* Current mode	*/
 			);

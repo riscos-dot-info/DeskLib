@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -20,17 +20,17 @@
 
 
 
-static BOOL	Menu2__OpenFromClick( 
-	event_pollblock	*event, 
-	menu2_handle	menu, 
+static BOOL	Menu2__OpenFromClick(
+	event_pollblock	*event,
+	menu2_handle	menu,
 	unsigned int	button
 	)
 {
 if ( event->data.mouse.button.value != button)	return FALSE;
 
-Menu2_Open( 
-	menu, 
-	event->data.mouse.pos.x, 
+Menu2_Open(
+	menu,
+	event->data.mouse.pos.x,
 	(event->data.mouse.window < 0) ? -1 : event->data.mouse.pos.y
 	);
 return TRUE;
@@ -59,9 +59,9 @@ return Menu2__OpenFromClick( event, (menu2_handle) reference, button_MENU);
 
 
 static void	Menu2__AttachOrReleaseMenu(
-	window_handle		window, 
-	icon_handle		icon, 
-	menu2_handle		menu, 
+	window_handle		window,
+	icon_handle		icon,
+	menu2_handle		menu,
 	int			button,
 	event_claimorreleasefn	fn
 	)
@@ -79,10 +79,10 @@ if ( button & button_ADJUST)
 
 
 
-void	Menu2_AttachMenu( 
-	window_handle	window, 
-	icon_handle	icon, 
-	menu2_handle	menu, 
+void	Menu2_AttachMenu(
+	window_handle	window,
+	icon_handle	icon,
+	menu2_handle	menu,
 	int		button
 	)
 {
@@ -91,10 +91,10 @@ Menu2__AttachOrReleaseMenu( window, icon, menu, button, Event_Claim);
 
 
 
-void	Menu2_DetachMenu( 
-	window_handle	window, 
-	icon_handle	icon, 
-	menu2_handle	menu, 
+void	Menu2_DetachMenu(
+	window_handle	window,
+	icon_handle	icon,
+	menu2_handle	menu,
 	int		button
 	)
 {

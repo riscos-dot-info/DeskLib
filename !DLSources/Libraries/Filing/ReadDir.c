@@ -16,7 +16,7 @@
                            DeskLib-compliant style
              07 Jun 1995 - JS - moved definition of __outofmemory to inside
                                 function when compiling a DLL - otherwise
-                                cc complains about 'RISC OS (or other reentrant 
+                                cc complains about 'RISC OS (or other reentrant
                                 module has static init. to data 'x$dataseg''.
 
 */

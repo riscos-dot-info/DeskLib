@@ -7,5 +7,4 @@ SWI_Hourglass_Smash             EQU &0406c2
 SWI_Hourglass_Start             EQU &0406c3
 SWI_Hourglass_Percentage        EQU &0406c4
 
-         END 
-  
+         END

@@ -30,7 +30,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-/* ANT URL broadcast wimp message number */  
+/* ANT URL broadcast wimp message number */
 #define message_ANTOPENURL (message_action) 0x4AF80
 
 /* Acorn URI messages */
@@ -179,7 +179,7 @@ static void Url_URIDispatch(url_info_blk *block)
 {
   int flags;
 
-  /* Dispatch the SWI, asking to be notified of the result with a message */ 
+  /* Dispatch the SWI, asking to be notified of the result with a message */
   if (SWI(3, 1, SWI_URI_Dispatch, 1, block->url, event_taskhandle, &flags) != NULL || flags & 1)
   {
     /* If we have failed, move straight onto the "antload" technique */

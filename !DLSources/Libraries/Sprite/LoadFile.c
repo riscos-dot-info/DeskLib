@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -30,7 +30,7 @@ extern sprite_area Sprite_LoadFile(const char *filename)
   sprite_area  sprarea;
 
   /*
-   * To load file, allocate and initialise sprite area block, and call SWI to 
+   * To load file, allocate and initialise sprite area block, and call SWI to
    *  load in file.
    */
 

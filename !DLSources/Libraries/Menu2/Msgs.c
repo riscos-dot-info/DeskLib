@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -11,7 +11,7 @@
     File:    Menu2.Msgs.c
     Author:  Copyright © 1995 Julian Smith
     Version: 1.00 (12 Jul 1995)
-    Purpose: Creating menus using message tags for menu title and 
+    Purpose: Creating menus using message tags for menu title and
              specification
 */
 

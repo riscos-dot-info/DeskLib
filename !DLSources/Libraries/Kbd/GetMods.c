@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -24,18 +24,18 @@ extern kbd_modifiers Kbd_GetModifiers(BOOL detailed)
   mods.alt   = Kbd_KeyDown(inkey_ALT);
   mods.ctrl  = Kbd_KeyDown(inkey_CTRL);
   mods.shift = Kbd_KeyDown(inkey_SHIFT);
-  
+
   if (detailed)
   {
     mods.left_alt    = Kbd_KeyDown(inkey_LALT);
     mods.left_ctrl   = Kbd_KeyDown(inkey_LCTRL);
     mods.left_shift  = Kbd_KeyDown(inkey_LSHIFT);
-    
+
     mods.right_alt   = Kbd_KeyDown(inkey_RALT);
     mods.right_ctrl  = Kbd_KeyDown(inkey_RCTRL);
     mods.right_shift = Kbd_KeyDown(inkey_RSHIFT);
   }
-  
+
   return mods;
 }
 

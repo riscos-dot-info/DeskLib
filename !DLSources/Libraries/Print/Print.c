@@ -26,7 +26,7 @@ typedef enum	{
 typedef struct	{
 
 	print_block	ppublic;
-	
+
 	unsigned int	message_ref;	/* id of the last event_SENDWANTACK we sent.	*/
 	print__progress	progress;
 	print_printfn	printfn;
@@ -39,9 +39,9 @@ typedef struct	{
 static void	Print__ClaimMessages( print__block *print);
 static void	Print__ReleaseMessages( print__block *print);
 
-static void	Print__Finish( 
-	print__block	*print, 
-	BOOL			releasemsgs, 
+static void	Print__Finish(
+	print__block	*print,
+	BOOL			releasemsgs,
 	print_result	result
 	);
 
@@ -131,20 +131,20 @@ if ( print->progress == print__progress_2)	{
 		/* PrintSave message bounced...	*/
 		if ( print->printfn)	Print__PrintIt( print);
 		else	Print__Finish( print, TRUE, print_result_NEEDPRINTERMANAGER);
-			
+
 		return TRUE;
 		}
-	
+
 	else if ( reply && event->data.message.header.action == message_PRINTERROR)	{
 		Print__Finish( print, TRUE, print_result_PRINTERROR);
 		return TRUE;
 		}
-	
+
 	else if ( reply && event->data.message.header.action == message_PRINTFILE)	{
 		print->progress = print__progress_4_5;
 		return TRUE;
 		}
-	
+
 	else if ( reply && event->data.message.header.action == message_DATASAVEACK)	{
 		print->progress = print__progress_4_5;
 		}
@@ -155,15 +155,15 @@ if ( print->progress == print__progress_4_5)	{
 
 	if ( /*reply &&*/ event->data.message.header.action == message_PRINTTYPEODD)	{
 		message_block	message = event->data.message;
-		
+
 		if ( print->printfn)	{
 			/* We can print the file ourselves...	*/
 			message.header.action	= message_PRINTTYPEKNOWN;
 			message.header.yourref	= event->data.message.header.myref;
 			message.header.size	= 256;
-			Wimp_SendMessage( 
-				event_SEND, 
-				&message, event->data.message.header.sender, 
+			Wimp_SendMessage(
+				event_SEND,
+				&message, event->data.message.header.sender,
 				0
 				);
 				/* This is the last message of the protool, so we don't	*/
@@ -171,15 +171,15 @@ if ( print->progress == print__progress_4_5)	{
 			Print__PrintIt( print);
 			return TRUE;
 			}
-		
+
 		else	{
 			/* We can't print directly, so we ignore message_PRINTTYPEODD	*/
 			/*  - printers will send DATASAVEACK next	*/
 			}
-			
+
 		return TRUE;
 		}
-	
+
 	else if ( reply && event->data.message.header.action == message_DATASAVEACK)	{
 		/* Save the file, for queing etc., to the filename specified. Then send	*/
 		/* message_DATALOAD.							*/
@@ -191,8 +191,8 @@ if ( print->progress == print__progress_4_5)	{
 		if ( print->savefn)	{
 			message_block	sreply;
 			BOOL		error;
-			
-			error = print->savefn( 
+
+			error = print->savefn(
 				&print->ppublic, &event->data.message.data.datasaveack
 				);
 			if (error)	{
@@ -202,30 +202,30 @@ if ( print->progress == print__progress_4_5)	{
 				Print__Finish( print, TRUE, print_result_SAVEFAILED);
 				return TRUE;
 				}
-			
+
 			sreply = event->data.message;
 			sreply.header.action	= message_DATALOAD;
 			sreply.header.yourref	= event->data.message.header.myref;
-			Wimp_SendMessage( 
-				event_SENDWANTACK, 
+			Wimp_SendMessage(
+				event_SENDWANTACK,
 				&sreply,
 				event->data.message.header.sender,
 				0
 				);
 			print->message_ref = sreply.header.myref;
-			
+
 			print->progress = print__progress_7;
 			return TRUE;
 			}
-		
+
 		else	{
-			Error_Report( 0, 
+			Error_Report( 0,
 				"Printer busy, and we are unable to save "
 				"data to be printed to printer queue"
 				);
 			Print__Finish( print, TRUE, print_result_CANTSAVE);
 			}
-			
+
 		return TRUE;
 		}
 	}
@@ -235,8 +235,8 @@ if ( print->progress == print__progress_7)	{
 		Error_Report( 0, "Print bounced, progress_7");
 		Print__Finish( print, TRUE, print_result_FAILED);
 		return TRUE;
-		}	
-		
+		}
+
 	if ( reply && event->data.message.header.action == message_DATALOADACK)	{
 		Print__Finish( print, TRUE, print_result_QUEUED);
 		return TRUE;
@@ -245,8 +245,8 @@ if ( print->progress == print__progress_7)	{
 
 
 if (reply)	{
-	Error_ReportInternal( 0, 
-		"Unrecognised print reply %i, progress %i", 
+	Error_ReportInternal( 0,
+		"Unrecognised print reply %i, progress %i",
 		event->data.message.header.action,
 		print->progress
 		);
@@ -260,11 +260,11 @@ return FALSE;
 
 
 
-BOOL	Print_StartPrint( 
+BOOL	Print_StartPrint(
 		print_printfn	printfn,
 		print_savefn	savefn,
 		print_resultfn	resultfn,
-		void			*reference, 
+		void			*reference,
 		int			filetype,
 		int			estsize,
 		char			*leafname,
@@ -323,9 +323,9 @@ Event_Release( event_ACK, event_ANY, event_ANY, Print__MessageHandler, print);
 
 
 
-static void	Print__Finish( 
-	print__block	*print, 
-	BOOL			releasemsgs, 
+static void	Print__Finish(
+	print__block	*print,
+	BOOL			releasemsgs,
 	print_result	result
 	)
 {

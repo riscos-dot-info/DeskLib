@@ -30,9 +30,9 @@ Dialog2__CommonOpenMenuCode( dialog2);	/* Close any previous menuleaf etc.	*/
 dialog2->flags.data.type = dialog2_type_MENULEAF;
 Dialog2__CommonOpenCode( dialog2);
 
-Wimp_CreateSubMenu( 
-	(menu_ptr) dialog2->window, 
-	event->data.message.data.words[1], 
+Wimp_CreateSubMenu(
+	(menu_ptr) dialog2->window,
+	event->data.message.data.words[1],
 	event->data.message.data.words[2]
 	);
 

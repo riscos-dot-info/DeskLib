@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -38,7 +38,7 @@ extern os_error *File_LoadTo(const char *filename, void *address, int *size)
   r.r[3] = 0;
 
   error = _kernel_swi( SWI_OS_File, &r, &r );
-  
+
   if (error != NULL)
     return( (os_error *) error );
 

@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -25,7 +25,7 @@
 linklist_header template_list         = {NULL, NULL};
 font_array      *template_fontarray   = (font_array *) -1;
 
-/* 
+/*
 Provide function veneers for the above globals - they are refered to by the
 Window_ModeChange() function.
 */
@@ -74,7 +74,7 @@ static void ReadHeader(const char *filename)
     s = (char *) &buffer[3];
     buffer[6] = 0;  /* Ensure terminators after 12-bytes of name */
     while (TRUE)
-    {      
+    {
       if (s[i] < 32)
       {
         temprec->identifier[i] = '\0';
@@ -127,7 +127,7 @@ extern void Template_LoadFile(const char *leafname)
     tptr = (template_record *) template_list.next;
   else
     tptr = (template_record *) tptr->header.next;
-  
+
   while (tptr != NULL)
   {
     tptr->windowdef = (window_block *) malloc(tptr->templatesize);
