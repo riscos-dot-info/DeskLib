@@ -16,7 +16,7 @@
 
 #include "DeskLib:Msgs.h"
 
-extern BOOL Msgs_printf(char *result, char *formattag, ...)
+extern BOOL Msgs_printf(char *result, const char *formattag, ...)
 {
   va_list ap;
   char temp[1024];
