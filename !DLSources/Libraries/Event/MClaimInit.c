@@ -10,7 +10,7 @@
 
     File:    Event.MClaimInit.c
     Author:  Copyright © 1992, 1993, 1994 Jason Williams
-    Version: 1.04 (22 Oct 1994)
+    Version: 1.05 (27 Sep 2002)
     Purpose: Extension to Event.c to allow routing of specific message types
              to different windows' message handlers.
 */
@@ -142,5 +142,7 @@ extern void EventMsg_Initialise(void)
   Event_Claim(event_USERMESSAGE, event_ANY, event_ANY,
               EventMsg_DispatchMessage, NULL);
   Event_Claim(event_USERMESSAGERECORDED, event_ANY, event_ANY,
+              EventMsg_DispatchMessage, NULL);
+  Event_Claim(event_USERMESSAGEACK, event_ANY, event_ANY,
               EventMsg_DispatchMessage, NULL);
 }
