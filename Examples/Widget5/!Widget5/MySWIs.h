@@ -2,8 +2,6 @@
  * SWI definitions for ArcComm
  */
 
-#define SWI_XOS_Bit                     0x020000
-
 #define OS_CLI                          0x000005
 
 /* #define SWI_OS_ReadSysInfo              0x000058 */

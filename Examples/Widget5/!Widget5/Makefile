@@ -6,9 +6,9 @@ CCFlags       = -c -fussy -throwback -IC: -Ff
 LinkFlags     = -o $@
 SqueezeFlags  = -f -v
 
-Files         = o.Error o.Widget5 o.SpriteWin o.Create o.Misc o.LoadSave o.ATrans o.CheckBanks o.ProcessWin o.Configure o.Process o.Filter o.GraphWin o.MixWin o.GreyEdWin
+Files         = o.Widget5 o.SpriteWin o.Create o.Misc o.LoadSave o.ATrans o.CheckBanks o.ProcessWin o.Configure o.Process o.Filter o.GraphWin o.MixWin o.GreyEdWin
 
-Libs          = C:o.HackLib C:o.DeskLib C:o.Stubs
+Libs          = Hacklib:o.HackLib Desklib:o.DeskLib C:o.Stubs C:flexlib.o
 
 
 !RunImage:    $(Files) 

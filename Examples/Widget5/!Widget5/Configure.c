@@ -26,7 +26,7 @@
 #include "DeskLib:KeyCodes.h"          /* Codes for wimp returned keys    */
 #include "DeskLib:KernelSWIs.h"        /* OS_Byte                         */
 
-#include "HackLib:flex.h"              /* Flexable malloc                 */
+#include "flex.h"                      /* Flexible malloc                 */
 
 #include "kernel.h"                    /* clib kernel functions           */
 #include "MySWIs.h"                    /* SWI no defs                     */
