@@ -39,11 +39,6 @@
 
 sprite_area resource_sprites = (sprite_area) 1;
 
-#ifdef _DLL
-sprite_area *Resource__Ref_sprites( void) { return &resource_sprites; }
-#endif
-
-
 
 extern void Resource_LoadSprites(void)
 {

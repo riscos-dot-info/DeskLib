@@ -130,19 +130,3 @@ extern char *Menu_FontMenuDecode(int *selection)
     return Menu_GetText(font_menu, *selection);
   }
 }
-
-
-
-
-
-/* JS 16 Apr 1995*	*/
-/* Support for DLL	*/
-/*
-menu_fontmenu is actually defined in FontMenu3.s, but we will put the
-veneer function here...
-*/
-#ifdef _DLL
-extern menu_ptr menu_fontmenu;
-menu_ptr		*Menu__Ref_fontmenu( void)	{ return &menu_fontmenu;	}
-#endif
-

@@ -23,12 +23,6 @@ wimp_point menu_currentpos;
 menu_ptr   menu_currentopen = NULL;
 
 
-#ifdef _DLL
-wimp_point	*Menu__Ref_currentpos( void)	{ return &menu_currentpos;	}
-menu_ptr	*Menu__Ref_currentopen( void)	{ return &menu_currentopen;	}
-#endif
-
-
 int Menu_CalcHeight(menu_ptr menu)
 {
   int       itemheight, count = 0;

@@ -18,11 +18,3 @@
 
 
 char resource_pathname[32] = "\0";      /* no path (use CSD) if user not set */
-
-
-#ifdef _DLL
-char *Resource__Ref_pathname( void)
-{
-return resource_pathname;
-}
-#endif
