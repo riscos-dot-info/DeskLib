@@ -815,7 +815,7 @@ atexit( _DeskLib_SDLS_dllEntry( Event__ExitFunction));
 
 extern void Event_InitNested(const char *taskname)
 {
-  Event_Initialise(taskname, 380, NULL);
+  Event_Initialise3(taskname, 380, NULL);
 }
 
 
