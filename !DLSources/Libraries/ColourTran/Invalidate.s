@@ -10,7 +10,7 @@
         STARTCODE ColourTrans_InvalidateCache
 ;
         STMFD   sp!,{lr}
-        SWI     XSWI_ColourTrans_InvalidateCache
+        SWI     SWI_ColourTrans_InvalidateCache + XOS_Bit
         MOVVC   r0, #0
         LDMFD   sp!,{pc}
 ;

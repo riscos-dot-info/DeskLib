@@ -15,7 +15,7 @@
         MOV     ip,sp
         STMFD   sp!,{r4,lr}
         LDR     r4,[ip,#0]
-        SWI     XSWI_ColourTrans_SelectTable
+        SWI     SWI_ColourTrans_SelectTable + XOS_Bit
         MOVVC   r0, #0
         LDMFD   sp!,{r4,pc}
 ;

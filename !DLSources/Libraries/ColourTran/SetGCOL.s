@@ -13,7 +13,7 @@
         STMFD   sp!,{r4,lr}
         MOV     r3,r1
         MOV     r4,r2
-        SWI     XSWI_ColourTrans_SetGCOL
+        SWI     SWI_ColourTrans_SetGCOL + XOS_Bit
         MOVVC   r0, #0
         LDMFD   sp!,{r4,pc}
 ;

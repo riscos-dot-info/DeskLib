@@ -16,7 +16,7 @@
         LDR     r1,[r4,#4]
         LDR     r2,[r4,#8]
         LDR     r3,[r4,#12]
-        SWI     XSWI_ColourTrans_ReturnFontColours
+        SWI     SWI_ColourTrans_ReturnFontColours + XOS_Bit
         STR     r1,[r4,#4]
         STR     r2,[r4,#8]
         STR     r3,[r4,#12]

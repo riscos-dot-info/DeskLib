@@ -11,7 +11,7 @@
         STARTCODE ColourTrans_ReturnColourNumberForMode
 ;
         STMFD   sp!,{lr}
-        SWI     XSWI_ColourTrans_ReturnColourNumberForMode
+        SWI     SWI_ColourTrans_ReturnColourNumberForMode + XOS_Bit
         MOVVS   r0, #-1
         LDMFD   sp!,{pc}
 ;
