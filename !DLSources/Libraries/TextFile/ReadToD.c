@@ -20,6 +20,8 @@
 #include "DeskLib:Core.h"
 #include "DeskLib:TextFile.h"
 
+#undef getc
+#undef feof
 
 extern void TextFile_ReadToDelimiter(FILE *infile, char delimiter,
                                      char *line, int maxlength)

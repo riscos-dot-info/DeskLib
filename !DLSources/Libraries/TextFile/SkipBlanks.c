@@ -20,6 +20,10 @@
 #include "DeskLib:Core.h"
 #include "DeskLib:TextFile.h"
 
+/* Avoid problems with macros accessing FILE * internals, that would
+   make Desklib tied to either SharedCLibrary or Unixlib */
+#undef getc
+#undef feof
 
 extern void TextFile_SkipBlanks(FILE *infile)
 {
