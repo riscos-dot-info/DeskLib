@@ -46,15 +46,19 @@ void Save_SetFiletype(save_saveblock *saveblock, int filetype)
   char *spritename;
 
   saveblock->filetype = filetype;
-                                  
-  spritename = Icon_GetTextPtr(saveblock->window, saveblock->dragsprite);
 
-  /* We can't set it - it is not indirected */
-  if (spritename == NULL) return;
-
-  sprintf(spritename, "file_%03x", filetype);
+  /* Only update the icon if it was specified to begin with */
+  if (saveblock->dragsprite >= 0)
+  {
+    spritename = Icon_GetTextPtr(saveblock->window, saveblock->dragsprite);
   
-  Icon_ForceRedraw(saveblock->window, saveblock->dragsprite);
+    /* We can't set it - it is not indirected */
+    if (spritename == NULL) return;
+  
+    sprintf(spritename, "file_%03x", filetype);
+    
+    Icon_ForceRedraw(saveblock->window, saveblock->dragsprite);
+  }
 }
 
 
@@ -486,10 +490,13 @@ save_saveblock *Save_InitSaveWindowHandler(window_handle      window,
   saveblock->filetype                  = filetype;
 
   /* Recreate the filetype icon as an indirected sprite-only icon with
-   * the appropriate filetype sprite in place.
+   * the appropriate filetype sprite in place - only if the icon is "real"
    */
-  saveblock->dragsprite = Icon_FileIcon(saveblock->window,
-                                        saveblock->dragsprite, filetype);
+  if (saveblock->dragsprite >= 0)
+  {
+    saveblock->dragsprite = Icon_FileIcon(saveblock->window,
+                                          saveblock->dragsprite, filetype);
+  }
 
   Save__ResetSaveBlock(saveblock);
 
