@@ -26,7 +26,7 @@
 
 /******************************************************************************/
 
-extern window_handle Pane2_CreateAndAddPane(char *windowname, int maxtitlesize,
+extern window_handle Pane2_CreateAndAddPane(const char *windowname, int maxtitlesize,
                                             window_handle mainwindow,
                                             wimp_point *paneoffset,
                                             wimp_point *panesize,

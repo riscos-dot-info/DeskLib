@@ -28,8 +28,8 @@
 
 
 typedef struct	{
-	char		*title;
-	char		*spec;
+	const char		*title;
+	const char		*spec;
 	menu2_makefn	makefn;
 	menu2_flagsfn	flagsfn;
 	menu2_subfn	subfn;
@@ -107,8 +107,8 @@ menu2__numopen = i;
 
 
 menu2_handle	Menu2_Create(
-	char			*title,
-	char			*spec,
+	const char			*title,
+	const char			*spec,
 	menu2_makefn		makefn,		/* If !=NULL, called to make the menu	*/
 	menu2_flagsfn		initfn, 	/* Called every time menu is opened	*/
 	menu2_subfn		subfn,		/* Called when submenu is needed	*/

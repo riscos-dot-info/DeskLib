@@ -55,7 +55,7 @@ static BOOL EventHandler(event_pollblock *event, void *reference)
 }
 
 
-extern dialog Dialog_Create(char *template_name, int maxtitlesize)
+extern dialog Dialog_Create(const char *template_name, int maxtitlesize)
 /*  Returns a pointer to a dialog record, or NULL if it fails */
 {
   window_handle window;
