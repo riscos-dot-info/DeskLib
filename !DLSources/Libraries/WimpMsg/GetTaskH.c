@@ -26,7 +26,7 @@ task_handle WimpMsg_GetTaskHandle(window_handle window, icon_handle icon)
 
   msg.size = 20;
   msg.yourref = 0;
-  msg.action = 0;
+  msg.action = (message_action)0;
 
   SWI(4, 3, SWI_Wimp_SendMessage, event_ACK, &msg, window, icon,
                                   NULL, NULL, &handle);
