@@ -1,9 +1,9 @@
 # GNU Make makefile for DeskLib
 
-AR = libfile
+AR = gccbin:libfile
 
 CC = cc
-CFLAGS = -ffahi -throwback -IDeskLib: -Ez
+CFLAGS = -ffahi -throwback -IDeskLib: 
 AS = objasm
 ASFLAGS = -ILibraries -I$(@D) -throwback
 
@@ -34,7 +34,7 @@ all: $(DESKLIB) debugs smerror
 # Link the objects together to make a new library
 $(DESKLIB): $(all_objects)
 	@mkdir -p $(basename $@)
-	$(AR) -c $@ $(ARFLAGS) $(lib_objects)
+	$(AR) -c $@ $(lib_objects)
 
 # Insert all the Makefiles in the Otherlibs directory as well.
 # This provides the targets debugs and smerror                  
