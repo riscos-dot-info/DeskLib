@@ -14,15 +14,18 @@
 #   make link
 
 CC = cc
-CFLAGS = -c -ffahi -throwback -IDeskLib: 
+CFLAGS = -ffahi -throwback -IDeskLib: 
 AS = objasm
 ASFLAGS = -I$(@D)/s
 
-# CC = gcc -c -ansi -IDeskLib: -mthrowback -o $@ $<
-# CC = gcc -apcs32 -c -ansi -IDeskLib: -mthrowback -o $@ $<
-# AS = gcc -Wa,-objasm,-throwback -c -o $@ $<
+WARNINGS = -ansi -pedantic -Wall -Wundef -Wpointer-arith \
+           -Wcast-align -Wwrite-strings -Wstrict-prototypes \
+           -Wmissing-prototypes -Wmissing-declarations -Wnested-externs \
+           -Winline -Wno-unused -Wno-long-long -W -Wcast-qual -Wshadow
+CC = gcc
+CFLAGS = -IDeskLib: -mthrowback $(WARNINGS) #-O2
 
-LIB = libfile -c -l DeskLib
+LIB = libfile -c DeskLib
 MKDIR = CDir
 
 DESKLIB = <DeskLib$$Dir>.o.DeskLib
