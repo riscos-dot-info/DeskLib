@@ -1,0 +1,143 @@
+Quick reference WIMP event block hierarchy
+==========================================
+(version 1.01, Jason Williams, 30 Apr '93)
+
+The following pseudocode function outlines the basic code layout you might
+use in a general event handler, and all the names you need to access the
+data structures used by the WIMP under DeskLib for each event type:
+
+BOOL MyEventHandler(event_pollblock event, void *reference)
+{
+  switch(event->type)
+  {
+    case event_REDRAW:
+    case event_OPEN:
+    case event_CLOSE:
+    case event_PTRENTER:
+    case event_PTRLEAVE:
+      event->data.openblock.
+                           .window
+                           .screenrect.
+                                      .min.x
+                                      .min.y
+                                      .max.x
+                                      .max.y
+                           .scroll.x
+                           .scroll.y
+                           .behind
+
+    case event_CLICK:
+    case event_BUTTON:
+      event->data.mouse.
+                       .pos.x
+                       .pos.y
+                       .button.{value|data. ... }
+                       .window
+                       .icon
+
+    case event_USERDRAG:
+      event->data.screenrect.min.x
+      event->data.screenrect.min.y
+      event->data.screenrect.max.x
+      event->data.screenrect.max.y
+
+    case event_KEY:
+      event->data.key.caret.
+                           .window
+                           .icon
+                           .offset.x
+                           .offset.y
+                           .height
+                           .index
+                     .code
+
+    case event_MENU:
+      event->data.selection[10]
+
+    case event_SCROLL:
+      event->data.scroll.openblock.
+                                  .window
+                                  .screenrect.
+                                             .min.x
+                                             .min.y
+                                             .max.x
+                                             .max.y
+                                  .scroll.x
+                                  .scroll.y
+                                  .behind
+                        .direction.x
+                        .direction.y
+
+    case event_LOSECARET:
+    case event_GAINCARET:
+      event->data.caret.
+                       .window
+                       .icon
+                       .offset.x
+                       .offset.y
+                       .height
+                       .index
+
+    case event_USERMESSAGE:
+    case event_USERMESSAGERECORDED:
+      event->data.message.
+                         .header.
+                                .size
+                                .sender
+                                .myref
+                                .yourref
+                                .action
+                         .data.
+                              .bytes[236]
+                              .words[59];
+                              .datasave.
+                                       .window
+                                       .icon
+                                       .pos.x
+                                       .pos.y
+                                       .estsize
+                                       .filetype
+                                       .leafname[12]
+                              .datasaveack.
+                                          .window
+                                          .icon
+                                          .pos.x
+                                          .pos.y
+                                          .estsize
+                                          .filetype
+                                          .filename[212]
+                              .dataload.
+                                       .window
+                                       .icon
+                                       .pos.x
+                                       .pos.y
+                                       .size
+                                       .filetype
+                                       .filename[212]
+                              .dataopen.
+                                       .window
+                                       .icon
+                                       .pos.x
+                                       .pos.y
+                                       .size
+                                       .filetype
+                                       .filename[212]
+                              .ramfetch.
+                                       .buffer
+                                       .buffsize
+                              .ramtransmit.
+                                          .buffer
+                                          .byteswritten
+                              .helprequest.where.
+                                                .pos.x
+                                                .pos.y
+                                                .button.{value|data. ... }
+                                                .window
+                                                .icon
+                              .helpreply.text[200]
+                              .print.
+                                    .filler[5]
+                                    .filetype
+                                    .filename[212]
+  }
+}

@@ -1,0 +1,104 @@
+Notes on the Dialog2 library version 1.03
+-----------------------------------------
+
+
+Introduction
+------------
+
+Dialog2 is intended to provide an easy way to have dialog boxes in
+programs. It enables you to open any dialog window in three ways: static
+(ie a proper window), menu-leaf (eg an Info window on an iconbar menu)
+and a menu (a free-standing window which is closed when the user clicks
+outside it or presses <Esc>).
+
+To use the Dialog2 library, you need to call Dialog2_CreateDialogBlock
+for each dialog window your program uses, and store the returned
+pointers for later use. Then, to open a dialog window, call
+Dialog2_OpenDialogMenu/MenuLeaf/Static with one of these pointers. To
+close a dialog window, call Dialog2_CloseDialog (this is done
+automatically if you tell Dialog2_CreateDialogBlock the icon handle of
+the OK or Cancel icons).
+
+
+Why Dialog2?
+------------
+
+The reason for the Dialog2 library, when DeskLib already has the Dialog
+library, is that there are a number of things about the Dialog library
+that I didn't like, and which would have caused problems for an
+application I wrote recently. For example Dialog has its own internal
+Event_Poll loop which is used while a dialog window is open. This is not
+helpful if you're using a non-standard polling loop, such as one which
+calls Wimp_PollIdle. Also, this polling loop claims event_NULLs.
+
+With the Dialog2 library, the dialog windows are treated exactly the
+same as any other windows, so your program will continue to use you
+original polling loop when Dialog2 windows are open.
+
+When you call Dialog2_CreateDialogBlock, you just pass the name of the
+window to use in your Templates file, and the window is only created
+(using Window_Create) when the dialog2 is actually open, and then
+deleted (using Window_Delete) when the dialog2 is closed. This saves
+having too many window handles, and reduces the amount of time spent by
+Event_Poll checking window records when handling an event.
+
+NB You can force a dialog2's window-handle to be preserved even when the
+dialog2 is closed.
+
+
+Open-function
+-------------
+
+Dialog2 enables you to register an open-function which is called
+whenever a dialog2 window is opened. This function could register event
+handlers for any events within the dialog2 window that you are
+interested in, eg event_CLICKs. These event claims are automatically
+released when the dialog2 window is closed, because the dialog2 will be
+deleted using Window_Delete, (which calls Event_ReleaseWindow). 
+
+You can also make your open-function be called whenever the dialog2
+window is closed. This is so you can register non window-specific
+handlers when the dialog2 is open, and release them when it closes. (the
+function can tell whether the dialog2 is being opened or closed by
+looking at the 'flags.data.type' of the dialog2_block it is given.)
+
+When you create the dialog2, you can (optionally) specify the icon
+handles of the 'ok' and 'Cancel' icons, for which default handlers will
+be registered, which deal with adjust/select clicks. Also, a handler is
+automatically registerd for event_KEY which detects <return> and <Esc>,
+and fakes a click on the OK/Cancel icon as appropriate.
+
+
+Automatic closing of menu dialogs
+---------------------------------
+
+The Dialog2 library will close any dialog window which is part of a menu
+when the menu is closed by the user clicking outside the menu or presses
+Escape, so that memory associated with the dialog is freed. This is done
+by detecting the RO3-only message_MENUWARN (event_CLOSE isn't sent when
+menu-windows are closed). 
+
+If RO2 is being used, message_MENUSDELETED is not sent, but Dialog2
+knows that only one dialog window can ever be open as part of a menu, so
+it always closes any old menu-dialog when asked to open a new
+menu-dialog. Thus there will only ever be one dialog2 window open when
+it isn't being used.
+
+NB There is one situation even under RO3 where one dialog2 window can
+remain un-closed after it has been opened as part of a menu: If the user
+chooses a menu-item (with Select/Menu) which is part of the menu-path
+leading up to the Dialog2, message_MENUWARN won't sent. 
+
+A remedy for this would be to register a handler for event_MENU inside
+Dialog2, check for the Select or Menu button, and close
+'dialog2_menublock'. Alternatively, user code could do
+'Dialog2_CloseDialog( dialog2_menublock);' whenever it detected a
+menu-choice with Select/Menu.
+
+
+!Dialog2EG
+----------
+
+The program !Dialog2EG contains some example code which uses Dialog2. It
+doesn't make of many of Dialog2's facilities, but should make it clear
+how to get started.

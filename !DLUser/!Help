@@ -1,0 +1,28 @@
+!DLUser - user DeskLib libraries.
+---------------------------------
+
+This directory is for any DeskLib libraries that you write that aren't
+(yet) part of the main DeskLib distribution. The !Boot file sets the
+path 'DeskLib_User:' to point to the !DLUser directory.
+
+DeskLib$Path is set in the main !DeskLib directory to be
+'DeskLib_User:,DeskLib_Core:', so your header files are searched first
+when '#include "DeskLib:xxx.h" is encountered in a .c file by the
+compiler.
+
+The intention behind this is that it makes it easier to have your own
+DeskLib libraries, as you don't have to copy your headers into
+'!DeskLib.h'. Installing a new DeskLib release is also easier, as there
+shouldn't be any need to change the main !DeskLib application.
+
+There is now a set of script files in '!DLUser.Scripts'. 'MakeAll' runs
+the makefile in each sublibrary directory, and then makes a library
+'!DLUser.o.DLUser' containing all of this code.
+
+In '!DLUser.o.' is a library file for each sublibrary within '!DLUser',
+plus a file '!DLUser.o.DLUser' which contains all these libraries in one
+file. This is to allow you to link either with individual libraries or
+all at once.
+
+There are also two example libraries 'Hash' and 'Import' in this release
+of DeskLib.

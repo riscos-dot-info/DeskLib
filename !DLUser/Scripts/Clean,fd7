@@ -1,0 +1,8 @@
+Wimpslot 320k
+Echo Clean: Removing all object files in DLUser sublibraries.
+
+|Echo You need to uncomment this file!
+
+DeskLib_Commands:EachUser Wipe %%0.o.* ~C~F~R~V
+
+Echo Clean: Finished

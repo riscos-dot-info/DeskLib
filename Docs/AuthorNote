@@ -1,0 +1,553 @@
+STOP PRESS
+
+I have realised that I don't often have time to do much work on DeskLib
+myself. This has resulted in suspension of my activities on a menu template
+system. The main problem is that many of the routines in DeskLib are just
+TOO generic, and can be better written for individual applications if they
+include nasty hacky hand-tuned things in them. However, some parts of
+DeskLib are useful 'little' routines, which I feel are more useful in any
+circumstances:
+
+  Compact and efficient function call interfaces for SWIs (in assembler)
+  Small routines like Icon_Select() which make the program more readable
+    and/or save a lot of programming bother on "nitty gritty" stuff.
+
+The other routines are more useful as tutorial type code for you to look at,
+chop bits out of, etc. when writing your own code for those operations.
+Thus, it would be preferable to add small, useful, timesavers rather than
+large, bloated "all-singing all-dancing" routines.
+
+Thus, if you send any code, I will concentrate my available time on the
+simpler, more useful routines, as I feel they are generally more globally
+useful than bigger, more complex routines.
+
+---
+
+If you write any code which you feel you may one day deign to send to the
+DeskLib moderator for possible inclusion in the library, then please read
+through the following text. It is also suggested that you familiarise
+yourself with the way most of the library structures have been laid out, and
+the naming conventions used, so that you can make your codes' external
+interface as consistent with the rest of DeskLib as possible
+
+The following is not mandatory, but it will help, and it'll save me
+re-writing your code before it goes in!
+
+
+Programming conventions
+=======================
+
+ There are various conventions which I have tried to impose upon the DeskLib
+ code to retain as much consistency as possible. If writing generic code
+ that you might add to DeskLib for all to use in the future, then please try
+ to write it in the same style as the current code (even if you don't
+ personally like this style, it is *very* bad to have inconsistencies, and I
+ will be forced to re-write all your code to comply, which is a lot of
+ wasted bother...)
+
+ The main aims of the following conventions are:
+   -Naming consistency. I have chosen to echo the style used in Acorn's SWI
+    names (see below).
+   -Readability. Although "event.type" means more typing work than "e->e",
+    it is far better in a global library such as this for the following
+    reasons:
+      - Anyone reading some source code will be able to work out fairly
+        easily what is going on, even if they haven't seen the library
+        naming before.
+      - You don't need to memorise huge gobs of ASCII encodings just to
+        program with the library - if you want an event type, it is most
+        likely called an event type, not an e->e.
+      - Learning the ins and outs of a new library is far quicker and less
+        painful if things have meaningful names - especially if they tally
+        with similar names used in other languages people are used to.
+      - Debugging is easier, as remembering what an "event->type" is tends
+        to be easier than remembering what the "e->e" was.
+      - Readability is improved, so other people can more easily understand
+        your code, and if you leave some code alone for a few weeks and then
+        come back to it, you will be able to work out what you had done more
+        easily.
+      - Portability is increased, as it is easier to translate code full of
+        meaningful names than code full of random ASCII symbols.
+
+ Anyone who does not like the names of types and functions in the library
+ can always use #defines or alter their copy of the sources to make the
+ names meaningless again if they so wish. (Though it is recommended that you
+ use #defines, so that the code remains compatible with future releases of
+ the Library.)
+
+ function names:
+   I have opted to use the same style as Acorn standardised with their SWI
+   names. That is,  module-name underline function-name, where module-name
+   and function-name are all lowercase except for the initial letters of
+   words:
+   
+ i.e. Wimp_OpenWindow();
+      Dialog_SaveAs();
+      Icon_PlaceCaret();
+
+ (Note that for the libraries I have defined SWI names as SWI_Wimp_OpenWindow
+ so that there is no clash between the #defined SWI name and the funcion name)
+
+ DeskLib uses a policy of splitting code up into the smallest reasonable
+ segments so that a minimum of code is included if the user only calls one
+ function. The result of this is that it is necessary to supply some
+ internal-use functions (and variables) to external callers (other parts of
+ DeskLib).
+ These are to be named as above, but use a double underline to make it clear
+ that they are internal routines that should generally not be used unless by
+ a new routine for inclusion into DeskLib itself...
+
+
+ variable/type names:
+   The LAST thing that we want is 1-letter variable names. Undeniably they
+   are faster to type, but they render code far more difficult to read, even
+   for people who are fluent with them, and they make learning the use of a
+   library a long and arduous task. Also, working out what an "m" is from
+   its context is an undesirable thing.
+   (i.e. "w", "i", "m", "m", and "e" are definitely out!)
+
+   The second to last thing that we want is a really long variable name, as
+   it is an annoyance to have to type exceedingly long names over and over.
+   Thus, some things are gong to have to be abbreviated.
+   (i.e. "saveas_read_leafname_during_send" is also not too good)
+
+   Abbreviations should be 4 to 6 characters long where possible. e.g.
+      icon          ->  icon
+      window        ->  window
+      menu          ->  menu
+      button        ->  button
+      mouse         ->  mouse
+      dialogue      ->  dialog
+      outline       ->  outline
+      rectangle     ->  rect
+
+   -most names fit nicely into 4 or 5 characters without much abbreviation,
+   and this seems to be a nice compromise between readability and typing
+   effort.
+
+   The third important thing is that naming should be consistent: If you
+   look through the wimp library data structures, for example, you will find
+   that a window handle (type window_handle) is ALWAYS called a window in
+   external interfaces.
+   An icon_handle is always called an icon
+   An icon definition block (type icon_block) is always called an iconblock
+   A flag word is always accessed as flagword.value or flagword.data.xxx
+   (i.e. "value" and "data" names for flags are consistent throughout the
+   library, even though they might not be the "best" names under all
+   circumstances)
+   etc.
+
+   Variables and types should be entirely lowercase to differentiate them
+   more easily from function names. They should contain underlines to
+   seperate groups from individuals (e.g. wimp_window, wimp_icon), but NO
+   MORE than ONE underline.
+   Although multiple-word variables look bad (wimp_openwindowstructure)
+   if things are abbreviated well and the words are carefully chosen, names
+   can still be quite readable all lowercased. (window_openblock)
+
+   Where Acorn's naming fits within these guidelines, you should use
+   Acorn-compatible names. For example, I don't wholly like Acorns
+   "nameisname", but I have kept it as it is not too bad, still adequately
+   describes it's function, and is not a silly name like "nin" which I would
+   find meaningless. (Thus, Acorn's w becomes window, and i becomes icon)
+   This will help to ease the job of moving from use of Acorn's library to
+   this one, as well as making it as easy as possible to integrate parts of
+   the two libraries together where necessary.
+                                              
+   constants should be named with lowercased module/group name, followed by
+   an underline and uppercased constant name. (i.e. the same as a variable,
+   but with the second half uppercased). e.g.
+     icon_SELECTED
+     colour_GREEN
+
+   Notice how I have seperated many data constants into groups like
+     icon, iconborder, iconbtype, etc.
+   rather than just the module name (Acorn use wimp_ for *everything*)
+   because this makes it much easier to understand what a constant is for...
+   e.g.
+        wimp_ISELECTED    ->     icon_SELECTED
+        wimp_MOVE_WIND    ->     drag_MOVEWINDOW
+        wimp_BRIGHT       ->     button_RIGHT
+        wimp_WMOVEABLE    ->     window_MOVEABLE
+
+   (In fact, DeskLib goes one step further, and defines variable structures
+   so that you can simply use icon.data.selected to retrieve a flag etc.)
+
+   which not only makes the function of the constant far more meaningful and
+   far less ambiguous, but in many cases makes the constant name shorter as
+   well. It also removes the possibility of using (for example) an icon flag
+   in a window_flagword by accident because you misread/misinterpreted one
+   character in its name.
+
+   From a programming point of view, it also reduces the chance of you
+   defining all your icon flags as wimp_Ixxxx, and then realising that you
+   defined one as wimp_INDIRECT instead of wimp_IINDIRECT (as Acorn did)
+
+   When in doubt about naming things, look at the source code in this
+   library for hints.
+
+   The main thing is to get the name as readable, meaningful, consistent,
+   and unambiguous as possible, with a secondary consideration to length of
+   variable/constant name.
+
+
+   header files/function group names:
+   ==================================
+
+   Try to divide any functions up into distinct groups. Acorn decided on
+   modules, for example "wimp", but I feel this should be further subdivided
+   into modules for windows, icons, drags, pointers, etc. - basically put
+   one "functional group" into it's own .c file (or group of files).
+
+   My intent for a module such as "wimp" is to provide a low-level interface
+   to all wimp SWI calls (Wimp_OpenWindow(), Wimp_CloseWindow(), etc.), with
+   a higher-level (or levels) of interfacing which is named according to
+   WHAT the function AFFECTS, for example:
+     Window_Open()
+   might be the high-level call which does:
+     Wimp_GetWindowState(&windowstate);
+     windowstate.open.behind = -1; /* Open on top of all other windows */
+     Wimp_OpenWindow(&windowstate.open);
+
+   For each .c file, there should be a .h file of the same name prototyping
+   all external function and variable names, plus any constants that should
+   be used in data passed in to those functions. This .h file will go into
+   the main .h directory.
+   An additional .h file (generally <name>defs.h or similar) can be used for
+   internal constant and structure definitions. This usually goes in the .h
+   directory local to a sublibrary directory.
+   e.g. "Template" has a "Template.h" file detailing the externally visible
+   functions, variables, and structures/types. It also has an internal header
+   file (Template.h.TempDefs - TempDefs.h) which defines internal-use-only
+   definitions.
+
+   EVERY header file should guard against multiple-inclusion by using the
+   following format:
+
+     #ifndef __dl_<filename>_h
+     #define __dl_<filename>_h
+
+     ... insert your .h code in here ...
+
+     #endif
+
+   (I know #pragma include_only_once is better, but this will work with ANY
+   C compiler, rather than just Acorn's one...)
+
+   Note that this is similar to the method used in Acorn's own libraries,
+   except for the addition of the dl_ portion: this is so that DeskLib
+   libraries can be used in conjunctipon with Acorn libraries (e.g. so there
+   is no clash between __dl_error_h and __error_h, for example)
+
+   This is also useful, as other files can check #ifdef __dl_<filename>_h...
+
+
+   Generic design
+   ==============
+
+   Please try to design your code in as generic a manner as possible. For
+   example, if you write code that automatically malloc's space for a
+   window's indirected data, then include a function that can be called to
+   free the memory when necessary. (And possibly also include a call to this
+   code in the Window_Delete() function). Note that this should be a seperate
+   function, so that programmers using the libraries can call it themselves
+   if they want to do things slightly differently to the way you envisaged it.
+
+   Some code is intended as a sort of template or prototype. For example, you
+   might produce routines to draw a single circle, line, etc. in a given
+   window. Of course, this means that if two circles are to be drawn my code
+   will call GetWindowState twice, which is inefficient. In this case, the
+   user can copy the code to draw the circle into his/her own redraw loop,
+   and simply use the library routine as a source of useful code fragments.
+
+   Another example is the code for SaveAs and other "standard" windows... I
+   have endeavoured to allow the user to do anything (e.g. 3-d icons,
+   pointer-shape changing) while a save-as window is up, but if necessary
+   they should have access to the full source code for SaveAs (so they can
+   alter anything), but also if possible to the dialogue-box or window data
+   used, so that slight alterations may be made if necessary while the code
+   is running. (Thus, I provide a standard functionality for a save-as
+   window, which provides consistency between different applications all
+   using the same code library, yet the programmer still has the power to
+   alter things if they really want to)
+
+   
+   Error (and other) messages
+   If ALL strings in the libraries use "msgs" format, then it will be
+   easier to replace default messages with different languages, etc.
+   e.g. instead of returning an error message "not found", you should return
+   the message "E.CantFind:Not found", so that if the message "E.CantFind" is
+   defined in a "msgs" message file, the whole error message can be replaced.
+
+   Currently, I have gone about 50% of the way to this, by defining all
+   output text in #defined constants at the top of .c files or in
+   local .h files... thus, the messages can be more easily changed to
+   use msgtrans tags or whatever... In the future these messages may be
+   collected into a central .h file to enable quick and easy conversion
+   of the entire library to a different language.
+
+   This also allows selected messages to be removed from your final
+   application (how many times have you needed the error message "Templates
+   file is not loaded for use with dialog boxes" after your application is
+   developed: If the templates aren't loaded, another error will already
+   have occurred (thus the message is never seen) or you don't get the 
+   error (thus the message is never seen)...
+
+   Also, I find it annoying when I know my messages file is loaded OK to
+   have text in my program (the default message) wasting space once again,
+   when it has been replaced by a message in my messages file. In these
+   cases I would like to replace the message with just the msgtrans tag.
+   So having all (most) constant strings used by a bit of code actually
+   defined at the top in one lump would be very useful.
+
+
+   Defaults
+   ========
+
+   The last point is to always use sensible defaults: If the user doesn't
+   supply a non-vital piece of information, your code should handle it (even
+   if *you* know *you* will always supply the full information). For
+   example, in *ANY* situation where a function-pointer is supplied, you
+   should check if it is NULL, and not try to call it if it is! (Even if
+   this renders the effect of your routine down to nothing whatsoever)
+   Anywhere that you return values to a variable passed by reference
+     ReturnAnInteger(&integer_variable);
+   if the variable pointer passed in is NULL, then that return-value should
+   be ignored if possible. (checking if something == 0 usually takes only
+   one instruction, so very little efficiency is lost due to this, but it is
+   VERY useful if you don't want all the return values)
+
+   At the very least, if your function DOESN'T do this, then WARN the user
+   of this fact in the .h and .c files with comments!
+
+   eg In the icon-handling code, it always *checks* that icons are of the right
+   types for things to be done to them... For example, an attempt to set the
+   text in *any* icon will not fail, even if the icon was not a text icon or
+   an indirected text icon. An attempt to place the caret in an icon will
+   not always succeed, but no errors or problems should be caused by
+   allowing the caret to be placed in "illegal" places such as non-writeable
+   icons...
+
+
+
+Types
+=====
+
+Try to define nicely structured types. For example, in the Wimp header, I
+have defined a point (x, y), from which a rectangle can be formed (min, max).
+This leads to names in use:
+  screenrect.min.x
+  screenrect.min.y
+  screenrect.max.x
+  screenrect.max.y
+
+which is far nicer than "screenrect.maxx" or "box.x0" etc.
+
+It also allows the user to pull out data more easily:
+  int         left_x_position    = screenrect.min.x;
+  wimp_point  bottom_left_corner = screenrect.min;
+  wimp_rect   rectangle          = screenrect;
+
+(Note that the point cannot be easily pulled out or copied in Acorn's scheme
+in one C instruction)
+
+Another example is my scroll positions:
+  scroll.x                  (Acorn: scx or x)
+  scroll.y                  (       scy or y)
+
+and caret offset:
+  offset.x                  (Acorn: x)
+  offset.y                  (       y)
+
+-As you can see, this structure also helps to control inconsistencies - when
+programming, you suddenly notice that part of a structure can be replaced by
+a predefined substructure, and so your new structure becomes more consistent
+with other structure definitions.
+
+Basically, the rule of thumb here is:
+If part of a data type would make a useful data type in it's own right, DO IT
+
+
+FlagWords
+=========
+
+For consistency, these should be made into structures as follows:
+
+union
+{
+  int value;        /* A straight 32-bit flag word */
+
+  struct
+  {
+    unsigned int bit0   : 1;  /* Note: the number of bits here must be <= 32 */
+    unsigned int bit2   : 1;
+    ...
+    unsigned int nybble : 4;
+    ...
+    unsigned int byte   : 8;
+  } data;
+} flagword;
+
+
+This gives the programmer the choice of:
+
+  flagword.value;
+(Exactly the same as current flagwords: a 32-bit integer)
+
+or
+  flagword.data.nybble (etc.)
+
+Note that the two parts "value" and "data" should ALWAYS have these names,
+for consistency throughout the library. These names are not always the "best"
+to use, but due to the fact that they are consistent, they become easy
+to remember.
+
+This has the advantage of being able to replace:
+  buttontype = (iconflags & BUTTONTYPEMASK) >> BUTTONTYPESHIFT;
+  gribble    = (frobbleflags & 0x00f70000) >> 16;
+
+with:
+  buttontype = iconflags.data.buttontype;
+  gribble    = frobbleflags.data.thingy;
+
+  (note though, that it is *still* possible to say:
+    buttontype = (iconflags.value & BUTTONTYPEMASK) >> BUTTONTYPESHIFT;
+   if you really want to?!)
+
+
+and replace:
+  if (iconflags & icon_SELECTED)
+
+with:
+  if (iconflags.data.selected)
+
+-- A much more pleasant way of thinking about things.
+
+
+Misc
+====
+
+Writing of basic functions is well underway. What we really need to make
+DeskLib better is a lot of little, useful functions.
+  e.g. Fake a click on an icon
+       Place the caret at the end of an icon
+       Shade an icon (ensuring that the caret is removed from the icon)
+       Open a window in a portion of "free space" on the desktop
+       Bring a window to the front
+       Change the colour of an icon
+       Change the sprite in an icon
+-Most of these things are *very* simple to write, and most of us have the
+ability to write most of the functions for ourselves... but it is still very
+nice to have them *predefined*, so you can spend your time on actual editing
+functions or whatever...
+
+  Also, I want a host of functions to handle writable icons: You give your
+  writable a validation string of "A" to allow NO characters to be entered,
+  and then call the Icon handlers when you get keypress events. They will
+  then vet entry of values properly:
+    Numbers where you can't type a 0 as the first digit.
+    Any number taking up to (e.g.) 12 digits, but not valued less than 0.1
+    and not more than 100.0
+    Any (e.g.) 3-digit number smaller than (e.g.) 73
+    Any number with a value between 0 and 7 (i.e. it will let you type only
+     a single digit, then you can only type a ".", and then you can type
+     up to x decimal places)
+    Any character entered is automatically uppercased/lowercased (good for
+     passwords etc.)
+    Any valid ADFS filename can be entered: For example, if you try to enter
+     a leafname only, you can't type more than 10 characters, but if you
+     type a "." then another 10 characters can be typed... I really hate
+     counting the number of characters in a save-as dialogue box to ensure I
+     haven't used too many characters in the leafname!
+
+  As you can probably see by now, there are an infinitude of little functions
+that would come in useful to many programmers much of the time, and will be
+very useful time/work savers for wimp programmers (it is amazing how much
+you use these functions as soon as they become available)
+  
+You will notice that some of these functions are just useful or convenient
+(e.g. Icon_Select, etc.) and others actually save a lot of work (e.g.
+placing the cursor at the end of the text in a given icon takes a fair bit
+of work) in really quite common cases.
+(What annoys me with RISC OS Lib is Acorn's dbox_ obviously has code to
+place the caret at the end of an icon's text, but it is HIDDEN inside dbox
+so you can't use it generically for any icon - useful code is IN your
+program, but YOU can't use it... I find that very wasteful, and this kind of
+wanton pollution is killing our planet... ;-) ... (After having seen dbox, I
+was also less than pleased to see that every time a caret is placed, the code
+is repeated, rather than using a nice generic place_caret call...ugh)
+
+-In fact, if you look carefully at the functionality in Acorn's dbox
+routines, you will see that it could be split up into a set of slightly more
+generic routines, and dbox will simply vanish - it isn't really needed, so
+long as your window, icon, and event code is well designed!
+
+dbox_show type functions   -> Window show type functions
+dbox_event handling        -> default handlers used with Event()
+dbox button click handling -> Icon button handlers + event handlers
+dbox_set.../dbox_get...    -> Icon_Set/Get Integer/double/text/radios/etc
+dbox caret handlers        -> generic caret handlers
+dbox key handlers          -> generic key handlers/event handlers
+
+Some more examples of the types of routines I intend to end up with:
+(well, OK, so these are now implemented in DeskLib... what do you expect? I
+wanted the code... it's been *days* since I thought of the idea... ;-)
+
+  Window_Show    - Opens a window, allowing it to be opened wherever it was
+                   defined in the template, or centered on screen, or
+                   centered plus a small random displacement, or appearing
+                   under the pointer or over the current caret position, or
+                   centered over a given window or icon.
+                   And if the window is being opened because of a menu
+                   sublink warning message, it is opened instead in the
+                   correct position in the menu tree.
+                   (This replaces dbox_show, and does more on top)
+
+  Window_Delete  - Closes and deletes a window, deallocating all it's
+                   handlers, memory, etc.
+                   (say goodbye to dbox_dispose!)
+
+  A series of functions you can connect in that are default event handlers
+  for dialogue boxes. This replaces the dbox_fillin series of calls.
+
+  Code for things like moving the caret to the next icon or the previous
+  icon, which can be called by the dialog handlers when up-arrow,
+  down-arrow, tab, and return keypresses are caught.
+
+  And last but not least (as mentioned above), a set of icon calls that set
+  and get icon values, radio button selection states, etc. (Not to mention
+  icon-groups such as "volume sliders" that will be handled
+  semi-automatically. (This is not a dream... the code has *already* been
+  written! See Icon.h))
+
+
+I also want to devise a method by which you can open two (or more) windows
+and attach them to each other as panes. Then, whenever you call high-level
+Window_ functions, the windows will be treated as one "window" (i.e. when
+one window is dragged, the panes attached to it will move as if glued onto
+it, completely automatically, so you don't need to worry about the fact that
+they are seperate windows... This will probably mean indexing icons as
+0..1..2 for the base window, and 512, 513, 514 for the pane, as if the whole
+kaboodle is really only one window...
+-This will probably be with Window_ calls, but the "handle" that you use
+is actually only the "back" window handle - you will just have to use 
+Window_ calls to access the pane as a "window".
+
+(This type of thing is now likely to be conducted in conjunction with the
+new Glass template format and !Glazier template editor, which we hope to
+have supporting meta-icons (e.g. sliders) and other stuff in a more powerful
+manner than is currently possible under the normal WIMP icons/windows)
+
+Hopefully these things have helped to show you what *I* intend to do for
+DeskLib... lots of useful "tack-on" facilities that are compatible with RISC
+OS Lib and DeskLib low-level functions. Any useful functions any of you have
+written will be gladly accepted and included into DeskLib (Even if your
+function only works with RISC OS Lib, I can try to add support for DeskLib
+as well, and the whole world can benefit from the usefulness of your
+function. Let's share all the useful code we have sweated over for minutes
+instead of hoarding it (which helps nobody)
+
+If you think of some good things to write, it might be a good idea to
+contact me before you start, and I'll hopefully be able to reduce clashes
+where more than one person spends time writing basically the same code...
+

@@ -1,0 +1,114 @@
+Using PopUps from within DeskLib applications
+=============================================
+
+The following message was posted to usenet by Philip Colmer.
+One note. The 'OpenPopUp' function decribed in the first part is needed
+for use of ANY type of MENU PopUp, not just the ProgInfo one.
+
+---
+
+From comp.sys.acorn.tech Thu Jun 24 08:30:27 1993
+Newsgroups: comp.sys.acorn.tech
+Subject: Re: DeskLib PopUps from within C
+Message-ID: <24432@acorn.co.uk>
+From: pcolmer@acorn.co.uk(Philip Colmer)
+Date: Thu Jun 24 08:30:27 1993
+References: <209mrv$7j@cezanne.ecs.soton.ac.uk>
+Organisation: Acorn Computers Ltd, Cambridge, England
+Lines: 93
+
+In article <209mrv$7j@cezanne.ecs.soton.ac.uk> Graeme Foster writes:
+
+>Can anyone (Jason?) supply some example C source which will demonstrate how
+> to use PopUps from within C?
+
+Hope the following helps.
+
+--Fil.
+
+
+
+To use the ProgInfo PopUp
+=========================
+
+ 1. Call EventMsg_Claim(message_POPUPREQUEST, event_ANY, OpenPopup, NULL)
+    at some point in your initialisation. The OpenPopup routine is:
+
+BOOL OpenPopup(event_pollblock *event, void *reference)
+{
+  message_popuprequest *request = (message_popuprequest *)
+                                  &event->data.message.data;
+
+  Wimp_CreateSubMenu((menu_block *)request->window,
+                     request->openpos.x, request->openpos.y);
+
+  return TRUE;
+}
+
+    This gets called when the PopUp server needs your application to open
+    the window for it.
+
+
+ 2. You would normally open the info dbox on a submenu warning, so call:
+
+    EventMsg_Claim(message_MENUWARNING, event_ANY, InfoRequest, NULL);
+
+    somewhere in your initialisation code, where InfoRequest is:
+
+BOOL InfoRequest(event_pollblock *event, void *reference)
+{
+  popup_data info;
+
+  Msgs_Lookup("app.name", info.proginfo.appname, 32);
+  Msgs_Lookup("app.purpose", info.proginfo.purpose, 32);
+  Msgs_Lookup("app.author", info.proginfo.author, 32);
+  Msgs_Lookup("app.version", info.proginfo.version, 32);
+
+  PopUp_ShowMenuLeaf("ProgInfo", &info, &event->data.message.data.menuwarn);
+  return TRUE;
+}
+
+    If you have more than one submenu warning set, you will need to check
+    the hit code returned, eg
+
+    switch (event->data.message.data.menuwarn.selection[0])
+    {
+      case iconmenu_INFO:
+        ...
+
+
+To use the SaveAs PopUp
+=======================
+
+ 1. Call EventMsg_Claim(message_POPUPSTATE, event_ANY, PopUpState, NULL) at
+    some point in your initialisation. PopUpState will be called when the
+    drag of the icon from the SaveAs box has been finished. Your
+    application must then start the normal data transfer protocol.
+    PopupState is defined as:
+
+BOOL PopUpState(event_pollblock *event, void *reference)
+{
+  /* do a GetPointerInfo and build a datasave block */
+  message_block message;
+  mouse_block ptrinfo;
+
+  Wimp_GetPointerInfo(&ptrinfo);
+  memcpy(&message, &event->data, sizeof(message_block));
+  message.header.yourref = 0;
+  message.header.action = message_DATASAVE;
+  message.data.datasave.window = ptrinfo.window;
+  message.data.datasave.icon = ptrinfo.icon;
+  message.data.datasave.pos = ptrinfo.pos;
+  message.data.datasave.estsize = -1;
+  message.data.datasave.filetype = 0xFFF;
+  Wimp_SendMessage(event_SEND, &message, ptrinfo.window, ptrinfo.icon);
+
+  return TRUE;
+}
+
+
+ 2. When you want the SaveAs PopUp to appear, go:
+
+    strcpy(saveas.saveas.iconsprite, "file_fff");
+    strcpy(saveas.saveas.filename, "FileName");
+    PopUp_ShowStandalone("SaveAs", &saveas);

@@ -1,0 +1,179 @@
+
+    ####             #    #     # #
+    #   #            #    #       #          
+    #   #  ##   ###  #  # #     # ###             
+    #   # #  # #     # #  #     # #  #
+    #   # ####  ###  ##   #     # #  #                                      
+    #   # #        # # #  #     # #  #    
+    ####   ### ####  #  # ##### # ###    
+
+    The FreeWare Desktop C library for
+             RISC OS machines
+
+              Release 2.30
+              02 Sep 1995
+
+  If you have used previous version(s) of
+  DeskLib, please consult 'DeskLib.Docs.Updates' 
+  to see what has changed.
+
+
+DeskLib
+-------
+
+DeskLib is a set of fully sourced C libraries for for writing desktop
+applications for Acorn RISC OS. The aim of DeskLib is to collect
+together useful little snippets of code to help the desktop programmer. 
+In this area, DeskLib already provides a full set of WIMP SWI veneers in
+assembler, a whole set of useful icon manipulation functions, etc. 
+Higher-level event managers, etc. are also provided but trade off
+efficiency and compactness to provide genericity.
+
+
+The completely installed DeskLib distribution looks something like:
+
+
+DeskLib.!Help		This file.
+DeskLib.!DeskLib...	Header files, the main DeskLib library,
+			DeskLib's StrongHelp file, dynamic-linking
+			libraries.
+DeskLib.!DLSources...	All source code, makefiles, scripts, etc.
+DeskLib.!DLUser...	Directory for user's extra sub-libraries.
+DeskLib.Docs...		Documentation files.
+DeskLib.Examples...	Example applications.
+
+
+
+
+
+Recompiling DeskLib with different versions of cc and link
+----------------------------------------------------------
+
+This release of DeskLib has been compiled with cc version 4 (as supplied
+with Acorn's Desktop C) and objasm 2.00, because later versions of these
+tools (eg cc 5 supplied with Acorn's C/C++ system) produce code which
+link 4 can't cope with.
+
+If you have Acorn C/C++ and want to re-make DeskLib using the new
+compiler (which will probably produce speed/space improvements in the
+compiled DeskLib code) then, after '!DeskLib' and '!DLSources' have been
+seen by your Filer, simply double-click on the file
+'!DLSources.Scripts.Static.MakeClean'.
+
+This will completely remake the normal static-linking version of DeskLib
+in a task window, taking approximately half an hour.
+
+NB You will need to have at least 1.5Mb RAM free to do this.
+
+If you have also down-loaded the dynamic-linking version of DeskLib,
+double click on '!DLSources.Scripts.Static+DLL.MakeClean' instead. This
+will recompile both the static and dynamic-linking versions of DeskLib.
+
+
+
+
+Dynamic linking note
+--------------------
+
+The dynamic-linking parts of this release of DeskLib need version 1.03
+of the Straylight Dynamic Linking System, which is available from the
+usual Acorn-related ftp sites.
+
+
+
+
+
+
+DeskLib distribution information
+--------------------------------
+
+DeskLib is now rather large, so it has been split up to allow people to
+download just the parts they require.
+
+The separate parts of DeskLib are in zip files in this directory. These
+can be extracted using Spark.
+
+Each of the Zip files contains just those parts of the DeskLib directory
+structure needed to contain the zip file's particular selection of
+DeskLib's files. This allows you to simply extract the zip files into
+the same place to get the parts of the DeskLib tree that you require.
+
+Here is which parts of the complete distribution each zip file in this
+directory contains:
+
+
+Zip File	What it contains
+------------------------------------------------------------------------
+
+Core		Everything need to compile and link programs which use
+		DeskLib (ie the header files and library file
+		!DeskLib.o.DeskLib), plus the documentation files and
+		release notes.
+		
+		DeskLib.!DeskLib...* except dynamic linking files.
+		DeskLib.Docs...*
+		DeskLib.!DLUser...*
+	
+
+Sources		All the source code for DeskLib, plus makefiles and
+		scripts needed to make DeskLib. No .o files.
+		
+		DeskLib.!DLSources...* except *.o.* .
+
+
+Objects		All .o files needed to make the normal version of DeskLib.
+		
+		DeskLib.!DLSources...Static.o.*
+
+
+DLLObjs		All .o files needed to make the dynamic-linking versions
+		of DeskLib.
+		
+		DeskLib.!DLSources...DLL.o.*
+		DeskLib.!DLSources...DLLClient.o.*
+		
+
+Examples	A few example programs with source, plus some random
+		source code.
+		
+		DeskLib.Examples...* except *.EasyC...* .
+
+
+EasyCEgs	Beebug EasyC-compatible versions of one of the example 
+		program.
+		
+		DeskLib.Examples.EasyC...*
+
+
+DLL		All files needed to make applications which use the
+		dynamically-linkable version of DeskLib.
+		
+		DeskLib.!DeskLib.o.DLL*
+		DeskLib.!DeskLib.!DLLs...*
+
+
+StrongHelp	This is a StrongHelp file which documents every
+		function, variable, typedef, macro etc in the DeskLib
+		header files.
+		Note that this needs version 2 of StrongHelp.
+		Also note that the extracted StrongHelp file is nearly
+		1Mb.
+		
+		DeskLib.!DeskLib.DeskLib
+
+
+
+
+
+-------------------------------------------------------
+
+
+Julian Smith
+
+
+If you have any problems, please feel free to contact me:
+
+Julian Smith                              Dept of Experimental Psychology
+julian.smith@psy.ox.ac.uk                 South Parks Road, Oxford, OX1 3UD
+http://cogsci1.psych.ox.ac.uk/~julians/   UK
+

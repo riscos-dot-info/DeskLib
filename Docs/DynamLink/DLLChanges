@@ -1,0 +1,611 @@
+
+  Modifications to DeskLib to enable generation of dynamically linked
+  ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜-
+  libraries (DLLs), using the Straylight Dynamic Linking System (SDLS)
+  ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+
+
+Julian Smith
+
+
+Contents
+˜˜˜˜˜˜˜˜
+
+Introduction
+Externally visible global variables
+Exporting function pointers from within a DLL
+Summaray of all extra macros
+Other
+
+
+Introduction
+˜˜˜˜˜˜˜˜˜˜˜˜
+
+This is a description of the changes I've made to DeskLib's header and
+.c files in order to allow easy building of DeskLib sublibraries which
+can be dynamically linked using the Straylight Dynamic Linking System.
+
+The changes in the headers are needed because with two versions of
+DeskLib (dynamically and statically linkable), header files can be
+included in many different circumstances (static/dynamic application,
+static/dynamic sublibrary), and need to do slightly different things in
+each. Most of the changes involve the use of various macros to enable
+this to happen automaticlly.
+
+In the following, 'DLL' means Dynamically Linked Library, 'SDLS' means
+the Straylight Dynamic Linking System and 'Client' is any program which
+uses the DeskLib libraries.
+
+This document has got rather long. It's only worth reading if you want
+to know about the changes needed to convert DeskLib sub-libraries
+into DLLs. None of the information here is necessary to write
+applications which use DeskLib.
+
+
+
+Externally visible global variables
+˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜-
+
+The main problem to be overcome when making a DLL version of DeskLib is
+to do with  DeskLib's occasional use of global variables which are
+available to client applications. Such global variables need to be dealt
+with rather carefully in a DLL system.
+
+For example, if DeskLib's Event sublibrary is to be made into a DLL, it
+will have several 'instances' of the global variable 'event_taskhandle',
+one for each of its client applications. We need to enable each client
+to gain access to the correct instance of event_taskhandle. 
+
+The solution to this is made possible because all function calls to a
+DLL are actually routed through a veneer function which sets up the
+DLL's instance data corectly, depending on who called it. This clearly
+has to be done otherwise DLL functions wouldn't be able to use global
+instance variables. The SDLS deals with all of this automatically when a
+DLL is linked together, by inventing veneer functions which do all the
+setting up before calling the actual library function. Hence if we turn
+all references to a global variable into a call to a function within the
+DLL which returns the value of the global variable, everything will work
+fine.
+
+[
+NB There is no problem with global variables which are only used
+internally by a DeskLib sublibrary, global variables are only a problem
+when used by client applications.
+]
+
+For example, we could add a function to the Event library:
+
+/* Event.c */
+task_handle Event__Ref_taskhandle( void) { return event_taskhandle; }
+
+and then, in Event.h, force all references to 'event_taskhandle' to use
+this new function:
+
+/* Event.h */
+#define event_taskhandle Event__Ref_taskhandle()
+
+- then all references, in client code, to 'event_taskhandle' will be
+resolved correctly and, importantly, old client code will simply need to
+be recompiled without any changes in order to work with DLLs. 
+
+There are a coupe of small problems with this: 
+
+First, it will be slower than before, because of the time penalty
+involved in making a function call. This might be important with
+DeskLib's 'screen_' globals which some clients might use in their redraw
+code. 
+
+Secondly, things won't work properly if a client tries to take the
+address of 'event_taskhandle', because &event_taskhandle would work out
+to be something like '&Event__Ref_taskhandle()'. This will be the
+address of the function rather than the address of event_taskhandle.
+While it is unlikely that &event_taskhandle would be used by a client,
+this is still a restriction which could cause problems in the future.
+
+We can improve things by doing the following:
+
+/* Event.c */ 
+task_handle *Event__Ref_taskhandle( void) { return &event_taskhandle; }
+
+/* Event.h */
+#define event_taskhandle (*Event__Ref_taskhandle())
+
+- we are now passing the *address* of 'event_taskhandle', so
+&event_taskhandle will translate to &(*Event__Ref_taskhandle) which will
+be just &event_taskhandle. Of course, &&event_taskhandle would still
+fail, but this doesn't make sense with the non-DLL DeskLib either.
+
+The name 'Event__Ref_taskhandle' is chosen because the function provides a
+sort-of C++-style *reference* for it's global variable.
+
+This method also alows client applications to cache the address of any
+global variable which they need fast access to, and so avoid the
+function call overhead. For example:
+
+/* Client.c */
+#include "DeskLib:Event.h"
+task_handle *ourtask;
+int main( void)
+{
+ourtask = &event_taskhandle;
+...
+printf( "Our task handle, accesed without a fn call, is %i\n", *ourtask); 
+...
+}
+
+This technique could be used for the screen_ globals for example.
+
+
+[
+Mark Wooding of Straylight has suggested a modification to the above
+scheme:
+
+/* Event.c */
+task_handle *Event__Ref_taskhandle( void) { return &event_taskhandle; }
+
+/* Event.h */
+task_handle *event__ref_taskhandle = NULL;
+#define event_taskhandle                                  \
+  (                                                       \
+    * (                                                   \
+      event__ref_taskhandle ?                             \
+        event_ref_taskhandle                              \
+        :                                                 \
+        (event_ref__taskhandle = Event__Ref_taskhandle()) \
+      )                                                   \
+  )
+
+This automatically generates local pointers to the correct instance of
+event_taskhandle and initialises them the first time they are needed,
+and so avoids the function call overhead for all but the first use of
+the global variable.
+]
+
+
+The above is conceptually simple, but unfortunately it turns into a bit
+of a mess when one tries to implement it. 
+
+The problem is that we don't want to have two different sets of DeskLib
+.c/h files for use by DLL/normal programs. Hence we need to predefine a
+symbol when compiling a client which will use DeskLib DLLs (using cc's
+-D flag) and put #ifdefs etc in the headers to select the appropriate
+code.
+
+For example, we could predefine '_DeskLib_SDLS_CLIENT' with 'cc ...
+-D_DeskLib_SDLS_CLIENT ...' when compiling a program for use with DLLs.
+Event.h would then look like:
+
+/* Event.h */
+#ifdef _DeskLib_SDLS_CLIENT
+#define event_taskhandle (*Event__Ref_taskhandle())
+extern task_handle *Event__Ref_taskhandle( void);
+#else
+extern task_handle event_taskhandle;
+#endif
+
+OK, that doesn't look too bad. However, what happens when the Event
+sublibrary is being compiled itself?
+
+In the DLL version of Event.c, there will be:
+
+/* Event.c */
+task_handle event_taskhandle;
+task_handle *Event__Ref_taskhandle( void) { return &event_taskhandle; }
+
+However, if Event.c #includes "DeskLib.Event.c" (and it should,
+otherwise inconsistancies between Event.c and Event.h will go unnoticed
+and horrible things happen at run-time), 'event_taskhandle' will be
+#defined to '(*Event__Ref_taskhandle())', and so cc would have a fit
+when it tries to compile Event.c. 
+
+Hence we need Event.h to only do: 
+#define event_taskhandle (*Event__Ref_taskhandle())
+- if it is being included in a client app which is going to use DeskLib
+DLLs or. It must *not* do the #define if it is included by Event.c.
+
+Additionaly, it must still do the #define if it is being included in the
+compilation of a different DLL sublibrary which refers to Event.h.
+
+This last restriction means that we cannot simply use '#ifdef
+_DeskLib_SDLS_CLIENT' to decide whether to do the #define.
+
+To further complicate matters, Event.h should still declare the
+Event__Ref_taskhandle() function even when being used in a compile
+of the Event sublibrary, in order to avoid compiler warnings.
+
+
+
+
+
+
+Hopefully, the above will have demonstrated that some rather tricky
+pre-processing is needed. There are also a few more things which depend
+on what is being compiled, so it's time to be systematic...
+
+
+
+What statements in Foo.c/h need to be used and when?
+----------------------------------------------------
+
+A sublibrary header 'Foo.h' used with SDLS DLLs will have facilities
+for doing the following things:
+
+Declaring global variables.
+Declaring Foo__Ref_global functions. 
+#defining all references to 'global' to call a Foo__Ref_global function.
+
+
+A sublibrary .c file 'Foo.c' will have facilities for:
+
+Defining functions like Foo__Ref_global which return pointers to global
+variables.
+
+
+We need a way of determining which of these need doing, depending on
+what is being compiled.
+
+There are a 5 senarios in which files from a typical DeskLib sublibrary
+'Foo' will be involved. 
+
+The following table shows what statements we would want to include in
+each senario. 
+
+It also shows what macros I have chosen to be predefined in the
+makefiles used to compile/link the DeskLib sublibraries, and the macros
+I have chosen to set in DeskLib:Core.h, in order to allow the Foo.h/c
+files to decide what to do.
+
+0/1 means the macro is undefined/defined.
+
+
+
+						What is being compiled?
+
+					Normal	DLL	Normal	DLL	DLL
+Possible statements			client	client	FooLib	FooLib	!FooLib
+˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜-			˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+
+In 'Foo.h'
+extern int foo_global;			YES	NO	YES	YES	NO
+extern int *Foo__Ref_global( void);	NO	YES	NO	YES	YES
+#define foo_global (*Foo__Ref_global())	NO	YES	NO	NO	YES
+
+In 'Foo.c'
+int *Foo__Ref_global(void)
+{return &foo_global;}					NO	YES	
+
+Predefines (from cc ... -D ...)
+_DLL					0	0	0	1	1
+_DeskLib_SDLS_CLIENT			0	1	0	0	0
+_DeskLib_Foo				0	0	1	1	0
+
+#defines in Core.h:
+_DeskLib_SDLS				0	1	0	1	1
+
+
+
+
+
+
+Here is what the chosen macros mean:
+
+
+Predefined (ie using -D option with cc):
+
+_DLL			Predefined only when compiling DLLs. This is
+			required by the Straylight docs.
+
+_DeskLib_SDLS_CLIENT	Predefined only when compiling client apps 
+			which are to use DLLs.
+
+_DeskLib_Foo	 	Predefined only when compiling DeskLib 
+			sublibrary 'Foo' (DLL or static)
+
+
+
+Defined in 'DeskLib:Core.h' from the above three:
+
+_DeskLib_SDLS			Defined only when compiling DLL clients
+				or libraries.
+				When defined, the 'reference' functions
+				like 'Foo__Ref_global' should be delared 
+				in Foo.h.
+				_DeskLib_SDLS = 
+					_DLL || _DeskLib_SDLS_CLIENT
+
+
+
+
+The 'DLL !FooLib' column is for when Foo.h is included by a SDLS build
+of a different sublibrary (eg DesLib:Event.h could be included by
+DeskLib:Dialog.h).
+
+To do all of the above, a header file which has global variables will
+need to do the following:
+
+
+/*Foo.h*/
+#ifdef _DeskLib_SDLS
+  extern int    *Foo__Ref_global1( void);
+  extern double *Foo__Ref_global2( void);
+#endif
+
+#if defined( _DeskLib_SDLS) && !defined( _DeskLib_Foo)
+  #define foo_global1 (*Foo__Ref_global1())
+  #define foo_global2 (*Foo__Ref_global2())
+#else
+  extern int    foo_global;
+  extern double foo_global2;
+#endif
+...
+
+
+A sublibrary .c file would have:
+
+/*Foo.c*/
+int    foo_global;
+double foo_global2;
+#ifdef _DLL
+int    *Foo__Ref_global(void)    { return &foo_global;  }
+double *Foo__Ref_global2( void); { return &foo_global2; }
+#endif
+...
+
+
+Since every DeskLib header includes "DeskLib:Core.h", the derived
+macro _DeskLib_SDLS is set there.
+
+
+
+Single-file libraries
+---------------------
+
+If a DeskLib sublibrary consists of a single .c file then, when
+compiling for a DLL, it is possible to make global variables *static*.
+This is because the only references to such globals will be from within
+the .c file or via a Foo__Ref_ function.
+
+This will enable Link to detect and complain if a .o file tries to
+reference a global variable directly instead of via a Foo__Ref_
+function.
+
+However, it hasn't been done for those DeskLib libraries for which it is
+applicable (eg in the Event sublibrary), because the header files are
+complicated enough already with the various preprocessor statements.
+
+
+
+
+
+Exporting function pointers from within a DLL
+˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜-
+
+One additional peculiarity of dynamic linking is that one has to be
+careful about exporting function pointers for functions within a DLL.
+This is because usually a DLL function is only called via a veneer
+function constructed by the SDLS.
+
+However, if a DLL function is passed to (say) Event_Claim, the the Event
+library will call the DLL function directly, resulting in the wrong
+instance variables being accessed.
+
+Hence, instead of: Event_Claim( e, w, i, Foo_InternalFn, ref); we
+need to do: Event_Claim( e, w, i, _dllEntry_Foo_InternalFn, ref);
+
+This is done by making DeskLib:Core.h define the macros
+'_DeskLib_SDLS_dllEntry( FnName). 
+
+If DeskLib:Core is used in a normal compile, _DeskLib_SDLS_dllEntry(
+FnName) reduces to just 'FnName'.
+
+However, when used in the compilation of a DLL, _DeskLib_SDLS_dllEntry(
+FnName) resolves to _dllEntry_FnName.
+
+Hence whenever a sublibrary needs to send an internal function pointer
+to an external function, it should use _DeskLib_SDLS_dllEntry( FnName)
+and everything will be sorted out automatically to suit how the
+sublibrary is being compiled.
+
+[
+NB, The SDLS already has a macro _dllEntry( FnName), in 'dll.h', which
+is equivalent to _DeskLib_SDLS_dllEntry. However, to allow DeskLib to be
+compiled for static linkage without having the SDLS's headers installed,
+DeskLib:Core defines it's own macro as described above.
+
+When involved with a DLL compile it actually #includes DLLLib.dll.h and
+uses the SDLS's _dllEntry macro for _DeskLib_SDLS_dllEntry.
+]
+
+
+One last problem is that the SDLS veneer function will not have been
+prototyped, so cc will complain when it comes across '_dllEntry_*. This
+can be remedied by using another (rather clumsy) macro (defined in
+DeskLib:Core.h) in the definition of the function who's veneer is being
+exported.
+
+Instead of having:
+
+/* Foo.c */
+static BOOL Foo_Handler( event_pollblock *event, void *reference)
+{
+...
+}
+
+use:
+
+/* Foo.c */
+_DeskLib_SDLS_PtrFn(
+    static,
+    BOOL,
+    Foo_Handler( event_pollblock *event, void *reference)
+    )
+{
+...
+}
+
+Under normal compilation, this resolves to the original form. However,
+when compiling a DLL, DeskLib:Core.h defines the macro to make:
+
+extern BOOL _dllEntry_Foo_Handler( event_pollblock *event, void *reference);
+extern BOOL Foo_Handler( event_pollblock *event, void *reference)
+{
+...
+}
+
+- which is exactly what we need. The origonal function has to be defined
+as external in the second case because the veneer function (which is not
+part of the same source file) will call it. Note that this will cause
+Acorn's cc to output warnings about 'external function not declared in
+header file' if compilation is with the 'ff' flag for lots of warnings;
+to suppress the warnings, one would need to prototype the
+_dllEntry_Foo_Handler in 'Foo.h' or something.
+
+Note that this only has to be done for sublibrary functions which are
+exported as function pointers, eg event handlers which are exported in
+calls to Event_Claim and Event_Release.
+
+If the DLL function is extern rather than static, then simply use:
+
+_DeskLib_SDLS_PtrFn(
+    extern,
+    BOOL,
+    Foo_Handler( event_pollblock *event, void *reference)
+    )
+{
+...
+}
+
+In this case, one could also use the same macro in a header file to
+prototype the two functions:
+
+/* Foo.h */
+_DeskLib_SDLS_PtrFn(
+    extern,
+    BOOL,
+    Foo_Handler( event_pollblock *event, void *reference)
+    );
+
+
+Of course, if you don't like using a macro in this way, feel free to use
+#ifdefs instead to conditionally include the different definitions.
+
+
+
+
+
+
+
+
+Summary of all extra macros
+˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜-
+
+
+_DLL
+----
+
+Defined in: Call to cc in each sublibrary's DLL makefile.
+
+If this is defined, compilation is for a DLL version of a DeskLib
+sublibrary. The DeskLib headers will replace all references to global
+variables from different sublibraries by function calls (eg #define
+event_taskhandle (*Event__Ref_taskhandle()) if compilation is *not* for
+the Event sub-library.
+
+
+_DeskLib_SDLS_CLIENT
+--------------------
+
+Defined in: Call to cc when a client application is being compiled.
+
+If this is defined, the DeskLib headers replace all references to global
+variables by function calls (eg #define event_taskhandle
+(*Event__Ref_taskhandle())).
+
+
+_DeskLib_Event, _DeskLib_Mem, ...
+---------------------------------
+
+Defined in: Call to cc in each sublibrary's makefile.
+
+This is so 'Foo.h' knows whether it is being included in a compile of
+its own Foo library, or some other library. This information is needed
+to control '#define foo_globalvar (*Foo__Ref_globalvar())', but might
+also be useful for other things which would otherwise require a
+'FooDefs.h'.
+
+
+_DeskLib_SDLS
+-------------
+
+Defined in: 'DeskLib:Core.h'
+
+This is defined if compilation is for either a DeskLib DLL, or a client
+which will use DeskLib DLLs.
+
+
+_DeskLib_SDLS_dllEntry( FnName) 
+-------------------------------
+
+Defined in: 'DeskLib:Core.h'
+
+Usage: When a function pointer for a function within a sublibrary is 
+required (eg an event handler whose name is used in a call to
+Event_Claim).
+
+Old code:
+/* Foo.c */
+Event_Claim( event, w, i, Foo_Handler, ref);
+
+DLL-compatible code:
+/* Foo.c */
+Event_Claim( event, w, i, _DeskLib_SDLS_dllEntry( Foo_Handler), ref);
+
+Under compilataion of a normal (static) sublibrary, resolves to:
+/* Foo.c */
+Event_Claim( event, w, i, Foo_Handler, ref);
+
+Under compilataion of a DLL sublibrary, resolves to:
+/* Foo.c */
+Event_Claim( event, w, i, _dllEntry_Foo_Handler, ref);
+
+
+
+
+_DeskLib_SDLS_PtrFn( staticextern, returntype, FnName)
+------------------------------------------------------ 
+
+Defined in: 'DeskLib:Core.h'
+
+Useage: For definitions of DLL functions whose function pointers are
+exported from the DLL (eg event handlers).
+
+Old code:
+/* Foo.c */
+static BOOL Foo_Handler( event_pollblock *event, void *reference)
+{ ... }
+
+DLL-compatible code:
+/* Foo.c */
+_DeskLib_SDLS_PtrFn(
+    static,
+    BOOL,
+    Foo_Handler( event_pollblock *event, void *reference)
+    )
+{ ... }
+
+
+Under compilation of a static library, resolves to:
+/* Foo.c */
+static BOOL Foo_Handler( event_pollblock *event, void *reference) 
+{ ... }
+
+Under compilation of a DLL, resolves to:
+/* Foo.c */
+extern BOOL _dllEntry_Foo_Handler( event_pollblock *event, void *reference);
+extern BOOL Foo_Handler( event_pollblock *event, void *reference)
+{ ... }
+
+
+
+
+

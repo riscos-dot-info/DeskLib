@@ -1,0 +1,13 @@
+Wimpslot 640k
+
+Echo RunStaMFs: Running the makefile in each DLUser sublibrary.
+Echo RunStaMFs: Started at <Sys$Time>
+Echo
+
+Set Sys$ReturnCode 0
+
+DeskLib_Commands:EachUser amu -desktop -f %%0.Makefile
+
+Echo 
+Echo RunStaMFs: Finished running each static makefile at <Sys$Time>
+Echo

@@ -1,0 +1,30 @@
+| !Run file for !DeskLib (DeskLib compile resources)
+| Jason Williams 93
+| Julian Smith 18 May 1995
+
+| Set up the DeskLib paths etc
+Run <Obey$Dir>.!Boot
+
+
+| Check the version of the window manager (RISC OS 2 or 3?)
+
+Set WindowManager$Version 300
+RMEnsure WindowManager 3.00 Set WindowManager$Version 200
+
+
+| Open the .h directory with Filer_OpenDir.
+| The settings used give a small-icon alphabetically sorted list
+| which appears in the top right corner of the screen, which I
+| find is more convenient than most other possible settings.
+|
+| Now compatible with both RISC OS 2 and 3
+
+If "<WindowManager$Version>" = "300" Then Filer_CloseDir <Obey$Dir>.h_doc
+If "<WindowManager$Version>" = "300" Then WimpSlot -min 32k -max 32k
+If "<WindowManager$Version>" = "300" Then <Obey$Dir>.OpenDirH
+
+Set Alias$OldOSFudge Filer_CloseDir <Obey$Dir>.h_doc
+If "<WindowManager$Version>" = "200" Then OldOSFudge
+Set Alias$OldOSFudge Filer_OpenDir <Obey$Dir>.h
+If "<WindowManager$Version>" = "200" Then OldOSFudge
+UnSet Alias$OldOSFudge

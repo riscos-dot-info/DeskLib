@@ -1,0 +1,70 @@
+Here are a few things I want to do in the next release of DeskLib, in
+addition to adding code sent in by DeskLib users. 
+
+Some of these ideas have been suggested by such DeskLib users. 
+
+I would be very keen to hear from people who have any comments or
+suggestions.
+
+
+
+Const
+-----
+
+DeskLib functions should make more use of 'const' in function arguments,
+as this makes things a little more robust.
+
+
+Debug version
+-------------
+
+I'd like to have a 'Debug' version of DeskLib, which would be compiled
+with 'DeskLib_DEBUG' predefined. The .o files for this would be in a
+'Debug' directory within each sublibrary directory. This would use
+variables like 'event_debuglevel' to control how much diagnostic
+information is output (using Debug_Printf). Calls to 'DebugX_Printf()'
+would have to be added to the libraries to make this worthwhile.
+
+
+Error handling
+--------------
+
+I'm thinking of having a global function-pointer 'desklib_errorfn'
+which, if not NULL, is called by all library functions if an error
+occurs. The user could then provide an error-handling function which
+uses longjmp to restore control, returns to just after the place where
+the error occured (after sorting everything out of course), or quits
+gracefully).
+
+This would eliminate the need for user code to check the returned
+'os_error *' from many library functions. Some functions would still
+return an 'os_error *' even if an error handler function is registered,
+for example if a SWI uses the 'os_error *' mechanism in circumstances
+which don't qualify as serious errors.
+
+There could also be a global structure which contains information about
+the error. This would enable the user to know what has gone wrong if
+setjmp returns non-zero.
+
+
+Memory allocation functions
+---------------------------
+
+A set of function prototypes 'DeskMem_Malloc,Calloc/Realloc/Free' could
+be used, with simple implementations which simply call
+malloc/calloc/realloc/free and deal with an out-of-memory situation by
+calling 'desklib_errorfn'. The user could provide alternatives, eg ones
+which call Mem_ functions.
+
+
+
+RISC OS version handling
+------------------------
+
+Have a macro RISC_OS_VERSION which can be set by the user, which enables
+different versions of functions, such as Window_GetInfo. This will allow
+programs to be compiled to run on specific versions of RISC OS.
+
+
+
+- Julian Smith

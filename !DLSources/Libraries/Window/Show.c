@@ -1,0 +1,135 @@
+/*
+    ####             #    #     # #
+    #   #            #    #       #          The FreeWare C library for 
+    #   #  ##   ###  #  # #     # ###             RISC OS machines
+    #   # #  # #     # #  #     # #  #   ___________________________________
+    #   # ####  ###  ##   #     # #  #                                      
+    #   # #        # # #  #     # #  #    Please refer to the accompanying
+    ####   ### ####  #  # ##### # ###    documentation for conditions of use
+    ________________________________________________________________________
+
+    File:    Window.Show.c
+    Author:  Copyright © 1992 Jason Williams
+    Version: 1.00 (19 Mar 1992)
+    Purpose: High-level window management functions: Show a window
+*/
+
+
+#include "DeskLib:WimpSWIs.h"
+#include "DeskLib:Window.h"
+#include "DeskLib:Screen.h"
+
+static wimp_point lastopenpos = {-1, -1};
+
+
+extern void Window_Show(window_handle window, window_openpos openpos)
+{
+  window_state  wstate;
+  wimp_point    moveto = {0, 0};
+  int           w, h;
+
+  Screen_CacheModeInfo();            /* Ensure got correct screen mode info. */
+
+  Wimp_GetWindowState(window, &wstate);
+  wstate.openblock.behind = -1;                             /* open in front */
+
+  w = wstate.openblock.screenrect.max.x - wstate.openblock.screenrect.min.x;
+  h = wstate.openblock.screenrect.max.y - wstate.openblock.screenrect.min.y;
+                                        
+  switch(openpos)
+  {
+    case open_CENTERED:
+      moveto.x = (screen_size.x - w) / 2;
+      moveto.y = (screen_size.y + h) / 2;
+      break;
+      
+    case open_CENTEREDUNDERPOINTER:
+      {
+        mouse_block ptr;
+
+        Wimp_GetPointerInfo(&ptr);
+        moveto.x = ptr.pos.x - (w / 2);
+        moveto.y = ptr.pos.y + (h / 2);
+      }
+      break;
+
+    case open_OVERCARET:
+      {
+        caret_block  caret;
+        window_state wstate;
+
+        Wimp_GetCaretPosition(&caret);
+
+        if (caret.window > 0)
+        {
+          Wimp_GetWindowState(caret.window, &wstate);
+
+          moveto.x = wstate.openblock.screenrect.min.x +
+                     (caret.offset.x - wstate.openblock.scroll.x) - 64;
+          moveto.y = wstate.openblock.screenrect.max.y -
+                     (caret.offset.y - wstate.openblock.scroll.y) + 64;
+        }
+        else
+        {
+          /* No caret, so just open centered on screen */
+          moveto.x = (screen_size.x - w) / 2;
+          moveto.y = (screen_size.y + h) / 2;
+        }
+      }
+      break;
+
+    case open_UNDERPOINTER:
+      {
+        mouse_block ptr;
+
+        Wimp_GetPointerInfo(&ptr);
+        moveto.x = ptr.pos.x - 64;
+        moveto.y = ptr.pos.y + 64;
+      }
+      break;
+
+    case open_NEARLAST:
+      if (lastopenpos.x >= 0)
+      {
+        moveto.x = lastopenpos.x + 16;
+        moveto.y = lastopenpos.y - 16;
+      }
+      else
+      {
+        moveto.x = (screen_size.x - w) / 2;
+        moveto.y = (screen_size.y + h) / 2;
+      }
+      
+      if (moveto.x > ((screen_size.x / 2) + 128))
+        moveto.x = (screen_size.x / 2) - 128;
+
+      if (moveto.y < ((screen_size.y / 2) - 128))
+        moveto.y = (screen_size.y / 2) + 128;
+      break;
+
+    default:
+      /* Open wherever it is defined in the template file. */
+      moveto.x = wstate.openblock.screenrect.min.x;
+      moveto.y = wstate.openblock.screenrect.max.y;
+      break;
+  }
+
+  if (moveto.x < 0)  moveto.x = 0;
+  if (moveto.y < 64) moveto.y = 64;
+  if (moveto.x > screen_size.x - 96) moveto.x = screen_size.x - 96;
+  if (moveto.y > screen_size.y - 32) moveto.y = screen_size.y - 32;
+
+  wstate.openblock.screenrect.min.x = moveto.x;
+  wstate.openblock.screenrect.max.y = moveto.y;
+
+  wstate.openblock.screenrect.max.x = wstate.openblock.screenrect.min.x + w;
+  wstate.openblock.screenrect.min.y = wstate.openblock.screenrect.max.y - h;
+
+  if (openpos == open_NEARLAST)
+  {
+    lastopenpos.x = wstate.openblock.screenrect.min.x;  /* save last open pos*/
+    lastopenpos.y = wstate.openblock.screenrect.max.y;
+  }
+
+  Wimp_OpenWindow(&wstate.openblock);
+}
