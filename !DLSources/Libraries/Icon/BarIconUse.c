@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -33,7 +33,7 @@
  */
 
 extern icon_handle Icon_BarIconUser(char *spritename, window_handle pos,
-      	      	      	      	    unsigned int *area)
+      	      	      	      	    void *area)
 {
   icon_createblock icreate;
   icon_handle      icon;
@@ -45,7 +45,7 @@ extern icon_handle Icon_BarIconUser(char *spritename, window_handle pos,
   iconname = malloc( wimp_MAXNAME + 1 );
   if (iconname == NULL)
     Error_Report(1,"Not enough memory");
-    
+
   strcpy(iconname,spritename);
 
   icreate.icondata.data.indirectsprite.name = iconname;
