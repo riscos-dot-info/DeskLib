@@ -17,10 +17,14 @@
 
 
 #include "EMsgDefs.h"
+ 
+#include "DeskLib:WimpSWIs.h"
 
 #define ERRBASE 1
 #define ERR1 ERRBASE+0
-#define ERRMESS1 "Unable to allocate memory for eventmsg claim"
+#define ERR2 ERRBASE+1
+#define ERRMESS1 "Unable to allocate memory for EventMsg claim."
+#define ERRMESS2 "Unable to add Wimp message for EventMsg claim."
 
 linklist_header eventmsg__claimanchor = {NULL, NULL};
 static BOOL initialised = FALSE;
@@ -99,6 +103,18 @@ extern BOOL EventMsg_Claim(message_action messagetype, window_handle window,
 
   if (ptr == NULL)                /* No current claims, so add new claimlist */
   {
+    int messagelist[2];
+            
+    /* Add the new message code to the list of those we receive from the Wimp */
+    messagelist[0] = messagetype;
+    messagelist[1] = 0;
+    
+    if (Wimp_AddMessages(messagelist) != NULL)
+    {
+      Error_ReportInternal(ERR2, ERRMESS2);
+      return(FALSE);
+    }
+    
     ptr = (eventmsg_claimrecord *) malloc(sizeof(eventmsg_claimrecord));
     if (ptr == NULL)
     {
