@@ -25,7 +25,7 @@
 
 
 /* These two functions are defined in Menu.c.NewMenu */
-extern void Menu__CountItems(char *, int *, int *);
+extern void Menu__CountItems(char *, int *, unsigned int *);
 extern BOOL Menu__Create(menu_item *, char *, int);
 
 
