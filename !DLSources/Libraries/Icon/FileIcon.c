@@ -22,7 +22,7 @@
 #include "DeskLib:WimpSWIS.h"
 #include "DeskLib:Icon.h"
 
-void Icon_FileIcon(window_handle window, icon_handle icon, int filetype)
+icon_handle Icon_FileIcon(window_handle window, icon_handle icon, int filetype)
 {
   /* Icon should be an indirected text-only icon with enough room in text
      buffer to hold the sprite name.  
@@ -58,4 +58,7 @@ void Icon_FileIcon(window_handle window, icon_handle icon, int filetype)
     
   /* Force the icon to be redrawn */
   Wimp_SetIconState(window, handle, 0, 0);
+
+  /* Return the new icon handle (in case it has changed) */
+  return handle;
 }
