@@ -26,16 +26,13 @@
 #include "DeskLib:WimpSWIs.h"
 #include "DeskLib:EventMsg.h"
 #include "DeskLib:SWI.h"
+#include "DeskLib:Module.h"
 
 #include <stdlib.h>
 #include <string.h>
 
-/* ANT URL broadcast wimp message number */
-#define message_ANTOPENURL (message_action) 0x4AF80
+#include "Url.h"
 
-/* Acorn URI messages */
-#define message_URI_MPROCESS (message_action) 0x4E382
-#define message_URI_MRETURNRESULT (message_action) 0x4E383
 
 /* Function prototypes for internal functions */
 static BOOL Url_ReturnMessage_h(event_pollblock *event, void *param);
@@ -46,6 +43,7 @@ typedef struct
   char *url;
   urllaunch_handler *success;
   urllaunch_handler *failure;
+  char *rma_url;
 } url_info_blk;
 
 /* ---------------------------------------------------------------------
@@ -55,11 +53,18 @@ static BOOL Url_Succeeded(event_pollblock *event, void *param)
 {
   url_info_blk *block = (url_info_blk *) param;
   UNUSED(event);
-
+      
   /* Release the various events we claimed to measuere success */
   EventMsg_Release(message_URI_MRETURNRESULT, event_ANY, Url_ReturnMessage_h);
   EventMsg_Release(message_ANTOPENURL, event_ANY, Url_ReturnMessage_h);
   Event_Release(event_NULL, event_ANY, event_ANY, Url_Succeeded, param);
+         
+  /* If we have a copy of the URL in RMA, free it */
+  if (block->rma_url)
+  { 
+    Module_Free(block->rma_url);
+    block->rma_url = NULL;
+  }
 
   if (block->success != NULL)
   {
@@ -101,26 +106,57 @@ static void Url_Failed(url_info_blk *block)
  * of the message.  This is only suitable for shortish URLs, less than
  * 235 (?) characters.
  * --------------------------------------------------------------------- */
-static int Url_ANTBroadcast(const char *url)
+static int Url_ANTBroadcast(url_info_blk *block, const char *url)
 {
   message_block msg;
-
-  /* We don't bother trying for longer URLs */
-  if (strlen(url) > 235) return (-1);
+  message_anturl *antmsg = (message_anturl *) &msg.data;
 
   /* Prepare the wimp message header */
-  msg.header.size = ((sizeof(msg.header) + strlen(url) + 4) & ~3);
   msg.header.yourref = 0;
   msg.header.action = message_ANTOPENURL;
 
-  /* Write the URL string into the "data" part of the message */
-  msg.data.bytes[0] = 0;
-  strncat(msg.data.bytes, url, sizeof(msg.data.bytes) - 1);
+  /* Long URL requires the indirected form to be used */
+  if (strlen(url) > 235)
+  {
+    msg.header.size = sizeof(msg.header) + 24;
 
-  /* Attempt to broadcast the message, return an error if we fail */
-  if (Wimp_SendMessage(event_SENDWANTACK, &msg, 0 , 0)) return (-1);
+    antmsg->data.indirect.tag = 0;
 
-  return (0);
+    /* Claim some RMA memory for the url */
+    if (Module_Claim(strlen(url) + 1, (void **) &block->rma_url) != NULL)
+    {
+      /* If it failes, return that we cannot broadcast the URL */
+      return -1;
+    }
+                     
+    strcpy(block->rma_url, url);
+
+    antmsg->data.indirect.url.ptr = block->rma_url;
+    antmsg->data.indirect.flags = 0;
+    antmsg->data.indirect.body_file.offset = 0;
+    antmsg->data.indirect.target.offset = 0;
+    antmsg->data.indirect.body_mimetype.offset = 0;
+
+    /* Attempt to broadcast the message, return an error if we fail */
+    if (Wimp_SendMessage(event_SENDWANTACK, &msg, 0 , 0))
+    {
+      Module_Free(block->rma_url);
+      block->rma_url = NULL;
+      return -1;
+    }
+  }
+  else
+  {
+    msg.header.size = WORDALIGN(sizeof(msg.header) + strlen(url));
+
+    /* Write the URL string into the "data" part of the message */
+    strcpy(antmsg->data.url, url);
+
+    /* Attempt to broadcast the message, return an error if we fail */
+    if (Wimp_SendMessage(event_SENDWANTACK, &msg, 0 , 0)) return -1;
+  }
+
+  return 0;
 }
 
 /* ---------------------------------------------------------------------
@@ -227,11 +263,20 @@ static BOOL Url_ReturnMessage_h(event_pollblock *event, void *param)
      * handler task will automatically free the URI
      */
   }
+  /* If this was a response to the ant broadcast */
   else if (event->data.message.header.action == message_ANTOPENURL)
   {
-    /* If this was a response to the ant broadcast */
+    message_anturl *antmsg = (message_anturl *) &event->data.message.data;
+
     if (event->type == event_USERMESSAGEACK)
     {
+      /* If it was indirected, we must free our RMA space holding the URL */
+      if (block->rma_url)
+      { 
+        Module_Free(block->rma_url);
+        block->rma_url = NULL;
+      }
+
       /* Try the acorn method instead */
       Url_URIDispatch(block);
 
@@ -262,6 +307,7 @@ extern void Url_Launch(const char *url, urllaunch_handler *failure, urllaunch_ha
   block->failure = failure;
   block->success = success;
   block->url = malloc(strlen(url) + 1);
+  block->rma_url = NULL;
 
   /* Take a copy of the URL */
   if (block->url == NULL)
@@ -282,7 +328,7 @@ extern void Url_Launch(const char *url, urllaunch_handler *failure, urllaunch_ha
   Event_Claim(event_NULL, event_ANY, event_ANY, Url_Succeeded, block);
 
   /* If this fails, we give an immediate report of problems */
-  if (Url_ANTBroadcast(url) == -1) Url_Failed(block);
+  if (Url_ANTBroadcast(block, url) == -1) Url_Failed(block);
 
   return;
 }
