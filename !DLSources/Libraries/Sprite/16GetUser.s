@@ -40,8 +40,7 @@
         STMFD   sp!, {a1, a2, a3, a4, v1, v2, v3, v4, lr}
         LDMFD   sp!, {a2, a3, a4, v1}
         LDMFD   ip!, {v2, v3, v4}
-        MOV     a1, #16
-        ADD     a1, a1, #256
+        MOV     a1, #256 + 16
         SWI     OS_SpriteOp + XOS_Bit
         LDRVC   ip, [ip, #0]
         STRVC   a3, [ip, #0]
