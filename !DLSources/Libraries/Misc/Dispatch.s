@@ -13,7 +13,7 @@
 ;   Purpose: See below
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; int Dispatch(int value, int size, int *table, void *functions[], int arg0, int arg1, int arg2, int arg3)

@@ -13,7 +13,7 @@
 ;   Purpose: Allocate a block of the RMA.
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; os_error *Module_Claim(unsigned size, void **block);

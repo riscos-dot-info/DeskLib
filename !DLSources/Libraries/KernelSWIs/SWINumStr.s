@@ -13,7 +13,7 @@
 ;   Purpose: Veneers for OS_SWINumber(To|From)String
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
         PREAMBLE

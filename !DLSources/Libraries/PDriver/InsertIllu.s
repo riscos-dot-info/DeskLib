@@ -14,7 +14,7 @@
 ;            current job's output.
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; os_error *PDriver_InsertIllustration(int illustration_handle, void *drawpath,

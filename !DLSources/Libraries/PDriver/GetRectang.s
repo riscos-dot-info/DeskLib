@@ -13,7 +13,7 @@
 ;   Purpose: Get the next print rectangle.
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; os_error *PDriver_GetRectangle(wimp_rect *rectangle_to_print, int *finished, int *rectangle_id);

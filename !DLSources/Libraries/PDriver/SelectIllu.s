@@ -14,7 +14,7 @@
 ;            it as an illustration.
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; os_error *PDriver_SelectIllustration(print_job new, char *title, print_job *old);

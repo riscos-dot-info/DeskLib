@@ -13,7 +13,7 @@
 ;   Purpose: Start the Hourglass
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; void Hourglass_On(void);

@@ -13,7 +13,7 @@
 ;   Purpose: Make a given print job the current one.
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; os_error *PDriver_SelectJob(print_job new, char *title, print_job *old);

@@ -13,7 +13,7 @@
 ;   Purpose: Generic veneer to the OS_ReadModeVariable SWI.
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; os_error *OS_ReadModeVariable(int mode, mode_variable variable, int *value);

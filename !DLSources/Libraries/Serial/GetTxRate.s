@@ -13,7 +13,7 @@
 ;   Purpose: Read the baud rate of data transmitted on the serial line.
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; serial_rate Serial_GetTxRate(void);

@@ -13,7 +13,7 @@
 ;   Purpose: Disable the serial port.
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; os_error *Serial_Deactivate(void);

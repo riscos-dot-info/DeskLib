@@ -13,7 +13,7 @@
 ;   Purpose: Read the status of the serial port.
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; int Serial_GetStatus(void);

@@ -15,7 +15,7 @@
 ;                          DeskLib-compliant style
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; os_error *Filing_ReadDirNames(char *dirname, void *buf,

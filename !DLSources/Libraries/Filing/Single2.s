@@ -13,7 +13,7 @@
 ;   Purpose: Reads a single directory entry
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; os_error *Filing_SingleDirEntry2(char *dirname, void *buf,

@@ -13,7 +13,7 @@
 ;   Purpose: Get information on the printer driver.
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; os_error *PDriver_Info(printer_info *block);

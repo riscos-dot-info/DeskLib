@@ -13,7 +13,7 @@
 ;   Purpose: Set the reception rate for the serial port.
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; os_error *Serial_SetRxRate(serial_rate rate);

@@ -14,7 +14,7 @@
 ;            (This is used in conjunction with Wimp_PollIdle)
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
         PREAMBLE

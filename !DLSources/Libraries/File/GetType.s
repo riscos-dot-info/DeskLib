@@ -15,7 +15,7 @@
 ;   Purpose: SWI veneer for file operations - get the type of a file
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 ;
         PREAMBLE

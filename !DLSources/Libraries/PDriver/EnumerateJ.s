@@ -13,7 +13,7 @@
 ;   Purpose: List existing print jobs.
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; os_error *PDriver_EnumerateJobs(print_job *handle);

@@ -14,7 +14,7 @@
 ;            generate an error.
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; os_error *PDriver_CancelJobWithError(print_job job, os_error *error);

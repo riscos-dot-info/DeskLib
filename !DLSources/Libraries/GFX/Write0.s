@@ -3,7 +3,7 @@
 ;
         GET     Macros.h
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
 ;
         PREAMBLE
         STARTCODE GFX_Write0

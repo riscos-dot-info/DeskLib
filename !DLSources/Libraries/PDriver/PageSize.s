@@ -13,7 +13,7 @@
 ;   Purpose: Read the size of the paper and how big the printable area is.
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; os_error *PDriver_PageSize(wimp_point *size, wimp_rect *printable);

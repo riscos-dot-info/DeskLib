@@ -1,7 +1,7 @@
 ; Author: Copyright 1993 Shaun Blackmore
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ;os_error *Font_SetPalette(int back_log, int fore_log, int offset, int back_phys, int fore_phys);

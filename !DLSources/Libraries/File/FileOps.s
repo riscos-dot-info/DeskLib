@@ -28,7 +28,7 @@
 ;            more efficient (saving one LDR in each function)
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 ;
         PREAMBLE

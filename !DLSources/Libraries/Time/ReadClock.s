@@ -13,7 +13,7 @@
 ;   Purpose: Reads the 5 byte time block.
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; os_error *Time_ReadClock(char *fivebyteblock);

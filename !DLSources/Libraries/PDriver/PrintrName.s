@@ -14,7 +14,7 @@
 ;            printer is installed. (only tested on RO3.10)
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
         PREAMBLE

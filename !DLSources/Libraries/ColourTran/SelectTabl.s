@@ -7,7 +7,7 @@
 
         GET     Macros.h
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
 ;
         PREAMBLE
         STARTCODE ColourTrans_SelectTable

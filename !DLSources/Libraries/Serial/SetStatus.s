@@ -13,7 +13,7 @@
 ;   Purpose: Configure state of serial system.
 
         GET     RegDefs.h
-        GET     swinos.h
+        GET     SwiNos.h
         GET     Macros.h
 
 ; os_error *Serial_SetStatus(int eor_mask, int and_mask);
