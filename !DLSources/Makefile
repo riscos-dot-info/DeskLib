@@ -23,7 +23,7 @@ lib_objects = $(addprefix Libraries.,$(addsuffix .o.*, $(libraries)))
 all_objects = $(patsubst %.s,%.o,$(patsubst %.c,%.o,$(filter %.c %.s,$(wildcard Libraries/*/*))))
 
 # Make the library
-all: $(DESKLIB)
+all: $(DESKLIB) debugs smerror
 
 # Link the objects together to make a new library
 $(DESKLIB): $(all_objects)
