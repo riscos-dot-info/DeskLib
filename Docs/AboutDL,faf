@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>DeskLib documentation: About DeskLib</title>
-	<meta http-equiv="charset" content="UTF-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 
@@ -91,7 +91,7 @@
 <p>If you find any bugs or problems in DeskLib, or if you can supply suggestions or code for alterations, additions, or tutorial applications, then please write to Peter Naulls (<a href="peter@chocky.org">peter@chocky.org</a>), who is the current DeskLib moderator.</p>
 
 
-<hr noshade="yes" />
+<hr noshade="noshade" />
 
 <p class="note">
 <b>The DeskLib team</b><br />
