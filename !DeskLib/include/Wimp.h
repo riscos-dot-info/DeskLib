@@ -508,39 +508,45 @@ typedef struct                /* Minimum width/height of window. Used to be: */
   it is being resized.
 */
 
-
-typedef enum
+typedef union
 {
-  windowcol_TITLEFORE = 0,
-  windowcol_TITLEBACK,
-  windowcol_WORKFORE,
-  windowcol_WORKBACK,
-  windowcol_SCROLLBACK,
-  windowcol_SCROLLFORE,
-  windowcol_TITLEHILITE
-} window_colourindices;
-/*
-  The window_block contains a colours array to specify the colours
-  of various elements of a Wimp window.  You can use the elements of
-  this enumerated type as indices to give more meaningful code when
-  you are setting up such colours.
-*/
+  struct
+  {
+    unsigned char titlefore; /* 0xff means no border and foreground is 7 */
+    unsigned char titleback; 
+    unsigned char workfore;
+    unsigned char workback;  /* 0xff means Wimp won't clear              */
+    unsigned char scrollouter;
+    unsigned char scrollinner;
+    unsigned char titlefocus;
+    unsigned int  fullcolour     : 1;  /* Use 24 bit colour                      */
+    unsigned int  extendedscroll : 1;  /* Use extended scroll requests           */
+    unsigned int  never3d        : 1;  /* Always have a 3D border                */
+    unsigned int  always3d       : 1;  /* Never have a 3D border                 */
+    unsigned int  returnshaded   : 1;  /* Return shaded icons for GetPointerInfo */
+  } cols;
+
+  struct {
+    unsigned char colours[7];
+    unsigned char extra;
+  } vals;
+} wimp_colourflags;
 
 
 typedef struct
 {
-  wimp_box       screenrect;
-  wimp_point     scroll;
-  window_handle  behind;
-  window_flags   flags;
-  char           colours[8];
-  wimp_box       workarearect;
-  icon_flags     titleflags;
-  icon_flags     workflags;
-  void           *spritearea;
-  window_minsize minsize;
-  icon_data      title;
-  unsigned int   numicons;
+  wimp_box         screenrect;
+  wimp_point       scroll;
+  window_handle    behind;
+  window_flags     flags;
+  wimp_colourflags colours;
+  wimp_box         workarearect;
+  icon_flags       titleflags;
+  icon_flags       workflags;
+  void             *spritearea;
+  window_minsize   minsize;
+  icon_data        title;
+  unsigned int     numicons;
 
   /* ANSI C doesn't allow this.  For Norcroft, you can use -Ez */
 #if defined(DESKLIB_zeroarray)
