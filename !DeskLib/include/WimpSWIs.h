@@ -430,17 +430,9 @@ extern os_error *Wimp_PlotIcon(icon_block *fakeicon);
 
 
 /*  Poll handling */
-/*  DeskLib 2.04:
- *  WimpSWIs.s.Poll has been updated to handle passing a WIMP pollword
- *  under RISC OS 3. The new Poll functions have been named Poll3 and
- *  PollIdle3 so that you can't accidentally link with the new forms
- *  of the functions.
- *  Poll and PollIdle are now macros that map Poll calls onto the new
- *  Poll3 functions (passing a zero for the pollword). So long as you
- *  only try to use pollwords under RISC OS 3 onwards, you should be fine!
- *
- *  If you wish to specifically use the pollword, then call the Poll3 functions
- *  directly, using the new parameter.
+/*  DeskLib 2.53:
+ *  Old RISC OS 2 support has been removed.  DeskLib now always saves
+ *  the saves of FP registers (because it's easy to ask the Wimp to).
  */
 
 #define Wimp_Poll(mask, evt) Wimp_Poll3(mask, evt, 0)
@@ -511,20 +503,6 @@ extern os_error *Wimp_PollIdle3(event_pollmask mask, event_pollblock *block,
   in 'earliest'.  You can use this when you want to do things in the
   background, to prevent your task from using more processor time than
   you need.
-*/
-
-
-extern os_error *Wimp_SaveFPStateOnPoll(void);
-/*
-  This function tells DeskLib to save the floating point status when
-  calling Wimp_Poll.
-*/
-
-
-extern os_error *Wimp_CorruptFPStateOnPoll(void);
-/*
-  This function tells DeskLib not to save the floating point status
-  when calling Wimp_Poll
 */
 
 
