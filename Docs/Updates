@@ -1,5 +1,25 @@
 This file documents changes made between released versions of DeskLib.
 
+Desklib 2.50 (15 Oct 2003)
+===============================
+
+Some new font handling calls - ColourTrans_SetFontColours, Font_GetWimpFont
+Signedness fixes for string handling
+Correct termination in icon bar icon
+Discard old h_doc arrangement, and all associated binaries
+Added Menu_ForceClose to close open menus
+Additional use of const where required
+SaveAs handling messages fix
+Support for RISC OS 3.5+ Screen modes, and sprite mode specifiers
+New TaskWindow support
+Preliminary USB/PCI interface (not implemented)
+New WimpMsg module - simpler messages
+New URL module - URI handling
+Added EventMsg_ReleaseSpecific
+Added GFX_ReadPoint
+Make File_Size return -1 on error
+
+
 DeskLib 2.50 pre 4 (26 May 2003)
 ================================
 
@@ -17,7 +37,6 @@ Examples supplied with Makefiles suitable for GCC too
 DeskLib 2.50 pre 1 (24 Dec 2002)
 ================================
 
-Lots of changes - need to update this document.
 Rebuild with GCC Libfile to work around Castle tools libfile issues
 for time being.
 
