@@ -579,9 +579,12 @@ typedef struct
 {
   window_openblock openblock;
   window_flags     flags;
-} window_state;
+} window_state, window_openblocknest;
 /*
   This holds all the information about the current state of a window.
+
+  When used with Wimp_OpenWindowNest, the supplied flags will update
+  the window if 'updateflags' is set in the supplied nested flags
 */
 
 
@@ -623,7 +626,8 @@ typedef union
 {
   struct
   {
-    unsigned int reserved    : 16;
+    unsigned int updateflags : 1;   /* Upate normal window flags too */
+    unsigned int reserved    : 15;
     unsigned int leftedge    : 2;
     unsigned int bottomedge  : 2;
     unsigned int rightedge   : 2;
@@ -650,17 +654,6 @@ typedef enum
 /*
   These enumerated constants are used to give meaningful names to
   the ways parts of a child window can be linked to its parent.
-*/
-
-
-typedef struct
-{
-  window_openblock openblock;
-  window_nestflags flags;
-} window_openblocknest;
-/*
-  This holds all the information needed to open a window using the
-  nested Wimp.  Used with Wimp_OpenWindowNest.
 */
 
 
