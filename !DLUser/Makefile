@@ -16,6 +16,13 @@
 COMPILER = norcroft
 PREFIX = gccbin:
 
+DLUSER = <DeskLib_User$$Dir>.o.DLUser
+DLUSERDIR = <DeskLib_User$$Dir>.o
+
+libraries := $(notdir $(filter-out Libraries/CVS, $(wildcard Libraries/*)))
+
+all_objects = $(patsubst %.s,%.o,$(patsubst %.c,%.o,$(filter %.c %.s,$(wildcard Libraries/*/*))))
+
 # Defaults for norcy
 ifeq (norcroft, $(COMPILER))
 
@@ -26,7 +33,9 @@ ifeq (norcroft, $(COMPILER))
   ASFLAGS = -ILibraries -I$(@D) -throwback
 
   AR = libfile    
-  ARFLAGS = -c
+  ARFLAGS = -c  
+
+  lib_objects := $(addprefix Libraries.,$(addsuffix .o.*, $(libraries)))
 endif
 
 # Defaults for gcc
@@ -44,17 +53,11 @@ ifeq (gcc, $(COMPILER))
   ASFLAGS = -Wa,-ILibraries,-I$(@D) -mthrowback -c
 
   AR = $(PREFIX)libfile    
-  ARFLAGS =
+  ARFLAGS = -c     
+
+  lib_objects := $(addprefix Libraries/,$(addsuffix /*.o, $(libraries)))
 endif
 
-DLUSER = <DeskLib_User$$Dir>.o.DLUser
-DLUSERDIR = <DeskLib_User$$Dir>.o
-
-libraries := $(notdir $(filter-out Libraries/CVS, $(wildcard Libraries/*)))
-
-lib_objects = $(addprefix Libraries.,$(addsuffix .o.*, $(libraries)))
-
-all_objects = $(patsubst %.s,%.o,$(patsubst %.c,%.o,$(filter %.c %.s,$(wildcard Libraries/*/*))))
 
 # Make the library
 all: $(DLUSER)
