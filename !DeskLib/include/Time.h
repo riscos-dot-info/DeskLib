@@ -73,7 +73,7 @@ os_error *Time_ReadClock(char *fivebyteblock);
 */
 
 
-extern int Time_Monotonic(void);
+extern unsigned int Time_Monotonic(void);
 /*
   This is an assembler veneer for the OS_ReadMonotonicTime SWI.
   It returns an integer representing the time since the computer was
