@@ -1,14 +1,15 @@
 ;-------------------------------------------------------------------------------
-; OS_Write0
+; GFX_SetColour(flags, colour)
+; by Peter Naulls 2004
 ;
         GET     Macros.h
         GET     RegDefs.h
         GET     SwiNos.h
 ;
         PREAMBLE
-        STARTCODE GFX_Write0
+        STARTCODE GFX_SetColour
 ;
-        SWI     XSWI_OS_Write0
+        SWI     XSWI_OS_SetColour
         MOV     pc, lr
 ;
         END

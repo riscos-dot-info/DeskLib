@@ -9,9 +9,8 @@
         PREAMBLE
         STARTCODE GFX_Wait
 ;
-        STMFD   sp!,{lr}
         MOV     a1, #19
         SWI     XSWI_OS_Byte
-        LDMFD   sp!,{pc}
+        MOV     pc, lr
 ;
         END

@@ -9,8 +9,7 @@
         PREAMBLE
         STARTCODE GFX_CLG
 ;
-        STMFD   sp!,{lr}
         SWI     XSWI_OS_WriteI + 16
-        LDMFD   sp!,{pc}
+        MOV     pc, lr
 ;
         END
