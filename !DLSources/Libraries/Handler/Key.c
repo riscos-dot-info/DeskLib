@@ -1,4 +1,4 @@
-#include "DeskLib:WimpSWIS.h"
+#include "DeskLib:WimpSWIs.h"
 #include "DeskLib:Handler.h"
 
 extern BOOL Handler_Key(event_pollblock *event, void *reference)

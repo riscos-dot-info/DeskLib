@@ -1,6 +1,6 @@
 #include "DeskLib:Wimp.h"
 #include "DeskLib:WimpSWIs.h"
-#include "DeskLib:icon.h"
+#include "DeskLib:Icon.h"
 
 
 extern void Icon_Shade(window_handle window, icon_handle icon)

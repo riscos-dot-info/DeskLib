@@ -16,7 +16,7 @@
 
 
 #include "DeskLib:Wimp.h"
-#include "DeskLib:WimpSWIS.h"
+#include "DeskLib:WimpSWIs.h"
 #include "DeskLib:Screen.h"
 #include "DeskLib:Icon.h"
 

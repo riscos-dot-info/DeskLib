@@ -19,7 +19,7 @@
 #include <stdio.h>
 
 #include "DeskLib:Wimp.h"
-#include "DeskLib:WimpSWIS.h"
+#include "DeskLib:WimpSWIs.h"
 #include "DeskLib:Icon.h"
 
 char *Icon_GetTextPtr(window_handle window, icon_handle icon)

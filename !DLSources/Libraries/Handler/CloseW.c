@@ -1,4 +1,4 @@
-#include "DeskLib:WimpSWIS.h"
+#include "DeskLib:WimpSWIs.h"
 #include "DeskLib:Window.h"
 #include "DeskLib:Handler.h"
 
