@@ -28,9 +28,6 @@
 
 	<dt>Unified memory management</dt>
 	<dd>Maybe have a set of function prototypes, such as "dl_malloc/realloc/free" or similar which could be used throughout the library, where more advanced control isn't needed.  There would then be a way to override the defaults via function pointers, I'd've thought.  This could save some memory management headaches.  Similarly, there could be a set of "neutral" functions which handle more advanced memory management, such as extending a block of memory in the middle, so the user could make all of DeskLib use the same memory management routines.</dd>
-
-	<dt>RISC OS version handling</dt>
-	<dd>Have a macro RISC_OS_VERSION which can be set by the user, which enables different versions of functions.  This will allow programs to be compiled to run on specific versions of RISC OS.  This seems pretty pointless now we no longer support RISC OS 2.</dd>
 </dl>
 
 <hr noshade="noshade" />
