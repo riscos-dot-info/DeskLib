@@ -1,5 +1,26 @@
 This file documents changes made between released versions of DeskLib.
 
+DeskLib 2.50 pre 4 (26 May 2003)
+================================
+
+Many changes, not all documented here.  Include:
+
+Many additions of "const" where needed.
+New URL module
+Fixes and new makefile to allow cross compiling
+Various MessageTrans fixes
+Header documentation made consistent
+Some additions for Nested Wimp
+Examples supplied with Makefiles suitable for GCC too
+
+
+DeskLib 2.50 pre 1 (24 Dec 2002)
+================================
+
+Lots of changes - need to update this document.
+Rebuild with GCC Libfile to work around Castle tools libfile issues
+for time being.
+
 
 DeskLib 2.40 (17 Nov 2002)
 ==========================
