@@ -21,14 +21,14 @@ Open window in a spare area of the screen
 
 Open window over iconbar icon
   This opens a window in much the same way as a menu is opened over the
-  iconbar, with it's x-position dependent upon the mouse pointer, and it's
+  iconbar, with its x-position dependent upon the mouse pointer, and its
   y-position set so that the bottom of the window occurs at OS coord. 96.
 
 Open window at a specified position on the screen
   This opens the window at specified co-ordinates at the screen.  Maybe this
   should a new function, say Window_ShowAtPos() or something.
 
-Also means by which a window being deleted can have it's state written back
+Also means by which a window being deleted can have its state written back
 to the parent template will be needed: That way, a window can be deleted and
 recreated as needed, but will always reappear in the size & position (state)
 that the user last left it, rather than always appearing "fresh" in the
