@@ -2,7 +2,7 @@
 ; OS_WriteC - VDU(ch)
 ;
         GET     macros.h
-        GET     RegNames.h
+        GET     regdefs.h
         GET     swinos.h
 ;
         PREAMBLE

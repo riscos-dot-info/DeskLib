@@ -3,7 +3,7 @@
 ; by Jason Williams 1993
 ;
         GET     macros.h
-        GET     RegNames.h
+        GET     regdefs.h
         GET     swinos.h
 ;
         PREAMBLE

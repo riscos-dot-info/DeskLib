@@ -9,7 +9,7 @@
 #include "DeskLib:WimpSWIs.h"
 
 
-extern void Icon_SetTextRJ(window_handle w, icon_handle i, char *text)
+extern void Icon_SetTextRJ(window_handle w, icon_handle i, const char *text)
 /*
  * Copies the text string into the icon's indirected string buffer (and redraws)
  * This text is "right justified", meaning that if the text doesn't fit,
