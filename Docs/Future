@@ -7,12 +7,19 @@ I would be very keen to hear from people who have any comments or
 suggestions.
 
 
+Nested Wimp
+-----------
 
-Const
------
+DeskLib's last update was before the Nested Wimp came into common use
+(or any use at all).  These functions would fit well into a new DeskLib
+module like the Pane handling (but with considerably less code).
 
-DeskLib functions should make more use of 'const' in function arguments,
-as this makes things a little more robust.
+
+Resources
+---------
+
+Resource handling is somewhat primitive, and could be updated to deal
+with country-specific resources.
 
 
 Debug version

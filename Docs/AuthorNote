@@ -1,27 +1,3 @@
-STOP PRESS
-
-I have realised that I don't often have time to do much work on DeskLib
-myself. This has resulted in suspension of my activities on a menu template
-system. The main problem is that many of the routines in DeskLib are just
-TOO generic, and can be better written for individual applications if they
-include nasty hacky hand-tuned things in them. However, some parts of
-DeskLib are useful 'little' routines, which I feel are more useful in any
-circumstances:
-
-  Compact and efficient function call interfaces for SWIs (in assembler)
-  Small routines like Icon_Select() which make the program more readable
-    and/or save a lot of programming bother on "nitty gritty" stuff.
-
-The other routines are more useful as tutorial type code for you to look at,
-chop bits out of, etc. when writing your own code for those operations.
-Thus, it would be preferable to add small, useful, timesavers rather than
-large, bloated "all-singing all-dancing" routines.
-
-Thus, if you send any code, I will concentrate my available time on the
-simpler, more useful routines, as I feel they are generally more globally
-useful than bigger, more complex routines.
-
----
 
 If you write any code which you feel you may one day deign to send to the
 DeskLib moderator for possible inclusion in the library, then please read
@@ -148,7 +124,7 @@ Programming conventions
    Where Acorn's naming fits within these guidelines, you should use
    Acorn-compatible names. For example, I don't wholly like Acorns
    "nameisname", but I have kept it as it is not too bad, still adequately
-   describes it's function, and is not a silly name like "nin" which I would
+   describes its function, and is not a silly name like "nin" which I would
    find meaningless. (Thus, Acorn's w becomes window, and i becomes icon)
    This will help to ease the job of moving from use of Acorn's library to
    this one, as well as making it as easy as possible to integrate parts of
@@ -197,7 +173,7 @@ Programming conventions
    Try to divide any functions up into distinct groups. Acorn decided on
    modules, for example "wimp", but I feel this should be further subdivided
    into modules for windows, icons, drags, pointers, etc. - basically put
-   one "functional group" into it's own .c file (or group of files).
+   one "functional group" into its own .c file (or group of files).
 
    My intent for a module such as "wimp" is to provide a low-level interface
    to all wimp SWI calls (Wimp_OpenWindow(), Wimp_CloseWindow(), etc.), with
@@ -365,7 +341,7 @@ a predefined substructure, and so your new structure becomes more consistent
 with other structure definitions.
 
 Basically, the rule of thumb here is:
-If part of a data type would make a useful data type in it's own right, DO IT
+If part of a data type would make a useful data type in its own right, DO IT
 
 
 FlagWords
@@ -503,7 +479,7 @@ wanted the code... it's been *days* since I thought of the idea... ;-)
                    correct position in the menu tree.
                    (This replaces dbox_show, and does more on top)
 
-  Window_Delete  - Closes and deletes a window, deallocating all it's
+  Window_Delete  - Closes and deletes a window, deallocating all its
                    handlers, memory, etc.
                    (say goodbye to dbox_dispose!)
 
@@ -533,11 +509,6 @@ kaboodle is really only one window...
 is actually only the "back" window handle - you will just have to use 
 Window_ calls to access the pane as a "window".
 
-(This type of thing is now likely to be conducted in conjunction with the
-new Glass template format and !Glazier template editor, which we hope to
-have supporting meta-icons (e.g. sliders) and other stuff in a more powerful
-manner than is currently possible under the normal WIMP icons/windows)
-
 Hopefully these things have helped to show you what *I* intend to do for
 DeskLib... lots of useful "tack-on" facilities that are compatible with RISC
 OS Lib and DeskLib low-level functions. Any useful functions any of you have
@@ -549,5 +520,5 @@ instead of hoarding it (which helps nobody)
 
 If you think of some good things to write, it might be a good idea to
 contact me before you start, and I'll hopefully be able to reduce clashes
-where more than one person spends time writing basically the same code...
+where more than one person spends time writing basically the same code.
 
