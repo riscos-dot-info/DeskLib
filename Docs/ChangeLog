@@ -1,7 +1,40 @@
+
+Updates since version 2.30
+
+2.40 (17 Nov 2002)
+
+Documentation updated to reflect new ownership, and remove outdated
+comments.
+
+Removed old DLL stuff from build system.
+
+Resource_LoadSprites checks for Sprites22 first.
+
+Updated some file handling functions so they correctly work when
+linked with UnixLib.
+
+Deprecated use of EventMsg_Initialise.  This is now called automatically
+for you.  Some modules were using EventMsg_Claim, but didn't clearly
+say so.
+
+New functions to Resource handling, for Choices.
+
+Added new URL functions, for URL launching.
+
+Improved use of typing (especially const), and removal of almost
+all warnings when building with both Norcroft and GCC with many
+warnings turned on. 
+
+Build system substantially changed to rely upon GNU make.
+
+Converted all assembler to APCS-32, non flags saving.
+Desklib picked up by Peter Naulls
+
+
+2.30 (02 Sep 1995) ----------------------------------------------------
+
 Updates between DeskLib beta versions since version 2.16 .
 
-
-2.30 (02 Sep 1995)
 
 02 Sep 1995
 
