@@ -32,8 +32,8 @@ typedef struct	{
 
 static debug_sighandlerblock debug_usersighandler = { NULL, NULL};
 
-static debug_siginited = FALSE;
-	/* So we can check we are inited when Debug_ClaimSignal is called	*/
+static BOOL debug_siginited = FALSE;
+	/* So we can check we are inited when Debug_ClaimSignal is called */
 
 static const char *debug_signalnames[] =
 	{
