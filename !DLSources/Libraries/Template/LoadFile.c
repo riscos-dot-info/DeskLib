@@ -25,16 +25,6 @@
 linklist_header template_list         = {NULL, NULL};
 font_array      *template_fontarray   = (font_array *) -1;
 
-/*
-Provide function veneers for the above globals - they are refered to by the
-Window_ModeChange() function.
-*/
-#ifdef _DLL
-extern linklist_header  *Template__Ref_list( void)      { return &template_list;      }
-extern font_array      **Template__Ref_fontarray( void) { return &template_fontarray; }
-#endif
-
-
 
 static void ReadHeader(const char *filename)
 /* Find out how many templates, names, and sizes */

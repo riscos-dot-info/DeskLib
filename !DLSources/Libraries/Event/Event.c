@@ -21,9 +21,10 @@
 
     JCW:     Fixed incorrect releasing of NULL events on event_ANY release.
 
-    JS:      Changed external globals to work with SDLS, and moved
+    JS:      Changed external globals to work with Straylight, and moved
              event_taskhandle into a separate .c file
 
+    AS:      Removed the DLL stuff - it's unneeded gunk now.
 */
 
 #include <stdlib.h>
@@ -59,6 +60,7 @@
 #define ERRMESS5 "Can't trace event claim"
 
 
+#if 0
 /* JS 22 Mar 1995
 Need to make these global non-static variables visible to this file.
 Event.h #defines them so that any reference to 'event_mask' (for eg)
@@ -72,16 +74,7 @@ event_pollblock event_lastevent;
 task_handle     event_taskhandle  = 0;
 unsigned int    event_wimpversion = 0;
 /*char            event_taskname[40];*/
-
-#ifdef _DLL
-event_pollmask         *Event__Ref_mask( void)        { return &event_mask;        }
-extern int             *Event__Ref_taskhandle( void)  { return &event_taskhandle;  }
-extern unsigned int    *Event__Ref_wimpversion( void) { return &event_wimpversion; }
-extern char            *Event__Ref_taskname( void)    { return event_taskname;     }
-extern event_pollblock *Event__Ref_lastevent( void)   { return &event_lastevent;   }
 #endif
-
-
 
 
 static short usagecounts[wimp_NUMBEROFEVENTS]= {
@@ -765,11 +758,7 @@ static BOOL DispatchWindowEvents(event_pollblock *event, void *reference)
 }
 
 
-_DeskLib_SDLS_PtrFn( static, void, Event__ExitFunction( void))
-/* This function is called at exit, to tidy up as we quit		*/
-/* cc gives 'Warning: extern 'Event__ExitFunction' not declared in 	*/
-/* header' when compilation is for a DLL.				*/
-/* cc warns about extern ... not declared in header in SDLS compiles	*/
+static void Event__ExitFunction(void)
 {
   if (event_taskhandle != 0)
     Wimp_CloseDown(event_taskhandle);
@@ -786,7 +775,7 @@ extern void Event_Initialise3(const char *taskname, int version, int *messages)
 {
   int index;
 
-atexit( _DeskLib_SDLS_dllEntry( Event__ExitFunction));
+  atexit(Event__ExitFunction);
 
   for (index = 0; index < event_MAXEVENTS; index++)
   {

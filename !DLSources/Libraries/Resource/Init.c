@@ -20,18 +20,8 @@
 #include "DeskLib:Resource.h"
 #include "DeskLib:Str.h"
 
-#ifdef _DeskLib_SDLS
-#include "DLLLib.dll.h"
-#endif
-
 extern void Resource_Initialise(const char *respath)
 {
-#ifdef _DeskLib_SDLS
-  char	*dllname = strdup( respath);
-  if ( dllname)  dll_nameApp( dllname);
-  /* So that the application's name is displayed and used by the DLLManager	*/
-#endif
-
   resource_pathname[0] = '<';
   strncat(resource_pathname, respath, 23);
   resource_pathname[24] = '\0';               /* Ensure string is terminated */

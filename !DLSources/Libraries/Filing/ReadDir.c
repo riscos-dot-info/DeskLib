@@ -39,9 +39,7 @@
 #define FREE(ptr)    free((ptr))
 
 
-#ifndef _DLL
 error_STATIC( __outofmemory, filing_ERROR_OutOfMemory, "Not enough memory");
-#endif
 
 
 os_error *Filing_OpenDir(const char *dirname, filing_dirdata *dirdata,
@@ -49,10 +47,6 @@ os_error *Filing_OpenDir(const char *dirname, filing_dirdata *dirdata,
 {
  os_error *er;
  filing_objtype objtype;
-
-#ifdef _DLL
-error_FIXED( __outofmemory, filing_ERROR_OutOfMemory, "Not enough memory");
-#endif
 
  dirdata->buf=NULL;
  dirdata->dirname=NULL;   /* to avoid problems with free in Filing_CloseDir */

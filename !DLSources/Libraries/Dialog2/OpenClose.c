@@ -29,16 +29,7 @@
 #include "Defs.h"
 
 
-/*
-We don't use _DeskLib_SDLS_staticglobal because dialog2_menublock is used by other
-files within the Dialog2 library.
-*/
 dialog2_block	*dialog2_menublock = NULL;
-
-
-#ifdef _DLL
-dialog2_block	**Dialog2__Ref_menublock( void)	{ return &dialog2_menublock;	}
-#endif
 
 
 static void	Dialog2__ClaimOrReleaseStandardHandlers(
@@ -107,14 +98,8 @@ return Dialog2__CloseDialogInternal(
 
 
 
-_DeskLib_SDLS_PtrFn(
-	static,
-	BOOL,
-	Dialog2__MenusDeletedHandler( event_pollblock *event, void *reference)
-	)
-/* static BOOL	Dialog2__MenusDeletedHandler( event_pollblock *event, void *reference)*/
 /* Handler for message_MENUSDELETED - sent if the menu closes.	*/
-/* cc warns about extern ... not declared in header in SDLS compiles	*/
+static BOOL Dialog2__MenusDeletedHandler(event_pollblock *event, void *reference)
 {
 UNUSED( reference);
 
@@ -141,14 +126,8 @@ return FALSE;
 
 
 
-_DeskLib_SDLS_PtrFn(
-	static,
-	BOOL,
-	Dialog2__OKCancelHandler( event_pollblock *event, void *reference)
-	)
-/*static BOOL	Dialog2__OKCancelHandler( event_pollblock *event, void *reference)*/
 /* Handler for click on OK or Cancel buttons.	*/
-/* cc warns about extern ... not declared in header in SDLS compiles	*/
+static BOOL Dialog2__OKCancelHandler( event_pollblock *event, void *reference)
 {
 dialog2_block *dialog2 = (dialog2_block *) reference;
 
@@ -176,14 +155,8 @@ return FALSE;
 }
 
 
-_DeskLib_SDLS_PtrFn(
-	static,
-	BOOL,
-	Dialog2__CloseHandler( event_pollblock *event, void *reference)
-	)
-/*static BOOL	Dialog2__CloseHandler( event_pollblock *event, void *reference)*/
 /* Handler for event_CLOSE.	*/
-/* cc warns about extern ... not declared in header in SDLS compiles	*/
+static BOOL Dialog2__CloseHandler( event_pollblock *event, void *reference)
 {
 UNUSED( event);
 Dialog2_CloseDialog( (dialog2_block *) reference);
@@ -197,17 +170,10 @@ return FALSE;
 #define keycode_RETURN	13
 #define keycode_ESCAPE	0x1B
 
-_DeskLib_SDLS_PtrFn(
-	static,
-	BOOL,
-	Dialog2__KeyHandler( event_pollblock *event, void *reference)
-	)
-/*static BOOL	Dialog2__KeyHandler( event_pollblock *event, void *reference)*/
-
 /* This sends our application an event_CLICK on the ok/cancel button	*/
 /* when Return/Escape is pressed in the dialog box. Would be better to 	*/
 /* have an Event_FakeEvent function or something...			*/
-/* cc warns about extern ... not declared in header in SDLS compiles	*/
+static BOOL Dialog2__KeyHandler( event_pollblock *event, void *reference)
 {
 dialog2_block *dialog2 = (dialog2_block *) reference;
 
@@ -267,19 +233,20 @@ static void	Dialog2__ClaimOrReleaseStandardHandlers(
 	/* releasing events ensures we don't leave any	*/
 	/* claims active that we don't use.		*/
 {
+
 fn( event_OPEN,  dialog2->window, event_ANY, Handler_OpenWindow,    dialog2);
 fn(	event_CLOSE, dialog2->window, event_ANY,
-	_DeskLib_SDLS_dllEntry( Dialog2__CloseHandler),
+	Dialog2__CloseHandler,
 	dialog2
 	);
 
 if ( dialog2->flags.data.okbutton != -1 || dialog2->flags.data.cancelbutton != -1)	{
 	fn(	event_KEY, dialog2->window, event_ANY,
-		_DeskLib_SDLS_dllEntry( Dialog2__KeyHandler),
+		Dialog2__KeyHandler,
 		dialog2
 		);
 	fn(	event_CLICK, dialog2->window, event_ANY,
-		_DeskLib_SDLS_dllEntry( Dialog2__OKCancelHandler),
+		Dialog2__OKCancelHandler,
 		dialog2
 		);
 	/* Make this icon-unspecific so that the application will get clicks first.	*/
@@ -289,7 +256,7 @@ if ( dialog2->flags.data.type == dialog2_type_MENU
 ||   dialog2->flags.data.type == dialog2_type_MENULEAF
 )	{
 	fn(	event_USERMESSAGE, event_ANY, event_ANY,
-		_DeskLib_SDLS_dllEntry( Dialog2__MenusDeletedHandler),
+		Dialog2__MenusDeletedHandler,
 		NULL
 		);
 		/* Closes the dialog2 if the menu is closed by Escape or a 	*/
