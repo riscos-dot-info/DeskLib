@@ -135,7 +135,7 @@ int main(void)
  MySliderInfo.flags.dragging = FALSE;
  MySliderInfo.flags.clickstop = FALSE;
  MySliderInfo.flags.reserved = 0;
- MySliderInfo.update = (slider_updateproc) SliderHasBeenUpdated;
+ MySliderInfo.update = SliderHasBeenUpdated;
  MySliderInfo.reference = NULL;
                              
  Icon_SetText(window, 3, "-");
