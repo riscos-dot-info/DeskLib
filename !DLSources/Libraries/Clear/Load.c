@@ -65,7 +65,7 @@ clear_picture *Clear_Load(const char *filename)
   temp->palette = NULL;
   temp->bitmap = NULL;
 
-  if(File_ReadBytes(in, temp->creator, creator_length))
+  if(File_ReadBytes(in, (char *)temp->creator, creator_length))
     return Clear__AbortLoad(in, temp);
 
   temp->creatorversion = File_Read32(in);
