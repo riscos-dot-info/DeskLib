@@ -16,7 +16,8 @@
 
 #include "DeskLib:MsgTrans.h"
 
-os_error *MsgTrans_LookupPS(msgtrans_filedesc *filedesc, char *token,
+os_error *MsgTrans_LookupPS(msgtrans_filedesc *filedesc,
+                            const char *token,
                             char *buffer, int bufflen,
                             char *p0, char *p1, char *p2, char *p3)
 {

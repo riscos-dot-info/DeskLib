@@ -19,7 +19,7 @@
 
 extern kbd_modifiers Kbd_GetModifiers(BOOL detailed)
 {
-  kbd_modifiers mods = { 0 };
+  kbd_modifiers mods = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
   mods.alt   = Kbd_KeyDown(inkey_ALT);
   mods.ctrl  = Kbd_KeyDown(inkey_CTRL);

@@ -191,7 +191,7 @@ extern void Mem__SplitOffFreeChunk(mem_header *chunk)
 
   if((chunk->realsize - chunk->datasize) >= (int)(sizeof(mem_header) + 16))
   {
-    mem_header *free;
+    mem_header *freech;
     int         oldchunksize = chunk->realsize,
                 newchunksize;
 
@@ -199,21 +199,21 @@ extern void Mem__SplitOffFreeChunk(mem_header *chunk)
      *  chunk of 16 or more bytes dataspace at the end of it
      */
 
-    free = (mem_header *)WORDALIGN((int)chunk + chunk->datasize + sizeof(mem_header));
+    freech = (mem_header *)WORDALIGN((int)chunk + chunk->datasize + sizeof(mem_header));
 
-    newchunksize       = (int)free - (int)chunk;
-    chunk->realsize    = newchunksize;
-    free->realsize     = oldchunksize - newchunksize;
-    free->prevrealsize = newchunksize;
-    free->datasize     = 0;
-    free->handle       = NULL;
+    newchunksize         = (int)freech - (int)chunk;
+    chunk->realsize      = newchunksize;
+    freech->realsize     = oldchunksize - newchunksize;
+    freech->prevrealsize = newchunksize;
+    freech->datasize     = 0;
+    freech->handle       = NULL;
 
     if (mem__lastchunk == chunk)
-      mem__lastchunk = free;
+      mem__lastchunk = freech;
     else
     {
-      chunk = Mem__NextChunk(free);
-      chunk->prevrealsize = free->realsize;
+      chunk = Mem__NextChunk(freech);
+      chunk->prevrealsize = freech->realsize;
 
       Mem__Amalgamate(&chunk);         /* Ensure not 2 free chunks in a row */
     }
@@ -507,36 +507,36 @@ mem__best_block_found:;     /* used to stop searching when perfect sized block i
         int free_count,
             used_count,
             used;
-        mem_header *start = mem__lastchunk;
+        mem_header *hstart = mem__lastchunk;
 
-        if(ISFREE(start))
+        if(ISFREE(hstart))
         {
           used_count = 0;
-          free_count = start->realsize;
+          free_count = hstart->realsize;
         }
         else
         {
-          used_count = CHUNKSIZE(start->datasize);
-          free_count = start->realsize - used_count;
+          used_count = CHUNKSIZE(hstart->datasize);
+          free_count = hstart->realsize - used_count;
         }
 
-        while((free_count < numbytes) && ((int)start > mem__heap))
+        while((free_count < numbytes) && ((int)hstart > mem__heap))
         {
-          start = (mem_header *)((int)start - start->prevrealsize);
+          hstart = (mem_header *)((int)hstart - hstart->prevrealsize);
 
-          if(!ISFREE(start))
+          if(!ISFREE(hstart))
           {
-            used = CHUNKSIZE(start->datasize);
+            used = CHUNKSIZE(hstart->datasize);
             used_count += used;
           }
           else
             used = 0;
-          free_count += start->realsize - used;
+          free_count += hstart->realsize - used;
         }
 
         if((free_count >= numbytes) && (used_count < best_used))
         {     /* found a better run of blocks (less work to compact) */
-          best_start = start;
+          best_start = hstart;
           best_end = (mem_header *)(mem__heap + mem__heapsize);
           best_used = used_count;
           best_free = free_count;

@@ -30,9 +30,9 @@ extern void Icon_GetText(window_handle w, icon_handle i, char *text)
  */
 {
   icon_block istate;
-  char       *buffer;
-  int        len = wimp_MAXNAME;
-  int        index;
+  const char *buffer;
+  int         len = wimp_MAXNAME;
+  int         index;
 
   text[0] = 0;  /* return NULL string if anything goes wrong */
 
@@ -40,7 +40,7 @@ extern void Icon_GetText(window_handle w, icon_handle i, char *text)
   if (istate.flags.data.indirected)
   {
     if (istate.flags.data.sprite)
-        buffer = (char *) istate.data.indirectsprite.name;
+        buffer = istate.data.indirectsprite.name;
     else
     {
       buffer = istate.data.indirecttext.buffer;

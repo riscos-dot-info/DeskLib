@@ -31,5 +31,5 @@ extern os_error *Window_GetInfo3(window_handle window, window_info *result)
  */
 {
     result->window = window;
-    return Wimp_GetWindowInfo((window_info *) (((char *) result) + 1));
+    return Wimp_GetWindowInfo((window_info *)(void *)(((char *) result) + 1));
 }

@@ -51,12 +51,13 @@
  */
 
 
-extern void Menu__CountItems(char *description, int *numitems, unsigned int *menuwidth)
+extern void Menu__CountItems(const char *description, unsigned int *numitems,
+                             unsigned int *menuwidth)
 /*  For internal use - counts the number of items in a menu description
  *  string, and also returns the widest menu item (in terms of characters)
  */
 {
-  char *s;
+  const char *s;
   int  width = 0, maxwidth = 0, count = 0;
   BOOL in_option = TRUE;
 
@@ -94,10 +95,10 @@ extern void Menu__CountItems(char *description, int *numitems, unsigned int *men
 }
 
 
-extern BOOL Menu__Create(menu_item *item, char *description, int numitems)
+extern BOOL Menu__Create(menu_item *item, const char *description, int numitems)
 {
   menu_item *it;
-  char *s, *t;
+  const char *s, *t;
   int  i, index;
   BOOL foundtext;
 
@@ -159,14 +160,18 @@ extern BOOL Menu__Create(menu_item *item, char *description, int numitems)
       t = it->icondata.indirecttext.buffer;
     }
 
-    while (*s != 0 && *s != ',' && *s != '|')
-      *t++ = *s++;
+    {
+      char **cst_t = (void *)(int)&t;
 
-    if (index != wimp_MAXNAME)     /* Only terminate if not exactly 12 chars */
-      *t = 0;
-
-    if (*s++ == '|')                        /* Step over separator...        */
-      it->menuflags.data.dotted = TRUE;     /* ...setting 'dotted' if needed */
+      while (*s != 0 && *s != ',' && *s != '|')
+        *(*cst_t)++ = *s++;
+  
+      if (index != wimp_MAXNAME)    /* Only terminate if not exactly 12 chars */
+        *(*cst_t) = 0;
+  
+      if (*s++ == '|')                       /* Step over separator...        */
+        it->menuflags.data.dotted = TRUE;    /* ...setting 'dotted' if needed */
+    }
   }
 
   return(TRUE);
@@ -174,14 +179,14 @@ extern BOOL Menu__Create(menu_item *item, char *description, int numitems)
 
 
 
-extern menu_ptr Menu_New(char *title, char *description)
+extern menu_ptr Menu_New(const char *title, const char *description)
 {
-  menu_ptr   menu;
-  menu_item  *item;
+  menu_ptr     menu;
+  menu_item    *item;
   unsigned int maxwidth;
-  int        numitems;
-  int        titlelen;
-  int        trunclen;
+  unsigned int numitems;
+  unsigned int titlelen;
+  unsigned int trunclen;
 
   /*  Copy the string. If it's less than 12 characters we need it to be
    *  zero-terminated. We can let it go to 12 chars without any terminator
@@ -229,7 +234,7 @@ extern menu_ptr Menu_New(char *title, char *description)
     if (titledata = malloc(1+titlelen), !titledata)	/* +1 courtesy of Neil Tarrant */
       return (menu);
     strcpy(titledata,title);
-    titleicon = (icon_data *) &menu->title;
+    titleicon = (icon_data *)(void *)&menu->title;
     titleicon->indirecttext.buffer = titledata;
     titleicon->indirecttext.validstring = (char *) -1;
     titleicon->indirecttext.bufflen = titlelen;

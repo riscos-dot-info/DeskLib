@@ -30,7 +30,7 @@
 #include "DeskLib:WimpSWIs.h"
 #include "DeskLib:Event.h"
 
-extern void Error_Report(int errornum, char *report, ...)
+extern void Error_Report(int errornum, const char *report, ...)
 {
   va_list va;
   os_error    error;
@@ -47,7 +47,7 @@ extern void Error_Report(int errornum, char *report, ...)
 
 
 
-extern void Error_ReportFatal(int errornum, char *report, ...)
+extern void Error_ReportFatal(int errornum, const char *report, ...)
 {
   va_list va;
   char errmess[256];
@@ -64,7 +64,7 @@ extern void Error_ReportFatal(int errornum, char *report, ...)
 
 
 
-extern void Error_ReportInternal(int errornum, char *report, ...)
+extern void Error_ReportInternal(int errornum, const char *report, ...)
 {
   va_list va;
   char errmess[256];
@@ -77,7 +77,7 @@ extern void Error_ReportInternal(int errornum, char *report, ...)
 
 
 
-extern void Error_ReportFatalInternal(int errornum, char *report, ...)
+extern void Error_ReportFatalInternal(int errornum, const char *report, ...)
 {
   va_list va;
   char errmess[256];
@@ -110,7 +110,7 @@ extern void Error_CheckFatal(os_error *error)
 
 
 
-extern BOOL Error_OutOfMemory(BOOL fatal, char *place)
+extern BOOL Error_OutOfMemory(BOOL fatal, const char *place)
 {
   if (fatal)
     Error_ReportFatal(0, "Unable to get enough memory for the %s", place);

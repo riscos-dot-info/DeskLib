@@ -39,7 +39,7 @@ void Icon_FileIcon(window_handle window, icon_handle icon, int filetype)
   Wimp_DeleteIcon(window, icon);
 
   /* Put sprite name in name field */
-  sprintf((char *) iconcreate.icondata.data.indirectsprite.name, 
+  sprintf((char *)(int)iconcreate.icondata.data.indirectsprite.name, 
           "file_%03x", filetype);
 
   /* Fill in sprite area */

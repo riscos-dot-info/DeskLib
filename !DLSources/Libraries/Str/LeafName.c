@@ -32,7 +32,7 @@
 
 extern char *Str_LeafName(char *path)
 {
-  char *leaf, ch = '.';
+  char *leaf = path, ch = '.';
 
   do
   {
@@ -42,5 +42,4 @@ extern char *Str_LeafName(char *path)
   while ( (ch = *(path++)) != '\0') ;
   
   return(leaf) ;
-  /* cc warns 'leaf' may be used before being set	*/
 }

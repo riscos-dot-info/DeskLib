@@ -17,13 +17,14 @@
 #include "DeskLib:Core.h"
 #include "DeskLib:Filing.h"
 
-os_error *Filing_SingleDirEntry(char *filename, filing_direntry *buf, int size)
+os_error *Filing_SingleDirEntry(const char *filename, filing_direntry *buf,
+                                int size)
 {
  char pathname[256];
  char *leafname;
 
  Filing_GetPathname(filename,pathname);
- leafname=Filing_FindLeafname(filename);
+ leafname = Filing_FindLeafname(filename);
 
  return Filing_SingleDirEntry2(pathname,buf,size,leafname);
 }

@@ -27,7 +27,7 @@ typedef struct	{
 
 	print_block	ppublic;
 	
-	int			message_ref;	/* id of the last event_SENDWANTACK we sent.	*/
+	unsigned int	message_ref;	/* id of the last event_SENDWANTACK we sent.	*/
 	print__progress	progress;
 	print_printfn	printfn;
 	print_savefn	savefn;
@@ -189,7 +189,7 @@ if ( print->progress == print__progress_4_5)	{
 
 		print->progress = print__progress_6;
 		if ( print->savefn)	{
-			message_block	reply;
+			message_block	sreply;
 			BOOL		error;
 			
 			error = print->savefn( 
@@ -203,16 +203,16 @@ if ( print->progress == print__progress_4_5)	{
 				return TRUE;
 				}
 			
-			reply = event->data.message;
-			reply.header.action	= message_DATALOAD;
-			reply.header.yourref	= event->data.message.header.myref;
+			sreply = event->data.message;
+			sreply.header.action	= message_DATALOAD;
+			sreply.header.yourref	= event->data.message.header.myref;
 			Wimp_SendMessage( 
 				event_SENDWANTACK, 
-				&reply, 
+				&sreply,
 				event->data.message.header.sender,
 				0
 				);
-			print->message_ref = reply.header.myref;
+			print->message_ref = sreply.header.myref;
 			
 			print->progress = print__progress_7;
 			return TRUE;

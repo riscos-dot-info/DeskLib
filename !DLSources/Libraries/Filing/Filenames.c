@@ -21,7 +21,7 @@
 #include "DeskLib:Core.h"
 #include "DeskLib:Filing.h"
 
-char *Filing_GetPathname(char *filename, char *pathname)
+char *Filing_GetPathname(const char *filename, char *pathname)
 {
  if (pathname==NULL || filename==NULL)
    return NULL;
@@ -37,7 +37,7 @@ char *Filing_GetPathname(char *filename, char *pathname)
  }
 }
 
-char *Filing_GetLeafname(char *filename, char *leafname)
+char *Filing_GetLeafname(const char *filename, char *leafname)
 {
  if (leafname==NULL || filename==NULL)
    return NULL;
@@ -48,13 +48,13 @@ char *Filing_GetLeafname(char *filename, char *leafname)
  }
 }
 
-char *Filing_FindLeafname(char *filename)
+char *Filing_FindLeafname(const char *filename)
 {
  if (filename==NULL)
    return NULL;
  else {
    char *p=strrchr(filename,'.');
-   return (p?p+1:filename);
+   return (p ? p+1 : (char *)(int)filename);
  }
 }
 
