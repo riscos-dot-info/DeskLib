@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -12,7 +12,7 @@
     Author:  Copyright © 1992, 1993, 1994 John Winters
              (mucked about by Jason Williams and Tim Browse)
              (and by Julian Smith)
-    Version: 1.10 (05 Jun 1995)
+    Version: 1.11 (18 Nov 2002)
     Purpose: High-level WIMP event dispatch to a hierarchy of user event
              handling functions.
 
@@ -20,8 +20,8 @@
              NonZero Poll Word event
 
     JCW:     Fixed incorrect releasing of NULL events on event_ANY release.
-    
-    JS:      Changed external globals to work with SDLS, and moved 
+
+    JS:      Changed external globals to work with SDLS, and moved
              event_taskhandle into a separate .c file
 
 */
@@ -32,6 +32,7 @@
 
 #include "DeskLib:Error.h"
 #include "DeskLib:WimpSWIs.h"
+#include "DeskLib:Time.h"
 
 #include "EventDefs.h"
 
@@ -61,7 +62,7 @@
 /* JS 22 Mar 1995
 Need to make these global non-static variables visible to this file.
 Event.h #defines them so that any reference to 'event_mask' (for eg)
-actually calls the function 'Event__Ref_mask', so that the DLL 
+actually calls the function 'Event__Ref_mask', so that the DLL
 application start-time is correctly set so that the correct instance
 data is returned.
 */
@@ -641,7 +642,7 @@ static BOOL DispatchMiscEvents(event_pollblock *event, void *reference)
   linklist_header *queue;
 
   UNUSED( reference);
-  
+
   queue = &eventqueues[event->type];          /* Try specific event handlers */
   dummy = ScanMiscQueue(queue, event);
 
@@ -692,7 +693,7 @@ static BOOL DispatchIconEvents(event_pollblock *event, void *reference)
   event_windowrecord *windowrecord;
 
   UNUSED( reference);
-  
+
   if (event->type == event_CLICK)
     window = event->data.mouse.window;
   else
@@ -748,7 +749,7 @@ static BOOL DispatchWindowEvents(event_pollblock *event, void *reference)
   event_windowrecord *windowrecord;
 
   UNUSED( reference);
-  
+
   window = event->data.openblock.window;
   windowrecord = FindWindow(window);
 
@@ -798,7 +799,7 @@ atexit( _DeskLib_SDLS_dllEntry( Event__ExitFunction));
   {
     if (event_masks[index])
       event_mask.value |= 1 << index;
-  }  
+  }
 
   if (version >= 300)
   {
@@ -807,14 +808,14 @@ atexit( _DeskLib_SDLS_dllEntry( Event__ExitFunction));
   }
 
   event_wimpversion = version;
-  
-  
+
+
   Error_CheckFatal(Wimp_Initialise(&event_wimpversion,
                                      taskname, &event_taskhandle, messages));
 
 
   strncpy(event_taskname, taskname, 39);
-  
+
   event_taskname[39] = 0;
 }
 
@@ -827,13 +828,21 @@ extern void Event_Process(event_pollblock *event)
   handler(event, NULL);
 }
 
-
 extern void Event_Poll(void)
 {
   Wimp_Poll(event_mask, &event_lastevent);
   Event_Process(&event_lastevent);
 }
 
+/*
+ * Takes a delay in cs, which is the earliest time after this call that
+ * we want to receive a Null Reason event.
+ */
+extern void Event_PollIdle(unsigned int delay)
+{
+  Wimp_PollIdle(event_mask, &event_lastevent, Time_Monotonic() + delay);
+  Event_Process(&event_lastevent);
+}
 
 extern void Event_CloseDown(void)
 {
