@@ -4,4 +4,3 @@ If "<DeskLib_Sources$Dir>" = "" Then Set Run$Path <Run$Path>,DeskLib_Run:
 
 Set DeskLib_Sources$Dir <Obey$Dir>
 Set DeskLib_Run$Path <DeskLib_Sources$Dir>.Bin.
-Set DeskLib_Commands$Path <Obey$Dir>.Scripts.Commands.
