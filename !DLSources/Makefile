@@ -72,7 +72,7 @@ $(DESKLIB): $(all_objects)
 # Insert all the Makefiles in the Otherlibs directory as well.
 # This provides the targets debugs and smerror                  
 
-include OtherLibs/*/Makefile*
+include <DeskLib_Sources$$Dir>/OtherLibs/*/Makefile*
 
 # Clean the whole library out in one go
 clean:
@@ -92,7 +92,9 @@ cleanlibs = $(foreach library, $(libraries), $(cleanlib))
 
 
 zip:
-	dir ^.^
+	make -C ../.. -f DeskLib/!DLSources/Makefile ziptargets
+
+ziptargets:
 	zip -9r RAM::RamDisc0.$$.sources/zip DeskLib.!DLSources -x *.CVS.* -x *.o.*
 	zip -9r RAM::RamDisc0.$$.core/zip DeskLib.!DeskLib DeskLib.!DLUser DeskLib.!Help DeskLib.Docs  -x *.CVS.* -x *cvsignore
 	zip -9r RAM::RamDisc0.$$.examples/zip DeskLib.Examples -x *.CVS.* 
