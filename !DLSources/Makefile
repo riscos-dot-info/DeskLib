@@ -16,6 +16,16 @@
 COMPILER = norcroft
 PREFIX = gccbin:
 
+DESKLIB = <DeskLib$$Dir>.o.DeskLib
+DESKLIBDIR = <DeskLib$$Dir>.o
+DEBUGS = <DeskLib$$Dir>.o.Debug
+
+libraries := $(notdir $(filter-out Libraries/CVS Libraries/h \
+               Libraries/Macros.h Libraries/RegDefs.h, $(wildcard Libraries/*)))
+
+all_objects := $(patsubst %.s,%.o,$(patsubst %.c,%.o,$(filter %.c %.s,$(wildcard Libraries/*/*))))
+
+
 # Defaults for norcy
 ifeq (norcroft, $(COMPILER))
 
@@ -26,7 +36,9 @@ ifeq (norcroft, $(COMPILER))
   ASFLAGS = -ILibraries -I$(@D) -throwback
 
   AR = libfile
-  ARFLAGS = 
+  ARFLAGS =
+
+  lib_objects := $(addprefix Libraries.,$(addsuffix .o.*, $(libraries)))
 endif
 
 # Defaults for gcc
@@ -45,18 +57,9 @@ ifeq (gcc, $(COMPILER))
 
   AR = $(PREFIX)libfile
   ARFLAGS =
+
+  lib_objects := $(addprefix Libraries/,$(addsuffix /*.o, $(libraries)))
 endif
-
-DESKLIB = <DeskLib$$Dir>.o.DeskLib
-DESKLIBDIR = <DeskLib$$Dir>.o
-DEBUGS = <DeskLib$$Dir>.o.Debug
-
-libraries := $(notdir $(filter-out Libraries/CVS Libraries/h \
-               Libraries/Macros.h Libraries/RegDefs.h, $(wildcard Libraries/*)))
-
-lib_objects = $(addprefix Libraries.,$(addsuffix .o.*, $(libraries)))
-
-all_objects = $(patsubst %.s,%.o,$(patsubst %.c,%.o,$(filter %.c %.s,$(wildcard Libraries/*/*))))
 
 # Make the library
 all: $(DESKLIB) debugs smerror
