@@ -31,7 +31,7 @@
         SWI     SWI_OS_File + XOS_Bit
         BVS     err
         TST     a1,#1      ; Success for file or image file
-        BNE     err
+        BEQ     err
 
         MOV     a1,a3,LSL#12
         MOV     a1,a1,LSR#12+8
