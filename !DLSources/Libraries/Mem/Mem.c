@@ -612,8 +612,10 @@ extern void Mem_Free(mem_anchor *anchor)
   }
 }
 
-
+#ifndef __GNUC__
 #pragma no_check_stack
+#endif
+
 static int Mem_DontBudge(int n, void **a)
 /*  Function to register with _kernel_register_slotextend to refuse to allow
  *  SharedCLib to allocate more memory. (identical to Flex's flex_dontbudge)
@@ -626,8 +628,10 @@ static int Mem_DontBudge(int n, void **a)
   a = a;
   return(0);                                    /* number of bytes allocated */
 }
-#pragma check_stack
 
+#ifndef __GNUC__
+#pragma check_stack
+#endif
 
 extern BOOL Mem_Initialise(void)
 /*  Initialises the Mem memory manager

@@ -178,7 +178,7 @@ int Debug__Dummyf(const char *format, ...);
 */
 
 
-#define Debug_Dummyf (TRUE) ? 0 : Debug__Dummyf
+#define Debug_Dummyf (void)((TRUE) ? 0 : Debug__Dummyf)
 /*
   A macro which is used to remove calls to a multi-argument function which
   returns an integer. This isn't a bomb-proof macro, but is the best I can

@@ -18,7 +18,7 @@
 #include "DeskLib:SWI.h"
 #include "DeskLib:Screen.h"
 
-screen_modeval screen_mode  = -1;
+screen_modeval screen_mode  = { -1 };
 wimp_point     screen_size;
 wimp_point     screen_eig;
 wimp_point     screen_delta;
