@@ -35,15 +35,14 @@
 ;
         PREAMBLE
         STARTCODE Wimp_OpenWindow
-;
-;        STMFD   sp!, {lr}
+
         MOV     ip, lr
 
         MOV     a2, a1
+        MOV     a3, #0
         SWI     SWI_Wimp_OpenWindow + XOS_Bit
         MOVVC   a1, #0
 
-        MOV    pc, ip
-;        LDMFD   sp!, {pc}
-;
+        MOV     pc, ip
+
         END
