@@ -106,6 +106,17 @@ extern BOOL EventMsg_ReleaseMessage(message_action messagetype);
 */
 
 
+typedef BOOL (*eventmsg_claimorreleasefn)(message_action messagetype,
+                                          window_handle window,
+                                          event_handler handler,
+                                          void *ref);
+/*
+  This is the function-type of the EventMsg_Claim and EventMsg_ReleaseSpecific
+  functions. It is useful for writing functions which accept a pointer to
+  either of these functions, in order to claim or release a set of message
+  events consistently.
+*/
+
 #ifdef __cplusplus
 }
 #endif
