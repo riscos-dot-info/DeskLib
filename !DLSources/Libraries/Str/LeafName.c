@@ -30,14 +30,14 @@
  * or you're using a path MyPath:FileName, so : is treated the same as .
  */
 
-extern char *Str_LeafName(char *path)
+extern char *Str_LeafName(const char *path)
 {
   char *leaf = path, ch = '.';
 
   do
   {
     if (ch == '.' || ch == ':')
-      leaf = path ;
+      leaf =  path ;
   }
   while ( (ch = *(path++)) != '\0') ;
 
