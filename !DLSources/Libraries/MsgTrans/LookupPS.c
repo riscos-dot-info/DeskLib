@@ -19,7 +19,10 @@
 os_error *MsgTrans_LookupPS(msgtrans_filedesc *filedesc,
                             const char *token,
                             char *buffer, int bufflen,
-                            char *p0, char *p1, char *p2, char *p3)
+                            const char *p0,
+                            const char *p1,
+                            const char *p2,
+                            const char *p3)
 {
   os_error *swierr;
 
