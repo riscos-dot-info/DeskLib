@@ -60,7 +60,6 @@
 #define ERRMESS5 "Can't trace event claim"
 
 
-#if 0
 /* JS 22 Mar 1995
 Need to make these global non-static variables visible to this file.
 Event.h #defines them so that any reference to 'event_mask' (for eg)
@@ -73,8 +72,6 @@ event_pollmask  event_mask = { 0 };
 event_pollblock event_lastevent;
 task_handle     event_taskhandle  = 0;
 unsigned int    event_wimpversion = 0;
-/*char            event_taskname[40];*/
-#endif
 
 
 static short usagecounts[wimp_NUMBEROFEVENTS]= {
