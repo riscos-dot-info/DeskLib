@@ -40,7 +40,7 @@
         STMFD     sp!, {v1-v6, lr}
         LDR       v4, [ip, #4]
         MOV       v3, a4
-        MOV       v2, [ip, #0]
+        LDR       v2, [ip, #0]
         LDR       v1, [a3, #4]
         LDR       a4, [a3, #0]
         MOV       a3, a2
