@@ -10,10 +10,9 @@
 
     File:    File.Exists.c
     Author:  Copyright © 1993,1994 Jason Williams, Jason Howat
-    Version: 1.01 (08 Jun 1994)
-    Purpose: Checks if a given file exists (can be read)
-             Note that directories cannot be read, so will be returned as
-             non existent.
+    Version: 1.02 (25 Sep 2002) (AJPS)
+    Purpose: Checks if the file exists at all, and if it can be termed a
+             "file" - directories are excluded, image files are not.
 */
 
 
@@ -22,8 +21,13 @@
 
 
 extern BOOL File_Exists(char *filename)
-{
-  _kernel_osfile_block osfile;
+{   
+	unsigned type;
+  
+	/* Get the file information */  
+	SWI(2, 1, SWI_OS_File, 17, filename, &type);
+	
+    /* 1 => normal file, 3 => image file */
+	return ((type & 1) ? TRUE : FALSE);
 
-  return (_kernel_osfile(17, filename, &osfile) == 1);
 }
