@@ -13,8 +13,10 @@
 # - To make a new library from the current object files:
 #   make link
 
-CC = cc -c -ffahi -throwback -IDeskLib: -IC: -o $@ $<
-AS = objasm -from $< -to $@
+CC = cc
+CFLAGS = -c -ffahi -throwback -IDeskLib: 
+AS = objasm
+ASFLAGS = -I$(@D)/s
 
 # CC = gcc -c -ansi -IDeskLib: -mthrowback -o $@ $<
 # CC = gcc -apcs32 -c -ansi -IDeskLib: -mthrowback -o $@ $<
@@ -23,6 +25,8 @@ AS = objasm -from $< -to $@
 LIB = libfile -c -l DeskLib
 MKDIR = CDir
 
+DESKLIB = <DeskLib$$Dir>.o.DeskLib
+
 # The location of this makefile
 makefile = <DeskLib_Sources$$Dir>.Makefile
 
@@ -30,21 +34,19 @@ libraries := $(notdir $(filter-out Libraries/CVS, $(wildcard Libraries/*)))
 
 lib_objects = $(addprefix Libraries.,$(addsuffix .o.*, $(libraries)))
 
-# Make the library
-all: makelibs link
+all_objects = $(patsubst %.s,%.o,$(patsubst %.c,%.o,$(filter %.c %.s,$(wildcard Libraries/*/*))))
 
-# Set the
+# Make the library
+all: $(DESKLIB)
 
 # Link the objects together to make a new library
-link:
-	$(LIB) $(lib_objects)
-	-@Echo Made DeskLib
+$(DESKLIB): $(all_objects)
+	$(AR) -c $@ $(AFLAFS) $(lib_objects)
 
 # Clean the whole library out in one go
 clean:
 	-@$(cleanlibs)
-	-@X Wipe DeskLib ~CF~R~V
-	-@Echo Wipe DeskLib ~CF~R~V
+	Remove $(DESKLIB) 
 
 # Make a single sublibrary
 one: $(addsuffix .library, $(library))
@@ -71,8 +73,4 @@ makelibs: $(addsuffix .library, $(libraries))
 %.library:
 	$(MKDIR) Libraries.$*.o
 	@$(MAKE) sublib=$* --directory Libraries.$* -f $(makefile) makelib
-
-%.o: %.c ;$(CC)
-	
-%.o: %.s; $(AS)
 
