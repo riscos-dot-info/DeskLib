@@ -13,7 +13,7 @@
 
 #include "ClearDefs.h"
 
-char *clear__creator;
+const char *clear__creator;
 unsigned clear__creatorversion;
 
 
