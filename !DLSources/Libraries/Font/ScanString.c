@@ -25,7 +25,7 @@
 
 
 os_error *Font_ScanString(font_handle font,
-                          char *string,
+                          const char *string,
                           char **end,
                           unsigned int flags,
                           int *x, int *y,

@@ -27,7 +27,7 @@ typedef struct {
   Filing_ScanDir_EndDir *enddir;
 } scandir_funcs;
 
-static os_error *Filing__ScanDirRec(char *dirname, filing_fulldirentry *dirdata, scandir_funcs *funcs)
+static os_error *Filing__ScanDirRec(const char *dirname, filing_fulldirentry *dirdata, scandir_funcs *funcs)
 {
  int readnum=0, offset=0;
  char direntries[BUF__SIZE];
@@ -84,7 +84,7 @@ static os_error *Filing__ScanDirRec(char *dirname, filing_fulldirentry *dirdata,
  return NULL;
 }
 
-os_error *Filing_ScanDir(char *dirname,
+os_error *Filing_ScanDir(const char *dirname,
                          Filing_ScanDir_StartDir *startdirproc,
                          Filing_ScanDir_FoundFile *foundfileproc,
                          Filing_ScanDir_EndDir *enddirproc)

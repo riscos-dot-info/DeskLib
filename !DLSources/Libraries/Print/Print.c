@@ -267,8 +267,8 @@ BOOL	Print_StartPrint(
 		void			*reference,
 		int			filetype,
 		int			estsize,
-		char			*leafname,
-		char			*jobtitle
+		const char	*leafname,
+		const char	*jobtitle
 		)
 {
 message_block	message;

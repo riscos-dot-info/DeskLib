@@ -16,7 +16,7 @@
         GET     SwiNos.h
         GET     Macros.h
 
-; os_error *PDriver_DrawPage(int copies, wimp_rect *rectangle_to_print, int sequence_no, char *page,
+; os_error *PDriver_DrawPage(int copies, wimp_rect *rectangle_to_print, int sequence_no, const char *page,
 ;                            int *finished, int *rectangle_id);
 
         PREAMBLE

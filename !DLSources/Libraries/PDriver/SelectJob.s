@@ -16,7 +16,7 @@
         GET     SwiNos.h
         GET     Macros.h
 
-; os_error *PDriver_SelectJob(print_job new, char *title, print_job *old);
+; os_error *PDriver_SelectJob(print_job new, const char *title, print_job *old);
 
         PREAMBLE
         STARTCODE PDriver_SelectJob

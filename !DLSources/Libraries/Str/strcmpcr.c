@@ -22,7 +22,7 @@
     *          as the string pointed to by s1 is greater than, equal to, or
     *          less than the string pointed to by s2.
     */
-extern int strcmpcr(char *s1, char *s2)
+extern int strcmpcr(const char *s1, const char *s2)
 {
   register int index = 0;
 

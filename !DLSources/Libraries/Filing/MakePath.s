@@ -17,7 +17,7 @@
         GET     RegDefs.h
         GET     Macros.h
 
-; char *Filing_MakePath(char *newpath, char *dirname, char *leafname);
+; char *Filing_MakePath(char *newpath, const char *dirname, const char *leafname);
 
         PREAMBLE
         STARTCODE Filing_MakePath

@@ -17,7 +17,7 @@ char *clear__creator;
 unsigned clear__creatorversion;
 
 
-void Clear_Init(char *creator, unsigned version)
+void Clear_Init(const char *creator, unsigned version)
 {
   clear__creator = creator;
   clear__creatorversion = version;

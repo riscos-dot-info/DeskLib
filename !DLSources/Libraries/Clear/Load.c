@@ -33,7 +33,7 @@ static clear_picture *Clear__AbortLoad(file_handle in, clear_picture *temp)
   return NULL;
 }
 
-clear_picture *Clear_Load(char *filename)
+clear_picture *Clear_Load(const char *filename)
 {
   file_handle   in = 0;
   clear_picture *temp = NULL;

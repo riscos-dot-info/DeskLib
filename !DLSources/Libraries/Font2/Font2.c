@@ -141,7 +141,7 @@ font2__initialised = TRUE;
 
 
 
-os_error	*Font2_ReclaimFont( font2_block **font2, char *name, int sizex, int sizey)
+os_error	*Font2_ReclaimFont( font2_block **font2, const char *name, int sizex, int sizey)
 {
 
 if ( !font2__initialised)	Font2_Initialise();
@@ -177,7 +177,7 @@ return f;
 
 
 
-os_error	*Font2_ClaimFont( font2_block **font2, char *name, int sizex, int sizey)
+os_error	*Font2_ClaimFont( font2_block **font2, const char *name, int sizex, int sizey)
 {
 os_error	*e;
 font_handle	handle;

@@ -19,7 +19,7 @@
 
 #include "DeskLib:Str.h"
 
-extern int strlencr(char *s)
+extern int strlencr(const char *s)
 /* return number of bytes needed to store this string, including terminator */
 {
   register int index = 0;

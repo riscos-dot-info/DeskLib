@@ -22,7 +22,7 @@
 #include "DeskLib:WimpSWIs.h"
 #include "DeskLib:WAssert.h"
 
-void __wassert(char *message)
+void __wassert(const char *message)
 {
 	os_error error;
 	error.errnum = 0;

@@ -18,7 +18,7 @@
 #include "DeskLib:Validation.h"
 
 
-extern int Validation_ScanString(char *string, char tag)
+extern int Validation_ScanString(const char *string, char tag)
 {
   register int  index;
   register char trytag;
