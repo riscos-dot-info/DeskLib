@@ -1,0 +1,34 @@
+
+Resource_ChoicesInit()
+======================
+
+ * This generates a fatal error if the 'appname' parameter is null.
+
+   It could alternatively extract the appname from the 'resource_pathname'
+   global, in the event of a null 'appname' parameter.
+
+   I think having the appname specifiable is important, for cases where
+   the config utility may be separate from the main application, but this
+   fallback approach could be useful.
+
+
+
+Resource_ChoicesPath()
+======================
+
+ * I've allocated 256 chars for 'Choices$Write' and 'Choices:' sys vars.
+   Is this enough ?  1024 ?
+
+
+ * There are 2 blocks of similar code (setting up of pathname using
+   Choices$Write) that could be moved out into a sub function.
+
+   This would shorten the code, simplify its readability, and remove any
+   chance of introducing disparity.
+
+
+ * In the section that deals with an 'upgrade' (ie the new boot has
+   recently been installed), I'm uncertain of the action to take in the
+   case of an error when copying the old choices file to the new location.
+
+

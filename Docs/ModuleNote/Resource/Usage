@@ -1,0 +1,65 @@
+
+Usage of these Resource_Choices routines
+========================================
+
+These routines provide support for saving and loading an application's
+user options files.  The Choices system is used (if present), with
+automatic fallback behaviour on systems where it is not present.
+
+It has been designed to make the whole process simple to use ...
+
+
+A single call of 'Resource_ChoicesInit()' during a program's
+initialisation stage to specify the application name, a groupdir name (or
+NULL if none), and whether the program uses just one (or multiple) options
+file(s).
+
+Then a single call to 'Resource_ChoicesPath()' whenever you wish to read
+or write the program's options.  This function's parameters specify the
+'pathname' return variable, the 'suggested' leafname and whether you are
+about to read or write options.  The function fills in 'pathname'
+appropriately dependant on the parameters supplied and whether or not the
+Choices system is detected.  The user can then read or write the options
+data from/to 'pathname'.
+
+---------------------------------------------------------------------------
+
+Eg.
+
+For my !Mixer program, which uses a single options file stored within a
+group directory 'MidiWays' (choices for all my programs are grouped within
+this 'MidiWays' directory).
+
+During the main init stage :
+
+   Resource_ChoicesInit("MidiWays", "Mixer", Choices_Single);
+
+ie, the application !Mixer has a single choices file, held in the groupdir
+MidiWays.
+
+
+Loading options :
+~~~~~~~~~~~~~~~
+
+  char              pathname[1024];
+  Resource_ChoicesPath(pathname, "!Config", Choices_Read);
+  // Then check file 'pathname' exists, load it, and extract choices
+  // details.  Otherwise report error 'Can't load user choices' or use
+  // internal default choices.
+
+
+Saving options :
+~~~~~~~~~~~~~~
+
+  char              pathname[1024];
+  Resource_ChoicesPath(pathname, "!Config", Choices_Write);
+  // Then attempt to open 'pathname' for writing, and write choices.
+  // Otherwise report error 'Can't write user choices'.
+
+
+Note that in this example, because I've specified 'Choices_Single', on a
+     system with the new boot, the options are saved in a file called
+     Mixer (in directory MidiWays) - the suggested leafname '!Config' is
+     not used.
+
+---------------------------------------------------------------------------
