@@ -21,14 +21,25 @@ LIB = libfile -c -l $@
 # convert the endings to .o instead
 all_objects = $(patsubst %.s,%.o,$(patsubst %.c,%.o,$(filter %.c %.s,$(wildcard Libraries/*/*))))
 
-# For RISC OS use (converts to o.filename)
-libfile_objects = $(subst /,.,$(addsuffix .o.*, $(filter-out Libraries/CVS, $(wildcard Libraries/*))))
-                                      
-# For GCC-SDK use (make filenames like filename.o) (?)                        
+#
+# For RISC OS use
+#
+# Gets all object directories in Libraries
+library_dirs = $(subst /,.,$(filter-out Libraries/CVS, $(wildcard Libraries/*)))
+# (adds .o.* to each directory for libfile to use)
+libfile_objects = $(addsuffix .o.*, $(library_dirs))
+# (creates o directories) 
+discard = $(foreach dir, $(library_dirs), $(shell cdir $(dir).o))
+
+#
+# For GCC-SDK use (make filenames like filename.o) (?)
+#                        
 # libfile_objects = $(addsuffix *.o, $(filter-out Libraries/CVS, $(wildcard Libraries/*)))
 
 DeskLib: $(all_objects)
 	$(LIB) $(libfile_objects)
+
+makedirs: $(discard)
 
 # Static dependencies:
 .SUFFIXES: .s .c .o
