@@ -4,4 +4,4 @@
 Iconsprites <Obey$Dir>.!Sprites
 
 If "<DeskLib_User$Dir>" = "" Then Set DeskLib_User$Dir <Obey$Dir>
-If "<DeskLib_User$Path>" = "" Then Set DeskLib_User$Path <DeskLib_User$Dir>.
+If "<DeskLib_User$Path>" = "" Then Set DeskLib_User$Path <DeskLib_User$Dir>.,<DeskLib_User$Dir>.include.,
