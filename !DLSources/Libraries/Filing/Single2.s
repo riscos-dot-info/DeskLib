@@ -33,7 +33,7 @@
 loop
         MOV     r3, #256
         SWI     SWI_OS_GBPB + XOS_Bit
-        LDMVSFD sp!, {r4-r6,pc}^
+        LDMVSFD sp!, {r4-r6,pc}
 
         TEQ     r3, #1
         BEQ     endok

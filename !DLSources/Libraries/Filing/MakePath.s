@@ -26,7 +26,7 @@
         TEQNE   r1, #0
         TEQNE   r2, #0
         MOVEQ   r0, #0
-        MOVEQS  pc, lr
+        MOVEQ   pc, lr
 
 loop1
         LDRB    r3, [r1], #1

@@ -36,14 +36,12 @@
         PREAMBLE
         STARTCODE Wimp_GetWindowState
 ;
-;        STMFD   sp!, {lr}
         MOV     ip, lr
 
         STR     a1, [a2, #0]
         SWI     SWI_Wimp_GetWindowState + XOS_Bit
         MOVVC   a1, #0
 
-        MOVS    pc, ip
-;        LDMFD   sp!, {pc}^
+        MOV     pc, ip
 ;
         END

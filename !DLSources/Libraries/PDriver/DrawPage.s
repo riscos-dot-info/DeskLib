@@ -25,7 +25,7 @@
         MOV     ip, sp
         STMFD   sp!, {lr}
         SWI     SWI_PDriver_DrawPage + XOS_Bit
-        LDMVSFD sp!, {pc}^        ; Error - return directly
+        LDMVSFD sp!, {pc}         ; Error - return directly
 
         LDR     a2, [ip, #0]
         CMP     a2, #0
