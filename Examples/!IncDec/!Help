@@ -1,0 +1,10 @@
+!IncDec
+by Lee Atkinson
+
+This example application tests the Icon increment/decrement button handlers
+These provide a simple way of adding a writable integer icon to your window,
+with bump icons with which the value can be increased/decreased.
+
+You will need to make this application before you can run it - inside the
+application directory you will find the source, and a makefile.
+

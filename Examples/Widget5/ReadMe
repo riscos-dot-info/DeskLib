@@ -1,0 +1,33 @@
+The version of !Widget5 here is slightly different from the one I have
+uploaded to Hensa.
+
+Firstly, it has some extra features turned on (by setting Widget5$Options
+in the !Run file). This makes it load and save two new file formats, but
+these are only of interest if you have done the image processing option
+in the BSc Physics course at Imperial College (Widget4) and the image
+processing option in the MSc in Information Technology course at Kingston
+University (Widget5). Widget4 was the program I wrote for the previous 
+course and this is the sequel, so I made it support both file formats so 
+I could use the images I had previously, but turned them off in the 
+release version as I randomly chose the filetype numbers.
+
+Secondly, I have optimised the Scale process by making the maths integer
+rather than floating point, this has made about a 20 times speed increase!
+
+It only works on 256 grey level images though.
+
+If you want to compile it then you will have to build "HackLib" (sources
+included). This is basically code which emulates the parts of RISCOS_Lib
+that flex uses so that it can be used with DeskLib (as Mem has some bugs
+which makes it crash with 100% certainty). Extract flex from RISCOS_Lib
+using libfile and then make a library with HackLib.Build.o.hacklib and
+put it in HackLib.o. Put the flex header in HackLib.h and HackLib.StartHLib
+sets up the paths needed. Also I had Dialog2 as a separate library so you
+may need to change that aswell.
+
+As to the program itself, I would like your comments on the UI, in particular
+the fact that some of the processes have separate choose banks and process
+options windows that follow on from each other and some have them combined.
+Which is better do you think? Also, are there anything missing in your
+opinion?
+

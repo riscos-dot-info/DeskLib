@@ -1,0 +1,2 @@
+Prefix <Obey$Dir>.
+TaskWindow "amu -f ^.MakeFile CCExtra=-DDeskLib_DEBUG" -name "Making with DeskLib_DEBUG" -wimpslot 640k -quit                          

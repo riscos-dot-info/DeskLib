@@ -1,0 +1,6 @@
+This application demonstrates how to use DeskLib's Dialog2 and Menu2
+libraries.
+
+There are is a normal version of the program, and a version which is
+compiled with 'DeskLib_DEBUG' predefined so that it produces diagnostics
+using the Debug_Printf function.
