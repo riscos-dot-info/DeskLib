@@ -153,28 +153,14 @@ extern void Window_DeleteOrig(window_handle window);
 */
 
 
-extern void Window_GetInfo(window_handle window, window_info *result);
+#define Window_GetInfo3 Window_GetInfo
+extern os_error *Window_GetInfo(window_handle window, window_info *result);
 /*
   This is simply a frontend to the Wimp_GetWindowInfo call. However, it
   returns the Window info block *without* the icon definitions.
   Thus, you can use a window_info structure in your local variables without
   having to allocate enough memory to cope with any icons that the window
-  happens to have in it. This is the old, slow, nasty RISC OS 2 compatible
-  version of this function. See Window_GetInfo3 (below) for RISC OS 3
-  specialness.
-*/
-
-
-extern os_error *Window_GetInfo3(window_handle window, window_info *result);
-/*
-  This is simply a frontend to the Wimp_GetWindowInfo call. However, it
-  returns the Window info block without the icon definitions.
-  Thus, you can use a window_info structure in your local variables without
-  having to allocate enough memory to cope with any icons that the window
   happens to have in it.
-
-  This version is a smaller, tidier, faster version of the GetInfo call
-  which makes use of a new feature of the SWI, available only under RISC OS 3
 */
 
 
