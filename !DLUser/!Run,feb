@@ -1,2 +1,9 @@
-Run <Obey$Dir>.!Boot
+| !DeskLib.!Boot does 'Set DeskLib$Path DeskLib_User:,DeskLib_Core:'
+| and sets DeskLib_Core:, so we only have to define DeskLib_User:
+
+IconSprites <Obey$Dir>.!Sprites
+
+Set DeskLib_User$Dir <Obey$Dir>
+Set DeskLib_User$Path <DeskLib_User$Dir>.
+
 Filer_OpenDir <Obey$Dir>

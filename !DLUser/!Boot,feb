@@ -3,5 +3,5 @@
 
 Iconsprites <Obey$Dir>.!Sprites
 
-Set DeskLib_User$Dir <Obey$Dir>
-Set DeskLib_User$Path <DeskLib_User$Dir>.
+If "<DeskLib_User$Dir>" = "" Then Set DeskLib_User$Dir <Obey$Dir>
+If "<DeskLib_User$Path>" = "" Then Set DeskLib_User$Path <DeskLib_User$Dir>.
