@@ -3,8 +3,8 @@
 ; Copyright 1993 Shaun Blackmore
 
         GET     macros.h
-        GET     ^.h.RegNames
-        GET     ^.h.SWInames
+        GET     regdefs.h
+        GET     swinos.h
 ;
         PREAMBLE
         STARTCODE ColourTrans_InvalidateCache
