@@ -28,6 +28,8 @@ extern "C" {
 
 /* Abstract */
 /*
+   Warning: This API has not yet been implemented.  Do not use.  
+
    These declarations are essentially just wrappers for the PCI SWIs.
    In time, we might add more complex functionality.
 

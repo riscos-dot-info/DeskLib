@@ -23,7 +23,7 @@ For examples of this, look in the Examples directory.
 
 Jason Williams May 1993
 Julian Smith May 1995
-Peter Naulls Nov 2002
+Peter Naulls Nov 2002-2003
 
 Contact: peter@chocky.org
 
@@ -31,10 +31,7 @@ Contact: peter@chocky.org
 About This Version
 ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
 
-This is version 2.50pre4 of DeskLib, the first release in rather a long time.
-This version was brought about for several reasons, one was for a 32-bit
-version DeskLib, another was the need for a reasonably popular Wimp
-library to be brought up to date.  The latter is ongoing.
+This is version 2.50 of DeskLib, the second 32-bit release.
 
 This version of DeskLib is 32-bit only.  This means that to use it, you
 will require a 32-bit C Compiler, such as Castle's 32-bit C/C++ tools,
@@ -81,6 +78,6 @@ function, typedef and global variable mentioned in the header files.
 Version
 ˜˜˜˜˜˜˜
 
-This is DeskLib version 2.50pre4
+This is DeskLib version 2.50
 
 Peter Naulls
