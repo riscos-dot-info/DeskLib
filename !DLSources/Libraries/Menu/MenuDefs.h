@@ -5,9 +5,9 @@
 #include "DeskLib:Wimp.h"
 #endif
 
-extern void Menu__CountItems(char *description, int *numitems,
+extern void Menu__CountItems(const char *description, unsigned int *numitems,
                              unsigned int *menuwidth);
 
-extern BOOL Menu__Create(menu_item *item, char *description, int numitems);
+extern BOOL Menu__Create(menu_item *item, const char *description, int numitems);
 
 #endif

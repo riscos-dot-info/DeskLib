@@ -28,11 +28,11 @@
 
 ****************************************************************************/
 
-extern menu_ptr ColourMenu_Create(char *name)
+extern menu_ptr ColourMenu_Create(const char *name)
 { menu_ptr menu;
   menu_item *item;
 
-  menu = Menu_New(name,"0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15");
+  menu = Menu_New(name, "0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15");
 
   item = (menu_item *) (((int) menu) + sizeof(menu_block));
   item = &item[0];

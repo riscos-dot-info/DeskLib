@@ -24,16 +24,11 @@
 #include "MenuDefs.h"
 
 
-/* These two functions are defined in Menu.c.NewMenu */
-extern void Menu__CountItems(char *, int *, unsigned int *);
-extern BOOL Menu__Create(menu_item *, char *, int);
-
-
-extern menu_ptr Menu_Extend(menu_ptr menu, char *description)
+extern menu_ptr Menu_Extend(menu_ptr menu, const char *description)
 {
   menu_ptr  newmenu;
   unsigned int   maxwidth = 0;
-  int            newitems = 0, lastitem = 0;
+  unsigned int   newitems = 0, lastitem = 0;
   menu_item *item = (menu_item *) ((int) menu + sizeof(menu_block));
 
   Menu__CountItems(description, &newitems, &maxwidth);

@@ -19,7 +19,7 @@
 #include "DeskLib:SWI.h"
 
 
-extern BOOL OS_ReadVarVal(char *varname, char *buf, int bufsize)
+extern BOOL OS_ReadVarVal(const char *varname, char *buf, int bufsize)
 {
   int result;
   

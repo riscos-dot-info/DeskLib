@@ -56,18 +56,18 @@ extern void Window_Show(window_handle window, window_openpos openpos)
     case open_OVERCARET:
       {
         caret_block  caret;
-        window_state wstate;
+        window_state car_wstate;
 
         Wimp_GetCaretPosition(&caret);
 
         if (caret.window > 0)
         {
-          Wimp_GetWindowState(caret.window, &wstate);
+          Wimp_GetWindowState(caret.window, &car_wstate);
 
-          moveto.x = wstate.openblock.screenrect.min.x +
-                     (caret.offset.x - wstate.openblock.scroll.x) - 64;
-          moveto.y = wstate.openblock.screenrect.max.y -
-                     (caret.offset.y - wstate.openblock.scroll.y) + 64;
+          moveto.x = car_wstate.openblock.screenrect.min.x +
+                     (caret.offset.x - car_wstate.openblock.scroll.x) - 64;
+          moveto.y = car_wstate.openblock.screenrect.max.y -
+                     (caret.offset.y - car_wstate.openblock.scroll.y) + 64;
         }
         else
         {

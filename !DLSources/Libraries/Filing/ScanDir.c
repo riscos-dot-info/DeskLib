@@ -46,14 +46,15 @@ static os_error *Filing__ScanDirRec(char *dirname, filing_fulldirentry *dirdata,
        break;
      }
      readnum=255;
-     er=Filing_ReadFullDirEntry(dirname,(filing_fulldirentry *)direntries,&readnum,&offset,BUF__SIZE,NULL);
-     if (er!=NULL) {
+     er = Filing_ReadFullDirEntry(dirname, (filing_fulldirentry *)(void *)direntries,
+                                  &readnum,&offset,BUF__SIZE,NULL);
+     if (er != NULL) {
        return er;
      }
      if (readnum==0) {
        break;
      }
-     actptr=(filing_fulldirentry *)direntries;
+     actptr=(filing_fulldirentry *)(void *)direntries;
    }
    else {
      actptr=(filing_fulldirentry *)(((int)(&actptr->name)+strlen(actptr->name)+4)&~3);

@@ -25,7 +25,8 @@ linklist_header msgtrans__list = {NULL,NULL};
 static os_error error;
 
 
-os_error *MsgTrans_LoadFile(msgtrans_filedesc **filedesc,char *filename)
+os_error *MsgTrans_LoadFile(msgtrans_filedesc **filedesc,
+                            const char *filename)
 {
   int flags;
   int size;

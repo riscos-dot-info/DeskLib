@@ -27,9 +27,9 @@ char *strdup(const char *src)
   if (src == NULL)
     return NULL;
 
-  len = strlen((char *) src) + 1;
+  len = strlen(src) + 1;
 
-  dest = (char *) malloc(len);
+  dest = malloc(len);
 
   if (dest == NULL)
     return NULL;
@@ -37,7 +37,7 @@ char *strdup(const char *src)
   memcpy(dest, src, len-1);
 
   /* make sure string is zero terminated */
-  dest[len-1] = (char) 0;
+  dest[len-1] = '\0';
 
   return dest;
 }

@@ -30,7 +30,7 @@ extern void Icon_DisposeIndData(icon_data *data, icon_flags flags)
   if (!flags.data.text && flags.data.sprite)             /* Sprite only icon */
   {
     if (data->indirectsprite.nameisname)
-      free((void *) data->indirectsprite.name);
+      free((void *)(int)data->indirectsprite.name);
     return;
   }
 
