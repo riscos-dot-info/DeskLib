@@ -28,7 +28,7 @@
 
 
 
-extern void Error_Report( int errornum, char *report, ...)
+extern void Error_Report( int errornum, const char *report, ...)
 {
 va_list	va;
 
@@ -44,7 +44,7 @@ va_end( va);
 
 
 
-extern void Error_ReportFatal( int errornum, char *report, ...)
+extern void Error_ReportFatal( int errornum, const char *report, ...)
 {
 va_list	va;
 char	errmess[256];
@@ -63,7 +63,7 @@ exit(1);
 
 
 
-extern void Error_ReportInternal( int errornum, char *report, ...)
+extern void Error_ReportInternal( int errornum, const char *report, ...)
 {
 va_list	va;
 char	errmess[256];
@@ -78,7 +78,7 @@ Error_Report( errornum, errmess);
 
 
 
-extern void Error_ReportFatalInternal( int errornum, char *report, ...)
+extern void Error_ReportFatalInternal( int errornum, const char *report, ...)
 {
 va_list	va;
 char	errmess[256];
@@ -112,7 +112,7 @@ if (error != NULL)	Error_ReportFatal( error->errnum, error->errmess);
 
 
 
-extern BOOL Error_OutOfMemory( BOOL fatal, char *place)
+extern BOOL Error_OutOfMemory( BOOL fatal, const char *place)
 {
 if ( fatal)	Error_ReportFatal( 0, "Unable to get enough memory for the %s", place);
 

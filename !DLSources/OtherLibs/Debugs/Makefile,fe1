@@ -1,5 +1,7 @@
 # Sub-makefile for the Debugging libraries
 
+CFLAGS += -DDeskLib_DEBUG
+
 DebugsDir	=	<DeskLib$$Dir>.o.Debug
 
 debugs:				\
@@ -7,7 +9,7 @@ debugs:				\
 	$(DebugsDir).uniquepipe	\
 	$(DebugsDir).pipetype	\
 	$(DebugsDir).uniquefile	\
-	$(DebugsDir).Signal
+	$(DebugsDir).Signal	
 #	$(DebugsDir).heapgraph
 
 $(DebugsDir).Signal:	OtherLibs/Debugs/Signal.o OtherLibs/Debugs/Debug.o
@@ -30,6 +32,10 @@ $(DebugsDir).uniquefile: OtherLibs/Debugs/uniquefile.o OtherLibs/Debugs/Debug.o
 	@mkdir -p $(DebugsDir)
 	$(AR) -c $@ $(AFLAFS) OtherLibs.Debugs.o.uniquefile OtherLibs.Debugs.o.Debug
 
+#$(DebugsDir).heapgraph: OtherLibs/Debugs/heapgraph.o OtherLibs/Debugs/Debug.o
+#	@mkdir -p $(DebugsDir)
+#	$(AR) -c $@ $(AFLAFS) OtherLibs.Debugs.o.heapgraph OtherLibs.Debugs.o.Debug
+
 OtherLibs/Debugs/Debug.o:
 	@mkdir -p $(@D)/o
 	$(CC) $(CFLAGS) -D_DeskLib_Debug -c OtherLibs/Debugs/Debug.c -o $@
@@ -50,6 +56,7 @@ OtherLibs/Debugs/uniquefile.o:
 	@mkdir -p $(@D)/o
 	$(CC) $(CFLAGS) -D_DeskLib_Debug -c OtherLibs/Debugs/uniquefile.c -o $@
 
-# $(DebugsDir).heapgraph:	o.heapgraph o.Debug
-# 	$(LIBFILE) $(LibFileFlags) $@ o.heapgraph o.Debug
+#OtherLibs/Debugs/heapgraph.o:
+#	@mkdir -p $(@D)/o
+#	$(CC) $(CFLAGS) -D_DeskLib_Debug -c OtherLibs/Debugs/heapgraph.c -o $@
 
