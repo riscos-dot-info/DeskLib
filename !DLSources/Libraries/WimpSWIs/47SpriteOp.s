@@ -42,6 +42,6 @@
         SWI     SWI_Wimp_SpriteOp + XOS_Bit
         STMIA   ip, {a1-v6}
         MOVVC   a1, #0
-        LDMFD   sp!, {v1-v6, pc}^
+        LDMFD   sp!, {v1-v6, pc}
 ;
         END

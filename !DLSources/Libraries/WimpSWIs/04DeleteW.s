@@ -38,6 +38,6 @@
         MOV     a2, sp
         SWI     SWI_Wimp_DeleteWindow + XOS_Bit
         MOVVC   a1, #0
-        LDMFD   sp!, {a2, pc}^
+        LDMFD   sp!, {a2, pc}
 ;
         END

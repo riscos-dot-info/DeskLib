@@ -42,6 +42,6 @@
         LDMFD   a2,  {a2, a3, a4, v1}
         SWI     SWI_Wimp_BlockCopy + XOS_Bit
         MOVVC   a1, #0
-        LDMFD   sp!, {v1, v2, v3, pc}^
+        LDMFD   sp!, {v1, v2, v3, pc}
 ;
         END

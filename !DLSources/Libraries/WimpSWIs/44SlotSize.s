@@ -52,6 +52,6 @@
         STRVC   a2, [v2, #0]
         STRVC   a3, [v3, #0]
         MOVVC   a1, #0
-        LDMFD   sp!, {v1, v2, v3, pc}^
+        LDMFD   sp!, {v1, v2, v3, pc}
 ;
         END

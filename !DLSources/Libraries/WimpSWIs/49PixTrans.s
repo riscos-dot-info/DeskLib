@@ -42,6 +42,6 @@
         MOV     v3, a4
         SWI     SWI_Wimp_ReadPixTrans + XOS_Bit
         MOVVC   a1, #0
-        LDMFD   sp!, {v1-v4, pc}^
+        LDMFD   sp!, {v1-v4, pc}
 ;
         END

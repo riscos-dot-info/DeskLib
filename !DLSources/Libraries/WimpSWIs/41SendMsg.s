@@ -42,7 +42,7 @@
         SWI     SWI_Wimp_SendMessage + XOS_Bit
         MOVVC   a1, #0
 
-        MOVS    pc, ip
-;        LDMFD   sp!, {pc}^
+        MOV     pc, ip
+;        LDMFD   sp!, {pc}
 ;
         END

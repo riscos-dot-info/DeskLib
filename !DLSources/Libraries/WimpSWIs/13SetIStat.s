@@ -41,6 +41,6 @@
         SWI     SWI_Wimp_SetIconState + XOS_Bit
         MOVVC   a1, #0
         ADD     sp, sp, #16
-        LDMFD   sp!, {pc}^
+        LDMFD   sp!, {pc}
 ;
         END

@@ -41,6 +41,6 @@
         LDMFD   ip!, {a1, a2, a3, a4, v1, v2}
         SWI     SWI_Wimp_SetPointerShape + XOS_Bit
         MOVVC   a1, #0
-        LDMFD   sp!, {v1, v2, pc}^
+        LDMFD   sp!, {v1, v2, pc}
 ;
         END

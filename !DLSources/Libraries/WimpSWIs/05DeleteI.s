@@ -40,6 +40,6 @@
         MOV     a2, sp
         SWI     SWI_Wimp_DeleteIcon + XOS_Bit
         MOVVC   a1, #0
-        LDMFD   sp!, {a2, a3, pc}^
+        LDMFD   sp!, {a2, a3, pc}
 ;
         END
