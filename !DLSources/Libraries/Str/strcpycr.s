@@ -26,7 +26,7 @@
 strcpycr_00
         LDRB    ip,[a2,v1]
         CMP     ip,#31
-        STRGTB  ip,[a1,v1]
+        STRHIB  ip,[a1,v1]
         ADDGT   v1,v1,#1
         BGT     strcpycr_00
         MOV     ip,#0
