@@ -23,13 +23,17 @@
 
 extern void Menu_Warn(menu_ptr menu, int entry, BOOL yesno,
                       event_handler handler, void *reference)
-{
-  menu_item *item = (menu_item *) (((int) menu) + sizeof(menu_block));
+{       
+  /* The array of menu items directly follows the menu_block */
+  menu_item *items = (menu_item *)  &(menu[1]);
 
-  item = &item[entry];
-  item->menuflags.data.notifysub = yesno;
-  if (yesno)
-    EventMsg_Claim(message_MENUWARNING, event_ANY, handler, reference);
-  else
-    EventMsg_Release(message_MENUWARNING, event_ANY, handler);
+  items[entry].menuflags.data.notifysub = yesno;
+
+  if (handler != NULL)
+  {
+    if (yesno)
+      EventMsg_Claim(message_MENUWARNING, event_ANY, handler, reference);
+    else
+      EventMsg_Release(message_MENUWARNING, event_ANY, handler);
+  }
 }
