@@ -22,7 +22,7 @@
         LDR     r4,[ip,#0]
         LDR     r5,[ip,#4]
         SWI     SWI_Font_FindFont + XOS_Bit
-        STR     r0,[r6,#0]
+        STRVC   r0,[r6,#0]
         MOVVC   r0,#0
         LDMFD   sp!, {r4,r5,r6,pc}
 ;
