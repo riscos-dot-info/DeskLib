@@ -23,11 +23,12 @@
 #include "DeskLib:Error.h"             /* Error despatcher                 */
 #include "DeskLib:File.h"              /* Low level file handling          */
 #include "DeskLib:Resource.h"          /* Handles finding resource files   */
+#include "DeskLib:Screen.h"            /* Getting screen size info, etc    */
 #include "DeskLib:Sprite.h"            /* Sprite handling                  */
 
 /* --- CLib -------------------------------------------------------------- */
 #include <stdlib.h>      /*  Standard library routines                     */
-#include <string.h>      /*  String manipulation routines                  */
+#include <stdio.h>       /*  General I/O routines                          */
 
 /* === FUNCTION DEFINITIONS ============================================== */
 
@@ -50,13 +51,23 @@ extern void Resource_LoadSprites(void)
   int                   filesize;
 
   if (resource_sprites != (sprite_area) 1)
-    return;   /* The resources have already been loaded?! */
+    return;   /* The resources have already been loaded */
 
-  strcpy(filename, resource_pathname);  strcat(filename, "Sprites");
+  Screen_CacheModeInfo();
+  if (screen_eig.y == 1) {
+    sprintf(filename, "%sSprites22", resource_pathname);
+    if (File_Exists(filename) == FALSE) {
+      sprintf(filename, "%sSprites", resource_pathname);
+    }
+  } else {
+    sprintf(filename, "%sSprites", resource_pathname);
+  }
+
   filesize = File_Size(filename);
   if (filesize == 0) {
     Error_ReportFatal(1, "'Sprites' resource file not found");
   }
+
   resource_sprites = malloc(filesize + 16);
   resource_sprites->areasize = filesize + 16;
   resource_sprites->firstoffset = 16;
