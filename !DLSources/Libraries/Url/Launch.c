@@ -1,18 +1,13 @@
 /*
-    ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for
-    #   #  ##   ###  #  # #     # ###             RISC OS machines
-    #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #
-    #   # #        # # #  #     # #  #    Please refer to the accompanying
-    ####   ### ####  #  # ##### # ###    documentation for conditions of use
-    ________________________________________________________________________
-
-    File:    Url.Launch.c
-    Author:  Copyright © 2002 Antony Sidwell
-    Version: 1.00 (4 July 2002)
-    Purpose: Handle Url launching using the Event & EventMsg bits of DeskLib
-*/
+ * File: Url.Launch.c
+ * Author: Antony Sidwell, 4th July 2002
+ *
+ * Abstract: Handle URL launching using the Event & EventMsg bits of DeskLib.
+ *
+ * This file is part of DeskLib, the general-purpose freeware C library for
+ * RISC OS.  Please refer to the accompanying documentation for conditions
+ * of use.
+ */
 
 /*
  * About Url.Launch.c
