@@ -10,7 +10,7 @@
 
     File:    MsgTrans.LoseFile.c
     Author:  Copyright © 1994 Tony Houghton
-    Version: 1.01 (05 Nov 1994)
+    Version: 1.02 (28 Dec 2002)
     Purpose: Close a Messages file and free its memory
 */
 
@@ -25,9 +25,9 @@
 os_error *MsgTrans_LoseFile(msgtrans_filedesc *filedesc)
 {
   msgtrans_file *block;
-  os_error *swierr = MessageTrans_CloseFile(&block->filedesc);
+  os_error *swierr = MessageTrans_CloseFile(filedesc);
 
-  for (block = LinkList_NextItem(&msgtrans__list);block;block = LinkList_NextItem(&block))
+  for (block = LinkList_NextItem(&msgtrans__list);block;block = LinkList_NextItem(block))
     if (&block->filedesc == filedesc)
     {
       free(block->data);
@@ -37,3 +37,4 @@ os_error *MsgTrans_LoseFile(msgtrans_filedesc *filedesc)
     }
   return (swierr);
 }
+
