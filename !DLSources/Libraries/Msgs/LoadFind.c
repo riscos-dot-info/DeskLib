@@ -36,7 +36,8 @@
 #include "MsgsDefs.h"
 
 
-
+#undef getc
+#undef feof
 
 msgdefptr msgs_grouplist = NULL;
 
@@ -267,7 +268,7 @@ static BOOL AddMessage(char *grouptag, char *msgtag, char *message)
 
 
 
-extern BOOL Msgs_LoadFile(char *leafname)
+extern BOOL Msgs_LoadFile(const char *leafname)
 /*  Merges the given messages file into the current list of messages
  *  Messages with the same group.msg tag will be overwritten by the
  *  new messages coming in from the file.
