@@ -12,9 +12,9 @@
 ;   Version: 1.00 (24 Jul 1993)
 ;   Purpose: Off
 
-        GET     ^.h.regdefs
-        GET     ^.h.swinos
-        GET     ^.h.macros
+        GET     regdefs.h
+        GET     swinos.h
+        GET     macros.h
 
 ; void Hourglass_Off(void);
 

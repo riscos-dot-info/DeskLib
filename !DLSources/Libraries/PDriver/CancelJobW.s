@@ -13,9 +13,9 @@
 ;   Purpose: Cancels a print job - future attempts to output to it
 ;            generate an error.
 
-        GET     ^.h.regdefs
-        GET     ^.h.swinos
-        GET     ^.h.macros
+        GET     regdefs.h
+        GET     swinos.h
+        GET     macros.h
 
 ; os_error *PDriver_CancelJobWithError(print_job job, os_error *error);
 

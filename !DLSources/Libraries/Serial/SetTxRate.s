@@ -12,9 +12,9 @@
 ;   Version: 1.00 (21 Nov 1993)
 ;   Purpose: Set the transmission rate for the serial port.
 
-        GET     ^.h.regdefs
-        GET     ^.h.swinos
-        GET     ^.h.macros
+        GET     regdefs.h
+        GET     swinos.h
+        GET     macros.h
 
 ; os_error *Serial_SetTxRate(serial_rate rate);
 

@@ -12,9 +12,9 @@
 ;   Version: 1.00 (24 Jun 1994)
 ;   Purpose: Generic veneer to the OS_ReadModeVariable SWI.
 
-        GET     ^.h.regdefs
-        GET     ^.h.swinos
-        GET     ^.h.macros
+        GET     regdefs.h
+        GET     swinos.h
+        GET     macros.h
 
 ; os_error *OS_ReadModeVariable(int mode, mode_variable variable, int *value);
 

@@ -1,8 +1,8 @@
 ; Author: Copyright 1993 Jason Williams
 
-        GET     ^.h.regdefs
-        GET     ^.h.swinos
-        GET     ^.h.macros
+        GET     regdefs.h
+        GET     swinos.h
+        GET     macros.h
 
 ; os_error *PopUp_Open(popup_block *params)
 

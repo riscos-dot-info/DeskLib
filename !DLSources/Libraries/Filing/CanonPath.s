@@ -12,9 +12,9 @@
 ;   Version: 1.00 (13 Jul 1995)
 ;   Purpose: Converts a pathname to a canonicalised path
 
-        GET     ^.h.regdefs
-        GET     ^.h.swinos
-        GET     ^.h.macros
+        GET     regdefs.h
+        GET     swinos.h
+        GET     macros.h
 
 ; os_error *Filing_CanonicalisePath(char *pathname, char *buffer,
 ;                                   int size, int *spare);

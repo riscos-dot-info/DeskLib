@@ -12,9 +12,9 @@
 ;   Version: 1.00 (07 Jul 1993)
 ;   Purpose: Output a screen dump to the printer.
 
-        GET     ^.h.regdefs
-        GET     ^.h.swinos
-        GET     ^.h.macros
+        GET     regdefs.h
+        GET     swinos.h
+        GET     macros.h
 
 ; os_error *PDriver_ScreenDump(print_job job);
 

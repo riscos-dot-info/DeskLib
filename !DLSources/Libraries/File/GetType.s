@@ -14,9 +14,9 @@
 ;   Version: 1.02 (25 Sep 2002)
 ;   Purpose: SWI veneer for file operations - get the type of a file
 
-        GET     ^.h.regdefs
-        GET     ^.h.swinos
-        GET     ^.h.macros
+        GET     regdefs.h
+        GET     swinos.h
+        GET     macros.h
 ;
         PREAMBLE
         STARTCODE File_GetType

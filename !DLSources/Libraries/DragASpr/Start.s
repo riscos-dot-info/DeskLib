@@ -1,8 +1,8 @@
 ; Copyright 1993 Shaun Blackmore
 
-        GET     ^.h.regdefs
-        GET     ^.h.swinos
-        GET     ^.h.macros
+        GET     regdefs.h
+        GET     swinos.h
+        GET     macros.h
 
 ; void DragASprite_Start(int flags, void *spritearea, char *name, wimp_box *bound, wimp_box *parent);
 

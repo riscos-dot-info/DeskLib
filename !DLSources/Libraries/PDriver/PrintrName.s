@@ -13,9 +13,9 @@
 ;   Purpose: Calls PDriver_Info, and returns the Printer name, or 0 if no
 ;            printer is installed. (only tested on RO3.10)
 
-        GET     ^.h.regdefs
-        GET     ^.h.swinos
-        GET     ^.h.macros
+        GET     regdefs.h
+        GET     swinos.h
+        GET     macros.h
 
         PREAMBLE
         STARTCODE PDriver_PrinterName

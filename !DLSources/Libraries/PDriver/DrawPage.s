@@ -12,9 +12,9 @@
 ;   Version: 1.00 (07 Jul 1993)
 ;   Purpose: Initiates printing after rectangles have been specified.
 
-        GET     ^.h.regdefs
-        GET     ^.h.swinos
-        GET     ^.h.macros
+        GET     regdefs.h
+        GET     swinos.h
+        GET     macros.h
 
 ; os_error *PDriver_DrawPage(int copies, wimp_rect *rectangle_to_print, int sequence_no, char *page,
 ;                            int *finished, int *rectangle_id);

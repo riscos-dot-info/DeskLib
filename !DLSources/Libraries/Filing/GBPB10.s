@@ -14,9 +14,9 @@
 ;   Mods:    6 June 1995 - changed procedure name to a more
 ;                          DeskLib-compliant style
 
-        GET     ^.h.regdefs
-        GET     ^.h.swinos
-        GET     ^.h.macros
+        GET     regdefs.h
+        GET     swinos.h
+        GET     macros.h
 
 ; os_error *Filing_ReadDirEntry(char *dirname, void *buf,
 ;                               int *number, int *offset,

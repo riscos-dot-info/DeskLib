@@ -12,9 +12,9 @@
 ;   Version: 1.00 (24 Jul 1993)
 ;   Purpose: Alter the percentage displayed under the hourglass
 
-        GET     ^.h.regdefs
-        GET     ^.h.swinos
-        GET     ^.h.macros
+        GET     regdefs.h
+        GET     swinos.h
+        GET     macros.h
 
 ; void Hourglass_Percentage(int percent);
 

@@ -13,9 +13,9 @@
 ;   Purpose: Read time since startup in centiseconds (OS_ReadMonotonicTime)
 ;            (This is used in conjunction with Wimp_PollIdle)
 
-        GET     ^.h.regdefs
-        GET     ^.h.swinos
-        GET     ^.h.macros
+        GET     regdefs.h
+        GET     swinos.h
+        GET     macros.h
 
         PREAMBLE
         STARTCODE Time_Monotonic

@@ -13,9 +13,9 @@
 ;   Purpose: Set the format for data to be transmitted and received over
 ;            the serial line.
 
-        GET     ^.h.regdefs
-        GET     ^.h.swinos
-        GET     ^.h.macros
+        GET     regdefs.h
+        GET     swinos.h
+        GET     macros.h
 
 ; os_error *Serial_SetFormat(int format);
 
