@@ -24,6 +24,6 @@
         SWI SWI_PDriver_Info + XOS_Bit
         MOVVS r0, #0
         MOVVC r0, r4
-        LDMFD sp!, {r1-r6, pc}^
+        LDMFD sp!, {r1-r6, pc}
 ;
         END

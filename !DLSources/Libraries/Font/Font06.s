@@ -21,6 +21,6 @@
         MOV     r1,r0
         SWI     SWI_Font_Paint + XOS_Bit
         MOVVC   r0,#0
-        LDMFD   sp!, {r4,pc}^
+        LDMFD   sp!, {r4,pc}
 ;
         END

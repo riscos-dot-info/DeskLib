@@ -36,9 +36,9 @@
         MOV     a1,a3,LSL#12
         MOV     a1,a1,LSR#12+8
 
-        LDMFD   sp!, {v1, v2, pc}^
+        LDMFD   sp!, {v1, v2, pc}
 err
         MOV     a1,#-1
-        LDMFD   sp!, {v1, v2, pc}^
+        LDMFD   sp!, {v1, v2, pc}
 ;
         END

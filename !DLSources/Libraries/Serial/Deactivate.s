@@ -26,6 +26,6 @@
         MOV     a2, #0
         SWI     SWI_OS_Byte + XOS_Bit
         MOVVC   a1, #0
-        LDMFD   sp!, {pc}^
+        LDMFD   sp!, {pc}
 ;
         END

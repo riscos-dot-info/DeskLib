@@ -28,6 +28,6 @@
         SWI     SWI_OS_Module + XOS_Bit
         MOVVC   a1, #0
         STRVC   a3, [v1]
-        LDMFD   sp!, {v1,pc}^
+        LDMFD   sp!, {v1,pc}
 ;
         END

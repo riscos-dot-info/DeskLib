@@ -31,10 +31,10 @@
         MOV     r1, r0
         MOV     r0, #37
         SWI     SWI_OS_FSControl + XOS_Bit
-        LDMVSFD sp!, {r4-r5,pc}^
+        LDMVSFD sp!, {r4-r5,pc}
         MOV     r0,#0
         TEQ     ip, #0
         STRNE   r5, [ip]
-        LDMFD   sp!, {r4-r5,pc}^
+        LDMFD   sp!, {r4-r5,pc}
 ;
         END

@@ -49,6 +49,6 @@
         STRNE     v3,[a1]
         MOV       a1,v2
         MVNVS     a1,#0
-        LDMFD     sp!, {v1-v6, pc}^
+        LDMFD     sp!, {v1-v6, pc}
 ;
 	END

@@ -44,6 +44,6 @@
         LDMFD   sp!, {a2}
         STMVCIA a2, {a4, v1, v2, v3}
         MOVVC   a1, #0
-        LDMFD   sp!, {v1, v2, v3, pc}^
+        LDMFD   sp!, {v1, v2, v3, pc}
 ;
         END

@@ -17,6 +17,6 @@
         SWI     SWI_Font_ListFonts + XOS_Bit
         STR     r2,[r4,#0]
         MOVVC   r0,#0
-        LDMFD   sp!, {r4,pc}^
+        LDMFD   sp!, {r4,pc}
 ;
         END

@@ -17,6 +17,6 @@
         LDR     r4,[ip,#0]
         SWI     XSWI_ColourTrans_SelectTable
         MOVVC   r0, #0
-        LDMFD   sp!,{r4,pc}^
+        LDMFD   sp!,{r4,pc}
 ;
         END

@@ -42,10 +42,10 @@ loop
 
         MOV     r0, #0                 ;
         STR     r0, [r2, #16]          ; objtype = 0
-        LDMFD   sp!, {r4-r6,pc}^
+        LDMFD   sp!, {r4-r6,pc}
 
 endok
         MOV     r0, #0
-        LDMFD   sp!, {r4-r6,pc}^
+        LDMFD   sp!, {r4-r6,pc}
 ;
         END

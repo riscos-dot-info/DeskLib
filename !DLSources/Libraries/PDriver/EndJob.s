@@ -24,6 +24,6 @@
         STMFD   sp!, {lr}
         SWI     SWI_PDriver_EndJob + XOS_Bit
         MOVVC   a1, #0
-        LDMFD   sp!, {pc}^
+        LDMFD   sp!, {pc}
 ;
         END

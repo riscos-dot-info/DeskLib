@@ -43,6 +43,6 @@ MessageTrans_CloseFile
         SWI     SWI_MessageTrans_CloseFile + XOS_Bit
 
         MOVVC   a1,#0
-        LDMFD   sp!,{pc}^
+        LDMFD   sp!,{pc}
 
         END

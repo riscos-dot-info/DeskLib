@@ -11,6 +11,6 @@
 ;
         STMFD   sp!, {lr}
         SWI     SWI_PopUp_Close + XOS_Bit
-        LDMFD   sp!, {pc}^
+        LDMFD   sp!, {pc}
 ;
         END

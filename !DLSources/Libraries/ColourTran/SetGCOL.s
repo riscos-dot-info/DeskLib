@@ -15,6 +15,6 @@
         MOV     r4,r2
         SWI     XSWI_ColourTrans_SetGCOL
         MOVVC   r0, #0
-        LDMFD   sp!,{r4,pc}^
+        LDMFD   sp!,{r4,pc}
 ;
         END

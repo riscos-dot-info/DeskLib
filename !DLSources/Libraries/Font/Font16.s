@@ -18,5 +18,5 @@
         SWI     SWI_Font_FindCaretJ + XOS_Bit
         STMIA   r6,{r1,r2,r3,r4,r5}
         MOVVC   r0,#0
-        LDMFD   sp!, {r4,r5,r6,pc}^
+        LDMFD   sp!, {r4,r5,r6,pc}
         END

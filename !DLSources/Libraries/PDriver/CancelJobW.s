@@ -25,6 +25,6 @@
         STMFD   sp!, {lr}
         SWI     SWI_PDriver_CancelJobWithError + XOS_Bit
         MOVVC   a1, #0
-        LDMFD   sp!, {pc}^
+        LDMFD   sp!, {pc}
 ;
         END

@@ -29,7 +29,7 @@
         ADRCS   r0, error
         CMP     r3, #0
         STRNE   r2, [r3]
-        LDMFD   sp!, {pc}^
+        LDMFD   sp!, {pc}
 ;
 error   DCD     0
         =       "Invalid mode or variable number",0

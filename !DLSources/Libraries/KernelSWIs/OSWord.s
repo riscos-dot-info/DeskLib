@@ -24,6 +24,6 @@
         STMFD   sp!, {lr}
         SWI     SWI_OS_Word + XOS_Bit
         MOVVC   r0, #0
-        LDMFD   sp!, {pc}^
+        LDMFD   sp!, {pc}
 ;
         END

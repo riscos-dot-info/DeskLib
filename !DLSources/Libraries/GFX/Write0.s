@@ -10,6 +10,6 @@
 ;
         STMFD   sp!,{lr}
         SWI     XSWI_OS_Write0
-        LDMFD   sp!,{pc}^
+        LDMFD   sp!,{pc}
 ;
         END

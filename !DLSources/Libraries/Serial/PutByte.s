@@ -28,6 +28,6 @@
         MOVCC   a1, #0
         MOVCS   a1, #1
         MOVVS   a1, #1
-        LDMFD   sp!, {pc}^
+        LDMFD   sp!, {pc}
 ;
         END

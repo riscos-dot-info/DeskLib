@@ -14,6 +14,6 @@
         LDR     r4,[ip,#0]
         SWI     SWI_DragASprite_Start + XOS_Bit
         MOVVC   r0,#0
-        LDMFD   sp!, {r4,pc}^
+        LDMFD   sp!, {r4,pc}
 ;
         END

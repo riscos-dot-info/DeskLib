@@ -37,6 +37,6 @@
         STRVC   a4, [v1]           ; store resulting size
         MOVVC   a1, #0             ; return NULL (no error)
 
-        LDMFD   sp!, {v1,pc}^
+        LDMFD   sp!, {v1,pc}
 ;
         END

@@ -43,6 +43,6 @@ loop2
         STRB    r3, [ip], #1
         BNE     loop2
 
-        MOVS    pc,lr
+        MOV     pc,lr
 ;
         END

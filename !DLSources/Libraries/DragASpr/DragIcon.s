@@ -113,7 +113,7 @@ NoDrag
 Exit
         MOV     sp, ip             ; restore old stack pointer
         MOVVC   r0, #0
-        LDMFD   sp!, {r4,r5,r6,r7,pc}^
+        LDMFD   sp!, {r4,r5,r6,r7,pc}
 ;
 VeryBig
         DCD     &7fffffff

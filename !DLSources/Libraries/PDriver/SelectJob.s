@@ -23,10 +23,10 @@
 ;
         STMFD   sp!, {lr}
         SWI     SWI_PDriver_SelectJob + XOS_Bit
-        LDMVSFD sp!, {pc}^
+        LDMVSFD sp!, {pc}
         CMP     a3, #0
         STRNE   r0, [a3,#0]
         MOV     a1, #0
-        LDMFD   sp!, {pc}^
+        LDMFD   sp!, {pc}
 ;
         END

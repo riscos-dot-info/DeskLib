@@ -62,6 +62,6 @@ MessageTrans_Lookup
         STR     r3,[r9]
 
         MOVVC   a1,#0
-        LDMFD   sp!,{v1,v2,v3,v4,v5,v6,pc}^
+        LDMFD   sp!,{v1,v2,v3,v4,v5,v6,pc}
 
         END

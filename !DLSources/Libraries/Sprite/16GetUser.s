@@ -46,6 +46,6 @@
         LDRVC   ip, [ip, #0]
         STRVC   a3, [ip, #0]
         MOVVC   a1, #0
-        LDMFD   sp!, {v1, v2, v3, v4, v5, pc}^
+        LDMFD   sp!, {v1, v2, v3, v4, v5, pc}
 ;
         END

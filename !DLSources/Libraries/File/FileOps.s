@@ -207,7 +207,7 @@ file_lasterror
 
         MOV     a1, a4               ; Return number of bytes not read
 
-        LDMFD   sp!, {v1-v4, pc}^
+        LDMFD   sp!, {v1-v4, pc}
 ;
 ; ---------------------------------------------------------------------------
 ;
@@ -228,7 +228,7 @@ file_lasterror
 
         MVNVS   a1, #0                  ; Return -1 to indicate error
 
-        LDMFD   sp!, {pc}^
+        LDMFD   sp!, {pc}
 ;
 ; ---------------------------------------------------------------------------
 ;
@@ -254,7 +254,7 @@ file_lasterror
         LDR     a1, [sp], #4     ; Return the word, restore stack pointer
         MVNVS   a1, #0           ; If error, then return -1
 
-        LDMFD   sp!, {v1-v4, pc}^
+        LDMFD   sp!, {v1-v4, pc}
 ;
 ; ---------------------------------------------------------------------------
 ;
@@ -275,7 +275,7 @@ file_lasterror
         AND     a1, a1, #&0000FF00          ; xx3x
         ORR     a2, a2, a1, LSL #8          ;       x321
         ORR     a1, a2, a3, LSL #24         ; 4321
-        LDMFD   sp!, {pc}^
+        LDMFD   sp!, {pc}
 ;
 ; ---------------------------------------------------------------------------
 ;
@@ -294,7 +294,7 @@ file_lasterror
         MOVVC   a1, #0
         STR     a1, file_lasterror
 
-        LDMFD   sp!, {pc}^
+        LDMFD   sp!, {pc}
 ;
 ; ---------------------------------------------------------------------------
 ;
@@ -319,7 +319,7 @@ file_lasterror
         MOVVC   a1, #0
         STR     a1, file_lasterror
 
-        LDMFD   sp!, {v1-v4, pc}^
+        LDMFD   sp!, {v1-v4, pc}
 ;
 ; ---------------------------------------------------------------------------
 ;
@@ -340,7 +340,7 @@ file_lasterror
         ORR     a2, a4, a3, LSL #24         ; 4321
 
         BL      File_Write32                ; Write the word
-        LDMFD   sp!, {pc}^
+        LDMFD   sp!, {pc}
 ;
 ; ---------------------------------------------------------------------------
 ;

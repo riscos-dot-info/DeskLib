@@ -26,6 +26,6 @@
         SWI     SWI_PDriver_CurrentJob + XOS_Bit
         STRVC   r0, [a2,#0]
         MOVVC   a1, #0
-        LDMFD   sp!, {pc}^
+        LDMFD   sp!, {pc}
 ;
         END

@@ -33,6 +33,6 @@
         LDMIA   a3, {r2,r3}
         SWI     SWI_PDriver_InsertIllustration + XOS_Bit
         MOVVC   a1, #0
-        LDMFD   sp!, {v1,v2,v3,v4,pc}^
+        LDMFD   sp!, {v1,v2,v3,v4,pc}
 ;
         END

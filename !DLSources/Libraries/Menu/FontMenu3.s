@@ -90,7 +90,7 @@ XFont_DecodeMenu EQU &400A0 + XOS_Bit
 ; SWI 256+7
 exit_err
         LDR     a1,fontmenu_def
-        LDMFD   sp!,{v1-v6,pc}^
+        LDMFD   sp!,{v1-v6,pc}
 
 no_ind_block
         MOV     a1,v1
@@ -112,7 +112,7 @@ free_data
         MOV     a1,#0
         STR     a1,fontmenu_def
         STR     a1,fontmenu_ind
-        LDMFD   sp!,{pc}^
+        LDMFD   sp!,{pc}
 
         EXPORT  Menu_FontMenuDecode3
 
@@ -150,11 +150,11 @@ mfmd_got_enough
         BVS     mfmd_err
 
         LDR     a1,answer
-        LDMFD   sp!,{v1-v4,pc}^
+        LDMFD   sp!,{v1-v4,pc}
 
 mfmd_err
         MOV     a1,#0
-        LDMFD   sp!,{v1-v4,pc}^
+        LDMFD   sp!,{v1-v4,pc}
 
 menu_fontmenu
 fontmenu_def    ; these should really be in an area of their own... but what the hell...

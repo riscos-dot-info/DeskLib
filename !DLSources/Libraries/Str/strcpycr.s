@@ -31,6 +31,6 @@ strcpycr_00
         BGT     strcpycr_00
         MOV     ip,#0
         STRB    ip,[a1,v1]
-        LDMFD   sp!, {v1,pc}^
+        LDMFD   sp!, {v1,pc}
 ;
         END

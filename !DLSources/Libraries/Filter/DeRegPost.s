@@ -13,6 +13,6 @@
         STMFD   sp!, {r4,lr}
         LDR     r4,[ip]
         SWI     SWI_Filter_DeRegisterPostFilter
-        LDMFD   sp!, {r4,pc}^
+        LDMFD   sp!, {r4,pc}
 ;
         END

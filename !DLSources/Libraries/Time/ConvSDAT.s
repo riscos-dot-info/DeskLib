@@ -22,6 +22,6 @@
         STMFD   sp!, {lr}
         SWI     SWI_OS_ConvertStandardDateAndTime + XOS_Bit
         MOVVC   a1, #0
-        LDMFD   sp!, {pc}^
+        LDMFD   sp!, {pc}
 ;
         END

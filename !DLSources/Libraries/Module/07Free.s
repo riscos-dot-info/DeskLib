@@ -27,6 +27,6 @@
         MOV     a1, #7
         SWI     SWI_OS_Module + XOS_Bit
         MOVVC   a1, #0
-        LDMFD   sp!, {pc}^
+        LDMFD   sp!, {pc}
 ;
         END

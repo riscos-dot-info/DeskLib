@@ -34,6 +34,6 @@
         STR     a4, [a2],#4
         STRB    a3, [a2]
 
-        MOVS    pc, lr
+        MOV     pc, lr
 ;
         END

@@ -26,6 +26,6 @@
         SWI     SWI_PDriver_Info + XOS_Bit
         STMVCIA r8, {r0,r1,r2,r3,r4,r5,r6,r7}
         MOVVC   a1, #0
-        LDMFD   sp!, {r4,r5,r6,r7,r8,pc}^
+        LDMFD   sp!, {r4,r5,r6,r7,r8,pc}
 ;
         END

@@ -27,6 +27,6 @@
         MOVCC   a1, a2
         MVNCS   a1, #0
         MVNVS   a1, #0
-        LDMFD   sp!, {pc}^
+        LDMFD   sp!, {pc}
 ;
         END

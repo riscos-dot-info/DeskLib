@@ -23,6 +23,6 @@
 ;
         STMFD   sp!, {lr}
         SWI     SWI_Hourglass_Off + XOS_Bit
-        LDMFD   sp!, {pc}^
+        LDMFD   sp!, {pc}
 ;
         END

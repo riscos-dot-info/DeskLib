@@ -29,7 +29,7 @@
         MOV     r1, r0
         MOV     r0, #20
         SWI     SWI_OS_File + XOS_Bit
-        LDMVSFD sp!, {r1-r6,pc}^
+        LDMVSFD sp!, {r1-r6,pc}
         LDR     lr, [sp]
         TEQ     lr, #0
         STRNE   r0, [lr]
@@ -49,6 +49,6 @@
         TEQ     lr, #0
         STRNE   r6, [lr]
         MOV     r0,#0
-        LDMFD   sp!, {r1-r6,pc}^
+        LDMFD   sp!, {r1-r6,pc}
 ;
         END
