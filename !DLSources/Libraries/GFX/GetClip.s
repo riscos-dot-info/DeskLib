@@ -14,13 +14,14 @@
         STMFD   sp!, {a2-a4}
         MOV     a2, #128
         MOV     a3, #129
-        STMFD   sp!, {a2-a3,lr}
+        STMFD   sp!, {a2-a3}
 
         MOV     a2, a1
         MOV     a1, sp
 
         SWI     XSWI_OS_ReadVduVariables
 
-        LDMFD   sp!, {a1-v1,pc}
+        ADD     sp, sp, #20
+        MOV     pc, lr
 ;
         END
