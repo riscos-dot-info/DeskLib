@@ -54,7 +54,7 @@ static menu_ptr item2menu = NULL;      /* Pointer to our main menu        */
 #define mainmenu_QUIT        3
 
 
-static BOOL AskUser(char *questiontag)
+static BOOL AskUser(const char *questiontag)
 /*  Tests/demonstrates use of Dialog_ calls to show a query window containing
  *  the given bit of text - the given string is a Msgs_ message tag
  */
