@@ -1,0 +1,29 @@
+These are examples of code using DeskLib.  This directory should contain:
+  - This ReadMe
+  - Various example applications
+  - The OtherSrc directory
+  - The Widget5 directory
+
+Example apps
+------------
+The example applications should compile with either Norcroft or GCC, though you will require GNU make to use the makefiles.  GNU make is included in the GCC distribution(s).
+
+To make one of the examples, simply go into the application directory, set the wimpslot to at least 5000k and type "make".
+
+e.g. for building with Norcroft (Castle/Acorn C/C++ package)
+*wimpslot 5000k
+*make
+
+e.g. for building with GCC
+*wimpslot 5000k
+*make COMPILER=gcc
+
+OtherSrc
+--------
+This holds various code snippets (not generally self-contained programs) which may be of interest or demonstrate use of some part of the DeskLib library.
+
+Widget5
+-------
+This contains the source to an image processing program, for which there is no GCC makefile.  This is because you need bits of the old RISCOS_Lib, for which you will need to own a copy of the Norcroft tools anyway, and it is a lot of trouble to remove it at the moment. :)
+
+It has its own ReadMe if you want more information about it.
