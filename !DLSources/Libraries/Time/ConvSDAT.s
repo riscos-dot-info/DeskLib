@@ -12,9 +12,9 @@
 ;   Version: 1.00 (12 May 1994)
 ;   Purpose: Convert given time to text using standard format string.
 
-        GET     regdefs.h
+        GET     RegDefs.h
         GET     swinos.h
-        GET     macros.h
+        GET     Macros.h
 
         PREAMBLE
         STARTCODE Time_ConvertStandardDateAndTime

@@ -2,8 +2,8 @@
 ; GFX_CLG(void)
 ; by Jason Williams 1993
 ;
-        GET     macros.h
-        GET     regdefs.h
+        GET     Macros.h
+        GET     RegDefs.h
         GET     swinos.h
 ;
         PREAMBLE

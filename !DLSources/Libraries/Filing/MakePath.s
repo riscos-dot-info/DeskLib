@@ -14,8 +14,8 @@
 ;   Mods:    6 June 1995 - changed procedure name to a more
 ;                          DeskLib-compliant style
 
-        GET     regdefs.h
-        GET     macros.h
+        GET     RegDefs.h
+        GET     Macros.h
 
 ; char *Filing_MakePath(char *newpath, char *dirname, char *leafname);
 

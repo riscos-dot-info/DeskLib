@@ -13,9 +13,9 @@
 ;   Version: 1.01 (10 Jun 1994)
 ;   Purpose: Read the size of a sprite save area (veneer to SpriteOp 62)
 
-        GET     regdefs.h
+        GET     RegDefs.h
         GET     swinos.h
-        GET     macros.h
+        GET     Macros.h
 ;
         PREAMBLE
         STARTCODE Sprite_ReadSaveAreaSize

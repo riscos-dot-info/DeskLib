@@ -12,9 +12,9 @@
 ;   Version: 1.00 (21 Nov 1993)
 ;   Purpose: Transmit a break on the serial port.
 
-        GET     regdefs.h
+        GET     RegDefs.h
         GET     swinos.h
-        GET     macros.h
+        GET     Macros.h
 
 ; os_error *Serial_SendBreak(int length);
 

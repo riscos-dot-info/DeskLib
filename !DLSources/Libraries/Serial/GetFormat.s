@@ -13,9 +13,9 @@
 ;   Purpose: Read the data format for the encoding of characters sent and
 ;            received on the serial line.
 
-        GET     regdefs.h
+        GET     RegDefs.h
         GET     swinos.h
-        GET     macros.h
+        GET     Macros.h
 
 ; int Serial_GetFormat(void);
 

@@ -12,9 +12,9 @@
 ;   Version: 1.00 (08 Jul 1993)
 ;   Purpose: Specify a rectangle to be printed.
 
-        GET     regdefs.h
+        GET     RegDefs.h
         GET     swinos.h
-        GET     macros.h
+        GET     Macros.h
 
 ; os_error *PDriver_GiveRectangle(int rectangle_id, wimp_rect *rectangle,
 ;                                 print_transformation *matrix,

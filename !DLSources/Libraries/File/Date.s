@@ -13,9 +13,9 @@
 ;   Version: 1.00 (31 Jul 1993)
 ;   Purpose: SWI veneer for file operations - read datestamp
 
-        GET     regdefs.h
+        GET     RegDefs.h
         GET     swinos.h
-        GET     macros.h
+        GET     Macros.h
 ;
         PREAMBLE
         STARTCODE File_Date

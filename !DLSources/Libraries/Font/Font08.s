@@ -1,8 +1,8 @@
 ; Author: Copyright 1993 Shaun Blackmore
 
-        GET     regdefs.h
+        GET     RegDefs.h
         GET     swinos.h
-        GET     macros.h
+        GET     Macros.h
 
 ;os_error *Font_ConverttoOS(int x, int y, int *xout, int *yout)
 

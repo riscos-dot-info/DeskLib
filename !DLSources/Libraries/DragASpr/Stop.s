@@ -1,8 +1,8 @@
 ; Copyright 1993 Shaun Blackmore
 
-        GET     regdefs.h
+        GET     RegDefs.h
         GET     swinos.h
-        GET     macros.h
+        GET     Macros.h
 
 ; void DragASprite_Stop(void);
 

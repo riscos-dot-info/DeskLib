@@ -14,9 +14,9 @@
 ;          rather than to the entire screen extent)
 
 
-        GET     regdefs.h
+        GET     RegDefs.h
         GET     swinos.h
-        GET     macros.h
+        GET     Macros.h
 
 ; void DragASprite_DragIcon(window_handle window, icon_handle icon);
 

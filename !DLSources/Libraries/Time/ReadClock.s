@@ -12,9 +12,9 @@
 ;   Version: 1.00 (15 Jan 2003)
 ;   Purpose: Reads the 5 byte time block.
 
-        GET     regdefs.h
+        GET     RegDefs.h
         GET     swinos.h
-        GET     macros.h
+        GET     Macros.h
 
 ; os_error *Time_ReadClock(char *fivebyteblock);
 

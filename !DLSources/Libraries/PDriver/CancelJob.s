@@ -12,9 +12,9 @@
 ;   Version: 1.00 (07 Jul 1993)
 ;   Purpose: Stop the print job from printing.
 
-        GET     regdefs.h
+        GET     RegDefs.h
         GET     swinos.h
-        GET     macros.h
+        GET     Macros.h
 
 ; os_error *PDriver_CancelJob(print_job job);
 

@@ -12,9 +12,9 @@
 ;   Version: 1.00 (04 Dec 1993)
 ;   Purpose: Generic veneer to the OS_Byte SWI.
 
-        GET     regdefs.h
+        GET     RegDefs.h
         GET     swinos.h
-        GET     macros.h
+        GET     Macros.h
 
 ; os_error *OS_Byte(osbyte_number reason, int r1in, int r2in,
 ;                                         int *r1out, int *r2out);

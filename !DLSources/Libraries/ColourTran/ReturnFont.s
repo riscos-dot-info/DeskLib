@@ -2,8 +2,8 @@
 ; ColourTrans_ReturnFontColours(ct_fontblock);
 ; Copyright 1993 Shaun Blackmore
 
-        GET     macros.h
-        GET     regdefs.h
+        GET     Macros.h
+        GET     RegDefs.h
         GET     swinos.h
 ;
         PREAMBLE
