@@ -10,8 +10,8 @@
     The FreeWare Desktop C library for
              RISC OS machines
 
-              Release 2.30
-              02 Sep 1995
+              Release 2.40
+              17 Nov 2002
 
   If you have used previous version(s) of
   DeskLib, please consult 'DeskLib.Docs.Updates' 
@@ -46,41 +46,10 @@ DeskLib.Examples...	Example applications.
 
 
 
-Recompiling DeskLib with different versions of cc and link
-----------------------------------------------------------
+Recompiling DeskLib
+-------------------
 
-This release of DeskLib has been compiled with cc version 4 (as supplied
-with Acorn's Desktop C) and objasm 2.00, because later versions of these
-tools (eg cc 5 supplied with Acorn's C/C++ system) produce code which
-link 4 can't cope with.
-
-If you have Acorn C/C++ and want to re-make DeskLib using the new
-compiler (which will probably produce speed/space improvements in the
-compiled DeskLib code) then, after '!DeskLib' and '!DLSources' have been
-seen by your Filer, simply double-click on the file
-'!DLSources.Scripts.Static.MakeClean'.
-
-This will completely remake the normal static-linking version of DeskLib
-in a task window, taking approximately half an hour.
-
-NB You will need to have at least 1.5Mb RAM free to do this.
-
-If you have also down-loaded the dynamic-linking version of DeskLib,
-double click on '!DLSources.Scripts.Static+DLL.MakeClean' instead. This
-will recompile both the static and dynamic-linking versions of DeskLib.
-
-
-
-
-Dynamic linking note
---------------------
-
-The dynamic-linking parts of this release of DeskLib need version 1.03
-of the Straylight Dynamic Linking System, which is available from the
-usual Acorn-related ftp sites.
-
-
-
+See !DLSources.!Help for more information.
 
 
 
@@ -121,18 +90,6 @@ Sources		All the source code for DeskLib, plus makefiles and
 		DeskLib.!DLSources...* except *.o.* .
 
 
-Objects		All .o files needed to make the normal version of DeskLib.
-		
-		DeskLib.!DLSources...Static.o.*
-
-
-DLLObjs		All .o files needed to make the dynamic-linking versions
-		of DeskLib.
-		
-		DeskLib.!DLSources...DLL.o.*
-		DeskLib.!DLSources...DLLClient.o.*
-		
-
 Examples	A few example programs with source, plus some random
 		source code.
 		
@@ -143,13 +100,6 @@ EasyCEgs	Beebug EasyC-compatible versions of one of the example
 		program.
 		
 		DeskLib.Examples.EasyC...*
-
-
-DLL		All files needed to make applications which use the
-		dynamically-linkable version of DeskLib.
-		
-		DeskLib.!DeskLib.o.DLL*
-		DeskLib.!DeskLib.!DLLs...*
 
 
 StrongHelp	This is a StrongHelp file which documents every
@@ -167,13 +117,4 @@ StrongHelp	This is a StrongHelp file which documents every
 
 -------------------------------------------------------
 
-
-Julian Smith
-
-
-If you have any problems, please feel free to contact me:
-
-Julian Smith                              Dept of Experimental Psychology
-julian.smith@psy.ox.ac.uk                 South Parks Road, Oxford, OX1 3UD
-http://cogsci1.psych.ox.ac.uk/~julians/   UK
 
