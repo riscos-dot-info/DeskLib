@@ -1,4 +1,0 @@
-wimpslot 320k
-Echo Creating trimmed header files
-every -f <Obey$Dir>.h_doc ctrim %%0 %%0.^.^.h.%%1 32
-Echo Trimming finished...

@@ -1,6 +1,0 @@
-IconSprites <Obey$Dir>.!Sprites
-
-WimpSlot -min 64k -max 64k
-
-Set Tester$Dir <Obey$Dir>
-Run <Tester$Dir>.!Normal.!RunImage

@@ -1,9 +1,0 @@
-Set Widget5$Dir <Obey$Dir>
-
-Set File$Type_042 Widget5
-Set Alias$@RunType_042 /<Widget5$Dir>.!Run %%*0
-
-Set File$Type_041 Widget4
-Set Alias$@RunType_041 /<Widget5$Dir>.!Run %%*0
-
-IconSprites <Widget5$Dir>.!Sprites

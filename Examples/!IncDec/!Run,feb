@@ -1,9 +1,0 @@
-| APPLICATION: !IncDec
-| FILE:        !Run
-| VERSION:     1.00 (28 Sep 94)
-| AUTHOR:      © Lee Atkinson, 1994
-
-Set IncDec$Path <Obey$Dir>.
-IconSprites IncDec:!Sprites
-
-Run IncDec:!RunImage
