@@ -66,7 +66,7 @@ file_lasterror
 
         MOVVS   a1, #0                   ; Error - return handle = NULL
 
-        LDMFD   sp!, {pc}^
+        LDMFD   sp!, {pc}
 ;
 ; ---------------------------------------------------------------------------
 ;
@@ -84,7 +84,7 @@ file_lasterror
         MOVVC   a1, #0                   ; No error, so reset file_lasterror
         STR     a1, file_lasterror       ; Store error condition
 
-        LDMFD   sp!, {pc}^
+        LDMFD   sp!, {pc}
 ;
 ; ---------------------------------------------------------------------------
 ;
@@ -105,7 +105,7 @@ file_lasterror
 
         MOV     a1, a3             ; Return EOF flag
 
-        LDMFD   sp!, {pc}^
+        LDMFD   sp!, {pc}
 ;
 ; ---------------------------------------------------------------------------
 ;
@@ -124,7 +124,7 @@ file_lasterror
         MOVVC   a1, #0
         STR     a1, file_lasterror
 
-        LDMFD   sp!, {pc}^
+        LDMFD   sp!, {pc}
 ;
 ; ---------------------------------------------------------------------------
 ;
@@ -144,7 +144,7 @@ file_lasterror
 
         MOV     a1, a3        ; return file position
 
-        LDMFD   sp!, {pc}^
+        LDMFD   sp!, {pc}
 ;
 ; ---------------------------------------------------------------------------
 ;
@@ -165,7 +165,7 @@ file_lasterror
         MOV     a1, a3        ; return file extent
         MOVVS	a1, #-1
 
-        LDMFD   sp!, {pc}^
+        LDMFD   sp!, {pc}
 ;
 ; ---------------------------------------------------------------------------
 ;
@@ -185,7 +185,7 @@ file_lasterror
         MOVVC   a1, #0
         STR     a1, file_lasterror
 
-        LDMFD   sp!, {v1-v4, pc}^
+        LDMFD   sp!, {v1-v4, pc}
 ;
 ; ---------------------------------------------------------------------------
 ;

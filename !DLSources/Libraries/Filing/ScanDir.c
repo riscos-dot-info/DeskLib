@@ -68,10 +68,7 @@ static os_error *Filing__ScanDirRec(const char *dirname, filing_fulldirentry *di
    }
 
    if (actptr->objtype==2) {
-     /* This ensures that all the code works up to roughly the same length of
-        filename, 32 being the size of the other elements of a
-        filing_fulldirentry. */
-     char newname[BUF__SIZE - 32];
+     char newname[256];
      Filing_MakePath(newname,dirname,actptr->name);
      if (er=Filing__ScanDirRec(newname,actptr,funcs),er!=NULL) {
        return er;
@@ -100,10 +97,10 @@ os_error *Filing_ScanDir(const char *dirname,
  funcs.enddir=enddirproc;
 
  if (dirname[strlen(dirname)-1]!='$') {
-   char dirdata[BUF__SIZE];
-   if (er=Filing_SingleFullDirEntry(dirname,(filing_fulldirentry *)dirdata,sizeof(dirdata)),er!=NULL)
+   filing_fulldirentry dirdata;
+   if (er=Filing_SingleFullDirEntry(dirname,&dirdata,sizeof(dirdata)),er!=NULL)
      return er;
-   return Filing__ScanDirRec(dirname,(filing_fulldirentry *)dirdata,&funcs);
+   return Filing__ScanDirRec(dirname,&dirdata,&funcs);
  }
  else {
    /* it could be possible to 'forge' the filing_fulldirentry for the root directory... */

@@ -34,7 +34,7 @@
         LDR     a1, [pc, #L00001c-.-8]
         MOV     a2, #0
         STR     a2, [a1, #0]
-        MOVS    pc, lr
+        MOV     pc, lr
 L00001c
         DCD     |x$dataseg|
 
@@ -128,7 +128,7 @@ L00001c
         LDR     a1, [pc, #L00001c-.-8]
         MOV     a2, #1
         STR     a2, [a1, #0]
-        MOVS    pc, lr
+        MOV     pc, lr
 
 fp_status_restore
         MOV     v1, #0
@@ -139,8 +139,8 @@ fp_status_restore
         LDFE    f7, [sp, #36]
         ADD     sp, sp, #48
         LDMIA   sp!, {v1}
-        WFS    v1
-        MOVS    pc, lr
+        WFS     v1
+        MOV     pc, lr
 
 fp_status_save
         RFS    a2
@@ -152,7 +152,7 @@ fp_status_save
         STFE    f5, [sp, #12]
         STFE    f6, [sp, #24]
         STFE    f7, [sp, #36]
-        MOVS    pc, lr
+        MOV     pc, lr
 
     AREA |C$$data|
 

@@ -41,6 +41,6 @@
         ORR     a2, a1, #1        ; set bit 0 of R1
         SWI     SWI_Wimp_GetWindowInfo + XOS_Bit
         MOVVC   a1, #0
-        MOVS    pc, ip
+        MOV     pc, ip
 ;
         END
