@@ -24,7 +24,7 @@
 #include "DLLLib.dll.h"
 #endif
 
-extern void Resource_Initialise(char *respath)
+extern void Resource_Initialise(const char *respath)
 {
 #ifdef _DeskLib_SDLS
   char	*dllname = strdup( respath);

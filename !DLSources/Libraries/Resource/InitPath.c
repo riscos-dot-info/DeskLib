@@ -20,7 +20,7 @@
 #include "DeskLib:Resource.h"
 
 
-extern void Resource_InitialisePath(char *respath)
+extern void Resource_InitialisePath(const char *respath)
 {
   strncpy(resource_pathname, respath, 30);
   resource_pathname[30] = '\0';               /* Ensure string is terminated */
