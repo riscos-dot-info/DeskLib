@@ -1,2 +1,2 @@
-Prefix <Obey$Dir>.
-TaskWindow "amu -f ^.MakeFile" -name "Making Normal" -wimpslot 640k -quit                          
+Prefix <Obey$Dir>.^
+TaskWindow "make" -name "Making Normal" -wimpslot 640k -quit

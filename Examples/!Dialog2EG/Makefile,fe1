@@ -44,7 +44,7 @@ ifeq (gcc, $(COMPILER))
 endif
 
 # We link against the main library and the "pipetype" debugging lib
-LIBS := DeskLib:o.DeskLib DeskLib:o.Debug.pipetype
+LIBS := DeskLib:o.Debug.pipetype DeskLib:o.DeskLib 
 
 # The default is to make the plain and the debug runimages
 all: !RunImage !RunImageD
