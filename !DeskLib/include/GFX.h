@@ -263,7 +263,7 @@ extern void GFX_VDU(char ch);
 
   Sets the screen mode to the given mode number.
 
-  Don't this in the desktop.
+  Don't do this in the desktop.
 */
 
 
