@@ -20,7 +20,7 @@
 
         PREAMBLE
         STARTCODE strcatcr
-;    extern char *strcatcr(char *s1, char *s2);
+;    extern char *strcatcr(char *s1, const char *s2);
 
 
         SUB       a3, a1, #1         ; a3 = pre-incrementing ptr to dest

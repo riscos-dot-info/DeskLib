@@ -18,7 +18,7 @@
 #include "DeskLib:StringCR.h"
 
 
-extern char *strncpycr(char *s1, char *s2, int n)
+extern char *strncpycr(char *s1, const char *s2, int n)
 {
   register char *end = s1 + n;
 

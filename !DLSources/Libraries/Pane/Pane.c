@@ -120,8 +120,8 @@ extern void Pane_Link(window_handle mast,
   }
 }
 
-extern window_handle Pane_CreateAndLink(char        *mastname,
-                                        char        *panename,
+extern window_handle Pane_CreateAndLink(const char  *mastname,
+                                        const char  *panename,
                                         int         mastmaxsize,
                                         int         panemaxsize,
                                         wimp_point *offset,
