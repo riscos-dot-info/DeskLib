@@ -22,7 +22,7 @@
 #include "DeskLib:File.h"
 #include "DeskLib:Sprite.h"
 
-extern sprite_area Sprite_LoadFiles(int nooffiles,...)
+extern sprite_area Sprite_LoadFiles(unsigned int nooffiles,...)
 /* loads any number of sprite files into a sprite area (allocated by malloc()),
                                                   and returns a pointer to it */
 {

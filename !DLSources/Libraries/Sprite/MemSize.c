@@ -22,26 +22,33 @@
 #include "DeskLib:SWI.h"
 
 
-#define XOS_ReadModeVariable 0x20035
-
 /* Macro to round a number of BITS up to a multiple of words */
 #define ROUND32(value) (((value) + 31) & ~31)
 
 
-extern int Sprite_MemorySize(int width, int height, int mode,
-                             spritemem_flags flags)
+extern unsigned int Sprite_MemorySize(unsigned int width,
+                                      unsigned int height,
+                                      screen_modeval mode,
+                                      spritemem_flags flags)
 {
-  int ncolours;          /* Maximum logical colour: 1, 3, 15 or 63    */
-  int log2bpp;           /* Log base 2 bits per pixel, i.e. 2^log2bpp */
-  int bpp;               /* Bits per pixel                            */
-  int bit_strlen;        /* Bit string length                         */
-  int size;              /* Memory requirements                       */
+  unsigned int log2bpp;      /* Log base 2 bits per pixel, i.e. 2^log2bpp */
 
-  SWI(2, 3, XOS_ReadModeVariable,             /* Get Log2BPC for mode */
-                 mode, 10,                    /* (used to be Log2BPP  */
+  SWI(2, 3, SWI_OS_ReadModeVariable,             /* Get Log2BPC for mode */
+                 mode, SCREEN_VAR_Log2BPC,       /* (used to be Log2BPP  */
        /* TO */  NULL, NULL, &log2bpp );
 
-  bpp = 1 << log2bpp;                /* Work out bits per pixel       */
+  return Sprite_MemorySizeBpp(width, height, 1 << log2bpp, flags);
+}
+
+
+extern unsigned int Sprite_MemorySizeBpp(unsigned int width,
+                                         unsigned int height,
+                                         unsigned int bpp,
+                                         spritemem_flags flags)
+{
+  int bit_strlen;        /* Bit string length                         */
+  size_t size;           /* Memory requirements                       */
+
   bit_strlen = ROUND32(width * bpp); /* Initial bit string length,    *
                                       * rounded up to nearest word    */
 
@@ -53,12 +60,11 @@ extern int Sprite_MemorySize(int width, int height, int mode,
 
   size += sizeof( sprite_header);    /* Add on 44 bytes for header    */
 
-  if (flags & sprite_HASPAL)         /* Add on size of palette        */
+  if ((flags & sprite_HASPAL) && bpp <= 8)  /* Add on size of palette        */
   {
-    SWI(2, 3, XOS_ReadModeVariable,
-                   mode, 3,
-         /* TO */  NULL, NULL, &ncolours);
-    size += ( ncolours + 1 ) * ( sizeof( palette_entry ) * 2);
+    static char colours[] = { 0, 2, 4, 0, 16, 0, 0, 0, 64 };
+
+    size += colours[bpp] * ( sizeof( palette_entry ) * 2);
   }
 
   return(size);

@@ -21,11 +21,9 @@
 #include "DeskLib:SWI.h"
 
 
-#define XOS_ReadModeVariable 0x20035
-
-
 extern int Sprite_IconMemorySize(window_block *pWinBlock, icon_handle icon,
-                                 int mode, spritemem_flags flags,
+                                 screen_modeval mode,
+                                 spritemem_flags flags,
                                  wimp_point *dimensions)
 {
   wimp_rect  *iconbox;
@@ -35,12 +33,12 @@ extern int Sprite_IconMemorySize(window_block *pWinBlock, icon_handle icon,
   iconbox = &(((icon_block*)(pWinBlock+1))[icon].workarearect);
 
   /* Get scaling factors */
-  SWI(2, 3, XOS_ReadModeVariable,
-                mode, 4,
+  SWI(2, 3, SWI_OS_ReadModeVariable,
+                mode, SCREEN_VAR_XEigFactor,
       /* TO */  NULL, NULL, &eig.x );
 
-  SWI(2, 3, XOS_ReadModeVariable,
-                mode, 5,
+  SWI(2, 3, SWI_OS_ReadModeVariable,
+                mode, SCREEN_VAR_YEigFactor,                   
       /* TO */  NULL, NULL, &eig.y );
 
   /* Convert OS units to pixels */
