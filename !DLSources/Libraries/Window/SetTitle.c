@@ -24,7 +24,7 @@
 
 
 
-extern void Window_SetTitle(window_handle window, char *title)
+extern void Window_SetTitle(window_handle window, const char *title)
 {
   window_info        info;
   window_redrawblock redraw;

@@ -23,6 +23,8 @@ BOOL Window_MoveWindow(event_pollblock *e, void *r)
  drag_block block;
  window_state state;
 
+ r = r;
+
  Wimp_GetWindowState(e->data.mouse.window,&state);
 
  block.window=e->data.mouse.window;
