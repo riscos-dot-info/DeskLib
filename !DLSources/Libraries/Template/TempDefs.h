@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -12,9 +12,9 @@
     Author:  Copyright © 1992 Jason Williams
              Thanks to John Winters for supplying the code that I hacked
              changed, hacked, rewrote, and then wrote again from scratch!
-             Modified 19 May 1995 Julian Smith to avoid duplicated 
+             Modified 19 May 1995 Julian Smith to avoid duplicated
              Window.TempDefs header file.
-             
+
     Version: 1.12 (19 May 1995)
     Purpose: Definitions and stuff for internal template routines
 
@@ -79,7 +79,7 @@
 
 #define HEADER_SIZE 16
 #define INDEX_SIZE  24
-       
+
 
 /* The next few are now declared in Template.h 19 May 1995 Julian Smith */
 /*

@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -35,7 +35,7 @@ os_error *SWI(int numregsin, int numregsout, int swicode, ...)
 
   for (loop = 0; loop < numregsin; loop++)
     regsin.r[loop] = va_arg(ap, int);
- 
+
   error = _kernel_swi(swicode, &regsin, &regsout);
 
   for (loop = 0; loop < numregsout; loop++)

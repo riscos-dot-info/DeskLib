@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -51,12 +51,12 @@ extern void Icon_GetText(window_handle w, icon_handle i, char *text)
     buffer = istate.data.text;                           /* text/sprite name */
 
   strncpy(text, buffer, len);                            /* text/sprite name */
-  
+
   /* Terminate string at first control character, or at end of buffer */
   index = 0;
   while ((index < len) && (text[index] >= ' '))
     index++;
-    
+
   if (index < len)
     text[index] = NULL;
   else

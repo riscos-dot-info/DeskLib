@@ -18,5 +18,4 @@ SWI_PDriver_CancelJobWithError  EQU &080152
 SWI_PDriver_SelectIllustration  EQU &080153
 SWI_PDriver_InsertIllustration  EQU &080154
 
-         END 
-  
+         END

@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -29,7 +29,7 @@
 /****************************************************************************
 
   static int Slider_UserToSlider( slider_info *slider, int value )
-    
+
   Inputs:   slider - the slider info for this slider.
       	    value - the value (in user units) to be converted.
   Returns:  The converted value.
@@ -44,15 +44,15 @@
 
 static int Slider_UserToSlider( slider_info *slider, int value )
 {
-  int low  = slider->limits.min, 
-      high = slider->limits.max, 
+  int low  = slider->limits.min,
+      high = slider->limits.max,
       range;
-      
+
   double scale;
 
-  /* 
-   * If the lower limit is higher than the upper limit, 
-   * then swap them over. 
+  /*
+   * If the lower limit is higher than the upper limit,
+   * then swap them over.
    */
   if (low > high)
   {
@@ -74,7 +74,7 @@ static int Slider_UserToSlider( slider_info *slider, int value )
   /* Work out the scaling ratio */
   scale = ((double) SLIDER_MAX) / ((double) range);
 
-  /* Scale the value and convert back to an integer */  
+  /* Scale the value and convert back to an integer */
   return ((int) (0.5 + (((double) value) * scale)));
 }
 
@@ -84,7 +84,7 @@ static int Slider_UserToSlider( slider_info *slider, int value )
 /****************************************************************************
 
   static int Slider_UserValue( slider_info *slider, int value )
-    
+
   Inputs:   slider - the slider info for this slider.
       	    value - the value (in slider units) to be converted.
   Returns:  The converted value.
@@ -101,14 +101,14 @@ static int Slider_UserValue( slider_info *slider, int value )
   /* Cope with zero ranges. */
   if ( slider->limits.min == slider->limits.max )
     return 0;
-    
+
   /* Scale internal units to user units. */
   range = slider->limits.max - slider->limits.min;
-  
+
   /* Work out the scaling ratio */
   scale = ((double) range) / ((double) SLIDER_MAX);
 
-  /* Scale the value and convert back to an integer */  
+  /* Scale the value and convert back to an integer */
   return (slider->limits.min + (int) (0.5 + (((double) value) * scale)));
 }
 
@@ -120,14 +120,14 @@ static int Slider_UserValue( slider_info *slider, int value )
 
 > os_error *Slider_Redraw(slider_info *slider, wimp_rect *clipwindow);
 
-    
+
   Inputs:   slider - the slider info for this slider.
       	    clipwindow - the area of the window being redrawn (in screen
       	    coordinates).
   Returns:  An error pointer, or NULL if no errors occured.
-  Purpose:  Redraws a slider icon - call this function from within your 
+  Purpose:  Redraws a slider icon - call this function from within your
       	    redraw loops.
-            If clipwindow != NULL then does nothing if slider is outside 
+            If clipwindow != NULL then does nothing if slider is outside
             clip window.
   Errors:   Unable to use the colour indicated in 'slider'.
   SeeAlso:  Slider_ReadValue; Slider_SetValue; Slider_Drag
@@ -137,11 +137,11 @@ static int Slider_UserValue( slider_info *slider, int value )
 extern os_error *Slider_Redraw( slider_info *slider, wimp_rect *clipwindow )
 {
   wimp_rect rect;
-  int       sliderx, 
-      	    slidery, 
-      	    sliderwidth, 
+  int       sliderx,
+      	    slidery,
+      	    sliderwidth,
       	    sliderheight;
-  int       barsize, 
+  int       barsize,
       	    backsize;
   os_error  *error;
 
@@ -171,10 +171,10 @@ extern os_error *Slider_Redraw( slider_info *slider, wimp_rect *clipwindow )
     barsize = ( sliderwidth * slider->value ) / SLIDER_MAX;
 
   /*
-   * Draw the background of the slider using the colours specified in the 
+   * Draw the background of the slider using the colours specified in the
    * slider_info structure.
    */
-   
+
   if (slider->colour.background != -1)
   {
     if (!slider->flags.rgb)
@@ -198,10 +198,10 @@ extern os_error *Slider_Redraw( slider_info *slider, wimp_rect *clipwindow )
   }
 
   /*
-   * Draw the slider 'bar' itself, using the colours specified in the 
+   * Draw the slider 'bar' itself, using the colours specified in the
    * slider_info structure.
    */
-   
+
   if ((slider->value > 0) && (slider->colour.foreground != -1))
   {
     if (!slider->flags.rgb)
@@ -221,7 +221,7 @@ extern os_error *Slider_Redraw( slider_info *slider, wimp_rect *clipwindow )
       GFX_RectangleFill(sliderx, slidery, barsize, sliderheight);
     }
   }
-  
+
   /* Everything went according to plan... */
   return NULL;
 }
@@ -230,7 +230,7 @@ extern os_error *Slider_Redraw( slider_info *slider, wimp_rect *clipwindow )
 /****************************************************************************
 
   int Slider_ReadValue(slider_info *slider);
-    
+
   Inputs:   slider - the slider info for this slider.
   Returns:  The current slider value, in user units.
   Purpose:  Returns current slider setting in user units.
@@ -247,9 +247,9 @@ extern int Slider_ReadValue(slider_info *slider)
 
 /****************************************************************************
 
-  static os_error *Slider_Set(slider_info *slider, int value, 
+  static os_error *Slider_Set(slider_info *slider, int value,
       	      	      	      void *ref, BOOL *stop)
-    
+
   Inputs:   slider - the slider info for this slider.
       	    value  - the value (in slider units) that the slider is to be
       	      	     set to.
@@ -259,10 +259,10 @@ extern int Slider_ReadValue(slider_info *slider)
   Purpose:  Sets slider to value (in internal units, 0-SLIDER_MAX).
       	    Value is clamped to the range 0 - SLIDER_MAX.
 
-      	    Redraws the window rectangle containing the icon using 
+      	    Redraws the window rectangle containing the icon using
       	    Wimp_UpdateWindow.
 
-      	    The icon must not be overlapped by any areas of the window which 
+      	    The icon must not be overlapped by any areas of the window which
       	    need redrawing separately since they will not be redrawn here.
 
       	    If the slider->update function pointer is not NULL and the slider
@@ -273,7 +273,7 @@ extern int Slider_ReadValue(slider_info *slider)
 
 ****************************************************************************/
 
-static os_error *Slider_Set(slider_info *slider, int value, 
+static os_error *Slider_Set(slider_info *slider, int value,
       	      	    	    void *ref, BOOL *stop)
 {
   icon_block         istate;
@@ -296,7 +296,7 @@ static os_error *Slider_Set(slider_info *slider, int value,
   oldvalue = slider->value;
   slider->value = value;
 
-  /* 
+  /*
    * Only redraw slider if value has changed.
    * Helps prevent flicker.
    */
@@ -336,7 +336,7 @@ static os_error *Slider_Set(slider_info *slider, int value,
     if ((stop != NULL) && stopdrag && slider->flags.dragging)
       *stop = TRUE;
   }
-  
+
   /* Everything went ok. */
   return NULL;
 }
@@ -348,7 +348,7 @@ static os_error *Slider_Set(slider_info *slider, int value,
                             int value,
                             int *valueset,
                             void *ref );
-    
+
   Inputs:   slider - the slider info for this slider.
       	    value  - the value (in user units) that the slider should be
       	      	     set to.
@@ -359,7 +359,7 @@ static os_error *Slider_Set(slider_info *slider, int value,
                        slider limits).
   Returns:  Standard error block or NULL if no error occurs.
   Purpose:  Sets slider to value in value (user units).
-      	    If the slider is being dragged (i.e. if slider->status.dragging 
+      	    If the slider is being dragged (i.e. if slider->status.dragging
       	    is set) then the function does nothing.
 
             The value is clamped to numbers between slider->limits.min and
@@ -368,7 +368,7 @@ static os_error *Slider_Set(slider_info *slider, int value,
             The slider->update function (if any) will be called if the value
             has changed.
 
-            Can also be used to alter other settings (e.g. colour) by 
+            Can also be used to alter other settings (e.g. colour) by
             directly changing the slider structure before calling.
   Errors:   An error is returned if there is a problem accessing or
       	    redrawing the icon.
@@ -376,7 +376,7 @@ static os_error *Slider_Set(slider_info *slider, int value,
 
 ****************************************************************************/
 
-extern os_error *Slider_SetValue(slider_info *slider, int value, 
+extern os_error *Slider_SetValue(slider_info *slider, int value,
       	      	      	      	 int *valueset, void *ref )
 {
   os_error *error;
@@ -402,7 +402,7 @@ extern os_error *Slider_SetValue(slider_info *slider, int value,
 
 /****************************************************************************
 
-  static os_error *Slider_Update(slider_info *slider, 
+  static os_error *Slider_Update(slider_info *slider,
       	      	      	      	 void *ref, BOOL *stop)
 
   Inputs:   slider - the slider info for this slider.
@@ -412,7 +412,7 @@ extern os_error *Slider_SetValue(slider_info *slider, int value,
   Returns:  Standard error block, or NULL if no errors encountered.
   Purpose:  Updates slider from current mouse pointer position.
       	    If value differs from that in slider->value then calls Slider_Set
-      	    (which in turn calls the slider's slider->update function, if 
+      	    (which in turn calls the slider's slider->update function, if
       	    any).
   Errors:   Unable to get the mouse position, or unable to redraw or access
       	    the slider icon in some way.
@@ -423,10 +423,10 @@ static os_error *Slider_Update( slider_info *slider, void *ref, BOOL *stop )
 {
   wimp_rect   rect;
   mouse_block mouse;
-  int         sliderx, 
-      	      slidery, 
-      	      sliderwidth, 
-      	      sliderheight, 
+  int         sliderx,
+      	      slidery,
+      	      sliderwidth,
+      	      sliderheight,
       	      sliderpos;
   os_error    *error;
 
@@ -469,7 +469,7 @@ static os_error *Slider_Update( slider_info *slider, void *ref, BOOL *stop )
     /* If click stops then only redraw slider if *user* value has altered */
     {
       int newvalue = Slider_UserValue(slider, sliderpos);
-      
+
       if (newvalue != Slider_UserValue(slider, slider->value))
       {
         /*
@@ -493,7 +493,7 @@ static os_error *Slider_Update( slider_info *slider, void *ref, BOOL *stop )
                         BOOL *closed,
                         int *value,
                         void *ref )
-    
+
   Inputs:   slider - the slider info for this slider.
       	    ref    - a reference to pass to the update callback funtion.
   Outputs:  closed - if not NULL, and the window is closed during the drag,
@@ -502,7 +502,7 @@ static os_error *Slider_Update( slider_info *slider, void *ref, BOOL *stop )
       	      	     user units) on exit.
   Returns:  Standard error block, or none if no errors encountered.
   Purpose:  Drag a slider. Call when slider's base icon is clicked on.
-      	    Polls the Wimp, grabbing NULL events but passing the rest on to 
+      	    Polls the Wimp, grabbing NULL events but passing the rest on to
       	    Event_Process.
       	    Exits when dragging stops or the slider->update function (if any)
       	    returns a non-NULL value.
@@ -513,7 +513,7 @@ static os_error *Slider_Update( slider_info *slider, void *ref, BOOL *stop )
 
 ****************************************************************************/
 
-extern os_error *Slider_Drag(slider_info *slider, int *closed, 
+extern os_error *Slider_Drag(slider_info *slider, int *closed,
       	      	      	     int *value, void *ref)
 {
   convert_block   convert;
@@ -536,7 +536,7 @@ extern os_error *Slider_Drag(slider_info *slider, int *closed,
   error= Wimp_GetWindowState(slider->window, &state);
   if (error != NULL)
     return error;
-    
+
   /* Start the Wimp drag process */
   convert.screenrect = state.openblock.screenrect;
   convert.scroll     = state.openblock.scroll;
@@ -573,17 +573,17 @@ extern os_error *Slider_Drag(slider_info *slider, int *closed,
     error = Wimp_DragBox((drag_block *) -1);
     if (error != NULL)
       return error;
-      
+
     /*
      * Inform the rest of the module that the slider is no longer
      * being dragged.
      */
     slider->flags.dragging = 0;
-    
+
     /* Return the current slider value to caller if required. */
     if (value != NULL)
       *value = Slider_ReadValue(slider);
-      
+
     return NULL;
   }
 
@@ -609,7 +609,7 @@ extern os_error *Slider_Drag(slider_info *slider, int *closed,
       	error = Wimp_GetWindowState(slider->window, &wstate);
         if (error != NULL)
           return error;
-          
+
         if (wstate.flags.data.open)
         {
           /* Window is still open - update the slider display. */
@@ -638,9 +638,9 @@ extern os_error *Slider_Drag(slider_info *slider, int *closed,
     }
   }
 
-  /* We're not dragging the slider any more. */  
+  /* We're not dragging the slider any more. */
   slider->flags.dragging = 0;
-  
+
   /* Ensure the Wimp's drag operation has finished. */
   error = Wimp_DragBox((drag_block *) -1);
 

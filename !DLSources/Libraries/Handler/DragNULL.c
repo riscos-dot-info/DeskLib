@@ -14,7 +14,7 @@ extern BOOL Handler_DragNULL(event_pollblock *event, void *reference)
 {
   UNUSED ( reference);
   UNUSED ( event);
-  
+
   if (drag_currentupdate != NULL)
     drag_currentupdate(drag_currentuserdata);
 

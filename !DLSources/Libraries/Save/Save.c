@@ -51,12 +51,12 @@ void Save_SetFiletype(save_saveblock *saveblock, int filetype)
   if (saveblock->dragsprite >= 0)
   {
     spritename = Icon_GetTextPtr(saveblock->window, saveblock->dragsprite);
-  
+
     /* We can't set it - it is not indirected */
     if (spritename == NULL) return;
-  
+
     sprintf(spritename, "file_%03x", filetype);
-    
+
     Icon_ForceRedraw(saveblock->window, saveblock->dragsprite);
   }
 }
@@ -385,7 +385,7 @@ static void Save__DefaultResultHandler(save_result result, void *ref)
 
     case save_RAMSAVERFAILED:
       Error_Report(0, "RAM-saver failed");
-    default:  
+    default:
       break;
   }
 }

@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -228,7 +228,7 @@ extern void Mem__ShuffleUp(mem_header *start, mem_header *end)
 /*  Moves all of the used blocks in the range (start < block < end) to a
  *  consecutive run at the end of the given area, fixing anchors as it goes,
  *  and appending the collected freespace to the first block.
- */ 
+ */
 {
   mem_header *source,
              *dest = end,
@@ -248,13 +248,13 @@ fflush(stderr);
   while(source > start)
   {
     next = (mem_header *)((int)source - source->prevrealsize);
-    
+
     if(!ISFREE(source))
     {
       int blocksize = CHUNKSIZE(source->datasize);
       if(dest <= m_lc)
         dest->prevrealsize = blocksize;
-        
+
       dest = (mem_header *)((int)dest - blocksize);
       memmove(dest, source, blocksize);         /* move chunk */
 
@@ -280,7 +280,7 @@ extern void Mem__ShuffleDown(mem_header *start, mem_header *end)
 /*  Moves all of the used blocks in the range (start <= block < end) to a
  *  consecutive run at the beginning of the given area, fixing anchors as it
  *  goes.
- */ 
+ */
 {
   int         prevblocksize = start->prevrealsize;
   mem_header *source = start,
@@ -302,7 +302,7 @@ fflush(stderr);
 
       /* shift block down */
       memmove(dest, source, currblocksize);
-      
+
       dest->prevrealsize = prevblocksize;
       dest->realsize = currblocksize;
       prevblocksize = currblocksize;
@@ -318,7 +318,7 @@ fflush(stderr);
   dest->prevrealsize = prevblocksize;
   dest->realsize = (int)end - (int)dest;
   dest->datasize = 0;
-  
+
   /* fix up block after shuffled run of blocks */
   if(end <= mem__lastchunk)
     end->prevrealsize = dest->realsize;
@@ -364,7 +364,7 @@ static BOOL Mem__TryAlloc(mem_anchor *anchor, int numbytes)
 
   *anchor  = NULL;
   if (numbytes <= 0) return(FALSE);
-  
+
   numbytes = CHUNKSIZE(numbytes);
 
 #ifndef FASTALLOC
@@ -377,7 +377,7 @@ static BOOL Mem__TryAlloc(mem_anchor *anchor, int numbytes)
        *  chunk which is >= numbytes)
        */
       chunk = (mem_header *) mem__heap;
-    
+
       while (chunk <= mem__lastchunk)
       {
         if (ISFREE(chunk) && chunk->realsize >= numbytes)
@@ -387,7 +387,7 @@ static BOOL Mem__TryAlloc(mem_anchor *anchor, int numbytes)
             bestfit = chunk;
             break;
           }
-  
+
           if (bestfit == NULL || bestfit_size > chunk->realsize)
           {
             bestfit = chunk;
@@ -412,7 +412,7 @@ static BOOL Mem__TryAlloc(mem_anchor *anchor, int numbytes)
 
       start = (mem_header *) mem__heap;
       end = (mem_header *) mem__heap;
-  
+
       best_used = mem__heapsize;
 
       while(1)
@@ -428,7 +428,7 @@ static BOOL Mem__TryAlloc(mem_anchor *anchor, int numbytes)
               bestfit = end;
               goto mem__best_block_found;  /* yeah... I know! */
             }
-    
+
             if(bestfit == NULL || bestfit_size > end->realsize)
             {
               bestfit = end;
@@ -554,7 +554,7 @@ mem__best_block_found:;     /* used to stop searching when perfect sized block i
     bestfit = (mem_header *)((int)best_end - best_free);
 #ifdef MEM__DEBUG
 fprintf(stderr, "last chance: start %p, end %p, chunk %p\n",
-                best_start, best_end, bestfit);    
+                best_start, best_end, bestfit);
 fflush(stderr);
 #endif
   }
@@ -604,7 +604,7 @@ extern void Mem_Free(mem_anchor *anchor)
       chunk = Mem__NextChunk(chunk);
       Mem__Amalgamate(&chunk);
     }
-  
+
     if (mem_autocompact == mem_FULLCOMPACT)
       Mem_Compact();      /* Compact also does a ReduceSlot */
     else
@@ -651,7 +651,7 @@ extern BOOL Mem_Initialise(void)
     mem__heapsize  = Mem__HeapSize(sizeof(mem_header) + 16);
     if (mem__heapsize < (int)sizeof(mem_header))
       return(FALSE);
-      
+
     mem__lastchunk = (mem_header *) mem__heap;
     mem__lastchunk->realsize     = mem__heapsize;
     mem__lastchunk->datasize     = 0;

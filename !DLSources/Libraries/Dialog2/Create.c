@@ -22,8 +22,8 @@
 #include "DeskLib:Dialog2.h"
 
 
-dialog2_block	*Dialog2_CreateDialogBlock( 
-	char			*templatename, 
+dialog2_block	*Dialog2_CreateDialogBlock(
+	char			*templatename,
 	icon_handle		okbutton,
 	icon_handle		cancelbutton,
 	dialog2_openfn		openfn,

@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -18,7 +18,7 @@
 #define __dl_mem_c
 #include "MemDefs.h"
 
-#include <string.h> 
+#include <string.h>
 
 #ifdef MEM__DEBUG
 #include <stdio.h>
@@ -194,14 +194,14 @@ fflush(stderr);
 
     move_count = start->datasize;
     free_count = start->realsize - CHUNKSIZE(start->datasize);
-  
+
     /* Scan backwards from chunk to find start of possible run of blocks */
     while((free_count < needed) && ((int)start != mem__heap))
     {
       int used;
-  
+
       start = (mem_header *)((int)start - start->prevrealsize);
-  
+
       if(ISFREE(start))
       {
         used = 0;
@@ -267,7 +267,7 @@ fflush(stderr);
         best_move = move_count;
         best_free = free_count;
       }
-  
+
       if(start == chunk)
         break;
 
@@ -351,7 +351,7 @@ fflush(stderr);
       destination = (char *)bestfit + sizeof(mem_header);
       memmove(destination, source, at);
       memmove(destination + at + by, source + at, chunk->datasize - at);
-      
+
       /* update heap control structures */
       bestfit->handle = chunk->handle;
       bestfit->datasize = newdatasize;

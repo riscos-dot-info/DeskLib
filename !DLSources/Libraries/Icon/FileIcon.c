@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -25,7 +25,7 @@
 icon_handle Icon_FileIcon(window_handle window, icon_handle icon, int filetype)
 {
   /* Icon should be an indirected text-only icon with enough room in text
-     buffer to hold the sprite name.  
+     buffer to hold the sprite name.
      This converts to an indirected sprite-only icon, and fills in the sprite
      name and area.
   */
@@ -39,7 +39,7 @@ icon_handle Icon_FileIcon(window_handle window, icon_handle icon, int filetype)
   Wimp_DeleteIcon(window, icon);
 
   /* Put sprite name in name field */
-  sprintf((char *)(int)iconcreate.icondata.data.indirectsprite.name, 
+  sprintf((char *)(int)iconcreate.icondata.data.indirectsprite.name,
           "file_%03x", filetype);
 
   /* Fill in sprite area */
@@ -55,7 +55,7 @@ icon_handle Icon_FileIcon(window_handle window, icon_handle icon, int filetype)
   /* Re-create the icon */
   iconcreate.window = window;
   Wimp_CreateIcon(&iconcreate, &handle);
-    
+
   /* Force the icon to be redrawn */
   Wimp_SetIconState(window, handle, 0, 0);
 

@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -30,7 +30,7 @@ extern void Pane2_DeletePane(window_handle mainwindow, int panenumber)
 {
  /*
   * This hides and deletes the 'panenumber'th pane attached to the window
-  * 'mainwindow' 
+  * 'mainwindow'
   */
   main_listelement *mainelement;
   pane_listelement *paneelement;

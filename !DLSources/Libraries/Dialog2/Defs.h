@@ -15,8 +15,8 @@
 void	Dialog2__CommonOpenCode( dialog2_block *dialog2);
 void	Dialog2__CommonOpenMenuCode( dialog2_block *dialog2);
 
-BOOL	Dialog2__CloseDialogInternal( 
-	dialog2_block	*dialog2, 
+BOOL	Dialog2__CloseDialogInternal(
+	dialog2_block	*dialog2,
 	BOOL		closemenu,	/* If TRUE, close the current menu if dialog is a menu	*/
 	BOOL		deletewindow	/* If TRUE, delete the window if dialog2 allows.	*/
 	);

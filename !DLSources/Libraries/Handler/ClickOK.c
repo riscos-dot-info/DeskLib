@@ -6,7 +6,7 @@
 extern BOOL Handler_ClickOK(event_pollblock *event, void *reference)
 {
   UNUSED( reference);
-  
+
   if (!event->data.mouse.button.data.menu)               /* Not a MENU click */
   {
     Icon_Select(event->data.mouse.window, event->data.mouse.icon);

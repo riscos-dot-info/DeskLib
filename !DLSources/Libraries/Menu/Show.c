@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -55,7 +55,7 @@ int Menu_CalcHeight(menu_ptr menu)
 
 
 void Menu_Show(menu_ptr menu, int x, int y)
-{                    
+{
   x -= 64;
   if (y < 0)
     y = 96 + Menu_CalcHeight(menu);            /* Calculate iconbar position */
@@ -66,7 +66,7 @@ void Menu_Show(menu_ptr menu, int x, int y)
 
   Wimp_CreateMenu(menu, x, y);
 }
- 
+
 
 void Menu_ShowLast(void)
 {

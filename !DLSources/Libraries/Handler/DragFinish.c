@@ -13,7 +13,7 @@ extern BOOL Handler_DragFinish(event_pollblock *event, void *reference)
 {
   UNUSED( reference);
   UNUSED( event);
-  
+
   if (drag_currentcomplete != NULL)
     drag_currentcomplete(drag_currentuserdata);
 

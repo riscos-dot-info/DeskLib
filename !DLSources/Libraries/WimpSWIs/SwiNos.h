@@ -52,10 +52,10 @@ SWI_Wimp_CommandWindow         EQU &0400ef
 SWI_Wimp_TextColour            EQU &0400f0
 SWI_Wimp_TransferBlock         EQU &0400f1
 SWI_Wimp_ReadSysInfo           EQU &0400f2
-SWI_Wimp_SetFontColours        EQU &0400f3 
-SWI_Wimp_AddMessages           EQU &0400f6 
+SWI_Wimp_SetFontColours        EQU &0400f3
+SWI_Wimp_AddMessages           EQU &0400f6
 SWI_Wimp_RemoveMessages        EQU &0400f7
-SWI_Wimp_Extend                EQU &0400fb 
+SWI_Wimp_Extend                EQU &0400fb
 
 SWI_Wimp_BorderIcon            EQU &081680
 SWI_Wimp_BorderWindow          EQU &081681

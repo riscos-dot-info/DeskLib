@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -31,7 +31,7 @@ extern BOOL Handler_HatchRedraw(event_pollblock *event, void *reference)
   int xstart, height, xcorr, ycorr, x;
 
   UNUSED( reference);
-  
+
   redraw.window = event->data.openblock.window;
   Wimp_RedrawWindow(&redraw, &more);
   origin_x = redraw.rect.min.x - redraw.scroll.x;

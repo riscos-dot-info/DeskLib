@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -35,9 +35,9 @@ void Menu_SetText(menu_ptr menu, int entry, char *text)
    *    Allocate a new buffer
    *  NOTE: we don't bother shrinking the buffer if the new text is shorter
    */
-   
+
   if (item->iconflags.data.indirected)
-    oldlength = item->icondata.indirecttext.bufflen; 
+    oldlength = item->icondata.indirecttext.bufflen;
   else
     oldlength = wimp_MAXNAME;
 
@@ -58,7 +58,7 @@ void Menu_SetText(menu_ptr menu, int entry, char *text)
   /*  Copy the new string into the buffer, truncating it if it is still
    *  too long to fit into the buffer.
    */
-   
+
   if (item->iconflags.data.indirected)
   {
     length = item->icondata.indirecttext.bufflen - 1;

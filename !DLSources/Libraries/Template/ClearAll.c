@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -49,5 +49,5 @@ extern void Template_ClearAll(void)
   LinkList_Init(&template_list);         /* just to be on the safe side! */
 
   if ((int) template_fontarray > 0)
-    Font_LoseAllFonts(template_fontarray); 
+    Font_LoseAllFonts(template_fontarray);
 }

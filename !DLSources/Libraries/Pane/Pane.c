@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -30,7 +30,7 @@ extern BOOL Pane_OpenEventHandler(event_pollblock *event,
   window_state pstate;
 
   UNUSED( reference);
-  
+
   curpane=pane_root;
 
   while(curpane)
@@ -154,7 +154,7 @@ extern void Pane_Show(window_handle  window,
         Window_Show(curpane->panedata.master, openpos);
         Wimp_GetWindowState(curpane->panedata.master, &mstate);
         Wimp_GetWindowState(curpane->panedata.pane, &pstate);
-  
+
         if(curpane->panedata.flags.data.fixed)
         {
           pstate.openblock.screenrect.max.y = mstate.openblock.screenrect.max.y - curpane->panedata.offset.y;
@@ -166,7 +166,7 @@ extern void Pane_Show(window_handle  window,
           pstate.openblock.screenrect.max.y = pstate.openblock.screenrect.min.y + curpane->panedata.size.y;
         }
         pstate.openblock.screenrect.min.x = mstate.openblock.screenrect.min.x + curpane->panedata.offset.x;
-  
+
         if(curpane->panedata.flags.data.resize)
         {
           if(mstate.openblock.screenrect.max.x > pstate.openblock.screenrect.min.x + curpane->panedata.size.x)

@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -22,7 +22,7 @@
 extern BOOL OS_ReadVarVal(const char *varname, char *buf, int bufsize)
 {
   int result;
-  
+
   /* Check for existence of this system variable */
   SWI(3, 3, SWI_OS_ReadVarVal, varname, buf, -1, NULL, NULL, &result);
   if (result < 0)
@@ -31,14 +31,14 @@ extern BOOL OS_ReadVarVal(const char *varname, char *buf, int bufsize)
     SWI(5, 3, SWI_OS_ReadVarVal,
         varname, buf, bufsize, 0, 0,
         NULL, NULL, &result);
-   
+
     /* Ensure correct termination */
     buf[result] = 0;
 
     return TRUE;
   }
-  
+
   /* Could not find it */
   return FALSE;
-}      
+}
 

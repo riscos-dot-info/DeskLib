@@ -47,7 +47,7 @@ static BOOL EventHandler(event_pollblock *event, void *reference)
       	dbox->state.persist = event->data.mouse.button.data.adjust;
       	return(TRUE);
       }
-    default:  
+    default:
       break;
   }
 

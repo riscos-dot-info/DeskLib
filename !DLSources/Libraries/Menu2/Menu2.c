@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -87,11 +87,11 @@ int	ii;
 Debug_Printf( "Menu2__Free, i=%i, menu2__numopen=%i\n", i, menu2__numopen);
 
 for ( ii=i; ii<menu2__numopen; ii++)	{
-	
-	Debug_Printf( error_PLACE "menu2__openmenus[ ii(=%i)]->makefn = %p\n", 
+
+	Debug_Printf( error_PLACE "menu2__openmenus[ ii(=%i)]->makefn = %p\n",
 		ii, menu2__openmenus[ ii]->makefn
 		);
-	
+
 	if ( !menu2__openmenus[ ii]->makefn)	{
 		Debug_Printf( error_PLACE "Freeing menu number %i\n", ii);
 		Menu2__FreeMenu( menu2__openmenus[ ii]);
@@ -106,7 +106,7 @@ menu2__numopen = i;
 }
 
 
-menu2_handle	Menu2_Create( 
+menu2_handle	Menu2_Create(
 	char			*title,
 	char			*spec,
 	menu2_makefn		makefn,		/* If !=NULL, called to make the menu	*/
@@ -118,7 +118,7 @@ menu2_handle	Menu2_Create(
 {
 menu2_block	*m = (menu2_block *) malloc( sizeof( menu2_block));
 if (!m)	return 0;
-	
+
 m->title	= title;
 m->spec		= spec;
 m->makefn	= makefn;
@@ -195,11 +195,11 @@ int		selectdepth = Menu2__SelectionDepth( &event->data.message.data.words[3]);
 Debug_Printf( "Menu2__OpenSub, handle=%i, selectdepth= %i\n", handle, selectdepth);
 
 Menu2__Free( selectdepth);
-	
+
 Menu2__EnsureMenu( m);
 Wimp_CreateSubMenu(
 	m->menu,
-	event->data.message.data.words[1], 
+	event->data.message.data.words[1],
 	event->data.message.data.words[2]
 	);
 
@@ -223,18 +223,18 @@ if ( event->data.message.header.action == message_MENUWARN)	{
 	int		selectdepth	= Menu2__SelectionDepth( selections);
 	menu2_block	*lastmenu	= menu2__openmenus[ selectdepth-1];
 	menu2_handle	nextmenu = NULL;
-	
+
 	Menu2__Free( selectdepth);
 	Debug_Printf( "Menu2__MessageHandler, menu2__numopen=%i\n", menu2__numopen);
-	
+
 	if ( menu2__numopen < selectdepth)	return FALSE;
 		/* Some menus are open which we don't know about...	*/
-	
+
 	if ( lastmenu->subfn)	{
 		Debug_Printf( "Menu2__MessageHandler, calling subfn %p\n", lastmenu->subfn);
-		nextmenu = lastmenu->subfn( 
-			selections[ selectdepth-1], 
-			event, 
+		nextmenu = lastmenu->subfn(
+			selections[ selectdepth-1],
+			event,
 			lastmenu->reference
 			);
 		Debug_Printf( "Menu2__MessageHandler, nextmenu=%i\n", nextmenu);
@@ -265,7 +265,7 @@ if ( leafmenu->selectfn)	{
 	}
 	/*
 	Note that this is not necessarily the leaf menu, just the
-	leaf-est menu2 opened. This is because the last menu2 
+	leaf-est menu2 opened. This is because the last menu2
 	could have opened non-menu2 menus itself.
 	*/
 
@@ -276,10 +276,10 @@ if ( !mouse.button.data.adjust)	Wimp_GetPointerInfo( &mouse);
 if ( mouse.button.data.adjust)	{
 
 	int	i;
-	
+
 	/* Rescan all open menus...	*/
 	Debug_Printf( "Menu2__MenuHandler reopening menu\n");
-	
+
 	for ( i=0; i<menu2__numopen; i++)	{
 		menu2_block	*m = menu2__openmenus[ i];
 		if ( m->flagsfn)	{
@@ -292,8 +292,8 @@ if ( mouse.button.data.adjust)	{
 			m->flagsfn( m->menu, m->reference);
 			}
 		}
-		
-	Debug_Printf( "Menu2__MenuHandler calling Menu_ShowLast\n");	
+
+	Debug_Printf( "Menu2__MenuHandler calling Menu_ShowLast\n");
 	Menu_ShowLast();
 	}
 

@@ -20,7 +20,7 @@
 #include "DeskLib:Dialog2.h"
 
 
-void	Dialog2_Window_GetWindowOpenPos( 
+void	Dialog2_Window_GetWindowOpenPos(
 		wimp_point *pos, window_openpos openpos, window_handle window
 		)
 	/* This is a bit of a cheat - opens the window using Window_Show, looks at where	*/

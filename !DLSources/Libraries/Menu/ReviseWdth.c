@@ -42,7 +42,7 @@ extern void Menu_ReviseWidth(menu_ptr menu)
   do {
     if (item->iconflags.data.indirected) {
       width = strlen(item->icondata.indirecttext.buffer);
-    } 
+    }
     else {
       width = strlen(item->icondata.text);
       if (width > 12)  width = 12;  /* It's a full length non-terminated entry */

@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -42,5 +42,5 @@ extern void Icon_DisposeIndData(icon_data *data, icon_flags flags)
     if ((data->indirecttext.validstring != NULL) &&
         (data->indirecttext.validstring != (char *) 0xffffffff))
       free(data->indirecttext.validstring);
-  }       
+  }
 }

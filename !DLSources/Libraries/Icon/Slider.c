@@ -79,7 +79,7 @@ extern int Icon_SetSlider(window_handle window,
   icreate.window = window;
   Wimp_DeleteIcon(window, slidericon);                 /* And resize icon... */
   Wimp_CreateIcon(&icreate, &icon);
-  
+
   {
     window_redrawblock r;  /* Force window redraw to remove: getting smaller */
 
@@ -115,7 +115,7 @@ extern int Icon_UpdateSlider(window_handle window,
   convert_block    convert;
 
   UNUSED( lastpos);
-  
+
   Wimp_GetPointerInfo(&ptr);
   Wimp_GetWindowState(window, &wstate);
 

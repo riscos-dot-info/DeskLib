@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -12,8 +12,8 @@
     Author:  Copyright © 1993 Tom Kirby-Green, Jason Howat
     Version: 1.01 (02 Sep 1995)
     Purpose: Calculate the size in bytes of a sprite with the given parameters
-    Mods:    02 Sep 1995 JH Uses mode variable Log2BPC (bytes per chr) instead 
-                            of Log2BPP (bits per pixel), to work properly with 
+    Mods:    02 Sep 1995 JH Uses mode variable Log2BPC (bytes per chr) instead
+                            of Log2BPP (bits per pixel), to work properly with
                             'double pixel' modes such as mode 4.
 */
 
@@ -50,7 +50,7 @@ extern int Sprite_MemorySize(int width, int height, int mode,
 
   if (flags & sprite_HASMASK)        /* Mask is just another chunk of */
     size *= 2;                       /* same size as the sprite data  */
-                                     
+
   size += sizeof( sprite_header);    /* Add on 44 bytes for header    */
 
   if (flags & sprite_HASPAL)         /* Add on size of palette        */

@@ -1,9 +1,9 @@
 /*
     ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
+    #   #            #    #       #          The FreeWare C library for
     #   #  ##   ###  #  # #     # ###             RISC OS machines
     #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
+    #   # ####  ###  ##   #     # #  #
     #   # #        # # #  #     # #  #    Please refer to the accompanying
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
@@ -61,10 +61,10 @@ extern void Pane2_Show(window_handle mainwindow, window_openpos openpos)
   * find first pane window
   */
   paneelement = LinkList_FirstItem(&(mainelement->paneanchor));
-  
+
  /*
   * open all pane windows
-  */ 
+  */
   while(paneelement != NULL){
 
     /*
@@ -146,7 +146,7 @@ extern void Pane2_Show(window_handle mainwindow, window_openpos openpos)
      panestate.openblock.behind = lastbehind;
      Wimp_OpenWindow(&panestate.openblock);
      lastbehind = paneelement->panewindow;
-     
+
     /*
      * find next pane window
      */
