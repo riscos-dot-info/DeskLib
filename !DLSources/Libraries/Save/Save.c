@@ -10,7 +10,7 @@
 
     File:    Save.Save.c
     Author:  Copyright © 1994 Julian Smith and Jason Howat
-    Version: 1.02 (18 Jun 1994)
+    Version: 1.03 (03 Aug 2003)
     Purpose: Automated handling of save-as window
     Mods:    13-Jun-1994 - JPS - Added support for filetypes
              18-Jun-1994 - JDH - Changed sense of value returned by
@@ -25,6 +25,8 @@
                   event_lastevent.  In Save__MessageHandler the initial
                   reference check excludes unacknowledged messages that were
                   returned.
+             03-Aug-2003 - Wimp_AddMessages which the Save__MessageHandler
+                           listens for to be sure it'll always work
 */
 
 #include "DeskLib:Event.h"
@@ -459,6 +461,14 @@ save_saveblock *Save_InitSaveWindowHandler(window_handle      window,
                                            void               *ref)
 {
   save_saveblock *saveblock;
+  int savemessages[7] = { message_DATASAVE,
+                          message_DATASAVEACK,
+                          message_RAMFETCH,
+                          message_RAMTRANSMIT,
+                          message_DATALOADACK,
+                          message_DATALOAD,
+                          0
+                        };
 
   if(!filesaver)
   {
@@ -503,12 +513,18 @@ save_saveblock *Save_InitSaveWindowHandler(window_handle      window,
   if(saveblock->resulthandler == NULL)
     saveblock->resulthandler = Save__DefaultResultHandler;
 
-  Save__CleanIconText(saveblock->window, saveblock->filenameicon);
   /*  Make sure the terminator of the filename is '\0' - templates
    *  seem to come with a '\n' as terminator.
    */
+  Save__CleanIconText(saveblock->window, saveblock->filenameicon);
 
+
+  /*  Claim the relevant poll events and ensure the user messages pertaining to
+   *  saving are being passed in.
+   *  Since DeskLib only supports Wimp 3.10 and later this is unconditional
+   */
   Save__EventClaimOrRelease(saveblock, Event_Claim);
+  Wimp_AddMessages(savemessages);
 
   return saveblock;
 }
@@ -518,3 +534,4 @@ void Save_ReleaseSaveHandlers(save_saveblock *saveblock)
 {
   Save__EventClaimOrRelease(saveblock, Event_Release);
 }
+
