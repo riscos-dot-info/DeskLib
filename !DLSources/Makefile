@@ -20,7 +20,7 @@ DESKLIB = <DeskLib$$Dir>.o.DeskLib
 DESKLIBDIR = <DeskLib$$Dir>.o
 DEBUGS = <DeskLib$$Dir>.o.Debug
 
-libraries := $(notdir $(filter-out Libraries/CVS, $(wildcard Libraries/*)))
+libraries := $(notdir $(filter-out Libraries/CVS Libraries/h, $(wildcard Libraries/*)))
 
 lib_objects = $(addprefix Libraries.,$(addsuffix .o.*, $(libraries)))
 
@@ -31,7 +31,7 @@ all: $(DESKLIB) debugs smerror
 
 # Link the objects together to make a new library
 $(DESKLIB): $(all_objects)
-	@mkdir $(subst .,/,$@)/..
+	@mkdir -p $(basename $@)
 	$(AR) -c $@ $(AFLAFS) $(lib_objects)
 
 # Insert all the Makefiles in the Otherlibs directory as well.
