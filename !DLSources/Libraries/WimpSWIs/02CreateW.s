@@ -45,7 +45,7 @@
         STRVC   a1, [a4, #0]
         MOVVC   a1, #0
 
-        MOVS    pc, ip
-;        LDMFD   sp!, {pc}^
+        MOV     pc, ip
+;        LDMFD   sp!, {pc}
 ;
         END

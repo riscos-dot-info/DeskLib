@@ -16,7 +16,7 @@
         SWI     SWI_Wimp_ReportError + XOS_Bit
         MOV     a1, a2
 
-        MOVS    pc, ip
-;        LDMFD   sp!, {pc}^
+        MOV     pc, ip
+;        LDMFD   sp!, {pc}
 ;
         END

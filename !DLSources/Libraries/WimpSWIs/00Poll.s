@@ -84,7 +84,7 @@ L00001c
         MOVVC   a1, #0
         CMP     lr, #0
         BLNE    fp_status_restore
-        LDMDB   fp, {v1, v2, v3, fp, sp, pc}^
+        LDMDB   fp, {v1, v2, v3, fp, sp, pc}
 
         STARTCODE Wimp_PollIdle3
 ;
@@ -120,7 +120,7 @@ L00001c
         SUB     a2, a2, #4
         STR     a1, [a2, #0]
         MOVVC   a1, #0
-        LDMDB   fp, {v1-v4, fp, sp, pc}^
+        LDMDB   fp, {v1-v4, fp, sp, pc}
 
 
         STARTCODE Wimp_SaveFPStateOnPoll

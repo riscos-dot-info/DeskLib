@@ -40,6 +40,6 @@
         LDMFD   a1, {a1, a2, a3, a4, v1}
         SWI     SWI_Wimp_ForceRedraw + XOS_Bit
         MOVVC   a1, #0
-        LDMFD   sp!, {v1, pc}^
+        LDMFD   sp!, {v1, pc}
 ;
         END

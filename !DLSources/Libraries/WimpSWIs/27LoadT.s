@@ -49,6 +49,6 @@
         SWI     SWI_Wimp_LoadTemplate + XOS_Bit
         STMDB   v4!, {a2, a3, a4, v1, v2, v3}
         MOVVC   a1, #0
-        LDMFD   sp!, {v1, v2, v3, v4, pc}^
+        LDMFD   sp!, {v1, v2, v3, v4, pc}
 ;
         END

@@ -40,7 +40,7 @@
         LDR     a2, DATA
         SWI     SWI_Wimp_CloseDown + XOS_Bit
         MOVVC   a1, #0
-        LDMFD   sp!, {pc}^
+        LDMFD   sp!, {pc}
 DATA
         DCB     "TASK"
 ;
