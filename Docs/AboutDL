@@ -92,7 +92,7 @@
  with occasional names altered to improve readability and/or consistency.
  We have reverted back to basing our naming on Acorn's very well designed
  SWI interfaces and their use, rather than sticking with Acorn's RISC OS Lib
- abstractions to keep this environment closer to it's Assembler and BASIC
+ abstractions to keep this environment closer to its Assembler and BASIC
  cousins, which will make it easier to port programmers between environments.
 
  As a result, DeskLib has been developed by individual programmers working
@@ -105,8 +105,8 @@
 
  The code has been written to provide a high-level interface that supports,
  encourages, and all BUT forces programmers to use a more consistent
- interface design, which will be brought into line with the Acorn Style
- Guide as soon as Acorn make up their minds...
+ interface design.
+
  The programmer using DeskLib is encouraged to use our more generic template
  and menu routines, so that the END USER of the product has more control 
  of the look, feel, layout, and hotkeys used in the program.
@@ -116,7 +116,7 @@
  if possible. Thus, we provide unrestricted low-level access as well. And by
  providing the sources, we make it possible for you to do low-level "tweaks"
  on our high-level data structures without the fear that you might be
- treading on the toes of some other code...
+ treading on the toes of some other code.
 
  We also feel it is important to distribute the library sources freely, so
  that you may improve or alter the library to suit your own needs, and
@@ -129,30 +129,6 @@
  We have absolutely NO objection to including SEVERAL DIFFERENT code modules
  that do essentially the same thing, so that you may CHOOSE the one that
  suits you best.
-
-
-
-The future
- As well as growing to include more and more code resources, three important
- goals for the future of this Library are:
-  * Conversion to assembler. Small and simple functions (Icon_Select, etc)
-    are extremely easy to convert to assembler. This also has the advantage
-    of reducing their size at the same time as increasing efficiency. The goal
-    is to convert as much of the library as possible to a more efficient
-    implementation over time. This will not affect the interface, so existing
-    applications can benefit from the conversion by simply relinking with
-    the new functions.
-
-  * Support for Glazier's 'Glass' template format, including menu, window, icon
-    and hotkey templates, and special creatures such as 'meta-icons' (things
-    like slider icons which are made up of more than one Wimp icon, but can
-    be treated by the main program as a single entity)
-
-  * Production of a shared DeskLib code library relocatable module, along
-    similar lines to the existing ANSI SharedCLibrary. This will basically move
-    the most important small functions into a SMALL relocatable module so that
-    the code resources may be shared by all desktop tasks, including ones
-    written in C, assembler, and (hopefully) BASIC.
 
 
 
@@ -218,19 +194,24 @@ Authors
     Peter Gaunt
     Tom Kirby-Green
     David Leftley
+    Lenny
     David Lenthall
     Keith Marlow
     Stuart Martin
     Sergio Monesi
+    Peter Naulls
     Ernest Ong
     Ainsley Pereira
     David Pilling
     Edouard Poor
     Andrew Sellors
+    Andrew Sidwell
+    Anthoy Sidwell
     Julian Smith
     Ben Summers
     Neil Tarrent
     William Waghorn
+    Dave Ward
     Robin Watts
     Jason Williams
     Mark H. Wilkinson
@@ -252,49 +233,12 @@ The above was mostly written by Jason Williams, the original DeskLib moderator
 
  If you find any bugs or problems in DeskLib, or if you can supply
  suggestions or code for alterations, additions, or tutorial applications,
- then please write to either of:
- 
-   Julian Smith
-   Department of Experimental Psychology
-   University of Oxford
-   South Parks Road
-   Oxford
-   OX1 3UD
-   UK
-   
-   Craig Beech
-   c/o Echelon Software
-   30 The Deerings
-   Harpenden
-   Hertfordshire
-   AL5 2PE.
-   UK
+ then please write to:
 
-(including a small lump of cash (1 british pound would suffice) to cover
-return postage would be appreciated!)
+ Peter Naulls
+ peter@chocky.org
 
- or email either of:
-   julians@festival.ed.ac.uk
-   c-beech@csm.uwe.ac.uk
+ Or visit:
 
- A set of DeskLib web pages is reachable from:
- http://cogsci1.psych.ox.ac.uk/~julians/
- This site may also have beta versions of DeskLib.
- 
-
- These addresses were valid as of the release date.
- If you fail to reach us at any of them, then we can also generally be
- contacted by posting an article onto usenet's comp.sys.acorn newsgroup,
- which we (or someone) will be watching regardless of where we happen to be
- living.
-
- Updates to this library are likely to be distributed over comp.sources.acorn,
- various Archive servers, selected "PD" Libraries, and by high velocity llama.
-
- If you wish to use DeskLib in a commercial product (or ANY important or
- global-release software for that matter), then PLEASE write to us at the
- above addresses enclosing a blank 3.5" disc, and I will endeavour to answer
- any queries you have, and forward you the latest version of the library
- sources. It is in your own best interests! The only way to get support is
- by contacting us.
+ http://www.riscos.info/desklib/
 
