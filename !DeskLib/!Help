@@ -31,11 +31,11 @@ Contact: peter@chocky.org
 About This Version
 ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
 
-This is version 2.50 of DeskLib, the second 32-bit release.
+This is version 2.51 of DeskLib.
 
 This version of DeskLib is 32-bit only.  This means that to use it, you
 will require a 32-bit C Compiler, such as Castle's 32-bit C/C++ tools,
-32-bit GCC or LCC.  The latter two have not yet been publically released.
+32-bit GCC or LCC.
 
 If you wish to know more about RISC OS and 32-bit, then visit
 http://www.riscos.info/32bit/
@@ -74,10 +74,3 @@ automatically generated from the DeskLib header files. The formatting is
 rather crude in places, but there is a help page for every DeskLib
 function, typedef and global variable mentioned in the header files.
 
-
-Version
-˜˜˜˜˜˜˜
-
-This is DeskLib version 2.50
-
-Peter Naulls
