@@ -1,7 +1,5 @@
 # Sub-makefile for the Debugging libraries
 
-CFLAGS += -DDeskLib_DEBUG
-
 DebugsDir	=	<DeskLib$$Dir>.o.Debug
 
 debugs:				\
@@ -35,6 +33,10 @@ $(DebugsDir).uniquefile: OtherLibs/Debugs/uniquefile.o OtherLibs/Debugs/Debug.o
 #$(DebugsDir).heapgraph: OtherLibs/Debugs/heapgraph.o OtherLibs/Debugs/Debug.o
 #	@mkdir -p $(DebugsDir)
 #	$(AR) -c $@ $(AFLAFS) OtherLibs.Debugs.o.heapgraph OtherLibs.Debugs.o.Debug
+
+OtherLibs/Debugs/Signal.o:
+	@mkdir -p $(@D)/o
+	$(CC) $(CFLAGS) -D_DeskLib_Debug -c OtherLibs/Debugs/Signal.c -o $@
 
 OtherLibs/Debugs/Debug.o:
 	@mkdir -p $(@D)/o
