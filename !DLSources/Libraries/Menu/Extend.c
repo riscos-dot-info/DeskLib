@@ -32,7 +32,8 @@ extern BOOL Menu__Create(menu_item *, char *, int);
 extern menu_ptr Menu_Extend(menu_ptr menu, char *description)
 {
   menu_ptr  newmenu;
-  int       maxwidth = 0, newitems = 0, lastitem = 0;
+  unsigned int   maxwidth = 0;
+  int            newitems = 0, lastitem = 0;
   menu_item *item = (menu_item *) ((int) menu + sizeof(menu_block));
 
   Menu__CountItems(description, &newitems, &maxwidth);

@@ -29,7 +29,7 @@
 extern void Pane2_Show(window_handle mainwindow, window_openpos openpos)
 {
  /*
-  * Opens the main window 'mainwindow' and all it's attached pane windows
+  * Opens the main window 'mainwindow' and all its attached pane windows
   * according to 'openpos'
   * Use in the same manner to Window_Show
   */

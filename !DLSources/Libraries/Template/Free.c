@@ -25,7 +25,7 @@ extern void Template_Free(window_block **windowdef)
 {
   window_block *window;
   icon_block   *icons;
-  int          icon;
+  unsigned int  icon;
 
   window = *windowdef;
   if (window->titleflags.data.indirected)

@@ -45,7 +45,7 @@ static void Icon__ResetCaret(const window_handle window, const icon_handle icon)
 static void Increment(const icon_incdecblock *b)
 {
  int i;
- if ((i=Icon_GetInteger(b->window,b->texticon))<(b->max-b->step))
+ if ((i = Icon_GetInteger(b->window,b->texticon)) < (int)(b->max-b->step))
                                Icon_SetInteger(b->window,b->texticon,i+b->step);
       /* if value in text icon is less than the max-step increment it by step */
  else if (i<b->max) Icon_SetInteger(b->window,b->texticon,b->max); /* else if
@@ -60,7 +60,7 @@ Icon__ResetCaret(b->window, b->texticon);
 static void Decrement(const icon_incdecblock *b)
 {
  int i;
- if ((i=Icon_GetInteger(b->window,b->texticon))>(b->min+b->step))
+ if ((i = Icon_GetInteger(b->window,b->texticon)) > (int)(b->min+b->step))
                                Icon_SetInteger(b->window,b->texticon,i-b->step);
       /* if value in text icon is more than the min+step decrement it by step */
  else if (i>b->min) Icon_SetInteger(b->window,b->texticon,b->min); /* else if

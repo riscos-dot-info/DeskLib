@@ -18,7 +18,7 @@
 
 #include "DeskLib:Str.h"
 
-int stricmpcr(char *s1, char *s2)
+int stricmpcr(const char *s1, const char *s2)
 {
   char ch1 = 0, 
        ch2 = 0;

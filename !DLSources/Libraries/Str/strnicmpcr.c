@@ -21,7 +21,7 @@
 
 #include "DeskLib:Str.h"
 
-extern int strnicmpcr(char *s1, char *s2, size_t n)
+extern int strnicmpcr(const char *s1, const char *s2, size_t n)
 {
   char ch1 = 0, 
        ch2 = 0;

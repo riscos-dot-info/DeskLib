@@ -18,7 +18,7 @@
 
 #include "DeskLib:file.h"
 
-extern int File_Size(char *filename)
+extern int File_Size(const char *filename)
 {
   _kernel_osfile_block osfile;
 

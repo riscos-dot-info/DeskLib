@@ -159,18 +159,18 @@ void Mem__Amalgamate(mem_header **chunk)
 /*  Tries to merge this free chunk with the previous chunk, if it's free.
  */
 {
-  mem_header *this, *prev, *next;
+  mem_header *merge, *prev, *next;
 
-  this = *chunk;
-  if (!ISFREE(this) || (int) this <= mem__heap) return;
+  merge = *chunk;
+  if (!ISFREE(merge) || (int) merge <= mem__heap) return;
 
-  prev = Mem__PrevChunk(this);
-  if (prev != this && ISFREE(prev))                /* Amalgamate free chunks */
+  prev = Mem__PrevChunk(merge);
+  if (prev != merge && ISFREE(prev))                /* Amalgamate free chunks */
   {
-    prev->realsize += this->realsize;              /* Extend prev chunk      */
+    prev->realsize += merge->realsize;              /* Extend prev chunk      */
     *chunk = prev;                                 /* Return new free chunk  */
 
-    if (this == mem__lastchunk)                    /* Update lastchunk ptr   */
+    if (merge == mem__lastchunk)                    /* Update lastchunk ptr   */
       mem__lastchunk = prev;
     else
     {                                              /* Fix backward 'link'    */
@@ -189,7 +189,7 @@ extern void Mem__SplitOffFreeChunk(mem_header *chunk)
   if(ISFREE(chunk))
     return;
 
-  if((chunk->realsize - chunk->datasize) >= (sizeof(mem_header) + 16))
+  if((chunk->realsize - chunk->datasize) >= (int)(sizeof(mem_header) + 16))
   {
     mem_header *free;
     int         oldchunksize = chunk->realsize,
@@ -355,11 +355,11 @@ static BOOL Mem__TryAlloc(mem_anchor *anchor, int numbytes)
 {
   mem_header *chunk, *bestfit = NULL,
              *start, *end,
-             *best_start = NULL, *best_end,
+             *best_start = NULL, *best_end = NULL,
              *end_of_heap = (mem_header *)(mem__heap + mem__heapsize);
-  int         bestfit_size,
-              best_used,
-              best_free,
+  int         bestfit_size = 0,
+              best_used = 0,
+              best_free = 0,
               truesize = numbytes;
 
   *anchor  = NULL;
@@ -614,7 +614,7 @@ extern void Mem_Free(mem_anchor *anchor)
 
 
 #pragma no_check_stack
-extern int Mem_DontBudge(int n, void **a)
+static int Mem_DontBudge(int n, void **a)
 /*  Function to register with _kernel_register_slotextend to refuse to allow
  *  SharedCLib to allocate more memory. (identical to Flex's flex_dontbudge)
  *  Don't call this function - pass to _k*_r*_slotextend instead. Note that
@@ -622,6 +622,8 @@ extern int Mem_DontBudge(int n, void **a)
  *  a Mem_Budge function, you shouldn't have to worry about this at all.
  */
 {
+  n = n;
+  a = a;
   return(0);                                    /* number of bytes allocated */
 }
 #pragma check_stack
@@ -647,7 +649,7 @@ extern BOOL Mem_Initialise(void)
     mem__heap += 0x8000;    /* Add application base address to get heap base */
 
     mem__heapsize  = Mem__HeapSize(sizeof(mem_header) + 16);
-    if (mem__heapsize < sizeof(mem_header))
+    if (mem__heapsize < (int)sizeof(mem_header))
       return(FALSE);
       
     mem__lastchunk = (mem_header *) mem__heap;

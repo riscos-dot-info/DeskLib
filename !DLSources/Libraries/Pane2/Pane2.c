@@ -25,7 +25,7 @@
 #include <stdlib.h>
 
 /* base of linked list */
-extern linklist_header main_anchor = {NULL, NULL};
+linklist_header main_anchor = {NULL, NULL};
 
 /******************************************************************************/
 

@@ -26,7 +26,7 @@
 
 extern void Msgs_DropGroup(char *grouptag)
 {
-  msgdefptr ptr, next, last;
+  msgdefptr ptr, next, last = NULL;
 
   ptr = msgs_grouplist;            /* Try to find group */
   while (ptr != NULL)
@@ -59,5 +59,4 @@ extern void Msgs_DropGroup(char *grouptag)
     free(ptr);
     ptr = next;
   }
-/* cc warns 'last' may be used before being set	*/
 }

@@ -14,6 +14,7 @@
     Purpose: Dynamic memory manager - checks validity of heap
 */
 
+#define __dl_mem_c
 #include "MemDefs.h"
 
 #include "DeskLib:Error.h"
@@ -51,7 +52,7 @@ fflush(stderr);
       free += chunk->realsize - CHUNKSIZE(chunk->datasize);
 
     if(!ISFREE(chunk) &&
-       ((int) *(chunk->handle) != ((int) chunk + sizeof(mem_header))))
+       ((int) *(chunk->handle) != ((int) chunk + (int)sizeof(mem_header))))
     {
       Error_Report(0, "Mem heap corrupt: Inconsistent chunk handle and anchor (chunk %p)",
                       chunk);
@@ -62,7 +63,7 @@ fflush(stderr);
       return(FALSE);
     }
 
-    if(chunk->realsize < chunk->datasize + sizeof(mem_header))
+    if(chunk->realsize < chunk->datasize + (int)sizeof(mem_header))
     {
       Error_Report(0, "Mem heap corrupt: Data larger than chunk (chunk %p)",
                       chunk);
