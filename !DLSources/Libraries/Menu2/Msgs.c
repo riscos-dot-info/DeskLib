@@ -21,8 +21,8 @@
 
 
 menu2_handle	Menu2_CreateFromMsgs(
-			char		*titletag,
-			char		*spectag,
+			const char		*titletag,
+			const char		*spectag,
 			menu2_makefn	makefn,
 			menu2_flagsfn	flagsfn,
 			menu2_subfn	subfn,

@@ -26,7 +26,7 @@
 
 /******************************************************************************/
 
-extern window_handle Pane2_CreateAndAddMain(char *windowname, int maxtitlesize)
+extern window_handle Pane2_CreateAndAddMain(const char *windowname, int maxtitlesize)
 {
  /*
   * Creates window as Window_Create and initialises it with the library as a

@@ -26,7 +26,7 @@
 
 /******************************************************************************/
 
-extern void Pane2_ReadIcon(window_handle window, icon_handle icon, char *panewindow,
+extern void Pane2_ReadIcon(window_handle window, icon_handle icon, const char *panewindow,
                            wimp_point *paneoffset, wimp_point *panesize)
 {
  /*

@@ -23,7 +23,7 @@
 
 
 dialog2_block	*Dialog2_CreateDialogBlock(
-	char			*templatename,
+	const char			*templatename,
 	icon_handle		okbutton,
 	icon_handle		cancelbutton,
 	dialog2_openfn		openfn,
@@ -40,7 +40,7 @@ if ( !dialog2)	{
 	}
 
 dialog2->window				= NULL;
-dialog2->templatename			= templatename;
+dialog2->templatename		= templatename;
 dialog2->reference			= reference;
 dialog2->openfn				= openfn;
 dialog2->okfn				= okfn;
