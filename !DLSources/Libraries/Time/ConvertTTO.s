@@ -12,9 +12,9 @@
 ;   Version: 1.00 (15 Jan 2003)
 ;   Purpose: Converts five-byte time block to local time ordinals
 
-        GET     regdefs.h
+        GET     RegDefs.h
         GET     swinos.h
-        GET     macros.h
+        GET     Macros.h
 
 ; os_error *Time_ConvertTimeToOrdinals(char *fivebyteblock, time_ordinals *ord);
 

@@ -12,9 +12,9 @@
 ;   Version: 1.00 (07 Jul 1993)
 ;   Purpose: List existing print jobs.
 
-        GET     regdefs.h
+        GET     RegDefs.h
         GET     swinos.h
-        GET     macros.h
+        GET     Macros.h
 
 ; os_error *PDriver_EnumerateJobs(print_job *handle);
 

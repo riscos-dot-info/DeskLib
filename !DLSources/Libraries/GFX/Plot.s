@@ -2,8 +2,8 @@
 ; GFX_Plot (int plotcode, int x, int y)
 ; by Jason Williams 1993
 ;
-        GET     macros.h
-        GET     regdefs.h
+        GET     Macros.h
+        GET     RegDefs.h
         GET     swinos.h
 ;
         PREAMBLE

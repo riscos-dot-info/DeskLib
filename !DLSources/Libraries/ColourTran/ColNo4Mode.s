@@ -3,8 +3,8 @@
 ; Copyright 1993 Jason Howat
 
 
-        GET     macros.h
-        GET     regdefs.h
+        GET     Macros.h
+        GET     RegDefs.h
         GET     swinos.h
 ;
         PREAMBLE

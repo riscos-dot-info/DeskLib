@@ -12,9 +12,9 @@
 ;   Version: 1.00 (03 Apr 1993)
 ;   Purpose: See below
 
-        GET     regdefs.h
+        GET     RegDefs.h
         GET     swinos.h
-        GET     macros.h
+        GET     Macros.h
 
 ; int Dispatch(int value, int size, int *table, void *functions[], int arg0, int arg1, int arg2, int arg3)
 

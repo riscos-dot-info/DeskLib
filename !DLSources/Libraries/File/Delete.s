@@ -13,9 +13,9 @@
 ;   Version: 1.01 (13 May 1994)
 ;   Purpose: SWI veneer for file operations - delete a file
 
-        GET     regdefs.h
+        GET     RegDefs.h
         GET     swinos.h
-        GET     macros.h
+        GET     Macros.h
 ;
         PREAMBLE
         STARTCODE File_Delete

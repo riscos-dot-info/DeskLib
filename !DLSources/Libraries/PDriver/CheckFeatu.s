@@ -13,9 +13,9 @@
 ;   Purpose: Check the features of a printer and return an error
 ;            if appropriate.
 
-        GET     regdefs.h
+        GET     RegDefs.h
         GET     swinos.h
-        GET     macros.h
+        GET     Macros.h
 
 ; os_error *PDriver_CheckFeatures(print_features mask, print_features value);
 

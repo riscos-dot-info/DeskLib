@@ -6,9 +6,9 @@
 ; returns the ASCII code of the next pressed (buffered) key (as in BASIC's GET)
 
 
-        GET     regdefs.h
+        GET     RegDefs.h
         GET     swinos.h
-        GET     macros.h
+        GET     Macros.h
 
 
         PREAMBLE

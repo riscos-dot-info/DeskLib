@@ -12,9 +12,9 @@
 ;   Version: 1.01 (13 Jul 1995)
 ;   Purpose: Veneers for OS_SWINumber(To|From)String
 
-        GET     regdefs.h
+        GET     RegDefs.h
         GET     swinos.h
-        GET     macros.h
+        GET     Macros.h
 
         PREAMBLE
 

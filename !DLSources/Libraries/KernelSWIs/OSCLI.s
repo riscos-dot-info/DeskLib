@@ -12,9 +12,9 @@
 ;   Version: 1.00 (15 Jul 1995)
 ;   Purpose: Veneer for OS_CLI
 
-        GET     regdefs.h
+        GET     RegDefs.h
         GET     swinos.h
-        GET     macros.h
+        GET     Macros.h
 
         PREAMBLE
 

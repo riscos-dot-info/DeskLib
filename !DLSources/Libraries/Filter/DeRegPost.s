@@ -1,8 +1,8 @@
 ; Copyright 1993 Shaun Blackmore, Sergio Monesi
 
-        GET     regdefs.h
+        GET     RegDefs.h
         GET     swinos.h
-        GET     macros.h
+        GET     Macros.h
 
 ;        void Filter_DeRegisterPostFilter(char *FilterName, FilterHandler handler, int R12, int TaskHandle, int EventMask);
 
