@@ -625,7 +625,7 @@ os_error *Font_Paint3(font_handle font,
   specification of a split character.
 */
 
-#define font_scan_BBOX (1<<18 + 1<<5)
+#define font_scan_BBOX ((1<<18) + (1<<5))
 /*
   This indicates that you wish the bounding box of the string to be returned
   in the 'bbox' field of the block passed to Font_ScanString in 'block'.
@@ -635,7 +635,7 @@ os_error *Font_Paint3(font_handle font,
   the values you require).
 */
 
-#define font_scan_RETURNTRANSMATRIX (1<<19 + 1<<6)
+#define font_scan_RETURNTRANSMATRIX ((1<<19) + (1<<6))
 /*
   This indicates that the transformation matrix passed to Font_ScanString
   should be updated on exit to contain the matrix applying at the end of
@@ -644,7 +644,7 @@ os_error *Font_Paint3(font_handle font,
   This requires that a matrix was passed in in the first place!
 */
 
-#define font_scan_RETURNCOUNT (1<<20 + 1<<7)
+#define font_scan_RETURNCOUNT ((1<<20) + (1<<7))
 /*
   This indicates that the number of split characters should be returned in
   'length' on exit from Font_ScanString.  If no split character is specified,
@@ -659,7 +659,7 @@ typedef struct
 {
   struct
   {
-    wimp_point space;        /* An additional offset for spaces */
+    wimp_point space;        /* An additional offset for spaces  */
     wimp_point letter;       /* An additional offset for letters */
   } offsets;
 
