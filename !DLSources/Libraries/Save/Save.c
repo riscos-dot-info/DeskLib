@@ -43,10 +43,19 @@
 
 void Save_SetFiletype(save_saveblock *saveblock, int filetype)
 {
-  saveblock->filetype = filetype;
-  Icon_FileIcon(saveblock->window, saveblock->dragsprite, filetype);
-}
+  char *spritename;
 
+  saveblock->filetype = filetype;
+                                  
+  spritename = Icon_GetTextPtr(saveblock->window, saveblock->dragsprite);
+
+  /* We can't set it - it is not indirected */
+  if (spritename == NULL) return;
+
+  sprintf(spritename, "file_%03x", filetype);
+  
+  Icon_ForceRedraw(saveblock->window, saveblock->dragsprite);
+}
 
 
 static void Save__CleanIconText(window_handle window, icon_handle icon)
@@ -474,8 +483,13 @@ save_saveblock *Save_InitSaveWindowHandler(window_handle      window,
   saveblock->resulthandler             = resulthandler;
   saveblock->estimatedsize             = estimatedsize;
   saveblock->ref                       = ref;
+  saveblock->filetype                  = filetype;
 
-  Save_SetFiletype(saveblock, filetype);
+  /* Recreate the filetype icon as an indirected sprite-only icon with
+   * the appropriate filetype sprite in place.
+   */
+  saveblock->dragsprite = Icon_FileIcon(saveblock->window,
+                                        saveblock->dragsprite, filetype);
 
   Save__ResetSaveBlock(saveblock);
 
