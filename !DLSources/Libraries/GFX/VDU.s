@@ -1,9 +1,9 @@
 ;-------------------------------------------------------------------------------
 ; OS_WriteC - VDU(ch)
 ;
-        GET     ^.h.Macros
-        GET     ^.h.RegDefs
-        GET     ^.h.SWINos
+        GET     macros.h
+        GET     RegNames.h
+        GET     swinos.h
 ;
         PREAMBLE
         STARTCODE GFX_VDU
