@@ -16,7 +16,7 @@
 #include "DeskLib:Wimp.h"
 
 
-void Clear_Save(clear_picture *picture, char *filename)
+void Clear_Save(clear_picture *picture, const char *filename)
 {
   file_handle   out;
   unsigned      colours,
