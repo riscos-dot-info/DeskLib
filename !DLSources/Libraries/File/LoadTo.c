@@ -27,7 +27,7 @@
  * Returns NULL or pointer to error.
  */
 
-extern os_error *File_LoadTo(char *filename, void *address, int *size )
+extern os_error *File_LoadTo(const char *filename, void *address, int *size)
 {
   _kernel_swi_regs r;
   _kernel_oserror  *error;

@@ -21,10 +21,9 @@
 extern int File_Size(const char *filename)
 {
   _kernel_osfile_block osfile;
-  int object_type = _kernel_osfile(17, filename, &osfile);
 
   /* Allow both image files and normal files to be "sized" */
-  if (object_type == 1 || object_type == 3)
+  if ((_kernel_osfile(17, filename, &osfile) & 1) == 1)
     return (osfile.start);
   /* Otherwise return the error code zero */
   else

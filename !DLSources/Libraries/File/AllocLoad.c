@@ -19,7 +19,7 @@
 #include "DeskLib:File.h"
 
 
-char	*File_AllocLoad0( char *filename)
+char	*File_AllocLoad0(const char *filename)
 {
 char	*buffer;
 int	length;
