@@ -1,0 +1,34 @@
+#	Library-making makefile
+
+CC		=	cc
+LIBFILE		=	LibFile
+
+CCFlags		=	-c -fahif -depend !Depend -throwback -I,C:
+LibFileFlags	=	-c -o
+
+Target		=	<DeskLib$Dir>.o.Other.SmError
+
+ObjectFiles	=			\
+			o.Error		\
+
+
+# path(s) to source files:
+VPATH = @ @.^
+
+# Don't change the following
+
+.SUFFIXES:	.o .c
+
+$(Target):	$(ObjectFiles)
+	$(LIBFILE) $(LibFileFlags) $@ $(ObjectFiles)
+
+.c.o:
+	$(CC) $(CCFlags) -o $@ $<
+
+
+# Dynamic dependencies:
+o.Error:	c.Error
+o.Error:	DeskLib:h.Error
+o.Error:	DeskLib:h.Core
+o.Error:	DeskLib:h.Event
+o.Error:	DeskLib:h.Wimp

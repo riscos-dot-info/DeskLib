@@ -1,0 +1,87 @@
+DeskLib Debug library functions
+-------------------------------
+
+
+Introduction
+------------
+
+The DeskLib:Debug.h header file contains prototypes for a set of
+debugging functions. The main idea is that these are macro-ed out
+*unless* DeskLib_DEBUG is #defined. This allows you to put lots of
+Debug_ calls in code, safe in the knowledge that they will disapear at
+compile time, but allowing you to build a debug-version of your project
+using 'cc -DDeskLib_DEBUG ...' from the same source code.
+
+The most useful function is Debug_Printf(). This can be treated exactly
+like printf.
+
+See 'DeskLib:h_doc.Debug' for more information on all the Debug calls.
+
+The main DeskLib library 'DeskLib:o.DeskLib' does *not* contain Debug_
+functions. Instead, there are various different libraries within
+'DeskLib:o.Debug.' which have different versions of the Debug_
+functions. The intention is that you link with just *one* of these,
+depending on where you would like debugging information sent.
+
+In addition, there is a Signal library, which detects signals and
+displays their information in a Wimp error window, rather than allowing
+the C runtime system to send them to stderr (usually invisible in a
+desktop program) and then silently terminate your program.
+
+Lastly, there is Debug_Assert(), which behaves like the ANSI C assert()
+except that diagnostics are output using Debug_Printf. Like all the
+Debug_ calls, Debug__Assert is compiled into your project only if
+'DeskLib_DEBUG' is defined.
+
+
+TestApp
+-------
+
+DeskLib's TestApp has a version compiled with DeskLib_DEBUG predefined.
+TestApp is an example of how to build several different versions of a
+project from the same source code and makefile.
+
+
+
+Link order
+----------
+
+When linking, you should put DeskLib:o.Debug.xxx *before*
+DeskLib:o.DeskLib in the list of object files given to 'Link', because
+some of the debug libraries use DeskLib functions. The TestApp makefile
+uses the correct order.
+
+
+
+Libraries
+---------
+
+There a few alternative Debug libraries in 'DeskLib:o.Debug.'. They all
+provide the standard functions prototyped in 'DeskLib:Debug.h'. Here is
+a run-down of what they do:
+
+
+stderr		All diagnostics sent to stderr using fprintf.
+
+uniquepipe	A unique file in 'Pipe:DeskLib.' is set up the 
+		first time Debug_Print/Printf is used, and all 
+		subsequent diagnostics go there.
+
+heapgraph	This uses the HeapGraph library's functions
+		which send diagnostics to a unique file in
+		'Pipe:C_Debug.' along with malloc/free 
+		information. You will need the StubsHack/HeapGraph
+		library for this to work.
+
+pipetype	This is similar to uniquepipe, except that 
+		a taskwindow is also opened which *Type's the
+		output. Note that opening the taskwindow is done
+		with Wimp_StartTask, so you shouldn't call any
+		debugging functions until you have called 
+		Wimp_Initialise.
+
+
+
+
+
+Julian Smith

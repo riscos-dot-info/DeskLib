@@ -1,0 +1,19 @@
+| Create file which contains a list of all .o
+| files in the DLUser sub-library directories
+| to be included in the standard static DeskLib
+
+Wimpslot 320k
+
+Echo MkOList: Making ObjLists.Static - list all DLUser .o files 
+Echo MkOList: compiled for use in the static DLUser.
+Echo MkOList: This list is used by LibFile to make the final
+Echo MkOList: DLuser library.
+
+Echo { > <DeskLib_User$Dir>.ObjLists.Static }
+
+DeskLib_Commands:EachUser   DeskLib_Commands:Append <DeskLib_User$Dir>.ObjLists.Static %%0.o.*
+
+TrimCRs <DeskLib_User$Dir>.ObjLists.Static
+
+Echo MkOList: Finished
+Echo

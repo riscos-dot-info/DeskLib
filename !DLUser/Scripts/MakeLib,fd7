@@ -1,0 +1,14 @@
+Wimpslot -min 1500k -max 1500k
+
+Echo MakeLib: Using LibFile to make 'DLUser.o.DLUser' from
+Echo MakeLib: all DLUser .o files.
+
+Set Sys$ReturnCode 0
+
+If <Sys$ReturnCode> = 0 Then Obey <Obey$Dir>.MkOList
+
+If <Sys$ReturnCode> = 0 Then Echo MakeLib: Calling LibFile...
+If <Sys$ReturnCode> = 0 Then LibFile -c -o <DeskLib_User$Dir>.o.DLUser -v <DeskLib_User$Dir>.ObjLists.Static
+
+Echo MakeLib: Finished
+Echo

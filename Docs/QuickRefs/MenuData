@@ -1,0 +1,74 @@
+Menu block data structures Quick-Reference guide
+================================================
+
+(14 May 1995 Julian Smith)
+
+
+menublock		menu_block
+	.title;			char[ wimp_MAXNAME]
+	.titlefore		char
+	.titleback		char
+	.workfore		char
+	.workback		char
+	.width			unsigned int
+	.height			unsigned int
+	.gap;			unsigned int
+
+
+followed in memory by list of menu items:
+
+
+menuitem				menu_item
+
+	.menuflags				menu_flags (union)
+		.value					unsigned int
+		.data					bitfield
+			.ticked					:  1;
+			.dotted					:  1;
+			.writable				:  1;
+			.notifysub				:  1;
+			.dummy3					:  3;
+			.last					:  1;
+			.dummy14				: 14;
+			.shaded					:  1; no affect
+			.dummy1					:  1;
+			.foreground				:  4;
+			.background				:  4;			
+
+	.submenu			menu_submenu (union)
+		.menu				menu_ptr
+		.window				window_handle
+		.value				int
+
+	.iconflags			icon_flags (union)
+		.value				unsigned int
+		.data				bitfield
+			.text				: 1;
+			.sprite				: 1;
+			.border				: 1;
+			.hcentre			: 1;
+			.vcentre			: 1;
+			.filled				: 1;
+			.font				: 1;
+			.needshelp			: 1;
+			.indirected			: 1;
+			.rightjustify			: 1;
+			.allowadjust			: 1;
+			.halfsize			: 1;
+			.buttontype			: 4;
+			.esg				: 5;
+			.selected			: 1;
+			.shaded				: 1;
+			.deleted			: 1;
+			.foreground			: 4;
+			.background			: 4;
+	
+	
+	.icondata
+		.text				char[wimp_MAXNAME]
+		.indirecttext			icon_indtext
+			.buffer				char *
+			.validstring			char *
+			.bufflen			unsigned int
+		.spritename			char[wimp_MAXNAME]
+		.indirectsprite			icon_indsprite

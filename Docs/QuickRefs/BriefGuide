@@ -1,0 +1,98 @@
+Brief style guide
+=================
+
+This is a style guide for any code you submit to DeskLib. It is not
+a compulsory style, but it makes it easier to swap between your code
+and DeskLib code without confusion, and also makes life much easier
+for me if you decide to submit your code to me at any stage.
+
+You can use any style you like for your internal code, but please try to
+stick to the following guidelines for external interface data structures and
+function calls. (Note that it is also preferable that the internal code and
+data structures follow these rules, to ensure you don't mistakenly use
+"internal" styles on "external" structures, and to make the code more
+readable for other people)
+
+#includes:            #include "DeskLib:Header.h"
+                      Always use the DeskLib: in the name, as some DeskLib
+                      header names will clash with RISC OS Lib and ANSI names.
+Function names:       Wimp_OpenWindow
+Type names:           window_openblock, mouse_block
+Global variables:     message_globaldata (use *sparingly*!)
+'Internal' variables: message__notglobal
+                      (These are declared as global variables so that several
+                      library files can access them, however, they are only
+                      intended for use in that sublibrary, and the user should
+                      ignore their existence!)
+Variable names:       window, icondata
+Constants:            icon_SELECTED, window_MOVEABLE
+
+Spelling:             Try to use the spelling used from this priority list:
+                        a) Elsewhere in DeskLib
+                        b) In the Programmers reference manuals
+                        c) In a dictionary ;-)
+                      -The only bad spelling problem I have noticed in RISC OS
+                       Lib is Writeable vs. Writable. (They use BOTH!)
+                       DeskLib uses the latter.
+    
+Name-choice:          Each word should be abbreviated to 4-6 characters
+                      Entire names should not be more than about 24 characters
+                      Use Acorn's RISC OS Lib name if it is reasonable and
+                       fits the guidelines - this makes switching between the
+                       libraries easier.
+                      Try to make the name as meaningful as possible
+                      ALWAYS use the same name for the same thing
+                      (e.g. a scroll position is ALWAYS a scroll.x/scroll.y)
+    
+Structures:           Where a portion of a structure is used elsewhere, think
+                      about making it a seperate structure definition
+                      e.g. a rectangle is made up of 2 x,y coordinate pairs,
+                      so it is logical (and useful) to define an x,y pair as a
+                      point, and a rectangle as being constructed from two
+                      such points.
+    
+    
+Code formatting:      Anything goes so long as it is tidy and readable.
+                      Preferably format code so it will fit into a 79-column
+                      display.
+    
+Code file naming:     Try to use the group name that is used in the module.
+                      e.g. all Icon_XXX code should go into a file icon.c,
+                      or make up several .c files in a sublibrary 'Icon'.
+                      
+    
+Header files:         Preferably use two files for each module: one to define
+                      anything internal to the code file ("icondefs.h"), and
+                      one to define the external interface (function prototypes
+                      and external variable types ("icon.h"). If making
+                      sublibraries, then the 'internal definition' header can
+                      go into the sublib directory's .h, while the external
+                      interface header should go in the main DeskLib headers
+                      directory.
+    
+                      Try to put a comment with each function prototype and
+                      type definition in your "icon.h" header file, describing
+                      the functions useage.
+                      I prefer to leave the variable names in my function
+                      prototypes, as this also gives a good clue as to what
+                      you should pass in to the function (not to mention saving
+                      you the bother of deleting the names when you copy/paste)
+    
+                      Guard against your header file being included more than
+                      once with #define __dl_<name>_h.
+                      Please define this macro, even if you don't need to worry
+                      about multiple inclusion: It is a useful way to know if
+                      your .h file has been looked at by the compiler.
+
+                      Note that "#pragma include_only_once" is out, as it is
+                      a compiler-dependant feature.
+    
+Other docs:           Any other documentation files detailing internal and
+                      external data structures, and manual entries for
+                      functions would be most welcome. (Please copy the format
+                      of any similar files you may find in the DeskLib release
+                      where possible).
+    
+                      I guess if I'm going to one day make an Impression
+                      version of the Docs up, it would be preferable if you
+                      don't indent stuff like I have done in this file!

@@ -1,0 +1,38 @@
+Intended additions to Window_Show():
+
+Open window centered over another window
+Open window NOT over the caret
+  These will be used in situations like Edit's replace/continue dialogue:
+  First, you Window_Show() centered over the edit window, or under the pointer
+  Then, you Window_Show() NOT over the caret, which will bump the window
+  up or dwon so that the caret is still visible.
+
+  Every time a search/replce is done (i.e. the caret is moved) by Edit, it
+  should then call Window_Show() NOT over the caret to bump the window
+  up/down if necessary. That way, the selected (found) piece of text is
+  ALWAYS visible instead of the more usual 60%-of-the-time-it's-under-the-
+  find-window. (I hate that!)
+
+Open window in a spare area of the screen 
+  Find an area of the screen with the minimum number of windows already in
+  it (remember that the iconbar and grey background are both actually
+  windows), and put the window there. This results in the window not
+  overlapping any others where possible.
+
+Open Window over iconbar icon
+  This opens a window in much the same way as a menu is opened over the
+  iconbar, with it's x-position dependent upon the mouse pointer, and it's
+  y-position set so that the bottom of the window occurs at OS coord. 96.
+
+
+Also means by which a window being deleted can have it's state written back
+to the parent template will be needed: That way, a window can be deleted and
+recreated as needed, but will always reappear in the size & position (state)
+that the user last left it, rather than always appearing "fresh" in the
+center of the screen or wherever.
+
+
+Note that you can reduce the size of the Window_Show code quite a bit by
+copying out the portions of it that you actually want to use, and including
+them in your own sources code (then, the default version in DeskLib won't
+be linked in). This helps remove redundant code from your application.
