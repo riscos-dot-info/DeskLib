@@ -1,3 +1,0 @@
-IF "<HackLib$Dir>" = "" THEN Set C$Path <C$Path>,<Obey$Dir>.
-Set HackLib$Dir <Obey$Dir>
-Set HackLib$Path <HackLib$Dir>.

@@ -1,9 +1,0 @@
-Wimpslot 500k
-
-Echo MakeStaMFs: Making a static makefile for each DLUser sublibrary.
-Echo
-
-DeskLib_Commands:EachUser    Makatic %%0 %%1 <DeskLib_User$Dir>.TemplateMF.Makefile Makefile
-
-Echo
-Echo MakeStaMFs: Finished making DLUser makefiles

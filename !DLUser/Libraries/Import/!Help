@@ -1,9 +1,0 @@
-Notes on the Import library
----------------------------
-
-This library handles the wimp protocol for importing data when the user
-saves to (or drags a file icon to) an icon or window belonging to your
-application.
-
-This version always uses <Wimp$Scrap> to transfer the data - ram
-transfer is not currently supported.

@@ -1,9 +1,0 @@
-
-Note on building the examples with GCC
---------------------------------------
-
-The examples will in principle build with GCC.  For the time being,
-there are no suitable Makefiles to do this, but these will be added
-in the next version in line with a 32-bit GCC release.
-
-

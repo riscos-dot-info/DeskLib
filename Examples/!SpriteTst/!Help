@@ -1,5 +1,0 @@
-This is a small test application by Ainsley Pereira, demonstrating the use
-of a couple of sprite calls, to plot a sprite in a window.
-
-It has not been 'made'. Inside the application directory is the source,
-and a makefile to make the RunImage.

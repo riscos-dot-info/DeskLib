@@ -1,5 +1,0 @@
-Set Slider$Path <Obey$Dir>.
-IconSprites Slider:!Sprites
-
-Wimpslot -min 32k -max 32k
-Run Slider:!RunImage
