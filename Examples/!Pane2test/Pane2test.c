@@ -42,7 +42,7 @@
 
 static BOOL quit = FALSE;              /* Set to TRUE to quit the app.    */
 
-extern sprite_area usericonsprites = NULL;
+sprite_area usericonsprites = NULL;
 
 static menu_ptr mainmenu = NULL;
 
@@ -53,7 +53,7 @@ static menu_ptr mainmenu = NULL;
 #define idle_TIME               40
 
 /* Wimp_PollIdle delay time */ 
-extern unsigned int idletime = idle_TIME;
+unsigned int idletime = idle_TIME;
 
 /* startup command for the Desktop Boot file */
 static char startup_command[256];
