@@ -32,12 +32,12 @@
 
 extern char *Str_LeafName(const char *path)
 {
-  char *leaf = path, ch = '.';
+  char *leaf = (char *)path, ch = '.';
 
   do
   {
     if (ch == '.' || ch == ':')
-      leaf =  path ;
+      leaf =  (char *)path;
   }
   while ( (ch = *(path++)) != '\0') ;
 
