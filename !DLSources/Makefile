@@ -3,9 +3,9 @@
 AR = libfile
 
 CC = cc
-CFLAGS = -ffahi -throwback -IDeskLib:
+CFLAGS = -ffahi -throwback -IDeskLib: -Ez
 AS = objasm
-ASFLAGS = -I$(@D)/s
+ASFLAGS = -ILibraries -I$(@D) -throwback
 
 WARNINGS = -ansi -pedantic -Wall -Wundef -Wpointer-arith \
            -Wcast-align -Wwrite-strings -Wstrict-prototypes \
@@ -13,14 +13,16 @@ WARNINGS = -ansi -pedantic -Wall -Wundef -Wpointer-arith \
            -Winline -Wno-unused -Wno-long-long -W -Wcast-qual -Wshadow
 
 #CC = gcc -mlibscl
-#CFLAGS = -I. -IDeskLib: -mthrowback $(WARNINGS) -O2
+#CFLAGS = -IDeskLib: -mthrowback $(WARNINGS) -O2
 #AS = gcc
+#ASFLAGS = -Wa,-ILibraries,-I$(@D) -v -mthrowback
 
 DESKLIB = <DeskLib$$Dir>.o.DeskLib
 DESKLIBDIR = <DeskLib$$Dir>.o
 DEBUGS = <DeskLib$$Dir>.o.Debug
 
-libraries := $(notdir $(filter-out Libraries/CVS Libraries/h, $(wildcard Libraries/*)))
+libraries := $(notdir $(filter-out Libraries/CVS Libraries/h \
+               Libraries/Macros.h Libraries/RegDefs.h, $(wildcard Libraries/*)))
 
 lib_objects = $(addprefix Libraries.,$(addsuffix .o.*, $(libraries)))
 
