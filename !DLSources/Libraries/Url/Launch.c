@@ -266,8 +266,6 @@ static BOOL Url_ReturnMessage_h(event_pollblock *event, void *param)
   /* If this was a response to the ant broadcast */
   else if (event->data.message.header.action == message_ANTOPENURL)
   {
-    message_anturl *antmsg = (message_anturl *) &event->data.message.data;
-
     if (event->type == event_USERMESSAGEACK)
     {
       /* If it was indirected, we must free our RMA space holding the URL */
