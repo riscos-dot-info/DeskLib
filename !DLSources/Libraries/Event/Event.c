@@ -782,13 +782,6 @@ _DeskLib_SDLS_PtrFn( static, void, Event__ExitFunction( void))
  * for... I give you... the amazing Eventi brothers...
  */
 
-extern void Event_Initialise(const char *taskname)
-{
-  Event_Initialise3(taskname, 200, NULL);
-}
-
-
-
 extern void Event_Initialise3(const char *taskname, int version, int *messages)
 {
   int index;
@@ -817,6 +810,12 @@ atexit( _DeskLib_SDLS_dllEntry( Event__ExitFunction));
   strncpy(event_taskname, taskname, 39);
 
   event_taskname[39] = 0;
+}
+
+
+extern void Event_InitNested(const char *taskname)
+{
+  Event_Initialise(taskname, 380, NULL);
 }
 
 
