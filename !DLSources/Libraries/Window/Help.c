@@ -42,7 +42,7 @@ extern BOOL Window_HelpHandler(event_pollblock *event, void *reference)
     sprintf(number, ".%d", event->data.message.data.helprequest.where.icon);
     strcat(mtemplate, number);
 
-    if (Msgs_Lookup(mtemplate, event->data.message.data.helpreply.text, 200))
+    if (Msgs_Lookup(mtemplate, event->data.message.data.helpreply.text, 235))
     {
       event->data.message.header.yourref = event->data.message.header.myref;
       event->data.message.header.action = message_HELPREPLY;
