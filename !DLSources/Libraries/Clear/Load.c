@@ -61,11 +61,11 @@ clear_picture *Clear_Load(const char *filename)
   if((temp = malloc(sizeof(clear_picture) + creator_length)) == NULL)
     return Clear__AbortLoad(in, temp);
 
-  temp->creator = (char *)&temp[1];
+  temp->creator = (char *)(int)&temp[1];
   temp->palette = NULL;
   temp->bitmap = NULL;
 
-  if(File_ReadBytes(in, (char *)temp->creator, creator_length))
+  if(File_ReadBytes(in, (char *)(int)temp->creator, creator_length))
     return Clear__AbortLoad(in, temp);
 
   temp->creatorversion = File_Read32(in);

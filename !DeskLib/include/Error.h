@@ -203,12 +203,12 @@ extern os_error error_global;
 */
 
 
-#define error_STATIC( id, number, description) \
-  static const struct {                              \
-    int  errnum;                              \
-    char errmess[ 1 + sizeof( description)];  \
-    }                                         \
-  id##_= { number, description};              \
+#define error_STATIC( id, number, description)     \
+  static struct {                            \
+    int   errnum;                                  \
+    char errmess[ 1 + sizeof( description)]; \
+    }                                              \
+  id##_= { number, description};                   \
   static os_error *id = (os_error *) &id##_
 /*
   MACRO: static os_error id_ = {number, description};
