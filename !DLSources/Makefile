@@ -26,7 +26,7 @@ ifeq (norcroft, $(COMPILER))
   ASFLAGS = -ILibraries -I$(@D) -throwback
 
   AR = libfile
-  ARFLAGS = -o
+  ARFLAGS = 
 endif
 
 # Defaults for gcc
