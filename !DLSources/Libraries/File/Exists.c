@@ -20,14 +20,9 @@
 #include "kernel.h"
 
 
-extern BOOL File_Exists(char *filename)
+extern BOOL File_Exists(const char *filename)
 {   
-	unsigned type;
-  
-	/* Get the file information */  
-	SWI(2, 1, SWI_OS_File, 17, filename, &type);
-	
-    /* 1 => normal file, 3 => image file */
-	return ((type & 1) ? TRUE : FALSE);
+  _kernel_osfile_block osfile;
 
+  return ((_kernel_osfile(17, filename, &osfile) & 1) == 1);
 }
