@@ -9,8 +9,7 @@
         PREAMBLE
         STARTCODE GFX_Plot
 ;
-        STMFD   sp!,{lr}
         SWI     XSWI_OS_Plot
-        LDMFD   sp!,{pc}
+        MOV     pc, lr
 ;
         END
