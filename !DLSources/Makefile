@@ -25,10 +25,10 @@ libraries := $(notdir $(filter-out Libraries/CVS Libraries/h \
 
 all_objects := $(patsubst %.s,%.o,$(patsubst %.c,%.o,$(filter %.c %.s,$(wildcard Libraries/*/*))))
 
+lib_objects := $(addprefix Libraries.,$(addsuffix .o.*, $(libraries)))
 
 # Defaults for norcy
 ifeq (norcroft, $(COMPILER))
-
   CC = cc
   CFLAGS = -ffahi -throwback
 
@@ -37,13 +37,10 @@ ifeq (norcroft, $(COMPILER))
 
   AR = libfile
   ARFLAGS =
-
-  lib_objects := $(addprefix Libraries.,$(addsuffix .o.*, $(libraries)))
 endif
 
 # Defaults for gcc
 ifeq (gcc, $(COMPILER))
-
   WARNINGS = -ansi -pedantic -Wall -Wundef -Wpointer-arith \
              -Wcast-align -Wwrite-strings -Wstrict-prototypes \
              -Wmissing-prototypes -Wmissing-declarations -Wnested-externs \
@@ -57,8 +54,6 @@ ifeq (gcc, $(COMPILER))
 
   AR = $(PREFIX)libfile
   ARFLAGS =
-
-  lib_objects := $(addprefix Libraries/,$(addsuffix /*.o, $(libraries)))
 endif
 
 # Make the library
