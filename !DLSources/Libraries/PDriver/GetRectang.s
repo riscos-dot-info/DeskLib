@@ -12,9 +12,9 @@
 ;   Version: 1.00 (07 Jul 1993)
 ;   Purpose: Get the next print rectangle.
 
-        GET     ^.h.regdefs
-        GET     ^.h.swinos
-        GET     ^.h.macros
+        GET     regdefs.h
+        GET     swinos.h
+        GET     macros.h
 
 ; os_error *PDriver_GetRectangle(wimp_rect *rectangle_to_print, int *finished, int *rectangle_id);
 

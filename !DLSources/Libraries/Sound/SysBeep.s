@@ -12,9 +12,9 @@
 ;   Version: 1.00 (28 Mar 1992)
 ;   Purpose: Does a VDU 7 in order to sound a system beep
 
-  GET     ^.h.regdefs
-  GET     ^.h.swinos
-  GET     ^.h.macros
+  GET     regdefs.h
+  GET     swinos.h
+  GET     macros.h
 
 
   PREAMBLE

@@ -13,9 +13,9 @@
 ;   Purpose: Makes the given print job the current one, and treats
 ;            it as an illustration.
 
-        GET     ^.h.regdefs
-        GET     ^.h.swinos
-        GET     ^.h.macros
+        GET     regdefs.h
+        GET     swinos.h
+        GET     macros.h
 
 ; os_error *PDriver_SelectIllustration(print_job new, char *title, print_job *old);
 

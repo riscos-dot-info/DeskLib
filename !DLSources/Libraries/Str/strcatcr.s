@@ -14,9 +14,9 @@
 ;            change the terminator of the result to a NUL (0).
 
 
-        GET     ^.h.regdefs
-        GET     ^.h.swinos
-        GET     ^.h.macros
+        GET     regdefs.h
+        GET     swinos.h
+        GET     macros.h
 
         PREAMBLE
         STARTCODE strcatcr

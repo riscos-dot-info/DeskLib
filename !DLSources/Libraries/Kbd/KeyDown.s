@@ -8,9 +8,9 @@
 ; (Who would have thought you had a manic depressive keyboard? ;-)
 
 
-        GET     ^.h.regdefs
-        GET     ^.h.swinos
-        GET     ^.h.macros
+        GET     regdefs.h
+        GET     swinos.h
+        GET     macros.h
 
 
         PREAMBLE

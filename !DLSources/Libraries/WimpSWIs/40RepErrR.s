@@ -3,9 +3,9 @@
 ;   button was clicked) that the SWI call returns.
 ;   Jason Williams 1993
 
-        GET     ^.h.regdefs
-        GET     ^.h.swinos
-        GET     ^.h.macros
+        GET     regdefs.h
+        GET     swinos.h
+        GET     macros.h
 ;
         PREAMBLE
         STARTCODE Wimp_ReportErrorR

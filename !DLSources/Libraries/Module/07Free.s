@@ -12,9 +12,9 @@
 ;   Version: 1.00 (23 Nov 1993)
 ;   Purpose: Deallocate a block of the RMA.
 
-        GET     ^.h.regdefs
-        GET     ^.h.swinos
-        GET     ^.h.macros
+        GET     regdefs.h
+        GET     swinos.h
+        GET     macros.h
 
 ; os_error *Module_Free(void *block);
 

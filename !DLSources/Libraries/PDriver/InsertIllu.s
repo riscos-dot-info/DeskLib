@@ -13,9 +13,9 @@
 ;   Purpose: Inserts a file containing an illustration into the
 ;            current job's output.
 
-        GET     ^.h.regdefs
-        GET     ^.h.swinos
-        GET     ^.h.macros
+        GET     regdefs.h
+        GET     swinos.h
+        GET     macros.h
 
 ; os_error *PDriver_InsertIllustration(int illustration_handle, void *drawpath,
 ;                                      wimp_point *bottom_left,

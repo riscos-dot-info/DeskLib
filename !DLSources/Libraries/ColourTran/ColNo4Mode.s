@@ -3,7 +3,7 @@
 ; Copyright 1993 Jason Howat
 
 
-        GET     ^.h.macros
+        GET     macros.h
         GET     ^.h.RegNames
         GET     ^.h.SWInames
 ;

@@ -2,7 +2,7 @@
 ; ColourTrans_InvalidateCache(void);
 ; Copyright 1993 Shaun Blackmore
 
-        GET     ^.h.macros
+        GET     macros.h
         GET     ^.h.RegNames
         GET     ^.h.SWInames
 ;

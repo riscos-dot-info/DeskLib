@@ -27,9 +27,9 @@
 ;            By doing this, I have been able to make access to file_lasterror
 ;            more efficient (saving one LDR in each function)
 
-        GET     ^.h.regdefs
-        GET     ^.h.swinos
-        GET     ^.h.macros
+        GET     regdefs.h
+        GET     swinos.h
+        GET     macros.h
 ;
         PREAMBLE
 

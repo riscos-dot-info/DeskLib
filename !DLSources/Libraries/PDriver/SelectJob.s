@@ -12,9 +12,9 @@
 ;   Version: 1.00 (06 Jul 1993)
 ;   Purpose: Make a given print job the current one.
 
-        GET     ^.h.regdefs
-        GET     ^.h.swinos
-        GET     ^.h.macros
+        GET     regdefs.h
+        GET     swinos.h
+        GET     macros.h
 
 ; os_error *PDriver_SelectJob(print_job new, char *title, print_job *old);
 
