@@ -1,17 +1,4 @@
 # GNU Make makefile for DeskLib
-#
-# Where appropriate, this calls make again to enter the correct subdirectory
-# for the part of the library you are making, so that it can work with
-# gcc which otherwise gets confused by the #include "DeskLib:xxx.h" lines.
-#
-# - To make the whole library again from scratch
-#   make clean all
-# - To make one part of the library: (eg. Url)
-#   make library="Url" one
-# - To make one part of the library from scratch:
-#   make library="Url" cleanone one
-# - To make a new library from the current object files:
-#   make link
 
 CC = cc
 CFLAGS = -ffahi -throwback -IDeskLib: 
@@ -26,13 +13,7 @@ WARNINGS = -ansi -pedantic -Wall -Wundef -Wpointer-arith \
 #CFLAGS = -I. -IDeskLib: -mthrowback $(WARNINGS) -O2
 #AS = gcc
 
-LIB = libfile -c DeskLib
-MKDIR = CDir
-
 DESKLIB = <DeskLib$$Dir>.o.DeskLib
-
-# The location of this makefile
-makefile = <DeskLib_Sources$$Dir>.Makefile
 
 libraries := $(notdir $(filter-out Libraries/CVS, $(wildcard Libraries/*)))
 
@@ -52,12 +33,6 @@ clean:
 	-@$(cleanlibs)
 	Remove $(DESKLIB) 
 
-# Make a single sublibrary
-one: $(addsuffix .library, $(library))
-
-# Clean a single sublibrary
-cleanone:; -X Wipe Libraries.$(library).o.* ~C~VF~R
-
 # To empty the 'o' directories for each library
 # This a hack, we'd be much better off with a "rm" command that could take
 # a list of things to delete.  
@@ -67,17 +42,6 @@ $(shell X Wipe Libraries.$(library).o.* ~C~VF~R)
 endef
 cleanlibs = $(foreach library, $(libraries), $(cleanlib))
               
-# Make all the object files for the current sublibrary
-makelib:  $(patsubst %.s,%.o,$(patsubst %.c,%.o,$(filter %.c %.s,$(wildcard *))))
-
-# We make makelibs depend on phony .library files to invoke make recursively for
-# each sublibrary
-makelibs: $(addsuffix .library, $(libraries))
-
-%.library:
-	$(MKDIR) Libraries.$*.o
-	@$(MAKE) sublib=$* --directory Libraries.$* -f $(makefile) makelib
-
 .c.o:
 	@mkdir -p $(@D)/o
 	$(CC) $(CFLAGS) -c $< -o $@
