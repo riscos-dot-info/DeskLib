@@ -12,27 +12,27 @@ debugs:				\
 
 $(DebugsDir).Signal:	OtherLibs/Debugs/Signal.o OtherLibs/Debugs/Debug.o
 	@mkdir -p $(DebugsDir)
-	$(AR) -c $@ $(AFLAFS) OtherLibs.Debugs.o.Signal OtherLibs.Debugs.o.Debug 
+	$(AR) -c $@ $(ARFLAGS) OtherLibs.Debugs.o.Signal OtherLibs.Debugs.o.Debug 
 
 $(DebugsDir).pipetype:	OtherLibs/Debugs/pipetype.o OtherLibs/Debugs/Debug.o
 	@mkdir -p $(DebugsDir)
-	$(AR) -c $@ $(AFLAFS) OtherLibs.Debugs.o.pipetype OtherLibs.Debugs.o.Debug
+	$(AR) -c $@ $(ARFLAGS) OtherLibs.Debugs.o.pipetype OtherLibs.Debugs.o.Debug
 
 $(DebugsDir).uniquepipe: OtherLibs/Debugs/uniquepipe.o OtherLibs/Debugs/Debug.o
 	@mkdir -p $(DebugsDir)
-	$(AR) -c $@ $(AFLAFS) OtherLibs.Debugs.o.uniquepipe OtherLibs.Debugs.o.Debug
+	$(AR) -c $@ $(ARFLAGS) OtherLibs.Debugs.o.uniquepipe OtherLibs.Debugs.o.Debug
 
 $(DebugsDir).stderr:	OtherLibs/Debugs/stderr.o OtherLibs/Debugs/Debug.o
 	@mkdir -p $(DebugsDir)
-	$(AR) -c $@ $(AFLAFS) OtherLibs.Debugs.o.stderr OtherLibs.Debugs.o.Debug
+	$(AR) -c $@ $(ARFLAGS) OtherLibs.Debugs.o.stderr OtherLibs.Debugs.o.Debug
 
 $(DebugsDir).uniquefile: OtherLibs/Debugs/uniquefile.o OtherLibs/Debugs/Debug.o
 	@mkdir -p $(DebugsDir)
-	$(AR) -c $@ $(AFLAFS) OtherLibs.Debugs.o.uniquefile OtherLibs.Debugs.o.Debug
+	$(AR) -c $@ $(ARFLAGS) OtherLibs.Debugs.o.uniquefile OtherLibs.Debugs.o.Debug
 
 #$(DebugsDir).heapgraph: OtherLibs/Debugs/heapgraph.o OtherLibs/Debugs/Debug.o
 #	@mkdir -p $(DebugsDir)
-#	$(AR) -c $@ $(AFLAFS) OtherLibs.Debugs.o.heapgraph OtherLibs.Debugs.o.Debug
+#	$(AR) -c $@ $(ARFLAGS) OtherLibs.Debugs.o.heapgraph OtherLibs.Debugs.o.Debug
 
 OtherLibs/Debugs/Signal.o:
 	@mkdir -p $(@D)/o
