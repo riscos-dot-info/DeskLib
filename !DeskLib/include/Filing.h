@@ -220,7 +220,7 @@ os_error *Filing_ReadDirNames(const char *dirname, char *buf,
 
 os_error *Filing_ReadDirEntry(const char *dirname, filing_direntry *buf,
                               int *number, int *offset,
-                              int size, char *match);
+                              int size, const char *match);
 /*
   This is a veneer for OS_GBPB 10. and allows you to read the directory
   entries of objects in directory 'dirname'.
