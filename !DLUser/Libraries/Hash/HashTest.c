@@ -10,7 +10,7 @@ typedef struct {
   int data;
   } obj;
 
-void print_entry(Hash_Obj *entry)
+static void print_entry(Hash_Obj *entry)
 {
 obj *item = (obj *) entry;
 

@@ -26,7 +26,7 @@ ifeq (norcroft, $(COMPILER))
   ASFLAGS = -ILibraries -I$(@D) -throwback
 
   AR = libfile    
-  ARFLAGS = -o
+  ARFLAGS = -c
 endif
 
 # Defaults for gcc
@@ -62,7 +62,7 @@ all: $(DLUSER)
 # Link the objects together to make a new library
 $(DLUSER): $(all_objects)
 	@mkdir -p $(basename $@)
-	$(AR) $(ARFLAGS) -c $@ $(lib_objects)
+	$(AR) $(ARFLAGS) $@ $(lib_objects)
 
 
 # Clean the whole library out in one go
