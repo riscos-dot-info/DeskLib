@@ -12,6 +12,7 @@
 #include "DeskLib:Icon.h"              /* Icon handling automation        */
 #include "DeskLib:Menu.h"              /* Menu create & show support      */
 #include "DeskLib:Screen.h"
+#include "DeskLib:SWI.h"
 
 #include "kernel.h"
 

@@ -31,9 +31,9 @@
 #include "DeskLib:Time.h"              /* "TIME"                          */
 #include "DeskLib:KernelSWIs.h"        /* OS_Byte                         */
 
-#include "Dialog2:Dialog2.h"           /* windows on menus made easy      */
+#include "DeskLib:Dialog2.h"           /* windows on menus made easy      */
 
-#include "HackLib:flex.h"              /* Flexable malloc                 */
+#include "flex.h"                      /* Flexible malloc                 */
 
 #include "kernel.h"
 #include "MySwis.h"
@@ -216,8 +216,8 @@ int main(int argc, char *argv[])
  /*
   * initialise shifting heap memory manager
   */
-  flex_init();
-  _kernel_register_slotextend(flex_budge);
+  flex_init("Widget5", NULL, 0);
+//  _kernel_register_slotextend(flex_set_budge);
 
  /*
   * store current screen description and install event hander to keep it updated

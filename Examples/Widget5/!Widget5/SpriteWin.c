@@ -27,11 +27,11 @@
 #include "DeskLib:File.h"              /* OS file IO                      */
 #include "DeskLib:KeyCodes.h"          /* Codes for wimp returned keys    */
 
-#include "Dialog2:Dialog2.h"           /* windows on menus made easy      */
+#include "DeskLib:Dialog2.h"           /* windows on menus made easy      */
 
-#include "HackLib:flex.h"              /* Flexable malloc                 */
+#include "flex.h"                      /* Flexible malloc                 */
 
-#include "Pane.h"                      /* Panes with less pain            */
+#include "DeskLib:Pane.h"                      /* Panes with less pain            */
 
 #include "ATrans.h"                    /* My load/save library            */
 
@@ -76,7 +76,7 @@ static menu_ptr savemenu = NULL;
 static menu_ptr processmenu = NULL;
 static menu_ptr graphmenu = NULL;
 
-static currentimageno = 0; /* it's sad isn't it! */
+static int currentimageno = 0; /* it's sad isn't it! */
 
 #define imagewindowmenu_IMAGEINFO 0
 #define imagewindowmenu_SAVE      1

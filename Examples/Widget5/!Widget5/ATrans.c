@@ -22,6 +22,8 @@
 #include <string.h>
 #include <stdlib.h>
 
+#undef OS_CLI
+
 static ATrans_defblock defblock;
 static BOOL initialised = FALSE;
 
@@ -86,7 +88,7 @@ BOOL ATrans_message(event_pollblock *event, void *reference)
                              event->data.message.data.dataload.filetype,
                              truefalse);
       if( truefalse == FALSE )
-         OSCLI("Remove <Wimp$Scrap>");                       
+         OS_CLI("Remove <Wimp$Scrap>");                       
       }
       return(TRUE);
       break;
@@ -147,7 +149,7 @@ BOOL ATrans_acknowledge(event_pollblock *event, void *reference)
         return(TRUE);
      if( event->data.message.header.yourref == defblock.ref){
         if(strcmp(event->data.message.data.dataload.filename,"<Wimp$Scrap>")==0)
-           OSCLI("Remove <Wimp$Scrap>");
+           OS_CLI("Remove <Wimp$Scrap>");
         Msgs_Lookup("msg.rdied", err_msg, 60);
         Error_Report(1, err_msg);
      }

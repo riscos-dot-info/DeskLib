@@ -26,7 +26,7 @@
 #include "DeskLib:KeyCodes.h"          /* Codes for wimp returned keys    */
 #include "DeskLib:Hourglass.h"         /* control hourglass               */
 
-#include "HackLib:flex.h"              /* Flexable malloc                 */
+#include "flex.h"                      /* Flexible malloc                 */
 
 #include "ATrans.h"                    /* My load/save library            */
 

@@ -21,12 +21,6 @@ extern void Icon_SetFileType(window_handle window, icon_handle icon, int filetyp
 extern void Popup_menu(window_handle window, icon_handle icon, menu_ptr menu);
 
  /*
-  * reads system variable into buffer and returns TRUE
-  * if variable found
-  */
-extern BOOL OS_ReadVarVal(char *varname, char *buffer, int bufflen);
-
- /*
   * makes the entry in the menu send a menuwarn message or not
   * as yesno
   */
