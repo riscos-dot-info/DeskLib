@@ -49,7 +49,7 @@ static void MapFontHandles(window_block  *wblock,
  */
 {
   icon_block    *icons;
-  int           i;
+  unsigned int   i;
 
   icons = (icon_block *) (wblock + 1);    /* pointer arithmetic! */
   for (i = 0; i < wblock->numicons; i++)
@@ -58,7 +58,7 @@ static void MapFontHandles(window_block  *wblock,
     {
       if (window != 0)    /* The window is open - change all on-screen icons */
       {
-        icon_flags flags;
+        icon_flags flags = { 0 };
         flags.font.handle = fontarray->fonts[icons[i].flags.font.handle];
         Wimp_SetIconState(window, i, flags.value & FONT_MASK, FONT_MASK);
       }
@@ -68,7 +68,6 @@ static void MapFontHandles(window_block  *wblock,
                           fontarray->fonts[icons[i].flags.font.handle];
     }
   }
-/* cc warns 'flags' may be used before being set	*/
 }
 
 
@@ -145,5 +144,5 @@ extern void Window_ModeChange(void)
 
   for (i = 0; i < 256; i++)
     if (fontconvert.fonts[i] != 0)
-      template_fontarray->fonts[fontconvert.fonts[i]]++;
+      template_fontarray->fonts[(unsigned int)fontconvert.fonts[i]]++;
 }

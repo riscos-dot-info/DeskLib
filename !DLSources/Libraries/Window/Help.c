@@ -28,7 +28,7 @@
 
 extern BOOL Window_HelpHandler(event_pollblock *event, void *reference)
 {
-  char template[16], number[16];
+  char mtemplate[16], number[16];
   message_destinee replyto;
 
   UNUSED( reference);
@@ -36,13 +36,13 @@ extern BOOL Window_HelpHandler(event_pollblock *event, void *reference)
   if (event->data.message.header.action == message_HELPREQUEST)
   {
     Window_ParentName(event->data.message.data.helprequest.where.window,
-                      template);
-    template[8] = '\0';         /* tags can't be more than 8 characters long */
+                      mtemplate);
+    mtemplate[8] = '\0';         /* tags can't be more than 8 characters long */
 
     sprintf(number, ".%d", event->data.message.data.helprequest.where.icon);
-    strcat(template, number);
+    strcat(mtemplate, number);
 
-    if (Msgs_Lookup(template, event->data.message.data.helpreply.text, 200))
+    if (Msgs_Lookup(mtemplate, event->data.message.data.helpreply.text, 200))
     {
       event->data.message.header.yourref = event->data.message.header.myref;
       event->data.message.header.action = message_HELPREPLY;
