@@ -9,7 +9,7 @@ Otherwise, the best you can hope for is a slight drag effect on the speed of
 event dispatching as it searches through lists of unneeded handler
 registrations, and the worst you can expect is to find a whole load of
 handlers attached to a window you create later that happens to end up with
-the same window handle as one of it's predecessors.
+the same window handle as one of its predecessors.
 This will also return (small) amounts of memory back to the free "malloc"
 pool.
 
