@@ -74,12 +74,10 @@ task_handle     event_taskhandle  = 0;
 unsigned int    event_wimpversion = 0;
 
 
-static short usagecounts[wimp_NUMBEROFEVENTS]= {
+static int usagecounts[wimp_NUMBEROFEVENTS]= {
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 };
-
-
 
 
 /*
@@ -202,9 +200,6 @@ static const char event_masks[event_MAXEVENTS] = {
    ========================================================================= */
 
 
-
-
-
 static void IncrementUsage(event_type event)
 {
   if ((usagecounts[event])++ == 0)      /* increment count: if not used b4...*/
@@ -216,7 +211,6 @@ static void IncrementUsage(event_type event)
       event_mask.data.r3ispollwordptr = TRUE;
   }
 }
-
 
 
 static void DecrementUsage(event_type event)
@@ -231,7 +225,6 @@ static void DecrementUsage(event_type event)
       event_mask.data.r3ispollwordptr = FALSE;
   }
 }
-
 
 
 static event_iconrecord *CreateIconRecord(event_windowrecord *windowrecord,
@@ -809,8 +802,10 @@ extern void Event_Process(event_pollblock *event)
 {
   event_handler handler;
 
-  handler = (event_handler) (event_handlers[event->type]);
-  handler(event, NULL);
+  if (event->type < event_MAXEVENTS) {
+    handler = (event_handler) (event_handlers[event->type]);
+    handler(event, NULL);
+  }
 }
 
 extern void Event_Poll(void)
