@@ -7,7 +7,7 @@
 ;   ####   ### ####  #  # ##### # ###    documentation for conditions of use
 ;   ________________________________________________________________________
 ;
-;   File:    KernelSWIs.s.ReadClock
+;   File:    Time.s.ReadClock
 ;   Author:  Copyright © 2003 Antony Sidwell
 ;   Version: 1.00 (15 Jan 2003)
 ;   Purpose: Reads the 5 byte time block.
