@@ -18,14 +18,15 @@
 
 #include "DeskLib:File.h"
 
-extern int File_Size(const char *filename)
+extern signed int File_Size(const char *filename)
 {
   _kernel_osfile_block osfile;
 
   /* Allow both image files and normal files to be "sized" */
   if ((_kernel_osfile(17, filename, &osfile) & 1) == 1)
     return (osfile.start);
-  /* Otherwise return the error code zero */
+
+  /* Otherwise return an error */
   else
-    return (0);
+    return (-1);
 }
