@@ -1,5 +1,0 @@
-
-Set Sys$ReturnCode 0
-
-If <Sys$ReturnCode> = 0 Then Obey <DeskLib_User$Dir>.Scripts.Clean
-If <Sys$ReturnCode> = 0 Then Obey <DeskLib_User$Dir>.Scripts.MakeAll
