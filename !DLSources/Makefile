@@ -26,6 +26,7 @@ ifeq (norcroft, $(COMPILER))
   ASFLAGS = -ILibraries -I$(@D) -throwback
 
   AR = libfile
+  ARFLAGS = -o
 endif
 
 # Defaults for gcc
@@ -43,6 +44,7 @@ ifeq (gcc, $(COMPILER))
   ASFLAGS = -Wa,-ILibraries,-I$(@D) -mthrowback -c
 
   AR = $(PREFIX)libfile
+  ARFLAGS =
 endif
 
 DESKLIB = <DeskLib$$Dir>.o.DeskLib
@@ -62,7 +64,7 @@ all: $(DESKLIB) debugs smerror
 # Link the objects together to make a new library
 $(DESKLIB): $(all_objects)
 	@mkdir -p $(basename $@)
-	$(AR) -c $@ $(lib_objects)
+	$(AR) $(ARFLAGS) -c $@ $(lib_objects)
 
 # Insert all the Makefiles in the Otherlibs directory as well.
 # This provides the targets debugs and smerror                  
