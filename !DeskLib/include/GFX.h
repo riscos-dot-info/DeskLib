@@ -319,6 +319,18 @@ extern BOOL GFX_ReadPoint(int x, int y, int *colour, int *tint);
 */
 
 
+extern void GFX_GetClip(wimp_rect *rect);
+/*
+  Get the current graphics clip rectangle
+*/
+
+
+extern void GFX_SetClip(wimp_rect *rect);
+/*
+  Set the current graphics clip rectangle
+*/
+
+
 #ifdef __cplusplus
 }
 #endif

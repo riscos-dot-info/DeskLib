@@ -8,8 +8,7 @@
         PREAMBLE
         STARTCODE GFX_VDU
 ;
-        STMFD   sp!,{lr}
         SWI     XSWI_OS_WriteC
-        LDMFD   sp!,{pc}
+        MOV     pc, lr
 ;
         END
