@@ -1,18 +1,14 @@
 /*
-    ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
-    #   #  ##   ###  #  # #     # ###             RISC OS machines
-    #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
-    #   # #        # # #  #     # #  #    Please refer to the accompanying
-    ####   ### ####  #  # ##### # ###    documentation for conditions of use
-    ________________________________________________________________________
-
-    File:    Colourmenu.Colourmenu.c
-    Author:  Copyright © 1994 Craig Beech
-    Version: 1.00 (27 Aug 1994)
-    Purpose: Equivalent of the RISC_OSLib colourmenu function.
-*/
+ * File: ColourMenu.Colourmenu.c
+ * Author: Craig Beech, 27th August 1994
+ *
+ * Abstract: Create a "colour selector" menu.  This is equivalent to the
+ * RISC_OSLib colourmenu function.
+ *
+ * This file is part of DeskLib, the general-purpose freeware C library for
+ * RISC OS.  Please refer to the accompanying documentation for conditions
+ * of use.
+ */
 
 #include "DeskLib:Menu.h"
 #include "DeskLib:ColourMenu.h"
