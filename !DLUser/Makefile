@@ -25,7 +25,8 @@ ifeq (norcroft, $(COMPILER))
   AS = objasm
   ASFLAGS = -ILibraries -I$(@D) -throwback
 
-  AR = libfile
+  AR = libfile    
+  ARFLAGS = -o
 endif
 
 # Defaults for gcc
@@ -42,7 +43,8 @@ ifeq (gcc, $(COMPILER))
   AS = $(PREFIX)gcc
   ASFLAGS = -Wa,-ILibraries,-I$(@D) -mthrowback -c
 
-  AR = $(PREFIX)libfile
+  AR = $(PREFIX)libfile    
+  ARFLAGS =
 endif
 
 DLUSER = <DeskLib_User$$Dir>.o.DLUser
@@ -60,7 +62,7 @@ all: $(DLUSER)
 # Link the objects together to make a new library
 $(DLUSER): $(all_objects)
 	@mkdir -p $(basename $@)
-	$(AR) -c $@ $(lib_objects)
+	$(AR) $(ARFLAGS) -c $@ $(lib_objects)
 
 
 # Clean the whole library out in one go
