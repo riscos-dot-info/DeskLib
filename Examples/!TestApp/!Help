@@ -63,27 +63,10 @@ Jason Williams May 1993
 
 
 
+A second version of !TestApp is now present - this has debugging enabled.
+This uses the standard makefile, but makes a version with DeskLib_DEBUG defined. This means that all DeskLib Debug_ calls are implemented.
 
-
-
-
-There is now a version of TestApp that is compiled for use with the DLL
-version of DeskLib. Because making a DLL-version involves a different
-set of libraries from normal, there is a second makefile for this,
-called '!TestApp.DLLMake'. All the .o files for the DLL version are in
-'!TestApp.!DLL'. Double-click on this to make the DLL version.
-
-Double-click on !TestApp.!RunDLL to run this version (you will need to
-have the Straylight Dynamic Linking System installed for this to work).
-
-
-
-A third version of !TestApp is now present - this has debugging enabled,
-and the relevant files are in '!TestApp.!Debug'. This uses the standard
-makefile, but calls it setting 'CCExtra' to be '-DDeskLib_DEBUG'. This
-is put in the call to cc, so all DeskLib Debug_ calls are implemented.
-Double-click on '!TestApp.!Debug' to build this version, and
-double-click on '!TestApp.!RunDebug' to run it.
+Double-click on '!TestApp.!RunDebug' to run this version, it will be made at the same time as the "plain" version by default.
 
 
 Julian Smith

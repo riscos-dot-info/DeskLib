@@ -1,67 +1,69 @@
-CC		=	cc
-LINK		=	Link
+# Project: DeskLib Example
+# Make: make
+# Wimpslot: 5000k
+#
+# GNU Make makefile for a DeskLib example.
+# Defaults to using Norcroft as the compiler.
+#
+# Various things passed on the command line can alter this makefile's behaviour;
+# these are:
+#
+#   COMPILER - either "gcc" or "norcroft", depends on what you want to use
+#   PREFIX   - this is only used when COMPILER is gcc; it gives a prefix for all
+#              gcc commands executed.  Default is "gccbin:".
+#
+# e.g. make COMPILER=gcc
 
-CCFlags		=	-fahi -c $(CCExtra) -depend !Depend -throwback -I,C:
-LinkFlags	=	-aif $(LinkExtra)
+# Defaults
+COMPILER = norcroft
+PREFIX = gccbin:
 
-Libraries	=					\
-			DeskLib:o.Debug.pipetype	\
-			DeskLib:o.Debug.Signal		\
-			DeskLib:o.DeskLib		\
-			C:o.stubs			\
+# Defaults for norcy
+ifeq (norcroft, $(COMPILER))
 
+  CC = cc
+  CFLAGS = -throwback 
 
-Target		=	$(TargetPath)!RunImage
+  LINK = link
+  LINKFLAGS = C:o.stubs 
+endif
 
-ObjectFiles	=					\
-			o.TestApp			\
+# Defaults for gcc
+ifeq (gcc, $(COMPILER))
 
+  WARNINGS = -ansi -pedantic -Wall -Wundef -Wpointer-arith \
+             -Wcast-align -Wwrite-strings -Wstrict-prototypes \
+             -Wmissing-prototypes -Wmissing-declarations -Wnested-externs \
+             -Winline -Wno-unused -Wno-long-long -W -Wcast-qual -Wshadow
 
+  CC = $(PREFIX)gcc
+  CFLAGS = -mlibscl -mthrowback -O2 $(WARNINGS) 
 
+  LINK = $(PREFIX)gcc
+  LINKFLAGS = -mlibscl -mthrowback
+endif
 
-# Don't alter anything below this...
+# We link against the main library and the pipetype and Signal debugging libs
+LIBS := DeskLib:o.DeskLib DeskLib:o.Debug.pipetype DeskLib:o.Debug.Signal
 
+# The default is to make the plain and the debug runimages
+all: !RunImage !RunImageD
 
-VPATH = @ @.^
+# Plain version
+!RunImage: TestApp.o
+	$(LINK) $(LINKFLAGS) -o $@ $< $(LIBS)
 
-.SUFFIXES:	.o .c
+# Debugging version
+!RunImageD: TestAppD.o
+	$(LINK) $(LINKFLAGS) -o $@ $< $(LIBS)
 
-$(Target):	$(ObjectFiles) $(Libraries)
-	$(LINK) $(LinkFlags) -o $@ $(ObjectFiles) $(Libraries)
+# Debug object depends on the single source file, but compiles with
+# the DeskLib_DEBUG macro defined
+TestAppD.o: TestApp.c
+	@mkdir -p o
+	$(CC) $(CFLAGS) -DDeskLib_DEBUG -c $< -o $@
 
 .c.o:
-	$(CC) $(ccFlags) -o $@ $<
+	@mkdir -p o
+	$(CC) $(CFLAGS) -c $< -o $@
 
-
-
-# Dynamic dependencies:
-o.TestApp:	^.c.TestApp
-o.TestApp:	DeskLib:h.WimpSWIs
-o.TestApp:	DeskLib:h.Core
-o.TestApp:	DeskLib:h.Wimp
-o.TestApp:	DeskLib:h.Window
-o.TestApp:	DeskLib:h.Pointer
-o.TestApp:	DeskLib:h.Core
-o.TestApp:	DeskLib:h.Icon
-o.TestApp:	DeskLib:h.DragASpr
-o.TestApp:	DeskLib:h.Window
-o.TestApp:	DeskLib:h.Coord
-o.TestApp:	DeskLib:h.Dialog
-o.TestApp:	DeskLib:h.Error
-o.TestApp:	DeskLib:h.Event
-o.TestApp:	DeskLib:h.EventMsg
-o.TestApp:	DeskLib:h.File
-o.TestApp:	DeskLib:h.SWI
-o.TestApp:	DeskLib:h.GFX
-o.TestApp:	DeskLib:h.Handler
-o.TestApp:	DeskLib:h.Hourglass
-o.TestApp:	DeskLib:h.Icon
-o.TestApp:	DeskLib:h.Menu
-o.TestApp:	DeskLib:h.Msgs
-o.TestApp:	DeskLib:h.Resource
-o.TestApp:	DeskLib:h.Sprite
-o.TestApp:	DeskLib:h.Screen
-o.TestApp:	DeskLib:h.Sound
-o.TestApp:	DeskLib:h.Template
-o.TestApp:	DeskLib:h.LinkList
-o.TestApp:	DeskLib:h.Debug
