@@ -32,7 +32,7 @@
  * Returns icon handle.
  */
 
-extern icon_handle Icon_BarIconUser(char *spritename, window_handle pos,
+extern icon_handle Icon_BarIconUser(const char *spritename, window_handle pos,
       	      	      	      	    void *area)
 {
   icon_createblock icreate;
