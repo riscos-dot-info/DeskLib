@@ -1,0 +1,18 @@
+IconSprites <Obey$Dir>.!Sprites
+
+RMEnsure UtilityModule 3.10 Error 0 You need RISC OS 3.10 or later to run this program.
+
+Set Widget5$Dir <Obey$Dir>
+
+Set File$Type_042 Widget5
+Set Alias$@RunType_042 /<Widget5$Dir>.!Run %%*0
+
+Set File$Type_041 Widget4
+Set Alias$@RunType_041 /<Widget5$Dir>.!Run %%*0
+
+Set Widget5$Options X
+
+WimpSlot -min 160K -max 160k
+
+| > <Widget5$Dir>.^.Debug
+Run <Widget5$Dir>.!RunImage %*0  

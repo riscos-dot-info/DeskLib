@@ -1,0 +1,17 @@
+# Project:   Slider
+
+.SUFFIXES:    .c .o
+CC            = cc
+CCFlags       = -c -throwback -I,C: -Ff
+LinkFlags     = -o $@
+SqueezeFlags  = -f -v
+
+Files         = o.!RunImage
+Libs          = DeskLib:o.DeskLib C:o.Stubs
+
+
+!RunImage:    $(Files) DeskLib:o.DeskLib 
+              link $(LinkFlags) $(Files) $(Libs)
+              squeeze $(SqueezeFlags) !RunImage
+
+.c.o:;        $(CC) $(CCflags) $< -o $@

@@ -1,0 +1,9 @@
+IconSprites <Obey$Dir>.!Sprites
+
+RMEnsure UtilityModule 3.10 Error 0 You need RISC OS 3.10 or later to run this program.
+
+Set Pane2test$Dir <Obey$Dir>
+
+WimpSlot -min 64K -max 64k
+
+Run <Pane2test$Dir>.!RunImage %*0
