@@ -48,17 +48,17 @@ extern "C" {
 */
 
 
-typedef int font_handle;
+typedef unsigned int font_handle;
 /* A RISC OS font manager font handle */
 
 
 typedef struct
 {
   char name[128];
-  int xsize, ysize;
-  int xres, yres;
-  int age;
-  int usage;
+  unsigned int xsize, ysize;
+  unsigned int xres, yres;
+  unsigned int age;
+  unsigned int usage;
 } font_defn;
 /*
   This is a structure to hold information about a font.  Most of the fields
@@ -415,7 +415,10 @@ extern os_error *Font_SetThresholds(font_thresholds *t);
 */
 
 
-
+extern os_error *Font_GetWimpFont(font_handle *handle);
+/*
+  Get handle of desktop font
+*/
 
 
 #define font_justify_NONE (0)

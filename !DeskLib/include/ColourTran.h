@@ -28,6 +28,8 @@ extern "C" {
 #include "DeskLib:Core.h"
 #endif
 
+#include "DeskLib:Font.h"
+
 /* Abstract */
 /*
   This header defines several functions which are veneers for some of
@@ -100,6 +102,12 @@ extern int ColourTrans_ReturnColourNumberForMode(int palette, int mode,
 
   It returns -1 to indicate an error.
 */
+
+
+extern os_error *ColourTrans_SetFontColours(font_handle font,
+                                            unsigned int background,
+                                            unsigned int foreground,
+                                            int offset);
 
 #ifdef __cplusplus
 }

@@ -298,7 +298,8 @@ os_error *PDriver_AbortJob(print_job job);
 
 os_error *PDriver_GiveRectangle(int rectangle_id, wimp_rect *rectangle,
                                 print_transformation *matrix,
-                                wimp_point *position, int background_colour);
+                                wimp_point *position,
+                                unsigned int background_colour);
 /*
   This function specifies a rectangle that the application wants to print.
   'rectangle_id' is a value of your choosing to identify the rectangle,
