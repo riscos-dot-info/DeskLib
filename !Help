@@ -93,13 +93,7 @@ Sources		All the source code for DeskLib, plus makefiles and
 Examples	A few example programs with source, plus some random
 		source code.
 		
-		DeskLib.Examples...* except *.EasyC...* .
-
-
-EasyCEgs	Beebug EasyC-compatible versions of one of the example 
-		program.
-		
-		DeskLib.Examples.EasyC...*
+		DeskLib.Examples...* except
 
 
 StrongHelp	This is a StrongHelp file which documents every
