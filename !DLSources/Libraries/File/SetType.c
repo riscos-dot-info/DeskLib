@@ -18,7 +18,7 @@
 
 #include "DeskLib:File.h"
 
-extern void File_SetType(char *filename, int type)
+extern void File_SetType(const char *filename, int type)
 {
   _kernel_osfile_block osfile;
 
