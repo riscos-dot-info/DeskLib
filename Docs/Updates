@@ -1,7 +1,14 @@
 This file documents changes made between released versions of DeskLib.
 
+Desklib 2.51 (31 Dec 2003)
+==========================
+
+Misc warning fixes in the build
+Fix register handing in Sprite_GetUser
+
+
 Desklib 2.50 (15 Oct 2003)
-===============================
+==========================
 
 Some new font handling calls - ColourTrans_SetFontColours, Font_GetWimpFont
 Signedness fixes for string handling
