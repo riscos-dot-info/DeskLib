@@ -28,6 +28,8 @@ extern "C" {
 
 /* Abstract */
 /*
+   Warning: This API has not yet been implemented.  Do not use.  
+
    Low level DeviceFS functions
 
    See: http://www.iyonix.com/32bit/USBDevFS.shtml
