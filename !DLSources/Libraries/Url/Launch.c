@@ -175,15 +175,19 @@ static BOOL Url_ANTLoad(const char *url)
 /* ---------------------------------------------------------------------
  * Launch an URL using the Acorn URI protocol.
  * --------------------------------------------------------------------- */
-static void Url_URIDispatch(const char *url)
+static void Url_URIDispatch(url_info_blk *block)
 {
   int flags;
 
   /* Dispatch the SWI, asking to be notified of the result with a message */ 
-  if (SWI(3, 1, SWI_URI_Dispatch, 1, url, event_taskhandle, &flags) != NULL || flags & 1)
+  if (SWI(3, 1, SWI_URI_Dispatch, 1, block->url, event_taskhandle, &flags) != NULL || flags & 1)
   {
     /* If we have failed, move straight onto the "antload" technique */
-    Url_ANTLoad(url);
+    if (Url_ANTLoad(block->url) == FALSE)
+    {
+      /* If that failed, report error and clean up */
+      Url_Failed(block);
+    }
   }
 
   return;
@@ -229,7 +233,9 @@ static BOOL Url_ReturnMessage_h(event_pollblock *event, void *param)
     if (event->type == event_USERMESSAGEACK)
     {
       /* Try the acorn method instead */
-      Url_URIDispatch(block->url);
+      Url_URIDispatch(block);
+
+      /* True because we handled the message, not because it succeeded */
       return (TRUE);
     }
   }
