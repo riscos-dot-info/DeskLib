@@ -1,21 +1,49 @@
-# GNU Make makefile for DeskLib
+# Project: DeskLib
+# Make: make
+# Wimpslot: 5000k
+#
+# GNU Make makefile for DeskLib.  Defaults to using Norcroft as the compiler.
+#
+# Various things passed on the command line can alter this makefile's behaviour;
+# these are:
+#
+#   COMPILER - either "gcc" or "norcroft", depends on what you want to use
+#   PREFIX   - this is only used when COMPILER is gcc; it gives a prefix for all
+#              gcc commands executed.  Default is "gccbin:".
+#
 
-AR = gccbin:libfile
+# Defaults
+COMPILER = norcroft
+PREFIX = gccbin:
 
-CC = cc
-CFLAGS = -ffahi -throwback -IDeskLib: 
-AS = objasm
-ASFLAGS = -ILibraries -I$(@D) -throwback
+# Defaults for norcy
+ifeq (norcroft, $(COMPILER))
 
-WARNINGS = -ansi -pedantic -Wall -Wundef -Wpointer-arith \
-           -Wcast-align -Wwrite-strings -Wstrict-prototypes \
-           -Wmissing-prototypes -Wmissing-declarations -Wnested-externs \
-           -Winline -Wno-unused -Wno-long-long -W -Wcast-qual -Wshadow
+  CC = cc
+  CFLAGS = -ffahi -throwback
 
-#CC = gcc -mlibscl
-#CFLAGS = -IDeskLib: -mthrowback $(WARNINGS) -O2
-#AS = gcc
-#ASFLAGS = -Wa,-ILibraries,-I$(@D) -v -mthrowback
+  AS = objasm
+  ASFLAGS = -ILibraries -I$(@D) -throwback
+
+  AR = libfile
+endif
+
+# Defaults for gcc
+ifeq (gcc, $(COMPILER))
+
+  WARNINGS = -ansi -pedantic -Wall -Wundef -Wpointer-arith \
+             -Wcast-align -Wwrite-strings -Wstrict-prototypes \
+             -Wmissing-prototypes -Wmissing-declarations -Wnested-externs \
+             -Winline -Wno-unused -Wno-long-long -W -Wcast-qual -Wshadow
+
+  CC = $(PREFIX)gcc
+  CFLAGS = -mlibscl -mthrowback -O2 $(WARNINGS)
+
+  AS = $(PREFIX)gcc
+  ASFLAGS = -Wa,-ILibraries,-I$(@D) -mthrowback -c
+
+  AR = $(PREFIX)libfile
+endif
 
 DESKLIB = <DeskLib$$Dir>.o.DeskLib
 DESKLIBDIR = <DeskLib$$Dir>.o
@@ -38,7 +66,8 @@ $(DESKLIB): $(all_objects)
 
 # Insert all the Makefiles in the Otherlibs directory as well.
 # This provides the targets debugs and smerror                  
-include OtherLibs/*/Makefile
+
+include OtherLibs/*/Makefile*
 
 # Clean the whole library out in one go
 clean:
@@ -48,10 +77,12 @@ clean:
 # To empty the 'o' directories for each library
 # This a hack, we'd be much better off with a "rm" command that could take
 # a list of things to delete.  
+
 define cleanlib                     
 $(shell Echo Wipe Libraries.$(library).o.* ~C~VF~R)
 $(shell X Wipe Libraries.$(library).o.* ~C~VF~R)
 endef
+
 cleanlibs = $(foreach library, $(libraries), $(cleanlib))
 
 
@@ -67,5 +98,5 @@ zip:
 
 .s.o:
 	@mkdir -p $(@D)/o
-	$(AS) $(ASFLAGS) -c $< -o $@
+	$(AS) $(ASFLAGS) $< -o $@
 
