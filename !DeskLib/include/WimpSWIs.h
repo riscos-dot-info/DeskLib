@@ -331,16 +331,10 @@ extern os_error *Wimp_ForceRedraw(window_redrawblock *block);
 
 extern os_error *Wimp_OpenWindowNest(window_openblocknest *block,
                                      window_handle parent,
-                                     BOOL extended);
+                                     window_nestflags flags);
 /*
   This is a version of Wimp_OpenWindow for the nested Wimp, which allows
-  access to the new features available.  If you want to use it without any
-  of the new features, you can pass FALSE for 'extended'.
-
-  If you want to open a nested window, you should pass TRUE for 'extended'
-  and the window handle of the parent of the window you are opening in
-  'parent'.  You then set up the flags in 'block' to the appropriate values
-  for the window you are opening.
+  access to the new features.
 */
 
 
