@@ -36,9 +36,10 @@ typedef struct
   extern int        mem__free;
 #endif
 
-
-/* Rounds an address up to the nearest word boundary */
-#define WORDALIGN(ADDR) (((ADDR) + 3) & (~3))
+#ifndef WORDALIGN
+	/* Rounds an address up to the nearest word boundary */
+	#define WORDALIGN(ADDR) (((ADDR) + 3) & (~3))
+#endif
 
 /* Rounds a datasize up to the smallest realsize that fits it */
 #define CHUNKSIZE(DATA) ((int)((DATA) + 3 + sizeof(mem_header)) & (~3))
