@@ -30,7 +30,7 @@
 #include "DeskLib:Error.h"          /* Centralised error reporting         */
 #include "DeskLib:KernelSWIs.h"     /* General low level SWI veneers       */
 #include "DeskLib:Resource.h"       /* Handles finding resource files      */
-#include "DeskLib:Choices.h"        /* Header for this file                */
+#include "DeskLib:File.h"           /* Filing system functions             */
 
 /* --- CLib -------------------------------------------------------------- */
 #include <stdio.h>      /*  General I/O routines                           */
