@@ -12,109 +12,56 @@ DeskLib - the !DeskLib application contains all the headers and
 libraries needed. All source code for DeskLib is contained in this
 directory.
 
-The structure of this directory is rather different from previous
-DeskLib releases. This is partly because I've attempted to automate the
-creation of the various files needed for DeskLib, and because DeskLib is
-now available in DLL form, as well as the original statically-linkable
-'DeskLib:o.DeskLib'. Code for DLLs has to be compiled with different
-flags from normal, so each DeskLib sublibrary now has two or three
-subdirectories contining differently-compiled .o files.
-
-In the 'Scripts' subdirectory, there are a few Obey files which can be
-used to do various things such as generate makefiles for each
-sub-library. See below for a description of what each one does.
-
-Please note that the version of the 'LibFile' program that comes with
-Acorn's Desktop C can crash the whole system very nastily if there isn't
-enough memory (it trashed my HD's boot block in doing so once). It seems
-to grab 1.5Mb if possible, so the scripts which actually call LibFile
-have a 'Wimpslot 1500k' to ensure there is enough space for LibFile to
-work in. This seems to be enough memory to build DeskLib at least.
-
-All of the scripts are of type 'TaskObey' so run in a taskwindow if
-double clicked. This probably slows down compiling, but I prefer to keep
-my system multitasking where possible. Everything should work fine if
-you settype them to be vanilla Obey files.
-
 The 'Bin' directory contains a few of programs which I use to do various
-things sycj as create makefiles in each DeskLib sublibrary directory.
+things.
 
-The 'Libraries' directory contains, as before, a separate directory for
-each DeskLib sub-library. Each has two or three makefiles which make the
-various files. These makefiles are now created automatically using
-template makefiles in the 'TemplateMF' directory.
-
+The 'Libraries' directory contains a separate directory for
+each DeskLib sub-library.
 
 
 Remaking DeskLib
 ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
 
-This should be fairly straightforward:
+The default setup is for Norcroft.  If you have GCC, the things you
+need to uncomment in the Makefile should be obvious.  
 
-The file '!DLSources.Scripts.Static.MakeAll' will remake those parts of
-the static version of DeskLib that are out of date, by running Amu on
-each library's makefile.
+We've changed the build system substantially from the previous 2.30 release,
+partly so we can in future cross compile DeskLib, and partly to remove
+the need for slightly unstable tools that we didn't have source for.
 
-The file '!DLSources.Scripts.Static.MakeAll2' is more drastic - it
-deletes all the .o files, retrims the header files, remakes all the
-makefiles from the template makefiles in '!DLSources.TemplateMF', and
-then recompiles everything.
+DeskLib requires GNU make - AMU isn't quite up to the job.  If you don't
+already have GCC, then you can get this as part of the "utils" archive
+from the latest GCC release:
 
-The files '!DLSources.Scripts.Static+DLL.MakeAll' and
-'!DLSources.Scripts.Static+DLL.MakeAll2' are similar to the above,
-except that they also remake the dynamic-linking version of DeskLib.
+http://hard-mofo.dsvr.net/gcc/
 
-The file '!DLSources.Scripts.OtherLibs.MakeAll' remakes the libraries
-which aren't part of the main DeskLib library - Debug and SmallError.
+The rest of the system will build with tools from Castle's 32-bit release.
+Don't try and rebuild DeskLib with a 26-bit compiler - you'll just end up
+with a broken library.
 
+At time of writing, DeskLib cannot be fully built with GCC, due to minor
+problems with the assembler, but these will be fixed soon.  A GCC build will
+still require you to use objasm, but otherwise you should not have any
+problems.   Again, you'll require a 32-bit version of GCC - in principle, you could add suitable flags to current 26-bit GCC to output 32-bit code, but
+this is likely to be of limited value if you don't have a 32-bit compiler
+for any programs you want to compile.
+
+In general, using libraries such as DeskLib between UnixLib and
+SharedCLibrary programs isn't a good idea, as they have some
+incompatibilities.  DeskLib has been checked to ensure that it is
+compatible with both C libraries.  Visit http://www.riscos.info/unixlib/
+if you wish to know more.
+
+Just running "make" is sufficient to build everything.
 
 
 
 Dynamically Linked DeskLib sublibraries
 ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
 
-When making a client for use with DeskLib DLLs, link with
-'DeskLib:o.DLLClient' (instead of 'DeskLib:o.DeskLib'). This file
-contains the stubs files of all DeskLib sublibraries available as DLLs,
-and suitably-compiled .o files from all the other sublibraries (for full
-information about making DLL clients, see
-'...Docs.DynamLink.SDLS_Apps').
-
-This ensures that, when making a client to use DLL DeskLib, code for
-DeskLib functions not available as a DLL is linked in statically.
-
-Only about half of the DeskLib sublibraries have DLL versions. This is
-because it is not practical to make a DLL version of (say) WimpSWIs -
-for example, just one call to a Wimp SWI would involve loading the
-entire 5k WimpSWIs DLL into the RMA. Instead, the call is statically
-linked into the client. This is generally true for any DeskLib
-sublibrary which consists of many small unrelated functions.
-
-There is also what appears to be a 1.2k overhead when making a DLL, so
-very small DeskLib sublibraries (eg Sound) are also not available as
-DLLs.
-
-
-
-Other
-˜˜˜˜˜
-
-To enable auto-generation of appropriate makefiles for the sublibraries
-and auto-generation of the final DeskLib libraries, sub-libraies which
-are available as DLLs have a zero-length 'IsDLL' file in their
-directory.
-
-Code for use in a DLL has to be compiled with various special cc flags,
-so every DeskLib sublibrary which has a DLL version has two different
-sets of .o files. These are in '<sublibname>.DLL' and
-'<sublibname>.Static'.
-
-In addition, every sublibrary which is not available as a DLL has three
-sets of .o files - for static linking, static linking with a DLL client,
-and static linking with a DLL.
-
-
-
+We have removed all the DLL stuff from Desklib build, as we consider
+this of very limited interest.  Any future DLL/Shared Library system
+in RISC OS will likely take a very different form.
 
 
 Fairly complete description of all files in this !DLSources directory
@@ -161,7 +108,6 @@ Bin.		Some general utilities used by some of the scripts described
 	IfNotExist	Runs a command only of the specified file/dir
 			doesn't exist.
 
-	
 
 Libraries.	Every DeskLib sub-library's source, makefiles etc.
 	
@@ -174,133 +120,6 @@ Libraries.	Every DeskLib sub-library's source, makefiles etc.
 		s.	Assembler source
 		h.	Internal headers 
 		
-		Every library also has the following directory:
-
-		Static.		All files for the conventional version
-				of this sublibrary.
-					
-			Makefile	The makefile
-			
-			Lib		One-chr long file which has the
-					date-stamp of the last creation
-					date of this library.
-				
-			o.		The .o files.
-		
-					
-		DeskLib sublibraries which are not available as a DLLs
-		˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
-	
-		As well as the normal static .o files described above,
-		there are two extra sets of .o files, in 'DLLClient' 
-		and 'DLL':
-		
-	<Lib-name>.DLLClient.	All files needed when statically
-				linking this sublibrary with a 
-				client application.
-				The .o files are compiled with
-				_DeskLib_SDLS_CLIENT predefined.
-			
-			MkClientOs	This makefile compiles the
-					source with _DeskLib_SDLS_CLIENT
-					predefined.
-			
-			o.		The .o files.
-		
-		
-		DLL.		All files needed when statically
-				linking this sublibrary with a 
-				DLL.
-			
-			MkOs		Compiles the source with cc -zM
-					etc.
-			
-			o.		The object files.
-		
-		
-		
-		DeskLib sublibraries which are available as a DLLs
-		˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
-		
-		As well as the normal static .o files described above,
-		there is one extra set of .o files in 'DLL' plus a few 
-		extra files which are needed to make the DLL version.
-		
-	<Lib-name>.DLL.		Everything for making this
-				sublibrary into a DLL.
-				
-			o.	Object code compiled
-				with special flags
-				for use in SDLS DLLs:
-				-zM
-				-D_DLL
-				etc.
-			
-			MakeStubsOs
-				This makefile compiles
-				all the .c files and
-				makes the DLL Stubs file.
-							
-			PlainStubs
-				Plain stubs file as created
-				using SDLS's 'cdll' tool.
-				
-			OSObj	An extra .o file which 
-				imports symbols from every
-				Stubs file that this sublibrary
-				references. This is an assembled
-				version of 'OtherStubs' 
-				described below.
-				
-			Stubs	The Stubs file for this
-				sublibrary. This is simply the
-				'PlainStubs' and 'OSObj' object
-				files partially linked together.
-			
-			MakeDLL	This makefile makes the DLL
-				by linking all the .o
-				files with 'Header',
-				DeskLib:o.DLLDLL and a
-				few .o files which come
-				with the SDLS.
-			
-			Header	Intermediate file used
-				to make the 'DLL' file.
-		
-		
-		These are a few extra files in DLL library directories.
-		
-		OtherStubs
-			Small assembler source. Only
-			used when making DLL Stubs
-			files. See
-			'!DLSources.Docs.RndDLLInfo' for
-			more information about this.
-		
-		
-		DLLDef	(Libraries.DLL.*. only)
-		
-			Text file which specifies what functions the DLL
-			provides. If this is not present, the DLL 
-			makefile will use cdll to make a default one based 
-			on what .o files are present, but this will need 
-			modifying by hand.
-			
-			NB the DLLDef file is not in the 'DLL' directory 
-			because it is effectively a source file - it is
-			tweaked by hand after generation by cdll. Hence 
-			keeping it outside the 'DLL' directory means that 
-			one can delete all the 'DLL' directories to save on 
-			disc space but still be able to restore all DLL 
-			information easily.
-		
-		IsDLL	Zero-length file which is present only in
-			sub-libraries which are available as DLLs.
-			The presence/absence of this file is checked by
-			the various DeskLib scripts so that different
-			things are done to libraries which can/can't be 
-			made into DLLs.			
-					
 
 
 OtherLibs.	A few libraries which aren't part of the main DeskLib
@@ -320,245 +139,10 @@ OtherLibs.	A few libraries which aren't part of the main DeskLib
 			'<DeskLib>.Other.SmError'.
 
 
-TemplateMF.	Contains template makefiles for making static and
-		dynamically-linked versions of the DeskLib sublibraries.
-		These makefiles just need the macro $(ObjectFiles) to
-		be set to be a space-separated list of .o files, and 
-		$(LibName) to be set to the name of the library, and 
-		they will compile/assemble etc as necessary.
-		The 'Makatic' command is used to generate real usable
-		makefiles from these templates in each of the 
-		sub-library directories.
-	
-	Static		Produces standard .o files
-	
-	MakeDLL		Links .o files with the DeskLib:o.DLLDLL library
-			to make the finished DLL.
-	
-	MkStubsOs	Compiles all .c/s files with flags suitable for
-			making into a DLL.
-			Uses cdll to make a stubs file.
-			Uses cdll to generate a default Defs file if
-			none is present.
-	
-	MkOs		Compiles all .c/s files with flags suitable for
-			linking statically with a DLL.  Used for libraries 
-			which aren't available as a DLL.
 	
 	MkClientOs	Makes .o files suitable for static linking with
 			a client application. Used for libraries which
 			aren't available as a DLL.
-
-
-ObjLists.	Various text files which contain lists of .o
-		files for use with LibFile to make the finished DeskLib
-		libraries.
-		
-		Note that these lists are generated automatically by
-		scripts before LibFile is called, so that they are
-		always up to date. They take a few minutes to generate
-		at the moment, because they use a rather clumsy system 
-		of calling Obey file CLI commands.
-		
-	DLLDLL		List of all Stubs files, and all .o files
-			from non-DLL sublibraries compiled for use in
-			DLLs.
-			ie.
-			<DeskLib_Sources$Dir>.Libraries.DLL.*.DLL.Stubs
-			<DeskLib_Sources$Dir>.Libraries.Static.*.DLL.o.*
-	
-	Static		List of all .o files compiled conventionally for 
-			use in the standard DeskLib library.
-			ie.
-			<DeskLib_Sources$Dir>.Libraries.Static.*.Static.o.*
-			<DeskLib_Sources$Dir>.Libraries.DLL.*.Static.o.*
-	
-	DLLClient	List of all Stubs files, and all .o files
-			from non-DLL sublibraries compiled for use in
-			clients.
-			ie.
-			<DeskLib_Sources$Dir>.Libraries.DLL.*.DLL.Stubs
-			<DeskLib_Sources$Dir>.Libraries.Static.*.Static.o.*
-
-
-Scripts.	Some TaskObey files which do various things such as
-		generate makefiles, run makefiles etc. NB a TaskObey
-		file is the same as a normal obey file, except it runs
-		in a taskwindow when double-clicked.
-		
-		
-	Static+DLL.	These scripts make both the static and DLL parts of
-			DeskLib
-		
-
-		MakeAll		Does everything needed to make
-				the three DeskLib library files.
-	
-		MakeLibs	Does all the LibFile-ing needed to completely
-				remake DeskLib. Useful if a library is changed 
-				- just run the library's makefiles and then 
-				run this script. This saves running every 
-				makefile as done by MakeAll.
-		
-		CleanC		Removes all C .o files.
-		
-		Clean		Removes all .o files.
-		
-		MakeMFs		Remakes every makefile in the sublibraries.
-		
-		MakeAll2	This *completely* remakes DeskLib - new makefiles,
-				trims the DeskLib headers, deletes all .o files
-				and recompiles etc.
-	
-	
-	Commands.	Some general DeskLib-specific commands.
-			These are accessed with (for eg.)
-			DeskLib_Commands:EachStatic ...
-		
-		EachStatic	'EachStatic <command>' runs <command> on 
-				every static-only DeskLib sublibrary. Any
-				occurrence of '%0' is replaced by the 
-				complete dirname of the sublibrary, while
-				'%1' is replaced by the leafname of the
-				sublibrary (ie the sublibrary name).
-				This uses 'Every' and 'IfNotExist'.
-		
-		EachDLL		As above, except <command> is run on each
-				DLL-sublibrary.
-		
-		EachLib		As above, except <command> is run on all
-				DeskLib's sublibraries, both static and DLL.
-		
-		EachUser	As above, except <command> is run on all
-				the libraries in '!DLUser'.
-	
-		Append		'Append <file> <text>' appends '|<text>' 
-				to <file>
-		
-	
-	
-
-	
-	
-	Static.		All the scripts to do with making the static DeskLib
-			DeskLib:o.DeskLib
-		
-		MakeAll		This makes the entire static version of
-				DeskLib, 'DeskLib:o.DeskLib'.
-				It first runs RunStaMFs, then runs MakeLib.
-		
-		MakeOList	Makes ObjLists.Static, a list of all .o 
-				files compiled for the static version of
-				DeskLib
-	
-		MakeStaMFs	Makes a makefile in each sublibrary
-				directory. The makefile makes each 
-				.c/s file into a .o suitable for the
-				static version of DeskLib.
-		
-		RunStaMFs	This runs AMU on each makefile created by
-				the above MakeStaMFs.
-		
-		MakeLib		Runs MkOList to generate the file
-				ObjLists.Static, and then uses LibFile to 
-				merge all .o files into DeskLib:o.DeskLib.
-		
-		CleanC		Deletes every .Static.o.* file which was
-				made from a .c file.
-		
-		Clean		Deletes every .Static.o.* file.
-		
-		MakeAll2	This *completely* remakes the static DeskLib
-				library - new makefiles, trims the headers,
-				deletes all static .o files and recompiles
-				them, and then calls LibFiles to make
-				DeskLib:o.DeskLib .
-				Note that the DLL DeskLib is not updated.
-		
-		CleanMake	Deletes all static .o files and recompiles, 
-				and then remakes DeskLib:o.DeskLib .
-
-
-	DLL.		All the scripts to do with making the DLL DeskLib.
-	
-		CleanDLLC	Deletes all .o files that came from .c files.
-		
-		CleanDLLOb	Deletes all non .o object files - Stubs, 
-				PlainStubs, OSObj and Header. I used this when 
-				a new version of the SDLS came out.
-
-		CopySObjs	Copies every .o file that came from
-				assembling a .s file in the 'Static'
-				subdirectory, into the .o directory of
-				the 'DLL' subdirectory.
-		
-		MakeAll		This makes the two DLL-DeskLibs
-				DeskLib:o.DLLDLL and DeskLib:o.DLLClient
-				It first runs RunSubsOs, then MakeDLibs,
-				then RunDLL, then MoveDLLs.
-		
-		MkDCList	Generates the 'ObjLists.DLLClient' file
-				- all DLL Stubs files plus all .o files
-				from non-DLL sublibraries compiled for
-				linking with *clients*.
-		
-		MkDDList	Generates the 'ObjLists.DLLDLL' file -
-				all DLL Stubs files plus all .o files
-				from non-DLL sublibraries compiled for
-				linking with *DLLs*.
-		
-		MakeDLibs	Makes the two libraries needed for DLL client
-				and the actual SDLS libraries.
-	
-	
-		MakeTree	Makes all the subdirs and makefiles for a DLL 
-				sublibrary.
-		
-		
-		-- Scripts for making makefiles --
-		
-		MakeDLL		Uses Makatic to generate a makesfile in each 
-				DLL sublibrary directory which makes the DLL.
-				Each makefile is based on 'TemplateMF.MakeDLL'
-		
-		MakeStbsOs	Uses Makatic to make a makefile in each DLL
-				sublibrary directory which makes all .o files
-				for that library and also makes the Stubs 
-				file for that sublibrary. Each makefile is based
-				on TemplateMF.MakeStubsOs
-				Also makes the MakeOs makefile in each non-DLL
-				sublibrary, whch makes all .o files suitable for
-				linking with a DLL.
-		
-		MkClientOs	Uses Makatic to make a makefile in each 
-				static-sublibrary. This makefile will make .o
-				files suitable for static linking with client
-				applications.
-		
-		MakeAllMFs	Calls all three of the above files.
-		
-		
-		-- Scripts for running makefiles --
-		
-		RunClientO	Runs each <libname>.DLLClient.MkClientOs makefile.
-
-		RunDLL		Runs the 'MakeDLL' makefiles in each DLL-library.
-		
-		RunStubOs	Runs each of the MakeDLL makefiles.
-	
-	
-	OtherLibs	Scripts for making the extra libraries that aren't 
-			included in the main 'DeskLib:o.DeskLib' library
-			(eg Debug and SmallError).
-		
-		MakeAll	Runs amu on the makefile within each directory in 
-			'!DLSources.OtherLibs'.
-		
-		Clean	Deletes all .o files within 
-			'!DLSources.Scripts.OtherLibs'.
-
-
-
 
 
 - Julian Smith
