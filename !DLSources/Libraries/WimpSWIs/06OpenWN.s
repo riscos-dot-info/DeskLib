@@ -36,16 +36,17 @@
         PREAMBLE
         STARTCODE Wimp_OpenWindowNest
 ;
-        MOV     ip, lr
+        STMFD   sp!, {v1, lr}
 
-        MOV     a2, a1
+        MOV     a4, a2
         MOV     v1, a3
+        MOV     a2, a1
         LDR     a3, |task|
         SWI     SWI_Wimp_OpenWindow + XOS_Bit
         MOVVC   a1, #0
 
-        MOV     a2, #0  ; Prevent R2 retaining value
-        MOV     pc, ip
+        MOV     r2, #0  ; Prevent R2 retaining value
+        LDMFD   sp!, {v1, lr}
 
 |task|
         DCB    "TASK"
