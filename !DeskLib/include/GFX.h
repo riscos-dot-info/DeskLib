@@ -27,6 +27,10 @@ extern "C" {
 #include "Desklib:Core.h"
 #endif
 
+#ifndef __dl_wimp_h
+#include "Desklib:Wimp.h"
+#endif
+
 /* Abstract */
 /*
   A set of fairly low-level graphics manipulation routines and related macros.
