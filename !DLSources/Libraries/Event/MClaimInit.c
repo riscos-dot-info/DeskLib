@@ -23,6 +23,7 @@
 #define ERRMESS1 "Unable to allocate memory for eventmsg claim"
 
 linklist_header eventmsg__claimanchor = {NULL, NULL};
+static BOOL initialised = FALSE;
 
 
 static BOOL EventMsg_DispatchMessage(event_pollblock *event, void *reference)
@@ -85,6 +86,8 @@ extern BOOL EventMsg_Claim(message_action messagetype, window_handle window,
   eventmsg_claimrecord *ptr;
   eventmsg_windowrecord *wrecord;
 
+  EventMsg_Initialise();
+
   ptr = (eventmsg_claimrecord *) eventmsg__claimanchor.next;
   while (ptr != NULL)            /* Find claims for this message action type */
   {
@@ -139,10 +142,13 @@ extern BOOL EventMsg_Claim(message_action messagetype, window_handle window,
 
 extern void EventMsg_Initialise(void)
 {
-  Event_Claim(event_USERMESSAGE, event_ANY, event_ANY,
-              EventMsg_DispatchMessage, NULL);
-  Event_Claim(event_USERMESSAGERECORDED, event_ANY, event_ANY,
-              EventMsg_DispatchMessage, NULL);
-  Event_Claim(event_USERMESSAGEACK, event_ANY, event_ANY,
-              EventMsg_DispatchMessage, NULL);
+  if (!initialised) {
+    Event_Claim(event_USERMESSAGE, event_ANY, event_ANY,
+                EventMsg_DispatchMessage, NULL);
+    Event_Claim(event_USERMESSAGERECORDED, event_ANY, event_ANY,
+                EventMsg_DispatchMessage, NULL);
+    Event_Claim(event_USERMESSAGEACK, event_ANY, event_ANY,
+                EventMsg_DispatchMessage, NULL);
+    initialised = TRUE;            
+  }
 }
