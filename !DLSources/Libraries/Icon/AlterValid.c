@@ -22,7 +22,7 @@
 
 
 extern void Icon_AlterValidation(window_handle window, icon_handle icon,
-                                    char *newvalidation)
+                                 const char *newvalidation)
 {
   icon_block wimpicon;
 

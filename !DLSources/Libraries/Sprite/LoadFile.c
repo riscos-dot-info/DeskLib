@@ -20,7 +20,7 @@
 #include "DeskLib:File.h"
 #include "DeskLib:Sprite.h"
 
-extern sprite_area Sprite_LoadFile(char *filename)
+extern sprite_area Sprite_LoadFile(const char *filename)
 /*
  * This loads the given sprite file into a sprite area, and returns a pointer to
  * it.  The memory is automatically allocated with malloc().

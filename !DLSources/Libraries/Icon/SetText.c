@@ -23,7 +23,7 @@
 
 
 
-extern void Icon_SetText(window_handle w, icon_handle i, char *text)
+extern void Icon_SetText(window_handle w, icon_handle i, const char *text)
 /*
  * Copies the text string into the icon's indirected string buffer (and redraws)
  * If unable to set the text (incorrect icon type), it returns quietly

@@ -27,7 +27,7 @@
 
 #define ReadModeVar(m, v, r) SWI(3, 3, 0x20035, (m), (v), 0,   0, 0, (r))
 
-extern icon_handle Icon_BarIcon(char *spritename, window_handle pos)
+extern icon_handle Icon_BarIcon(const char *spritename, window_handle pos)
 {
   icon_createblock icreate;
   icon_handle      icon;

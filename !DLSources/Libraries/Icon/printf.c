@@ -24,7 +24,7 @@
 #include "DeskLib:Icon.h"
 
 extern void Icon_printf(window_handle window, icon_handle icon,
-                        char *format, ...)
+                        const char *format, ...)
 {
   va_list    argp;
   char       temp[512];   /* Longer strings will break this call */
