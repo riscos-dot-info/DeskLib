@@ -13,10 +13,11 @@ WARNINGS = -ansi -pedantic -Wall -Wundef -Wpointer-arith \
            -Winline -Wno-unused -Wno-long-long -W -Wcast-qual -Wshadow
 
 #CC = gcc -mlibscl
-#CFLAGS = -IDeskLib: -mthrowback $(WARNINGS) -O2
+#CFLAGS = -I. -IDeskLib: -mthrowback $(WARNINGS) -O2
 #AS = gcc
 
 DESKLIB = <DeskLib$$Dir>.o.DeskLib
+DESKLIBDIR = <DeskLib$$Dir>.o
 DEBUGS = <DeskLib$$Dir>.o.Debug
 
 libraries := $(notdir $(filter-out Libraries/CVS, $(wildcard Libraries/*)))
@@ -30,6 +31,7 @@ all: $(DESKLIB) debugs smerror
 
 # Link the objects together to make a new library
 $(DESKLIB): $(all_objects)
+	@mkdir $(subst .,/,$@)/..
 	$(AR) -c $@ $(AFLAFS) $(lib_objects)
 
 # Insert all the Makefiles in the Otherlibs directory as well.
