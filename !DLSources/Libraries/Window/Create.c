@@ -37,7 +37,7 @@
 linklist_header window_listanchor;
 
 
-extern window_handle Window_Create(char *windowname, int maxtitlesize)
+extern window_handle Window_Create(const char *windowname, int maxtitlesize)
 {
   windowrec     *record;
   window_block  *windowptr;

@@ -27,7 +27,7 @@
 
 /* === FUNCTION DEFINITIONS ============================================== */
 
-extern void Template_LinkSpriteArea(char *identifier, sprite_area area)
+extern void Template_LinkSpriteArea(const char *identifier, sprite_area area)
 {
   window_block          *wblock;
 

@@ -26,7 +26,7 @@
 /* Define the sprite area variable */
 sprite_area __template_spritearea = NULL;
 
-extern template_record *Template__FindTemplate(char *name)
+extern template_record *Template__FindTemplate(const char *name)
 /* not intended for user-consumption! Use Template_Find instead */
 {
   template_record *t;
@@ -55,7 +55,7 @@ extern template_record *Template__FindTemplate(char *name)
 
 
 
-extern window_block *Template_Find(char *name)
+extern window_block *Template_Find(const char *name)
 {
   template_record *t;
 

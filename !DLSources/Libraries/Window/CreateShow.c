@@ -16,7 +16,7 @@
 
 #include "DeskLib:Window.h"
 
-extern window_handle Window_CreateAndShow(char           *windowname,
+extern window_handle Window_CreateAndShow(const char    *windowname,
                                           int            maxtitlesize,
                                           window_openpos openpos)
 {

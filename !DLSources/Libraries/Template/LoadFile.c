@@ -36,7 +36,7 @@ extern font_array      **Template__Ref_fontarray( void) { return &template_fonta
 
 
 
-static void ReadHeader(char *filename)
+static void ReadHeader(const char *filename)
 /* Find out how many templates, names, and sizes */
 {
   FILE *filehandle;
@@ -98,7 +98,7 @@ static void ReadHeader(char *filename)
 
 
 
-extern void Template_LoadFile(char *leafname)
+extern void Template_LoadFile(const char *leafname)
 {
   template_record *tptr;
   char            filename[60];

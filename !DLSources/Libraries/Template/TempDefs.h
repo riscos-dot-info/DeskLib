@@ -102,6 +102,6 @@ extern font_array      *template_fontarray;
 
 extern sprite_area __template_spritearea;
 
-extern template_record *Template__FindTemplate(char *name);
+extern template_record *Template__FindTemplate(const char *name);
 
 #endif
