@@ -337,6 +337,7 @@ os_error *SWI(int numregsin, int numregsout, int swicode, ... );
 #define SWI_Draw_FlattenPathFP             0x040709
 #define SWI_Draw_TransformPath             0x04070a
 #define SWI_Draw_TransformPathFP           0x04070b
+#define SWI_ColourTrans_GenerateTable      0x040763
 #define SWI_RamFS_DiscOp                   0x040780
 #define SWI_RamFS_Drives                   0x040782
 #define SWI_RamFS_FreeSpace                0x040783

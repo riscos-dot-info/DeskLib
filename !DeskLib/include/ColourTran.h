@@ -55,8 +55,8 @@ extern os_error *ColourTrans_InvalidateCache(void);
 */
 
 extern os_error *ColourTrans_SelectTable(int src_mode, int *src_pal,
-                                  int dst_mode, int *dst_pal,
-                                  char *table);
+                                         int dst_mode, int *dst_pal,
+                                         char *table);
 /*
   This function sets up a translation table in a buffer for the
   given source and destination modes and palettes.

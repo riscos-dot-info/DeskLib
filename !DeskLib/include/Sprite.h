@@ -588,8 +588,8 @@ extern os_error *Sprite_PlotMaskScaled(sprite_area area, const char *name,
 
 
 extern os_error *Sprite_PlotScaled(sprite_area area, const char *name,
-                                   wimp_point *pos, sprite_scalefactors *scale,
-                                   unsigned int plot_action, void *pixtrans);
+                                   wimp_point *pos, unsigned int plot_action,
+                                   sprite_scalefactors *scale, void *pixtrans);
 /*
   This is a veneer to OS_SpriteOp 52.
 

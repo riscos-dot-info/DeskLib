@@ -331,6 +331,12 @@ extern void GFX_SetClip(wimp_rect *rect);
 */
 
 
+extern void GFX_SetColour(unsigned int flags, unsigned int colour);
+/*
+  Set foreground or background colour.  This is an interface to OS_SetColour
+*/
+
+
 #ifdef __cplusplus
 }
 #endif
