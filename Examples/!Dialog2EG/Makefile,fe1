@@ -1,37 +1,69 @@
+# Project: DeskLib Example
+# Make: make
+# Wimpslot: 5000k
 #
+# GNU Make makefile for a DeskLib example.
+# Defaults to using Norcroft as the compiler.
+#
+# Various things passed on the command line can alter this makefile's behaviour;
+# these are:
+#
+#   COMPILER - either "gcc" or "norcroft", depends on what you want to use
+#   PREFIX   - this is only used when COMPILER is gcc; it gives a prefix for all
+#              gcc commands executed.  Default is "gccbin:".
+#
+# e.g. make COMPILER=gcc
 
-CC		=	cc
-#LINK		=	DRLink -debimage -aif
-LINK		=	Link
+# Defaults
+COMPILER = norcroft
+PREFIX = gccbin:
 
-CCFlags		=	-fahi -c $(CCExtra) -depend !Depend -throwback -I,C:
-LinkFlags	=	$(LinkExtra)
+# Defaults for norcy
+ifeq (norcroft, $(COMPILER))
 
+  CC = cc
+  CFLAGS = -throwback 
 
+  LINK = link
+  LINKFLAGS = C:o.stubs 
+endif
 
-Libraries	=					\
-			DeskLib:o.Debug.pipetype	\
-			DeskLib:o.DeskLib		\
-			C:o.Stubs
+# Defaults for gcc
+ifeq (gcc, $(COMPILER))
 
-Target		=	!RunImage
+  WARNINGS = -ansi -pedantic -Wall -Wundef -Wpointer-arith \
+             -Wcast-align -Wwrite-strings -Wstrict-prototypes \
+             -Wmissing-prototypes -Wmissing-declarations -Wnested-externs \
+             -Winline -Wno-unused -Wno-long-long -W -Wcast-qual -Wshadow
 
-ObjectFiles	=	o.Main		
+  CC = $(PREFIX)gcc
+  CFLAGS = -mlibscl -mthrowback -O2 $(WARNINGS) 
 
+  LINK = $(PREFIX)gcc
+  LINKFLAGS = -mlibscl -mthrowback
+endif
 
+# We link against the main library and the "pipetype" debugging lib
+LIBS := DeskLib:o.DeskLib DeskLib:o.Debug.pipetype
 
-# path(s) to source files:
-VPATH = @.^ @
+# The default is to make the plain and the debug runimages
+all: !RunImage !RunImageD
 
+# Plain version
+!RunImage: Main.o
+	$(LINK) $(LINKFLAGS) -o $@ Main.o $(LIBS)
 
-# Don't alter anything below this...
+# Debugging version
+!RunImageD: MainD.o
+	$(LINK) $(LINKFLAGS) -o $@ MainD.o $(LIBS)
 
-.SUFFIXES:	.o .c
-
-$(Target):	$(ObjectFiles) $(Libraries)
-	$(LINK) $(LinkFlags) -o $@ $(ObjectFiles) $(Libraries)
+# Debug object depends on the single source file, but compiles with
+# the DeskLib_DEBUG macro defined
+MainD.o: Main.c
+	@mkdir -p o
+	$(CC) $(CFLAGS) -DDeskLib_DEBUG -c $< -o $@
 
 .c.o:
-	$(CC) $(ccFlags) -o $@ $<
+	@mkdir -p o
+	$(CC) $(CFLAGS) -c $< -o $@
 
-# Dynamic dependencies:
