@@ -27,14 +27,15 @@ extern void TextFile_ReadToDelimiter(FILE *infile, char delimiter,
                                      char *line, int maxlength)
 {
   int index = 0;
-  char thischar = 0;
+  int thischar = 0;
 
   TextFile_SkipBlanks(infile);
 
-  while (!feof(infile) && index < maxlength - 1)
+  while (index < maxlength - 1)
   {
     thischar = getc(infile);
-    if (thischar == delimiter)
+
+    if (thischar == EOF || thischar == delimiter)
       break;
 
     line[index++] = thischar;
