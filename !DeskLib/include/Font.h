@@ -153,13 +153,13 @@ extern os_error *Font_CacheAddr(int *version, int *cacheused, int *cachesize);
 */
 
 
-extern os_error *Font_ListFonts(char *name, int *count);
+extern os_error *Font_ListFonts(const char *name, int *count);
 /*
   This function allows you to list the fonts currently available, in
   alphabetical order.
 
   You call it with a pointer to a buffer of at least 40 characters in 'name',
-  and with count pointing to an int containing  zero.  After each call, a font
+  and with count pointing to an int containing zero.  After each call, a font
   name will be placed in 'name', and 'count' will contain the correct value
   to pass for the next call of the function, or -1 if you have read all font
   names.
@@ -515,6 +515,11 @@ extern os_error *Font_GetWimpFont(font_handle *handle);
   than it being added after painting.
 */
 
+#define font_plot_BLENDING (1<<11)
+/*
+  Background font blending - requires font manager present in RISC OS 3.7
+  or later.
+*/
 
 typedef struct
 {

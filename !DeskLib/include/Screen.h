@@ -32,7 +32,7 @@ extern "C" {
   This header declares a function to read information about the current
   screen mode, and store it in various global variables.  To ensure that
   the variables are up to date, you should either call Screen_CacheModeInfo
-  before you acces them, or call it every time the mode changes.
+  before you access them, or call it every time the mode changes.
 
   A handler is provided in the Handler library (Handler_ModeChange) which you
   can use with the EventMsg system to call the function on every mode change.
