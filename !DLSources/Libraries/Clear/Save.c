@@ -1,19 +1,13 @@
 /*
-    ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
-    #   #  ##   ###  #  # #     # ###             RISC OS machines
-    #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
-    #   # #        # # #  #     # #  #    Please refer to the accompanying
-    ####   ### ####  #  # ##### # ###    documentation for conditions of use
-    ________________________________________________________________________
-
-    File:    Clear.c.Save
-    Author:  Copyright © 1993 Jason Howat
-    Version: 1.00 (16 Dec 1993)
-    Purpose: Save a Clear file to disk.
-*/
-
+ * File: Clear.Save.c
+ * Author: Jason Howat, 16th December 1993
+ *
+ * Abstract: Save out a Clear file from memory.
+ *
+ * This file is part of DeskLib, the general-purpose freeware C library for
+ * RISC OS.  Please refer to the accompanying documentation for conditions
+ * of use.
+ */
 
 #include <string.h>
 

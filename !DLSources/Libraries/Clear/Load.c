@@ -1,20 +1,13 @@
 /*
-    ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
-    #   #  ##   ###  #  # #     # ###             RISC OS machines
-    #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
-    #   # #        # # #  #     # #  #    Please refer to the accompanying
-    ####   ### ####  #  # ##### # ###    documentation for conditions of use
-    ________________________________________________________________________
-
-    File:    Clear.c.Load
-    Author:  Copyright © 1993,1994 Jason Howat
-    Version: 1.01 (13 May 1994)
-    Purpose: Load a Clear file from disk.
-    History: 1.00 (16 Dec 1993)   initial version
-             1.01 (13 May 1994)   updated to use Mem_ library
-*/
+ * File: Clear.Load.c
+ * Author: Jason Howat, 16th December 1993
+ *
+ * Abstract: Load a Clear file into memory.
+ *
+ * This file is part of DeskLib, the general-purpose freeware C library for
+ * RISC OS.  Please refer to the accompanying documentation for conditions
+ * of use.
+ */
 
 #include <stdlib.h>
 

@@ -1,27 +1,20 @@
 /*
-    ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for 
-    #   #  ##   ###  #  # #     # ###             RISC OS machines
-    #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #                                      
-    #   # #        # # #  #     # #  #    Please refer to the accompanying
-    ####   ### ####  #  # ##### # ###    documentation for conditions of use
-    ________________________________________________________________________
-
-    File:    Clear.c.Init
-    Author:  Copyright © 1993 Jason Howat
-    Version: 1.00 (16 Dec 1993)
-    Purpose: Initialise the Clear library.
-*/
-
+ * File: Clear.Init.c
+ * Author: Jason Howat, 16th December 1993
+ *
+ * Abstract: Initialise the Clear library.
+ *
+ * This file is part of DeskLib, the general-purpose freeware C library for
+ * RISC OS.  Please refer to the accompanying documentation for conditions
+ * of use.
+ */
 
 #include "DeskLib:Clear.h"
 
 #include "ClearDefs.h"
 
-
-char            *clear__creator;
-unsigned        clear__creatorversion;
+char *clear__creator;
+unsigned clear__creatorversion;
 
 
 void Clear_Init(char *creator, unsigned version)
