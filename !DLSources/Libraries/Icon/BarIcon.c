@@ -39,7 +39,6 @@ extern icon_handle Icon_BarIcon(const char *spritename, window_handle pos)
   icreate.window = pos;
   icreate.icondata.flags.value = 0x1700301a;       /* Click-able sprite icon */
   strncpy(icreate.icondata.data.spritename, spritename, sprite_MAXNAME);
-  icreate.icondata.data.spritename[sprite_MAXNAME - 1] = 0;
 
   icreate.icondata.workarearect.min.x =
     icreate.icondata.workarearect.min.y = 0;
