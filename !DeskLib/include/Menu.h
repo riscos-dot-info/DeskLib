@@ -272,6 +272,15 @@ extern void Menu_ReviseWidth(menu_ptr menu);
 */
 
 
+#define Menu_ForceClose() Wimp_CreateMenu((menu_ptr)-1, 0, 0)
+/*
+  MACRO: void Menu_ForceClose(void);
+
+  This simply forces the Wimp to close *all* open menus (or transient
+  dialogue boxes opened as menus).
+*/
+
+
 #define	Menu_FirstItem(menu) ((menu_item *) (((menu_ptr) (menu) + 1)))
 /*
   MACRO: menu_item *Menu_FirstItem(menu_ptr *menu);
@@ -346,7 +355,6 @@ extern menu_ptr menu_currentopen;
   been opened, or the last menu no longer exists then this value
   will be invalid.  Use with caution.
 */
-
 
 
 #ifdef __cplusplus
