@@ -51,7 +51,7 @@
  */
 
 
-extern void Menu__CountItems(char *description, int *numitems, int *menuwidth)
+extern void Menu__CountItems(char *description, int *numitems, unsigned int *menuwidth)
 /*  For internal use - counts the number of items in a menu description
  *  string, and also returns the widest menu item (in terms of characters)
  */
@@ -178,7 +178,8 @@ extern menu_ptr Menu_New(char *title, char *description)
 {
   menu_ptr   menu;
   menu_item  *item;
-  int        numitems, maxwidth;
+  unsigned int maxwidth;
+  int        numitems;
   int        titlelen;
   int        trunclen;
 
