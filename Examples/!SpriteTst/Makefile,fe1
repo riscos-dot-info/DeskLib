@@ -1,17 +1,55 @@
-# Project:   SpriteTest
+# Project: DeskLib Example
+# Make: make
+# Wimpslot: 5000k
+#
+# GNU Make makefile for a DeskLib example.
+# Defaults to using Norcroft as the compiler.
+#
+# Various things passed on the command line can alter this makefile's behaviour;
+# these are:
+#
+#   COMPILER - either "gcc" or "norcroft", depends on what you want to use
+#   PREFIX   - this is only used when COMPILER is gcc; it gives a prefix for all
+#              gcc commands executed.  Default is "gccbin:".
+#
+# e.g. make COMPILER=gcc
 
-.SUFFIXES:    .c .o
-CC            = cc
-CCFlags       = -c -throwback -IC: -Ff
-LinkFlags     = -o $@
-SqueezeFlags  = -f -v
+# Defaults
+COMPILER = norcroft
+PREFIX = gccbin:
 
-Files         = o.!RunImage
-Libs          = DeskLib:o.DeskLib C:o.Stubs
+# Defaults for norcy
+ifeq (norcroft, $(COMPILER))
 
+  CC = cc
+  CFLAGS = -throwback 
 
-!RunImage:    $(Files) 
-              link $(LinkFlags) $(Files) $(Libs)
-              squeeze $(SqueezeFlags) !RunImage
+  LINK = link
+  LINKFLAGS = C:o.stubs 
+endif
 
-.c.o:;        $(CC) $(CCflags) $< -o $@
+# Defaults for gcc
+ifeq (gcc, $(COMPILER))
+
+  WARNINGS = -ansi -pedantic -Wall -Wundef -Wpointer-arith \
+             -Wcast-align -Wwrite-strings -Wstrict-prototypes \
+             -Wmissing-prototypes -Wmissing-declarations -Wnested-externs \
+             -Winline -Wno-unused -Wno-long-long -W -Wcast-qual -Wshadow
+
+  CC = $(PREFIX)gcc
+  CFLAGS = -mlibscl -mthrowback -O2 $(WARNINGS) 
+
+  LINK = $(PREFIX)gcc
+  LINKFLAGS = -mlibscl -mthrowback
+endif
+
+# Get a list of all .c files and change it to a list of the resulting .o files
+all_objects := $(patsubst %.c,%.o,$(filter %.c,$(wildcard *)))
+
+!RunImage: $(all_objects)
+	$(LINK) $(LINKFLAGS) -o $@ $(all_objects) DeskLib:o.DeskLib
+
+.c.o:
+	@mkdir -p o
+	$(CC) $(CFLAGS) -c $< -o $@
+
