@@ -72,8 +72,8 @@ BOOL Url_Encode(const char *toencode, char *encoded_buf, int *bufsize)
         if (pass == 1)
         {
           *(encoded++) = '%';
-             *(encoded++) = hex[(*encoding / 16) % 16];
-            *(encoded++) = hex[*encoding % 16];
+          *(encoded++) = hex[(*encoding / 16) % 16];
+          *(encoded++) = hex[*encoding % 16];
         }
 
         /* Increase the needed size */
@@ -97,21 +97,21 @@ BOOL Url_Encode(const char *toencode, char *encoded_buf, int *bufsize)
     counter++;
 
     /* Has the size been requested? */
-        if (*bufsize == 0)
-        {
-          /* Set the size needed */
-          *bufsize = counter;
+    if (*bufsize == 0)
+    {
+      /* Set the size needed */
+      *bufsize = counter;
 
-          /* We've not filled in the URL (obviously) */
-          return (FALSE);
-        }
-        else if (*bufsize < counter)
-        {
-          /* We've not got enough space */
-          *bufsize = counter;
+      /* We've not filled in the URL (obviously) */
+      return (FALSE);
+    }
+    else if (*bufsize < counter)
+    {
+      /* We've not got enough space */
+      *bufsize = counter;
 
       /* Indicate this */
-          return (FALSE);
+      return (FALSE);
     }
   }
 
