@@ -42,18 +42,7 @@ SWI_Font_ReadEncodingFilename         EQU &0400a5
 SWI_Font_FindField                    EQU &0400a6
 SWI_Font_ApplyFields                  EQU &0400a7
 
-
-
-
-
-
-
-
-
-
-
-
-
+SWI_Wimp_ReadSysInfo                  EQU &0400f2
 
 
         END
