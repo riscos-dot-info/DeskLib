@@ -283,7 +283,7 @@ extern BOOL Msgs_LoadFile(const char *leafname)
   char buffer[1024];
   FILE *infile;
   int  loop;
-  char ch;
+  int  ch;
 
   strcpy(filename, resource_pathname);
   strcat(filename, leafname);
@@ -303,13 +303,14 @@ extern BOOL Msgs_LoadFile(const char *leafname)
     while (TRUE) /* Skip comments */
     {
       TextFile_SkipBlanks(infile);
-      if ((ch = getc(infile)) == '#')
+
+      ch = getc(infile);
+      ungetc(ch, infile);
+
+      if (ch == '#')
         TextFile_ReadToDelimiter(infile, '\n', buffer, 510);
       else
-      {
-        ungetc(ch, infile);
         break;
-      }
     }
 
     TextFile_ReadToDelimiter(infile, '.', groupname, 10);
