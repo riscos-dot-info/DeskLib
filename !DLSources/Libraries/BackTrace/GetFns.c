@@ -60,27 +60,31 @@ static void	BackTrace_GetFrameInfo( BackTrace_frameblock* frameblock, const _ker
 
 const char*	BackTrace_GetFunctionName( const void* ptr)
 {
-function_name_info*	fn = (function_name_info*) ptr;
+  const function_name_info*	fn =  ptr;
   int			i;
 
-//  Debug2_Printf( "BackTrace_GetFunctionName( 0x%p)\n", ptr);
+/*  Debug2_Printf( "BackTrace_GetFunctionName( 0x%p)\n", ptr); */
 
   for ( i=0; i<5; i++, fn--)	{
 
-//	Debug2_Printf( "fn->ff_code = %i, fn->length = %i\n",
-//		fn->ff_code, fn->length
-//		);
+#if 0
+	Debug2_Printf( "fn->ff_code = %i, fn->length = %i\n",
+		fn->ff_code, fn->length
+		);
+#endif
 
 	if ( fn->ff_code == 0xff && fn->length<4096)	{
 		const char*	c = (const char*) fn - fn->length;
-//		Debug2_Printf( "BackTrace_GetFunctionName returning 0x%p '%s'\n",
-//			c, c
-//			);
+#if 0
+		Debug2_Printf( "BackTrace_GetFunctionName returning 0x%p '%s'\n",
+			c, c
+			);
+#endif
 		return c;
 		}
 	}
 
-//  Debug2_Printf( "BackTrace_GetFunctionName returning NULL\n");
+/*  Debug2_Printf( "BackTrace_GetFunctionName returning NULL\n"); */
   return NULL;
 }
 
@@ -107,7 +111,7 @@ const BackTrace_functionlist*	BackTrace_GetCurrentFunctions( void)
 			if ( !frameblock.save_instruction)	break;
 
 			functions[ functionlist.n] = frameblock.frame_create_instruction;
-//			Debug2_Printf( error_PLACE "0x%p\n", functions[ functionlist.n]);
+/*			Debug2_Printf( error_PLACE "0x%p\n", functions[ functionlist.n]); */
 			functionlist.n++ ;
 			if ( functionlist.n >= BackTrace_MAXFNS)	break;
 			}

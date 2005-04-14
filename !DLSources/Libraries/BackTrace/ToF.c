@@ -70,15 +70,15 @@ void	BackTrace_OutputToFFunctionWithPrefix( backtrace_printf_fn fn, void* refere
 		Also, frame.sl doesn't seem to be updated when _kernel_unwind changes into a different stack chunk.
 		 */
 
-		//fp = (unsigned int*) (frame.fp & PCMask);
+		/*fp = (unsigned int*) (frame.fp & PCMask);*/
 		fp		= (unsigned int*) frame.fp;
-		return_pc	= (unsigned int*) (frame.pc-4);	// frame.pc points to instruction to return to. Usually, prev instruct is the BL.
+		return_pc	= (unsigned int*) (frame.pc-4);	/* frame.pc points to instruction to return to. Usually, prev instruct is the BL. */
 
-//		Debug5_Printf( error_PLACE "BackTrace: fp=0x%p\n", fp);
+/*		Debug5_Printf( error_PLACE "BackTrace: fp=0x%p\n", fp); */
 
 		if (fp != NULL)	{
 			save_code_pointer = (unsigned*) (*fp & pcm);
-//			Debug5_Printf( error_PLACE "BackTrace: save_code_pointer=0x%p\n", save_code_pointer);
+/*			Debug5_Printf( error_PLACE "BackTrace: save_code_pointer=0x%p\n", save_code_pointer); */
 
 			if ( save_code_pointer)	{
 
@@ -86,12 +86,12 @@ void	BackTrace_OutputToFFunctionWithPrefix( backtrace_printf_fn fn, void* refere
 
 				frame_create_instruction	= save_code_pointer - SaveCodePointerOffset;
 
-//				Debug5_Printf( error_PLACE "BackTrace: frame_create_instruction=0x%p\n", frame_create_instruction);
+/*				Debug5_Printf( error_PLACE "BackTrace: frame_create_instruction=0x%p\n", frame_create_instruction); */
 
 				/* Search backwards from the frame creation instruction looking for a 'name info' word */
 				name_info = (function_name_info*) (frame_create_instruction-1);
 
-//				Debug5_Printf( error_PLACE "BackTrace: name_info=0x%p\n", name_info);
+/*				Debug5_Printf( error_PLACE "BackTrace: name_info=0x%p\n", name_info); */
 
 				for	(
 					test_words = NameInfoSearchWordLimit;
@@ -99,16 +99,16 @@ void	BackTrace_OutputToFFunctionWithPrefix( backtrace_printf_fn fn, void* refere
 					test_words--
 					)
 					{
-//					Debug5_Printf( error_PLACE "BackTrace: name_info=0x%p\n", name_info);
+/*					Debug5_Printf( error_PLACE "BackTrace: name_info=0x%p\n", name_info); */
 					name_info--;
 					}
 
 				/* If we found the name info word we can print the name, otherwise the function is anonymous */
 
-//				Debug5_Printf( error_PLACE "name_info->ff_code=0x%x\n", name_info->ff_code);
+/*				Debug5_Printf( error_PLACE "name_info->ff_code=0x%x\n", name_info->ff_code); */
 				if ( name_info->ff_code == 0xff && name_info->length<4096)	{
 					fnname = (char*) name_info - name_info->length;
-//					Debug5_Printf( error_PLACE "fn name = '%s'\n", fnname);
+/*					Debug5_Printf( error_PLACE "fn name = '%s'\n", fnname); */
 					}
 
 				fn( reference, "%s pc=0x%p from function at 0x%p (%s), (language is %s)\n",
@@ -122,7 +122,7 @@ void	BackTrace_OutputToFFunctionWithPrefix( backtrace_printf_fn fn, void* refere
 				/*
 				fn( reference, "_kernel_unwindblock has fp=0x%08x sp=0x%08x pc=0x%08x sl=0x%08x\n", frame.fp, frame.sp, frame.pc, frame.sl);
 				*/
-//				Debug5_Printf( error_PLACE "\n");
+/*				Debug5_Printf( error_PLACE "\n"); */
 				}
 
 			else	{
