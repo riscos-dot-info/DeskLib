@@ -11,7 +11,7 @@
     File:    KernelSWIs.h
     Author:  Copyright © 1993, 1994 Jason Howat
                          1995       Sergio Monesi
-    Version: 1.03 (02 Sep 1995)
+    Version: 1.04 (17 Apr 2005)
     Purpose: General low level SWI veneers.
     Mods:    07 Jun 1995 Sergio Monesi: Added OS_SWINumberTo/FromString
              13 Jul 1995 Sergio Monesi: Added OS_GSTrans
@@ -22,13 +22,13 @@
 #ifndef __dl_kernelswis_h
 #define __dl_kernelswis_h
 
-#ifdef __cplusplus
-extern "C" {
+#ifndef __dl_core_h
+#include "DeskLib:Core.h"
 #endif
 
 
-#ifndef __dl_core_h
-#include "DeskLib:Core.h"
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 

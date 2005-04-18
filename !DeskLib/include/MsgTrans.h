@@ -10,7 +10,7 @@
 
     File:    MsgTrans.h
     Author:  Copyright © 1994 Tony Houghton
-    Version: 1.02 (05 Nov 1994)
+    Version: 1.03 (17 Apr 2005)
     Purpose: Interface to some of the most useful MessageTrans routines
 
     NOTE: This is a veneer for the OS 'MsgTrans' system. An analogue of
@@ -22,13 +22,13 @@
 #ifndef __dl_msgtrans_h
 #define __dl_msgtrans_h
 
-#ifdef __cplusplus
-extern "C" {
+#ifndef __dl_core_h
+#include "DeskLib:Core.h"
 #endif
 
 
-#ifndef __dl_core_h
-#include "DeskLib:Core.h"
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 

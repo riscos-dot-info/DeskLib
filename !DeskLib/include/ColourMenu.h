@@ -10,20 +10,19 @@
 
     File:    ColourMenu.ColourMenu.c
     Author:  Copyright © 1994 Craig Beech
-    Version: 1.00 (27 Aug 1994)
+    Version: 1.01 (17 Apr 2005)
     Purpose: Equivalent of the RISC_OSLib colourmenu function.
 */
 
 #ifndef __dl_colourmenu_h
 #define __dl_colourmenu_h
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-
 #ifndef __dl_menu_h
 #include "DeskLib:Menu.h"
+#endif
+
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 /* Abstract */

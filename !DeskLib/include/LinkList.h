@@ -10,7 +10,7 @@
 
     File:    LinkList.h
     Author:  Copyright © 1992 John Winters
-    Version: 1.33 (30 May 1994)
+    Version: 1.34 (17 Apr 2005)
     Purpose: Linked list management routines
 */
 
@@ -18,13 +18,13 @@
 #ifndef __dl_linklist_h
 #define __dl_linklist_h
 
-#ifdef __cplusplus
-extern "C" {
+#ifndef __dl_core_h
+#include "DeskLib:Core.h"
 #endif
 
 
-#ifndef __dl_core_h
-#include "DeskLib:Core.h"
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 

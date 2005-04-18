@@ -10,7 +10,7 @@
 
     File:    Font2.Font2.c
     Author:  Copyright © 1994 Julian Smith
-    Version: 1.00 (08 Jul 1995)
+    Version: 1.01 (17 Apr 2005)
     Purpose: Fonts with automatic handling of mode-changing
 */
 
@@ -85,13 +85,13 @@ of how many times the applcation is using the font.
 #ifndef __dl_font2_h
 #define __dl_font2_h
 
-#ifdef __cplusplus
-extern "C" {
+#ifndef __dl_font_h
+#include "DeskLib:Font.h"
 #endif
 
 
-#ifndef __dl_font_h
-#include "DeskLib:Font.h"
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 

@@ -10,7 +10,7 @@
 
     File:    Serial.h
     Author:  Copyright © 1993 Jason Howat
-    Version: 1.10 (12 Dec 1993)
+    Version: 1.11 (17 Apr 2005)
     Purpose: Serial-SWI interfaces.
 */
 
@@ -18,13 +18,13 @@
 #ifndef __dl_serial_h
 #define __dl_serial_h
 
-#ifdef __cplusplus
-extern "C" {
+#ifndef __dl_core_h
+#include "DeskLib:Core.h"
 #endif
 
 
-#ifndef __dl_core_h
-#include "DeskLib:Core.h"
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 

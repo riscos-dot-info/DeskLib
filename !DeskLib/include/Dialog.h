@@ -10,17 +10,12 @@
 
     File:    Dialog.h
     Author:  Copyright © 1993 Tim Browse, with modifications by JW
-    Version: 1.01 (02 Mar 1994)
+    Version: 1.02 (17 Apr 2005)
     Purpose: Very high-level window (dialogue box) handling
 */
 
 #ifndef __dl_dialog_h
 #define __dl_dialog_h
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 
 #ifndef __dl_wimp_h
 #include "DeskLib:Wimp.h"
@@ -28,6 +23,11 @@ extern "C" {
 
 #ifndef __dl_window_h
 #include "DeskLib:Window.h"
+#endif
+
+
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 

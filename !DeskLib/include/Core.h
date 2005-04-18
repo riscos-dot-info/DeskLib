@@ -10,7 +10,7 @@
 
     File:    Core.h
     Author:  Copyright © 1992, 1993, 1994 Jason Williams and Tim Browse
-    Version: 1.01 (02 Mar 1994)
+    Version: 1.02 (17 Apr 2005)
     Purpose: Core definitions used by most of DeskLib
     Mods:    20 Mar 1995 Julian Smith
              removed OSCLI if _desklib_DLL is defined.
@@ -23,6 +23,9 @@
 
 #ifndef __dl_core_h
 #define __dl_core_h
+
+#include <stddef.h>
+/* For NULL, size_t etc */
 
 #ifdef __cplusplus
 extern "C" {
@@ -43,10 +46,6 @@ extern "C" {
 #define ERROR   1
 #define NOERROR 0
 #endif
-
-
-#include <stddef.h>
-/* For NULL, size_t etc */
 
 
 /*

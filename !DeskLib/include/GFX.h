@@ -10,7 +10,7 @@
 
     File:    GFX.gfx.h
     Author:  Copyright © 1992, 1993 Edouard Poor, Jason Williams, Jason Howat
-    Version: 0.71 (02 Sep 1995)
+    Version: 0.72 (17 Apr 2005)
     Purpose: Graphics manipulation commands
     Mods:    02 Sep 1995 JH Added GFX_Mode, GFX_SetOrigin.
 */
@@ -19,16 +19,16 @@
 #ifndef __dl_gfx_h
 #define __dl_gfx_h
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #ifndef __dl_core_h
 #include "Desklib:Core.h"
 #endif
 
 #ifndef __dl_wimp_h
 #include "Desklib:Wimp.h"
+#endif
+
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 /* Abstract */

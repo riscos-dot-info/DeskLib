@@ -10,7 +10,7 @@
 
     File:    Pointer.h
     Author:  Copyright © 1994 Lee Atkinson
-    Version: 1.00 (28 Sep 1994)
+    Version: 1.01 (17 Apr 2005)
     Purpose: high level pointer handling routines
 */
 
@@ -24,14 +24,14 @@
 #ifndef __dl_pointer_h
 #define __dl_pointer_h
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-
 #include "DeskLib:Core.h"
 #include "DeskLib:Icon.h"
 #include "DeskLib:Window.h"
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 
 extern os_error *Pointer_RestrictToWindow(window_handle window);

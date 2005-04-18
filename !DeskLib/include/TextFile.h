@@ -10,7 +10,7 @@
 
     File:    TextFile.h
     Author:  Copyright © 1992 Jason Williams
-    Version: 1.00 (07 Apr 1992)
+    Version: 1.01 (17 Apr 2005)
     Purpose: Generic textfile-handling routines
 */
 
@@ -18,14 +18,14 @@
 #ifndef __dl_textfile_h
 #define __dl_textfile_h
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #include <stdio.h>
 
 #ifndef __dl_core_h
 #include "DeskLib:Core.h"
+#endif
+
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 /* Abstract */

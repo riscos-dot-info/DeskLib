@@ -14,7 +14,7 @@
              bits and pieces, menu template ideas, etc, which were mostly
              not used for this simple implementation, but may be used in
              the future.
-    Version: 1.04 (28 Sep 2002)
+    Version: 1.05 (17 Apr 2005)
     Purpose: Equivalent of RISC OS Lib's "menus" functions - Give a simple
              method for creating and showing menus.
 
@@ -31,11 +31,6 @@
 
 #ifndef __dl_menu_h
 #define __dl_menu_h
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 
 /* Abstract */
 /*
@@ -57,6 +52,11 @@ extern "C" {
 
 #ifndef __dl_event_h
 #include "DeskLib:Event.h"
+#endif
+
+
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 

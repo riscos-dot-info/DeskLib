@@ -11,7 +11,7 @@
     File:    Window.h
     Author:  Copyright © 1992, 1993, 1994, 1995 Jason Williams, Cy Booker and
                                                 Sergio Monesi
-    Version: 1.13 (26 Jul 1995)
+    Version: 1.14 (17 Apr 2005)
     Purpose: High-level window management functions
     Mods:    1.10 (Dec 1994) Jason Williams
              1.11 (05 Mar 1995) Cy Boooker
@@ -22,6 +22,8 @@
                   Window_ForceWholeRedraw()
              1.13 (26 Jul 1995) Sergio Monesi
                   Added Window_MoveWindow()
+             1.14 (17 Apr 2005) John Tytgat
+                  Made it usable for C++
 */
 
 
@@ -44,6 +46,9 @@
 #include "DeskLib:Coord.h"
 #endif
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /* Abstract */
 /*
@@ -317,5 +322,8 @@ extern BOOL Window_MoveWindow(event_pollblock *event, void *reference);
   This function *always* returns TRUE.
 */
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif

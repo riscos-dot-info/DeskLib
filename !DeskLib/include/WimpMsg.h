@@ -9,6 +9,12 @@
  * of use.
  */
 
+#ifndef __dl_wimpmsg_h
+#define __dl_wimp_h
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /* Overview */
 /*
@@ -82,3 +88,10 @@ task_handle WimpMsg_GetTaskHandle(window_handle window, icon_handle icon);
   combination (useful for finding the owner of an iconbar icon).
 */
 
+
+#ifdef __cplusplus
+}
+#endif
+
+
+#endif

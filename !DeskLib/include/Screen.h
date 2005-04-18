@@ -10,20 +10,20 @@
 
     File:    Screen.h
     Author:  Copyright © 1992 Jasn Williams
-    Version: 1.00 (23 Mar 1992)
+    Version: 1.01 (17 Apr 2005)
     Purpose: Screen functions (read size, eig factors, etc.)
 */
 
 #ifndef __dl_screen_h
 #define __dl_screen_h
 
-#ifdef __cplusplus
-extern "C" {
+#ifndef __dl_wimp_h
+#include "DeskLib:Wimp.h"
 #endif
 
 
-#ifndef __dl_wimp_h
-#include "DeskLib:Wimp.h"
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 

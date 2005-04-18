@@ -10,7 +10,7 @@
 
     File:    Wimp.h
     Author:  Copyright © 1992, 1993, 1994 John Winters and Jason Williams
-    Version: 1.12 (26 Jun 1994)
+    Version: 1.13 (17 Apr 2005)
     Purpose: Type/structure definitions for Wimp SWI interface
 */
 
@@ -18,13 +18,13 @@
 #ifndef __dl_wimp_h
 #define __dl_wimp_h
 
-#ifdef __cplusplus
-extern "C" {
+#ifndef __dl_core_h
+#include "DeskLib:Core.h"
 #endif
 
 
-#ifndef __dl_core_h
-#include "DeskLib:Core.h"
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 
@@ -513,7 +513,7 @@ typedef union
   struct
   {
     unsigned char titlefore; /* 0xff means no border and foreground is 7 */
-    unsigned char titleback; 
+    unsigned char titleback;
     unsigned char workfore;
     unsigned char workback;  /* 0xff means Wimp won't clear              */
     unsigned char scrollouter;

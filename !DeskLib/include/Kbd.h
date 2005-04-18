@@ -10,7 +10,7 @@
 
     File:    Kbd.h
     Author:  Copyright © 1993 Jason Williams
-    Version: 1.01 (24 Jul 1993)
+    Version: 1.02 (17 Apr 2005)
     Purpose: Reading from the keyboard
 
     Mods:    24-07-93  JW  Added Kbd_GET
@@ -20,13 +20,13 @@
 #ifndef __dl_kbd_h
 #define __dl_kbd_h
 
-#ifdef __cplusplus
-extern "C" {
+#ifndef __dl_core_h
+#include "DeskLib:Core.h"
 #endif
 
 
-#ifndef __dl_core_h
-#include "DeskLib:Core.h"
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 

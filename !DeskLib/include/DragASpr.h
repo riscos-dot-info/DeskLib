@@ -10,20 +10,19 @@
 
     File:    DragASpr.h
     Author:  Copyright © 1992 Shaun Blackmore and Jason Williams
-    Version: 1.01 (30 Apr 1992)
+    Version: 1.02 (17 Apr 2005)
     Purpose: Function veneers for DragASpr SWIs
 */
 
 #ifndef __dl_dragaspr_h
 #define __dl_dragaspr_h
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-
 #ifndef __dl_wimp_h
 #include "DeskLib:wimp.h"
+#endif
+
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 /* Abstract */

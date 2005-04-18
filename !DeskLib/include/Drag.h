@@ -10,20 +10,19 @@
 
     File:    Drag.h
     Author:  Copyright © 1994 Jason Williams
-    Version: 1.00 (01 April 1994)
+    Version: 1.01 (17 Apr 2005)
     Purpose: Automatic handling of drag update and finish events
 */
 
 #ifndef __dl_drag_h
 #define __dl_drag_h
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-
 #ifndef __dl_core_h
 #include "DeskLib:Core.h"
+#endif
+
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 /* Abstract */

@@ -10,7 +10,7 @@
 
     File:    Clear.h
     Author:  Copyright © 1994 Jason Howat
-    Version: 1.01 (30 Jun 1994)
+    Version: 1.02 (17 Apr 2005)
     Purpose: Clear file manipulation routines.
 */
 
@@ -18,13 +18,12 @@
 #ifndef __dl_clear_h
 #define __dl_clear_h
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-
 #ifndef __dl_wimp_h
 #include "DeskLib:Wimp.h"
+#endif
+
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 /* Abstract */

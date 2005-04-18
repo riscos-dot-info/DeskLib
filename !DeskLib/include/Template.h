@@ -10,7 +10,7 @@
 
     File:    Template.h
     Author:  Copyright © 1992, 1993, 1994 John Winters and Jason Williams
-    Version: 1.05 (Dec 1994)
+    Version: 1.06 (17 Apr 2005)
     Purpose: Loading, caching, and retrieval of window templates
 
 */
@@ -19,17 +19,16 @@
 #ifndef __dl_template_h
 #define __dl_template_h
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-
 #ifndef __dl_sprite_h
 #include "DeskLib:Sprite.h"
 #endif
 
 #ifndef __dl_linklist_h
 #include "DeskLib:LinkList.h"
+#endif
+
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 /* Abstract */

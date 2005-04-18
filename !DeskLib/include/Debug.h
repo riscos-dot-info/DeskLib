@@ -10,7 +10,7 @@
 
     File:    Debug.h
     Author:  Copyright © 1995 Julian Smith, Cy Booker, Paul Field.
-    Version: 1.01 (04 Jun 1995)
+    Version: 1.02 (17 Apr 2005)
     Purpose: Defines interface to a set of functions useful for
              debugging.
     Mods:    25 Aug 1995 - JS - Added Debug_Assert.
@@ -36,11 +36,6 @@
 #ifndef __dl_debug_h
 #define __dl_debug_h
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-
 #ifndef __dl_core_h
 #include "DeskLib:Core.h"
 #endif
@@ -49,7 +44,9 @@ extern "C" {
 #include "DeskLib:Error.h"
 #endif
 
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 
 typedef void (*debug_signalhandlerfn)( int sig, void *reference);

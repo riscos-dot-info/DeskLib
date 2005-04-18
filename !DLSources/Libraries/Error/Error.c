@@ -37,7 +37,7 @@ extern void Error_Report(int errornum, const char *report, ...)
   error_flags eflags;
 
   va_start(va, report);
-  vsprintf(error.errmess, report, va);
+/*  vsprintf(error.errmess, report, va); */
   va_end(va);
   error.errnum = errornum;
 
@@ -53,7 +53,7 @@ extern void Error_ReportFatal(int errornum, const char *report, ...)
   char errmess[256];
 
   va_start(va, report);
-  vsprintf(errmess, report, va);
+/*  vsprintf(errmess, report, va); */
   va_end(va);
 
   Error_Report(errornum,
@@ -70,7 +70,7 @@ extern void Error_ReportInternal(int errornum, const char *report, ...)
   char errmess[256];
 
   va_start(va, report);
-  vsprintf(errmess, report, va);
+/*  vsprintf(errmess, report, va); */
   va_end(va);
   Error_Report(errornum, errmess);
 }
@@ -83,7 +83,7 @@ extern void Error_ReportFatalInternal(int errornum, const char *report, ...)
   char errmess[256];
 
   va_start(va, report);
-  vsprintf(errmess, report, va);
+/*  vsprintf(errmess, report, va); */
   va_end(va);
   Error_ReportFatal(errornum, errmess);
 }

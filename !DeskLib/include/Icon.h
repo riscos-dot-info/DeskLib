@@ -10,18 +10,13 @@
 
     File:    Icon.h
     Author:  Copyright © 1992, 1993, 1994 Jason Williams
-    Version: 1.14 (Dec 1994)
+    Version: 1.15 (17 Apr 2005)
     Purpose: High-level icon handling routines
 */
 
 
 #ifndef __dl_icon_h
 #define __dl_icon_h
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 
 #ifndef __dl_wimp_h
 #include "DeskLib:Wimp.h"
@@ -30,6 +25,11 @@ extern "C" {
 #ifndef __dl_dragaspr_h
 #include "DeskLib:DragASpr.h"
 #endif
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /* Abstract */
 /*

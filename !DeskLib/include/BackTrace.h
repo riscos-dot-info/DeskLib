@@ -8,9 +8,9 @@
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
 
-    File:    DeskMem.h
+    File:    BackTrace.h
     Author:  Copyright © 1995 Tom Hughs, Paul Field, Julian Smith
-    Version: 1.00 (17 Apr 1996)
+    Version: 1.01 (17 Apr 2005)
     Purpose: Functions which walk the current stack.
 */
 
@@ -23,52 +23,50 @@
  */
 
 
-#ifndef __dl_backTrace_h
-#define __dl_backTrace_h
+#ifndef __dl_backtrace_h
+#define __dl_backtrace_h
 
 
 #include <stdio.h>
-
 #include "kernel.h"
 
-
 #ifdef __cplusplus
-	extern "C"	{
+extern "C" {
 #endif
 
 
-void	BackTrace_SupportCurrentFrame( _kernel_unwindblock *frame);
+void BackTrace_SupportCurrentFrame(_kernel_unwindblock *frame);
 /*
   Read the current values of fp, sl and pc (so that _kernel_unwind() can
   be called).
   */
 
-void	BackTrace_OutputToStdErr( void);
+void BackTrace_OutputToStdErr(void);
 /*
   Generates a stack backtrace on stderr.
  */
 
 
-void	BackTrace_OutputToStreamWithPrefix( FILE* stream, const char* prefix);
+void BackTrace_OutputToStreamWithPrefix(FILE* stream, const char* prefix);
 /*
   Sends a backtrace to 'stream', prefixing each line with 'prefix'.
  */
 
 
-typedef int (*backtrace_printf_fn)( void* reference, const char* format, ...);
+typedef int (*backtrace_printf_fn)(void* reference, const char* format, ...);
 
-void	BackTrace_OutputToFFunctionWithPrefix(backtrace_printf_fn fn, void* reference, const char* prefix);
+void BackTrace_OutputToFFunctionWithPrefix(backtrace_printf_fn fn, void* reference, const char* prefix);
 /*
   Sends a backtrace to 'fn', prefixing each line with 'prefix'.
  */
 
 
-extern unsigned int	BackTrace_GetPC( void);
+extern unsigned int BackTrace_GetPC(void);
 /*
   Returns PC for caller.
  */
 
-extern unsigned int	BackTrace_GetSL( void);
+extern unsigned int BackTrace_GetSL(void);
 /*
   Returns value of stack-limit register.
  */
@@ -80,7 +78,7 @@ extern unsigned int BackTrace_GetPC2(void);
  */
 
 
-int	BackTrace_GetNestingDepth( void);
+int BackTrace_GetNestingDepth(void);
 /*
   Returns the current function-nesting depth. Only functions which set up
   a stack-frame are detected, and note that Shared C Lib stack-extension
@@ -93,10 +91,10 @@ typedef struct {
   unsigned int** functions;
 } BackTrace_functionlist;
 
-#define	BackTrace_MAXFNS 256
+#define BackTrace_MAXFNS 256
 
 
-const BackTrace_functionlist*	BackTrace_GetCurrentFunctions( void);
+const BackTrace_functionlist *BackTrace_GetCurrentFunctions(void);
 /*
   Returns a pointer to an internal object containing array of current
   functions. Each entry in the array is the address of the save
@@ -110,7 +108,7 @@ const BackTrace_functionlist*	BackTrace_GetCurrentFunctions( void);
 
 
 
-const char*	BackTrace_GetFunctionName( const void* ptr);
+const char *BackTrace_GetFunctionName(const void* ptr);
 /*
   Returns function name if ptr is <= 4 words after start of function and
   the name is embedded in code.
