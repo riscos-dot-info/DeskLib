@@ -10,7 +10,7 @@
 
     File:    PDriver.h
     Author:  Copyright © 1993, 1994 Jason Howat (and a bit by Jason Williams)
-    Version: 1.11 (22 Oct 1994)
+    Version: 1.12 (17 Apr 2005)
     Purpose: SWI veneers for using printer drivers (the PDriver module)
 */
 
@@ -19,11 +19,6 @@
 #ifndef __dl_pdriver_h
 #define __dl_pdriver_h
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-
 #ifndef __dl_core_h
 #include "DeskLib:Core.h"
 #endif
@@ -31,6 +26,11 @@ extern "C" {
 #ifndef __dl_wimp_h
 #include "DeskLib:Wimp.h"
 #endif
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /* Abstract */
 /*

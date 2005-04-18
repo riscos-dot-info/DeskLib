@@ -10,7 +10,7 @@
 
     File:    Pane2.h
     Author:  Copyright © 1995 Andrew Sellors.
-    Version: 1.04 (4th August 1995)
+    Version: 1.05 (17 Apr 2005)
     Purpose: Handles windows with panes.
     Mods:    1.02 -> 1.04
              Added pane2_MAINRIGHT, Pane2_GetMainHandle, Pane2_GetPaneNumber,
@@ -30,10 +30,6 @@
 #ifndef __dl_pane2_h
 #define __dl_pane2_h
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #ifndef __dl_wimpswis_h
 #include "DeskLib:WimpSWIs.h"
 #endif
@@ -48,6 +44,10 @@ extern "C" {
 
 #ifndef __dl_wimp_h
 #include "DeskLib:Wimp.h"
+#endif
+
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 

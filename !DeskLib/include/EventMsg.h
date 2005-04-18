@@ -10,7 +10,7 @@
 
     File:    EventMsg.h
     Author:  Copyright © 1992 Jason Williams
-    Version: 1.00 (16 Mar 1992)
+    Version: 1.01 (17 Apr 2005)
     Purpose: Augments Event() routines to provide a better way of serving
              WIMP messages to a set of user handler functions
 */
@@ -19,11 +19,11 @@
 #ifndef __dl_eventmsg_h
 #define __dl_eventmsg_h
 
+#include "DeskLib:Event.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-#include "DeskLib:Event.h"
 
 /* Abstract */
 /*

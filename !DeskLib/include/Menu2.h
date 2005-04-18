@@ -10,7 +10,7 @@
 
     File:    Menu2.h
     Author:  Copyright © 1995 Julian Smith
-    Version: 1.00 (22 Jun 1995)
+    Version: 1.01 (17 Apr 2005)
     Purpose: Easy menu handling
 */
 
@@ -18,13 +18,13 @@
 #ifndef __dl_menu2_h
 #define __dl_menu2_h
 
-#ifdef __cplusplus
-extern "C" {
+#ifndef __dl_menu_h
+#include "DeskLib:Menu.h"
 #endif
 
 
-#ifndef __dl_menu_h
-#include "DeskLib:Menu.h"
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 

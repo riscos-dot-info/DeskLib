@@ -10,7 +10,7 @@
 
     File:    WAssert.h
     Author:  Copyright © 1993, 1994 Mark H. Wilkinson
-    Version: 1.01 (19 Jul 1994)
+    Version: 1.02 (17 Apr 2005)
     Purpose: Wimp version of ANSI assert() system, based on RISCOS_Lib
              version presented in Archive magazine 6.12.53 by Remo Biagioni.
 */
@@ -37,12 +37,12 @@
   indicating where in your source the assertion failed.
 */
 
+#ifndef __dl_wassert_h
+#define __dl_wassert_h
+
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-#ifndef __dl_wassert_h
-#define __dl_wassert_h
 
 extern void __wassert(const char *);
 /*
@@ -86,11 +86,8 @@ extern void __wassert(const char *);
   assertion was and where the assertion was made.
 */
 
-#endif
-
 #ifdef __cplusplus
 }
 #endif
 
-
-
+#endif

@@ -10,21 +10,20 @@
 
     File:    Url.h
     Author:  Copyright © 2002 Antony Sidwell
-    Version: 1.00 (4 July 2002)
+    Version: 1.01 (17 Apr 2005)
     Purpose: Handle Url launching using the Event & EventMsg bits of DeskLib
 */
 
 #ifndef __dl_url_h
 #define __dl_url_h
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #ifndef __dl_core_h
 #include "DeskLib:Core.h"
 #endif
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /* Abstract */
 /*
@@ -106,7 +105,7 @@ extern BOOL Url_AddHandler(urlreceive_handler *handler);
   This function registers a handler function to be called when a request to
   process an URL is received.  It returns TRUE if the handler was added
   successfully.
-        
+
   You can attach more than one handler - the most recently added handler will
   be called first, and if that returns FALSE (i.e. it cannot handle the URL)
   the next most recently added handler will be given a chance to process it,
@@ -121,7 +120,7 @@ extern BOOL Url_RemoveHandler(urlreceive_handler *handler);
   received.  It returns TRUE if the handler could be removed.
 
   If the same handler has been attached more than once, this will remove the
-  most recently added of them, not all of them.  
+  most recently added of them, not all of them.
 */
 
 
@@ -130,4 +129,3 @@ extern BOOL Url_RemoveHandler(urlreceive_handler *handler);
 #endif
 
 #endif
-

@@ -10,7 +10,7 @@
 
     File:    Dialog2.h
     Author:  Copyright © 1994 Julian Smith
-    Version: 1.03 (13 Mar 1995)
+    Version: 1.04 (17 Apr 2005)
     Purpose: Dialogue box handling
     Mods:    25 Feb 1995 - JPS - Added okfn which is called when program should
                                  read the dialog's contents
@@ -26,17 +26,16 @@
 #ifndef __dl_dialog2_h
 #define __dl_dialog2_h
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-
 #ifndef __dl_wimp_h
 #include "DeskLib:Wimp.h"
 #endif
 
 #ifndef __dl_window_h
 #include "DeskLib:Window.h"
+#endif
+
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 /* Abstract */

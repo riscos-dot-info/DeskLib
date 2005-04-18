@@ -10,7 +10,7 @@
 
     File:    Resource.h
     Author:  Copyright © 1992, 1993, 1994 Jason Williams
-    Version: 1.02 (Dec 1994)
+    Version: 1.03 (17 Apr 2005)
     Purpose: Resource file (files within user application directory)
              management functions
     Mods:    Julian Smith 20 Mar 1995
@@ -22,13 +22,13 @@
 #ifndef __dl_resource_h
 #define __dl_resource_h
 
-#ifdef __cplusplus
-extern "C" {
+#ifndef __dl_sprite_h
+#include "DeskLib:Sprite.h"
 #endif
 
 
-#ifndef __dl_sprite_h
-#include "DeskLib:Sprite.h"
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 

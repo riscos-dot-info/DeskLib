@@ -10,21 +10,21 @@
 
     File:    Filter.h
     Author:  Copyright © 1993 Shaun Blackmore
-    Version: 1.01 (22 Oct 1994)
+    Version: 1.02 (17 Apr 2005)
     Purpose: Assembler veneers for the RISC OS 3 Filter Manager SWIs
 */
 
 #ifndef __dl_filter_h
 #define __dl_filter_h
 
+#ifndef __dl_wimp_h
+#include "DeskLib:Wimp.h"
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-
-#ifndef __dl_wimp_h
-#include "DeskLib:Wimp.h"
-#endif
 
 /* Abstract */
 /*

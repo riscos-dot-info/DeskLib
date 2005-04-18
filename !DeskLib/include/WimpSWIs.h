@@ -10,7 +10,7 @@
 
     File:    WimpSWIs.h
     Author:  Copyright © 1992, 1993, 1994 John Winters and Jason Williams
-    Version: 1.07 (22 Oct 1994)
+    Version: 1.08 (17 Apr 2005)
     Purpose: Prototypes for Wimp SWI calls defined in the Wimp library
              (Basic SWI-level interface to the Wimp)
 
@@ -32,11 +32,6 @@
 #ifndef __dl_wimpswis_h
 #define __dl_wimpswis_h
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-
 #ifndef __dl_core_h
 #include "DeskLib:Core.h"
 #endif
@@ -51,6 +46,9 @@ extern "C" {
 #include "DeskLib:Wimp.h"
 #endif
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /* Abstract */
 /*

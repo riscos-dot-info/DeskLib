@@ -14,7 +14,7 @@
              Julian Smith:  error_PLACE
              Sergio Monesi: error_FIXED, error_global (with some ideas and code from
                             Martin Ebourne)
-    Version: 1.60 (06 Jun 1995)
+    Version: 1.61 (17 Apr 2005)
     Purpose: Centralised error reporting, with hopefully useful routines,
              but which YOU (the user) can change if you want something
              different.
@@ -33,13 +33,12 @@
 #ifndef __dl_error_h
 #define __dl_error_h
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-
 #ifndef __dl_core_h
 #include "DeskLib:Core.h"
+#endif
+
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 /* Abstract */

@@ -10,7 +10,7 @@
 
     File:    Pane.h
     Author:  Copyright © 1994 Ainsley Pereira. Complete revision by Keith Hall
-    Version: 1.11 (30th March 1994)
+    Version: 1.12 (17 Apr 2005)
     Purpose: Handles windows with panes.
 */
 
@@ -35,11 +35,6 @@
 #ifndef __dl_pane_h
 #define __dl_pane_h
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-
 #ifndef __dl_wimp_h
 #include "DeskLib:Wimp.h"
 #endif
@@ -52,6 +47,9 @@ extern "C" {
 #include "DeskLib:WimpSWIs.h"
 #endif
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 typedef struct
 {

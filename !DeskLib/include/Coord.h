@@ -11,17 +11,12 @@
     File:    Coord.h
     Author:  Copyright © 1992, 1993, 1994 Edouard Poor, Jason Williams
                                           and Tim Browse
-    Version: 1.02 (02 Mar 1994)
+    Version: 1.03 (17 Apr 2005)
     Purpose: Coord (point and rectangle) handling functions
 */
 
 #ifndef __dl_coord_h
 #define __dl_coord_h
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 
 #ifndef __dl_core_h
 #include "DeskLib:Core.h"
@@ -29,6 +24,10 @@ extern "C" {
 
 #ifndef __dl_wimp_h
 #include "DeskLib:Wimp.h"
+#endif
+
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 /* Abstract */

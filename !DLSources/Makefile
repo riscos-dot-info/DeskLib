@@ -30,7 +30,7 @@ lib_objects := $(addprefix Libraries.,$(addsuffix .o.*, $(libraries)))
 # Defaults for norcy
 ifeq (norcroft, $(COMPILER))
   CC = cc
-  CFLAGS = -ffahi -throwback
+  CFLAGS = -ffahi -throwback -IC:
 
   AS = objasm
   ASFLAGS = -ILibraries -I$(@D) -throwback
@@ -47,7 +47,7 @@ ifeq (gcc, $(COMPILER))
              -Winline -Wno-unused -Wno-long-long -W -Wcast-qual -Wshadow
 
   CC = $(PREFIX)gcc
-  CFLAGS = -mlibscl -mthrowback -O2 $(WARNINGS) -I.
+  CFLAGS = -mlibscl -mthrowback -O2 $(WARNINGS) 
 
   AS = $(PREFIX)gcc
   ASFLAGS = -Wa,-ILibraries,-I$(@D) -mthrowback -c

@@ -12,7 +12,7 @@
     Author:  Copyright © 1992, 1993, 1994 John Winters, Jason Williams,
                                           Jason Howat
              and sundry contributors
-    Version: 0.29 (02 Sep 1995)
+    Version: 0.30 (17 Apr 2005)
     Purpose: Sprite-SWI interfaces.
              This version of the Sprite library only includes the most common
              sprite operations, and only on "user" sprite areas, and "named"
@@ -29,11 +29,6 @@
 #ifndef __dl_sprite_h
 #define __dl_sprite_h
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-
 #include "DeskLib:Core.h"
 #include "DeskLib:Wimp.h"
 #include "DeskLib:Coord.h"
@@ -41,6 +36,9 @@ extern "C" {
 
 #include <stdarg.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /* Abstract */
 /*

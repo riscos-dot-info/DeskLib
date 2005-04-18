@@ -10,11 +10,18 @@
 
     File:    TaskWindow.h
     Author:  Copyright © 2003 Antony Sidwell
-    Version: 1.00 (12 July 2003)
+    Version: 1.01 (17 Apr 2005)
     Purpose: TaskWindow handling using Event/EventMsg
 */
 
+#ifndef __dl_taskwindow_h
+#define __dl_taskwindow_h
+
 #include "DeskLib:Wimp.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 typedef void tw_output_fn(char *data, size_t datalen, void *ref);
 /*
@@ -105,3 +112,8 @@ int TaskWindow_Check(void);
   a taskwindow, and a non-zero value otherwise.
 */
 
+#ifdef __cplusplus
+}
+#endif
+
+#endif

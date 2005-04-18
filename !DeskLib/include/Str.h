@@ -10,9 +10,9 @@
 
     File:    Str.h
     Author:  Copyright © 1992, 1993 Jason Williams
-    Version: 1.12 (17 May 1993)
+    Version: 1.13 (17 Apr 2005)
     Purpose: Useful string functions not provided by ANSI, including functions
-      	     to deal with CR-terminated strings, as used by the RISC OS Wimp.
+             to deal with CR-terminated strings, as used by the RISC OS Wimp.
 */
 
 
@@ -27,12 +27,12 @@
 #ifndef __dl_str_h
 #define __dl_str_h
 
+/* We need size_t from stddef.h */
+#include <stddef.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-/* We need size_t from stddef.h */
-#include <stddef.h>
 
 
 extern int strlencr(const char *s);

@@ -8,27 +8,27 @@
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
 
-    File:    Pci.h
+    File:    USB.h
     Author:  Copyright © 2003 Peter Naulls
-    Version: 1.00 (10 July 2003)
+    Version: 1.01 (17 Apr 2005)
     Purpose: Veneers for Castle USB interface
 */
 
 #ifndef __dl_usb_h
 #define __dl_usb_h
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #ifndef __dl_core_h
 #include "DeskLib:Core.h"
+#endif
+
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 
 /* Abstract */
 /*
-   Warning: This API has not yet been implemented.  Do not use.  
+   Warning: This API has not yet been implemented.  Do not use.
 
    Low level DeviceFS functions
 
@@ -85,4 +85,3 @@ extern void devicefs_location(const char *name, usb_location *location);
 #endif
 
 #endif
-

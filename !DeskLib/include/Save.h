@@ -10,7 +10,7 @@
 
     File:    Save.h
     Author:  Copyright © 1994 Julian Smith and Jason Howat
-    Version: 1.02 (18 Jun 1994)
+    Version: 1.03 (17 Apr 2005)
     Purpose: Automate handling of save-as windows
     Mods:    13-Jun-1994 - JPS - Added filetype handling
              18-Jun-1994 - JDH - See Save.c
@@ -19,18 +19,15 @@
 #ifndef __dl_save_h
 #define __dl_save_h
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-
-#ifndef __stdlib_h
-#include <stdlib.h>
-/* For size_t	*/
-#endif
+#include <stdlib.h> /* For size_t */
 
 #ifndef __dl_event_h
 #include "DeskLib:Event.h"
+#endif
+
+
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 
@@ -253,4 +250,3 @@ void Save_SetFiletype(save_saveblock *saveblock, int filetype);
 
 
 #endif
-

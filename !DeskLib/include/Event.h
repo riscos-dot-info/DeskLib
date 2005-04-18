@@ -10,7 +10,7 @@
 
     File:    Event.h
     Author:  Copyright © 1992 Jason Williams (for code by John Winters)
-    Version: 1.01 (14 Jul 1993)
+    Version: 1.02 (17 Apr 2005)
     Purpose: High-level WIMP event dispatch to a hierarchy of user event
              handling functions.
     Mods:    14 July 1993 - Added Event_Initialise3
@@ -21,17 +21,16 @@
 #ifndef __dl_event_h
 #define __dl_event_h
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-
 #ifndef __dl_core_h
 #include "DeskLib:Core.h"
 #endif
 
 #ifndef __dl_wimp_h
 #include "DeskLib:Wimp.h"
+#endif
+
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 /* Abstract */

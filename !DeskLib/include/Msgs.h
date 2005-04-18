@@ -10,7 +10,7 @@
 
     File:    Msgs.h
     Author:  Copyright © 1992, 1993 Jason Williams
-    Version: 1.01 (04 Aug 1993)
+    Version: 1.02 (17 Apr 2005)
     Purpose: MessageTrans-like message handling functions.
              (If you want MessageTrans, use the SWI interface, if you want
              high-level message handling, use this code...)
@@ -20,14 +20,14 @@
 #define __dl_msgs_h
 
 
+#ifndef __dl_core_h
+#include "DeskLib:Core.h"
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-
-#ifndef __dl_core_h
-#include "DeskLib:Core.h"
-#endif
 
 /* Abstract */
 /*

@@ -10,7 +10,7 @@
 
     File:    SWI.h
     Author:  Copyright © 1992 Jason Williams
-    Version: 1.02 (30 May 1994)
+    Version: 1.03 (17 Apr 2005)
     Purpose: Generic SWI call veneer function
 */
 
@@ -18,12 +18,12 @@
 #ifndef __dl_swi_h
 #define __dl_swi_h
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #ifndef __dl_core_h
 #include "DeskLib:Core.h"
+#endif
+
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 /* Abstract */

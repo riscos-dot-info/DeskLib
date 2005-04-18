@@ -12,7 +12,7 @@
     Author:  Copyright © 1993, 1994 Jason Williams, Tim Browse,
                                     Julian Smith, Sergio Monesi,
                                     Jason Howat.
-    Version: 1.04 (31 Aug 1995)
+    Version: 1.05 (17 Apr 2005)
     Purpose: Low level file operations, much faster than stdio equivalents,
              and more convenient when interacting with other code that uses
              RISC OS file handles to refer to files.
@@ -28,16 +28,16 @@
 #ifndef __dl_file_h
 #define __dl_file_h
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #ifndef __dl_core_h
 #include "DeskLib:Core.h"
 #endif
 
 #ifndef __dl_swi_h
 #include "DeskLib:SWI.h"
+#endif
+
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 /* Abstract */
@@ -450,22 +450,22 @@ extern int File_ReadExtent(file_handle handle);
  * #defines for some common filetypes.
  */
 
-#define filetype_AIM  	    0x004
-#define filetype_CLEAR 	    0x690
-#define filetype_DEGAS 	    0x691
-#define filetype_IMG  	    0x692
+#define filetype_AIM        0x004
+#define filetype_CLEAR      0x690
+#define filetype_DEGAS      0x691
+#define filetype_IMG        0x692
 #define filetype_AMIGAIFF   0x693
 #define filetype_MACPAINT   0x694
-#define filetype_GIF  	    0x695
-#define filetype_PCX  	    0x697
-#define filetype_QRT  	    0x698
-#define filetype_MTV  	    0x699
+#define filetype_GIF        0x695
+#define filetype_PCX        0x697
+#define filetype_QRT        0x698
+#define filetype_MTV        0x699
 #define filetype_CADSOFT    0x69A
-#define filetype_IRLAM 	    0x69B
-#define filetype_BMP  	    0x69C
-#define filetype_TARGA 	    0x69D
+#define filetype_IRLAM      0x69B
+#define filetype_BMP        0x69C
+#define filetype_TARGA      0x69D
 #define filetype_PBMPlus    0x69E
-#define filetype_ZVDA 	    0x69F
+#define filetype_ZVDA       0x69F
 #define filetype_MSX2       0x6A0
 #define filetype_RLE        0x6A1
 #define filetype_COLORIX    0x6A2
@@ -492,25 +492,25 @@ extern int File_ReadExtent(file_handle handle);
 #define filetype_TASKEXEC   0xFD6
 #define filetype_TASKOBEY   0xFD7
 #define filetype_MAKEFILE   0xFE1
-#define filetype_DOS  	    0xFE4
+#define filetype_DOS        0xFE4
 #define filetype_DESKTOP    0xFEA
-#define filetype_OBEY 	    0xFEB
+#define filetype_OBEY       0xFEB
 #define filetype_TEMPLATE   0xFEC
 #define filetype_PALETTE    0xFED
-#define filetype_TIFF 	    0xFF0
+#define filetype_TIFF       0xFF0
 #define filetype_CONFIG     0xFF2
 #define filetype_PRINTOUT   0xFF4
 #define filetype_POSCRIPT   0xFF5
-#define filetype_FONT 	    0xFF6
+#define filetype_FONT       0xFF6
 #define filetype_BBCFONT    0xFF7
 #define filetype_ABSOLUTE   0xFF8
 #define filetype_SPRITE     0xFF9
 #define filetype_MODULE     0xFFA
-#define filetype_BASIC 	    0xFFB
+#define filetype_BASIC      0xFFB
 #define filetype_UTILITY    0xFFC
-#define filetype_DATA 	    0xFFD
+#define filetype_DATA       0xFFD
 #define filetype_COMMAND    0xFFE
-#define filetype_TEXT 	    0xFFF
+#define filetype_TEXT       0xFFF
 
 #ifdef __cplusplus
 }

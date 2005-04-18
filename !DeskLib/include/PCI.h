@@ -8,27 +8,27 @@
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
 
-    File:    Pci.h
+    File:    PCI.h
     Author:  Copyright © 2003 Peter Naulls
-    Version: 1.00 (9 July 2003)
+    Version: 1.01 (17 Apr 2005)
     Purpose: Veneers for RISC OS 5 PCI SWIs
 */
 
 #ifndef __dl_pci_h
 #define __dl_pci_h
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #ifndef __dl_core_h
 #include "DeskLib:Core.h"
+#endif
+
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 
 /* Abstract */
 /*
-   Warning: This API has not yet been implemented.  Do not use.  
+   Warning: This API has not yet been implemented.  Do not use.
 
    These declarations are essentially just wrappers for the PCI SWIs.
    In time, we might add more complex functionality.
@@ -42,7 +42,7 @@ extern "C" {
 typedef unsigned int pci_handle;
 
 typedef struct {
-  int access     :  4;   
+  int access     :  4;
   int bufferable :  1;
   int cacheable  :  1;
   int policy     :  3;
@@ -148,7 +148,7 @@ extern unsigned int PCI_SpecialCycle(unsigned int bus,
 
 
 extern pci_handle PCI_FindByID(int vendor, int device,
-                               int subvendor, int subid); 
+                               int subvendor, int subid);
 
 
 extern pci_handle PCI_FindBuClass(pci_handle handle, unsigned int class_code,
@@ -170,4 +170,3 @@ exetern void *PCI_LogicalAddress(pci_aflags flags, unsigned int pci_address,
 #endif
 
 #endif
-

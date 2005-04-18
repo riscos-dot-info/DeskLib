@@ -10,7 +10,7 @@
 
     File:    Filing.h
     Author:  Copyright © 1994, 1995 Sergio Monesi
-    Version: 1.04 (27 Aug 1995)
+    Version: 1.05 (17 Apr 2005)
     Purpose: Easy access to files informations, directory scans, filenames
              handling.
     Mods:    06 Jun 1995 - changed some procedure names to a more
@@ -26,6 +26,10 @@
 
 #ifndef __dl_core_h
 #include "DeskLib:Core.h"
+#endif
+
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 /* Abstract */
@@ -506,5 +510,8 @@ os_error *Filing_ScanDirByDir(const char *dirname,
   RISC OS or returned from one of the handler functions.
 */
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif

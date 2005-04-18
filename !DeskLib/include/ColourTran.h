@@ -10,7 +10,7 @@
 
     File:    ColourTran.h
     Author:  Copyright © 1993 Shaun Blackmore
-    Version: 1.00 (13 May 1994)
+    Version: 1.01 (17 Apr 2005)
     Purpose: Function veneer for ColourTrans SWIs
 */
 
@@ -19,16 +19,16 @@
 #ifndef __dl_colourtran_h
 #define __dl_colourtran_h
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-
 #ifndef __dl_core_h
 #include "DeskLib:Core.h"
 #endif
 
 #include "DeskLib:Font.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /* Abstract */
 /*

@@ -10,17 +10,12 @@
 
     File:    Mem.h
     Author:  Copyright © 1993, 1994, 1995 Jason Williams and Jason Howat
-    Version: 2.00 (18 Jun 1995)
+    Version: 2.01 (17 Apr 2005)
     Purpose: Dynamic memory manager
 */
 
 #ifndef __dl_mem_h
 #define __dl_mem_h
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 
 /* Abstract */
 /*
@@ -51,6 +46,11 @@ extern "C" {
 
 #ifndef __dl_core_h
 #include "DeskLib:Core.h"
+#endif
+
+
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 

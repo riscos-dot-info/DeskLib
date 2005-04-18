@@ -10,7 +10,7 @@
 
     File:    Print.h
     Author:  Copyright © 1995 Julian Smith
-    Version: 1.00 (20 Jan 1995)
+    Version: 1.01 (17 Apr 2005)
     Purpose: Automatic handling of RO 3 wimp printing protocol messages,
              and some of the PDriver calls involved in printing.
 
@@ -18,10 +18,6 @@
 
 #ifndef __dl_print_h
 #define __dl_print_h
-
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 #ifndef __dl_wimp_h
 #include "DeskLib:Wimp.h"
@@ -32,6 +28,10 @@ extern "C" {
 #include "DeskLib:PDriver.h"
 #endif
 
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /* Abstract */
 /*

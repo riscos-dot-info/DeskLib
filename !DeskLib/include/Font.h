@@ -10,7 +10,7 @@
 
     File:    Font.h
     Author:  Copyright © 1993 Shaun Blackmore, Julian Smith
-    Version: 1.02 (08 Jul 1995)
+    Version: 1.03 (17 Apr 2005)
     Purpose: Assembler SWI veneers for the Font Manager
              NOTE that some names are not strictly 'DeskLib' style, to keep
              them consistent with the SWIs they represent ("Converttopoints",
@@ -24,11 +24,6 @@
 #ifndef __dl_font_h
 #define __dl_font_h
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-
 #ifndef __dl_core_h
 #include "DeskLib:Core.h"
 #endif
@@ -36,6 +31,11 @@ extern "C" {
 #ifndef __dl_wimp_h
 #include "DeskLib:Wimp.h"
 #endif
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /* Abstract */
 /*

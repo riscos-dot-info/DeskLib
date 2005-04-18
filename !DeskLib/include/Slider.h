@@ -10,33 +10,33 @@
 
     File:    Slider.h
     Author:  Copyright © 1994 Peter Gaunt
-    Version: 1.00 (12 Mar 1994)
+    Version: 1.01 (17 Apr 2005)
     Purpose: Provide a clean way of using 'slider' icons.  These routines
-      	     are more general-purpose, friendly and efficient that those
-      	     found in the Icon library.  (The Icon slider functions are left
-      	     in for backwards compatibility at the moment - you should
-      	     use these functions in preference).
+             are more general-purpose, friendly and efficient that those
+             found in the Icon library.  (The Icon slider functions are left
+             in for backwards compatibility at the moment - you should
+             use these functions in preference).
 */
 
 #ifndef __dl_slider_h
 #define __dl_slider_h
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-
 #ifndef __dl_core_h
 #include "DeskLib:Core.h"
 #endif
 
-#ifndef __dl_WimpSWIs_h
+#ifndef __dl_wimpswis_h
 #include "DeskLib:WimpSWIs.h"
 #endif
 
-#ifndef __dl_Sprite_h
+#ifndef __dl_sprite_h
 #include "DeskLib:Sprite.h"
 #endif
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /* Abstract */
 /*

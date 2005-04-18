@@ -10,7 +10,7 @@
 
     File:    Desklib:Time.h
     Author:  Copyright © 1992, 1993, 1994 Jason Williams, Jason Howat
-    Version: 1.02 (22 May 1994)
+    Version: 1.03 (17 Apr 2005)
     Purpose: time handling
 */
 
@@ -18,17 +18,17 @@
 #ifndef __dl_time_h
 #define __dl_time_h
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-
 #ifndef __dl_core_h
 #include "DeskLib:Core.h"
 #endif
 
 #ifndef __dl_core_h
 #include "DeskLib:KernelSWIs.h"
+#endif
+
+
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 
