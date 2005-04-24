@@ -30,7 +30,7 @@
 
 BOOL quit = FALSE;
 window_handle window;
-char sblck[10240];
+int sblck[2560];
 char name [] ="ampy";
 sprite_areainfo *sblock = (sprite_areainfo *) sblck;
 
