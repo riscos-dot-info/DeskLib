@@ -8,7 +8,7 @@ SqueezeFlags  = -f -v
 
 Files         = o.Widget5 o.SpriteWin o.Create o.Misc o.LoadSave o.ATrans o.CheckBanks o.ProcessWin o.Configure o.Process o.Filter o.GraphWin o.MixWin o.GreyEdWin
 
-Libs          = Hacklib:o.HackLib Desklib:o.DeskLib C:o.Stubs C:flexlib.o
+Libs          = Desklib:o.DeskLib C:o.Stubs C:flexlib.o
 
 
 !RunImage:    $(Files) 

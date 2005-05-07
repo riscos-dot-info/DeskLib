@@ -416,6 +416,9 @@ extern BOOL SpriteWin_CreateImage(spritewin_block *block, wimp_point *res)
   int colour;
   char *image;
   int imagesize;
+  screen_modeval mode;
+
+  mode.screen_mode = Mode;
 
  /*
   * return if image already used
@@ -428,7 +431,7 @@ extern BOOL SpriteWin_CreateImage(spritewin_block *block, wimp_point *res)
   * total memory is 'size' bytes for sprite area
   * 'imagesize' is size of image pixel data in bytes
   */
-  size = Sprite_MemorySize(res->x, res->y, Mode, sprite_HASNOMASKPAL);
+  size = Sprite_MemorySize(res->x, res->y, mode, sprite_HASNOMASKPAL);
   imagesize = size - sizeof(sprite_header);
   size += sizeof(sprite_areainfo); /* add sprite area header size */
   size += sizeof_PALETTE; /* add 256 colour palette size */
@@ -453,7 +456,7 @@ extern BOOL SpriteWin_CreateImage(spritewin_block *block, wimp_point *res)
  /*
   * create blank sprite with no palette in sprite area
   */
-  Sprite_Create(block->spritearea, SpriteName, sprite_HASNOMASKPAL, res->x, res->y, Mode);
+  Sprite_Create(block->spritearea, SpriteName, sprite_HASNOMASKPAL, res->x, res->y, mode);
 
  /*
   * 'header' points to start of sprite header
