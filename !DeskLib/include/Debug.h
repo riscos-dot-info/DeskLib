@@ -175,7 +175,6 @@ int Debug__Dummyf(const char *format, ...);
 */
 
 
-/*#define Debug_Dummyf TRUE ? 0 : Debug__Dummyf*/
 #define Debug_Dummyf  if (1) (void)0; else Debug__Dummyf
 /*
   A macro which is used to remove calls to a multi-argument function which
