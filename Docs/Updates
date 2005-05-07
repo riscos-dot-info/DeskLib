@@ -1,14 +1,25 @@
 This file documents changes made between released versions of DeskLib.
 
+DeskLib 2.70 (7 May 2005)
+=========================
+
+Fix problematic debugging macro causing branch through zero
+DeskLib is now entirely build with GCC.  It remains compatible
+ with various combinations of GCC/Norcroft/UnixLib/SharedCLibrary,
+ and problems with varargs have been fixed.
+All the examples have been checked and brought up to date.
+Miscellaneous improvements from John Tytgat
+
+
 Desklib 2.60 (2 Dec 2004)
 ==========================
 
 Speed improvements to Wimp_Poll
 Some missed non 32-bit code now fixed
 Removed RISC OS 2 compatiblity code for Window_GetInfo which was
-causing problems
+ causing problems
 Corrected Nested Wimp API
-Added extra wimp flag colours - this make require canges in your code
+Added extra wimp flag colours - this may require changes in your code
 Import Backtrace functionality from Desk
 
 
