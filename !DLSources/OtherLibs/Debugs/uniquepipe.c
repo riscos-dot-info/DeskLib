@@ -19,6 +19,8 @@
 #include <stdarg.h>
 #include <stdio.h>
 
+#undef vsprintf
+
 #include "DeskLib:Error.h"
 
 #include "DeskLib:Debug.h"

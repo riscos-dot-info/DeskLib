@@ -18,6 +18,8 @@
 #include <stdarg.h>
 #include <stdio.h>
 
+#undef vsprintf
+
 #include "DeskLib:Debug.h"
 
 

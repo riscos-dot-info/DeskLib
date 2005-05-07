@@ -128,7 +128,7 @@ m->selectfn	= selectfn;
 m->reference	= reference;
 m->menu		= NULL;
 
-Debug_Printf( "Menu2_Create, title=%s, subfn=%p\n", title, subfn);
+Debug_Printf( "Menu2_Create, title=%s, subfn=%p\n", title, subfn); 
 
 return (menu2_handle) m;
 }
