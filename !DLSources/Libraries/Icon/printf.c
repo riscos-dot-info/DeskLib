@@ -19,6 +19,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#undef vsprintf
+
 #include "DeskLib:Wimp.h"
 #include "DeskLib:WimpSWIs.h"
 #include "DeskLib:Icon.h"

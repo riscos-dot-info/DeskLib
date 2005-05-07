@@ -81,7 +81,7 @@ signal( SIGFPE,  &Debug__SignalHandler);
 signal( SIGILL,  &Debug__SignalHandler);
 signal( SIGSEGV, &Debug__SignalHandler);
 signal( SIGTERM, &Debug__SignalHandler);
-signal( SIGSTAK, &Debug__SignalHandler);
+/* signal( SIGSTAK, &Debug__SignalHandler); */
 }
 
 

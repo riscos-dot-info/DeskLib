@@ -17,6 +17,8 @@
 #include <stdarg.h>
 #include <stdio.h>
 
+#undef vsprintf
+
 #include "DeskLib:File.h"
 
 extern int File_printf(file_handle file, const char *format, ...)
