@@ -1,0 +1,71 @@
+# Project: DeskLib
+# Make: make
+#
+# GNU Make makefile for DeskLib. Unix make file.
+#
+
+# Defaults
+
+DESKLIB = ../\!DeskLib/o/DeskLib
+DESKLIBDIR = ../\!DeskLib/o
+DEBUGS = ../\!DeskLib/o/Debug
+
+DESKLIB_PATH=$(shell realpath $$PWD/../\!DeskLib/include/)/
+
+libraries := $(notdir $(filter-out Libraries/CVS Libraries/h \
+               Libraries/Macros.h Libraries/RegDefs.h, $(wildcard Libraries/*)))
+
+all_objects := $(patsubst %.s,%.o,$(patsubst %.c,%.o,$(filter %.c %.s,$(wildcard Libraries/*/*))))
+
+lib_objects := $(addprefix Libraries.,$(addsuffix .o.*, $(libraries)))
+
+  WARNINGS = -ansi -pedantic -Wall -Wundef -Wpointer-arith \
+             -Wcast-align -Wwrite-strings -Wstrict-prototypes \
+             -Wmissing-prototypes -Wmissing-declarations -Wnested-externs \
+             -Winline -Wno-unused -Wno-long-long -W -Wcast-qual -Wshadow
+
+  CC = DESKLIB_PATH=$(DESKLIB_PATH) gcc
+  CFLAGS = -mlibscl -O2 $(WARNINGS)
+
+  AS = gcc
+  ASFLAGS = -Wa,-ILibraries,-I$(@D) -c
+
+  AR = $(PREFIX)libfile
+  ARFLAGS =
+
+# Make the library
+all: $(DESKLIB)
+
+# Link the objects together to make a new library
+$(DESKLIB): $(all_objects)
+	@mkdir -p $(DESKLIBDIR)
+	$(AR) $(ARFLAGS) -c $@ $$(find | grep "\.o$$")
+
+# Insert all the Makefiles in the Otherlibs directory as well.
+# This provides the targets debugs and smerror                  
+
+include OtherLibs/Debugs/Makefile,fe1
+include OtherLibs/SmallError/Makefile,fe1
+
+# Clean the whole library out in one go
+clean:
+	find | grep "\.o$$" | xargs rm
+
+# To empty the 'o' directories for each library
+# This a hack, we'd be much better off with a "rm" command that could take
+# a list of things to delete.  
+
+.c.o:
+	@mkdir -p $(@D)/o
+	$(CC) $(CFLAGS) -c $< -o $@
+
+.s.o:
+	@mkdir -p $(@D)/o
+	$(AS) $(ASFLAGS) $< -o $@
+
+
+install:
+	mkdir -p $(GCCSDK_INSTALL_ENV)/include/DeskLib
+	cp $(DESKLIB_PATH)/*.h $(GCCSDK_INSTALL_ENV)/include/DeskLib
+	cp $(DESKLIB) $(GCCSDK_INSTALL_ENV)/lib/libDesk.o
+	
