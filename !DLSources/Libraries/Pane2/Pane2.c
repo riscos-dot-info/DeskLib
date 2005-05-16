@@ -202,7 +202,7 @@ extern BOOL OpenWindow(window_openblock *openblock, main_listelement *mainelemen
   Wimp_OpenWindow(&mainstate.openblock);
 
 
-  return(TRUE);
+  return(FALSE);
 }
 
 /******************************************************************************/
