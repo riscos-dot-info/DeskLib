@@ -4,7 +4,7 @@ DeskLib 2.70 (7 May 2005)
 =========================
 
 Fix problematic debugging macro causing branch through zero
-DeskLib is now entirely build with GCC.  It remains compatible
+DeskLib is now entirely built with GCC.  It remains compatible
  with various combinations of GCC/Norcroft/UnixLib/SharedCLibrary,
  and problems with varargs have been fixed.
 All the examples have been checked and brought up to date.
