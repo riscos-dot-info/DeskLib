@@ -637,7 +637,8 @@ typedef enum
   sprite_HASMASK      = 0x01,             /* Sprite has a mask only        */
   sprite_HASPAL       = 0x02,             /* Sprite has a palette only     */
   sprite_HASMASKPAL   = 0x03,             /* Has both mask and palette     */
-  sprite_HASPALMASK   = 0x03
+  sprite_HASPALMASK   = 0x03,
+  sprite_DEEPFORMAT   = 0x04,             /* Deep format sprite            */
 } spritemem_flags;
 /*
   Various flags you use when working out the amount of memory needed to
@@ -655,6 +656,9 @@ extern unsigned int Sprite_MemorySize(unsigned int width,
   defined by the given parameters.  The width and height are in pixels, 'mode'
   is the mode of the sprite (-1 for the current screen mode), and the flags
   determine whether the sprite has a palette and/or mask.
+
+  Make sure you specifiy sprite_DEEPFORMAT for new code, otherwise masks
+  will use far more memory than is required. 
 */
 /*
   Example:
