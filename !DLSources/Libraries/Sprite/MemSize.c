@@ -55,8 +55,20 @@ extern unsigned int Sprite_MemorySizeBpp(unsigned int width,
   bit_strlen >>= 3;                  /* Convert bits to bytes (/= 8)  */
   size = bit_strlen * height;        /* Multiply by number of columns */
 
-  if (flags & sprite_HASMASK)        /* Mask is just another chunk of */
-    size *= 2;                       /* same size as the sprite data  */
+  if (flags & sprite_HASMASK)
+  {
+    if (flags & sprite_DEEPFORMAT)
+    {
+      /* For deep format sprites, the mask uses the same as a
+         1 bpp sprite of the same dimensions as the image */
+      size += ROUND32(width) * height;
+    }
+    else
+    {
+      /* For old format sprites, the mask is a chunk the same size as the data.  */
+      size *= 2;
+    }
+  }
 
   size += sizeof( sprite_header);    /* Add on 44 bytes for header    */
 
