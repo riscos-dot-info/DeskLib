@@ -638,7 +638,7 @@ typedef enum
   sprite_HASPAL       = 0x02,             /* Sprite has a palette only     */
   sprite_HASMASKPAL   = 0x03,             /* Has both mask and palette     */
   sprite_HASPALMASK   = 0x03,
-  sprite_DEEPFORMAT   = 0x04,             /* Deep format sprite            */
+  sprite_DEEPFORMAT   = 0x04              /* Deep format sprite            */
 } spritemem_flags;
 /*
   Various flags you use when working out the amount of memory needed to
