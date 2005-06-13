@@ -305,7 +305,6 @@ extern os_error *Wimp_GetWindowOutline(window_outline *outline);
 /*
   This function returns the given window's bounding box - the box which
   completely covers the window including all scrollbars, title bar, etc.
-  The window must be open to be able to read this information.
 */
 
 
