@@ -38,7 +38,7 @@ all: $(DESKLIB)
 
 # Link the objects together to make a new library
 $(DESKLIB): $(all_objects)
-	@mkdir -p $(DESKLIBDIR)
+	mkdir $(DESKLIBDIR)/
 	$(AR) $(ARFLAGS) -c $@ $$(find | grep "\.o$$")
 
 # Insert all the Makefiles in the Otherlibs directory as well.
