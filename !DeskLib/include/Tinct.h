@@ -96,7 +96,7 @@ extern os_error *Tinct_Compress(tinct_sprite *sprite, unsigned char *output,
                                 unsigned int available, unsigned int flag,
                                 unsigned int *size);
 
-extern os_eroor *Tinct_Decompress(unsigned char *input, unsigned char *output,
+extern os_error *Tinct_Decompress(unsigned char *input, unsigned char *output,
                                   unsigned int flag, unsigned int *size);
 
 
