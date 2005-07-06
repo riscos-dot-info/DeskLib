@@ -10,7 +10,7 @@
  */
 
 #ifndef __dl_wimpmsg_h
-#define __dl_wimp_h
+#define __dl_wimpmsg_h
 
 #ifdef __cplusplus
 extern "C" {

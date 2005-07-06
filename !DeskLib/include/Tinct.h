@@ -22,6 +22,8 @@
 #include "DeskLib:Core.h"
 #endif
 
+#include "DeskLib:Sprite.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif

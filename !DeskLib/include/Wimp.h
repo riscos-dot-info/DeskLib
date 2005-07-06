@@ -982,6 +982,12 @@ typedef enum
   message_DEVICEINUSE,
   message_DATASAVED,
 
+  message_CLAIMENTITY    = 15,
+  message_DATAREQUEST    = 16,
+  message_DRAGGING       = 17,
+  message_DRAGCLAIM      = 18,
+  message_RELEASEENITY   = 19,
+
   message_FILEROPENDIR   = 0x400,
   message_FILERCLOSEDIR,
   message_FILEROPENDIRAT,
@@ -1261,6 +1267,31 @@ typedef struct
 
 typedef struct
 {
+  int           selectionclaimed : 2;
+  int           clipboardclaimed : 1;
+} message_claimentity;
+/*
+  Broadcast to all tasks when the caret/seletion or clipboard are claimed
+*/
+
+
+typedef struct
+{
+  window_handle window;
+  unsigned int  internal_handle;
+  int           x, y;
+  int           dummy    : 2;
+  int           senddata : 1;
+  int           filetypes[1];
+} message_datarequest;
+/*
+  Broadcast by an application when it wishes to paste data that it doesn't
+  own.
+*/
+
+
+typedef struct
+{
   message_header  header;
   union
   {
@@ -1278,6 +1309,8 @@ typedef struct
     message_menuwarn     menuwarn;
     message_iconize      iconize;
     message_windowinfo   windowinfo;
+    message_claimentity  claimentity;
+    message_datarequest  datarequest;
   } data;
 } message_block;
 /*
