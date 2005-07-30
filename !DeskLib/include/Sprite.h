@@ -118,7 +118,7 @@ typedef struct
 {
     int          callno;
     sprite_area  spritearea;
-    sprite       sprite;
+    sprite_info  *sprite;
     void         *savearea;
 } sprite_outputstate;
 /*
