@@ -6,11 +6,11 @@
 
 # Defaults
 
-DESKLIB = ../\!DeskLib/o/DeskLib
+DESKLIB = ../!DeskLib/o/DeskLib
 DESKLIBDIR = ../\!DeskLib/o
 DEBUGS = ../\!DeskLib/o/Debug
 
-DESKLIB_PATH=$(shell realpath $$PWD/../\!DeskLib/include/)/
+DESKLIB_PATH=$(shell realpath $$PWD/../\!DeskLib/include)/
 
 libraries := $(notdir $(filter-out Libraries/CVS Libraries/h \
                Libraries/Macros.h Libraries/RegDefs.h, $(wildcard Libraries/*)))
@@ -38,7 +38,7 @@ all: $(DESKLIB)
 
 # Link the objects together to make a new library
 $(DESKLIB): $(all_objects)
-	mkdir $(DESKLIBDIR)/
+	mkdir -p $(DESKLIBDIR)/
 	$(AR) $(ARFLAGS) -c $@ $$(find | grep "\.o$$")
 
 # Insert all the Makefiles in the Otherlibs directory as well.
@@ -64,7 +64,7 @@ clean:
 	$(AS) $(ASFLAGS) $< -o $@
 
 
-install:
+install: $(DESKLIB)
 	mkdir -p $(GCCSDK_INSTALL_ENV)/include/DeskLib
 	cp $(DESKLIB_PATH)/*.h $(GCCSDK_INSTALL_ENV)/include/DeskLib
 	cp $(DESKLIB) $(GCCSDK_INSTALL_ENV)/lib/libDesk.o
