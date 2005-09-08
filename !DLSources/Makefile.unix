@@ -7,7 +7,7 @@
 # Defaults
 
 DESKLIB = ../!DeskLib/o/DeskLib
-DESKLIBDIR = ../\!DeskLib/o
+DESKLIBDIR = ../!DeskLib/o
 DEBUGS = ../\!DeskLib/o/Debug
 
 DESKLIB_PATH=$(shell realpath $$PWD/../\!DeskLib/include)/
