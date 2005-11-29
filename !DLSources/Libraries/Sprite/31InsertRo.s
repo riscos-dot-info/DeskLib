@@ -36,12 +36,12 @@
         PREAMBLE
         STARTCODE Sprite_InsertRow
 ;
-        STMFD     sp!, {a1-a3, v1-v6, lr}
+        STMFD     sp!, {a1-a3, lr}
         LDMFD     sp!, {a2-a4}
         MOV       a1, #256
         ADD       a1, a1, #31
         SWI       OS_SpriteOp + XOS_Bit
         MOVVC     a1,#0
-        LDMFD     sp!, {v1-v6, pc}
+        LDMFD     sp!, {pc}
 ;
 	END

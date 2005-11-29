@@ -1,5 +1,15 @@
 This file documents changes made between released versions of DeskLib.
 
+DeskLib 2.xx (xx xxx 200x)
+==========================
+
+Several important bugfixes, optimisations and a couple of API changes in Sprite.
+Provided 'sprite by pointer' in addition to 'sprite by name' routines (named as
+Sprite_*P()).
+Added Sprite_SetPointerShape()/Sprite_SetPointerShapeP().
+
+
+
 DeskLib 2.70 (7 May 2005)
 =========================
 
@@ -9,6 +19,7 @@ DeskLib is now entirely built with GCC.  It remains compatible
  and problems with varargs have been fixed.
 All the examples have been checked and brought up to date.
 Miscellaneous improvements from John Tytgat
+
 
 
 Desklib 2.60 (2 Dec 2004)
@@ -21,6 +32,7 @@ Removed RISC OS 2 compatiblity code for Window_GetInfo which was
 Corrected Nested Wimp API
 Added extra wimp flag colours - this may require changes in your code
 Import Backtrace functionality from Desk
+
 
 
 Desklib 2.52 (7 Mar 2004)
@@ -61,6 +73,7 @@ Added GFX_ReadPoint
 Make File_Size return -1 on error
 
 
+
 DeskLib 2.50 pre 4 (26 May 2003)
 ================================
 
@@ -75,11 +88,13 @@ Some additions for Nested Wimp
 Examples supplied with Makefiles suitable for GCC too
 
 
+
 DeskLib 2.50 pre 1 (24 Dec 2002)
 ================================
 
 Rebuild with GCC Libfile to work around Castle tools libfile issues
 for time being.
+
 
 
 DeskLib 2.40 (17 Nov 2002)

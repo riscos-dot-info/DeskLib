@@ -37,13 +37,13 @@
         STARTCODE Sprite_Plot
 ;
         MOV     ip, sp
-        STMFD   sp!, {a1, a2, a3, a4, v1, v2, lr}
+        STMFD   sp!, {a1-a4, v1-v2, lr}
         LDMFD   sp!, {a2, a3, a4, v1}
         LDR     v2, [ip, #0]
         MOV     a1, #256
         ADD     a1, a1, #34
         SWI     OS_SpriteOp + XOS_Bit
         MOVVC   a1, #0
-        LDMFD   sp!, {v1, v2, pc}
+        LDMFD   sp!, {v1-v2, pc}
 ;
         END

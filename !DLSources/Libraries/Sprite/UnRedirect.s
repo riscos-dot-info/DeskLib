@@ -6,7 +6,7 @@
 ;       Date                   : 26th January, 1992
 ;       Author                 : John H. Winters
 ;
-;       Function               : Issues an OS_SpriteOp 60.
+;       Function               : Issues an OS_SpriteOp 60/61.
 ;
 ;
 ;       Modification history.
@@ -37,8 +37,7 @@
         STARTCODE Sprite_UnRedirect
 ;
         STMFD   sp!, {lr}
-        MOV     ip, a1
-        LDMIA   ip, {a1, a2, a3, a4}
+        LDMIA   a1, {a1, a2, a3, a4}
         SWI     OS_SpriteOp + XOS_Bit
         MOVVC   a1, #0
         LDMFD   sp!, {pc}

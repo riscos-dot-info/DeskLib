@@ -1,12 +1,12 @@
 ;
-;       Title                  : Read palette size
+;       Title                  : Sprite 40N
 ;       System                 : Sprite Library
 ;       Version                : 1.0
-;       Copyright              : (C) Ainsley Pereira
-;       Date                   : Sun 27th February 94
-;       Author                 : Ainsley M. Pereira
+;       Copyright              : (C) John Tytgat
+;       Date                   : 29 Nov 2005
+;       Author                 : John Tytgat
 ;
-;       Function               : Reads size of sprite's palette
+;       Function               : Issues an OS_SpriteOp 40 for a user sprite.
 ;
 ;
 ;       Modification history.
@@ -34,16 +34,16 @@
 ;============================================================================
 ;
         PREAMBLE
-        STARTCODE Sprite_ReadPaletteSize
+        STARTCODE Sprite_ReadInfoP
 ;
-        STMFD     sp!, {a1-a2, v1-v2, lr}
-        LDMFD     sp!, {a2-a3}
-        MOV       a1, #256
-        ADD       a1, a1, #37
-        MVN       a4, #0
-        SWI       OS_SpriteOp + XOS_Bit
-        MOVVC     a1, a4
-        MOVVS     a1, #0
-        LDMFD     sp!, {v1-v2, pc}
+        STMFD   sp!, {a3, v1-v3, lr}
+        MOV     a3, a2
+        MOV     a2, a1
+        MOV     a1, #512 + 40
+        SWI     OS_SpriteOp + XOS_Bit
+        LDMFD   sp!, {a2}
+        STMVCIA a2, {a4, v1-v3}
+        MOVVC   a1, #0
+        LDMFD   sp!, {v1-v3, pc}
 ;
-	END
+        END
