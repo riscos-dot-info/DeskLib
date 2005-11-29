@@ -19,19 +19,19 @@ all_objects := $(patsubst %.s,%.o,$(patsubst %.c,%.o,$(filter %.c %.s,$(wildcard
 
 lib_objects := $(addprefix Libraries.,$(addsuffix .o.*, $(libraries)))
 
-  WARNINGS = -ansi -pedantic -Wall -Wundef -Wpointer-arith \
-             -Wcast-align -Wwrite-strings -Wstrict-prototypes \
-             -Wmissing-prototypes -Wmissing-declarations -Wnested-externs \
-             -Winline -Wno-unused -Wno-long-long -W -Wcast-qual -Wshadow
+WARNINGS = -ansi -pedantic -Wall -Wundef -Wpointer-arith \
+           -Wcast-align -Wwrite-strings -Wstrict-prototypes \
+           -Wmissing-prototypes -Wmissing-declarations -Wnested-externs \
+           -Winline -Wno-unused -Wno-long-long -W -Wcast-qual -Wshadow
 
-  CC = DESKLIB_PATH=$(DESKLIB_PATH) gcc
-  CFLAGS = -mlibscl -O2 $(WARNINGS)
+CC = DESKLIB_PATH=$(DESKLIB_PATH) gcc
+CFLAGS = -mlibscl -O2 $(WARNINGS)
 
-  AS = gcc
-  ASFLAGS = -Wa,-ILibraries,-I$(@D) -c
+AS = gcc
+ASFLAGS = -Wa,-ILibraries,-I$(@D) -c
 
-  AR = $(PREFIX)libfile
-  ARFLAGS =
+AR = $(PREFIX)libfile
+ARFLAGS =
 
 # Make the library
 all: $(DESKLIB)
@@ -51,16 +51,10 @@ include OtherLibs/SmallError/Makefile,fe1
 clean:
 	find | grep "\.o$$" | xargs rm
 
-# To empty the 'o' directories for each library
-# This a hack, we'd be much better off with a "rm" command that could take
-# a list of things to delete.  
-
 .c.o:
-	@mkdir -p $(@D)/o
 	$(CC) $(CFLAGS) -c $< -o $@
 
 .s.o:
-	@mkdir -p $(@D)/o
 	$(AS) $(ASFLAGS) $< -o $@
 
 
