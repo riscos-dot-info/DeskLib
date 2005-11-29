@@ -36,13 +36,13 @@
         PREAMBLE
         STARTCODE Sprite_RemovePalette
 ;
-        STMFD     sp!, {a1-a2, lr}
+        STMFD     sp!, {a1-a2, v1-v2, lr}
         LDMFD     sp!, {a2-a3}
         MOV       a1, #256
         ADD	  a1, a1, #37
         MOV       a4, #0
         SWI       OS_SpriteOp + XOS_Bit
         MOVVC     a1, #0
-        LDMFD     sp!, {pc}
+        LDMFD     sp!, {v1-v2, pc}
 ;
 	END

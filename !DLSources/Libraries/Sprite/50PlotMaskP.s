@@ -1,12 +1,12 @@
 ;
-;       Title                  : Read palette size
+;       Title                  : Plot mask Scaled
 ;       System                 : Sprite Library
 ;       Version                : 1.0
-;       Copyright              : (C) Ainsley Pereira
-;       Date                   : Sun 27th February 94
-;       Author                 : Ainsley M. Pereira
+;       Copyright              : (C) John Tytgat
+;       Date                   : 29 Nov 2005
+;       Author                 : John Tytgat
 ;
-;       Function               : Reads size of sprite's palette
+;       Function               : Plots sprite's mask scaled
 ;
 ;
 ;       Modification history.
@@ -34,16 +34,17 @@
 ;============================================================================
 ;
         PREAMBLE
-        STARTCODE Sprite_ReadPaletteSize
+        STARTCODE Sprite_PlotMaskScaledP
 ;
-        STMFD     sp!, {a1-a2, v1-v2, lr}
-        LDMFD     sp!, {a2-a3}
-        MOV       a1, #256
-        ADD       a1, a1, #37
-        MVN       a4, #0
+        STMFD     sp!, {v1, v3, lr}
+        MOV       v3, a4
+	LDMIA     a3, {a4, v1}
+        MOV       a3, a2
+        MOV       a2, a1
+        MOV       a1, #512
+        ADD       a1, a1, #50
         SWI       OS_SpriteOp + XOS_Bit
-        MOVVC     a1, a4
-        MOVVS     a1, #0
-        LDMFD     sp!, {v1-v2, pc}
+        MOVVC     a1, #0
+        LDMFD     sp!, {v1, v3, pc}
 ;
-	END
+        END

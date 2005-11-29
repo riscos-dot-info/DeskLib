@@ -40,7 +40,7 @@
         STMFD     sp!, {v1-v4, lr}
         MOV       v2, a4
         LDMFD     ip, {v3, v4}
-        LDMFD     a3, {a4, v1}
+        LDMIA     a3, {a4, v1}
         MOV       a3, a2
         MOV       a2, a1
         MOV       a1, #256 + 52

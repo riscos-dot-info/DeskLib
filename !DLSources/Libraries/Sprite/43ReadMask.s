@@ -36,15 +36,15 @@
         PREAMBLE
         STARTCODE Sprite_ReadMaskPixel
 ;
-        STMFD     sp!, {v1-v6, lr}
-        LDR       v1, [a3, #4]
-        LDR       a4, [a3, #0]
+        STMFD     sp!, {v1-v2, lr}
+	LDMIA     a3, {a4, v1}
         MOV       a3, a2
         MOV       a2, a1
         MOV       a1, #256
         ADD       a1, a1, #43
         SWI       OS_SpriteOp + XOS_Bit
-        MOV       a1, v2
-        LDMFD     sp!, {v1-v6, pc}
+	MOVVS     a1, #0
+        MOVVC     a1, v2
+        LDMFD     sp!, {v1-v2, pc}
 ;
         END

@@ -36,14 +36,14 @@
         PREAMBLE
         STARTCODE Sprite_ReadInfo
 ;
-        STMFD   sp!, {a3, v1, v2, v3, lr}
+        STMFD   sp!, {a3, v1-v3, lr}
         MOV     a3, a2
         MOV     a2, a1
         MOV     a1, #256 + 40
         SWI     OS_SpriteOp + XOS_Bit
         LDMFD   sp!, {a2}
-        STMVCIA a2, {a4, v1, v2, v3}
+        STMVCIA a2, {a4, v1-v3}
         MOVVC   a1, #0
-        LDMFD   sp!, {v1, v2, v3, pc}
+        LDMFD   sp!, {v1-v3, pc}
 ;
         END

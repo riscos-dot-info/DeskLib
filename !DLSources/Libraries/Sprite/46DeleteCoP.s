@@ -1,12 +1,12 @@
 ;
-;       Title                  : Read palette size
+;       Title                  : Delete Column
 ;       System                 : Sprite Library
 ;       Version                : 1.0
-;       Copyright              : (C) Ainsley Pereira
-;       Date                   : Sun 27th February 94
-;       Author                 : Ainsley M. Pereira
+;       Copyright              : (C) John Tytgat
+;       Date                   : 29 Nov 2005
+;       Author                 : John Tytgat
 ;
-;       Function               : Reads size of sprite's palette
+;       Function               : Delete column of pixels
 ;
 ;
 ;       Modification history.
@@ -34,16 +34,14 @@
 ;============================================================================
 ;
         PREAMBLE
-        STARTCODE Sprite_ReadPaletteSize
+        STARTCODE Sprite_DeleteColumnP
 ;
-        STMFD     sp!, {a1-a2, v1-v2, lr}
-        LDMFD     sp!, {a2-a3}
-        MOV       a1, #256
-        ADD       a1, a1, #37
-        MVN       a4, #0
+        STMFD     sp!, {a1-a3, lr}
+        LDMFD     sp!, {a2-a4}
+        MOV       a1, #512
+        ADD	  a1, a1, #46
         SWI       OS_SpriteOp + XOS_Bit
-        MOVVC     a1, a4
-        MOVVS     a1, #0
-        LDMFD     sp!, {v1-v2, pc}
+        MOVVC     a1, #0
+        LDMFD     sp!, {pc}
 ;
-	END
+        END

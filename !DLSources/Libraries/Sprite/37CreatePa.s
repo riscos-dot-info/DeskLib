@@ -36,16 +36,15 @@
         PREAMBLE
         STARTCODE Sprite_CreatePalette
 ;
-        STMFD     sp!, {a1-a2, lr}
-        CMP       a3,#0
-        MOVEQ     a4,#0
+        STMFD     sp!, {a1-a2, v1-v2, lr}
+	MOVS      a4, a3
         MOVNE     a4,#&80000000
         LDMFD     sp!, {a2-a3}
         MOV       a1, #256
         ADD	  a1, a1, #37
         SWI       OS_SpriteOp + XOS_Bit
-        MOV       a1, a4
+        MOVVC     a1, a4
         MOVVS     a1, #0
-        LDMFD     sp!, {pc}
+        LDMFD     sp!, {v1-v2, pc}
 ;
 	END

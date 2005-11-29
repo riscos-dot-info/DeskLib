@@ -37,7 +37,7 @@
         STARTCODE Sprite_Get
 ;
         MOV     ip, sp
-        STMFD   sp!, {a1, a2, a3, a4, v1, v2, v3, v4, lr}
+        STMFD   sp!, {a1-a4, v1-v4, lr}
         LDMFD   sp!, {a2, a3, a4, v1}
         LDMFD   ip!, {v2, v3, v4}
         MOV     a1, #256 + 16
@@ -45,6 +45,6 @@
         LDRVC   ip, [ip, #0]
         STRVC   a3, [ip, #0]
         MOVVC   a1, #0
-        LDMFD   sp!, {v1, v2, v3, v4, pc}
+        LDMFD   sp!, {v1-v4, pc}
 ;
         END

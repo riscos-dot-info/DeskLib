@@ -12,13 +12,10 @@
     Author:  Copyright © 1992, 1993, 1994 John Winters, Jason Williams,
                                           Jason Howat
              and sundry contributors
-    Version: 0.30 (17 Apr 2005)
+    Version: 0.40 (28 Nov 2005)
     Purpose: Sprite-SWI interfaces.
              This version of the Sprite library only includes the most common
-             sprite operations, and only on "user" sprite areas, and "named"
-             sprites. (i.e. not pointers-to-sprites)
-             More Sprite operations may appear as the moderator gets time
-             to include them into the library.
+             sprite operations.
 
     Mods:    02 Sep 1995 JH Sprite_MemorySize now works in 'double pixel'
                             modes (see 'Libraries.Sprite.c.MemSize' for the
@@ -108,17 +105,13 @@ typedef struct
 */
 
 
-typedef sprite_info *sprite;
-/*
-  This is a pointer to sprite_info.
-*/
-
-
 typedef struct
 {
     int          callno;
     sprite_area  spritearea;
-    sprite_info  *sprite;
+    void         *sprite; /* Either const char *name, either const
+                             sprite_header *sprite, depending on
+                             callno & (1<<9) */
     void         *savearea;
 } sprite_outputstate;
 /*
@@ -247,7 +240,20 @@ extern os_error *Sprite_Select(sprite_area area, const char *name,
 */
 
 
+extern os_error *Sprite_SelectP(sprite_area area,
+                                const sprite_header *sprite);
+/*
+  This is a veneer to OS_SpriteOp 24.
+
+  It selects the sprite with the given pointer of that sprite from the given
+  sprite area for subsequent plotting.  This is only valid until the next
+  time the sprite area is rearranged (such as by deleting a sprite).
+*/
+
+
 extern os_error *Sprite_Delete(sprite_area area, const char *name);
+extern os_error *Sprite_DeleteP(sprite_area area,
+                                const sprite_header *sprite);
 /*
   This is a veneer to OS_SpriteOp 25.
 
@@ -268,22 +274,47 @@ extern os_error *Sprite_Rename(sprite_area area,
 */
 
 
+extern os_error *Sprite_RenameP(sprite_area area,
+                                sprite_header *oldsprite,
+                                const char *newname);
+/*
+  This is a veneer to OS_SpriteOp 26.
+
+  It changes the name of the sprite at pointer 'oldsprite' in the given
+  sprite area to 'newname'.  It produces an error if there is already a
+  sprite 'newname' in the area.  Bear in mind that sprite names can be no
+  more than 12 characters long.
+*/
+
+
 extern os_error *Sprite_Copy(sprite_area area,
                              const char *oldname,
                              const char *newname);
 /*
   This is a veneer to OS_SpriteOp 27.
 
-  It makes a copy of the sprite called 'oldname' in the the given sprite area.
-  The new sprite is called 'newname'.  It produces an error if there is already
-  a sprite called 'newname' in the sprite area.
+  It makes a copy of the sprite called 'oldname' in the the given sprite
+  area.  The new sprite is called 'newname'.  It produces an error if there
+  is already a sprite called 'newname' in the sprite area.
+*/
+
+
+extern os_error *Sprite_CopyP(sprite_area area,
+                              const sprite_header *oldsprite,
+                              const char *newname);
+/*
+  This is a veneer to OS_SpriteOp 27.
+
+  It makes a copy of the sprite at pointer 'oldsprite' in the the given
+  sprite area.  The new sprite is called 'newname'.  It produces an error
+  if there is already a sprite called 'newname' in the sprite area.
 */
 
 
 extern os_error *Sprite_Get(sprite_area area,
                             const char *name, int with_palette,
                             int left, int bottom, int right, int top,
-                            sprite *sprite_ptr);
+                            sprite_header **sprite_ptr);
 /*
   This is a veneer to OS_SpriteOp 16.
 
@@ -300,8 +331,8 @@ extern os_error *Sprite_Plot(sprite_area area,
 /*
   This is a veneer for OS_SpriteOp 34.
 
-  This plots the sprite 'name' from the given sprite are with its bottom-left
-  corner at the given screen coordinates.
+  This plots the sprite 'name' from the given sprite area with its
+  bottom-left corner at the given screen coordinates.
 
   The plot action is one of:
     0 overwrite the screen colour with the sprite colour,
@@ -318,25 +349,106 @@ extern os_error *Sprite_Plot(sprite_area area,
 */
 
 
+extern os_error *Sprite_PlotP(sprite_area area,
+                              const sprite_header *sprite,
+                              int x, int y, int plot_action);
+/*
+  This is a veneer for OS_SpriteOp 34.
+
+  This plots the sprite at pointer 'sprite' from the given sprite area with
+  its bottom-left corner at the given screen coordinates.
+
+  The plot action is one of:
+    0 overwrite the screen colour with the sprite colour,
+    1 OR the screen colour with the sprite colour,
+    2 AND the screen colour with the sprite colour,
+    3 EOR the screen colour with the sprite colour,
+    4 invert the screen colour,
+    5 leave screen colour unchanged,
+    6 AND the screen colour with the NOT of the sprite colour,
+    7 OR the screen colour with the NOT of the sprite colour.
+
+  You can set it to plot the sprite using the mask by bitwise ORing these
+  values with 8.
+*/
+
+
+#define sprite_POINTERSHAPE1 (1)
+#define sprite_POINTERSHAPE2 (2)
+#define sprite_POINTERSHAPE3 (3)
+#define sprite_POINTERSHAPE4 (4)
+/*
+  Used with Sprite_SetPointerShape and Sprite_SetPointerShapeP argument
+  'bits' to specify which pointer shape needs to be set.
+*/
+
+#define sprite_POINTERSHAPE_IGNORESHAPEDATA (1<<4)
+/*
+  Used with Sprite_SetPointerShape and Sprite_SetPointerShapeP to defer
+  the pointer shape setting.
+*/
+
+#define sprite_POINTERSHAPE_IGNOREPALETTE (1<<5)
+/*
+  Used with Sprite_SetPointerShape and Sprite_SetPointerShapeP to prevent
+  the sprite palette being taken.
+*/
+
+#define sprite_POINTERSHAPE_IGNORESHAPE (1<<6)
+/*
+  Used with Sprite_SetPointerShape and Sprite_SetPointerShapeP to prevent
+  the pointer shape to be reprogrammed.
+*/
+
+extern os_error *Sprite_SetPointerShape(sprite_area area,
+                                        const char *name,
+                                        unsigned int bits,
+                                        const wimp_point *active_point,
+                                        const sprite_scalefactors *scale,
+                                        const void *pixtrans);
+extern os_error *Sprite_SetPointerShapeP(sprite_area area,
+                                         const sprite_header *sprite,
+                                         unsigned int bits,
+                                         const wimp_point *active_point,
+                                         const sprite_scalefactors *scale,
+                                         const void *pixtrans);
+/*
+  This is a veneer for OS_SpriteOp 36.
+  
+  This sets up the pointer shape using given sprite.  The pointer shape
+  will be scaled using the scaling factors pointed to by 'scale' and the
+  pixel translation table given by 'pixtrans'.
+*/
+
+
 extern os_error *Sprite_ReadInfo(sprite_area area, const char *name,
                                  sprite_info *info);
+extern os_error *Sprite_ReadInfoP(sprite_area area,
+                                  const sprite_header *sprite,
+                                  sprite_info *info);
 /*
   This is a veneer for OS_SpriteOp 40.
 
   This returns information (in 'info') about the sprite specified, giving its
-  width and height in pixels, whether the sprite has a mask and the screen mode
-  in which it was defined.
+  width and height in pixels, whether the sprite has a mask and the screen
+  mode in which it was defined.
 */
 
 
 extern os_error *Sprite_Redirect(sprite_area area, const char *name,
-                                 void *savearea, sprite_outputstate *oldstate);
+                                 void *savearea,
+                                 sprite_outputstate *oldstate);
+extern os_error *Sprite_RedirectP(sprite_area area,
+                                  const sprite_header *sprite,
+                                  void *savearea,
+                                  sprite_outputstate *oldstate);
 /*
   This is a veneer for OS_SpriteOp 60.
 
   It redirects VDU output into the given sprite.  You should pass a pointer
   to a sprite_outputstate block, which will be updated to hold the details
-  of the old output state so that you can switch back using Sprite_UnRedirect.
+  of the old output state so that you can switch back using
+  Sprite_UnRedirect.
 
   You should pass a save area block of the size given by a call to
   Sprite_ReadSaveAreaSize if you want to be able to switch output again and
@@ -346,9 +458,9 @@ extern os_error *Sprite_Redirect(sprite_area area, const char *name,
 */
 
 
-extern os_error *Sprite_UnRedirect(sprite_outputstate *oldstate);
+extern os_error *Sprite_UnRedirect(const sprite_outputstate *oldstate);
 /*
-  This is a veneer for OS_SpriteOp 60.
+  This is a veneer for OS_SpriteOp 60/61.
 
   You pass the output state you stored when you called Sprite_Redirect, and
   it sets the output back to that saved state.
@@ -356,7 +468,12 @@ extern os_error *Sprite_UnRedirect(sprite_outputstate *oldstate);
 
 
 extern os_error *Sprite_RedirectMask(sprite_area area, const char *name,
-                                     void *savearea, sprite_outputstate *oldstate);
+                                     void *savearea,
+                                     sprite_outputstate *oldstate);
+extern os_error *Sprite_RedirectMaskP(sprite_area area,
+                                      const sprite_header *sprite,
+                                      void *savearea,
+                                      sprite_outputstate *oldstate);
 /*
   This is a veneer for OS_SpriteOp 61.
 
@@ -375,15 +492,15 @@ extern os_error *Sprite_ReadSaveAreaSize(sprite_area area, const char *name,
 */
 
 
-extern int Sprite_ReadControl(sprite_area area, int *size, sprite *firstsprite,
-                              void *firstfree);
+extern int Sprite_ReadControl(sprite_area area, int *size,
+                              sprite_header **firstsprite,
+                              sprite_header **firstfree);
 /*
   This is a veneer for OS_SpriteOp 8.
 
   It reads information about the given sprite area.  It returns the total
   size of the area in bytes, a sprite pointer to the first sprite in the area
-  (actually the offset within the block) and the offset to the first free word
-  in the area.
+  and a pointer to the first free sprite in the area.
 
   If you aren't interested in any of the returned values, pass NULL pointers
   in.
@@ -403,6 +520,7 @@ extern int Sprite_GetName(sprite_area area, const char *name, int spritenumber);
 
 
 extern os_error *Sprite_CreateMask(sprite_area area, const char *name);
+extern os_error *Sprite_CreateMaskP(sprite_area area, sprite_header *sprite);
 /*
   This is a veneer for OS_SpriteOp 29.
 
@@ -411,6 +529,7 @@ extern os_error *Sprite_CreateMask(sprite_area area, const char *name);
 
 
 extern os_error *Sprite_RemoveMask(sprite_area area, const char *name);
+extern os_error *Sprite_RemoveMaskP(sprite_area area, sprite_header *sprite);
 /*
   This is a veneer for OS_SpriteOp 30.
 
@@ -418,18 +537,24 @@ extern os_error *Sprite_RemoveMask(sprite_area area, const char *name);
 */
 
 
-extern os_error *Sprite_InsertRow(sprite_area area, const char *name, int pos);
+extern os_error *Sprite_InsertRow(sprite_area area, const char *name,
+                                  int pos);
+extern os_error *Sprite_InsertRowP(sprite_area area, sprite_header *sprite,
+                                   int pos);
 /*
   This is a veneer for OS_SpriteOp 31.
 
   This inserts a row in the given sprite at the given position, and shuffles
-  the rest upwards.  Rows are numbered from the bottom upwards with the bottom
-  row being zero.  Any value larger than the height of the sprite will
+  the rest upwards.  Rows are numbered from the bottom upwards with the
+  bottom row being zero.  Any value larger than the height of the sprite will
   generate an error.
 */
 
 
-extern os_error *Sprite_DeleteRow(sprite_area area, const char *name, int pos);
+extern os_error *Sprite_DeleteRow(sprite_area area, const char *name,
+                                  int pos);
+extern os_error *Sprite_DeleteRowP(sprite_area area, sprite_header *sprite,
+                                   int pos);
 /*
   This is a veneer for OS_SpriteOp 32.
 
@@ -441,6 +566,8 @@ extern os_error *Sprite_DeleteRow(sprite_area area, const char *name, int pos);
 
 
 extern os_error *Sprite_FlipX(sprite_area area, const char *name);
+extern os_error *Sprite_FlipXP(sprite_area area,
+                               const sprite_header *sprite);
 /*
   This is a veneer for OS_SpriteOp 33.
 
@@ -450,13 +577,13 @@ extern os_error *Sprite_FlipX(sprite_area area, const char *name);
 
 #define sprite_APPENDVERT 1
 /*
-  Used with Sprite_Append to denote that sprites should be
+  Used with Sprite_Append and Sprite_AppendP to denote that sprites should be
   appended vertically.
 */
 
 #define sprite_APPENDHORIZ 0
 /*
-  Used with Sprite_Append to denote that sprites should be
+  Used with Sprite_Append and Sprite_AppendP to denote that sprites should be
   appended horizontally.
 */
 
@@ -466,23 +593,52 @@ extern os_error *Sprite_Append(sprite_area area, const char *name1,
 /*
   This is a veneer for OS_SpriteOp 35.
 
-  This function joins two sprites together. 'name2' is deleted and joined onto
-  'name1'. If 'dir' is sprite_APPENDHORIZ, they are joined horizontally and
-  must have the same height.  If 'dir' is sprite_APPENDVERT they are joined
-  vertically and must have the same width.
+  This function joins two sprites together. 'name2' is deleted and joined
+  onto 'name1'. If 'dir' is sprite_APPENDHORIZ, they are joined horizontally
+  and must have the same height.  If 'dir' is sprite_APPENDVERT they are
+  joined vertically and must have the same width.
+*/
+
+extern os_error *Sprite_AppendP(sprite_area area, sprite_header *sprite1,
+                                const char *name2,
+                                int dir);
+/*
+  This is a veneer for OS_SpriteOp 35.
+
+  This function joins two sprites together. 'name2' is deleted and joined
+  onto 'sprite1'. If 'dir' is sprite_APPENDHORIZ, they are joined
+  horizontally and must have the same height.  If 'dir' is sprite_APPENDVERT
+  they are joined vertically and must have the same width.
 */
 
 
-extern int Sprite_CreatePalette(sprite_area area, const char *name, BOOL big);
+extern int Sprite_CreatePalette(sprite_area area, const char *name,
+                                BOOL big);
+extern int Sprite_CreatePaletteP(sprite_area area, sprite_header *sprite,
+                                 BOOL big);
 /*
   This is a veneer for OS_SpriteOp 37.
 
   This creates a palette for the given sprite, returning the size of the
-  created palette.  If 'big' is TRUE then a 256 entry palette is created.
+  created palette (0 in case this call failed).  If 'big' is TRUE then a 256
+  entry palette is created.
+*/
+
+
+extern int Sprite_ReadPaletteSize(sprite_area area, const char *name);
+extern int Sprite_ReadPaletteSizeP(sprite_area area,
+                                   const sprite_header *sprite);
+/*
+  This is a veneer for OS_SpriteOp 37.
+
+  This function reads the palette size for given sprite.  It returns 0
+  when the sprite doesn't have a palette or when an error happened.
 */
 
 
 extern os_error *Sprite_RemovePalette(sprite_area area, const char *name);
+extern os_error *Sprite_RemovePaletteP(sprite_area area,
+                                       const sprite_header *sprite);
 /*
   This is a veneer for OS_SpriteOp 37.
 
@@ -490,8 +646,13 @@ extern os_error *Sprite_RemovePalette(sprite_area area, const char *name);
 */
 
 
-extern int Sprite_ReadPixel(sprite_area area, const char *name,
-                            wimp_point *pos);
+extern os_error *Sprite_ReadPixel(sprite_area area, const char *name,
+                                  const wimp_point *pos,
+                                  int *colour, int *tint);
+extern os_error *Sprite_ReadPixelP(sprite_area area,
+                                   const sprite_header *sprite,
+                                   const wimp_point *pos,
+                                   int *colour, int *tint);
 /*
   This is a veneer for OS_SpriteOp 41.
 
@@ -501,7 +662,12 @@ extern int Sprite_ReadPixel(sprite_area area, const char *name,
 
 
 extern os_error *Sprite_WritePixel(sprite_area area, const char *name,
-                                   wimp_point *pos, int colour, int tint);
+                                   const wimp_point *pos,
+                                   int colour, int tint);
+extern os_error *Sprite_WritePixelP(sprite_area area,
+                                    const sprite_header *sprite,
+                                    const wimp_point *pos,
+                                    int colour, int tint);
 /*
   This is a veneer for OS_SpriteOp 42.
 
@@ -511,7 +677,9 @@ extern os_error *Sprite_WritePixel(sprite_area area, const char *name,
 
 
 extern BOOL Sprite_ReadMask(sprite_area area, const char *name,
-                            wimp_point *pos);
+                            const wimp_point *pos);
+extern BOOL Sprite_ReadMaskP(sprite_area area, const sprite_header *sprite,
+                             const wimp_point *pos);
 /*
   This is a veneer for OS_SpriteOp 43.
 
@@ -521,7 +689,10 @@ extern BOOL Sprite_ReadMask(sprite_area area, const char *name,
 
 
 extern os_error *Sprite_WriteMask(sprite_area area, const char *name,
-                                  wimp_point *pos, BOOL solid);
+                                  const wimp_point *pos, BOOL solid);
+extern os_error *Sprite_WriteMaskP(sprite_area area,
+                                   const sprite_header *sprite,
+                                   const wimp_point *pos, BOOL solid);
 /*
   This is a veneer for OS_SpriteOp 44.
 
@@ -532,28 +703,35 @@ extern os_error *Sprite_WriteMask(sprite_area area, const char *name,
 
 extern os_error *Sprite_InsertColumn(sprite_area area, const char *name,
                                      int pos);
+extern os_error *Sprite_InsertColumnP(sprite_area area,
+                                      sprite_header *sprite,
+                                      int pos);
 /*
   This is a veneer for OS_SpriteOp 45.
 
   It inserts a column in the given sprite at the specified position, shifting
-  all columns after it (if any) to the right.  The left-hand column is numbered
-  zero.
+  all columns after it (if any) to the right.  The left-hand column is
+  numbered zero.
 */
 
 
 extern os_error *Sprite_DeleteColumn(sprite_area area, const char *name,
                                      int pos);
-
+extern os_error *Sprite_DeleteColumnP(sprite_area area,
+                                      sprite_header *sprite,
+                                      int pos);
 /*
   This is a veneer for OS_SpriteOp 46.
 
-  It deletes the specified column in the given sprite, shifting all rows after
-  it (if there are any) to the left.  The left-hand column is numbered
+  It deletes the specified column in the given sprite, shifting all rows
+  after it (if there are any) to the left.  The left-hand column is numbered
   zero.
 */
 
 
 extern os_error *Sprite_FlipY(sprite_area area, const char *name);
+extern os_error *Sprite_FlipYP(sprite_area area,
+                               const sprite_header *sprite);
 /*
   This is a veneer to OS_SpriteOp 47.
 
@@ -562,64 +740,87 @@ extern os_error *Sprite_FlipY(sprite_area area, const char *name);
 
 
 extern os_error *Sprite_PlotMask(sprite_area area, const char *name,
-                                 wimp_point *pos);
+                                 const wimp_point *pos);
+extern os_error *Sprite_PlotMaskP(sprite_area area,
+                                  const sprite_header *sprite,
+                                  const wimp_point *pos);
 /*
   This is a veneer to OS_SpriteOp 49.
 
   It plots the given sprite's *mask* at the given screen location using the
-  current background graphics colour and action, only plotting those pixels for
-  which the mask is 1 (solid).  If there is no mask, a rectangle the size of the
-  sprite is plotted instead.
+  current background graphics colour and action, only plotting those pixels
+  for which the mask is 1 (solid).  If there is no mask, a rectangle the
+  size of the sprite is plotted instead.
 */
 
 
 extern os_error *Sprite_PlotMaskScaled(sprite_area area, const char *name,
-                                       wimp_point *pos, sprite_scalefactors sc);
+                                       const wimp_point *pos,
+                                       const sprite_scalefactors *scale);
+extern os_error *Sprite_PlotMaskScaledP(sprite_area area,
+                                        const sprite_header *sprite,
+                                        const wimp_point *pos,
+                                        const sprite_scalefactors *scale);
 /*
   This is a veneer to OS_SpriteOp 50.
 
   It plots the given sprite's mask at the given screen location using the
-  current background graphics colour and action, only plotting those pixels for
-  which the mask is 1 (solid).  The mask is scaled according to the cale
-  factors pointed to by 'sc'.
+  current background graphics colour and action, only plotting those pixels
+  for which the mask is 1 (solid).  The mask is scaled according to the
+  scale factors pointed to by 'scale'.
 */
 
 
 extern os_error *Sprite_PlotScaled(sprite_area area, const char *name,
-                                   wimp_point *pos, unsigned int plot_action,
-                                   sprite_scalefactors *scale, void *pixtrans);
+                                   const wimp_point *pos,
+                                   unsigned int plot_action,
+                                   const sprite_scalefactors *scale,
+                                   const void *pixtrans);
+extern os_error *Sprite_PlotScaledP(sprite_area area,
+                                    const sprite_header *sprite,
+                                    const wimp_point *pos,
+                                    unsigned int plot_action,
+                                    const sprite_scalefactors *scale,
+                                    const void *pixtrans);
 /*
   This is a veneer to OS_SpriteOp 52.
 
   It plots the given sprite with its bottom left corner at the position 'pos'
-  The sprite will be scaled using the scaling factors pointed to by 'sc' and
-  the pixel translation table given by 'pixtrans'.
+  The sprite will be scaled using the scaling factors pointed to by 'scale'
+  and the pixel translation table given by 'pixtrans'.
 
-  'scale' and 'pixtrans' may be set to NULL to not use scaling or translation,
-  repectively.
+  'scale' and 'pixtrans' may be set to NULL to not use scaling or
+  translation, repectively.
 */
 
 
 extern os_error *Sprite_PlotGrey(sprite_area area, const char *name,
-                                 wimp_point *pos, sprite_scalefactors scale,
-                                 void *pixtrans);
+                                 const wimp_point *pos,
+                                 const sprite_scalefactors *scale,
+                                 const void *pixtrans);
+extern os_error *Sprite_PlotGreyP(sprite_area area,
+                                  const sprite_header *sprite,
+                                  const wimp_point *pos,
+                                  const sprite_scalefactors *scale,
+                                  const void *pixtrans);
 /*
   This is a veneer for OS_SpriteOp 53.
 
   This function is similar to Sprite_PlotScaled, except that it anti-aliases
-  the sprite as it scales it. The sprite must have been defined in a 16 colour
-  mode, and the palette must be a linear grey-scale.
+  the sprite as it scales it. The sprite must have been defined in a 16
+  colour mode, and the palette must be a linear grey-scale.
 
-  This call is slow and should only be used when the quality is more important
-  than speed. If this quality is needed for something that will be redrawn more
-  than once, it is advisable to redraw it once into another sprite, using
-  Sprite_Redirect, and then redraw to screen using this sprite.
+  This call is slow and should only be used when the quality is more
+  important than speed. If this quality is needed for something that will be
+  redrawn more than once, it is advisable to redraw it once into another
+  sprite, using Sprite_Redirect, and then redraw to screen using this sprite.
 */
 
 
 extern os_error *Sprite_WimpPlot(sprite_area area, const char *name,
-                                 wimp_point *pos,
-                                 convert_block *convert, int plot_action);
+                                 const wimp_point *pos,
+                                 const convert_block *convert,
+                                 int plot_action);
 /*
   This function plots the given sprite with its bottom left corner at the
   *work area* coordinates 'pos' for the window whose convert block is given.
