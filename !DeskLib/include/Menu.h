@@ -189,7 +189,7 @@ extern void Menu_GetFlags(menu_ptr menu, int entry, int *ticked, int *shaded);
 */
 
 
-extern void Menu_SetText(menu_ptr menu, int entry, char *text);
+extern void Menu_SetText(menu_ptr menu, int entry, const char *text);
 /*
   This sets the text for a menu entry.  The entry does not have to be indirected
   to do this, as a buffer will be malloced for the new entry if there is not
