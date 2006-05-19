@@ -21,7 +21,7 @@
 #include "DeskLib:Menu.h"
 
 
-void Menu_SetText(menu_ptr menu, int entry, char *text)
+void Menu_SetText(menu_ptr menu, int entry, const char *text)
 {
   int       length, oldlength;
   char      *dest;
