@@ -1,0 +1,9 @@
+################################################################
+# Font Demo Messages File
+
+################################################################
+# Main Menu
+#
+
+Main.Title: Font Demo
+Main.Menu: >Font List, Font Width, Font Colour |Close
