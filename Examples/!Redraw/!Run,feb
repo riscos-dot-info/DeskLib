@@ -1,0 +1,3 @@
+Set Redraw$Dir <Obey$Dir>
+WimpSlot -min 320k -max 320k
+Run <Redraw$Dir>.!RunImage
