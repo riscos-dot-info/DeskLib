@@ -1,0 +1,3 @@
+| Set up Tiles2$Dir
+Set Tiles2$Dir <Obey$Dir>
+IconSprites <Obey$Dir>.!Sprites
