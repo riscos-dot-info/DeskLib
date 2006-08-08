@@ -1,0 +1,5 @@
+Set Tiles2$Dir <Obey$Dir>
+IconSprites <Obey$Dir>.!Sprites
+
+WimpSlot -min 320k -max 320k
+Run <Tiles2$Dir>.!RunImage
