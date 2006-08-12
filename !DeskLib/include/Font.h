@@ -48,7 +48,7 @@ extern "C" {
 */
 
 
-typedef unsigned int font_handle;
+typedef unsigned char font_handle;
 /* A RISC OS font manager font handle */
 
 
@@ -519,6 +519,12 @@ extern os_error *Font_GetWimpFont(font_handle *handle);
 /*
   Background font blending - requires font manager present in RISC OS 3.7
   or later.
+*/
+
+#define font_plot_GIVEN16_BIT (1<<12)
+#define font_plot_GIVEN32_BIT (1<<13)
+/*
+  RISC OS 5+ Unicode font plotting
 */
 
 typedef struct
