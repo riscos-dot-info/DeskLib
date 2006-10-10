@@ -20,7 +20,7 @@ DESKLIB = <DeskLib$$Dir>.o.DeskLib
 DESKLIBDIR = <DeskLib$$Dir>.o
 DEBUGS = <DeskLib$$Dir>.o.Debug
 
-libraries := $(notdir $(filter-out Libraries/CVS Libraries/h \
+libraries := $(notdir $(filter-out Libraries/.svn Libraries/h \
                Libraries/Macros.h Libraries/RegDefs.h, $(wildcard Libraries/*)))
 
 all_objects := $(patsubst %.s,%.o,$(patsubst %.c,%.o,$(filter %.c %.s,$(wildcard Libraries/*/*))))
@@ -90,9 +90,9 @@ zip:
 	make -C ../.. -f DeskLib/!DLSources/Makefile ziptargets
 
 ziptargets:
-	zip -9r RAM::RamDisc0.$$.sources/zip DeskLib.!DLSources -x *.CVS.* -x *.o.*
-	zip -9r RAM::RamDisc0.$$.core/zip DeskLib.!DeskLib DeskLib.!DLUser DeskLib.!Help DeskLib.Docs  -x *.CVS.* -x *cvsignore
-	zip -9r RAM::RamDisc0.$$.examples/zip DeskLib.Examples -x *.CVS.* 
+	zip -9r RAM::RamDisc0.$$.sources/zip DeskLib.!DLSources -x *./svn.* -x *.o.*
+	zip -9r RAM::RamDisc0.$$.core/zip DeskLib.!DeskLib DeskLib.!DLUser DeskLib.!Help DeskLib.Docs -x *./svn.*
+	zip -9r RAM::RamDisc0.$$.examples/zip DeskLib.Examples -x *./svn.* 
 
 .c.o:
 	@mkdir -p $(@D)/o
