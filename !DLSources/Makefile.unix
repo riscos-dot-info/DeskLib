@@ -12,7 +12,7 @@ DEBUGS = ../\!DeskLib/o/Debug
 
 DESKLIB_PATH=$(shell realpath $$PWD/../\!DeskLib/include)/
 
-libraries := $(notdir $(filter-out Libraries/CVS Libraries/h \
+libraries := $(notdir $(filter-out Libraries/.svn Libraries/h \
                Libraries/Macros.h Libraries/RegDefs.h, $(wildcard Libraries/*)))
 
 all_objects := $(patsubst %.s,%.o,$(patsubst %.c,%.o,$(filter %.c %.s,$(wildcard Libraries/*/*))))
@@ -42,7 +42,7 @@ $(DESKLIB): $(all_objects)
 	$(AR) $(ARFLAGS) -c $@ $$(find | grep "\.o$$")
 
 # Insert all the Makefiles in the Otherlibs directory as well.
-# This provides the targets debugs and smerror                  
+# This provides the targets debugs and smerror
 
 include OtherLibs/Debugs/Makefile,fe1
 include OtherLibs/SmallError/Makefile,fe1

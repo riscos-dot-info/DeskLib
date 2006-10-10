@@ -19,7 +19,7 @@ PREFIX = gccbin:
 DLUSER = <DeskLib_User$$Dir>.o.DLUser
 DLUSERDIR = <DeskLib_User$$Dir>.o
 
-libraries := $(notdir $(filter-out Libraries/CVS, $(wildcard Libraries/*)))
+libraries := $(notdir $(filter-out Libraries/.svn, $(wildcard Libraries/*)))
 
 all_objects = $(patsubst %.s,%.o,$(patsubst %.c,%.o,$(filter %.c %.s,$(wildcard Libraries/*/*))))
 
