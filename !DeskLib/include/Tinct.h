@@ -8,15 +8,15 @@
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
 
-    File:    USB.h
+    File:    Tinct.h
     Author:  Copyright © 2005 Peter Naulls
     Version: 1.00 (27 May 2005)
     Purpose: Veneers the Tinct module.
              See http://www.tinct.net/
 */
 
-#ifndef __dl_usb_h
-#define __dl_usb_h
+#ifndef __dl_tinct_h
+#define __dl_tinct_h
 
 #ifndef __dl_core_h
 #include "DeskLib:Core.h"
