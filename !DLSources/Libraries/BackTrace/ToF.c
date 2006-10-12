@@ -20,8 +20,7 @@
 
 #include "BackDefs.h"
 
-
-
+#ifndef __TARGET_UNIXLIB__
 
 void	BackTrace_OutputToFFunctionWithPrefix( backtrace_printf_fn fn, void* reference, const char* prefix)
 	{
@@ -133,3 +132,5 @@ void	BackTrace_OutputToFFunctionWithPrefix( backtrace_printf_fn fn, void* refere
 
 	fn( reference, "%s\n", prefix);
 	}
+
+#endif

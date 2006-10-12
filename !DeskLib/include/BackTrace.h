@@ -9,7 +9,7 @@
     ________________________________________________________________________
 
     File:    BackTrace.h
-    Author:  Copyright © 1995 Tom Hughs, Paul Field, Julian Smith
+    Author:  Copyright (c) 1995 Tom Hughes, Paul Field, Julian Smith
     Version: 1.01 (17 Apr 2005)
     Purpose: Functions which walk the current stack.
 */
@@ -34,6 +34,7 @@
 extern "C" {
 #endif
 
+#ifndef __TARGET_UNIXLIB__
 
 void BackTrace_SupportCurrentFrame(_kernel_unwindblock *frame);
 /*
@@ -115,6 +116,7 @@ const char *BackTrace_GetFunctionName(const void* ptr);
   Otherwise returns NULL.
  */
 
+#endif
 
 #ifdef __cplusplus
 }

@@ -9,7 +9,7 @@
     ________________________________________________________________________
 
     File:    Sprite.h
-    Author:  Copyright © 1992, 1993, 1994 John Winters, Jason Williams,
+    Author:  Copyright (c) 1992, 1993, 1994 John Winters, Jason Williams,
                                           Jason Howat
              and sundry contributors
     Version: 0.40 (28 Nov 2005)
@@ -909,7 +909,7 @@ extern sprite_area Sprite_LoadFile(const char *filename);
 */
 
 
-extern sprite_area Sprite_LoadFiles(size_t nooffiles,...);
+extern sprite_area Sprite_LoadFiles(unsigned int nooffiles,...);
 /*
   This function allocates memory for a sprite area with malloc, initialises
   it, and loads 'nooffiles' sprite files into it.  The files to be loaded are

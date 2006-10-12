@@ -6,9 +6,7 @@
 
 # Defaults
 
-DESKLIB = ../!DeskLib/o/DeskLib
-DESKLIBDIR = ../!DeskLib/o
-DEBUGS = ../\!DeskLib/o/Debug
+DESKLIB = ../!DeskLib/DeskLib.a
 
 DESKLIB_PATH=$(shell realpath $$PWD/../\!DeskLib/include)/
 
@@ -24,22 +22,33 @@ WARNINGS = -ansi -pedantic -Wall -Wundef -Wpointer-arith \
            -Wmissing-prototypes -Wmissing-declarations -Wnested-externs \
            -Winline -Wno-unused -Wno-long-long -W -Wcast-qual -Wshadow
 
-CC = DESKLIB_PATH=$(DESKLIB_PATH) gcc
-CFLAGS = -mlibscl -O2 $(WARNINGS)
+# We support AOF and ELF based builds but the latter still needs 'as' from GCCSDK 3.4.6 AOF
+ifeq "$(AB_ELFBUILD)" "yes"
+CC = $(GCCSDK_INSTALL_CROSSBIN)/arm-elf-riscos-gcc
+CFLAGS = -O2 $(WARNINGS)
 
-AS = gcc
+AS = $(GCCSDK_INSTALL_CROSSBIN)/gcc
+ASFLAGS = -Wa,-elf,-ILibraries,-I$(@D) -c
+
+AR = $(GCCSDK_INSTALL_CROSSBIN)/arm-elf-riscos-ar
+ARFLAGS = rcv
+else
+CC = $(GCCSDK_INSTALL_CROSSBIN)/gcc
+CFLAGS = -O2 $(WARNINGS)
+
+AS = $(CC)
 ASFLAGS = -Wa,-ILibraries,-I$(@D) -c
 
-AR = $(PREFIX)libfile
-ARFLAGS =
+AR = $(GCCSDK_INSTALL_CROSSBIN)/ar
+ARFLAGS = rcv
+endif
 
 # Make the library
 all: $(DESKLIB)
 
 # Link the objects together to make a new library
 $(DESKLIB): $(all_objects)
-	mkdir -p $(DESKLIBDIR)/
-	$(AR) $(ARFLAGS) -c $@ $$(find | grep "\.o$$")
+	$(AR) $(ARFLAGS) $@ $$(find | grep "\.o$$")
 
 # Insert all the Makefiles in the Otherlibs directory as well.
 # This provides the targets debugs and smerror
@@ -49,10 +58,11 @@ include OtherLibs/SmallError/Makefile,fe1
 
 # Clean the whole library out in one go
 clean:
-	find | grep "\.o$$" | xargs rm
+	-find | grep "\.o$$" | xargs rm
+	-rm $(DESKLIB)
 
 .c.o:
-	$(CC) $(CFLAGS) -c $< -o $@
+	DESKLIB_PATH=$(DESKLIB_PATH) $(CC) $(CFLAGS) -c $< -o $@
 
 .s.o:
 	$(AS) $(ASFLAGS) $< -o $@
@@ -62,4 +72,4 @@ install: $(DESKLIB)
 	mkdir -p $(GCCSDK_INSTALL_ENV)/include/DeskLib
 	$(GCCSDK_INSTALL_ENV)/ro-install $(DESKLIB_PATH)/*.h $(GCCSDK_INSTALL_ENV)/include/DeskLib
 	mkdir -p $(GCCSDK_INSTALL_ENV)/lib
-	$(GCCSDK_INSTALL_ENV)/ro-install $(DESKLIB) $(GCCSDK_INSTALL_ENV)/lib/libDesk.o
+	$(GCCSDK_INSTALL_ENV)/ro-install $(DESKLIB) $(GCCSDK_INSTALL_ENV)/lib/libDesk.a

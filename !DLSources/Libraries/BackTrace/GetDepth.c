@@ -4,6 +4,7 @@
 
 #include "BackDefs.h"
 
+#ifndef __TARGET_UNIXLIB__
 
 int	BackTrace_GetNestingDepth( void)
 	{
@@ -31,3 +32,5 @@ int	BackTrace_GetNestingDepth( void)
 
 	return depth-1;	/* don't include this function	*/
 	}
+
+#endif
