@@ -5,10 +5,7 @@
 
 #include "BackDefs.h"
 
-
-
-
-
+#ifndef __TARGET_UNIXLIB__
 
 typedef struct	{
 	char*		fnname;
@@ -17,8 +14,6 @@ typedef struct	{
 	unsigned int*	fp;
 	}
 	BackTrace_frameblock;
-
-
 
 
 static void	BackTrace_GetFrameInfo( BackTrace_frameblock* frameblock, const _kernel_unwindblock* frame)
@@ -119,3 +114,5 @@ const BackTrace_functionlist*	BackTrace_GetCurrentFunctions( void)
 
 	return &functionlist;
 	}
+
+#endif

@@ -11,17 +11,16 @@
 
 #include "BackDefs.h"
 
+#ifndef __TARGET_UNIXLIB__
 
-
-void	BackTrace_OutputToStdErr(void)
+void BackTrace_OutputToStdErr(void)
 {
   BackTrace_OutputToStreamWithPrefix(stderr, "");
 }
-
-
-
 
 void BackTrace_OutputToStreamWithPrefix(FILE *stream, const char *prefix)
 {
   BackTrace_OutputToFFunctionWithPrefix((backtrace_printf_fn)fprintf, stream, prefix);
 }
+
+#endif
