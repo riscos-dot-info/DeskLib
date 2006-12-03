@@ -24,13 +24,13 @@ WARNINGS = -ansi -pedantic -Wall -Wundef -Wpointer-arith \
 
 # We support AOF and ELF based builds but the latter still needs 'as' from GCCSDK 3.4.6 AOF
 ifeq "$(AB_ELFBUILD)" "yes"
-CC = $(GCCSDK_INSTALL_CROSSBIN)/arm-elf-riscos-gcc
+CC = $(GCCSDK_INSTALL_CROSSBIN)/arm-unknown-riscos-gcc
 CFLAGS = -O2 $(WARNINGS)
 
 AS = $(GCCSDK_INSTALL_CROSSBIN)/gcc
 ASFLAGS = -Wa,-elf,-ILibraries,-I$(@D) -c
 
-AR = $(GCCSDK_INSTALL_CROSSBIN)/arm-elf-riscos-ar
+AR = $(GCCSDK_INSTALL_CROSSBIN)/arm-unknown-riscos-ar
 ARFLAGS = rcv
 else
 CC = $(GCCSDK_INSTALL_CROSSBIN)/gcc
