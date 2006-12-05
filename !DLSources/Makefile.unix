@@ -27,7 +27,7 @@ ifeq "$(AB_ELFBUILD)" "yes"
 CC = $(GCCSDK_INSTALL_CROSSBIN)/arm-unknown-riscos-gcc
 CFLAGS = -O2 $(WARNINGS)
 
-AS = $(GCCSDK_INSTALL_CROSSBIN)/gcc
+AS = $(GCCSDK_INSTALL_CROSSBIN)/arm-riscos-aof-gcc
 ASFLAGS = -Wa,-elf,-ILibraries,-I$(@D) -c
 
 AR = $(GCCSDK_INSTALL_CROSSBIN)/arm-unknown-riscos-ar
