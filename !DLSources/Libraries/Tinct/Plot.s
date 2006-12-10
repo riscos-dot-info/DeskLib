@@ -25,6 +25,7 @@
        MOV     r3, r1
        MOV     r2, r0
        SWI     SWI_Tinct_Plot + XOS_Bit
+       MOVVC   r0, #0
        LDMFD   sp!, {r4,r7,pc}
 
        END
