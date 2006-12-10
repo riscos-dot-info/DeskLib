@@ -27,6 +27,7 @@
        MOV     r2, r0
        LDMIA   ip, {r5, r6}
        SWI     SWI_Tinct_PlotAlpha + XOS_Bit
+       MOVVC   r0, #0
        LDMFD   sp!, {r4-r7,pc}
 
        END
