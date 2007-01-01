@@ -1,14 +1,14 @@
-;-------------------------------------------------------------------------------
-; ColourTrans_ReturnFontColours(ct_fontblock);
-; Copyright 1993 Shaun Blackmore
+@-------------------------------------------------------------------------------
+@ ColourTrans_ReturnFontColours(ct_fontblock);
+@ Copyright 1993 Shaun Blackmore
 
-        GET     Macros.h
-        GET     RegDefs.h
-        GET     SwiNos.h
-;
-        PREAMBLE
-        STARTCODE ColourTrans_ReturnFontColours
-;
+        .include     "Macros.h"
+        .include     "RegDefs.h"
+        .include     "SwiNos.h"
+@
+        
+        .globl ColourTrans_ReturnFontColours
+@
         MOV     ip,sp
         STMFD   sp!,{r4,lr}
         MOV     r4,r0
@@ -22,5 +22,4 @@
         STR     r3,[r4,#12]
         MOVVC   r0, #0
         LDMFD   sp!,{r4,pc}
-;
-        END
+@
