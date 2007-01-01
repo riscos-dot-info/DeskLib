@@ -22,26 +22,15 @@ WARNINGS = -ansi -pedantic -Wall -Wundef -Wpointer-arith \
            -Wmissing-prototypes -Wmissing-declarations -Wnested-externs \
            -Winline -Wno-unused -Wno-long-long -W -Wcast-qual -Wshadow
 
-# We support AOF and ELF based builds but the latter still needs 'as' from GCCSDK 3.4.6 AOF
-ifeq "$(AB_ELFBUILD)" "yes"
+# We ELF based builds only
 CC = $(GCCSDK_INSTALL_CROSSBIN)/arm-unknown-riscos-gcc
-CFLAGS = -O2 $(WARNINGS)
-
-AS = $(GCCSDK_INSTALL_CROSSBIN)/arm-riscos-aof-gcc -msoft-float
-ASFLAGS = -Wa,-elf,-ILibraries,-I$(@D) -c
-
-AR = $(GCCSDK_INSTALL_CROSSBIN)/arm-unknown-riscos-ar
-ARFLAGS = rcv
-else
-CC = $(GCCSDK_INSTALL_CROSSBIN)/gcc
 CFLAGS = -O2 $(WARNINGS)
 
 AS = $(CC)
 ASFLAGS = -Wa,-ILibraries,-I$(@D) -c
 
-AR = $(GCCSDK_INSTALL_CROSSBIN)/ar
+AR = $(GCCSDK_INSTALL_CROSSBIN)/arm-unknown-riscos-ar
 ARFLAGS = rcv
-endif
 
 # Make the library
 all: $(DESKLIB)
