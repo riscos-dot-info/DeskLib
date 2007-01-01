@@ -1,5 +1,4 @@
 
-XOS_Bit                    EQU &020000
-OS_WriteI                  EQU &000100
+.equ	XOS_Bit, 0x020000
+.equ	OS_WriteI, 0x000100
 
-  END
