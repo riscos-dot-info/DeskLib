@@ -33,7 +33,7 @@ DeskLib requires GNU make - AMU isn't quite up to the job.  If you don't
 already have GCC, then you can get this as part of the "utils" archive
 from the latest GCC release:
 
-http://hard-mofo.dsvr.net/gcc/
+http://gccsdk.riscos.info/
 
 The rest of the system will build with tools from Castle's 32-bit release.
 Don't try and rebuild DeskLib with a 26-bit compiler - you'll just end up
@@ -48,14 +48,6 @@ if you wish to know more.
 
 Just running "make" is sufficient to build everything.
 
-
-
-Dynamically Linked DeskLib sublibraries
-˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
-
-We have removed all the DLL stuff from Desklib build, as we consider
-this of very limited interest.  Any future DLL/Shared Library system
-in RISC OS will likely take a very different form.
 
 
 Fairly complete description of all files in this !DLSources directory

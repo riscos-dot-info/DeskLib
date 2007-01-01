@@ -23,7 +23,7 @@ For examples of this, look in the Examples directory.
 
 Jason Williams May 1993
 Julian Smith May 1995
-Peter Naulls Nov 2002-2003
+Peter Naulls Nov 2002-2006
 
 Contact: peter@chocky.org
 
@@ -31,39 +31,22 @@ Contact: peter@chocky.org
 About This Version
 ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
 
-This is version 2.60 of DeskLib.
+This is version 2.80 of DeskLib.
 
-This version of DeskLib is 32-bit only.  This means that to use it, you
-will require a 32-bit C Compiler, such as Castle's 32-bit C/C++ tools,
-32-bit GCC or LCC.
+It is designed for use with Castle's 32-bit C/C++ tools, or GCC 3.x version.
+This is the *last* version of DeskLib that is suitable for use with these
+compilers.  DeskLib version 3 onwards will require use of GCC 4 version
+for RISC OS.
 
-If you wish to know more about RISC OS and 32-bit, then visit
-http://www.riscos.info/32bit/
-
-There is no intention to make a newer 26-bit only version of
-DeskLib, as we would like to encourage developers to make all new
-software (and software versions) 32-bit compatible.  If you really
-require a 26-bit version, use version 2.30:
-
-http://www.acornsearch.com/archives/ftp.argonet.co.uk/pub/Acorn/PD/Programming/
- 
 DeskLib is suitable for all RISC OS 3.x, 4.x and 5 machines.
 
-DeskLib's homepage is http://www.riscos.info/desklib/
+DeskLib's homepage is http://www.riscos.info/index.php/DeskLib/
 Check here for updates.
 
 
 DeskLib is currently maintained by:
 
 Peter Naulls
-Antony Sidwell
-Andrew Sidwell
-
-
-DLL DeskLib
-˜˜˜˜˜˜˜˜˜˜˜
-
-Has been removed, as we consider this of very limited interest.
 
 
 DeskLib StrongHelp
@@ -73,4 +56,5 @@ The file '!DeskLib.Help' is a StrongHelp help-directory. This has been
 automatically generated from the DeskLib header files. The formatting is
 rather crude in places, but there is a help page for every DeskLib
 function, typedef and global variable mentioned in the header files.
+This file may lag behind the current implementation.
 
