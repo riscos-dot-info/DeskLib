@@ -15,7 +15,8 @@
 @       [r0,#16] = index
 
         
-        .globl Font_FindCaret
+        .global Font_FindCaret
+Font_FindCaret:
 @
         STMFD   sp!, {r4,r5,r6,lr}
         MOV     r6,r0

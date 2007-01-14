@@ -19,7 +19,8 @@
 @ os_error *Module_Claim(unsigned size, void **block);
 
         
-        .globl Module_Claim
+        .global Module_Claim
+Module_Claim:
 @
         STMFD   sp!, {v1,lr}
         MOV     a4, a1

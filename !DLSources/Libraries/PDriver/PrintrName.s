@@ -18,7 +18,8 @@
         .include     "Macros.h"
 
         
-        .globl PDriver_PrinterName
+        .global PDriver_PrinterName
+PDriver_PrinterName:
 @
         STMFD sp!, {r1-r6, lr}
         SWI SWI_PDriver_Info + XOS_Bit

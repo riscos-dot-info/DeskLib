@@ -12,7 +12,8 @@
 @   r3=y
 
         
-        .globl Font_Paint
+        .global Font_Paint
+Font_Paint:
 @
         STMFD   sp!, {r4,lr}
         MOV     r4,r3

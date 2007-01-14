@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_SelectP
+        .global Sprite_SelectP
+Sprite_SelectP:
 @
         STMFD   sp!, {lr}
         MOV     a3, a2

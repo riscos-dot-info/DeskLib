@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_Delete
+        .global Sprite_Delete
+Sprite_Delete:
 @
         STMFD   sp!, {a1, a2, lr}
         LDMFD   sp!, {a2, a3}

@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_UpdateWindow
+        .global Wimp_UpdateWindow
+Wimp_UpdateWindow:
 @
 @        STMFD   sp!, {lr}
         MOV     ip, lr

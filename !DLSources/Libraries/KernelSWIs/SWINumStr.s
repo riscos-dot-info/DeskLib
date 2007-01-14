@@ -20,7 +20,8 @@
 
 @ os_error *OS_SWINumberToString(int number, char *buffer, int size);
 
-        .globl OS_SWINumberToString
+        .global OS_SWINumberToString
+OS_SWINumberToString:
 
         MOV     ip, lr
         SWI     SWI_OS_SWINumberToString + XOS_Bit
@@ -30,7 +31,8 @@
 
 @ os_error *OS_SWINumberFromString(char *string, int *number);
 
-        .globl OS_SWINumberFromString
+        .global OS_SWINumberFromString
+OS_SWINumberFromString:
 
         MOV     ip, lr
         MOV     r2, r1

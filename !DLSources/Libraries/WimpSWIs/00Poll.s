@@ -29,10 +29,12 @@
 @
         
 
-        .globl Wimp_Poll
+        .global Wimp_Poll
+Wimp_Poll:
         MOV     a3, #0
 
-        .globl Wimp_Poll3
+        .global Wimp_Poll3
+Wimp_Poll3:
 
         ORR     a1, a1, #1<<24 @ Always save FP
         ADD     a2, a2, #4
@@ -42,10 +44,12 @@
         MOVVC   a1, #0
         MOV     pc, lr
 
-        .globl Wimp_PollIdle
+        .global Wimp_PollIdle
+Wimp_PollIdle:
         MOV     a4, #0
 
-        .globl Wimp_PollIdle3
+        .global Wimp_PollIdle3
+Wimp_PollIdle3:
         ORR     a1, a1, #1<<24 @ Always save FP
         ADD     a2, a2, #4
         SWI     SWI_Wimp_PollIdle + XOS_Bit

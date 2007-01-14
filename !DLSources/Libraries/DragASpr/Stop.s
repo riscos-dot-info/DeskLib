@@ -7,7 +7,8 @@
 @ void DragASprite_Stop(void);
 
         
-        .globl DragASprite_Stop
+        .global DragASprite_Stop
+DragASprite_Stop:
 @
         STMFD   sp!, {lr}
         SWI     SWI_DragASprite_Stop + XOS_Bit

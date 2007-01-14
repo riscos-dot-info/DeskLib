@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_CloseWindow
+        .global Wimp_CloseWindow
+Wimp_CloseWindow:
 @
         STMFD   sp!, {a1, lr}
         MOV     a2, sp

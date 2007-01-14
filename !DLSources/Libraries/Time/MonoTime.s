@@ -18,7 +18,8 @@
         .include     "Macros.h"
 
         
-        .globl Time_Monotonic
+        .global Time_Monotonic
+Time_Monotonic:
 @
         MOV  ip, lr
         SWI  SWI_OS_ReadMonotonicTime + XOS_Bit

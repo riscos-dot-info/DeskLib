@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_BaseOfSprites
+        .global Wimp_BaseOfSprites
+Wimp_BaseOfSprites:
 @
 @        STMFD   sp!, {lr}
         MOV     ip, lr

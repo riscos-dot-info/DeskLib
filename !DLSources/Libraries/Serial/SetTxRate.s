@@ -19,7 +19,8 @@
 @ os_error *Serial_SetTxRate(serial_rate rate);
 
         
-        .globl Serial_SetTxRate
+        .global Serial_SetTxRate
+Serial_SetTxRate:
 @
         STMFD   sp!, {lr}
         MOV     a2, a1

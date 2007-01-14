@@ -9,7 +9,8 @@
 
 
         
-        .globl Font_FutureFont
+        .global Font_FutureFont
+Font_FutureFont:
 @
         STMFD   sp!, {r4,lr}
         MOV     r4,r0

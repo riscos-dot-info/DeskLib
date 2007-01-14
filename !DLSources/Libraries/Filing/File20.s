@@ -23,7 +23,8 @@
 @                                int *attrib, int *filetype);
 
         
-        .globl Filing_ReadCatalogue
+        .global Filing_ReadCatalogue
+Filing_ReadCatalogue:
 @
         STMFD   sp!, {r1-r6,lr}
         MOV     r1, r0

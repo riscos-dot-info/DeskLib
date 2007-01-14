@@ -17,7 +17,8 @@
 
 
        
-       .globl Tinct_ConvertSprite
+       .global Tinct_ConvertSprite
+Tinct_ConvertSprite:
 
        MOV     r2, r0
        MOV     r3, r1

@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_StartTask3
+        .global Wimp_StartTask3
+Wimp_StartTask3:
 @
         MOV     ip, lr
         SWI     SWI_Wimp_StartTask + XOS_Bit

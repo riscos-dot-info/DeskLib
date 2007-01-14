@@ -19,7 +19,8 @@
         .include     "Macros.h"
 
         
-        .globl strcpycr
+        .global strcpycr
+strcpycr:
 
         STMFD   sp!, {v1,lr}
         MOV     v1,#0

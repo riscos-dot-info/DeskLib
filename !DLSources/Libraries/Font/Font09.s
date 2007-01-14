@@ -9,7 +9,8 @@
 
 
         
-        .globl Font_Converttopoints
+        .global Font_Converttopoints
+Font_Converttopoints:
 @
         STMFD   sp!, {r4,lr}
         MOV     r4,r3

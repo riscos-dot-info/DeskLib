@@ -7,7 +7,8 @@
 @ void DragASprite_Start(int flags, void *spritearea, char *name, wimp_box *bound, wimp_box *parent);
 
         
-        .globl DragASprite_Start
+        .global DragASprite_Start
+DragASprite_Start:
 @
         MOV     ip,sp
         STMFD   sp!, {r4,lr}

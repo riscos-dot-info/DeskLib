@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_CreateWindow
+        .global Wimp_CreateWindow
+Wimp_CreateWindow:
 @
 @        STMFD   sp!, {lr}
         MOV     ip, lr

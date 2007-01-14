@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_WriteMaskPixelP
+        .global Sprite_WriteMaskPixelP
+Sprite_WriteMaskPixelP:
 @
         STMFD     sp!, {v1-v2, lr}
 	MOVS      v2, a4

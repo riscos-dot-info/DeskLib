@@ -35,7 +35,8 @@
 @============================================================================
 @
         
-        .globl Wimp_SlotSize
+        .global Wimp_SlotSize
+Wimp_SlotSize:
 @
 @  There is a nasty bug in Risc-OS.  R4 (v1) is not preserved during calls
 @  to Wimp_SlotSize.  Hence can't use it as temporary workspace.

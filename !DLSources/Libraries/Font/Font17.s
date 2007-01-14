@@ -8,7 +8,8 @@
 
 
         
-        .globl Font_StringBBox
+        .global Font_StringBBox
+Font_StringBBox:
 @
         STMFD   sp!, {r4,r5,lr}
         MOV     r5,r1

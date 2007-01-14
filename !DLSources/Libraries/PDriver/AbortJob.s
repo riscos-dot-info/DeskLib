@@ -19,7 +19,8 @@
 @ os_error *PDriver_AbortJob(print_job job);
 
         
-        .globl PDriver_AbortJob
+        .global PDriver_AbortJob
+PDriver_AbortJob:
 @
         STMFD   sp!, {lr}
         SWI     SWI_PDriver_AbortJob + XOS_Bit

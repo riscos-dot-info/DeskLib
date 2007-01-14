@@ -41,7 +41,8 @@
 @============================================================================
 @
         
-        .globl Wimp_LoadTemplate
+        .global Wimp_LoadTemplate
+Wimp_LoadTemplate:
 @
         STMFD   sp!, {v1, v2, v3, v4, lr}
         LDMIA   a1!, {a2, a3, a4, v1, v2, v3}

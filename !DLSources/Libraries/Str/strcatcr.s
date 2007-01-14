@@ -19,7 +19,8 @@
         .include     "Macros.h"
 
         
-        .globl strcatcr
+        .global strcatcr
+strcatcr:
 @    extern char *strcatcr(char *s1, const char *s2);
 
 

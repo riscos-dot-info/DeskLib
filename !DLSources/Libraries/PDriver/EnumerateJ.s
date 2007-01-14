@@ -19,7 +19,8 @@
 @ os_error *PDriver_EnumerateJobs(print_job *handle);
 
         
-        .globl PDriver_EnumerateJobs
+        .global PDriver_EnumerateJobs
+PDriver_EnumerateJobs:
 @
         STMFD   sp!, {lr}
         MOV     a2, a1

@@ -7,7 +7,8 @@
 @os_error *Font_SetScaleFactor(int xscale, int yscale);
 
         
-        .globl Font_SetScaleFactor
+        .global Font_SetScaleFactor
+Font_SetScaleFactor:
 @
         STMFD   sp!, {lr}
         MOV     r2,r1

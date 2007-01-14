@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_Merge
+        .global Sprite_Merge
+Sprite_Merge:
 @
         STMFD   sp!, {lr}
         MOV     a3, a2

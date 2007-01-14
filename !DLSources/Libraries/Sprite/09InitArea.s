@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_InitArea
+        .global Sprite_InitArea
+Sprite_InitArea:
 @
         STMFD   sp!, {lr}
         MOV     a2, a1

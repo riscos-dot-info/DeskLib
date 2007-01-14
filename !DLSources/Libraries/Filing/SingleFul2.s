@@ -22,7 +22,8 @@
 @                                      int size, char *filename);
 
         
-        .globl Filing_SingleFullDirEntry2
+        .global Filing_SingleFullDirEntry2
+Filing_SingleFullDirEntry2:
 @
         STMFD   sp!, {r4-r6,lr}
         MOV     r6, r3

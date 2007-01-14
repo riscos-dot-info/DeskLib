@@ -17,7 +17,8 @@
 
 
        
-       .globl Tinct_Plot
+       .global Tinct_Plot
+Tinct_Plot:
 
        STMFD   sp!, {r4,r7,lr}
        MOV     r7, r3

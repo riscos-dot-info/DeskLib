@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_SetExtent
+        .global Wimp_SetExtent
+Wimp_SetExtent:
 @
 @        STMFD   sp!, {lr}
         MOV     ip, lr

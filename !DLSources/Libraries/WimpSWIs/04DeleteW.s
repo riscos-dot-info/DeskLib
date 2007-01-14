@@ -32,7 +32,8 @@
 @============================================================================
 @
         
-        .globl Wimp_DeleteWindow
+        .global Wimp_DeleteWindow
+Wimp_DeleteWindow:
 @
         STMFD   sp!, {a1, lr}
         MOV     a2, sp

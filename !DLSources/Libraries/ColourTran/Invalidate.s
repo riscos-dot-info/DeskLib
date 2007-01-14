@@ -7,7 +7,8 @@
         .include     "SwiNos.h"
 @
         
-        .globl ColourTrans_InvalidateCache
+        .global ColourTrans_InvalidateCache
+ColourTrans_InvalidateCache:
 @
         STMFD   sp!,{lr}
         SWI     SWI_ColourTrans_InvalidateCache + XOS_Bit

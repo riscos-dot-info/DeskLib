@@ -20,7 +20,8 @@
 @ os_error *PDriver_CancelJobWithError(print_job job, os_error *error);
 
         
-        .globl PDriver_CancelJobWithError
+        .global PDriver_CancelJobWithError
+PDriver_CancelJobWithError:
 @
         STMFD   sp!, {lr}
         SWI     SWI_PDriver_CancelJobWithError + XOS_Bit

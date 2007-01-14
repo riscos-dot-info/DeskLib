@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_StartTask
+        .global Wimp_StartTask
+Wimp_StartTask:
 @
 @        STMFD   sp!, {lr}
 

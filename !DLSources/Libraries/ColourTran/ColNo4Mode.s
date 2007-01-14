@@ -8,7 +8,8 @@
         .include     "SwiNos.h"
 @
         
-        .globl ColourTrans_ReturnColourNumberForMode
+        .global ColourTrans_ReturnColourNumberForMode
+ColourTrans_ReturnColourNumberForMode:
 @
         STMFD   sp!,{lr}
         SWI     SWI_ColourTrans_ReturnColourNumberForMode + XOS_Bit

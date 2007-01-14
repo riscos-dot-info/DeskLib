@@ -20,7 +20,8 @@
 @                            int *finished, int *rectangle_id);
 
         
-        .globl PDriver_DrawPage
+        .global PDriver_DrawPage
+PDriver_DrawPage:
 @
         MOV     ip, sp
         STMFD   sp!, {lr}

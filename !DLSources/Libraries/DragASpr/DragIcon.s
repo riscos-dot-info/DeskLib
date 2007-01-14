@@ -21,7 +21,8 @@
 @ void DragASprite_DragIcon(window_handle window, icon_handle icon);
 
         
-        .globl DragASprite_DragIcon
+        .global DragASprite_DragIcon
+DragASprite_DragIcon:
 @
         STMFD   sp!, {r4,r5,r6,r7,lr}
         MOV     ip,sp

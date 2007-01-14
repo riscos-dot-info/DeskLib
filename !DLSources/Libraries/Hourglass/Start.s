@@ -19,7 +19,8 @@
 @ void Hourglass_Start(int startdelay);
 
         
-        .globl Hourglass_Start
+        .global Hourglass_Start
+Hourglass_Start:
 @
         STMFD   sp!, {lr}
         SWI     SWI_Hourglass_Start + XOS_Bit

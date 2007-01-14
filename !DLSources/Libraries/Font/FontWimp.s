@@ -7,7 +7,8 @@
 @ extern os_error *Font_GetWimpFont(font_handle *handle);
 
         
-        .globl Font_GetWimpFont
+        .global Font_GetWimpFont
+Font_GetWimpFont:
 @
         MOV     r2, r0
         MOV     r0, #8

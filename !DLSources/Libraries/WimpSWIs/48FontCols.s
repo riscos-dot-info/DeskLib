@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_SetFontColours
+        .global Wimp_SetFontColours
+Wimp_SetFontColours:
 @
 @        STMFD   sp!, {lr}
         MOV     ip, lr

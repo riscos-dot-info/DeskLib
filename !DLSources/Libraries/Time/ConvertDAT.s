@@ -17,7 +17,8 @@
         .include     "Macros.h"
 
         
-        .globl Time_ConvertDateAndTime
+        .global Time_ConvertDateAndTime
+Time_ConvertDateAndTime:
 @
         STMFD   sp!, {lr}
         SWI     SWI_OS_ConvertDateAndTime + XOS_Bit

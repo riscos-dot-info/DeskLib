@@ -7,7 +7,8 @@
         .include     "SwiNos.h"
 @
         
-        .globl GFX_Plot
+        .global GFX_Plot
+GFX_Plot:
 @
         SWI     XSWI_OS_Plot
         MOV     pc, lr

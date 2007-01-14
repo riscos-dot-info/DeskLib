@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_Get
+        .global Sprite_Get
+Sprite_Get:
 @
         MOV     ip, sp
         STMFD   sp!, {a1-a4, v1-v4, lr}

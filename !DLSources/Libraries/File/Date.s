@@ -18,7 +18,8 @@
         .include     "Macros.h"
 @
         
-        .globl File_Date
+        .global File_Date
+File_Date:
 @
 @ extern void File_Date(char *filename, unsigned char *fivebyteblock);
 @

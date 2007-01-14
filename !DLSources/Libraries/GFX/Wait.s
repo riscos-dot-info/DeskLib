@@ -7,7 +7,8 @@
         .include     "SwiNos.h"
 @
         
-        .globl GFX_Wait
+        .global GFX_Wait
+GFX_Wait:
 @
         MOV     a1, #19
         SWI     XSWI_OS_Byte

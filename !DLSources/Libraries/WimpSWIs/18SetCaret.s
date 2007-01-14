@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_SetCaretPosition
+        .global Wimp_SetCaretPosition
+Wimp_SetCaretPosition:
 @
         STMFD   sp!, {v1, v2, lr}
         LDMFD   a1, {a1, a2, a3, a4, v1, v2}

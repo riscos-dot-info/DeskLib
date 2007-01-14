@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_WritePixel
+        .global Sprite_WritePixel
+Sprite_WritePixel:
 @
         STMFD     sp!, {v1-v3, lr}
         LDR       v3, [sp, #4*4]

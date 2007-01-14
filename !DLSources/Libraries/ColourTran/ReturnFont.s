@@ -7,7 +7,8 @@
         .include     "SwiNos.h"
 @
         
-        .globl ColourTrans_ReturnFontColours
+        .global ColourTrans_ReturnFontColours
+ColourTrans_ReturnFontColours:
 @
         MOV     ip,sp
         STMFD   sp!,{r4,lr}

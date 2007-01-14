@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_WritePixelP
+        .global Sprite_WritePixelP
+Sprite_WritePixelP:
 @
         STMFD     sp!, {v1-v3, lr}
         MOV       v3, v1

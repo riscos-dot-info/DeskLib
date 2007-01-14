@@ -19,7 +19,8 @@
 @ int Serial_GetStatus(void);
 
         
-        .globl Serial_GetStatus
+        .global Serial_GetStatus
+Serial_GetStatus:
 @
         STMFD   sp!, {lr}
         MOV     a1, #0

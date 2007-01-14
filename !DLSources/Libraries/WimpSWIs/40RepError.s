@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_ReportError
+        .global Wimp_ReportError
+Wimp_ReportError:
 @
 @        STMFD   sp!, {lr}
         MOV     ip, lr

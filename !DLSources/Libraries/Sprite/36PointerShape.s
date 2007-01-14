@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_SetPointerShape
+        .global Sprite_SetPointerShape
+Sprite_SetPointerShape:
 @
         MOV       ip, sp
         STMFD     sp!, {a1-a3, v1-v4, lr}

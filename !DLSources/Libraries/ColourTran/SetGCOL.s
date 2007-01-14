@@ -8,7 +8,8 @@
         .include     "SwiNos.h"
 @
         
-        .globl ColourTrans_SetGCOL
+        .global ColourTrans_SetGCOL
+ColourTrans_SetGCOL:
 @
         STMFD   sp!,{r4,lr}
         MOV     r3,r1

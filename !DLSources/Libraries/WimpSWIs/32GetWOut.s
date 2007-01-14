@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_GetWindowOutline
+        .global Wimp_GetWindowOutline
+Wimp_GetWindowOutline:
 @
 @        STMFD   sp!, {lr}
         MOV     ip, lr

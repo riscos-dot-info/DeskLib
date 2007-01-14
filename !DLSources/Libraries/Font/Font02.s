@@ -10,7 +10,8 @@
 
 
         
-        .globl Font_LoseFont
+        .global Font_LoseFont
+Font_LoseFont:
 @
         STMFD   sp!, {lr}
         SWI     SWI_Font_LoseFont + XOS_Bit

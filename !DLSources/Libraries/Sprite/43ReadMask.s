@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_ReadMaskPixel
+        .global Sprite_ReadMaskPixel
+Sprite_ReadMaskPixel:
 @
         STMFD     sp!, {v1-v2, lr}
 	LDMIA     a3, {a4, v1}

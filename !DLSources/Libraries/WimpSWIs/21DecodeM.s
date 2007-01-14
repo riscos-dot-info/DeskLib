@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_DecodeMenu
+        .global Wimp_DecodeMenu
+Wimp_DecodeMenu:
 @
 @        STMFD   sp!, {lr}
         MOV      ip, lr

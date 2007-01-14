@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_CreateMenu
+        .global Wimp_CreateMenu
+Wimp_CreateMenu:
 @
 @        STMFD   sp!, {lr}
         MOV     ip, lr

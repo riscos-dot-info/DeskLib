@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_SetPalette
+        .global Wimp_SetPalette
+Wimp_SetPalette:
 @
 @        STMFD   sp!, {lr}
         MOV     ip, lr

@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_ProcessKey
+        .global Wimp_ProcessKey
+Wimp_ProcessKey:
 @
 @        STMFD   sp!, {lr}
         MOV     ip, lr

@@ -19,7 +19,8 @@
 @ os_error *Time_ReadClock(char *fivebyteblock);
 
         
-        .globl Time_ReadClock
+        .global Time_ReadClock
+Time_ReadClock:
 @
         STMFD   sp!, {lr}
         MOV     r1, r0

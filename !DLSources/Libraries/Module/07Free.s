@@ -20,7 +20,8 @@
 
 
         
-        .globl Module_Free
+        .global Module_Free
+Module_Free:
 @
         STMFD   sp!, {lr}
         MOV     a3, a1

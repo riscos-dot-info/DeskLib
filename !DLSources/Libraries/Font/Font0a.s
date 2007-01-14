@@ -9,7 +9,8 @@
 
 
         
-        .globl Font_SetFont
+        .global Font_SetFont
+Font_SetFont:
 @
         STMFD   sp!, {lr}
         SWI     SWI_Font_SetFont + XOS_Bit

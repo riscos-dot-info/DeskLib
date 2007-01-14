@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_Save
+        .global Sprite_Save
+Sprite_Save:
 @
         STMFD   sp!, {lr}
         MOV     a3, a2

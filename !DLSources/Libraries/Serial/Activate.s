@@ -19,7 +19,8 @@
 @ os_error *Serial_Activate(void);
 
         
-        .globl Serial_Activate
+        .global Serial_Activate
+Serial_Activate:
 @
         STMFD   sp!, {lr}
         MOV     a1, #2

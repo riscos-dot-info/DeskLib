@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_AddMessages
+        .global Wimp_AddMessages
+Wimp_AddMessages:
 @
         MOV     ip, lr
 

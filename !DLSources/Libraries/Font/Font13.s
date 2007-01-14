@@ -13,7 +13,8 @@
 @ [ip,#0]=fore_phys
 
         
-        .globl Font_SetPalette
+        .global Font_SetPalette
+Font_SetPalette:
 @
         MOV     ip,sp
         STMFD   sp!, {r4,r5,lr}

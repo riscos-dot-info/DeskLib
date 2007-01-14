@@ -23,7 +23,8 @@
 @                               int size, char *match);
 
         
-        .globl Filing_ReadDirNames
+        .global Filing_ReadDirNames
+Filing_ReadDirNames:
 @
         MOV     ip, sp
         STMFD   sp!, {r2-r6,lr}

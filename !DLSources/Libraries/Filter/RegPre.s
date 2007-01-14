@@ -7,7 +7,8 @@
 @        void Filter_RegisterPreFilter(char *FilterName, FilterHandler handler, int R12, int TaskHandle);
 
         
-        .globl Filter_RegisterPreFilter
+        .global Filter_RegisterPreFilter
+Filter_RegisterPreFilter:
 @
         STMFD   sp!, {lr}
         SWI     SWI_Filter_RegisterPreFilter

@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_Initialise
+        .global Wimp_Initialise
+Wimp_Initialise:
 @
         STMFD   sp!, {v1, v2, lr}
 

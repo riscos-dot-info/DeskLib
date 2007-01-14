@@ -20,7 +20,8 @@
 @ int Serial_GetFormat(void);
 
         
-        .globl Serial_GetFormat
+        .global Serial_GetFormat
+Serial_GetFormat:
 @
         STMFD   sp!, {lr}
         MOV     a1, #1

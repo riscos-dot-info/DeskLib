@@ -20,7 +20,8 @@
 @ char *Filing_MakePath(char *newpath, const char *dirname, const char *leafname);
 
         
-        .globl Filing_MakePath
+        .global Filing_MakePath
+Filing_MakePath:
 @
         MOVS    ip, r0
         TEQNE   r1, #0

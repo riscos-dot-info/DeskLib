@@ -7,7 +7,8 @@
 @        void Filter_DeRegisterPreFilter(char *FilterName, FilterHandler handler, int R12, int TaskHandle);
 
         
-        .globl Filter_DeRegisterPreFilter
+        .global Filter_DeRegisterPreFilter
+Filter_DeRegisterPreFilter:
 @
         STMFD   sp!, {lr}
         SWI     SWI_Filter_DeRegisterPreFilter

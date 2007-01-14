@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_OpenWindowNest
+        .global Wimp_OpenWindowNest
+Wimp_OpenWindowNest:
 @
         STMFD   sp!, {v1, lr}
 

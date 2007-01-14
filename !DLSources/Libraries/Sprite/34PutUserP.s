@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_PlotP
+        .global Sprite_PlotP
+Sprite_PlotP:
 @
         MOV     ip, sp
         STMFD   sp!, {a1-a4, v1-v2, lr}

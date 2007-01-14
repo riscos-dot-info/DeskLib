@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_WimpPlot
+        .global Sprite_WimpPlot
+Sprite_WimpPlot:
 @
         MOV       ip, sp
         STMFD     sp!, {a1-a4, v1-v6, lr}

@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_DeleteRowP
+        .global Sprite_DeleteRowP
+Sprite_DeleteRowP:
 @
         STMFD     sp!, {a1-a3, lr}
         LDMFD     sp!, {a2-a4}

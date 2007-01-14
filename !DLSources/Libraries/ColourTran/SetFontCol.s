@@ -8,7 +8,8 @@
         .include     "SwiNos.h"
 @
         
-        .globl ColourTrans_SetFontColours
+        .global ColourTrans_SetFontColours
+ColourTrans_SetFontColours:
 @
         SWI     SWI_ColourTrans_SetFontColours + XOS_Bit
         MOVVC   r0, #0

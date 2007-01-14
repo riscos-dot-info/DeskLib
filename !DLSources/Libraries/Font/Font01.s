@@ -14,7 +14,8 @@
 @       r5,[ip,#4]=yres
 
         
-        .globl Font_FindFont
+        .global Font_FindFont
+Font_FindFont:
 @
         MOV     ip,sp
         STMFD   sp!, {r4,r5,r6,lr}

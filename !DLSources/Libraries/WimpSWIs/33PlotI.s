@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_PlotIcon
+        .global Wimp_PlotIcon
+Wimp_PlotIcon:
 @
 @        STMFD   sp!, {lr}
         MOV     ip, lr

@@ -20,7 +20,8 @@
 @ os_error *Serial_SetFormat(int format);
 
         
-        .globl Serial_SetFormat
+        .global Serial_SetFormat
+Serial_SetFormat:
 @
         STMFD   sp!, {lr}
         MOV     a2, a1

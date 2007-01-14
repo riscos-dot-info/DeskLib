@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_RedrawWindow
+        .global Wimp_RedrawWindow
+Wimp_RedrawWindow:
 @
 @        STMFD   sp!, {lr}
         MOV     ip, lr

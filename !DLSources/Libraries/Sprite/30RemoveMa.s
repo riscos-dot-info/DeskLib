@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_RemoveMask
+        .global Sprite_RemoveMask
+Sprite_RemoveMask:
 @
         STMFD     sp!, {a1-a2, lr}
         LDMFD     sp!, {a2-a3}

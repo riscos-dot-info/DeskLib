@@ -8,7 +8,8 @@
 
 
         
-        .globl Font_FindCaretJ
+        .global Font_FindCaretJ
+Font_FindCaretJ:
 @
         STMFD   sp!, {r4,r5,r6,lr}
         MOV     r6,r0

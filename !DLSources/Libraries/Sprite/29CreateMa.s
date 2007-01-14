@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_CreateMask
+        .global Sprite_CreateMask
+Sprite_CreateMask:
 @
         STMFD     sp!, {a1-a2, lr}
         LDMFD     sp!, {a2-a3}

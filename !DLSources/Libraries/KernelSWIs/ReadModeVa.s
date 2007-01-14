@@ -19,7 +19,8 @@
 @ os_error *OS_ReadModeVariable(int mode, mode_variable variable, int *value);
 
         
-        .globl OS_ReadModeVariable
+        .global OS_ReadModeVariable
+OS_ReadModeVariable:
 @
         MOV     ip, sp
         STMFD   sp!, {lr}

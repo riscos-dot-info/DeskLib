@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_BlockCopy
+        .global Wimp_BlockCopy
+Wimp_BlockCopy:
 @
         STMFD   sp!, {v1, v2, v3, lr}
         MOV     v2,  a3

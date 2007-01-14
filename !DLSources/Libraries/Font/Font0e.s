@@ -7,7 +7,8 @@
 @os_error *Font_CharBBox(FontHandle font, char c, int flags, FontInfo *info);
 
         
-        .globl Font_CharBBox
+        .global Font_CharBBox
+Font_CharBBox:
 @
         STMFD   sp!, {r4,r5,lr}
         MOV     r5,r3

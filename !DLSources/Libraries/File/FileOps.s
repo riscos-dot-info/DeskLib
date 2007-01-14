@@ -46,7 +46,8 @@ file_lasterror:
 @
 @ ---------------------------------------------------------------------------
 @
-        .globl File_Open
+        .global File_Open
+File_Open:
 @
 @ extern file_handle File_Open(char *filename, file_access access);
 @
@@ -70,7 +71,8 @@ file_lasterror:
 @
 @ ---------------------------------------------------------------------------
 @
-        .globl File_Close
+        .global File_Close
+File_Close:
 @
 @ extern os_error *File_Close(file_handle a1);
 @
@@ -88,7 +90,8 @@ file_lasterror:
 @
 @ ---------------------------------------------------------------------------
 @
-        .globl File_EOF
+        .global File_EOF
+File_EOF:
 @
 @ extern BOOL File_EOF(file_handle a1);
 @
@@ -109,7 +112,8 @@ file_lasterror:
 @
 @ ---------------------------------------------------------------------------
 @
-        .globl File_Seek
+        .global File_Seek
+File_Seek:
 @
 @ extern os_error *File_Seek(file_handle a1, file_position position);
 @
@@ -128,7 +132,8 @@ file_lasterror:
 @
 @ ---------------------------------------------------------------------------
 @
-        .globl File_ReturnPos
+        .global File_ReturnPos
+File_ReturnPos:
 @
 @ extern file_position File_ReturnPos(file_handle a1);
 @
@@ -148,7 +153,8 @@ file_lasterror:
 @
 @ ---------------------------------------------------------------------------
 @
-        .globl File_ReadExtent
+        .global File_ReadExtent
+File_ReadExtent:
 @
 @ extern int File_ReadExtent(file_handle a1);
 @
@@ -169,7 +175,8 @@ file_lasterror:
 @
 @ ---------------------------------------------------------------------------
 @
-        .globl File_WriteBytes
+        .global File_WriteBytes
+File_WriteBytes:
 @
 @ extern os_error *File_WriteBytes(file_handle a1, void *buffer, int numbytes);
 @
@@ -189,7 +196,8 @@ file_lasterror:
 @
 @ ---------------------------------------------------------------------------
 @
-        .globl File_ReadBytes
+        .global File_ReadBytes
+File_ReadBytes:
 @
 @ extern int File_ReadBytes(file_handle a1, char *buffer, int numbytes);
 @
@@ -211,7 +219,8 @@ file_lasterror:
 @
 @ ---------------------------------------------------------------------------
 @
-        .globl File_Read8
+        .global File_Read8
+File_Read8:
 @
 @ extern int File_Read8(file_handle a1);
 @
@@ -232,7 +241,8 @@ file_lasterror:
 @
 @ ---------------------------------------------------------------------------
 @
-        .globl File_Read32
+        .global File_Read32
+File_Read32:
 @
 @ extern int File_Read32(file_handle a1);
 @
@@ -258,7 +268,8 @@ file_lasterror:
 @
 @ ---------------------------------------------------------------------------
 @
-        .globl File_Read32R
+        .global File_Read32R
+File_Read32R:
 @
 @ extern int File_Read32R(file_handle a1);
 @
@@ -279,7 +290,8 @@ file_lasterror:
 @
 @ ---------------------------------------------------------------------------
 @
-        .globl File_Write8
+        .global File_Write8
+File_Write8:
 @
 @ extern os_error *File_Write8(file_handle a1, int byte);
 @
@@ -298,7 +310,8 @@ file_lasterror:
 @
 @ ---------------------------------------------------------------------------
 @
-        .globl File_Write32
+        .global File_Write32
+File_Write32:
 @
 @ extern os_error *File_Write32(file_handle a1, int word);
 @
@@ -323,7 +336,8 @@ file_lasterror:
 @
 @ ---------------------------------------------------------------------------
 @
-        .globl File_Write32R
+        .global File_Write32R
+File_Write32R:
 @
 @ extern os_error *File_Write32R(file_handle a1, int a2);
 @

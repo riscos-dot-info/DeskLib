@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_GetPointerInfo
+        .global Wimp_GetPointerInfo
+Wimp_GetPointerInfo:
 @
 @        STMFD   sp!, {lr}
         MOV     ip, lr

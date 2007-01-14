@@ -19,7 +19,8 @@
 @ void Hourglass_On(void);
 
         
-        .globl Hourglass_On
+        .global Hourglass_On
+Hourglass_On:
 @
         STMFD   sp!, {lr}
         SWI     SWI_Hourglass_On + XOS_Bit

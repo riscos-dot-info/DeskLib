@@ -19,7 +19,8 @@
 @ os_error *Time_ConvertTimeToOrdinals(char *fivebyteblock, time_ordinals *ord);
 
         
-        .globl Time_ConvertTimeToOrdinals
+        .global Time_ConvertTimeToOrdinals
+Time_ConvertTimeToOrdinals:
 @              
         STMFD   sp!, {lr}
         MOV     r2, r1

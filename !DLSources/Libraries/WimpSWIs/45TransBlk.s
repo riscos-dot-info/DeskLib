@@ -35,7 +35,8 @@
 @============================================================================
 @
         
-        .globl Wimp_TransferBlock
+        .global Wimp_TransferBlock
+Wimp_TransferBlock:
 @
         MOV     ip, sp
         STMFD   sp!, {v1, lr}

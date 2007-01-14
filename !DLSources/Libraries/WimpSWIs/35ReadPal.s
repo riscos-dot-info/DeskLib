@@ -44,7 +44,8 @@
 @============================================================================
 @
         
-        .globl Wimp_ReadPalette
+        .global Wimp_ReadPalette
+Wimp_ReadPalette:
 @
 @        STMFD   sp!, {lr}
         MOV     ip, lr
