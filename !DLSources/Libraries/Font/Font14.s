@@ -8,7 +8,8 @@
 
 
         
-        .globl Font_ReadThresholds
+        .global Font_ReadThresholds
+Font_ReadThresholds:
 @
         STMFD   sp!, {lr}
         MOV     r1,r0

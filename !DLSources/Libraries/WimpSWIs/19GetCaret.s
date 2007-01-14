@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_GetCaretPosition
+        .global Wimp_GetCaretPosition
+Wimp_GetCaretPosition:
 @
 @        STMFD   sp!, {lr}
         MOV     ip, lr

@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_RedirectMask
+        .global Sprite_RedirectMask
+Sprite_RedirectMask:
 @
         STMFD   sp!, {a1, a2, a3, a4, lr}
         LDMFD   sp!, {a2, a3, a4, ip}

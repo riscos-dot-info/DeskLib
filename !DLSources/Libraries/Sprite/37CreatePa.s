@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_CreatePalette
+        .global Sprite_CreatePalette
+Sprite_CreatePalette:
 @
         STMFD     sp!, {a1-a2, v1-v2, lr}
 	MOVS      a4, a3

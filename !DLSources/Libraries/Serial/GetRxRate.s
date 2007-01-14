@@ -19,7 +19,8 @@
 @ serial_rate Serial_GetRxRate(void);
 
         
-        .globl Serial_GetRxRate
+        .global Serial_GetRxRate
+Serial_GetRxRate:
 @
         STMFD   sp!, {lr}
         MOV     a1, #5

@@ -19,7 +19,8 @@
 @ os_error *OS_Word(osword_number reason, void *param_block);
 
         
-        .globl OS_Word
+        .global OS_Word
+OS_Word:
 @
         STMFD   sp!, {lr}
         SWI     SWI_OS_Word + XOS_Bit

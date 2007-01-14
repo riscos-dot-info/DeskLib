@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_OpenWindow
+        .global Wimp_OpenWindow
+Wimp_OpenWindow:
 
         MOV     ip, lr
 

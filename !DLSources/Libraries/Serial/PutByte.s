@@ -19,7 +19,8 @@
 @ BOOL Serial_PutByte(int c);
 
         
-        .globl Serial_PutByte
+        .global Serial_PutByte
+Serial_PutByte:
 @
         STMFD   sp!, {lr}
         MOV     a2, a1

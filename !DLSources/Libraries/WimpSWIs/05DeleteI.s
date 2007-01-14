@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_DeleteIcon
+        .global Wimp_DeleteIcon
+Wimp_DeleteIcon:
 @
         STMFD   sp!, {a1, a2, lr}
         MOV     a2, sp

@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_ForceRedraw
+        .global Wimp_ForceRedraw
+Wimp_ForceRedraw:
 @
         STMFD   sp!, {v1, lr}
         LDMFD   a1, {a1, a2, a3, a4, v1}

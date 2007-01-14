@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_InsertColumnP
+        .global Sprite_InsertColumnP
+Sprite_InsertColumnP:
 @
         STMFD     sp!, {a1-a3, lr}
         LDMFD     sp!, {a2-a4}

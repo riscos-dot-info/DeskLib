@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_WhichIcon
+        .global Wimp_WhichIcon
+Wimp_WhichIcon:
 @
 @        STMFD   sp!, {lr}
         MOV     ip, lr

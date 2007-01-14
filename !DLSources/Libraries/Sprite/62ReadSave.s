@@ -18,7 +18,8 @@
         .include     "Macros.h"
 @
         
-        .globl Sprite_ReadSaveAreaSize
+        .global Sprite_ReadSaveAreaSize
+Sprite_ReadSaveAreaSize:
 @
 @ extern os_error *Sprite_ReadSaveAreaSize(areainfo*, sprname*, size*);
 @

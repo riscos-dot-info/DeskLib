@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_ScreenSave
+        .global Sprite_ScreenSave
+Sprite_ScreenSave:
 @
         STMFD   sp!, {lr}
         MOV     a4, a2

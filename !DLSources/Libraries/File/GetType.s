@@ -19,7 +19,8 @@
         .include     "Macros.h"
 @
         
-        .globl File_GetType
+        .global File_GetType
+File_GetType:
 @
 @ extern int File_GetType(const char *filename);
 @

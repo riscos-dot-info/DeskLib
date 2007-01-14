@@ -19,7 +19,8 @@
 @ os_error *PDriver_PageSize(wimp_point *size, wimp_rect *printable);
 
         
-        .globl PDriver_PageSize
+        .global PDriver_PageSize
+PDriver_PageSize:
 @
         STMFD   sp!, {r4,r5,r6,r7,r8,lr}
         MOV     r7, a1

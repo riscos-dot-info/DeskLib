@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_UnRedirect
+        .global Sprite_UnRedirect
+Sprite_UnRedirect:
 @
         STMFD   sp!, {lr}
         LDMIA   a1, {a1, a2, a3, a4}

@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_FlipXP
+        .global Sprite_FlipXP
+Sprite_FlipXP:
 @
         STMFD     sp!, {a1-a2,lr}
         LDMFD     sp!, {a2-a3}

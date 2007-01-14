@@ -19,7 +19,8 @@
 @ void Hourglass_Smash(void);
 
         
-        .globl Hourglass_Smash
+        .global Hourglass_Smash
+Hourglass_Smash:
 @
         STMFD   sp!, {lr}
         SWI     SWI_Hourglass_Smash + XOS_Bit

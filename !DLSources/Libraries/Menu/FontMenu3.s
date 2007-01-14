@@ -41,7 +41,8 @@
           @ a1 = BOOL sysfont
           @ a2 = char *tick
 
-        .globl Menu_FontMenu3
+        .global Menu_FontMenu3
+Menu_FontMenu3:
 
         STMFD   sp!,{v1-v6,lr}
         MOV     v5,a1

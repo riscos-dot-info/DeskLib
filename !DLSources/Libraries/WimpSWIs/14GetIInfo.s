@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_GetIconState
+        .global Wimp_GetIconState
+Wimp_GetIconState:
 @
         STMFD   sp!, {v1, v2, v3, v4, lr}
 @

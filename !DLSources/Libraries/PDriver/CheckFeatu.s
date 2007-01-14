@@ -20,7 +20,8 @@
 @ os_error *PDriver_CheckFeatures(print_features mask, print_features value);
 
         
-        .globl PDriver_CheckFeatures
+        .global PDriver_CheckFeatures
+PDriver_CheckFeatures:
 @
         STMFD   sp!, {lr}
         SWI     SWI_PDriver_CheckFeatures + XOS_Bit

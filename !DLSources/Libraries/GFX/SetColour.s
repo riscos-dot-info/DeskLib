@@ -7,7 +7,8 @@
         .include     "SwiNos.h"
 @
         
-        .globl GFX_SetColour
+        .global GFX_SetColour
+GFX_SetColour:
 @
         SWI     XSWI_OS_SetColour
         MOV     pc, lr

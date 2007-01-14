@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_Load
+        .global Sprite_Load
+Sprite_Load:
 @
         STMFD   sp!, {lr}
         MOV     a3, a2

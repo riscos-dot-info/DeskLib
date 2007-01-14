@@ -20,7 +20,8 @@
 @                                   int size, int *spare);
 
         
-        .globl Filing_CanonicalisePath
+        .global Filing_CanonicalisePath
+Filing_CanonicalisePath:
 @
         STMFD   sp!, {r4-r5,lr}
         MOV     ip, r3

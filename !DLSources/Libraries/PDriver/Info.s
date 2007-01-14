@@ -19,7 +19,8 @@
 @ os_error *PDriver_Info(printer_info *block);
 
         
-        .globl PDriver_Info
+        .global PDriver_Info
+PDriver_Info:
 @
         STMFD   sp!, {r4,r5,r6,r7,r8,lr}
         MOV     r8, a1

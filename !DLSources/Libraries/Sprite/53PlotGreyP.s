@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_PlotGreyP
+        .global Sprite_PlotGreyP
+Sprite_PlotGreyP:
 @
         STMFD     sp!, {v1-v4, lr}
         LDR       v4, [sp, #4*5]

@@ -19,7 +19,8 @@
 @ void Hourglass_Off(void);
 
         
-        .globl Hourglass_Off
+        .global Hourglass_Off
+Hourglass_Off:
 @
         STMFD   sp!, {lr}
         SWI     SWI_Hourglass_Off + XOS_Bit

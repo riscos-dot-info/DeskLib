@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_SendMessage
+        .global Wimp_SendMessage
+Wimp_SendMessage:
 @
 @        STMFD   sp!, {lr}
         MOV     ip, lr

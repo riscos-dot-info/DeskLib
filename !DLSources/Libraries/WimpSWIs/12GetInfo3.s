@@ -35,7 +35,8 @@
 @============================================================================
 @
         
-        .globl Wimp_GetWindowInfoNoIcons
+        .global Wimp_GetWindowInfoNoIcons
+Wimp_GetWindowInfoNoIcons:
 @
         MOV     ip, lr
         ORR     a2, a1, #1        @ set bit 0 of R1

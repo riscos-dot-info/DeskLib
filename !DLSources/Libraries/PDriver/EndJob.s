@@ -19,7 +19,8 @@
 @ os_error *PDriver_EndJob(print_job job);
 
         
-        .globl PDriver_EndJob
+        .global PDriver_EndJob
+PDriver_EndJob:
 @
         STMFD   sp!, {lr}
         SWI     SWI_PDriver_EndJob + XOS_Bit

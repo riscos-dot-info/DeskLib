@@ -20,7 +20,8 @@
 
 @ os_error *OS_GSTrans(char *string, char *buffer, int size, char **end);
 
-        .globl OS_GSTrans
+        .global OS_GSTrans
+OS_GSTrans:
 
         MOV     ip, lr
         SWI     SWI_OS_GSTrans + XOS_Bit

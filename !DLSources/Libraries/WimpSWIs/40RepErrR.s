@@ -8,7 +8,8 @@
         .include     "Macros.h"
 @
         
-        .globl Wimp_ReportErrorR
+        .global Wimp_ReportErrorR
+Wimp_ReportErrorR:
 @
 @        STMFD   sp!, {lr}
         MOV     ip, lr

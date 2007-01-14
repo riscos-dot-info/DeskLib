@@ -19,7 +19,8 @@
 @ os_error *PDriver_ScreenDump(print_job job);
 
         
-        .globl PDriver_ScreenDump
+        .global PDriver_ScreenDump
+PDriver_ScreenDump:
 @
         STMFD   sp!, {lr}
         SWI     SWI_PDriver_ScreenDump + XOS_Bit

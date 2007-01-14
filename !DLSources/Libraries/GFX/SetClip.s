@@ -6,7 +6,8 @@
         .include     "SwiNos.h"
 @
         
-        .globl GFX_SetClip
+        .global GFX_SetClip
+GFX_SetClip:
 @
         MOV     a2, a1
 

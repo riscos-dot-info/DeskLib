@@ -20,7 +20,8 @@
 
 @ os_error *OS_CLI(char *cmd);
 
-        .globl OS_CLI
+        .global OS_CLI
+OS_CLI:
 
         MOV     ip, lr
         SWI     SWI_OS_CLI + XOS_Bit

@@ -6,7 +6,8 @@
 @ int TaskWindow_Check(void);
 
         
-        .globl TaskWindow_Check
+        .global TaskWindow_Check
+TaskWindow_Check:
 @
         STMFD   sp!, {lr}
         MOV     r0, #0

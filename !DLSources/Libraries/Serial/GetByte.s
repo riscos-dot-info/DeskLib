@@ -19,7 +19,8 @@
 @ int Serial_GetByte(void);
 
         
-        .globl Serial_GetByte
+        .global Serial_GetByte
+Serial_GetByte:
 @
         STMFD   sp!, {lr}
         MOV     a1, #4

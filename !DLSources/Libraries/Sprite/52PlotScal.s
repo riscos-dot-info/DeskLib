@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_PlotScaled
+        .global Sprite_PlotScaled
+Sprite_PlotScaled:
 @
         MOV       ip, sp
         STMFD     sp!, {v1-v4, lr}

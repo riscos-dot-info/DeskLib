@@ -19,7 +19,8 @@
 @ os_error *PDriver_SelectJob(print_job new, const char *title, print_job *old);
 
         
-        .globl PDriver_SelectJob
+        .global PDriver_SelectJob
+PDriver_SelectJob:
 @
         STMFD   sp!, {lr}
         SWI     SWI_PDriver_SelectJob + XOS_Bit

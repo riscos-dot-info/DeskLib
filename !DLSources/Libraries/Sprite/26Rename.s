@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_Rename
+        .global Sprite_Rename
+Sprite_Rename:
 @
         STMFD   sp!, {a1, a2, a3, lr}
         LDMFD   sp!, {a2, a3, a4}

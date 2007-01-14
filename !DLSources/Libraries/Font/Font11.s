@@ -7,7 +7,8 @@
 @os_error *Font_ListFonts(char *name, int *count);
 
         
-        .globl Font_ListFonts
+        .global Font_ListFonts
+Font_ListFonts:
 @
         STMFD   sp!, {r4,lr}
         MOV     r4,r1

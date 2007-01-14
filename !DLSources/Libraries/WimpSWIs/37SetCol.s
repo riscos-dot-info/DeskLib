@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_SetColour
+        .global Wimp_SetColour
+Wimp_SetColour:
 @
 @        STMFD   sp!, {lr}
         MOV     ip, lr

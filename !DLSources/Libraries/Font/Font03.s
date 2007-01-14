@@ -18,7 +18,8 @@
 @       [r1,#148] = usage
 
         
-        .globl Font_ReadDefn
+        .global Font_ReadDefn
+Font_ReadDefn:
 @
         STMFD   sp!, {r4,r5,r6,r7,lr}
         SWI     SWI_Font_ReadDefn + XOS_Bit

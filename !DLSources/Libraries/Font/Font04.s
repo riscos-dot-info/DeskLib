@@ -15,7 +15,8 @@
 @       [r5,#12] = max y
 
         
-        .globl Font_ReadInfo
+        .global Font_ReadInfo
+Font_ReadInfo:
 @
         STMFD   sp!, {r4,r5,lr}
         MOV     r5,r1

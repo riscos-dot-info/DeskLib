@@ -14,7 +14,8 @@
 
 
         
-        .globl Kbd_KeyDown
+        .global Kbd_KeyDown
+Kbd_KeyDown:
 
         STMFD  sp!, {lr}
 

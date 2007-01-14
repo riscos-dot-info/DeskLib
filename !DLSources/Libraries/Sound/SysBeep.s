@@ -18,7 +18,8 @@
 
 
   
-  .globl Sound_SysBeep
+  .global Sound_SysBeep
+Sound_SysBeep:
 
     STMFD   sp!, {lr}
     SWI     OS_WriteI + 7 + XOS_Bit

@@ -6,7 +6,8 @@
         .include     "SwiNos.h"
 @
         
-        .globl GFX_Write0
+        .global GFX_Write0
+GFX_Write0:
 @
         SWI     XSWI_OS_Write0
         MOV     pc, lr

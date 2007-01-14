@@ -19,7 +19,8 @@
 @ void Hourglass_Percentage(int percent);
 
         
-        .globl Hourglass_Percentage
+        .global Hourglass_Percentage
+Hourglass_Percentage:
 @
         STMFD   sp!, {lr}
         SWI     SWI_Hourglass_Percentage + XOS_Bit

@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_ReadPaletteSize
+        .global Sprite_ReadPaletteSize
+Sprite_ReadPaletteSize:
 @
         STMFD     sp!, {a1-a2, v1-v2, lr}
         LDMFD     sp!, {a2-a3}

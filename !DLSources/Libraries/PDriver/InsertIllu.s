@@ -23,7 +23,8 @@
 @                                      wimp_point *top_left);
 
         
-        .globl PDriver_InsertIllustration
+        .global PDriver_InsertIllustration
+PDriver_InsertIllustration:
 @
         MOV     ip, sp
         STMFD   sp!, {v1,v2,v3,v4,lr}

@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_Create
+        .global Sprite_Create
+Sprite_Create:
 @
         MOV     ip, sp
         STMFD   sp!, {a1-a4, v1-v3, lr}

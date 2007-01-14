@@ -19,7 +19,8 @@
 @ os_error *Serial_SetStatus(int eor_mask, int and_mask);
 
         
-        .globl Serial_SetStatus
+        .global Serial_SetStatus
+Serial_SetStatus:
 @
         STMFD   sp!, {lr}
         MOV     a3, a2

@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_GetWindowInfo
+        .global Wimp_GetWindowInfo
+Wimp_GetWindowInfo:
 @
 @        STMFD   sp!, {lr}
         MOV     ip, lr

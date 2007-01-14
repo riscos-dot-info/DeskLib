@@ -10,7 +10,8 @@
         .include     "SwiNos.h"
 @
         
-        .globl ColourTrans_SelectTable
+        .global ColourTrans_SelectTable
+ColourTrans_SelectTable:
 @
         MOV     ip,sp
         STMFD   sp!,{r4,lr}

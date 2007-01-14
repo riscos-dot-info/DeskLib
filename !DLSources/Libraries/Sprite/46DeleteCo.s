@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_DeleteColumn
+        .global Sprite_DeleteColumn
+Sprite_DeleteColumn:
 @
         STMFD     sp!, {a1-a3, lr}
         LDMFD     sp!, {a2-a4}

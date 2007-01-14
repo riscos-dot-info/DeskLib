@@ -7,7 +7,8 @@
 @os_error *Font_SetFontColours(FontHandle font, int back_colour, int fore_colour, int offset);
 
         
-        .globl Font_SetFontColours
+        .global Font_SetFontColours
+Font_SetFontColours:
 @
         STMFD   sp!, {lr}
         SWI     SWI_Font_SetFontColours + XOS_Bit

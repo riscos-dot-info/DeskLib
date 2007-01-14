@@ -31,7 +31,8 @@
 @============================================================================
 @
         
-        .globl Wimp_CommandWindow
+        .global Wimp_CommandWindow
+Wimp_CommandWindow:
 @
         MOV     ip, lr
 

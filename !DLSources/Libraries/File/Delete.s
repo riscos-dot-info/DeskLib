@@ -18,7 +18,8 @@
         .include     "Macros.h"
 @
         
-        .globl File_Delete
+        .global File_Delete
+File_Delete:
 @
 @ extern os_error *File_Delete(char *filename);
 @

@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_RemoveMessages
+        .global Wimp_RemoveMessages
+Wimp_RemoveMessages:
 @
         MOV     ip, lr
 

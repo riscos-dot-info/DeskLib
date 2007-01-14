@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_PlotMask
+        .global Sprite_PlotMask
+Sprite_PlotMask:
 @
         STMFD     sp!, {v1, lr}
 	LDMIA     a3, {a4, v1}

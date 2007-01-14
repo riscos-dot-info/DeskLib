@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_GetWindowState
+        .global Wimp_GetWindowState
+Wimp_GetWindowState:
 @
         MOV     ip, lr
 

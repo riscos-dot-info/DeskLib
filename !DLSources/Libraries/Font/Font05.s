@@ -15,7 +15,8 @@
 @       [r0,#16] = index
 
         
-        .globl Font_StringWidth
+        .global Font_StringWidth
+Font_StringWidth:
 @
         STMFD   sp!, {r4,r5,r6,lr}
         MOV     r6,r0

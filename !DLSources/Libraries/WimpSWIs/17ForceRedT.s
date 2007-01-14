@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_RedrawTitle
+        .global Wimp_RedrawTitle
+Wimp_RedrawTitle:
 @
         LDR     a2, task
         MOV     a3, #3        

@@ -20,7 +20,8 @@
 @ os_error *PDriver_SelectIllustration(print_job new, const char *title, print_job *old);
 
         
-        .globl PDriver_SelectIllustration
+        .global PDriver_SelectIllustration
+PDriver_SelectIllustration:
 @
         STMFD   sp!, {lr}
         SWI     SWI_PDriver_SelectIllustration + XOS_Bit

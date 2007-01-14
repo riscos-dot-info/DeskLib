@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_PlotMaskScaled
+        .global Sprite_PlotMaskScaled
+Sprite_PlotMaskScaled:
 @
         STMFD     sp!, {v1, v3, lr}
         MOV       v3, a4

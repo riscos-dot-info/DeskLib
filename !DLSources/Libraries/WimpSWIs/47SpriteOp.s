@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_SpriteOp
+        .global Wimp_SpriteOp
+Wimp_SpriteOp:
 @
         STMFD   sp!, {v1-v6, lr}
         MOV     ip, a1

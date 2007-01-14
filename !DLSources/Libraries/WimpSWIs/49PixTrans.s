@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_ReadPixTrans
+        .global Wimp_ReadPixTrans
+Wimp_ReadPixTrans:
 @
         MOV     ip, sp
         STMFD   sp!, {v1-v4, lr}

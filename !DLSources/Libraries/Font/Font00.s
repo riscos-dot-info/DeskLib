@@ -7,7 +7,8 @@
 @ os_error *Font_CacheAddr(int *version, int *cacheused, int *cachesize);
 
         
-        .globl Font_CacheAddr
+        .global Font_CacheAddr
+Font_CacheAddr:
 @
         STMFD   sp!, {v1,v2,v3,lr}
         MOV     v1,a1

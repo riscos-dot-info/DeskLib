@@ -17,7 +17,8 @@
      
      
        
-       .globl Tinct_PlotScaled
+       .global Tinct_PlotScaled
+Tinct_PlotScaled:
    
        MOV     ip, sp
        STMFD   sp!, {r4-r7,lr}

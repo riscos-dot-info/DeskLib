@@ -19,7 +19,8 @@
 @ os_error *PDriver_GetRectangle(wimp_rect *rectangle_to_print, int *finished, int *rectangle_id);
 
         
-        .globl PDriver_GetRectangle
+        .global PDriver_GetRectangle
+PDriver_GetRectangle:
 @
         STMFD   sp!, {v1,lr}
         MOV     a4, a2

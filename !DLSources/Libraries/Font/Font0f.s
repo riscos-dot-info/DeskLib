@@ -7,7 +7,8 @@
 @os_error *Font_ReadScaleFactor(int *xscale, int *yscale);
 
         
-        .globl Font_ReadScaleFactor
+        .global Font_ReadScaleFactor
+Font_ReadScaleFactor:
 @
         STMFD   sp!, {r4,lr}
         MOV     r3,r0

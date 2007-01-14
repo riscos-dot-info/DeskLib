@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_CloseTemplate
+        .global Wimp_CloseTemplate
+Wimp_CloseTemplate:
 @
 @        STMFD   sp!, {lr}
         MOV     ip, lr

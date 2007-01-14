@@ -20,7 +20,8 @@
 @                                         int *r1out, int *r2out);
 
         
-        .globl OS_Byte
+        .global OS_Byte
+OS_Byte:
 @
         MOV     ip, sp
         STMFD   sp!, {lr}

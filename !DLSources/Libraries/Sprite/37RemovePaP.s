@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_RemovePaletteP
+        .global Sprite_RemovePaletteP
+Sprite_RemovePaletteP:
 @
         STMFD     sp!, {a1-a2, v1-v2, lr}
         LDMFD     sp!, {a2-a3}

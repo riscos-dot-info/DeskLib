@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_CloseDown
+        .global Wimp_CloseDown
+Wimp_CloseDown:
 @
         STMFD   sp!, {lr}
         LDR     a2, DATA

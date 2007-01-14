@@ -19,7 +19,8 @@
 @ os_error *PDriver_CurrentJob(print_job *current);
 
         
-        .globl PDriver_CurrentJob
+        .global PDriver_CurrentJob
+PDriver_CurrentJob:
 @
         STMFD   sp!, {lr}
         MOV     a2, a1

@@ -12,7 +12,8 @@
 
 
         
-        .globl Kbd_GET
+        .global Kbd_GET
+Kbd_GET:
 
         STMFD  sp!, {lr}
         SWI    SWI_OS_ReadC + XOS_Bit

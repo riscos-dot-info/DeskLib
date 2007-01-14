@@ -20,7 +20,8 @@
 @                                         time_ordinals *ord);
 
         
-        .globl Time_ConvertTimeToUTCOrdinals
+        .global Time_ConvertTimeToUTCOrdinals
+Time_ConvertTimeToUTCOrdinals:
 @              
         STMFD   sp!, {lr}
         MOV     r2, r1

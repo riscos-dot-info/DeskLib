@@ -24,7 +24,8 @@
 @ If the table contains a -1 then this is always taken
 @       - Use this for a default action
 
-        .globl Dispatch
+        .global Dispatch
+Dispatch:
 @
         MOV     ip,sp
         STMFD   sp!, {r4,r5,r6,r7,fp,ip,lr,pc}

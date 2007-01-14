@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_Enumerate
+        .global Wimp_Enumerate
+Wimp_Enumerate:
 @
         MOV     a3, a2
         LDR     a2, [a3]

@@ -9,7 +9,8 @@
 
 
         
-        .globl Font_CurrentFont
+        .global Font_CurrentFont
+Font_CurrentFont:
 @
         STMFD   sp!, {r4,lr}
         MOV     r4,r0

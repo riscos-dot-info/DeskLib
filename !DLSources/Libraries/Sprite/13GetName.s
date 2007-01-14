@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_GetName
+        .global Sprite_GetName
+Sprite_GetName:
 @
         STMFD     sp!, {v1,lr}
         MOV       v1, a3

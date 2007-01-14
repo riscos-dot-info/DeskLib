@@ -9,7 +9,8 @@
 
 
         
-        .globl Font_ConverttoOS
+        .global Font_ConverttoOS
+Font_ConverttoOS:
 @
         STMFD   sp!, {r4,lr}
         MOV     r4,r3

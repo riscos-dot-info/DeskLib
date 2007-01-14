@@ -9,7 +9,8 @@
 
 
         
-        .globl Font_Caret
+        .global Font_Caret
+Font_Caret:
 @
         MOV     ip,sp
         STMFD   sp!, {r4,lr}

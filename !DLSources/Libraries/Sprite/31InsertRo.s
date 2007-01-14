@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_InsertRow
+        .global Sprite_InsertRow
+Sprite_InsertRow:
 @
         STMFD     sp!, {a1-a3, lr}
         LDMFD     sp!, {a2-a4}

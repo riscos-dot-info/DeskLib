@@ -7,7 +7,8 @@
 @        void Filter_DeRegisterPostFilter(char *FilterName, FilterHandler handler, int R12, int TaskHandle, int EventMask);
 
         
-        .globl Filter_DeRegisterPostFilter
+        .global Filter_DeRegisterPostFilter
+Filter_DeRegisterPostFilter:
 @
         MOV     ip,sp
         STMFD   sp!, {r4,lr}

@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_DragBox
+        .global Wimp_DragBox
+Wimp_DragBox:
 @
 @        STMFD   sp!, {lr}
         MOV     ip, lr

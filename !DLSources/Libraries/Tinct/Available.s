@@ -17,7 +17,8 @@
 
 
        
-       .globl Tinct_AvailableFeatures
+       .global Tinct_AvailableFeatures
+Tinct_AvailableFeatures:
 
        SWI     SWI_Tinct_AvailableFeatures + XOS_Bit
        MOV     pc, lr

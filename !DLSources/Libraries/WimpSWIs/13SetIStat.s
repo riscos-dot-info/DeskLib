@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_SetIconState
+        .global Wimp_SetIconState
+Wimp_SetIconState:
 @
         STMFD   sp!, {a1-a4, lr}
         MOV     a2, sp

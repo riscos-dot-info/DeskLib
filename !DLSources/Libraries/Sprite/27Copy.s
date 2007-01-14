@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_Copy
+        .global Sprite_Copy
+Sprite_Copy:
 @
         STMFD   sp!, {a1, a2, a3, lr}
         LDMFD   sp!, {a2, a3, a4}

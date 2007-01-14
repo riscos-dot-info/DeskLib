@@ -17,7 +17,8 @@
      
      
        
-       .globl Tinct_Compress
+       .global Tinct_Compress
+Tinct_Compress:
    
        MOV     ip, sp
        STMFD   sp!, {r7,lr}

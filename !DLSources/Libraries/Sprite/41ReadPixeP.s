@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_ReadPixelP
+        .global Sprite_ReadPixelP
+Sprite_ReadPixelP:
 @
         STMFD     sp!, {a4, v1-v3, lr}
 	LDMIA	  a3, {a4, v1}		@ Reads x,y coord

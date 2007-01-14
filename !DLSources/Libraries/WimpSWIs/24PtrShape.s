@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_SetPointerShape
+        .global Wimp_SetPointerShape
+Wimp_SetPointerShape:
 @
         STMFD   sp!, {v1, v2, lr}
         MOV     ip, a1

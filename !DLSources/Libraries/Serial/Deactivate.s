@@ -19,7 +19,8 @@
 @ os_error *Serial_Deactivate(void);
 
         
-        .globl Serial_Deactivate
+        .global Serial_Deactivate
+Serial_Deactivate:
 @
         STMFD   sp!, {lr}
         MOV     a1, #2

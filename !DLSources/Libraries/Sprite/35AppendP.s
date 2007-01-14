@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_AppendP
+        .global Sprite_AppendP
+Sprite_AppendP:
 @
         STMFD     sp!, {a1-a4, v1, lr}
         LDMFD     sp!, {a2-a4, v1}

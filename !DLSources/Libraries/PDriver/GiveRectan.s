@@ -21,7 +21,8 @@
 @                                 wimp_point *position, int background_colour);
 
         
-        .globl PDriver_GiveRectangle
+        .global PDriver_GiveRectangle
+PDriver_GiveRectangle:
 @
         MOV     ip, sp
         STMFD   sp!, {v1,lr}

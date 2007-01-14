@@ -19,7 +19,8 @@
 @ os_error *Serial_SendBreak(int length);
 
         
-        .globl Serial_SendBreak
+        .global Serial_SendBreak
+Serial_SendBreak:
 @
         STMFD   sp!, {lr}
         MOV     a2, a1

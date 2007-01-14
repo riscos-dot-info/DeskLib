@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Sprite_ReadInfoP
+        .global Sprite_ReadInfoP
+Sprite_ReadInfoP:
 @
         STMFD   sp!, {a3, v1-v3, lr}
         MOV     a3, a2

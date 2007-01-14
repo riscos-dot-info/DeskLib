@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_SetMode
+        .global Wimp_SetMode
+Wimp_SetMode:
 @
 @        STMFD   sp!, {lr}
         MOV     ip, lr

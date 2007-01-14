@@ -34,7 +34,8 @@
 @============================================================================
 @
         
-        .globl Wimp_GetRectangle
+        .global Wimp_GetRectangle
+Wimp_GetRectangle:
 @
 @        STMFD   sp!, {lr}
         MOV     ip,lr
