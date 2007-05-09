@@ -1,0 +1,13 @@
+The command line I use to make the Desklib XML file is
+haddoc -v -o docs.xml -n DeskLib -x "_dl_.*_h" h_doc
+
+Where h_doc is the path to the h_doc directory.
+
+To make the HTML stuff, I use xsltproc from Gerph's XML utils page at http://homepage.ntlworld.com/justin.fletcher/XML/ and invoke it thusly:
+
+xsltproc -o index.html html.xsl docs.xml
+
+This produces an index page and a HTML page for each header file in the current directory.
+
+
+haddoc needs a wimpslot of about a meg to handle DeskLib, significantly less for smaller libraries/files.

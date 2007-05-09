@@ -1,0 +1,22 @@
+Set DeskLibGenHelp$Dir <Obey$Dir>
+IconSprites <DeskLibGenHelp$Dir>.!Sprites
+Echo
+Echo -> DLGenHelp
+Echo    ---------
+Echo
+Echo -> Writing XML docs...
+<DeskLibGenHelp$Dir>.haddoc --native -v -o <DeskLibGenHelp$Dir>.Output.XMLDocs -n "DeskLib 2.80" -x "_dl_.*_h" <DeskLib$Dir>/include/*
+Echo
+Echo -> Writing HTML docs...
+Echo   (Warning: setting CSD!)
+IfThere <DeskLibGenHelp$Dir>.Output.HTML Then Echo Else CDir <DeskLibGenHelp$Dir>.Output.HTML
+Dir <DeskLibGenHelp$Dir>.Output.HTML
+<DeskLibGenHelp$Dir>.xsltproc --native -o index.html <DeskLibGenHelp$Dir>.html/xsl <DeskLibGenHelp$Dir>.Output.XMLDocs
+Echo
+IfThere <DeskLibGenHelp$Dir>.Output.DeskLib Then Wipe <DeskLibGenHelp$Dir>.Output.DeskLib ~C F
+Echo -> Writing StrongHelp file...
+<DeskLibGenHelp$Dir>.haddoctosh -i <DeskLibGenHelp$Dir>.Output.XMLDocs <DeskLibGenHelp$Dir>.Output.DeskLib
+Filer_OpenDir <DeskLibGenHelp$Dir>.Output
+
+Echo
+Echo -> Finished.
