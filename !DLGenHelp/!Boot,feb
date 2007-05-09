@@ -1,0 +1,2 @@
+If "<DeskLibGenHelp$Dir>" = "" Then Set DeskLibGenHelp$Dir <Obey$Dir>
+IconSprites <DeskLibGenHelp$Dir>.!Sprites
