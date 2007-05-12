@@ -18,6 +18,7 @@
 
 #include <string.h>
 
+#include "DeskLib:Error.h"
 #include "DeskLib:Wimp.h"
 #include "DeskLib:WimpSWIs.h"
 #include "DeskLib:Sprite.h"
@@ -30,11 +31,12 @@
 extern icon_handle Icon_BarIcon(const char *spritename, window_handle pos)
 {
   icon_createblock icreate;
-  icon_handle      icon;
+  icon_handle      icon = 0;
   void             *romsprites, *ramsprites;
   sprite_info      sinfo;
   int              xeigfactor;
   int              yeigfactor;
+  os_error         *swierr;
 
   icreate.window = pos;
   icreate.icondata.flags.value = 0x1700301a;       /* Click-able sprite icon */
@@ -44,20 +46,20 @@ extern icon_handle Icon_BarIcon(const char *spritename, window_handle pos)
     icreate.icondata.workarearect.min.y = 0;
 
   Wimp_BaseOfSprites(&romsprites, &ramsprites);
-  if (Sprite_ReadInfo(ramsprites, spritename, &sinfo) == NULL)
+  swierr = Sprite_ReadInfo(ramsprites, spritename, &sinfo);
+  if (swierr == NULL)
   {
-    /****** previous version used eigfactors for current mode ******/
     ReadModeVar(sinfo.mode, 4, &xeigfactor);
     ReadModeVar(sinfo.mode, 5, &yeigfactor);
     icreate.icondata.workarearect.max.x = sinfo.width  << xeigfactor;
     icreate.icondata.workarearect.max.y = sinfo.height << yeigfactor;
+
+    Wimp_CreateIcon(&icreate, &icon);
   }
-  else
+  else /* there was some error from Sprite_ReadInfo */
   {
-    icreate.icondata.workarearect.max.x =
-      icreate.icondata.workarearect.max.y = 68;
+    Error_ReportInternal(swierr->errnum, swierr->errmess);
   }
 
-  Wimp_CreateIcon(&icreate, &icon);
   return(icon);
 }
