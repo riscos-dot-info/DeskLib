@@ -6,4 +6,4 @@ IconSprites <Obey$Dir>.!Sprites
 Set DeskLib_User$Dir <Obey$Dir>
 Set DeskLib_User$Path <DeskLib_User$Dir>.,<DeskLib_User$Dir>.include.,
 
-Filer_OpenDir <Obey$Dir>
+Filer_OpenDir <DeskLib_User$Dir>
