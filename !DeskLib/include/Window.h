@@ -322,6 +322,12 @@ extern BOOL Window_MoveWindow(event_pollblock *event, void *reference);
   This function *always* returns TRUE.
 */
 
+extern BOOL Window_IsOpen(window_handle window);
+/*
+  This returns TRUE if the window is currently open.
+*/
+
+
 #ifdef __cplusplus
 }
 #endif
