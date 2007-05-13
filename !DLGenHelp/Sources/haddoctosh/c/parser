@@ -1386,8 +1386,8 @@ int assemble_manual(xmlDoc *parsed, const char *ofilename)
   wputs("About this manual\n", output);
   wputs("#Parent !root\n", output);
   wputs("This manual is generated automatically from the library's header files using haddoc (to parse the headers into XML) and haddoctosh (to take this XML and output a Stronghelp manual).\n\n", output);
-  wputs("Both of these utilities and their source code should at some point be available via <http://www.isparpsoft.co.uk=>#URL http://www.isparpsoft.co.uk/>.\n\n", output);
-  wputs("Therefore any comments you wish to make about the style and presentation of the manual should be directed to the author of the documentation tools (<Antony Sidwell=>#URL mailto:antony@isparp.co.uk>), whereas any feedback about the contents of the manual should probably be directed to the author(s) of the library being documented.\n", output);
+  wputs("Both of these utilities and their source code can be obtained from the <DeskLib SVN repository=>#URL http://www.riscos.info/index.php/Source_repositories_overview#DeskLib>.\n\n", output);
+  wputs("More information about haddoc, haddoctosh and DeskLib can be found at the <DeskLib website=>#URL http://www.riscos.info/index.php?title=DeskLib>.\n", output);
   close_output(output);
 
 
