@@ -147,12 +147,10 @@ extern os_error *MsgTrans_LoadFile(msgtrans_filedesc **filedesc,
   MsgTrans_LookupPS((filedesc), (token), (buffer), (bufflen), \
                     NULL, NULL, NULL, NULL)
 /*
-  MACRO: extern os_error *MsgTrans_Lookup(msgtrans_filedesc *filedesc,
-                                          char *token,
-                                          char *buffer, int bufflen);
+  MACRO: extern os_error *MsgTrans_Lookup(msgtrans_filedesc *filedesc, char *token, char *buffer, int bufflen);
 
   This looks up the given token in the given file, and copies the matched
-  token's message to the given buffer (of length 'bufflen') and ensure that
+  token's message to the given buffer (of length 'bufflen') and ensures that
   it is properly '\0' terminated.  This doesn't allow parameter substitution.
 
   You can supply a token in the form "Token:Default string" and if the
