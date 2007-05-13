@@ -9,7 +9,7 @@ Echo -> Writing XML docs...
 Echo
 Echo -> Writing HTML docs...
 Echo   (Warning: setting CSD!)
-IfThere <DeskLibGenHelp$Dir>.Output.HTML Then Echo Else CDir <DeskLibGenHelp$Dir>.Output.HTML
+CDir <DeskLibGenHelp$Dir>.Output.HTML
 Dir <DeskLibGenHelp$Dir>.Output.HTML
 <DeskLibGenHelp$Dir>.xsltproc --native -o index.html <DeskLibGenHelp$Dir>.html/xsl <DeskLibGenHelp$Dir>.Output.XMLDocs
 Echo
