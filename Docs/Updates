@@ -1,15 +1,15 @@
 This file documents changes made between released versions of DeskLib.
 
-DeskLib 2.80 (May 2007)
+DeskLib 2.80 (June 2007)
 ==========================
 
 Several important bugfixes, optimisations and a couple of API changes in Sprite.
 Provided 'sprite by pointer' in addition to 'sprite by name' routines (named as
 Sprite_*P()).
 Added Sprite_SetPointerShape()/Sprite_SetPointerShapeP().
-Last AOF-based release (next release will be ELF-based)
 Some extra examples
 Tinct support
+Documentation updated and re-organised
 
 
 DeskLib 2.70 (7 May 2005)
