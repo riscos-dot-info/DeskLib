@@ -6,7 +6,10 @@
 
 # Defaults
 
-DESKLIB = ../!DeskLib/DeskLib.a
+# Uncomment the following line if you have not already set GCCSDK_INSTALL_CROSSBIN
+#GCCSDK_INSTALL_CROSSBIN ?= /home/riscos/cross/bin
+
+DESKLIB = ../!DeskLib/o/DeskLib
 
 DESKLIB_PATH=$(shell realpath $$PWD/../\!DeskLib/include)/
 
@@ -53,8 +56,11 @@ $(DESKLIB): $(all_objects)
 # Insert all the Makefiles in the Otherlibs directory as well.
 # This provides the targets debugs and smerror
 
-include OtherLibs/Debugs/Makefile,fe1
-include OtherLibs/SmallError/Makefile,fe1
+DEBUGSDIR = ../!DeskLib/o/Debug
+OTHERDIR = ../!DeskLib/o/Other
+
+include OtherLibs/Debugs/Makefile.unix
+include OtherLibs/SmallError/Makefile.unix
 
 # Clean the whole library out in one go
 clean:
