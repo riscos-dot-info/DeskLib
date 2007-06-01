@@ -1,0 +1,9 @@
+# Sub-makefile for making SmError
+
+VPATH = @ @.^
+
+smerror: $(OTHERDIR)/SmError
+
+$(OTHERDIR)/SmError: OtherLibs/SmallError/Error.o
+	@mkdir -p $(OTHERDIR)
+	$(AR) $(ARFLAGS) $@ OtherLibs/SmallError/Error.o
