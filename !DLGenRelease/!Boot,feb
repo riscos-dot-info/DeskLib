@@ -1,2 +1,2 @@
-If "<DeskLibGenHelp$Dir>" = "" Then Set DeskLibGenHelp$Dir <Obey$Dir>
-IconSprites <DeskLibGenHelp$Dir>.!Sprites
+If "<DeskLib_GenRelease$Dir>" = "" Then Set DeskLib_GenRelease$Dir <Obey$Dir>
+IconSprites <DeskLib_GenRelease$Dir>.!Sprites

@@ -1,9 +1,26 @@
-DLGenHelp
----------
+DLGenRelease
+------------
 
 This is a very simple package of command line utilities and a script, to
-automate the process of creating the DeskLib help documentation. Any
-contributions and improvements are welcome.
+automate the process of creating the DeskLib help documentation and spit
+out the release archives. Any contributions and improvements are
+welcome.
 
+For the script to be successful, you'll need:
+ * an active internet connection (to export from the svn repository)
+ * the RISC OS svn port
+ * the RISC OS zip port
+ * an active Memphis drive (because HostFS here plays havoc with svn)
+ * to not care that the CSD gets reset! ;)
 
-Adam Richardson, May 2007
+The version number and svn download location are set at the top of !Run.
+
+If everything goes to plan, you should end up with an open filer window containing directories for release archives, RiscPkg archives and HTML
+documentation. There'll also be a XMLDocs file which is used during the
+generation process and is not important if everything finishes OK.
+
+The release archives are made up of svn exports of the DeskLib
+repository together with your locally generated DeskLib library binary
+and a StrongHelp quick reference.
+
+Adam Richardson, June 2007
