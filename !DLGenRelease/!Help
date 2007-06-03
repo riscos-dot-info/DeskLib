@@ -8,8 +8,8 @@ welcome.
 
 For the script to be successful, you'll need:
  * an active internet connection (to export from the svn repository)
- * the RISC OS svn port
- * the RISC OS zip port
+ * the RISC OS svn port - http://www.cp15.org/versioncontrol/
+ * the RISC OS zip port - http://www.sbellon.de/sw-ports.html
  * an active Memphis drive (because HostFS here plays havoc with svn)
  * to not care that the CSD gets reset! ;)
 
