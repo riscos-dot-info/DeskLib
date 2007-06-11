@@ -1,6 +1,11 @@
         Help for !DeskLib (Desklib compile-time resources)
         ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
 
+
+        Note: This is an old file. To see the full documentation,
+              please load a web browser and try again.
+
+
 This application contains everything you need to write programs using
 functions from the DeskLib library - the library itself, plus the
 DeskLib header (.h) files. 

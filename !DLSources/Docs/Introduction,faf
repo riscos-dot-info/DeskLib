@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>DeskLib Source Documentation</title>
+<link rel="stylesheet" type="text/css" href="styles">
+</head>
+<body>
+
+<table>
+<tr>
+<td colspan="2">
+<h1 style="padding-top: 3mm; padding-bottom: 3mm; margin-top: 0; margin-bottom: 0;">DeskLib Source Documentation</h1>
+</td></tr>
+<tr valign="top"><td>
+<table style="margin-left:3mm;">
+<tr class="maintext"><td class="menu">                       <h3 class="menu">Introduction</h3>           </td></tr>
+<tr>                 <td class="menu">                   <h3><a href="Making">Making&nbsp;Desklib</a></h3></td></tr>
+<tr>                 <td class="menu">             <h3><a href="Contributing">Contributing</a></h3>          </td></tr>
+<tr>                 <td class="menu">                    <h3><a href="Files">Files</a></h3>              </td></tr>
+</table>
+</td>
+<td class="maintext" style="padding:5mm;">
+<h2 style="margin-top: 0;">Introduction</h2>
+<p>The <em>!DLSources</em> application directory contains all DeskLib code-files except for
+the final libraries and headers, which are in the !DeskLib application.
+It sets the system variable <code>&lt;DeskLib_Sources$Dir&gt;</code> to be the !DLSources
+directory.</p>
+
+<p>This directory is <strong>not</strong> needed for writing applications which use
+DeskLib - the <em>!DeskLib</em> application contains all the headers and
+libraries needed. All source code for DeskLib is contained in the <em>!DLSources</em>
+directory.</p>
+
+<p>The 'Libraries' directory contains a separate directory for
+each DeskLib sub-library.</p>
+
+</td></tr>
+</table>
+</body>
+</html>

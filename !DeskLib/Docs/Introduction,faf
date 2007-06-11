@@ -1,35 +1,28 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
-<head>
-	<title>DeskLib documentation: About DeskLib</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>DeskLib Documentation</title>
+<link rel="stylesheet" type="text/css" href="styles">
 </head>
 <body>
 
-<h1>DeskLib documentation: About DeskLib</h1>
-
-
-<h2>Licence</h2>
-
-<p>Note that although this software is supplied free of charge, copyright applies to it. All rights are reserved, except for the following:</p>
-
-<p>This software may be copied and distributed without restriction so long as the following conditions are met:</p>
-
-<ul>
-	<li>The copyright messages and these conditions are distributed intact in all such copies</li>
-	<li>Only original, unaltered copies of this software are to be distributed so that this library retains consistent over time - <em>please don't</em> alter the library and pass it on; alter it and send alterations back to the moderator (see below) so that your code becomes an official update rather than a hack.</li>
-	<li>No profit is made through such distribution</li>
-</ul>
-
-<p>This software may be used in the production of any piece of software so long as the authors acknowledge in the final product distribution that DeskLib (or parts thereof) was used.</p>
-
-<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  Bug reports, fixes, or any extra code may be sent to the moderator, who may or may not act on them as he deems fit.</p>
-
-<p>NOTE that DeskLib is totally unaffiliated to anyone or anything.  All comments about people and companies in this product are either personal opinion or were factual at the time of writing. Most such comments are included only so that the user knows the REASON for things having been done as they were.</p>
-
-
-<h2>About DeskLib</h2>
-<p class="note">(The following was written mostly by Jason Williams, the original DeskLib moderator.)</p>
+<table>
+<tr>
+<td colspan="2">
+<h1 style="padding-top: 3mm; padding-bottom: 3mm; margin-top: 0; margin-bottom: 0;">DeskLib Documentation</h1>
+</td></tr>
+<tr valign="top"><td>
+<table style="margin-left:3mm;">
+<tr class="maintext"><td class="menu">                       <h3 class="menu">Introduction</h3>          </td></tr>
+<tr>                 <td class="menu">                    <h3><a href="Using">Using&nbsp;Desklib</a></h3></td></tr>
+<tr>                 <td class="menu">                <h3><a href="Reference">Reference</a></h3>         </td></tr>
+<tr>                 <td class="menu">                   <h3><a href="Future">Future</a></h3>            </td></tr>
+</table>
+</td>
+<td class="maintext" style="padding:5mm;">
+<h2 style="margin-top: 0;">Introduction</h2>
+<h3>About DeskLib</h3>
+<p><em>(The following was written mostly by Jason Williams, the original DeskLib moderator.)</em></p>
 
 <p>After some bad experiences with Acorn's RISC OS Lib, I decided that a new, well-written, professionally-finished library would be very useful.  Acorn appeared to be uninterested in fixing RISC OS Lib for me, so I managed to rustle up a band of merry programmers to help me write a completely new library, from scratch, and design things before they were written.</p>
 
@@ -61,23 +54,41 @@
 
 <p>We have absolutely NO objection to including <em>several different</em> code modules that do essentially the same thing, so that you may CHOOSE the one that suits you best.</p>
 
+<h3>Licence</h3>
 
-<h2>Authors</h2>
+<p>Note that although this software is supplied free of charge, copyright applies to it. All rights are reserved, except for the following:</p>
 
-<p>If code you have written is incorporated into this library, you retain your copyright for it.  If you ever wish to retract copy-permission for a part of DeskLib you have written, then it will be removed from *future* releases of the distribuion - it *will not* be retracted from previously released versions of the library.  It's quite likely that an equivalent bit of code will then be written by somebody else to fill the gap which was left.</p>
+<p>This software may be copied and distributed without restriction so long as the following conditions are met:</p>
 
-<p>If DeskLib is updated by someone writing code based upon your suggestions and/or code, then they retain copyright for that which they have written, though you will be credited in the updated file(s).</p>
+<ul>
+	<li>The copyright messages and these conditions are distributed intact in all such copies</li>
+	<li>Only original, unaltered copies of this software are to be distributed so that this library retains consistent over time - <em>please don't</em> alter the library and pass it on; alter it and send alterations back to the moderator (see below) so that your code becomes an official update rather than a hack.</li>
+	<li>No profit is made through such distribution</li>
+</ul>
 
-<p>If you feel that you have a good code example which would help people learning to use DeskLib, then please send a copy of that code to the moderator so it may be examined as a candidate for inclusion into future releases of the library as a tutorial/demonstration.</p>
+<p>This software may be used in the production of any piece of software so long as the authors acknowledge in the final product distribution that DeskLib (or parts thereof) was used.</p>
 
-<p>For documentation on using DeskLib in your own programming projects, and submitting your own code/ideas for inclusion in DeskLib, please read the files in the Docs directory. Note that most of the documentation of function calls is provided in the form of comments in the files in the !DeskLib.h_doc directory, or it is available seperately as a nicely-formatted StrongHelp manual.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  Bug reports, fixes, or any extra code may be sent to the moderator, who may or may not act on them as he deems fit.</p>
 
-<p>The last point is that although we are trying to provide complete useful code, some bugs are bound to fall through the net.  Some decisions on naming or data structures may seem bad to you (some do to me), but we have our reasons (usually consistency) for doing things this way.  We are doing our best; constructive criticism is welcome, but please don't whinge at us.  Note that the DeskLib team don't welcome criticism from people who are unwilling to write the code themselves, and those who bother us but can't be bothered to help fix whatever problems they may have will probably be ignored.</p>
+<p>NOTE that DeskLib is totally unaffiliated to anyone or anything.  All comments about people and companies in this product are either personal opinion or were factual at the time of writing. Most such comments are included only so that the user knows the REASON for things having been done as they were.</p>
 
-<p>Now please go back and read the conditions that you skipped at the top of this file, because they are important. ;-)</p>
+<h3>About This Version</h3>
+
+<p>This is version 2.80 of DeskLib.</p>
+
+<p>It is designed for use with Castle's 32-bit C/C++ tools, or GCC 3.x version.
+DeskLib version 3 onwards will require use of GCC 4 version for RISC OS.</p>
+
+<p>DeskLib is suitable for all RISC OS 3.x, 4.x and 5 machines.</p>
+
+<p>DeskLib's homepage is http://www.riscos.info/index.php/DeskLib/
+<br>Check here for updates.</p>
 
 
-<h2>Credits</h2>
+<p>DeskLib is currently maintained by:
+<br>
+Peter Naulls</p>
+<h3>Credits</h3>
 
 <p>This library has been built up by a group of authors.  Individual files contain copyright notices for the author(s) who created them.  The authors (and other contributors) I've remembered to write down here are (alphabetically):</p>
 
@@ -85,18 +96,11 @@
 
 <p>Thanks also to the numerous others who have offered suggestions, constructive criticism, etc.  If you feel you have been omitted from this list in error, then please contact a member of the DeskLib team so we can fix it.</p>
 
-
-<h2>Contacting the moderators</h2>
+<h3>Contacting the moderators</h3>
 
 <p>If you find any bugs or problems in DeskLib, or if you can supply suggestions or code for alterations, additions, or tutorial applications, then please write to Peter Naulls (<a href="peter@chocky.org">peter@chocky.org</a>), who is the current DeskLib moderator.</p>
 
-
-<hr noshade="noshade" />
-
-<p class="note">
-<b>The DeskLib team</b><br />
-<a href="http://www.riscos.info/index.php/DeskLib">http://www.riscos.info/index.php/DeskLib/</a>
-</p>
-
+</td></tr>
+</table>
 </body>
 </html>

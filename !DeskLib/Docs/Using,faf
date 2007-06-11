@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>DeskLib Documentation</title>
+<link rel="stylesheet" type="text/css" href="styles">
+</head>
+<body>
+
+<table>
+<tr>
+<td colspan="2">
+<h1 style="padding-top: 3mm; padding-bottom: 3mm; margin-top: 0; margin-bottom: 0;">DeskLib Documentation</h1>
+</td></tr>
+<tr valign="top"><td>
+<table style="margin-left:3mm;">
+<tr>                 <td class="menu">             <h3><a href="Introduction">Introduction</a></h3>      </td></tr>
+<tr class="maintext"><td class="menu">                       <h3 class="menu">Using&nbsp;Desklib</h3>    </td></tr>
+<tr>                 <td class="menu">                <h3><a href="Reference">Reference</a></h3>         </td></tr>
+<tr>                 <td class="menu">                   <h3><a href="Future">Future</a></h3>            </td></tr>
+</table>
+</td>
+<td class="maintext" style="padding:5mm;">
+<h2 style="margin-top: 0;">Using DeskLib</h2>
+<p>This application contains everything you need to write programs using
+functions from the DeskLib library - the library itself, plus the
+DeskLib header (.h) files.</p>
+
+<p>Once the filer has 'seen' this application, everything is set up ready
+for you to use it.</p>
+
+<p>To see the header files, simply double-click the application - a filer
+window will appear in a convenient position at the right of the screen,
+containing <a href="HTMLAction:/Filer_Run{}<DeskLib$Dir>.OpenDirH">all the header files</a> (if you don't like the layout, it can
+be changed by editing the <em>OpenDirH </em>file)</p>
+
+<p>To #include the header files in your own code, use the form:
+<br><code>#include &quot;DeskLib:Header.h&quot;</code>
+</p>
+
+<p>To link with the DeskLib library, use something like:
+<br><code>link $(linkflags) C:o.Stubs DeskLib:o.DeskLib</code>
+</p>
+
+<p>For examples of this, look in the Examples directory.</p>
+
+<p>Jason Williams May 1993
+<br>Julian Smith May 1995
+<br>Peter Naulls Nov 2002-2006</p>
+
+<p>Contact: peter@chocky.org</p>
+</td></tr>
+</table>
+</body>
+</html>

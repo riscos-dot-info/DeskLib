@@ -1,15 +1,27 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
-<head>
-	<title>DeskLib documentation: Future Plans</title>
-	<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>DeskLib Documentation</title>
+<link rel="stylesheet" type="text/css" href="styles">
 </head>
 <body>
 
-<h1>DeskLib documentation: Future Plans</h1>
-
-
-<h2>Plans for the future</h2>
+<table>
+<tr>
+<td colspan="2">
+<h1 style="padding-top: 3mm; padding-bottom: 3mm; margin-top: 0; margin-bottom: 0;">DeskLib Documentation</h1>
+</td></tr>
+<tr valign="top"><td>
+<table style="margin-left:3mm;">
+<tr>                 <td class="menu">             <h3><a href="Introduction">Introduction</a></h3>      </td></tr>
+<tr>                 <td class="menu">                    <h3><a href="Using">Using&nbsp;Desklib</a></h3></td></tr>
+<tr>                 <td class="menu">                <h3><a href="Reference">Reference</a></h3>         </td></tr>
+<tr class="maintext"><td class="menu">                       <h3 class="menu">Future</h3>                </td></tr>
+</table>
+</td>
+<td class="maintext" style="padding:5mm;">
+<h2 style="margin-top: 0;">Future</h2>
+<h3>Plans for the future</h3>
 
 <p>There are several things which are planned for a future DeskLib release.  If you want to write code for something suggested below, then check with the moderator before writing it so we don't get duplicated effort.</p>
 
@@ -29,13 +41,7 @@
 	<dt>Unified memory management</dt>
 	<dd>Maybe have a set of function prototypes, such as "dl_malloc/realloc/free" or similar which could be used throughout the library, where more advanced control isn't needed.  There would then be a way to override the defaults via function pointers, I'd've thought.  This could save some memory management headaches.  Similarly, there could be a set of "neutral" functions which handle more advanced memory management, such as extending a block of memory in the middle, so the user could make all of DeskLib use the same memory management routines.</dd>
 </dl>
-
-<hr noshade="noshade" />
-
-<p class="note">
-<b>The DeskLib team</b><br />
-<a href="http://www.riscos.info/desklib/">http://www.riscos.info/desklib/</a>
-</p>
-
+</td></tr>
+</table>
 </body>
 </html>
