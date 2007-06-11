@@ -93,15 +93,15 @@ Run <DeskLib_GenRelease$Dir>.GenControlFiles
 
 | We zip up the packages and wipe the directories they were in to save confusion
 Dir <DeskLib_GenRelease$Dir>.Output.Packages.Core
-zip -9 <DeskLib_GenRelease$Dir>.Output.Packages.DeskLib-Core/zip -m -r Apps RiscPkg
+zip -9 <DeskLib_GenRelease$Dir>.Output.Packages.DeskLib-Core/zip -m -r -I Apps RiscPkg
 Wipe <DeskLib_GenRelease$Dir>.Output.Packages.Core R ~C
 
 Dir <DeskLib_GenRelease$Dir>.Output.Packages.User
-zip -9 <DeskLib_GenRelease$Dir>.Output.Packages.DeskLib-User/zip -m -r Apps RiscPkg
+zip -9 <DeskLib_GenRelease$Dir>.Output.Packages.DeskLib-User/zip -m -r -I Apps RiscPkg
 Wipe <DeskLib_GenRelease$Dir>.Output.Packages.User R ~C
 
 Dir <DeskLib_GenRelease$Dir>.Output.Packages.Examples
-zip -9 <DeskLib_GenRelease$Dir>.Output.Packages.DeskLib-Examples/zip -m -r Apps RiscPkg
+zip -9 <DeskLib_GenRelease$Dir>.Output.Packages.DeskLib-Examples/zip -m -r -I Apps RiscPkg
 Wipe <DeskLib_GenRelease$Dir>.Output.Packages.Examples R ~C
 
 
@@ -110,9 +110,9 @@ Echo
 Echo -> Generating release zipfiles...
 CDir <DeskLib_GenRelease$Dir>.Output.ReleaseArchives
 Dir Mem::Memphis.$
-zip -9 <DeskLib_GenRelease$Dir>.Output.ReleaseArchives.core/zip -m -r !DeskLib !DLUser
-zip -9 <DeskLib_GenRelease$Dir>.Output.ReleaseArchives.source/zip -m -r !DLSources
-zip -9 <DeskLib_GenRelease$Dir>.Output.ReleaseArchives.examples/zip -m -r Examples
+zip -9 <DeskLib_GenRelease$Dir>.Output.ReleaseArchives.core/zip -m -r -I !DeskLib !DLUser
+zip -9 <DeskLib_GenRelease$Dir>.Output.ReleaseArchives.source/zip -m -r -I !DLSources
+zip -9 <DeskLib_GenRelease$Dir>.Output.ReleaseArchives.examples/zip -m -r -I Examples
 
 
 | Tidy up system variables
