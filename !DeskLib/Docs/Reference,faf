@@ -27,30 +27,30 @@
 <p>Quick reference documentation detailing every DeskLib function, typedef
 and global variable mentioned in the header files is available either in
 <a href="http://www.snowstone.org.uk/riscos/desklib/">HTML format on the
-internet</a> or as a <a href="HTMLAction:/Filer_Run{}<DeskLib$Dir>.Docs.DeskLibQR">local StrongHelp file</a>.</p>
+internet</a> or as a <a href="DeskLibHTMLAction:/Filer_Run{}Docs.DeskLibQR">local StrongHelp file</a>.</p>
 <h3>Structure Guides</h3>
 <p>A number of brief guides to using the components of DeskLib are available:</p>
 <ul>
-<li><a href="HTMLAction:/Filer_Run{}<DeskLib$Dir>.Docs.DataStructures.EventData">Complete Event Data Reference</a>
-<li><a href="HTMLAction:/Filer_Run{}<DeskLib$Dir>.Docs.DataStructures.IconData">Icon Block Data Structure</a>
-<li><a href="HTMLAction:/Filer_Run{}<DeskLib$Dir>.Docs.DataStructures.MenuData">Menu Block Data Structure</a>
-<li><a href="HTMLAction:/Filer_Run{}<DeskLib$Dir>.Docs.DataStructures.WindowData">Window Block Data Structure</a>
+<li><a href="DeskLibHTMLAction:/Filer_Run{}Docs.DataStructures.EventData">Complete Event Data Reference</a>
+<li><a href="DeskLibHTMLAction:/Filer_Run{}Docs.DataStructures.IconData">Icon Block Data Structure</a>
+<li><a href="DeskLibHTMLAction:/Filer_Run{}Docs.DataStructures.MenuData">Menu Block Data Structure</a>
+<li><a href="DeskLibHTMLAction:/Filer_Run{}Docs.DataStructures.WindowData">Window Block Data Structure</a>
 </ul>
 <h3>Module Notes</h3>
 <p>Brief notes are available on specific aspects of some of the different DeskLib &quot;Modules&quot;:</p>
 <ul>
-<li><a href="HTMLAction:/Filer_Run{}<DeskLib$Dir>.Docs.ModuleNotes.Debug">Debug</a>
-<li><a href="HTMLAction:/Filer_Run{}<DeskLib$Dir>.Docs.ModuleNotes.Dialog2">Dialog2</a>
-<li><a href="HTMLAction:/Filer_Run{}<DeskLib$Dir>.Docs.ModuleNotes.Event">Event</a>
-<li><a href="HTMLAction:/Filer_Run{}<DeskLib$Dir>.Docs.ModuleNotes.Mem">Mem</a>
-<li><a href="HTMLAction:/Filer_Run{}<DeskLib$Dir>.Docs.ModuleNotes.Msgs">Msgs</a>
-<li><a href="HTMLAction:/Filer_Run{}<DeskLib$Dir>.Docs.ModuleNotes.ResIssues">Resource (Issues)</a>
-<li><a href="HTMLAction:/Filer_Run{}<DeskLib$Dir>.Docs.ModuleNotes.ResUsage">Resource (Usage)</a>
-<li><a href="HTMLAction:/Filer_Run{}<DeskLib$Dir>.Docs.ModuleNotes.Window">Window</a>
+<li><a href="DeskLibHTMLAction:/Filer_Run{}Docs.ModuleNotes.Debug">Debug</a>
+<li><a href="DeskLibHTMLAction:/Filer_Run{}Docs.ModuleNotes.Dialog2">Dialog2</a>
+<li><a href="DeskLibHTMLAction:/Filer_Run{}Docs.ModuleNotes.Event">Event</a>
+<li><a href="DeskLibHTMLAction:/Filer_Run{}Docs.ModuleNotes.Mem">Mem</a>
+<li><a href="DeskLibHTMLAction:/Filer_Run{}Docs.ModuleNotes.Msgs">Msgs</a>
+<li><a href="DeskLibHTMLAction:/Filer_Run{}Docs.ModuleNotes.ResIssues">Resource (Issues)</a>
+<li><a href="DeskLibHTMLAction:/Filer_Run{}Docs.ModuleNotes.ResUsage">Resource (Usage)</a>
+<li><a href="DeskLibHTMLAction:/Filer_Run{}Docs.ModuleNotes.Window">Window</a>
 </ul>
 
 <h3>Version History</h3>
-<p>The history of DeskLib is available <a href="HTMLAction:/Filer_Run{}<DeskLib$Dir>.Docs.Updates">here</a>.</p>
+<p>The history of DeskLib is available <a href="DeskLibHTMLAction:/Filer_Run{}Docs.Updates">here</a>.</p>
 </td></tr>
 </table>
 </body>
