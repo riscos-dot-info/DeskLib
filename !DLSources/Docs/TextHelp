@@ -2,6 +2,10 @@
 	
 
 
+        Note: This is an old file. To see the full documentation,
+              please load a web browser and try again.
+
+
 This application directory contains all DeskLib code-files except for
 the final libraries and headers, which are in the !DeskLib application.
 It sets the system variable <DeskLib_Sources$Dir> to be the !DLSources

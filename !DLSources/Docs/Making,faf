@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>DeskLib Source Documentation</title>
+<link rel="stylesheet" type="text/css" href="styles">
+</head>
+<body>
+
+<table>
+<tr>
+<td colspan="2">
+<h1 style="padding-top: 3mm; padding-bottom: 3mm; margin-top: 0; margin-bottom: 0;">DeskLib Source Documentation</h1>
+</td></tr>
+<tr valign="top"><td>
+<table style="margin-left:3mm;">
+<tr>                 <td class="menu">             <h3><a href="Introduction">Introduction</a></h3>   </td></tr>
+<tr class="maintext"><td class="menu">                       <h3 class="menu">Making&nbsp;Desklib</h3></td></tr>
+<tr>                 <td class="menu">             <h3><a href="Contributing">Contributing</a></h3>   </td></tr>
+<tr>                 <td class="menu">                    <h3><a href="Files">Files</a></h3>          </td></tr>
+</table>
+</td>
+<td class="maintext" style="padding:5mm;">
+
+<h2>Making DeskLib</h2>
+
+<p><strong>Note: much of the following information is out of date. Hopefully
+it will be updated with the next release of DeskLib.</strong></p>
+
+<p>The default setup is for Norcroft.  If you have GCC, the things you
+need to uncomment in the Makefile should be obvious.</p>
+
+<p>We've changed the build system substantially from the previous 2.30 release,
+partly so we can in future cross compile DeskLib, and partly to remove
+the need for slightly unstable tools that we didn't have source for.</p>
+
+<p>DeskLib requires GNU make - AMU isn't quite up to the job.  If you don't
+already have GCC, then you can get this as part of the &quot;utils&quot; archive
+from the <a href="http://gccsdk.riscos.info/">latest GCC release</a>.</p>
+
+<p>The rest of the system will build with tools from Castle's 32-bit release.
+Don't try and rebuild DeskLib with a 26-bit compiler - you'll just end up
+with a broken library. GCC should be able to build it fine too. Again, you'll
+require a 32-bit version of GCC.</p>
+
+<p>In general, using libraries such as DeskLib between UnixLib and
+SharedCLibrary programs isn't a good idea, as they have some
+incompatibilities.  DeskLib has been checked to ensure that it is
+compatible with both C libraries.  Visit http://www.riscos.info/unixlib/
+if you wish to know more.</p>
+
+<p>Just running &quot;make&quot; is sufficient to build everything.</p>
+
+
+
+
+</td></tr>
+</table>
+</body>
+</html>
