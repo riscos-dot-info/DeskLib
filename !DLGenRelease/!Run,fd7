@@ -11,49 +11,48 @@ Echo
 
 | Change these as needed
 Set DeskLib_GenRelease$Version "2.80"
-Set DeskLib_GenRelease$svnlocation "svn://svn.riscos.info/DeskLib/branches/aof/"
+Set DeskLib_GenRelease$svnlocation "svn://svn.riscos.info/DeskLib/tags/release-2.80/"
 
 Echo Version:      <DeskLib_GenRelease$Version>
 Echo SVN location: <DeskLib_GenRelease$svnlocation>
 
 
-| First, we wipe anything left over from last time
+| First, we wipe anything left over (by mistake or deliberately) from last time
 Echo
 Echo -> Wiping old data
+IfThere <DeskLib_GenRelease$Dir>.Output.!DeskLib Then Wipe <DeskLib_GenRelease$Dir>.Output.!DeskLib ~C
+IfThere <DeskLib_GenRelease$Dir>.Output.!DLSources Then Wipe <DeskLib_GenRelease$Dir>.Output.!DLSources ~C
+IfThere <DeskLib_GenRelease$Dir>.Output.!DLUser Then Wipe <DeskLib_GenRelease$Dir>.Output.!DLUser ~C
+IfThere <DeskLib_GenRelease$Dir>.Output.Examples Then Wipe <DeskLib_GenRelease$Dir>.Output.Examples ~C
 IfThere <DeskLib_GenRelease$Dir>.Output.DeskLibQR Then Wipe <DeskLib_GenRelease$Dir>.Output.DeskLibQR ~C
 IfThere <DeskLib_GenRelease$Dir>.Output.XMLDocs Then Wipe <DeskLib_GenRelease$Dir>.Output.XMLDocs ~C
-IfThere <DeskLib_GenRelease$Dir>.Output.HTML Then Wipe <DeskLib_GenRelease$Dir>.Output.HTML ~C R
 IfThere <DeskLib_GenRelease$Dir>.Output.ReleaseArchives Then Wipe <DeskLib_GenRelease$Dir>.Output.ReleaseArchives ~C R
 IfThere <DeskLib_GenRelease$Dir>.Output.Packages Then Wipe <DeskLib_GenRelease$Dir>.Output.Packages ~C R
 
 
-| Now we export the main apps from the riscos.info subversion server
-| Note: this requires a Memphis drive (due to nasty HostFS:svn interaction on VRPC)
+| Now we export the main apps from the riscos.info subversion server to a temporary location
+| Note: if using VRPC, this cannot be on a HostFS drive due to nasty interaction between HostFS and svn
+|       (if you don't have Memphis, you could change the line to use the RAM::RamDisc0.$ instead)
+If "<DeskLib_GenRelease$Dir>" LEFT 6 = "HostFS" Then Set DeskLib_TempExport$Dir Mem::Memphis.$ Else Set DeskLib_TempExport$Dir <DeskLib_GenRelease$Dir>.Output
+
 Echo -> Exporting from riscos.info svn...
 If "<SVN$Dir>" = "" Then Error SVN not found
-Set Alias$DeskLib_svnexport svn export <DeskLib_GenRelease$svnlocation>%%*0 Mem::Memphis/$/%%*0
+Set Alias$DeskLib_svnexport svn export <DeskLib_GenRelease$svnlocation>%%*0 |<DeskLib_TempExport$Dir|>/%%*0
 DeskLib_svnexport !DeskLib
 DeskLib_svnexport !DLUser
 DeskLib_svnexport !DLSources
 DeskLib_svnexport Examples
 
 
-| The headers can be generated from any !DeskLib, so alter DeskLib_Head as needed
+| The documents can be generated from the header files in any !DeskLib, so alter DeskLib_Head as needed
 |Set DeskLib_Head$Dir <DeskLib$Dir>
-Set DeskLib_Head$Dir Mem::Memphis.$.!DeskLib
+Set DeskLib_Head$Dir <DeskLib_TempExport$Dir>.!DeskLib
 Echo -> Writing XML docs...
 Set Alias$DeskLib_haddoc <DeskLib_GenRelease$Dir>.haddoc %%*0 -v -o <DeskLib_GenRelease$Dir>.Output.XMLDocs -n |"DeskLib <DeskLib_GenRelease$Version>|" -x "_dl_.*_h" |<DeskLib_Head$Dir|>/include/*
 | The precise layout of !DeskLib.include can vary depending on your setup so this can handle two different layouts
 | (For instance, checked out using the RISC OS svn port vs. accessed in a remote unix enviroment.)
 IfThere <DeskLib_Head$Dir>.include.h Then DeskLib_haddoc Else DeskLib_haddoc --native
 
-Echo
-Echo -> Writing HTML docs...
-Echo   (May take some time)
-CDir <DeskLib_GenRelease$Dir>.Output.HTML
-Dir <DeskLib_GenRelease$Dir>.Output.HTML
-<DeskLib_GenRelease$Dir>.xsltproc --native -o index.html <DeskLib_GenRelease$Dir>.html/xsl <DeskLib_GenRelease$Dir>.Output.XMLDocs
-Echo
 Echo -> Writing StrongHelp quick reference file...
 <DeskLib_GenRelease$Dir>.haddoctosh -i <DeskLib_GenRelease$Dir>.Output.XMLDocs <DeskLib_GenRelease$Dir>.Output.DeskLibQR
 | The final StrongHelp file is copied into the Docs directory of !DeskLib
@@ -62,10 +61,10 @@ Copy <DeskLib_GenRelease$Dir>.Output.DeskLibQR <DeskLib$Dir>.Docs.DeskLibQR ~C
 
 Echo -> Copying in locally generated library & StrongHelp files
 | You need to make made the library already
-IfThere <DeskLib$Dir>.o.DeskLib Then Copy <DeskLib$Dir>.o.DeskLib Mem::Memphis.$.!DeskLib.o.DeskLib ~C
-IfThere <DeskLib$Dir>.o.Debug Then Copy <DeskLib$Dir>.o.Debug Mem::Memphis.$.!DeskLib.o.Debug ~C R
-IfThere <DeskLib$Dir>.o.Other Then Copy <DeskLib$Dir>.o.Other Mem::Memphis.$.!DeskLib.o.Other ~C R
-IfThere <DeskLib$Dir>.Docs.DeskLibQR Then Copy <DeskLib$Dir>.Docs.DeskLibQR Mem::Memphis.$.!DeskLib.Docs.DeskLibQR ~C R
+IfThere <DeskLib$Dir>.o.DeskLib Then Copy <DeskLib$Dir>.o.DeskLib <DeskLib_TempExport$Dir>.!DeskLib.o.DeskLib ~C
+IfThere <DeskLib$Dir>.o.Debug Then Copy <DeskLib$Dir>.o.Debug <DeskLib_TempExport$Dir>.!DeskLib.o.Debug ~C R
+IfThere <DeskLib$Dir>.o.Other Then Copy <DeskLib$Dir>.o.Other <DeskLib_TempExport$Dir>.!DeskLib.o.Other ~C R
+IfThere <DeskLib$Dir>.Docs.DeskLibQR Then Copy <DeskLib$Dir>.Docs.DeskLibQR <DeskLib_TempExport$Dir>.!DeskLib.Docs.DeskLibQR ~C R
 
 
 Echo
@@ -80,13 +79,13 @@ CDir <DeskLib_GenRelease$Dir>.Output.Packages.Template.RiscPkg
 Copy <DeskLib_GenRelease$Dir>.RiscPkg-Copyright <DeskLib_GenRelease$Dir>.Output.Packages.Template.RiscPkg.Copyright ~C
 
 Copy <DeskLib_GenRelease$Dir>.Output.Packages.Template <DeskLib_GenRelease$Dir>.Output.Packages.Core R ~C
-Copy Mem::Memphis.$.!DeskLib <DeskLib_GenRelease$Dir>.Output.Packages.Core.Apps.Library.DeskLib.!DeskLib R ~C
+Copy <DeskLib_TempExport$Dir>.!DeskLib <DeskLib_GenRelease$Dir>.Output.Packages.Core.Apps.Library.DeskLib.!DeskLib R ~C
 
 Copy <DeskLib_GenRelease$Dir>.Output.Packages.Template <DeskLib_GenRelease$Dir>.Output.Packages.User R ~C
-Copy Mem::Memphis.$.!DLUser <DeskLib_GenRelease$Dir>.Output.Packages.User.Apps.Library.DeskLib.!DLUser R ~C
+Copy <DeskLib_TempExport$Dir>.!DLUser <DeskLib_GenRelease$Dir>.Output.Packages.User.Apps.Library.DeskLib.!DLUser R ~C
 
 Copy <DeskLib_GenRelease$Dir>.Output.Packages.Template <DeskLib_GenRelease$Dir>.Output.Packages.Examples R ~C
-Copy Mem::Memphis.$.Examples <DeskLib_GenRelease$Dir>.Output.Packages.Examples.Apps.Library.DeskLib.Examples R ~C
+Copy <DeskLib_TempExport$Dir>.Examples <DeskLib_GenRelease$Dir>.Output.Packages.Examples.Apps.Library.DeskLib.Examples R ~C
 
 | This produces a RiscPkg Control file for each package
 Run <DeskLib_GenRelease$Dir>.GenControlFiles
@@ -109,7 +108,7 @@ Echo
 | Finally, we zip the svn-exported application directories (now containing the StrongHelp file and library binaries)
 Echo -> Generating release zipfiles...
 CDir <DeskLib_GenRelease$Dir>.Output.ReleaseArchives
-Dir Mem::Memphis.$
+Dir <DeskLib_TempExport$Dir>
 zip -9 <DeskLib_GenRelease$Dir>.Output.ReleaseArchives.core/zip -m -r -I !DeskLib !DLUser
 zip -9 <DeskLib_GenRelease$Dir>.Output.ReleaseArchives.source/zip -m -r -I !DLSources
 zip -9 <DeskLib_GenRelease$Dir>.Output.ReleaseArchives.examples/zip -m -r -I Examples
@@ -121,6 +120,7 @@ Unset DeskLib_GenRelease$svnlocation
 Unset Alias$DeskLib_svnexport
 Unset DeskLib_Head$Dir
 Unset Alias$DeskLib_haddoc
+Unset DeskLib_TempExport$Dir
 
 
 | Open the end result on screen

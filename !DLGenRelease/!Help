@@ -6,7 +6,14 @@ automate the process of creating the DeskLib help documentation and spit
 out the release archives. Any contributions and improvements are
 welcome.
 
-For the script to be successful, you'll need:
+As prerequisites for the script you'll need:
+ * to have built the haddoc and haddoctosh binaries under RISC OS
+   (you'll need RISC OS ports of pcre and libxml from
+   http://www.riscos.info/downloads/unix-libraries/ then hopefully
+   just typing "make" in the relevant directory should be sufficient)
+ * to have built the main DeskLib binaries (see !Help in !DLSources)
+
+and:
  * an active internet connection (to export from the svn repository)
  * the RISC OS svn port - http://www.cp15.org/versioncontrol/
  * the RISC OS zip port - http://www.sbellon.de/sw-ports.html
@@ -15,7 +22,8 @@ For the script to be successful, you'll need:
 
 The version number and svn download location are set at the top of !Run.
 
-If everything goes to plan, you should end up with an open filer window containing directories for release archives, RiscPkg archives and HTML
+If everything goes to plan, you should end up with an open filer window
+containing directories for release archives, RiscPkg archives and
 documentation. There'll also be a XMLDocs file which is used during the
 generation process and is not important if everything finishes OK.
 

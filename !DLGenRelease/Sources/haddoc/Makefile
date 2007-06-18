@@ -7,7 +7,7 @@
 default: riscos
 
 # Set the default output executable
-TARGET = haddoc
+TARGET = ../../haddoc
 
 # Warning options
 WARNINGS = \

@@ -22,12 +22,10 @@
 <td class="maintext" style="padding:5mm;">
 <h2 style="margin-top: 0;">Reference</h2>
 <h3>Caveat</h3>
-<p><strong>Much of the following information has not been updated since being written so should be treated with care. The StrongHelp and HTML quick reference documents are generated dynamically from the DeskLib header files so <em>are</em> up to date.</strong></p>
+<p><strong>Much of the following information has not been updated since being written so should be treated with care. The StrongHelp quick reference file is generated dynamically from the DeskLib header files so <em>is</em> up to date.</strong></p>
 <h3>Quick Reference</h3>
 <p>Quick reference documentation detailing every DeskLib function, typedef
-and global variable mentioned in the header files is available either in
-<a href="http://www.snowstone.org.uk/riscos/desklib/">HTML format on the
-internet</a> or as a <a href="DeskLibHTMLAction:/Filer_Run{}Docs.DeskLibQR">local StrongHelp file</a>.</p>
+and global variable mentioned in the header files is available as a <a href="DeskLibHTMLAction:/Filer_Run{}Docs.DeskLibQR">local StrongHelp file</a>.</p>
 <h3>Structure Guides</h3>
 <p>A number of brief guides to using the components of DeskLib are available:</p>
 <ul>
