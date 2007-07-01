@@ -21,33 +21,57 @@
 </td>
 <td class="maintext" style="padding:5mm;">
 <h2 style="margin-top: 0;">Using DeskLib</h2>
-<p>This application contains everything you need to write programs using
-functions from the DeskLib library - the library itself, plus the
-DeskLib header (.h) files.</p>
+<h3>Including the Library</h3>
+<p>The <em>!DeskLib</em> application contains everything you need to use the DeskLib functions in your programs - the library itself and the header (.h) files. When <em>!DeskLib</em> has been seen by the filer it sets up some system variables for use in referencing the library. To include the relevant headers in your own code use the form: <code>#include &quot;DeskLib:Header.h&quot;</code> and to link with the DeskLib library, use <code>-I DeskLib:o.DeskLib</code> when linking your code.</p>
+<p>The header files have been parsed to construct a <em>StrongHelp</em> reference file (see the <a href="Reference">Reference</a> section) but if you would like to <a href="DeskLibHTMLAction:/Filer_Run{}OpenDirH">examine the files yourself</a>, just double-click on <em>!DeskLib</em> and the relevant directory will open on screen. (The positioning etc can be modified by altering the <em>OpenDirH</em> file inside <em>!DeskLib</em>.)
 
-<p>Once the filer has 'seen' this application, everything is set up ready
-for you to use it.</p>
+<h3>Writing an Application with DeskLib</h3>
+<h4>Introduction</h4>
+<p><em>DeskLib</em> contains a large number of modules to cover different functionality, ranging from launching taskwindows to altering icon text. (Note that <em>DeskLib</em> &quot;modules&quot; have nothing to do with RISC OS relocatable modules and are simply used to refer to a sub-section of the library code.) Some of this functionality is described below, starting with the <strong>Event</strong> module, which is at the core of how a <em>DeskLib</em> program interacts with the Wimp. This text is only an introduction to a few aspects of <em>DeskLib</em>. For further, more detailed, information you should consult the <a href="Reference">Reference</a> section of the manual (particularly the <em>StrongHelp</em> documentation).
 
-<p>To see the header files, simply double-click the application - a filer
-window will appear in a convenient position at the right of the screen,
-containing <a href="HTMLAction:/Filer_Run{}<DeskLib$Dir>.OpenDirH">all the header files</a> (if you don't like the layout, it can
-be changed by editing the <em>OpenDirH </em>file)</p>
+<h4>The Event Module</h4>
+<p>Wimp programs in RISC OS are based around the <em>Wimp_Poll</em> loop. The call to the <code>Wimp_Poll</code> SWI yields control to the OS which returns control to the program when an event occurs which the program might wish to act upon. <em>DeskLib</em> handles this process through the <strong>Event</strong> module.
+<p>The <em>Wimp_Poll</em> loop in a typical <em>DeskLib</em> program might look like this:</p>
+<p><code>while(!quit) Event_Poll();</code></p>
+<p>If you're used to programming in <em>Basic</em> you might be puzzled that this loop seems to give no way of dealing with any <em>Wimp_Poll</em> events at all. This is because <em>DeskLib</em> makes use of the ability of C to pass around references to whole functions within a program. So, if a program plans to respond to any Wimp events it should &quot;pre-register&quot; a &quot;handler&quot; function for each event before calling <code>Event_Poll</code>. For instance, to respond to mouse clicks, the program might use something like:</p>
+<p><code>Event_Claim(event_CLICK, main_window, cancel_ICON, main_cancel_handler, NULL);</code></p>
+<p>This can be interpreted as: when a click event is recieved for the <em>cancel</em> icon in the <em>main</em> window, call the <em>main_cancel_handler</em> routine, which is used to perform the required actions. (Optionally, the final parameter for <code>Event_Claim</code> can be used to pass a reference to your handler function.) The event you claim can be very specific (as in the case above) or very general. For instance, you might want your handler function to deal with any click in any window. To do this you'd use a form such as:</p>
+<p><code>Event_Claim(event_CLICK, event_ANY, event_ANY, click_handler, NULL);</code></p>
+<p>In fact, you can register multiple handers for the same, or similar, events. <em>DeskLib</em> will cascade through the handlers you've registered (starting with the more specific ones) until one of them returns <em>TRUE</em>. At that point <em>Event_Poll</em> is called again.</p>
+<p>The handlers which you create to be called in responce to different events must all be of the same type. That is, they should be of the form:</p>
+<p><code>BOOL handler_name(event_pollblock *event, void *reference);</code></p>
+<p>The information passed to the task from the OS will be contained in the <code>event</code> structure (which is defined in <code>Wimp.h</code>) so can be accessed in your handler function. If you included any &quot;reference&quot; data when you registered the handler with <code>Event_Claim</code> then this can be accessed through <code>reference</code>.
 
-<p>To #include the header files in your own code, use the form:
-<br><code>#include &quot;DeskLib:Header.h&quot;</code>
-</p>
+<h4>An Example Program</h4>
+<p>To illustrate how to construct a basic <em>DeskLib</em> based program, including the event handling mechanism, we'll look at a <a href="DeskLibHTMLAction:/Filer_Run{}Docs.DLExample/c">short example program</a>. The program will put an icon on the iconbar and construct an iconbar menu which includes a &quot;ProgInfo&quot; window. (If you wish to compile and run the program, you'll need to create a <em>Templates</em> file containing an &quot;Info&quot; window (<a href="DeskLibHTMLAction:/Filer_Run{}Docs.Templates">like this one</a>) and place a <em>!DLExample</em> sprite in the Wimp sprite pool.)</p>
 
-<p>To link with the DeskLib library, use something like:
-<br><code>link $(linkflags) C:o.Stubs DeskLib:o.DeskLib</code>
-</p>
+<table>
+<tr><td style="border: thin solid #147099; padding: 2mm;"><strong>Line Numbers</strong></td><td style="border: thin solid #147099; padding: 2mm;"><strong>Description of code</strong></td></tr>
+<tr><td style="border: thin solid #147099; padding: 2mm;">1 to 23</td>     <td style="border: thin solid #147099; padding: 2mm;">At the top of the file are the <code>#include</code> lines for the parts of <em>DeskLib</em> which we'll be using, followed by the function prototypes. We will be using two functions - both of which are event handlers so are in the standard form for an event handler. The global variable <code>quit</code> is used so we can invoke the closing down of the program from anywhere.</td></tr>
+<tr><td style="border: thin solid #147099; padding: 2mm;">29 to 31</td>    <td style="border: thin solid #147099; padding: 2mm;">At the top of <code>main()</code> we declare the variables which will hold the handles for the iconbar menu and proginfo window. These types are defined in <em>Wimp.h</em>.
+<tr><td style="border: thin solid #147099; padding: 2mm;">33</td><td style="border: thin solid #147099; padding: 2mm;">The <strong>Event</strong> library must be initialised before we use it.</td></tr>
+<tr><td style="border: thin solid #147099; padding: 2mm;">36 to 40</td>    <td style="border: thin solid #147099; padding: 2mm;">These lines initialise the Template library and load all the templates in the <em>Templates</em> file into memory and then create the window.</td></tr>
+<tr><td style="border: thin solid #147099; padding: 2mm;">43 to 46</td>    <td style="border: thin solid #147099; padding: 2mm;">This creates a menu and then attaches the proginfo window to it. The first parameter of <code>Menu_New</code>gives the menu title and the second gives the menu contents as a pipe (<code>|</code>) separated list of entries. If the entries are preceded by a tilde (<code>~</code>) the entry will be shaded and if preceded by a pling (<code>!</code>), they'll have a tick next to them. Sub-menus are added separately.</td></tr>
+<tr><td style="border: thin solid #147099; padding: 2mm;">49</td>          <td style="border: thin solid #147099; padding: 2mm;">Here we create the iconbar icon.</td></tr>
+<tr><td style="border: thin solid #147099; padding: 2mm;">52 to 60</td>    <td style="border: thin solid #147099; padding: 2mm;">This is the section which claims the handlers associated with Wimp events. They register functions which will be called later as events occur. Notice that <em>DeskLib</em> provides some default actions - for instance to handle closing and opening windows. These functions just call <code>Wimp_CloseWindow</code> and <code>Wimp_OpenWindow</code> respectively. Without these handlers windows wouldn't close when the user clicks on the close icon and wouldn't redraw when revealed, moved around, etc. The final line is the actual <em>Wimp_Poll</em> loop which only stops when we set <code>quit</code> to &quot;true&quot;</td></tr>
+<tr><td style="border: thin solid #147099; padding: 2mm;">65 to 81</td>    <td style="border: thin solid #147099; padding: 2mm;">This is the handler function which deals with iconbar clicks. If the click was a menu click then the iconbar menu is displayed at line 72. Notice how information is retrieved about the event using <code>event-&gt;</code> at lines 68 and 72. The function only returns &quot;true&quot; if it successfully deals with the event. For instance left and right button clicks will cause it to return &quot;false&quot;. In this example this has no implications, but in a more sophisticated program we might have several handlers attached to an event and using this mechanism we could cascade through them until one returns &quot;true&quot; - at which point the Wimp will be polled again by <code>Event_Poll</code></td></tr>
+<tr><td style="border: thin solid #147099; padding: 2mm;">83 to 107</td>   <td style="border: thin solid #147099; padding: 2mm;">This is the menu choice handler which works in the same way as the click handler, only returning &quot;true&quot; if the event is successfully dealt with.</td></tr>
+</table>
 
-<p>For examples of this, look in the Examples directory.</p>
+<h4>Major Other Modules</h4>
+<p><em>DeskLib</em> has been developed over many years by many different authors so contains a large amount of code, some of which is duplicated. This gives the most flexibility for the end programmer to choose which module best suits their needs, but can mean there's a bit too much choice for someone starting out. The table below outlines a few of the main modules. If in doubt, you should use these over any alternative modules.</p>
+<table>
+<tr><td style="border: thin solid #147099; padding: 2mm;"><strong>Module</strong></td><td style="border: thin solid #147099; padding: 2mm;"><strong>Function</strong></td></tr>
+<tr><td style="border: thin solid #147099; padding: 2mm;">Core</td><td style="border: thin solid #147099; padding: 2mm;">Although this module does not contain any functions, it sets up some important data types such as <code>BOOL</code> (which can be set to <code>TRUE</code> or <code>FALSE</code>) and <code>os_error</code> and will be required by almost all <em>DeskLib</em> functions.</td></tr>
+<tr><td style="border: thin solid #147099; padding: 2mm;">Wimp</td><td style="border: thin solid #147099; padding: 2mm;">This module also does not contain any functions. It does, however, set up the vast majority of the data types used in <em>DeskLib</em> (such as <code>window_handle</code>, <code>event_data</code> etc.) and should be included if you intend to use any of the <em>DeskLib</em> Wimp functionality.</td></tr>
+<tr><td style="border: thin solid #147099; padding: 2mm;">Window</td><td style="border: thin solid #147099; padding: 2mm;">This module contains the functions used to create and manipulate windows. Windows would usually be generated using <code>Window_CreateWindow</code> after loading a <em>Templates</em> file into memory.</td></tr>
+<tr><td style="border: thin solid #147099; padding: 2mm;">Template</td><td style="border: thin solid #147099; padding: 2mm;">Use this module to load a <em>Templates</em> file (with <code>Tempate_LoadFile</code> following a call to <code>Template_Initialise</code>) before using the Window module to create windows from it.</td></tr>
+<tr><td style="border: thin solid #147099; padding: 2mm;">Menu</td><td style="border: thin solid #147099; padding: 2mm;">This module provides various functions to create and manipulate menus. In particular, <code>Menu_New</code> together with <code>Menu_AddSubMenu</code> and <code>Menu_AddSubWindow</code> will allow you to create menu trees and <code>Menu_SetFlags</code> can be used to alter existing menu entries (add ticks etc). Note the use of <code>Menu_ShowLast</code> in the example program above to keep a menu open when the user clicks <em>Adjust</em> on a menu item.</td></tr>
+<tr><td style="border: thin solid #147099; padding: 2mm;">Icon</td><td style="border: thin solid #147099; padding: 2mm;">The Icon module provides a whole range of easy-to-use icon manipulation functions.</td></tr>
+<tr><td style="border: thin solid #147099; padding: 2mm;">Event</td><td style="border: thin solid #147099; padding: 2mm;">As described above, the Event module provides the means through which <em>DeskLib</em> programs interact with the Wimp.</td></tr>
+<tr><td style="border: thin solid #147099; padding: 2mm;">MsgTrans</td><td style="border: thin solid #147099; padding: 2mm;">This module provides an interface to the <em>MessageTrans</em> SWIs. These SWIs allow you to read in values from a plain text <em>Messages</em> file, referenced by textual <em>tokens</em>. This saves you having to &quot;hard wire&quot; text into your code, and allows for easier translation of your progam.</td></tr>
+</table>
 
-<p>Jason Williams May 1993
-<br>Julian Smith May 1995
-<br>Peter Naulls Nov 2002-2006</p>
-
-<p>Contact: peter@chocky.org</p>
 </td></tr>
 </table>
 </body>
