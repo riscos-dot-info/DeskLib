@@ -1,7 +1,7 @@
 
 body
 {
-font-family:      arial, helvetica, sans-serif;
+font-family:      "arial, helvetica, sans-serif";
 background-color: #FFFFFF;
 color:            #000000;
 }
@@ -35,7 +35,6 @@ margin-left:    3mm;
 margin-right:   3mm;
 margin-top:     3mm;
 margin-bottom:  1mm;
-/*padding-bottom: 3mm;*/
 color:          #0000AA;
 }
 
@@ -43,7 +42,7 @@ code
 {
 text-align:    left;
 color:         #290062;
-font-family:   courier new,courier;
+font-family:   "courier new, courier";
 }
 
 a:link
