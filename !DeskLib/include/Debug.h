@@ -57,7 +57,8 @@ typedef void (*debug_signalhandlerfn)( int sig, void *reference);
 
 
 
-
+/* haddoc ignore on */
+/* This bit is ignored to avoid duplicate entries being written */
 
 #if !defined( DeskLib_DEBUG) && !defined( _DeskLib_Debug)
 
@@ -81,7 +82,7 @@ typedef void (*debug_signalhandlerfn)( int sig, void *reference);
       These effectively remove any references to Debug_ functions from
       source code.
     */
-
+/* haddoc ignore off */
 #else
 
 	void Debug_Initialise( void);
@@ -163,7 +164,8 @@ typedef void (*debug_signalhandlerfn)( int sig, void *reference);
 
 
 
-
+/* haddoc ignore on */
+/* This bit is ignored as the programmer doesn't need to see it */
 
 int Debug__Dummyf(const char *format, ...);
 /*
@@ -174,12 +176,14 @@ int Debug__Dummyf(const char *format, ...);
   arguments.
 */
 
+/* haddoc ignore off */
 
 #define Debug_Dummyf  if (1) (void)0; else Debug__Dummyf
 /*
-  A macro which is used to remove calls to a multi-argument function which
-  returns an integer. This isn't a bomb-proof macro, but is the best I can
-  come up with.
+  A macro which is used to remove calls to a multi-argument function
+  (Debug_Printf) which returns an integer. This isn't a bomb-proof macro,
+  but is the best I can come up with. Debug__Dummyf is a dummy function
+  which does nothing.
 
   NB The simpler alternative macro '#define Debug_Dummyf if (0)
   Debug__Dummyf' isn't used because it affects the meaning of 'else' in
