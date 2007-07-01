@@ -12,6 +12,8 @@ Echo
 | Change these as needed
 Set DeskLib_GenRelease$Version "2.80"
 Set DeskLib_GenRelease$svnlocation "svn://svn.riscos.info/DeskLib/tags/release-2.80/"
+| The repository uses ,ext format for storing filetypes:
+Set svn$filetypeext "yes"
 
 Echo Version:      <DeskLib_GenRelease$Version>
 Echo SVN location: <DeskLib_GenRelease$svnlocation>
@@ -20,10 +22,10 @@ Echo SVN location: <DeskLib_GenRelease$svnlocation>
 | First, we wipe anything left over (by mistake or deliberately) from last time
 Echo
 Echo -> Wiping old data
-IfThere <DeskLib_GenRelease$Dir>.Output.!DeskLib Then Wipe <DeskLib_GenRelease$Dir>.Output.!DeskLib ~C
-IfThere <DeskLib_GenRelease$Dir>.Output.!DLSources Then Wipe <DeskLib_GenRelease$Dir>.Output.!DLSources ~C
-IfThere <DeskLib_GenRelease$Dir>.Output.!DLUser Then Wipe <DeskLib_GenRelease$Dir>.Output.!DLUser ~C
-IfThere <DeskLib_GenRelease$Dir>.Output.Examples Then Wipe <DeskLib_GenRelease$Dir>.Output.Examples ~C
+IfThere <DeskLib_GenRelease$Dir>.Output.!DeskLib Then Wipe <DeskLib_GenRelease$Dir>.Output.!DeskLib ~C R
+IfThere <DeskLib_GenRelease$Dir>.Output.!DLSources Then Wipe <DeskLib_GenRelease$Dir>.Output.!DLSources ~C R
+IfThere <DeskLib_GenRelease$Dir>.Output.!DLUser Then Wipe <DeskLib_GenRelease$Dir>.Output.!DLUser ~C R
+IfThere <DeskLib_GenRelease$Dir>.Output.Examples Then Wipe <DeskLib_GenRelease$Dir>.Output.Examples ~C R
 IfThere <DeskLib_GenRelease$Dir>.Output.DeskLibQR Then Wipe <DeskLib_GenRelease$Dir>.Output.DeskLibQR ~C
 IfThere <DeskLib_GenRelease$Dir>.Output.XMLDocs Then Wipe <DeskLib_GenRelease$Dir>.Output.XMLDocs ~C
 IfThere <DeskLib_GenRelease$Dir>.Output.ReleaseArchives Then Wipe <DeskLib_GenRelease$Dir>.Output.ReleaseArchives ~C R
