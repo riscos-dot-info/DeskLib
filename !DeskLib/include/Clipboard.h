@@ -30,7 +30,9 @@ extern "C" {
 /*
   This header declares functions for manipulation of the RISC OS
   clipboard.
- */
+
+  Note: This module is incomplete.
+*/
 
 
 void Clipboard_Claim(BOOL Selection, BOOL Clipboard);
@@ -38,7 +40,7 @@ void Clipboard_Claim(BOOL Selection, BOOL Clipboard);
 typedef void (*paste_handler) (message_block *message);
 
 void Clipboard_Request(window_handle window, unsigned int internal, BOOL send,
-                       paste_handler *paste, int *filetypes); 
+                       paste_handler *paste, int *filetypes);
 
 
 

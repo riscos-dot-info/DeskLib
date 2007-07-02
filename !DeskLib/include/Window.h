@@ -159,6 +159,15 @@ extern void Window_DeleteOrig(window_handle window);
 
 
 #define Window_GetInfo3 Window_GetInfo
+/*
+  Old versions of DeskLib included a RISC OS 2 compatible Window_GetInfo
+  function, with Window_GetInfo3 being the RISC OS 3 version. The RISC OS
+  2 function is no longer present so the function has been renamed as
+  simply Window_GetInfo. This macro is defined in order to allow code
+  written using the old naming scheme to still work.
+*/
+
+
 extern os_error *Window_GetInfo(window_handle window, window_info *result);
 /*
   This is simply a frontend to the Wimp_GetWindowInfo call. However, it
@@ -321,6 +330,12 @@ extern BOOL Window_MoveWindow(event_pollblock *event, void *reference);
 
   This function *always* returns TRUE.
 */
+
+extern BOOL Window_IsOpen(window_handle window);
+/*
+  This returns TRUE if the window is currently open.
+*/
+
 
 #ifdef __cplusplus
 }

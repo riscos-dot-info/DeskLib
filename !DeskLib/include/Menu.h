@@ -72,11 +72,9 @@ extern menu_ptr Menu_New(const char *title, const char *description);
 
   The items themselves can be preceded by option characters to set flags
   for the given item.  '!' means the item will be ticked, '~' means it
-  will be shaded (greyed out) and '>' means it has a submenu (this means
-  that the Wimp will send you MenuWarn messages when the user moves the
-  pointer over the submenu arrow). Leading spaces are ignored.
+  will be shaded (greyed out). Leading spaces are ignored.
 
-  An example is "!Ticked,~Disabled,>Sub-menu,!~Ticked and disabled, Normal".
+  An example is "!Ticked,~Disabled,Sub-menu,!~Ticked and disabled, Normal".
 
   If this cannot allocate enough memory, it calls Error_OutOfMemory and then
   returns NULL, otherwise it returns a pointer to the created menu.

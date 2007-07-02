@@ -110,8 +110,10 @@ extern BOOL Event_Release(event_type event,
                           window_handle  window, icon_handle icon,
                           event_handler handler, void *reference);
 /*
-  This releases an event handler.  This should be called with same parameters
-  as were passed to Event_Claim to claim it.
+  This releases an event handler. This should be called with same parameters
+  as were passed to Event_Claim to claim it. It will only release one claim
+  each time it is called, so make sure you haven't mistakenly made multiple
+  identical claims.
 */
 
 

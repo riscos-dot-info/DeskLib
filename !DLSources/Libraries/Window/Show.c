@@ -114,10 +114,11 @@ extern void Window_Show(window_handle window, window_openpos openpos)
       break;
   }
 
+  /* Check that window doesn't fall off the side of the screen */
   if (moveto.x < 0)  moveto.x = 0;
   if (moveto.y < 64) moveto.y = 64;
-  if (moveto.x > screen_size.x - 96) moveto.x = screen_size.x - 96;
-  if (moveto.y > screen_size.y - 32) moveto.y = screen_size.y - 32;
+  if (moveto.x > (screen_size.x - w)) moveto.x = screen_size.x - w;
+  if (moveto.y > (screen_size.y - h)) moveto.y = screen_size.y - h;
 
   wstate.openblock.screenrect.min.x = moveto.x;
   wstate.openblock.screenrect.max.y = moveto.y;
@@ -125,11 +126,13 @@ extern void Window_Show(window_handle window, window_openpos openpos)
   wstate.openblock.screenrect.max.x = wstate.openblock.screenrect.min.x + w;
   wstate.openblock.screenrect.min.y = wstate.openblock.screenrect.max.y - h;
 
-  if (openpos == open_NEARLAST)
-  {
-    lastopenpos.x = wstate.openblock.screenrect.min.x;  /* save last open pos*/
-    lastopenpos.y = wstate.openblock.screenrect.max.y;
-  }
+  /* save last open position (for potential use next time with open_NEARLAST) */
+  lastopenpos.x = wstate.openblock.screenrect.min.x;
+  lastopenpos.y = wstate.openblock.screenrect.max.y;
 
-  Wimp_OpenWindow(&wstate.openblock);
+  /* If the window's already open, bring it to the top of thw window stack, otherwise open it */
+  if (wstate.flags.data.open)
+    Window_BringToFront(window);
+  else
+    Wimp_OpenWindow(&wstate.openblock);
 }

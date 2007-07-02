@@ -1,0 +1,55 @@
+# Sub-makefile for the Debugging libraries
+
+debugs:					\
+	$(DEBUGSDIR)/stderr.a		\
+	$(DEBUGSDIR)/uniquepipe.a	\
+	$(DEBUGSDIR)/pipetype.a		\
+	$(DEBUGSDIR)/uniquefile.a	\
+	$(DEBUGSDIR)/Signal.a		
+#	$(DEBUGSDIR)/heapgraph.a
+
+$(DEBUGSDIR)/Signal:	OtherLibs/Debugs/Signal.o OtherLibs/Debugs/Debug.o
+	@mkdir -p $(DEBUGSDIR)
+	$(AR) $(ARFLAGS) $@ OtherLibs/Debugs/Signal.o OtherLibs/Debugs/Debug.o
+
+$(DEBUGSDIR)/pipetype:	OtherLibs/Debugs/pipetype.o OtherLibs/Debugs/Debug.o
+	@mkdir -p $(DEBUGSDIR)
+	$(AR) $(ARFLAGS) $@ OtherLibs/Debugs/pipetype.o OtherLibs/Debugs/Debug.o
+
+$(DEBUGSDIR)/uniquepipe: OtherLibs/Debugs/uniquepipe.o OtherLibs/Debugs/Debug.o
+	@mkdir -p $(DEBUGSDIR)
+	$(AR) $(ARFLAGS) $@ OtherLibs/Debugs/uniquepipe.o OtherLibs/Debugs/Debug.o
+
+$(DEBUGSDIR)/stderr:	OtherLibs/Debugs/stderr.o OtherLibs/Debugs/Debug.o
+	@mkdir -p $(DEBUGSDIR)
+	$(AR) $(ARFLAGS) $@ OtherLibs/Debugs/stderr.o OtherLibs/Debugs/Debug.o
+
+$(DEBUGSDIR)/uniquefile: OtherLibs/Debugs/uniquefile.o OtherLibs/Debugs/Debug.o
+	@mkdir -p $(DEBUGSDIR)
+	$(AR) $(ARFLAGS) $@ OtherLibs/Debugs/uniquefile.o OtherLibs/Debugs/Debug.o
+
+#$(DEBUGSDIR)/heapgraph: OtherLibs/Debugs/heapgraph.o OtherLibs/Debugs/Debug.o
+#	@mkdir -p $(DEBUGSDIR)
+#	$(AR) $(ARFLAGS) -c $@ OtherLibs/Debugs/o.heapgraph OtherLibs/Debugs/o.Debug
+
+OtherLibs/Debugs/Signal.o:
+	DESKLIB_PATH=$(DESKLIB_PATH) $(CC) $(CFLAGS) -D_DeskLib_Debug -c OtherLibs/Debugs/Signal.c -o $@
+
+OtherLibs/Debugs/Debug.o:
+	DESKLIB_PATH=$(DESKLIB_PATH) $(CC) $(CFLAGS) -D_DeskLib_Debug -c OtherLibs/Debugs/Debug.c -o $@
+
+OtherLibs/Debugs/pipetype.o:  
+	DESKLIB_PATH=$(DESKLIB_PATH) $(CC) $(CFLAGS) -D_DeskLib_Debug -c OtherLibs/Debugs/pipetype.c -o $@
+	
+OtherLibs/Debugs/uniquepipe.o: 
+	DESKLIB_PATH=$(DESKLIB_PATH) $(CC) $(CFLAGS) -D_DeskLib_Debug -c OtherLibs/Debugs/uniquepipe.c -o $@
+                             
+OtherLibs/Debugs/stderr.o: 
+	DESKLIB_PATH=$(DESKLIB_PATH) $(CC) $(CFLAGS) -D_DeskLib_Debug -c OtherLibs/Debugs/stderr.c -o $@
+	
+OtherLibs/Debugs/uniquefile.o: 
+	DESKLIB_PATH=$(DESKLIB_PATH) $(CC) $(CFLAGS) -D_DeskLib_Debug -c OtherLibs/Debugs/uniquefile.c -o $@
+
+#OtherLibs/Debugs/heapgraph.o:
+#	$(CC) $(CFLAGS) -D_DeskLib_Debug -c OtherLibs/Debugs/heapgraph.c -o $@
+

@@ -1,0 +1,235 @@
+                    _               _     _
+                   | |__   __ _  __| | __| | ___   ___ 
+                   | '_ \ / _` |/ _` |/ _` |/ _ \ / __|
+                   | | | | (_| | (_| | (_| | (_) | (__ 
+                   |_| |_|\__,_|\__,_|\__,_|\___/ \___|
+
+haddoc is a program to take heavily-commented library header files, such as the h_doc files in DeskLib, and output an stonking big XML file with as much of the information as possible from the source files.  This can then be used in conjunction with XSL stylesheets, or whatever other program you care to use, to produce pleasantly formatted documentation for the library.
+
+The program uses the minimum amount of special markup in the header files and instead relies on the format being fairly consistent so it can produce the output anyway.
+
+
+The Command Line Interface
+--------------------------
+I'm sure this could be clearer, but if I knew how, I'd have done it that way in the first place.
+
+The syntax is:
+haddoc [<options>] [-l] <filename> [ [-l] <filename> ... ]
+
+Options:
+-h --help            Print the help text.
+
+-v --verbose         Print progress information.
+
+-o --output <file>   Output to the given file, otherwise output is on stdout.
+
+-n --name <name>     The name of the library being documented.
+
+-i --info <file>     File containing a valid XML information block for
+                     the library.
+
+-x --exclude <regex> Ignores any *lines* in the header files which match
+                     the given regular expression.  Note that some lines
+                     (like all '#if' lines and 'extern "C" {' lines) are
+                     ignored automatically.  You can specify more than
+                     one expression by using the option more than once.
+
+-l --leaf <number>   Defines how much of the path to a header file will be
+                     used as its name (by default only the leaf will be use
+                     It gives the number of "sections" of the following
+                     filename, counting from the right.  Zero means use the
+                     whole path, no matter how many sections it is made up of.
+
+On RISC OS, there is the --native option, which allows you to use normal '.' directory separators, instead of the UNIX-style '/'. 
+
+
+Input File format
+-----------------
+Pieces of special markup which are used are comments to turn on and off the documentation.  These are single-line comments on a line of their own, either
+/* haddoc ignore on */  or  /* haddoc ignore off */.  Any text on lines in the file between the "ignore on" comment and the "ignore off" comment will not be processed, wherever it appears in the file.  In addition, a comment of the form /* haddoc ignore line */ will stop haddoc reading in the next line for processing.
+
+It is possible to specify an introduction or overview for each file by the use of another special comment sequence.  This is fairly simple and consists of the single-line comment /* Overview */ (matched case insensitively) immediately follwed by the contents of the intro itself.
+
+
+Formatting of code
+------------------
+I've done my best to recognise all legal C formatting of function prototypes, structs, enums, unions, "extern"ed variables, typedefs, etc.  So the intention is that if the compiler accepts it, so will haddoc.  Note that I haven't tried (very hard) to actually check for legality, I assume it is legal and parse it on that basis.
+
+I have chosen to not accept - or at least not parse correctly - combined type definition and variable declaration.
+
+struct foo
+{
+	int a;
+	int b;
+} bar;
+
+would be categorised as a type definition and treated as such.  This is because I want to be able to have a few categories for arranging final documentation.  The categories are type, macro, macrofn, function and variable.  It shouldn't cause any problems, because this is after all supposed to produce documentation, and so the purposes of the type and the variable should really be given separately anyway.
+
+
+Macros
+------
+Macros will have their formatting preserved in the outputted XML file - what happens after that is up to you.  Note that macros can have the same name as another object, normally when designed to inline a function or provide different functionality depending on #defined values.
+
+Note that all #if, #else, #endif, etc. directives are ignored by haddoc.  If some symbol is only defined under certain conditions, you will have to mention that in the description (the related comment) if it is relevant.
+
+#define's aren't ignored, but you can specify a regex to ignore lines on the command line if you want to eliminate, eg. header gurads without using /* haddoc ignore */ comments around them.
+
+
+Comments
+--------
+Comments linked to an object should come immediately before it or after it, eg.
+
+void my_function(void);
+/*
+ * A comment explaining the purpose of my_function.
+ */
+
+or
+
+/*
+ * A comment explaining the purpose of my_function.
+ */
+void my_function(void);
+
+If a function has both pre- and post- commenting the pre-comment will be lost, and the post- one used.  This isn't ideal, and may change in later versions so don't rely on it.  I don't see why you would, really. :) 
+
+The formatting of the comment can be more or less as you would like - the margin for the text is defined by the first character which isn't a space or asterisk after the opening of the comment.  In the above example, the comment margin would be taken to be three characters for the whole of that comment.  Equally valid would be:
+
+/* A comment explaining the purpose of my_function. */
+
+/*
+A comment explaining the purpose of my_function.
+*/
+
+and so on.
+
+You cannot rely on the formatting of the text in the comments being preserved in the documentation.  The text will be wrapped into paragraphs, with paragraphs in the source text being separated by an empty line (ie. a line with nothing but whitespace to the right of the margin).
+
+e.g.
+/*
+ * This is one paragraph.
+ *
+ * And this is another.
+ */
+
+At some point in the future it is likely some way of "titling" sections of comments will be introduced, to allow you to give different headings to sections in the final documentation, or pick out examples from the main descriptive text, for example.
+
+In the output, links in the comment text will be marked up entirely on the basis of the text existing elsewhere in the library definition - this could
+have unwanted effects if you have, for instance, a function called "and".  Sorry.  If you have this problem, I would suggest you come up with better names for the parts of libraries in future.
+
+
+The output format
+-----------------
+haddoc outputs only one format - an XML format of my own devising.  The aim here was to produce a format which could be processed by standard XML tools to produce any sort of documentation you want.  This has led to a somewhat complicated format, which I will attempt to summarise below.  There will be a DTD for it at some point, and there already is an xslt stylesheet to give HTML documentation in a RISC OS PRM-y sort of style (this was primarily developed for DeskLib, a RISC OS library).
+
+Note that this is not an entirely straightforward text-with-markup system - it attempts to structure the XML to mimick the structure of the C code it is created from.  For this reason, it may be best to run haddoc on some small sample of e.g. DeskLib header files and use that as a worked example of this format.  With that warning, a guide to the format follows.
+
+The <library> element contains the whole file (in much the same way as the <html> element does in HTML.  It has the attribute "name", which can be specified with the -n or --name option on the command line.
+
+Inside this, there are one or more <file> elements, identified by a "name" attribute - this is the name of the file which was processed to produce this block of information.  If there was an "Overview" given in the source file, it will appear in a <description> element inside the <file>, with the title attribute "overview".
+
+<description> elements are used to contain all information drawn from comments in the file, and presently consists of text inside paragraph-specifying <p> elements.  Links within such text (and elsewhere, such as variable types) are enclosed in a <link> element, which has "file" and "ref" attributes giving the name of the file and the unique id of the first object with that name in the library.  Due to objects being able to have the same name, this may not link to the object you expect.  Not much I can do about that without adding source file markup.
+
+The information about any "object" in the source file is output in an <object> element.  This has an id attribute containing a unique id within the library, and a type attribute containing the type of object.  Types are function, type, global (for global variables), macro and macrofn (for macros which take parameters).
+
+An object will contain one or more <name> elements, which will enclose names he object is known by.  An object can have more than one name (eg. typedef struct fred {int a;} fred; would have names "struct fred" *and* "fred".  It is also worth noting that more than one object in a file can have the same name, as you can have, e.g. a function which is overridden by a macro.
+
+An object will also contain a <definition> element and (probably) a <description> element.  The definition is an XMLified C definition, and the description is as for the overview, consisting of paragraphs enclosing plain text and links.
+
+Taking the various possible parts of a definition one at a time:
+
+<variable> is used to enclose a definition of a global variable.  Like other places where there is a type definition and some sort of "named" part, it consists of some type of type definition (in the case of a variable this is normally a <type> element), and one or more <item> elements.   
+
+<macro> is used to enclose the exact text of the macro from the source file, including formatting (line breaks, spacing, etc.).
+
+<item> is used to enclose the "named" parts of definitions, sucha variable names, "typedef"ed aliases for structs, etc.  It consists of the item element itself, with a "name" attribute giving the name, and (when inside structures) an optional bitfield attribute to hold the specification for a bitfield.  All such "numbers" are actually the pieces of text used to specify the value, as their may be some significance in the choice of hexadecimal, decimal or even macro used to specify it.
+
+Inside the <item> element there can be any number of nested <ptr> and <array> elements.  <ptr> elements can have qualifier attributes which consist of a space separated list of qualifiers (eg. "const").  <array> elements have a size attribute which consists of the size specification *including* the square brackets.  These are not nested in the order they appear in the C code (that would require a different approach altogether as "bracketing" would have to be accounted for in the XML) - instead they are in the order they might appear if written by a human (or might be given by cdecl).
+
+This removes any ambiguity in the order of elements and makes it foolishly easy to describe it in "human readable" terms, and a little more difficult to output it in C code again. :)  I think this is one of the more complex (and idiosyncratic parts), so I'll give an example or two:
+
+char *const *apple;
+
+Is a const pointer to pointer to char (called apple).  This would be output as:
+
+<variable>
+<type>char</type>
+<item name="apple"><ptr qualifier="const"><ptr></ptr></ptr></item>
+</variable>
+
+This is a lot less compact, but expresses the same information.  If there were more than one variable defined at the same time (i.e. comma-separated with the same type), there would be more than one item element in the variable element.
+
+More complicatedly, the faintly absurd:
+const int (*volatile (*const apple[2])[0x3])[4];  would become...
+
+<variable>
+<type qualifier="const">int</type>
+<item name="apple">
+<array size="[2]">
+<ptr qualifier="const">
+<array size="[0x3]">
+<ptr qualifier="volatile">
+<array size="[4]">
+</array></ptr></array></ptr></array>
+</item>
+</variable>
+
+These rules holds true for all uses of <item>, in variables, struct definitions, function parameters. etc.
+
+A <typedef> element will contain a <struct>, <union>, <function>, <enum> or <type> element (otherwise there would be no type to define), and optionally an <item> element (if there was an actual "typedef" in the source defining an alias to the type).
+
+An <enum> element has an optional name attribute (used if the enum itself has a name, such as "enum foo"), which contains one or more <enum-val> elements.  These also have name attributes, which give the name of the enumerated constant.
+They (optionally) enclose a piece of text representing the value they were assigned in the source file (by an equals sign).  This will only be present if the value was explicitly stated for the constant in question.
+
+The <struct> and <union> elements are identical in form.  Like the enum, these have name attributes if the struct or union has a name and is not anonymous.  struct/union elements may be empty (if they define an incomplete type (where you cannot manipulate the contents directly, but must use a defined function interface), or contain one or more <member> elements.  <member> elements are very like <variable>s, and contain a type (which may be a nested struct or union) and one or more <item>s.
+
+<function> elements are used to declare function prototypes, but can also serve to define a type of function pointer or function pointer variable.  They contain a <returns> element which gives the return type (usually just a <type> element), an <item> element which gives the function name, and none or more <parameter> elements.   If there are no <parameter>s, it represents a function with an unknown number of parameters (represented in C as function();).  <parameter> elements are very like variable elements - they contain a type and  one <item> element.
+
+Right, I think that covers it all. ;) 
+
+
+Problems and things to be aware of
+----------------------------------
+Comments "inside" structures, function definitions and suchlike are all discarded at present - by all means use them if it makes the header file itself easier to understand, but bear in mind that the documentation for the object should contain all the information needed to describe its function, as that is all that will make it into the separate documentation.
+
+In general, the more complicated the arrangement of things in the source file, the less chance you have of getting a good result in the XML output.  Keep separate concepts in separate objects, then you can document them better. ("objects" being used in the haddoc sense of some self-contained chunk of code with accompanying comment).
+
+When used under RISC OS, it is worth noting that parts of paths specified on the command line may be case-sensitive, if they also include wildcards.  This is unlike normal RISC OS operation.
+
+i.e. the path fred/C* will only match files starting with a capital C.  To match files starting with either case, you will need to use fred/[Cc]* instead.  Sorry.
+
+
+
+The usual licensing gubbins
+---------------------------
+This software is made available under the following licence:
+
+Copyright (c) 2003 Antony Sidwell
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to
+deal in the Software without restriction, including without limitation the
+rights to use, copy, modify, merge, publish, distribute, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to
+do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+IN THE SOFTWARE.
+
+
+Acknowledgements
+----------------
+haddoc uses the PCRE (Perl-Compatible Regular Expression) Library to do the identifying and matching of pieces of text in the source files.
+
+It was written to use Unixlib so I could run it on my linux machine as well, so thanks to everyone who put so much work into both that and the GCC port.
+
+A few bits and bobs were done by Andrew Sidwell.
+

@@ -1,0 +1,109 @@
+	!DLSources - DeskLib Sources application directory
+	
+
+
+        Note: This is an old file. To see the full documentation,
+              please load a web browser and try again.
+
+
+This application directory contains all DeskLib code-files except for
+the final libraries and headers, which are in the !DeskLib application.
+It sets the system variable <DeskLib_Sources$Dir> to be the !DLSources
+directory.
+
+This directory is *not* needed for writing applications which use
+DeskLib - the !DeskLib application contains all the headers and
+libraries needed. All source code for DeskLib is contained in this
+directory.
+
+The 'Bin' directory contains a few of programs which I use to do various
+things.
+
+The 'Libraries' directory contains a separate directory for
+each DeskLib sub-library.
+
+
+Remaking DeskLib
+˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+
+The default setup is for Norcroft.  If you have GCC, the things you
+need to uncomment in the Makefile should be obvious.  
+
+We've changed the build system substantially from the previous 2.30 release,
+partly so we can in future cross compile DeskLib, and partly to remove
+the need for slightly unstable tools that we didn't have source for.
+
+DeskLib requires GNU make - AMU isn't quite up to the job.  If you don't
+already have GCC, then you can get this as part of the "utils" archive
+from the latest GCC release:
+
+http://gccsdk.riscos.info/
+
+The rest of the system will build with tools from Castle's 32-bit release.
+Don't try and rebuild DeskLib with a 26-bit compiler - you'll just end up
+with a broken library. GCC should be able to build it fine too. Again, you'll
+require a 32-bit version of GCC.
+
+In general, using libraries such as DeskLib between UnixLib and
+SharedCLibrary programs isn't a good idea, as they have some
+incompatibilities.  DeskLib has been checked to ensure that it is
+compatible with both C libraries.  Visit http://www.riscos.info/unixlib/
+if you wish to know more.
+
+Just running "make" is sufficient to build everything.
+
+
+
+Fairly complete description of all files in this !DLSources directory
+˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+
+Here is what is where:
+
+
+!Boot		Sets the system variable DeskLib_Source$Dir to point to
+		this directory.
+
+!Run		Simply runs !Boot.
+
+!Help		This file.
+
+!Sprites	The !DLSources sprite - a green version of the normal
+		DeskLib sprite.
+
+Libraries.	Every DeskLib sub-library's source, makefiles etc.
+	
+	<Lib-name>.
+		
+		Every sublibrary has the following
+		source-directories:
+		
+		c.	C source
+		s.	Assembler source
+		h.	Internal headers 
+		
+
+
+OtherLibs.	A few libraries which aren't part of the main DeskLib
+		library-files.
+	
+	Debugs.		Some alternative debugging libraries
+	
+		Makefile	This puts the different debugging
+				libraries into <DeskLib$Dir>.o.Debug.
+		o.
+		c.
+	
+	SmallError.	An alternative to the standard Error library.
+			It sends error messages to stderr. Useful for
+			using Error_Report* in command line programs.
+			The generated library is 
+			'<DeskLib>.Other.SmError'.
+
+
+	
+	MkClientOs	Makes .o files suitable for static linking with
+			a client application. Used for libraries which
+			aren't available as a DLL.
+
+
+- DeskLib Developers
