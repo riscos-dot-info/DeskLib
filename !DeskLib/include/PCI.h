@@ -61,12 +61,14 @@ typedef struct {
   void         *laddress;
 } pci_address;
 
+/*
+This empty structure commented out to stop helpfile generation (haddoc) aborting
 
 typedef struct {
 
 
 } pci_info;
-
+*/
 
 /*
    Return PCI IDs for a given device.

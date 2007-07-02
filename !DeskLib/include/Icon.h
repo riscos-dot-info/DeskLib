@@ -44,7 +44,7 @@ extern icon_handle Icon_BarIcon(const char *spritename, window_handle pos);
 
   If you want to attach handlers or otherwise make use of the icon,
   you should store the returned icon handle for use with Event_Claim or
-  similar.
+  similar. The returned icon handle is 0 if there is an error.
 
   You pass the name of a sprite in the Wimp sprite pool and 'pos' which
   should be iconbar_LEFT or iconbar_RIGHT.  The icon will be created the
@@ -84,6 +84,13 @@ extern void Icon_SetSelect(window_handle window, icon_handle icon, int flag);
 /*
   This sets whether or not the given icon is selected. If flag is 0 it
   means will be deselected, 1 means it will be selected.
+*/
+
+extern void Icon_SetDeleted(window_handle window, icon_handle icon, int flag);
+/*
+  This sets whether or not the given icon has its "deleted" flag set. If the
+  value of flag passed to the function is 0, the "deleted" icon flag will be
+  unset. If 1 is passed, the icon "deleted" flag will be set.
 */
 
 

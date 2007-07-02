@@ -417,7 +417,7 @@ extern os_error *Font_SetThresholds(font_thresholds *t);
 
 extern os_error *Font_GetWimpFont(font_handle *handle);
 /*
-  Get handle of desktop font
+  Get handle of desktop font - handle is 0 if the "system" font is in use.
 */
 
 

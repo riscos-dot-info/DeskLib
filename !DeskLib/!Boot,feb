@@ -14,13 +14,13 @@ IconSprites <Obey$Dir>.!Sprites
 | Uncomment these if you are using EasyC/EasyC++
 | They will have no effect if you don't use EasyC(++) apart
 | from taking up a bit of system-variable space.
-If "<DeskLib$Dir>"="" Then Set MoreLib$Dir <MoreLib$Dir>,<Obey$Dir>.o.
-If "<DeskLib$Dir>"="" Then Set MoreHdr$Dir <MoreHdr$Dir>,<Obey$Dir>.
+
+| Commented out as of 26/4/07 - EasyC now obsolete. MoreLib & MoreHdr probably not registered
+|If "<DeskLib$Dir>"="" Then Set MoreLib$Dir <MoreLib$Dir>,<Obey$Dir>.o.
+|If "<DeskLib$Dir>"="" Then Set MoreHdr$Dir <MoreHdr$Dir>,<Obey$Dir>.
 
 
-Set DeskLib$Path DeskLib_User:,DeskLib_Core:
+If "<DeskLib$Path>" = "" Then Set DeskLib$Path DeskLib_User:,DeskLib_Core:
 
-Set DeskLib$Dir <Obey$Dir>
-Set DeskLib_Core$Path <DeskLib$Dir>.,<DeskLib$Dir>.include.,
-
-Filer_Boot <DeskLib$Dir>.!DLLs
+If "<DeskLib$Dir>" = "" Then Set DeskLib$Dir <Obey$Dir>
+If "<DeskLib_Core$Path>" = "" Then Set DeskLib_Core$Path <DeskLib$Dir>.,<DeskLib$Dir>.include.,

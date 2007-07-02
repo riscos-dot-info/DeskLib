@@ -1,0 +1,711 @@
+<?xml version="1.0" standalone="yes"?>
+
+<!--
+      Stylesheet to convert hdoc2xml output into a HTML
+      page per header file.
+-->
+<xsl:stylesheet version="1.0"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns="http://www.w3.org/TR/xhtml1/strict"
+                xmlns:saxon = "http://icl.com/saxon">
+                         
+
+
+<xsl:output method="html" indent="no" />
+
+<xsl:param name="outputpath" />
+
+<xsl:preserve-space elements="macro" />
+<xsl:strip-space elements="parameter description" />
+
+<xsl:variable name="title-to-id-src">ABCDEFGHIJKLMNOPQRSTUVWXYZ ,$:()-*?</xsl:variable>
+<xsl:variable name="title-to-id-map">abcdefghijklmnopqrstuvwxyz_-_-</xsl:variable>
+
+
+<!-- ========================================================================
+   Generate the index page and the pages for each file
+========================================================================= -->
+<xsl:template match="library">
+<html>
+<head>
+<title><xsl:value-of select="@name" /></title>
+</head>
+<body bgcolor="white">
+<hr />
+<h1><xsl:value-of select="@name" /></h1>
+<!--
+<xsl:if test="@version">
+<h2>Version <xsl:value-of select="@version" /></h2>
+</xsl:if>-->
+<hr />
+<dl><dt><h3>Header files</h3></dt>
+<dd>
+<xsl:call-template name="library-toc" />
+</dd>
+</dl>
+<hr />
+</body>
+</html>
+
+<xsl:for-each select="//file">
+<xsl:sort select="@name" />
+<xsl:call-template name="file-write" />
+</xsl:for-each>
+
+</xsl:template>
+
+
+<!-- ========================================================================
+	Write the table of contents for the library.
+
+	This can basically just be a list of the header files in the
+	library, with links to the file information. 
+========================================================================= -->
+<xsl:template name="library-toc">
+
+  <xsl:variable name="no-files">
+    <xsl:value-of select="ceiling(count(/library/file) div 2)" />
+  </xsl:variable>
+
+  <!-- A two-columned table of header files -->
+  <table width="40%" border="0">
+  <tr>
+  <td align="top">
+  
+  <xsl:for-each select="//file">
+  <xsl:sort select="@name" />
+    <xsl:if test="floor(count(preceding::file) div $no-files) = 0">
+      <xsl:call-template name="file-link" />
+      <xsl:element name="br" />
+    </xsl:if>
+  </xsl:for-each>
+  </td>
+
+  <td>
+  <xsl:for-each select="//file">
+  <xsl:sort select="@name" />
+    <xsl:if test="floor(count(preceding::file) div $no-files)">
+      <xsl:call-template name="file-link" />
+      <xsl:element name="br" />
+    </xsl:if>
+  </xsl:for-each>
+  </td>
+
+  </tr>
+  </table>
+
+</xsl:template>
+
+
+<!-- ========================================================================
+	Output a link to a header file.
+========================================================================= -->
+<xsl:template name="file-link">
+<xsl:element name="a">
+
+<xsl:attribute name="href">
+<xsl:call-template name="file-name">
+<xsl:with-param name="name"><xsl:value-of select="@name" /></xsl:with-param>
+</xsl:call-template>
+</xsl:attribute>
+
+<xsl:value-of select="@name" />
+</xsl:element>
+</xsl:template>
+
+
+<!-- ========================================================================
+   Output details of a header file.
+========================================================================= -->
+<xsl:template name="file-write">
+
+<!-- Put the filename of this file in $filename -->
+<xsl:variable name="filename">
+<xsl:call-template name="file-name">
+<xsl:with-param name="name"><xsl:value-of select="@name" /></xsl:with-param>
+</xsl:call-template>
+</xsl:variable>
+
+<xsl:document href="{$filename}" method="html" indent="no">
+<html>
+<head>
+<title>
+<xsl:value-of select="/library/@name" />
+<xsl:text>: </xsl:text>
+<xsl:value-of select="@name" /></title>
+</head>
+<body bgcolor="white">
+<hr />
+<h1>   
+<a href="index.html"><xsl:value-of select="/library/@name" /></a>
+<xsl:text>:</xsl:text><xsl:value-of select="@name" /></h1>
+<hr />
+
+<!-- List of contents of this header file page -->
+<dl>
+<dt><h2>Contents</h2></dt>
+<dd>
+<ul>
+
+<xsl:if test="description[@title='overview']">
+   <li><a href="#intro">Introduction and Overview</a></li>
+</xsl:if>
+
+<!-- List the functions -->
+<xsl:if test="object[@type='function']">
+  <xsl:call-template name="contents-list">
+  <xsl:with-param name="type">function</xsl:with-param>
+  <xsl:with-param name="heading">Function</xsl:with-param>
+  </xsl:call-template>
+</xsl:if>
+
+<!-- List the function-like macros -->  
+<xsl:if test="object[@type='macrofn']">
+  <xsl:call-template name="contents-list">
+  <xsl:with-param name="type">macrofn</xsl:with-param>
+  <xsl:with-param name="heading">Function-like macro</xsl:with-param>
+  </xsl:call-template>
+</xsl:if>
+
+<!-- List the macros -->  
+<xsl:if test="object[@type='macro']">
+  <xsl:call-template name="contents-list">
+  <xsl:with-param name="type">macro</xsl:with-param>
+  <xsl:with-param name="heading">Macro</xsl:with-param>
+  </xsl:call-template>
+</xsl:if>   
+
+<!-- List the types -->  
+<xsl:if test="object[@type='type']">
+  <xsl:call-template name="contents-list">
+  <xsl:with-param name="type">type</xsl:with-param>
+  <xsl:with-param name="heading">Type</xsl:with-param>
+  </xsl:call-template>
+</xsl:if>   
+
+<!-- List the variables -->
+<xsl:if test="object[@type='global']">
+  <xsl:call-template name="contents-list">
+  <xsl:with-param name="type">global</xsl:with-param>
+  <xsl:with-param name="heading">Variable</xsl:with-param>
+  </xsl:call-template>
+</xsl:if>
+
+
+</ul>
+</dd>
+</dl>
+
+<!-- The overview section (if it exists) -->  
+<xsl:if test="description[@title='overview']">
+  <hr />
+  <dl>
+  <dt><h2><a name="intro">Introduction and Overview</a></h2></dt>
+  <dd><dl><dt></dt>
+  <dd><xsl:apply-templates select="description[@title='overview']"/></dd>
+  </dl>
+  </dd>  
+  </dl>
+</xsl:if>
+
+<!-- Functions (if there are any) -->
+<xsl:if test="object[@type='function']">
+  <xsl:call-template name="all-of-type">
+  <xsl:with-param name="type">function</xsl:with-param>
+  <xsl:with-param name="heading">Function</xsl:with-param>
+  </xsl:call-template>
+</xsl:if>
+
+<!-- function-like macros -->  
+<xsl:if test="object[@type='macrofn']">
+  <xsl:call-template name="all-of-type">
+  <xsl:with-param name="type">macrofn</xsl:with-param>
+  <xsl:with-param name="heading">Function-like macro</xsl:with-param>
+  </xsl:call-template>
+</xsl:if>
+
+<!-- macros -->  
+<xsl:if test="object[@type='macro']">
+  <xsl:call-template name="all-of-type">
+  <xsl:with-param name="type">macro</xsl:with-param>
+  <xsl:with-param name="heading">Macro</xsl:with-param>
+  </xsl:call-template>
+</xsl:if>   
+
+<!-- types -->  
+<xsl:if test="object[@type='type']">
+  <xsl:call-template name="all-of-type">
+  <xsl:with-param name="type">type</xsl:with-param>
+  <xsl:with-param name="heading">Type</xsl:with-param>
+  </xsl:call-template>
+</xsl:if>   
+
+<!-- variables -->
+<xsl:if test="object[@type='global']">
+  <xsl:call-template name="all-of-type">
+  <xsl:with-param name="type">global</xsl:with-param>
+  <xsl:with-param name="heading">Variable</xsl:with-param>
+  </xsl:call-template>
+</xsl:if>
+
+<hr />
+</body>
+</html>
+</xsl:document>
+</xsl:template>
+
+
+<!-- ========================================================================
+   A paragraph in a description.
+========================================================================= -->
+<xsl:template match="p">
+<p><xsl:apply-templates /></p>
+</xsl:template>
+
+<!-- ========================================================================
+   Pretty pointless - outputs definitions.
+========================================================================= -->
+<xsl:template match="definition" >
+<xsl:apply-templates />
+</xsl:template>
+
+
+<!-- ========================================================================
+  A definition of a function.
+========================================================================= -->
+<xsl:template match="function" name="function">
+<xsl:apply-templates select="returns" />
+
+<xsl:if test="item/ptr">
+<xsl:text>(</xsl:text>
+</xsl:if>
+
+<xsl:apply-templates select="item" />
+
+<xsl:if test="item/ptr">
+<xsl:text>)</xsl:text>
+</xsl:if>
+
+<xsl:text>(</xsl:text>
+
+<xsl:for-each select="parameter">
+  <xsl:call-template name="parameter" />
+</xsl:for-each>
+
+<xsl:text>);</xsl:text>
+</xsl:template>
+
+
+<!-- ========================================================================
+   Pointer notation before things.
+========================================================================= -->
+<xsl:template match="ptr"> 
+<xsl:param name="location" />
+                     
+  <xsl:apply-templates>
+    <xsl:with-param name="location" select="$location" />
+  </xsl:apply-templates>
+  
+  <xsl:if test="$location='pre'">
+    <xsl:text>*</xsl:text>
+    <xsl:if test="@qualifier">
+      <xsl:value-of select="@qualifier" />
+      <xsl:text> </xsl:text>
+    </xsl:if>
+  </xsl:if>
+
+</xsl:template>
+
+
+<!-- ========================================================================
+   Array notation and appropriate brackets.
+========================================================================= -->
+<xsl:template match="array">
+<xsl:param name="location" />
+              
+  <xsl:if test="$location='post'">
+    <xsl:if test="ancestor::ptr">
+      <xsl:text>)</xsl:text>
+    </xsl:if>
+
+    <xsl:value-of select="@size" />
+
+  </xsl:if>
+
+  <xsl:apply-templates>
+    <xsl:with-param name="location" select="$location" />
+  </xsl:apply-templates>
+  
+  <xsl:if test="$location='pre'">
+    <xsl:if test="ancestor::ptr">
+      <xsl:text>(</xsl:text>
+    </xsl:if>
+  </xsl:if>  
+
+</xsl:template>
+
+
+<!-- ========================================================================
+   An "item" of some sort - ie. a piece of text with surrounding ptr, array
+   or bitfield notation.
+========================================================================= -->
+<xsl:template match="item">
+
+<xsl:apply-templates select="ptr|array">
+<xsl:with-param name="location">pre</xsl:with-param>
+</xsl:apply-templates>
+
+<xsl:value-of select="@name" />
+<xsl:if test="@bitfield">
+<xsl:text> : </xsl:text>
+<xsl:value-of select="@bitfield" />
+</xsl:if>
+
+<xsl:apply-templates select="ptr|array">
+<xsl:with-param name="location">post</xsl:with-param>
+</xsl:apply-templates>
+
+</xsl:template>
+
+
+<!-- ========================================================================
+   A "type" - a piece of text denoting a type.
+========================================================================= -->
+<xsl:template match="type" name="type">
+<xsl:if test="@qualifier">
+<xsl:value-of select="@qualifier" /><xsl:text> </xsl:text>
+</xsl:if>
+<xsl:apply-templates />
+</xsl:template>
+
+
+<!-- ========================================================================
+   A parameter of a function
+========================================================================= -->
+<xsl:template name="parameter">
+<xsl:apply-templates select="type" />
+<xsl:text> </xsl:text>
+<xsl:apply-templates select="item" />
+
+<xsl:if test="following-sibling::parameter[position()=1]">
+<xsl:text>, </xsl:text>
+</xsl:if>
+
+</xsl:template>
+
+
+<!-- ========================================================================
+   A macro definition
+========================================================================= -->
+<xsl:template match="macro">
+<pre><small><xsl:value-of select="." /></small></pre>
+</xsl:template>    
+
+
+<!-- ========================================================================
+   Outputs an enum.  Oh yes.
+========================================================================= -->
+<xsl:template match="enum">
+
+  <xsl:text>enum</xsl:text>
+  
+  <xsl:if test="@name">
+    <xsl:text> </xsl:text>
+    <xsl:value-of select="@name" />
+  </xsl:if>
+
+  <br />
+  <xsl:text>{</xsl:text>
+
+  <dl><dt /><dd>            
+  <xsl:apply-templates />
+  </dd></dl>
+
+  <xsl:text>}</xsl:text>
+
+</xsl:template>
+
+
+<!-- ========================================================================
+   An enumerated constant, part of an enum.
+========================================================================= -->
+<xsl:template match="enum-val">
+
+<xsl:value-of select="@name" />
+
+<xsl:if test="string-length(.)!=0">
+<xsl:text> = </xsl:text>
+<xsl:value-of select="." />
+</xsl:if>
+
+<xsl:if test="following-sibling::enum-val[(position()=1)]">
+<xsl:text>, </xsl:text>
+</xsl:if>
+
+<br />
+</xsl:template>
+
+
+<!-- ========================================================================
+   Outputs a struct or union encountered in the normal course of events.   
+========================================================================= -->
+<xsl:template match="struct|union">
+
+  <xsl:if test="self::struct">
+  <xsl:text>struct</xsl:text>
+  </xsl:if>
+
+  <xsl:if test="self::union">
+  <xsl:text>union</xsl:text>
+  </xsl:if>
+
+  <xsl:if test="@name">
+    <xsl:text> </xsl:text>
+    <xsl:value-of select="@name" />
+  </xsl:if>
+
+  <br />
+
+  <xsl:text>{</xsl:text><br />
+
+  <dl><dt /><dd>            
+  <xsl:apply-templates />
+  </dd></dl>
+
+  <br />
+  <xsl:text>}</xsl:text>
+
+</xsl:template>
+
+
+<!-- ========================================================================
+   Output a member of a struct/union
+========================================================================= -->
+<xsl:template match="member|typedef|variable">
+
+<xsl:if test="self::typedef">
+<xsl:text>typedef </xsl:text>
+</xsl:if>
+
+<xsl:if test="self::variable">
+<xsl:text>extern </xsl:text>
+</xsl:if>
+
+<xsl:choose>
+  <xsl:when test="function">
+    <xsl:apply-templates select="function"/>
+  </xsl:when>
+
+  <xsl:otherwise>
+    <xsl:apply-templates select="enum|struct|union|type"/>
+    
+    <xsl:for-each select="item">
+      <xsl:text> </xsl:text>
+      <xsl:apply-templates select="self::item" />
+    
+      <xsl:if test="following-sibling::item[position()=1]">
+        <xsl:text>,</xsl:text>
+      </xsl:if>
+    
+    </xsl:for-each>  
+    <xsl:text>;</xsl:text>
+    <br />        
+  </xsl:otherwise>
+</xsl:choose>
+
+</xsl:template>
+
+
+<!-- ========================================================================
+   Outputs the contents list for functions, macros, etc depending
+   on parameter values   
+========================================================================= -->
+<xsl:template name="contents-list">
+<xsl:param name="type" />
+<xsl:param name="heading" />
+
+  <li>
+  <xsl:element name="a">
+  <xsl:attribute name="href">
+  <xsl:text>#</xsl:text>
+  <xsl:value-of select="$type" />
+  <xsl:text>s</xsl:text>
+  </xsl:attribute>
+
+  <xsl:value-of select="$heading" />
+  <xsl:if test="count(object[@type=$type])>1">
+    <xsl:text>s</xsl:text>
+  </xsl:if>
+  </xsl:element>
+
+  <ul>
+  <xsl:for-each select="object[@type=$type]">
+    <xsl:for-each select="name">
+      <li>
+      <xsl:call-template name="internal-link" >
+        <xsl:with-param name="type">href</xsl:with-param>
+      </xsl:call-template> 
+      </li>
+    </xsl:for-each>
+  </xsl:for-each>
+  </ul>
+   
+  </li>
+  
+</xsl:template>
+
+
+<!-- ========================================================================
+   Outputs the definitions for all of a particular type,
+   complete with heading.
+========================================================================= -->
+<xsl:template name="all-of-type">
+<xsl:param name="type" />
+<xsl:param name="heading" />    
+
+<hr />
+<dl><dt><h2>
+  <xsl:element name="a">
+  <xsl:attribute name="name">
+  <xsl:value-of select="$type" /><xsl:text>s</xsl:text>
+  </xsl:attribute>
+
+  <xsl:value-of select="$heading" />
+  <xsl:if test="count(object[@type=$type])>1">
+    <xsl:text>s</xsl:text>
+  </xsl:if>
+  </xsl:element>
+</h2></dt>
+<dd>
+<dl>
+
+<xsl:for-each select="object[@type=$type]">
+<xsl:sort select="@name" />
+<hr />
+<dt>
+
+       
+  <xsl:for-each select="name">
+  <h3 align="right">
+    <xsl:call-template name="internal-link" >
+      <xsl:with-param name="type">name</xsl:with-param>
+    </xsl:call-template>
+  </h3>
+  </xsl:for-each>
+</dt>
+<dd><xsl:apply-templates select="definition"/></dd>
+
+<dd><xsl:apply-templates select="description"/></dd>
+</xsl:for-each>
+
+</dl>
+</dd>
+</dl>
+
+</xsl:template>
+
+
+<!-- ========================================================================
+   Gives the filename for the given "file" element name.
+========================================================================= -->
+<xsl:template name="file-name">
+<xsl:param name="name" />
+<xsl:value-of select="translate($name,$title-to-id-src,$title-to-id-map)" />
+<xsl:text>.html</xsl:text>
+</xsl:template>
+
+
+<!-- ========================================================================
+   Outputs an internal link to an object (ie. internal to this file).
+
+   Takes one parameter: type.
+   If "type" is href, it is a link to the object,
+   if it is "name", it is marking the location of the object.    
+========================================================================= -->
+<xsl:template name="internal-link">
+<xsl:param name="type" />
+
+  <xsl:element name="a">
+  
+  <!-- Either href or name -->
+  <xsl:attribute name="{$type}">
+  
+  <!-- #<type>_ -->
+  <xsl:if test="$type='href'">
+    <xsl:text>#</xsl:text>
+  </xsl:if>
+  
+  <xsl:value-of select="../@id" />
+  
+  </xsl:attribute>
+
+  <xsl:apply-templates />
+  
+  </xsl:element>
+</xsl:template>
+
+
+<!-- ========================================================================
+   Outputs the name of the type supplied (ie. it maps global onto variable).
+========================================================================= -->
+<xsl:template name="objtype-name">
+<xsl:param name="type" />
+
+  <xsl:choose>
+    <xsl:when test="$type='global'">
+      <xsl:text>variable</xsl:text>
+    </xsl:when>
+
+    <xsl:otherwise>
+      <xsl:value-of select="$type" />
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
+
+<!-- ========================================================================
+   Outputs an external link to an object (ie. an object which may or may
+   not be in this file, but is in the library).
+========================================================================= -->
+<xsl:template match="link">
+
+  <xsl:variable name="object-id" select="@ref" />
+
+  <xsl:choose>
+    <xsl:when test="ancestor::object/@id=@ref">
+     <xsl:value-of select="." />
+   </xsl:when>
+
+    <xsl:otherwise>
+      <xsl:element name="a">
+      <xsl:attribute name="href">
+
+      <!-- If the object is in another file -->
+      <xsl:if test="ancestor::file/@name!=@file">
+        <xsl:call-template name="file-name">
+        <xsl:with-param name="name">
+          <xsl:value-of select="@file" />
+        </xsl:with-param>
+        </xsl:call-template>
+      </xsl:if>
+
+      <!-- #<object-id> -->
+      <xsl:text>#</xsl:text><xsl:value-of select="@ref" />
+    
+      </xsl:attribute>
+        <xsl:value-of select="." />
+      </xsl:element>
+    </xsl:otherwise>      
+  </xsl:choose>
+
+</xsl:template>
+
+
+<xsl:template name="footer">
+<p><small>
+<xsl:text>These pages are generated automatically from the library header files by a combination of "haddock" and an xslt stylesheet.</xsl:text>
+</small></p>
+</xsl:template>
+
+
+</xsl:stylesheet>
