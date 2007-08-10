@@ -15,6 +15,7 @@
              handling functions.
     Mods:    14 July 1993 - Added Event_Initialise3
              20 Mar 1995  - JPS Added veneers for global vars for use with DLLs
+             1 May 2007 - Tweaked documentation
 */
 
 

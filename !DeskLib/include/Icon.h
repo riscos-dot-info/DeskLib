@@ -1,19 +1,21 @@
 /*
-    ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for
-    #   #  ##   ###  #  # #     # ###             RISC OS machines
-    #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #
-    #   # #        # # #  #     # #  #    Please refer to the accompanying
-    ####   ### ####  #  # ##### # ###    documentation for conditions of use
-    ________________________________________________________________________
-
-    File:    Icon.h
-    Author:  Copyright © 1992, 1993, 1994 Jason Williams
-    Version: 1.15 (17 Apr 2005)
-    Purpose: High-level icon handling routines
-*/
-
+ * This file is part of DeskLib, the C library for RISC OS.
+ * Please see accompanying documentation for terms of use.
+ *
+ *       http://www.riscos.info/index.php/DeskLib
+ *
+ *
+ * Module:  Icon
+ * File:    Icon.h
+ * Author:  Copyright © 1992, 1993, 1994 Jason Williams
+ * Purpose: High-level icon handling routines
+ *
+ * Version History
+ * 17/04/2005, v1.15
+ * 01/07/2007: Added Icon_SetDeleted
+ * 10/08/2007: Tidied file header
+ *
+ */
 
 #ifndef __dl_icon_h
 #define __dl_icon_h
