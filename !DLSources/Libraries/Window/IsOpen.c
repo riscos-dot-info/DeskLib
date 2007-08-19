@@ -21,7 +21,7 @@ extern BOOL Window_IsOpen(window_handle window)
 {
   BOOL returnvalue = FALSE;
   window_info winfo;
-j
+
   Window_GetInfo3(window, &winfo);
 
   if (winfo.block.flags.data.open) returnvalue = TRUE;

@@ -86,7 +86,7 @@ extern void Error_ReportFatalInternal(int errornum, const char *report, ...)
   char errmess[256];
 
   va_start(va, report);
-  vsprintf(errmess, report, va); 
+  vsprintf(errmess, report, va);
   va_end(va);
   Error_ReportFatal(errornum, errmess);
 }
@@ -103,7 +103,13 @@ extern BOOL Error_Check(os_error *error)
   return(FALSE);
 }
 
+extern BOOL Error_CheckSilent(os_error *error)
+{
+  if (error != NULL)
+    return(TRUE);
 
+  return(FALSE);
+}
 
 extern void Error_CheckFatal(os_error *error)
 {
