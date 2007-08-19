@@ -47,7 +47,7 @@ ARFLAGS = rcv
 endif
 
 # Make the library
-all: $(DESKLIB)
+all: $(DESKLIB) debugs smerror
 
 # Link the objects together to make a new library
 $(DESKLIB): $(all_objects)
