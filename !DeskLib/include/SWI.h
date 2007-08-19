@@ -1,18 +1,20 @@
 /*
-    ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for
-    #   #  ##   ###  #  # #     # ###             RISC OS machines
-    #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #
-    #   # #        # # #  #     # #  #    Please refer to the accompanying
-    ####   ### ####  #  # ##### # ###    documentation for conditions of use
-    ________________________________________________________________________
-
-    File:    SWI.h
-    Author:  Copyright © 1992 Jason Williams
-    Version: 1.03 (17 Apr 2005)
-    Purpose: Generic SWI call veneer function
-*/
+ * This file is part of DeskLib, the C library for RISC OS.
+ * Please see accompanying documentation for terms of use.
+ *
+ *       http://www.riscos.info/index.php/DeskLib
+ *
+ *
+ * Module:  SWI
+ * File:    SWI.h
+ * Author:  Copyright © 1992 Jason Williams
+ * Purpose: Generic SWI call veneer function + SWI number macros.
+ *
+ * Version History
+ * 17/04/1992: 1.03
+ * 19/08/2007: Added some Reporter numbers
+ *
+ */
 
 
 #ifndef __dl_swi_h
@@ -392,6 +394,14 @@ os_error *SWI(int numregsin, int numregsout, int swicode, ... );
 #define SWI_Tinct_AvailableFeatures        0x057245
 #define SWI_Tinct_Compress                 0x057246
 #define SWI_Tinct_Decompress               0x057247
+
+#define SWI_Reporter_Text0                 0x054C80
+#define SWI_Reporter_TextS                 0x054C81
+#define SWI_Reporter_Regs                  0x054C82
+#define SWI_Reporter_Registers             0x054C83
+#define SWI_Reporter_Where                 0x054C84
+#define SWI_Reporter_Poll                  0x054C85
+#define SWI_Reporter_Dump                  0x054C86
 
 #ifdef __cplusplus
 }

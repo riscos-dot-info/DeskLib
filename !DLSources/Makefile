@@ -67,7 +67,7 @@ $(DESKLIB): $(all_objects)
 # Insert all the Makefiles in the Otherlibs directory as well.
 # This provides the targets debugs and smerror                  
 
-include <DeskLib_Sources$$Dir>/OtherLibs/*/Makefile*
+include <DeskLib_Sources$$Dir>/OtherLibs/*/Makefile
 
 # Clean the whole library out in one go
 clean:

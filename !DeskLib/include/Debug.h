@@ -88,11 +88,13 @@ typedef void (*debug_signalhandlerfn)( int sig, void *reference);
 	void Debug_Initialise( void);
 	/*
 	  Sets up the debug library - call this at the start of main().
+	  Only required for: pipetype, uniquepipe and uniquefile debug libraries.
 	*/
 
 	void Debug_InitialiseSignal( void);
 	/*
-	  Sets up a handler for signals.
+	  Sets up a default handler for signals which calls Error_Report.
+	  To set up your own handler, use Debug_ClaimSignal;
 	*/
 
 	void Debug_ClaimSignal( debug_signalhandlerfn fn, void *reference);
@@ -103,6 +105,7 @@ typedef void (*debug_signalhandlerfn)( int sig, void *reference);
 	void Debug_ReleaseSignal( void);
 	/*
 	  Stops the fn, from a previous call to Debug_ClaimSignal, being called.
+	  The default handler is re-instated.
 	*/
 
 	int Debug_Printf( const char *format, ...);
