@@ -2,7 +2,7 @@
 # Make: make
 # Wimpslot: 5000k
 #
-# GNU Make makefile for DeskLib.  Defaults to using Norcroft as the compiler.
+# GNU Make makefile for DeskLib.  Defaults to using gcc as the compiler.
 #
 # Various things passed on the command line can alter this makefile's behaviour;
 # these are:
@@ -13,7 +13,7 @@
 #
 
 # Defaults
-COMPILER = norcroft
+COMPILER = gcc
 PREFIX = gccbin:
 
 DESKLIB = <DeskLib$$Dir>.o.DeskLib
