@@ -64,7 +64,8 @@ extern "C" {
   #endif
 #endif
 
-
+/* haddoc ignore on */
+/* No point showing this defined twice */
 #define UNUSED_ARG(x) ((x) = (x))
 /*
   A simple macro to avoid compiler warnings when you don't actually use
@@ -73,6 +74,7 @@ extern "C" {
   Also useful for conditional compilation where one of the paths doesn't
   use a variable.
 */
+/* haddoc ignore off */
 
 #define UNUSED(x) ((x) = (x))
 /*

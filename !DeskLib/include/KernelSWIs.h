@@ -17,6 +17,7 @@
              13 Jul 1995 Sergio Monesi: Added OS_GSTrans
              02 Sep 1995 JH Added osbyte_WRITEVDUDRIVERBANK and
                             osbyte_WRITEDISPLAYHARDWAREBANK.
+             25 Aug 2007 ReadVarVal can explicitly accept 0 as bufsize
 */
 
 #ifndef __dl_kernelswis_h
@@ -202,6 +203,9 @@ extern BOOL OS_ReadVarVal(const char *varname, char *buf, int bufsize);
 /*
   This reads the value of the system variable whose name is 'varname',
   placing the text in the buffer 'buf' of size 'bufsize'.
+
+  If bufsize is 0 then only the presence of the variable will be tested
+  and the buffer will not be altered.
 */
 
 
