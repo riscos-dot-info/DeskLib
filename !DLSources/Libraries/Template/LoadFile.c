@@ -96,6 +96,8 @@ extern void Template_LoadFile(const char *leafname)
   template_block  tblock;
   char            tempdata[5192];        /* temp. buffer for indirected data */
 
+  if (!template_initialised) Template_Initialise();
+
   strcpy(filename, resource_pathname);
   strcat(filename, leafname);
 
