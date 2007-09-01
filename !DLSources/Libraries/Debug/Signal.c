@@ -1,21 +1,24 @@
 /*
-    ####             #    #     # #
-    #   #            #    #       #          The FreeWare C library for
-    #   #  ##   ###  #  # #     # ###             RISC OS machines
-    #   # #  # #     # #  #     # #  #   ___________________________________
-    #   # ####  ###  ##   #     # #  #
-    #   # #        # # #  #     # #  #    Please refer to the accompanying
-    ####   ### ####  #  # ##### # ###    documentation for conditions of use
-    ________________________________________________________________________
-
-    File:    Debug.c.Signal
-    Author:  Paul Field and Cy Booker, hacked around by Julian Smith
-    Version: 0.00 (04 Jun 1995)
-    Purpose: Provides a set of Debug_ functions which deal with signals
-             nicely.
-*/
+ * This file is part of DeskLib, the C library for RISC OS.
+ * Please see accompanying documentation for terms of use.
+ *
+ *       http://www.riscos.info/index.php/DeskLib
+ *
+ *
+ * Module:  Debugs
+ * File:    OtherLibs/Signal.c
+ * Author:  Paul Field and Cy Booker, hacked around by Julian Smith
+ * Purpose: Provides a set of Debug_ functions which deal with signals nicely
+ *
+ * Version History
+ * 01/07/2007: Version 0.00
+ * 22/08/2007: Added debug_siginited = TRUE to Debug_InitialiseSignal
+ *
+ */
 
 #include <signal.h>
+
+#define _DeskLib_Debug_BUILD
 
 #include "DeskLib:Debug.h"
 
@@ -38,12 +41,12 @@ static BOOL debug_siginited = FALSE;
 static const char *debug_signalnames[] =
 	{
 	"zero signal",
-	"abnormal termination", 
+	"abnormal termination",
 	"arithmetic exception",
-	"illegal instruction", 
+	"illegal instruction",
 	"interrupt",
-	"memory violation", 
-	"terminate", 
+	"memory violation",
+	"terminate",
 	"stack overflow",
 	"user1 signal",
 	"user2 signal",
@@ -59,8 +62,8 @@ static void	Debug__SignalHandler( int sig)
 if ( debug_usersighandler.fn)
 	debug_usersighandler.fn( sig, debug_usersighandler.reference);
 
-Error_Report( 
-	0, 
+Error_Report(
+	0,
 	"'%s' has suffered a fatal internal error, signal %i (%s) and must exit immediately",
 	event_taskname,
 	sig,
@@ -73,7 +76,7 @@ raise( sig);
 }
 
 
-	
+
 void	Debug_InitialiseSignal( void)
 {
 signal( SIGABRT, &Debug__SignalHandler);
@@ -82,6 +85,7 @@ signal( SIGILL,  &Debug__SignalHandler);
 signal( SIGSEGV, &Debug__SignalHandler);
 signal( SIGTERM, &Debug__SignalHandler);
 /* signal( SIGSTAK, &Debug__SignalHandler); */
+debug_siginited = TRUE;
 }
 
 

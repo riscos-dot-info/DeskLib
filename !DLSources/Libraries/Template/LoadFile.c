@@ -25,6 +25,7 @@
 linklist_header template_list         = {NULL, NULL};
 font_array      *template_fontarray   = (font_array *) -1;
 
+extern BOOL template_initialised; /* Set up in Init.c */
 
 static void ReadHeader(const char *filename)
 /* Find out how many templates, names, and sizes */

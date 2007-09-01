@@ -47,20 +47,11 @@ ARFLAGS = rcv
 endif
 
 # Make the library
-all: $(DESKLIB) debugs smerror
+all: $(DESKLIB)
 
 # Link the objects together to make a new library
 $(DESKLIB): $(all_objects)
 	$(AR) $(ARFLAGS) $@ $$(find | grep "\.o$$")
-
-# Insert all the Makefiles in the Otherlibs directory as well.
-# This provides the targets debugs and smerror
-
-DEBUGSDIR = ../!DeskLib/o/Debug
-OTHERDIR = ../!DeskLib/o/Other
-
-include OtherLibs/Debugs/Makefile.unix
-include OtherLibs/SmallError/Makefile.unix
 
 # Clean the whole library out in one go
 clean:

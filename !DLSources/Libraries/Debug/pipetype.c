@@ -11,6 +11,7 @@
     File:    Debug1.c.uniquepipe
     Author:  Julian Smith, with clever taskwindow code from Paul Field and Cy Booker.
     Version: 0.00 (04 Jun 1995)
+             0.10 (31 Aug 2007) Altered to work as part of main library
     Purpose: Provides a set of Debug_ function which send stuff to a unique
              file in a given directory.
 */
@@ -19,7 +20,10 @@
 #include <stdarg.h>
 #include <stdio.h>
 
+/*
+31/8/07 - not sure why this #undef was here?
 #undef vsprintf
+*/
 
 #include "DeskLib:Error.h"
 #include "DeskLib:WimpSWIs.h"
@@ -28,51 +32,29 @@
 
 #include "DeskLib:Str.h"
 
-static char	debug_filename[ 256] = "";
+#include "DebugDefs.h"
 
+extern char debug__filename[256]; /* Set up in Debug.c */
 
-
-#define Debug__EnsureInitialised()	if ( debug_filename[0]==0)	Debug_Initialise()
-
-void	Debug_Initialise( void)
+void dl_Debug_InitialisePipetype(void)
 /* Simply redirect stderr to a unique file in pipe:, and	*/
 /* open a taskwindow which will *Type out stderr.		*/
 /* Aren't taskwindows wonderful?				*/
 {
-char	command[ 320];
-sprintf( debug_filename, "Pipe:$.DeskLib.%s", LeafName( tmpnam( NULL)));
-freopen( debug_filename, "w", stderr);
-setbuf( stderr, NULL);
-sprintf( command, 
-	"taskwindow \"type %s\" -wimpslot 16k -name \"Debug output\" -quit", 
-	debug_filename
-	);
+  char command[320];
+  snprintf(debug__filename, 256, "Pipe:$.DeskLib.%s", LeafName(tmpnam(NULL)));
+  freopen(debug__filename, "w", stderr);
+  setbuf(stderr, NULL);
+  snprintf(command, 320,
+           "taskwindow \"type %s\" -wimpslot 16k -name \"Debug output\" -quit",
+           debug__filename);
 
-Error_CheckFatal(
-	Wimp_StartTask( command)
-	);
+  Error_CheckFatal(Wimp_StartTask(command));
 }
 
-
-
-int	Debug_Printf( const char *format, ...)
+void dl_Debug_PrintPipetype(const char *text)
 {
-va_list	va;
-int	i;
-Debug__EnsureInitialised();
-va_start(va, format);
-i = vfprintf( stderr, format, va);
-va_end(va);
-
-return i;
-}
-
-
-
-void	Debug_Print( const char *text)
-{
-Debug__EnsureInitialised();
-fputs( text, stderr);
+  fputs(text, stderr);
 }
 
 
