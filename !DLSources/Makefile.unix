@@ -20,7 +20,7 @@ all_objects := $(patsubst %.s,%.o,$(patsubst %.c,%.o,$(filter %.c %.s,$(wildcard
 
 lib_objects := $(addprefix Libraries.,$(addsuffix .o.*, $(libraries)))
 
-WARNINGS = -ansi -pedantic -Wall -Wundef -Wpointer-arith \
+WARNINGS = -std=c99 -pedantic -Wall -Wundef -Wpointer-arith \
            -Wcast-align -Wwrite-strings -Wstrict-prototypes \
            -Wmissing-prototypes -Wmissing-declarations -Wnested-externs \
            -Winline -Wno-unused -Wno-long-long -W -Wcast-qual -Wshadow
@@ -28,7 +28,7 @@ WARNINGS = -ansi -pedantic -Wall -Wundef -Wpointer-arith \
 # We support AOF and ELF based builds but the latter still needs 'as' from GCCSDK 3.4.6 AOF
 ifeq "$(AB_ELFBUILD)" "yes"
 CC = $(GCCSDK_INSTALL_CROSSBIN)/arm-unknown-riscos-gcc
-CFLAGS = -O2 $(WARNINGS)
+CFLAGS = -O3 $(WARNINGS)
 
 AS = $(GCCSDK_INSTALL_CROSSBIN)/arm-riscos-aof-gcc -msoft-float
 ASFLAGS = -Wa,-elf,-ILibraries,-I$(@D) -c
@@ -37,7 +37,7 @@ AR = $(GCCSDK_INSTALL_CROSSBIN)/arm-unknown-riscos-ar
 ARFLAGS = rcv
 else
 CC = $(GCCSDK_INSTALL_CROSSBIN)/gcc
-CFLAGS = -O2 $(WARNINGS)
+CFLAGS = -O3 $(WARNINGS)
 
 AS = $(CC)
 ASFLAGS = -Wa,-ILibraries,-I$(@D) -c

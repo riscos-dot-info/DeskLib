@@ -18,7 +18,6 @@ PREFIX = gccbin:
 
 DESKLIB = <DeskLib$$Dir>.o.DeskLib
 DESKLIBDIR = <DeskLib$$Dir>.o
-DEBUGS = <DeskLib$$Dir>.o.Debug
 
 libraries := $(notdir $(filter-out Libraries/.svn Libraries/h \
                Libraries/Macros.h Libraries/RegDefs.h, $(wildcard Libraries/*)))
@@ -41,13 +40,13 @@ endif
 
 # Defaults for gcc
 ifeq (gcc, $(COMPILER))
-  WARNINGS = -ansi -pedantic -Wall -Wundef -Wpointer-arith \
+  WARNINGS = -std=c99 -pedantic -Wall -Wundef -Wpointer-arith \
              -Wcast-align -Wwrite-strings -Wstrict-prototypes \
              -Wmissing-prototypes -Wmissing-declarations -Wnested-externs \
              -Winline -Wno-unused -Wno-long-long -W -Wcast-qual -Wshadow
 
   CC = $(PREFIX)gcc
-  CFLAGS = -mlibscl -mthrowback -O2 $(WARNINGS) -mpoke-function-name 
+  CFLAGS = -mlibscl -mthrowback -O3 $(WARNINGS) -mpoke-function-name 
 
   AS = $(PREFIX)gcc
   ASFLAGS = -Wa,-ILibraries,-I$(@D) -mthrowback -c
@@ -57,17 +56,12 @@ ifeq (gcc, $(COMPILER))
 endif
 
 # Make the library
-all: $(DESKLIB) debugs smerror
+all: $(DESKLIB)
 
 # Link the objects together to make a new library
 $(DESKLIB): $(all_objects)
 	@mkdir -p $(basename $@)
 	$(AR) $(ARFLAGS) -c $@ $(lib_objects)
-
-# Insert all the Makefiles in the Otherlibs directory as well.
-# This provides the targets debugs and smerror                  
-
-include <DeskLib_Sources$$Dir>/OtherLibs/*/Makefile
 
 # Clean the whole library out in one go
 clean:
