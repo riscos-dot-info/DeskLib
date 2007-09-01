@@ -33,7 +33,6 @@ int main(void)
   Event_Initialise("DLExample");
 
   /* Load templates */
-  Template_Initialise();
   Template_LoadFile("<DLExample$Dir>.Templates");
 
   /* Create windows */
@@ -64,7 +63,7 @@ int main(void)
 
 BOOL Click_Handler(event_pollblock *event, void *reference)
 {
-  /* Only respond is menu button was clicked */
+  /* Only respond if menu button was clicked */
   if (event->data.mouse.button.data.menu)
   {
     /* Display menu (-1 means: display at correct height for an iconbar menu) */

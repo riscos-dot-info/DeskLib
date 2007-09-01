@@ -11,6 +11,7 @@
     File:    Debug1.c.uniquepipe
     Author:  Julian Smith
     Version: 0.00 (04 Jun 1995)
+             0.10 (31 Aug 2007) Altered to work as part of main library
     Purpose: Provides a set of Debug_ function which send stuff to a unique
              file in a given directory.
 */
@@ -19,7 +20,10 @@
 #include <stdarg.h>
 #include <stdio.h>
 
+/*
+31/8/07 - not sure why this #undef was here?
 #undef vsprintf
+*/
 
 #include "DeskLib:Error.h"
 
@@ -27,55 +31,37 @@
 
 #include "DeskLib:Str.h"
 
-static char	debug_filename[ 256] = "";
+#include "DebugDefs.h"
+
+
+#define dl_Debug__ClosePipeFile(f) fclose(f)
+
+extern char debug__filename[256]; /* Set up in Debug.c */
 
 
 
-
-
-void	Debug_Initialise( void)
+void dl_Debug_InitialiseUniquePipe(void)
 {
-sprintf( debug_filename, "Pipe:$.DeskLib.%s", LeafName( tmpnam( NULL)));
+  snprintf(debug__filename, 256, "Pipe:$.DeskLib.%s", LeafName(tmpnam( NULL)));
 }
 
 
-static FILE	*Debug__OpenPipeFile( void)
+static FILE *dl_Debug__OpenPipeFile(void)
 {
-FILE	*file;
-if ( debug_filename[ 0] == 0)	Debug_Initialise();
-file = fopen( debug_filename, "a");
-if ( !file)	Error_ReportFatal( 0, "Can't open debugging pipe file '%s'");
-return file;
+  FILE *file;
+
+  file = fopen(debug__filename, "a");
+  if (!file) Error_ReportFatal(1, "Can't open debugging pipe file '%s'");
+
+  return file;
 }
 
-#define Debug__ClosePipeFile( f)	fclose( f)
-
-
-
-int	Debug_Printf( const char *format, ...)
+void dl_Debug_PrintUniquePipe(const char *text)
 {
-va_list	va;
-int	i;
-FILE	*f;
-
-f = Debug__OpenPipeFile();
-
-va_start(va, format);
-i = vfprintf( f, format, va);
-va_end(va);
-
-Debug__ClosePipeFile( f);
-return i;
-}
-
-
-
-void	Debug_Print( const char *text)
-{
-FILE	*f;
-f = Debug__OpenPipeFile();
-fputs( text, f);
-Debug__ClosePipeFile( f);
+  FILE *f;
+  f = dl_Debug__OpenPipeFile();
+  fputs(text, f);
+  dl_Debug__ClosePipeFile(f);
 }
 
 
