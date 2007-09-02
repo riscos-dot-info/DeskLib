@@ -41,7 +41,7 @@ void dl_Debug_InitialisePipetype(void)
 /* open a taskwindow which will *Type out stderr.		*/
 /* Aren't taskwindows wonderful?				*/
 {
-  char command[320];
+  char command[320] = "";
   snprintf(debug__filename, 256, "Pipe:$.DeskLib.%s", LeafName(tmpnam(NULL)));
   freopen(debug__filename, "w", stderr);
   setbuf(stderr, NULL);

@@ -85,7 +85,7 @@ void Debug_Initialise(dl_debug_library_type type)
 
 int Debug_Printf(const char *format, ...)
 {
-  char buffer[1024];
+  char buffer[1024] = "";
   va_list argptr;
   int i;
 
