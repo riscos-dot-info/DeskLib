@@ -90,7 +90,7 @@ int Debug_Printf(const char *format, ...)
   int i;
 
   va_start(argptr, format);
-  i = vsnprintf(buffer, 1024, format, argptr);
+  i = vsnprintf(buffer, 1023, format, argptr);
   va_end(argptr);
 
   Debug_Print(buffer);
@@ -100,6 +100,7 @@ int Debug_Printf(const char *format, ...)
 
 void Debug_Print(const char *text)
 {
+  /* Check we've been initialised */
   if (dl_debug_libraryinuse == dl_Debug_UNINITIALISED)
     Debug_Initialise(dl_Debug_UNINITIALISED);
 

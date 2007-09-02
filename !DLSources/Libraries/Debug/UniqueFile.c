@@ -33,7 +33,6 @@
 
 
 static FILE *debug__file;
-static BOOL debug__initialised = FALSE;
 
 extern char debug__filename[256]; /* Set up in Debug.c */
 
