@@ -42,7 +42,7 @@ extern char debug__filename[256]; /* Set up in Debug.c */
 
 void dl_Debug_InitialiseUniquePipe(void)
 {
-  snprintf(debug__filename, 256, "Pipe:$.DeskLib.%s", LeafName(tmpnam( NULL)));
+  snprintf(debug__filename, sizeof(debug__filename), "Pipe:$.DeskLib.%s", LeafName(tmpnam( NULL)));
 }
 
 
