@@ -32,7 +32,7 @@ int debug_level = 0;
   Programs can set this to 0-5, and Debug1_Printf statements will come into effect.
 */
 
-dl_debug_library_type dl_debug_libraryinuse = dl_Debug_UNINITIALISED;
+dl_debug_type dl_debug__libraryinuse = dl_Debug_UNINITIALISED;
 
 char debug__filename[256] = "";
 
@@ -49,19 +49,19 @@ void Debug__Assert( const char *expression, char *sourcefile, int line)
   abort();
 }
 
-void Debug_Initialise(dl_debug_library_type type)
+void Debug_Initialise(dl_debug_type type)
 {
-  if (dl_debug_libraryinuse == dl_Debug_UNINITIALISED)
+  if (dl_debug__libraryinuse == dl_Debug_UNINITIALISED)
   /* Can only initialise once per session */
   {
-    dl_debug_libraryinuse = type;
+    dl_debug__libraryinuse = type;
 
     switch (type)
     {
       case dl_Debug_UNINITIALISED:
         /* In case user initialises with "unititialised" value or Debug_Printf
            is called before dl_Debug_Initialise is - the default is stderr */
-        dl_debug_libraryinuse = dl_Debug_STDERR;
+        dl_debug__libraryinuse = dl_Debug_STDERR;
         /* No initialisation needed for stderr */
         break;
       case dl_Debug_REPORTER:
@@ -85,13 +85,17 @@ void Debug_Initialise(dl_debug_library_type type)
 
 int Debug_Printf(const char *format, ...)
 {
-  char buffer[1024] = "";
+  char buffer[1024];
   va_list argptr;
   int i;
 
   va_start(argptr, format);
-  i = vsnprintf(buffer, 1023, format, argptr);
+  i = vsnprintf(buffer, sizeof(buffer), format, argptr);
   va_end(argptr);
+
+  /* If the output string runs over the end of the buffer, it will be
+     truncated but not null-terminated, so have to account for that: */
+  if (i>sizeof(buffer)) buffer[sizeof(buffer)-1] = '\0';
 
   Debug_Print(buffer);
 
@@ -101,14 +105,14 @@ int Debug_Printf(const char *format, ...)
 void Debug_Print(const char *text)
 {
   /* Check we've been initialised */
-  if (dl_debug_libraryinuse == dl_Debug_UNINITIALISED)
+  if (dl_debug__libraryinuse == dl_Debug_UNINITIALISED)
     Debug_Initialise(dl_Debug_UNINITIALISED);
 
-  switch (dl_debug_libraryinuse)
+  switch (dl_debug__libraryinuse)
   {
     case dl_Debug_UNINITIALISED:
       /* This case is dealt with above. After calling Debug_Initialise,
-         dl_debug_libraryinuse cannot be dl_Debug_UNINITIALISED.
+         dl_debug__libraryinuse cannot be dl_Debug_UNINITIALISED.
          This case statement is just here to suppress the compiler warning */
       break;
     case dl_Debug_REPORTER:

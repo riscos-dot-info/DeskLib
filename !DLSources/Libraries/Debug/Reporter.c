@@ -22,13 +22,13 @@
 
 #include "DebugDefs.h"
 
-extern dl_debug_library_type dl_debug_libraryinuse;
+extern dl_debug_type dl_debug__libraryinuse; /* Set up in Debug.c */
 
 void dl_Debug_InitialiseReporter(void)
 {
 /* re-include this once the Environment module is published
-  if (!dl_Environment_ModuleIsActive("Reporter"))
-     dl_debug_libraryinuse = dl_Debug_STDERR;*/
+  if (!dl_Environment_TaskIsActive("Reporter"))
+     dl_debug__libraryinuse = dl_Debug_STDERR;*/
 }
 
 void dl_Debug_PrintReporter(const char *text)
