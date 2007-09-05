@@ -14,7 +14,10 @@
 #include <stdarg.h>
 #include <stdio.h>
 
+/* commented out 5/9/7
 #undef vsprintf
+- don't know why it was here?
+*/
 
 #include "DeskLib:Msgs.h"
 
@@ -28,8 +31,9 @@ extern BOOL Msgs_printf(char *result, const char *formattag, ...)
   if (Msgs_Lookup(formattag, temp, 1020))
   {
     va_start(ap, formattag);
-    vsprintf(result, temp, ap);
+    vsnprintf(result, sizeof(result), temp, ap);
     va_end(ap);
+    result[sizeof(result)-1]='\0';
 
     return (TRUE);
   }

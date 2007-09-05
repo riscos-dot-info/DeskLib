@@ -27,6 +27,7 @@
                   returned.
              03-Aug-2003 - Wimp_AddMessages which the Save__MessageHandler
                            listens for to be sure it'll always work
+             05-Sep-2007 Use snprintf rather than sprintf etc
 */
 
 #include "DeskLib:Event.h"
@@ -57,7 +58,7 @@ void Save_SetFiletype(save_saveblock *saveblock, int filetype)
     /* We can't set it - it is not indirected */
     if (spritename == NULL) return;
 
-    sprintf(spritename, "file_%03x", filetype);
+    snprintf(spritename, sizeof(spritename), "file_%03x", filetype);
 
     Icon_ForceRedraw(saveblock->window, saveblock->dragsprite);
   }
@@ -205,8 +206,10 @@ static BOOL Save__UserDragHandler(event_pollblock *event, void *ref)
   msg.data.datasave.estsize  = saveblock->estimatedsize;
   msg.data.datasave.filetype = saveblock->filetype;
 
-  strcpy(msg.data.datasave.leafname,
-         LeafName(Icon_GetTextPtr(saveblock->window, saveblock->filenameicon)));
+  strncpy(msg.data.datasave.leafname,
+         LeafName(Icon_GetTextPtr(saveblock->window, saveblock->filenameicon)),
+         sizeof(msg.data.datasave.leafname)-1);
+  msg.data.datasave.leafname[sizeof(msg.data.datasave.leafname)-1] = '\0';
 
   Wimp_SendMessage(event_SENDWANTACK, &msg, ptr.window, ptr.icon);
 

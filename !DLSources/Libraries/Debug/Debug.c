@@ -95,7 +95,7 @@ int Debug_Printf(const char *format, ...)
 
   /* If the output string runs over the end of the buffer, it will be
      truncated but not null-terminated, so have to account for that: */
-  if (i>sizeof(buffer)) buffer[sizeof(buffer)-1] = '\0';
+  buffer[sizeof(buffer)-1] = '\0';
 
   Debug_Print(buffer);
 

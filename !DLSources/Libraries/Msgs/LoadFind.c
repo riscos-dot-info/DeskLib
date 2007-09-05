@@ -11,6 +11,7 @@
     File:    Msgs.LoadFind.c
     Author:  Copyright © 1992 Jason Williams
     Version: 1.00 (08 Apr 1992)
+             1.01 (05 Sep 2007) Removed use of strcpy and strcat
     Purpose: MessageTrans-like message handling functions.
              (If you want MessageTrans, use the SWI interface, if you want
              high-level message handling, use this code...)
@@ -249,7 +250,8 @@ static BOOL AddMessage(char *grouptag, char *msgtag, char *message)
 
   msg = (char *) malloc(strlen(message) + 1);
   if (msg == NULL)  return(Error_OutOfMemory(FALSE, "Messages"));
-  strcpy(msg, message);
+  strncpy(msg, message, sizeof(msg) - 1);
+  msg[sizeof(msg) - 1] = '\0';
 
   ptr = Msgs__Find(&msgs_grouplist, grouptag, TRUE, FALSE);
   if (ptr != NULL)
@@ -285,8 +287,7 @@ extern BOOL Msgs_LoadFile(const char *leafname)
   int  loop;
   int  ch;
 
-  strcpy(filename, resource_pathname);
-  strcat(filename, leafname);
+  snprintf(filename, sizeof(filename), "%s%s", resource_pathname, leafname);
 
   infile = fopen(filename, "r");
   if (infile == NULL)

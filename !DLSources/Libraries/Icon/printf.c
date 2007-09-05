@@ -12,6 +12,7 @@
     Author:  Copyright © 1992, 1993, 1994 Jason Williams
              Concept by Edouard Poor
     Version: 1.02 (12 Mar 1994)
+             1.03 (5 Sep 2007) Changed vsprintf to vsnprintf
     Purpose: Do a "printf" into an icon's indirected text string
 */
 
@@ -19,7 +20,9 @@
 #include <stdio.h>
 #include <string.h>
 
+/* commented out 5/9/07 - why was it here?
 #undef vsprintf
+*/
 
 #include "DeskLib:Wimp.h"
 #include "DeskLib:WimpSWIs.h"
@@ -39,11 +42,12 @@ extern void Icon_printf(window_handle window, icon_handle icon,
     return;
 
   va_start(argp,format);
-  vsprintf(temp, format, argp);
+  vsnprintf(temp, sizeof(temp), format, argp);
   strncpy(istate.data.indirecttext.buffer, temp,
           istate.data.indirecttext.bufflen - 1);
-  istate.data.indirecttext.buffer[istate.data.indirecttext.bufflen - 1] = 0;
+  istate.data.indirecttext.buffer[istate.data.indirecttext.bufflen - 1] = '\0';
   va_end(argp);
+  temp[sizeof(temp)-1] = '\0';
 
   /* Ensure caret isn't beyond end of text */
   Wimp_GetCaretPosition( &caret );

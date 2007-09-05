@@ -11,6 +11,7 @@
     File:    Menu.GetFlags.c
     Author:  Ben Summers
     Version: 1.00 (21 Oct 94)
+             1.01 (05 Sep 07) Changed sprintf to snprintf
     Purpose: Makes a Font menu
 */
 
@@ -75,7 +76,7 @@ menu_ptr Menu_FontMenu(BOOL sysfont, char *tick)
         if(created == FALSE) {
           char text[128];
           if(sysfont) {
-            sprintf(text, "System font,%s", name);
+            snprintf(text, sizeof(text), "System font,%s", name);
             entries++;
           }
 
