@@ -73,6 +73,9 @@ extern void Resource_Initialise(const char *respath);
   resource_pathname to a given leafname to create a full resource
   pathname.  This adds very little code size to your program, and makes
   it a lot easier to change the resource directory at a later time.
+
+  Note that after calling this function, calls to
+  dl_Resource_InitialiseAuto will no longer have any effect.
 */
 
 
@@ -93,8 +96,33 @@ extern void Resource_InitialisePath(const char *respath);
   default directory for resources, and this will enable DeskLib to load
   language-specific files first if they exist, and fall back to the
   default files if they don't.
+
+  Note that after calling this function, calls to
+  dl_Resource_InitialiseAuto will no longer have any effect.
 */
 
+extern BOOL dl_Resource_InitialiseAuto(void);
+/*
+  This function attempts to automatically set up resorce_pathname based
+  on the task name passed to Event_Initialise. (If Event_Initialise
+  hasn't been called, the function returns FALSE.)
+
+  The function attempts to use the following locations, in descending
+  order of preference (where "AppName" is the task name):
+  1) AppNameRes path [*]
+  2) AppName path
+  3) AppName.Resources directory
+  4) AppName directory
+
+  If none of these are found, the function returns FALSE.
+
+  This function should only be called once, it it is called more than
+  once there will be no effect and it will return FALSE. You can still
+  explicitly alter resource_pathname using Resource_Initialise or
+  Resource_InitialisePath.
+
+  [*] As per ResFind: http://www.gag.de/software/ResFind/
+*/
 
 extern void Resource_LoadSprites(void);
 /*

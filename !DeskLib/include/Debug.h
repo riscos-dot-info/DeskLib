@@ -55,21 +55,22 @@ typedef enum
   dl_Debug_STDERR,
   dl_Debug_UNIQUEFILE,
   dl_Debug_UNIQUEPIPE
-} dl_debug_library_type;
+} dl_debug_type;
 /*
    This enum is used to specify which method of outputting debug
    information you'd like the debug functions to use. Pass one of
    the values to Debug_Initialise.
 
-   REPORTER will output to Martin Avison's reporter, if it's present
-   when the debug library is initialised (otherwise it will default
-   to stderr).
-   PIPETYPE writes to a file in Pipe: and displays it in a taskwindow
-   on screen
-   STDERR writes to the stderr output (usually specified by redirection
-   in your !Run file).
+   REPORTER will output to Martin Avison's reporter if it's
+   present when the debug library is initialised (otherwise it
+   will default to stderr).
+   PIPETYPE writes to a file in Pipe: and displays it in a
+   taskwindow on screen
+   STDERR writes to the stderr output (usually specified by
+   redirection in your !Run file).
    UNIQUEFILE writes to a unique file inside Scrap
-   UNIQUEPIPE is similar to PIPETYPE but uses a unique file in Pipe:
+   UNIQUEPIPE is similar to PIPETYPE but creates aunique file in
+   Pipe: and does not open it in a taskwindow.
    UNINITIALISED is only for use internally.
 */
 
@@ -82,7 +83,7 @@ typedef void (*debug_signalhandlerfn)( int sig, void *reference);
 
 #if defined(DeskLib_DEBUG) || defined(_DeskLib_Debug_BUILD)
 
-        void Debug_Initialise(dl_debug_library_type type);
+        void Debug_Initialise(dl_debug_type type);
 	/*
 	  Sets up the debug library. Call this before you use the
 	  Debug_Print or Debug_Printf functions. "type" specifies how
