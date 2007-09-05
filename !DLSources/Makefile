@@ -46,7 +46,7 @@ ifeq (gcc, $(COMPILER))
              -Winline -Wno-unused -Wno-long-long -W -Wcast-qual -Wshadow
 
   CC = $(PREFIX)gcc
-  CFLAGS = -mlibscl -mthrowback -O3 $(WARNINGS) -mpoke-function-name 
+  CFLAGS = -mthrowback -O3 $(WARNINGS) -mpoke-function-name 
 
   AS = $(PREFIX)gcc
   ASFLAGS = -Wa,-ILibraries,-I$(@D) -mthrowback -c
