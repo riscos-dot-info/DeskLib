@@ -84,7 +84,8 @@ menu_ptr Menu_NewEmpty(const char *title, int numitems)
     titleicon->indirecttext.bufflen = titlelen + 1;
 
     /* Copy the text */
-    strcpy(titletext, title);
+    strncpy(titletext, title, sizeof(titletext)-1);
+    titletext[sizeof(titletext)-1] = '\0';
 
     /* Set flag in the first item to indicate the indirected title */
     items[0].menuflags.data.indtitle = 1;

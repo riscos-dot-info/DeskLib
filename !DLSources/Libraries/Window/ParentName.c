@@ -11,6 +11,7 @@
     File:    Window.ParentName.c
     Author:  Copyright © 1992 Jason Williams
     Version: 1.00 (19 Mar 1992)
+             1.01 (05 Sep 2007) Change strcpy to strncpy
     Purpose: High-level window management functions: Return template window
              was created from (if known)
 */
@@ -33,7 +34,8 @@ extern void Window_ParentName(window_handle window, char *windowname)
 
   if (window < 0)
   {
-    strcpy(windowname, "iconbar");
+    strncpy(windowname, "iconbar", sizeof(windowname)-1);
+    windowname[sizeof(windowname)-1] = '\0';
     return;
   }
 

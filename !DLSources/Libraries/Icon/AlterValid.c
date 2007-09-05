@@ -11,6 +11,7 @@
     File:    Icon.AlterValid.c
     Author:  Copyright 1994 Tony Howat
     Version: 1.00 (2 Aug 1994)
+             1.01 (5 Sep 2007) Changed strcpy to strncpy
     Purpose: Changes an icon's validation string - makes pressy slabbed
              borders easy.
 */
@@ -31,7 +32,8 @@ extern void Icon_AlterValidation(window_handle window, icon_handle icon,
   if (!strcmp(wimpicon.data.indirecttext.validstring, newvalidation))
      return;
 
-  strcpy(wimpicon.data.indirecttext.validstring, newvalidation);
+  strncpy(wimpicon.data.indirecttext.validstring, newvalidation, sizeof(wimpicon.data.indirecttext.validstring)-1);
+  wimpicon.data.indirecttext.validstring[sizeof(wimpicon.data.indirecttext.validstring)-1] = '\0';
 
   Wimp_SetIconState(window, icon, 0, 0);
 }

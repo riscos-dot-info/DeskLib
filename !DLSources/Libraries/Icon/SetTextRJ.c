@@ -43,7 +43,8 @@ extern void Icon_SetTextRJ(window_handle w, icon_handle i, const char *text)
         text += 1 ;
       }
     }
-    strcpy(buffer, text) ;
+    strncpy(buffer, text, sizeof(buffer)-1);
+    buffer[sizeof(buffer)-1] = '\0';
 
     /* Ensure caret isn't beyond end of text */
     Wimp_GetCaretPosition( &caret );
