@@ -22,7 +22,6 @@
 #include "DeskLib:Resource.h"
 #include "DeskLib:Str.h"
 #include "DeskLib:File.h"
-#include "DeskLib:Environment.h"
 #include "DeskLib:Event.h"       /* For event_taskname declaration */
 
 BOOL dl_resource__autoinited = FALSE;
