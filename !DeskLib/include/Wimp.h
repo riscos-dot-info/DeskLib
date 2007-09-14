@@ -35,6 +35,10 @@ extern "C" {
   Event, Menu, Coord, and so on.
 */
 
+#define dl_wimp_MAXPATH 1024
+/*
+  The maximum length of a file path used in various parts of the library.
+*/
 
 #define wimp_MAXNAME 12
 /*
