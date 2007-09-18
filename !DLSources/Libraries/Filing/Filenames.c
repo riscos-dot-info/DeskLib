@@ -14,7 +14,6 @@
     Purpose: Finds pathnames and leafnames
     Mods:    6 June 1995 - changed procedure names to a more
                            DeskLib-compliant style
-             5 September 2007 - changed strcpy to strncpy
 */
 
 #include <string.h>
@@ -28,8 +27,7 @@ char *Filing_GetPathname(const char *filename, char *pathname)
    return NULL;
  else {
    char *p;
-   strncpy(pathname,filename, sizeof(pathname)-1);
-   pathname[sizeof(pathname)-1] = '\0';
+   strcpy(pathname,filename);
    p=strrchr(pathname,'.');
    if (p)
      *p=0;
@@ -45,8 +43,7 @@ char *Filing_GetLeafname(const char *filename, char *leafname)
    return NULL;
  else {
    char *p=strrchr(filename,'.');
-   strncpy(leafname,p?p+1:filename, sizeof(leafname)-1);
-   leafname[sizeof(leafname)-1] = '\0';
+   strcpy(leafname,p?p+1:filename);
    return leafname;
  }
 }
