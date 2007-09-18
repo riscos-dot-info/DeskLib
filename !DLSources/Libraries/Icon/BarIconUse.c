@@ -47,8 +47,8 @@ extern icon_handle Icon_BarIconUser(const char *spritename, window_handle pos,
   if (iconname == NULL)
     Error_Report(1,"Not enough memory");
 
-  strncpy(iconname,spritename,sizeof(iconname)-1);
-  iconname[sizeof(iconname)-1] = '\0';
+  strncpy(iconname,spritename,wimp_MAXNAME);
+  iconname[wimp_MAXNAME] = '\0';
 
   icreate.icondata.data.indirectsprite.name = iconname;
   icreate.icondata.data.indirectsprite.spritearea = area;

@@ -17,7 +17,6 @@
     Mods:    24 Sep 1994  -  TH  -  Can now cope with indirected menu titles in
                                     >= RISC OS 3.1
              16 May 1995  - Neil Tarrant - malloc(1+titlelen).
-             05 Sep 2007  - Changed strcpy to strncpy
 */
 
 
@@ -234,8 +233,7 @@ extern menu_ptr Menu_New(const char *title, const char *description)
     /* Set up data as for indirected text icon */
     if (titledata = malloc(1+titlelen), !titledata)	/* +1 courtesy of Neil Tarrant */
       return (menu);
-    strncpy(titledata,title,sizeof(titledata)-1);
-    titledata[sizeof(titledata)-1] = '\0';
+    strcpy(titledata,title);
     titleicon = (icon_data *)(void *)&menu->title;
     titleicon->indirecttext.buffer = titledata;
     titleicon->indirecttext.validstring = (char *) -1;

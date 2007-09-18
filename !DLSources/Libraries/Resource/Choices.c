@@ -137,40 +137,40 @@ extern void Resource_ChoicesPath(char *pathname, const char *leafname, BOOL writ
       /* Writing.  Build pathname, and ensure subdir(s) exist .. */
       if (group) {
         if (resource_choices_multiple) {
-          snprintf(pathname, sizeof(pathname), "<Choices$Write>.%s.%s.%s",
+          sprintf(pathname, "<Choices$Write>.%s.%s.%s",
                   resource_choices_groupdir, resource_choices_appname, leafname);
           snprintf(tmp, sizeof(tmp), "<Choices$Write>.%s", resource_choices_groupdir);  File_CreateDir(tmp);
           snprintf(tmp, sizeof(tmp), "<Choices$Write>.%s.%s", resource_choices_groupdir, resource_choices_appname);
           File_CreateDir(tmp);
         } else {
           /* appname is used as leafname .. */
-          snprintf(pathname, sizeof(pathname), "<Choices$Write>.%s.%s", resource_choices_groupdir, resource_choices_appname);
+          sprintf(pathname, "<Choices$Write>.%s.%s", resource_choices_groupdir, resource_choices_appname);
           snprintf(tmp, sizeof(tmp), "<Choices$Write>.%s", resource_choices_groupdir);  File_CreateDir(tmp);
         }
       } else {
         if (resource_choices_multiple) {
-          snprintf(pathname, sizeof(pathname), "<Choices$Write>.%s.%s", resource_choices_appname, leafname);
+          sprintf(pathname, "<Choices$Write>.%s.%s", resource_choices_appname, leafname);
           snprintf(tmp, sizeof(tmp), "<Choices$Write>.%s", resource_choices_appname);  File_CreateDir(tmp);
         } else {
           /* appname is used as leafname .. */
-          snprintf(pathname, sizeof(pathname), "<Choices$Write>.%s", resource_choices_appname);
+          sprintf(pathname, "<Choices$Write>.%s", resource_choices_appname);
         }
       }
     } else {
       /* Reading.  Build pathname .. */
       if (group) {
         if (resource_choices_multiple) {
-          snprintf(pathname, sizeof(pathname), "Choices:%s.%s.%s", resource_choices_groupdir, resource_choices_appname, leafname);
+          sprintf(pathname, "Choices:%s.%s.%s", resource_choices_groupdir, resource_choices_appname, leafname);
         } else {
           /* appname is used as leafname .. */
-          snprintf(pathname, sizeof(pathname), "Choices:%s.%s", resource_choices_groupdir, resource_choices_appname);
+          sprintf(pathname, "Choices:%s.%s", resource_choices_groupdir, resource_choices_appname);
         }
       } else {
         if (resource_choices_multiple) {
-          snprintf(pathname, sizeof(pathname), "Choices:%s.%s", resource_choices_appname, leafname);
+          sprintf(pathname, "Choices:%s.%s", resource_choices_appname, leafname);
         } else {
           /* appname is used as leafname .. */
-          snprintf(pathname, sizeof(pathname), "Choices:%s", resource_choices_appname);
+          sprintf(pathname, "Choices:%s", resource_choices_appname);
         }
       }
     }
@@ -227,15 +227,15 @@ extern void Resource_ChoicesPath(char *pathname, const char *leafname, BOOL writ
   } else {
     /* No Choices: structure - ignore groupdir, use application dir .. */
     if (resource_choices_multiple) {
-/*      snprintf(pathname, sizeof(pathname), "<%s$Dir>.Choices.%s", appname, leafname);*/  /* Something like this for non DeskLib users */
-      snprintf(pathname, sizeof(pathname), "%sChoices.%s", resource_pathname, leafname);
+/*      sprintf(pathname, "<%s$Dir>.Choices.%s", appname, leafname);*/  /* Something like this for non DeskLib users */
+      sprintf(pathname, "%sChoices.%s", resource_pathname, leafname);
       if (write) {  /* ensure dir exists .. */
 /*        snprintf(tmp, sizeof(tmp), "<%s$Dir>.Choices", appname);  File_CreateDir(tmp); */ /* for non DeskLib users */
         snprintf(tmp, sizeof(tmp), "%sChoices", resource_pathname);  File_CreateDir(tmp);
       }
     } else {
-/*      snprintf(pathname, sizeof(pathname), "<%s$Dir>.%s", appname, leafname);*/  /* for non DeskLib users */
-      snprintf(pathname, sizeof(pathname), "%s%s", resource_pathname, leafname);
+/*      sprintf(pathname, "<%s$Dir>.%s", appname, leafname);*/  /* for non DeskLib users */
+      sprintf(pathname, "%s%s", resource_pathname, leafname);
     }
   }
 

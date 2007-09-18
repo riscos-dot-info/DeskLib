@@ -58,7 +58,7 @@ void Save_SetFiletype(save_saveblock *saveblock, int filetype)
     /* We can't set it - it is not indirected */
     if (spritename == NULL) return;
 
-    snprintf(spritename, sizeof(spritename), "file_%03x", filetype);
+    sprintf(spritename, "file_%03x", filetype);
 
     Icon_ForceRedraw(saveblock->window, saveblock->dragsprite);
   }
