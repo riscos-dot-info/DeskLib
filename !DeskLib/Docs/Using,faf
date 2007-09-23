@@ -14,9 +14,8 @@
 <tr valign="top"><td>
 <table style="margin-left:3mm;">
 <tr>                 <td class="menu">             <h3><a href="Introduction">Introduction</a></h3>      </td></tr>
-<tr class="maintext"><td class="menu">                       <h3 class="menu">Using&nbsp;Desklib</h3>    </td></tr>
+<tr class="maintext"><td class="menu">                       <h3 class="menu">Using&nbsp;DeskLib</h3>    </td></tr>
 <tr>                 <td class="menu">                <h3><a href="Reference">Reference</a></h3>         </td></tr>
-<tr>                 <td class="menu">                   <h3><a href="Future">Future</a></h3>            </td></tr>
 </table>
 </td>
 <td class="maintext" style="padding:5mm;">
@@ -65,7 +64,7 @@
 <tr><td style="border: thin solid #147099; padding: 2mm;">Core</td><td style="border: thin solid #147099; padding: 2mm;">Although this module does not contain any functions, it sets up some important data types such as <code>BOOL</code> (which can be set to <code>TRUE</code> or <code>FALSE</code>) and <code>os_error</code> and will be required by almost all <em>DeskLib</em> functions.</td></tr>
 <tr><td style="border: thin solid #147099; padding: 2mm;">Wimp</td><td style="border: thin solid #147099; padding: 2mm;">This module also does not contain any functions. It does, however, set up the vast majority of the data types used in <em>DeskLib</em> (such as <code>window_handle</code>, <code>event_data</code> etc.) and should be included if you intend to use any of the <em>DeskLib</em> Wimp functionality.</td></tr>
 <tr><td style="border: thin solid #147099; padding: 2mm;">Window</td><td style="border: thin solid #147099; padding: 2mm;">This module contains the functions used to create and manipulate windows. Windows would usually be generated using <code>Window_CreateWindow</code> after loading a <em>Templates</em> file into memory.</td></tr>
-<tr><td style="border: thin solid #147099; padding: 2mm;">Template</td><td style="border: thin solid #147099; padding: 2mm;">Use this module to load a <em>Templates</em> file (with <code>Tempate_LoadFile</code> following a call to <code>Template_Initialise</code>) before using the Window module to create windows from it.</td></tr>
+<tr><td style="border: thin solid #147099; padding: 2mm;">Template</td><td style="border: thin solid #147099; padding: 2mm;">Use this module to load, manipulate and close <em>Template</em> files.</td></tr>
 <tr><td style="border: thin solid #147099; padding: 2mm;">Menu</td><td style="border: thin solid #147099; padding: 2mm;">This module provides various functions to create and manipulate menus. In particular, <code>Menu_New</code> together with <code>Menu_AddSubMenu</code> and <code>Menu_AddSubWindow</code> will allow you to create menu trees and <code>Menu_SetFlags</code> can be used to alter existing menu entries (add ticks etc). Note the use of <code>Menu_ShowLast</code> in the example program above to keep a menu open when the user clicks <em>Adjust</em> on a menu item.</td></tr>
 <tr><td style="border: thin solid #147099; padding: 2mm;">Icon</td><td style="border: thin solid #147099; padding: 2mm;">The Icon module provides a whole range of easy-to-use icon manipulation functions.</td></tr>
 <tr><td style="border: thin solid #147099; padding: 2mm;">Event</td><td style="border: thin solid #147099; padding: 2mm;">As described above, the Event module provides the means through which <em>DeskLib</em> programs interact with the Wimp.</td></tr>

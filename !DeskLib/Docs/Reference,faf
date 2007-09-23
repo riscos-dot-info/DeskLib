@@ -14,20 +14,17 @@
 <tr valign="top"><td>
 <table style="margin-left:3mm;">
 <tr>                 <td class="menu">             <h3><a href="Introduction">Introduction</a></h3>      </td></tr>
-<tr>                 <td class="menu">                    <h3><a href="Using">Using&nbsp;Desklib</a></h3></td></tr>
+<tr>                 <td class="menu">                    <h3><a href="Using">Using&nbsp;DeskLib</a></h3></td></tr>
 <tr class="maintext"><td class="menu">                       <h3 class="menu">Reference</h3>             </td></tr>
-<tr>                 <td class="menu">                   <h3><a href="Future">Future</a></h3>            </td></tr>
 </table>
 </td>
 <td class="maintext" style="padding:5mm;">
 <h2 style="margin-top: 0;">Reference</h2>
-<h3>Caveat</h3>
-<p><strong>Much of the following information has not been updated since being written so should be treated with care. The StrongHelp quick reference file is generated dynamically from the DeskLib header files so <em>is</em> up to date.</strong></p>
 <h3>Quick Reference</h3>
 <p>Quick reference documentation detailing every DeskLib function, typedef
 and global variable mentioned in the header files is available as a <a href="DeskLibHTMLAction:/Filer_Run{}Docs.DeskLibQR">local StrongHelp file</a>.</p>
 <h3>Structure Guides</h3>
-<p>A number of brief guides to using the components of DeskLib are available:</p>
+<p>A number of brief guides to using the components of DeskLib are available. Note that these guides have not been updated since originally being written.</p>
 <ul>
 <li><a href="DeskLibHTMLAction:/Filer_Run{}Docs.DataStructures.EventData">Complete Event Data Reference</a>
 <li><a href="DeskLibHTMLAction:/Filer_Run{}Docs.DataStructures.IconData">Icon Block Data Structure</a>
@@ -35,20 +32,20 @@ and global variable mentioned in the header files is available as a <a href="Des
 <li><a href="DeskLibHTMLAction:/Filer_Run{}Docs.DataStructures.WindowData">Window Block Data Structure</a>
 </ul>
 <h3>Module Notes</h3>
-<p>Brief notes are available on specific aspects of some of the different DeskLib &quot;Modules&quot;:</p>
+<p>Some brief notes are available on specific aspects of some of the different modules:</p>
 <ul>
 <li><a href="DeskLibHTMLAction:/Filer_Run{}Docs.ModuleNotes.Debug">Debug</a>
 <li><a href="DeskLibHTMLAction:/Filer_Run{}Docs.ModuleNotes.Dialog2">Dialog2</a>
-<li><a href="DeskLibHTMLAction:/Filer_Run{}Docs.ModuleNotes.Event">Event</a>
 <li><a href="DeskLibHTMLAction:/Filer_Run{}Docs.ModuleNotes.Mem">Mem</a>
 <li><a href="DeskLibHTMLAction:/Filer_Run{}Docs.ModuleNotes.Msgs">Msgs</a>
-<li><a href="DeskLibHTMLAction:/Filer_Run{}Docs.ModuleNotes.ResIssues">Resource (Issues)</a>
-<li><a href="DeskLibHTMLAction:/Filer_Run{}Docs.ModuleNotes.ResUsage">Resource (Usage)</a>
-<li><a href="DeskLibHTMLAction:/Filer_Run{}Docs.ModuleNotes.Window">Window</a>
+<li><a href="DeskLibHTMLAction:/Filer_Run{}Docs.ModuleNotes.ResChoices">Choices</a>
 </ul>
 
 <h3>Version History</h3>
-<p>The history of DeskLib is available <a href="DeskLibHTMLAction:/Filer_Run{}Docs.Updates">here</a>.</p>
+<p>A list of changes to DeskLib is available on the riscos.info <a href="http://www.riscos.info/index.php/DeskLib_Changes">DeskLib wiki</a>.</p>
+
+<h3>DeskLib Source Documentation</h3>
+<p>For information on the DeskLib sources, please see the <a href="file:///<DeskLib_Sources$Dir>/Docs/Introduction">documentation</a> supplied with !DLSources.</p>
 </td></tr>
 </table>
 </body>

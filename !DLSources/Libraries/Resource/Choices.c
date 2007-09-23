@@ -22,6 +22,7 @@
     History: 0.01 (25 Feb 2001) : Added   'Resource_ChoicesInit()'
                                 : Added   'Resource_ChoicesPath()'
              0.02 (05 Sep 2007) : Removed sprintf and strcpy in favour of "n" versions
+             0.03 (23 Sep 2007) : Tweaked ChoicesInit to use event_taskname if appname is NULL
 
 */
 
@@ -32,6 +33,7 @@
 #include "DeskLib:KernelSWIs.h"     /* General low level SWI veneers       */
 #include "DeskLib:Resource.h"       /* Handles finding resource files      */
 #include "DeskLib:File.h"           /* Filing system functions             */
+#include "DeskLib:Event.h"          /* For event_taskname                  */
 
 /* --- CLib -------------------------------------------------------------- */
 #include <stdio.h>      /*  General I/O routines                           */
@@ -76,7 +78,8 @@ extern void Resource_ChoicesInit(const char *groupdir, const char *appname, BOOL
   resource_choices_groupdir[sizeof(resource_choices_groupdir)-1] = '\0';
 
   if ((appname == NULL) || (appname[0] == 0)) {
-    Error_ReportFatal(1, "Choices Init error : the application name must be provided");
+    strncpy(resource_choices_appname, event_taskname, sizeof(resource_choices_appname)-1);
+    resource_choices_appname[sizeof(resource_choices_appname)-1] = '\0';
   } else {
     strncpy(resource_choices_appname, appname, sizeof(resource_choices_appname)-1);
     resource_choices_appname[sizeof(resource_choices_appname)-1] = '\0';

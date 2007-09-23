@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>DeskLib Documentation</title>
+<link rel="stylesheet" type="text/css" href="styles">
+</head>
+<body>
+
+<h2 style="margin-top: 0;">Old DeskLib Introduction</h2>
+<h3>About DeskLib</h3>
+<p><em>(The following was written mostly by Jason Williams, the original DeskLib moderator.)</em></p>
+
+<p>After some bad experiences with Acorn's RISC OS Lib, I decided that a new, well-written, professionally-finished library would be very useful.  Acorn appeared to be uninterested in fixing RISC OS Lib for me, so I managed to rustle up a band of merry programmers to help me write a completely new library, from scratch, and design things before they were written.</p>
+
+<p>The result is, as you probably guessed, DeskLib.</p>
+
+<p>DeskLib is a set of ANSI C and ARM assembler sources intended to add to or replace PARTS of the libraries supplied with Acorn Desktop C.  Many parts of DeskLib replace parts of the Acorn Libraries, but many portions of the library code can be used in conjunction with Acorn's libraries, or as a base from which you will be able to more easily write code for use with Acorn's Libraries, so don't go away just yet!</p>
+
+<p>This library is intended both as an alternative to Acorn's RISC OS Lib as well as a useful source of fragments of code to include into your own sources.</p>
+
+<p>All efforts have been spent to make the library code as generic, robust, and useful as possible, as well as attempting to provide a comprehensive range of function calls, from basic SWI-level support to high-level functions such as automatic dialogue-box creation, handling and result-return in a single function.</p>
+
+<p>Where possible, routines have been optimised (to some extent) for efficiency, but the primary goals are high-level interfaces that make WIMP programming quick and easy.  (If the user wants to specifically do something special, and wants it fast, the source code for DeskLib is available, so any functions can be adapted for the user's needs as necessary...)</p>
+
+<p>All possible action is taken to keep code size down without adversely affecting the functionality of the library: Individual functions are added to the library separately, so that including one function in your code does NOT include the (unwanted and unneeded) code for several others.</p>
+
+<p>Where possible, code is written as a standalone unit to avoid pulling in too much other DeskLib code when you include a function.</p>
+
+<p>Attempts have also been made to rationalise the naming conventions used, while keeping as much compatibility with the Acorn libraries as possible.  Thus, data structures are as similar to Acorn conventions as possible, but with occasional names altered to improve readability and/or consistency.  We have reverted back to basing our naming on Acorn's very well designed SWI interfaces and their use, rather than sticking with Acorn's RISC OS Lib abstractions to keep this environment closer to its Assembler and BASIC cousins, which will make it easier to port programmers between environments.</p>
+
+<p>As a result, DeskLib has been developed by individual programmers working to some basic guidelines, with me, the moderator, taking in the code, tidying up any "loose ends" I find, and then including the final code in the Library.  This has helped to keep everything as consistent as possible throughout the library.  Though I can't guarantee that the library is perfect, I believe it is far superior to RISC OS Lib in the areas it currently covers.</p>
+
+<p>The code has been written to provide a high-level interface that supports, encourages, and all BUT forces programmers to use a more consistent interface design.</p>
+
+<p>The programmer using DeskLib is encouraged to use our more generic template and menu routines, so that the END USER of the product has more control of the look, feel, layout, and hotkeys used in the program.</p>
+
+<p>However, another important concept is that YOU are in charge, and DeskLib is just a tool for you to use, so it should not force you against your will if possible.  Thus, we provide unrestricted low-level access as well. And by providing the sources, we make it possible for you to do low-level "tweaks" on our high-level data structures without the fear that you might be treading on the toes of some other code.</p>
+
+<p>We also feel it is important to distribute the library sources freely, so that you may improve or alter the library to suit your own needs, and hopefully send back any improvements or bug fixes to me so that they may be officially incorporated into the DeskLib distribution.  Also, you can SEE what functions do, and thus KNOW what they do, and therefore be able to cope with what they do, rather than tripping over low-level implementation details/bugs that the author didn't bother to make you aware of.</p>
+
+<p>We have absolutely NO objection to including <em>several different</em> code modules that do essentially the same thing, so that you may CHOOSE the one that suits you best.</p>
+
+<h3>Licence</h3>
+
+<p>Note that although this software is supplied free of charge, copyright applies to it. All rights are reserved, except for the following:</p>
+
+<p>This software may be copied and distributed without restriction so long as the following conditions are met:</p>
+
+<ul>
+	<li>The copyright messages and these conditions are distributed intact in all such copies</li>
+	<li>Only original, unaltered copies of this software are to be distributed so that this library retains consistent over time - <em>please don't</em> alter the library and pass it on; alter it and send alterations back to the moderator (see below) so that your code becomes an official update rather than a hack.</li>
+	<li>No profit is made through such distribution</li>
+</ul>
+
+<p>This software may be used in the production of any piece of software so long as the authors acknowledge in the final product distribution that DeskLib (or parts thereof) was used.</p>
+
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  Bug reports, fixes, or any extra code may be sent to the moderator, who may or may not act on them as he deems fit.</p>
+
+<p>NOTE that DeskLib is totally unaffiliated to anyone or anything.  All comments about people and companies in this product are either personal opinion or were factual at the time of writing. Most such comments are included only so that the user knows the REASON for things having been done as they were.</p>
+
+</body>
+</html>

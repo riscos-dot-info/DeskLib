@@ -72,7 +72,9 @@ extern menu_ptr Menu_New(const char *title, const char *description);
 
   The items themselves can be preceded by option characters to set flags
   for the given item.  '!' means the item will be ticked, '~' means it
-  will be shaded (greyed out). Leading spaces are ignored.
+  will be shaded (greyed out).  '>' means you'll get a submenu warning
+  message. (Important: don't use '>' if you're going to use
+  Menu_AddSubMenu or Menu_AddSubWindow.) Leading spaces are ignored.
 
   An example is "!Ticked,~Disabled,Sub-menu,!~Ticked and disabled, Normal".
 

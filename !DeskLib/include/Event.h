@@ -42,14 +42,20 @@ extern "C" {
   It polls the Wimp for you, and then passes the resulting event to one
   or more of your handler routines based on the event which occurred and the
   window and icon the event occurred in.  Events are cascaded down through
-  your handlers until one of them returns TRUE, indicating that it has been
-  dealt with succesfully.  This allows you to have application-wide
-  defaults for certain event types, with occasional overrides of that
-  default for specific windows or icons.
+  your handlers (from specific to generic) until one of them returns TRUE,
+  indicating that it has been dealt with succesfully.  This allows you to
+  have application-wide defaults for certain event types, with occasional
+  overrides of that default for specific windows or icons.
 
   Any event which has no handlers attached is automatically masked out in
   subsequent Wimp_Polls (except for quit messages).  A set of default (and
   example) handlers for some events is provided in the Handlers library.
+
+  (Note that you should be careful not to leave handlers attached to windows
+  that you delete - potentially a new window might gain the same handle and
+  all the old handlers will become unexpectedly attached to it. The best way
+  to avoid this is to use Window_Delete, which neatly tidies everything up
+  for you.)
 */
 
 

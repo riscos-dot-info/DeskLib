@@ -40,8 +40,8 @@ endif
 
 # Defaults for gcc
 ifeq (gcc, $(COMPILER))
-  WARNINGS = -std=c99 -pedantic -Wall -Wundef -Wpointer-arith \
-             -Wcast-align -Wwrite-strings -Wstrict-prototypes \
+  WARNINGS = -std=c99 -pedantic -Wall -Wundef -Wpointer-arith -Wuninitialized\
+             -Wcast-align -Wwrite-strings -Wstrict-prototypes -Wunused\
              -Wmissing-prototypes -Wmissing-declarations -Wnested-externs \
              -Winline -Wno-unused -Wno-long-long -W -Wcast-qual -Wshadow
 
