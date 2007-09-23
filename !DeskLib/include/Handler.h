@@ -11,6 +11,7 @@
     File:    Handler.h
     Author:  Copyright © 1992, 1993, 1994 Jason Williams
     Version: 1.03 (01 April 1994)
+             1.04 (16 September 2007) Added dl_Handler__MenuClick
     Purpose: Predefined default handlers for you to COPY and use as the
              basis of your own handlers
 
@@ -134,6 +135,13 @@ extern BOOL Handler_HatchRedraw(event_pollblock *event, void *reference);
   routines so you can see that something is happening.
 */
 
+/* haddoc ignore on */
+BOOL dl_Handler__MenuClick(event_pollblock *event, void *reference);
+/*
+   This function is used to show menus for windows (& iconbar icon) set
+   up by dl_Shell_Initialise. It's not intended for direct end-user use.
+*/
+/* haddoc ignore off */
 
 #ifdef __cplusplus
 }

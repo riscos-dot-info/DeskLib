@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>DeskLib Source Documentation</title>
+<link rel="stylesheet" type="text/css" href="styles">
+</head>
+<body>
+
+<table>
+<tr>
+<td colspan="2">
+<h1 style="padding-top: 3mm; padding-bottom: 3mm; margin-top: 0; margin-bottom: 0;">DeskLib Source Documentation</h1>
+</td></tr>
+<tr valign="top"><td>
+<table style="margin-left:3mm;">
+<tr>                 <td class="menu"><h3><a href="Introduction">Introduction</a></h3></td></tr>
+<tr>                 <td class="menu"><h3><a href="Design">Module<br>Design</a></h3></td></tr>
+<tr>                 <td class="menu"><h3><a href="Naming">Naming<br>Conventions</a></h3></td></tr>
+<tr class="maintext"><td class="menu"><h3 class="menu">Structures<br>&amp; Types</h3></td></tr>
+<tr>                 <td class="menu"><h3><a href="Licensing">Licensing<br>&amp; Copyright</a></h3></td></tr>
+</table>
+</td>
+<td class="maintext" style="padding:5mm;">
+<h2 style="margin-top: 0;">Stuctures</h2>
+
+<h3>Types</h3>
+
+<p>Try to define nicely structured types. For example, in the Wimp header, I
+have defined a point (x, y), from which a rectangle can be formed (min, max).
+This leads to names in use:</p>
+<pre>
+  screenrect.min.x
+  screenrect.min.y
+  screenrect.max.x
+  screenrect.max.y
+</pre>
+
+<p>which is far nicer than &quot;screenrect.maxx&quot; or &quot;box.x0&quot; etc.</p>
+
+<p>It also allows the user to pull out data more easily:</p>
+<pre>
+  int         left_x_position    = screenrect.min.x;
+  wimp_point  bottom_left_corner = screenrect.min;
+  wimp_rect   rectangle          = screenrect;
+</pre>
+
+<p>Another example is my scroll positions:</p>
+<pre>
+  scroll.x                  (Acorn: scx or x)
+  scroll.y                  (       scy or y)
+</pre>
+
+<p>and caret offset:</p>
+<pre>
+  offset.x                  (Acorn: x)
+  offset.y                  (       y)
+</pre>
+
+<p>As you can see, this structure also helps to control inconsistencies - when
+programming, you suddenly notice that part of a structure can be replaced by
+a predefined substructure, and so your new structure becomes more consistent
+with other structure definitions.</p>
+
+<p>Basically, the rule of thumb here is:
+If part of a data type would make a useful data type in its own right, do it.</p>
+
+
+<h3>FlagWords</h3>
+
+<p>For consistency, these should be made into structures as follows:</p>
+
+<pre>
+union
+{
+  int value;        /* A straight 32-bit flag word */
+
+  struct
+  {
+    unsigned int bit0   : 1;  /* Note: the number of bits here must be &lt;= 32 */
+    unsigned int bit2   : 1;
+    ...
+    unsigned int nybble : 4;
+    ...
+    unsigned int byte   : 8;
+  } data;
+} flagword;
+</pre>
+
+<p>This gives the programmer the choice of:
+
+<code>flagword.value;</code>
+(Exactly the same as current flagwords: a 32-bit integer)
+
+or
+  <code>flagword.data.nybble</code> (etc.)</p>
+
+<p>Note that the two parts &quot;value&quot; and &quot;data&quot; should always have these names,
+for consistency throughout the library. These names are not always the &quot;best&quot;
+to use, but due to the fact that they are consistent, they become easy
+to remember.</p>
+
+<p>This has the advantage of being able to replace:
+<code>
+<br>buttontype = (iconflags &amp; BUTTONTYPEMASK) &gt;&gt; BUTTONTYPESHIFT;
+<br>gribble    = (frobbleflags &amp; 0x00f70000) &gt;&gt; 16;
+</code></p>
+
+<p>with:</p>
+<pre>
+  buttontype = iconflags.data.buttontype;
+  gribble    = frobbleflags.data.thingy;
+</pre>
+
+<p>(note though, that it is *still* possible to say:</p>
+<pre>
+    buttontype = (iconflags.value &amp; BUTTONTYPEMASK) &gt;&gt; BUTTONTYPESHIFT;
+</pre>
+   <p>if you really want to?!)</p>
+
+<p>and replace: <code>if (iconflags &amp; icon_SELECTED)</code>
+
+with:
+  <code>if (iconflags.data.selected)</code>
+
+<br>--A much more pleasant way of thinking about things.</p>
+
+</td></tr>
+</table>
+</body>
+</html>

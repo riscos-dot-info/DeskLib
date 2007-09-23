@@ -11,6 +11,7 @@
     File:    Resource.h
     Author:  Copyright © 1992, 1993, 1994 Jason Williams
     Version: 1.03 (17 Apr 2005)
+             1.04 (14 Sep 2007) Added dl_Resource_InitialiseAuto
     Purpose: Resource file (files within user application directory)
              management functions
     Mods:    Julian Smith 20 Mar 1995
@@ -151,7 +152,8 @@ extern void Resource_ChoicesInit(const char *groupdir,
   is choices_SINGLE, or as the name of a directory containing your
   choices files if 'multiple' is choices_MULTIPLE.  You can still use
   choices_MULTIPLE if you are using a single file, if you want that
-  file placed in a subdirectory.
+  file placed in a subdirectory. If 'appname' is NULL, the application
+  name (as passed to Event_Initialise) is used.
 
   If you want to use a parent directory (such as "WWW" or "MidiWays")
   for your choices, you can pass this in as 'groupdir'.  If this is

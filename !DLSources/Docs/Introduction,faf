@@ -13,26 +13,26 @@
 </td></tr>
 <tr valign="top"><td>
 <table style="margin-left:3mm;">
-<tr class="maintext"><td class="menu">                       <h3 class="menu">Introduction</h3>           </td></tr>
-<tr>                 <td class="menu">                   <h3><a href="Making">Making&nbsp;Desklib</a></h3></td></tr>
-<tr>                 <td class="menu">             <h3><a href="Contributing">Contributing</a></h3>          </td></tr>
-<tr>                 <td class="menu">                    <h3><a href="Files">Files</a></h3>              </td></tr>
+<tr class="maintext"><td class="menu"><h3 class="menu">Introduction</h3></td></tr>
+<tr>                 <td class="menu"><h3><a href="Design">Module<br>Design</a></h3></td></tr>
+<tr>                 <td class="menu"><h3><a href="Naming">Naming<br>Conventions</a></h3></td></tr>
+<tr>                 <td class="menu"><h3><a href="Structures">Structures<br>&amp; Types</a></h3></td></tr>
+<tr>                 <td class="menu"><h3><a href="Licensing">Licensing<br>&amp; Copyright</a></h3></td></tr>
+
 </table>
 </td>
 <td class="maintext" style="padding:5mm;">
 <h2 style="margin-top: 0;">Introduction</h2>
-<p>The <em>!DLSources</em> application directory contains all DeskLib code-files except for
-the final libraries and headers, which are in the !DeskLib application.
-It sets the system variable <code>&lt;DeskLib_Sources$Dir&gt;</code> to be the !DLSources
-directory.</p>
+<p>The <em>!DLSources</em> application directory contains all DeskLib code source code. Inside the <em>Libraries</em> directory each module has its own directory containing the C and assembler sources. The library header files are kept in the <em>!DeskLib</em> application, along with the final library file - so <em>!DLSources</em> is <strong>not</strong> needed for writing applications which use DeskLib - though you might find them useful to refer to.</p>
 
-<p>This directory is <strong>not</strong> needed for writing applications which use
-DeskLib - the <em>!DeskLib</em> application contains all the headers and
-libraries needed. All source code for DeskLib is contained in the <em>!DLSources</em>
-directory.</p>
+<h2>Making Desklib</h2>
+<p>DeskLib is made using <a href="http://gccsdk.riscos.info/">GCC</a> by default, either natively or by cross-compiling.
+<em>Makefile</em> and <em>Makefile.unix</em> are the respective makefiles and should work &quot;out of the box&quot;.</p>
+<p>Please see the <a href="http://www.riscos.info/index.php/DeskLib#Building">DeskLib home page</a> for more details.</p>
 
-<p>The 'Libraries' directory contains a separate directory for
-each DeskLib sub-library.</p>
+<h2>Contributing to DeskLib</h2>
+<p>The remainder of this document contains details of the layout and format of the DeskLib source code and notes on any conventions and styles which it follows. If you'd like to contribute to DeskLib, you should try and follow these quidelines.</p>
+<p>(Of course, you are more than welcome to contribute to the project in any way you can, and that's not limited to submitting source code. You could improve the documentation, provide examples, submit bug reports or feature requests  - any help will be gratefully received.)</p>
 
 </td></tr>
 </table>

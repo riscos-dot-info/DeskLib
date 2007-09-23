@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>DeskLib Source Documentation</title>
+<link rel="stylesheet" type="text/css" href="styles">
+</head>
+<body>
+
+<table>
+<tr>
+<td colspan="2">
+<h1 style="padding-top: 3mm; padding-bottom: 3mm; margin-top: 0; margin-bottom: 0;">DeskLib Source Documentation</h1>
+</td></tr>
+<tr valign="top"><td>
+<table style="margin-left:3mm;">
+<tr>                 <td class="menu"><h3><a href="Introduction">Introduction</a></h3></td></tr>
+<tr>                 <td class="menu"><h3><a href="Design">Module<br>Design</a></h3></td></tr>
+<tr class="maintext"><td class="menu"><h3 class="menu">Naming<br>Conventions</h3></td></tr>
+<tr>                 <td class="menu"><h3><a href="Structures">Structures<br>&amp; Types</a></h3>          </td></tr>
+<tr>                 <td class="menu"><h3><a href="Licensing">Licensing<br>&amp; Copyright</a></h3>          </td></tr>
+</table>
+</td>
+<td class="maintext" style="padding:5mm;">
+<h2 style="margin-top: 0;">Naming Conventions</h2>
+
+<p>DeskLib follows a number of naming conventions for consistency, to help with debugging, improve readability etc.</p>
+
+<h3>Function Names</h3>
+<p>In general the naming scheme follows the same style as the RISC OS SWI
+ names (e.g. module-name underline function-name, where module-name
+ and function-name are all lowercase except for the initial letters of
+ words), though with a DeskLib-specific <code>dl_</code> prefixing everything
+to ensure a unique namespace. i.e. <code>dl_Wimp_OpenWindow(),</code>; <code>dl_Dialog_SaveAs()</code>; <code>dl_Icon_PlaceCaret()</code>;</p>
+
+
+<h3>Variable/Type Names</h3>
+<p>The last thing that we want is 1-letter variable names. Undeniably they
+are faster to type, but they render code far more difficult to read, even
+for people who are fluent with them, and they make learning the use of a
+library a long and arduous task. Also, working out what an &quot;m&quot; is from
+its context is an undesirable thing.
+(i.e. &quot;w&quot;, &quot;i&quot;, &quot;m&quot;, &quot;m&quot;, and &quot;e&quot; are definitely out!)</p>
+
+<p>The second to last thing that we want is a really long variable name, as
+it is an annoyance to have to type exceedingly long names over and over.
+Thus, some things are gong to have to be abbreviated.
+(i.e. &quot;saveas_read_leafname_during_send&quot; is also not too good)</p>
+
+<p>Abbreviations should be 4 to 6 characters long where possible. e.g.:</p>
+<table>
+<tr><td>icon</td><td>-&gt;</td><td>icon</td></tr>
+<tr><td>window</td><td>-&gt;</td><td>window</td></tr>
+<tr><td>menu</td><td>-&gt;</td><td>menu</td></tr>
+<tr><td>button</td><td>-&gt;</td><td>button</td></tr>
+<tr><td>mouse</td><td>-&gt;</td><td>mouse</td></tr>
+<tr><td>dialogue</td><td>-&gt;</td><td>dialog</td></tr>
+<tr><td>outline</td><td>-&gt;</td><td>outline</td></tr>
+<tr><td>rectangle</td><td>-&gt;</td><td>rect</td></tr>
+</table>
+<p>Most names fit nicely into 4 or 5 characters without much abbreviation,
+and this seems to be a nice compromise between readability and typing
+effort.</p>
+
+<p>The third important thing is that naming should be consistent: If you
+look through the wimp library data structures, for example, you will find
+that a window handle (type window_handle) is ALWAYS called a window in
+external interfaces.</p>
+<p>An icon_handle is always called an icon</p>
+<p>An icon definition block (type icon_block) is always called an iconblock</p>
+<p>A flag word is always accessed as flagword.value or flagword.data.xxx
+(i.e. &quot;value&quot; and &quot;data&quot; names for flags are consistent throughout the
+library, even though they might not be the &quot;best&quot; names under all
+circumstances)
+etc.</p>
+
+<p>Variables and types should be entirely lowercase to differentiate them
+more easily from function names. They should contain underlines to
+seperate groups from individuals (e.g. wimp_window, wimp_icon), but no
+more than one underline.</p>
+
+<p>Although multiple-word variables look bad (wimp_openwindowstructure)
+if things are abbreviated well and the words are carefully chosen, names
+can still be quite readable all lowercased. (window_openblock)</p>
+
+<h3>Constants</h3>
+                                           
+<p>Constants should be named with lowercased module/group name, followed by
+an underline and uppercased constant name. (i.e. the same as a variable,
+but with the second half uppercased). e.g.:</p>
+<ul><li>icon_SELECTED
+<li>colour_GREEN</ul>
+
+<p>Notice how I have seperated many data constants into groups like</p>
+<ul><li>icon, iconborder, iconbtype, etc.</ul>
+<p>rather than just the module name (Acorn use wimp_ for *everything*)
+because this makes it much easier to understand what a constant is for...
+e.g.</p>
+<table>
+<tr><td>wimp_ISELECTED</td><td>-&gt;</td><td>icon_SELECTED</td></tr>
+<tr><td>wimp_MOVE_WIND</td><td>-&gt;</td><td>drag_MOVEWINDOW</td></tr>
+<tr><td>wimp_BRIGHT</td><td>-&gt;</td><td>button_RIGHT</td></tr>
+<tr><td>wimp_WMOVEABLE</td><td>-&gt;</td><td>window_MOVEABLE</td></tr>
+</table>
+
+<p>(In fact, DeskLib goes one step further, and defines variable structures
+so that you can simply use icon.data.selected to retrieve a flag etc.) 
+which not only makes the function of the constant far more meaningful and
+far less ambiguous, but in many cases makes the constant name shorter as
+well. It also removes the possibility of using (for example) an icon flag
+in a window_flagword by accident because you misread/misinterpreted one
+character in its name.</p>
+
+<p>From a programming point of view, it also reduces the chance of you
+defining all your icon flags as wimp_Ixxxx, and then realising that you
+defined one as wimp_INDIRECT instead of wimp_IINDIRECT (as Acorn did)</p>
+
+<p>When in doubt about naming things, look at the source code in this
+library for hints.</p>
+
+<p>The main thing is to get the name as readable, meaningful, consistent,
+and unambiguous as possible, with a secondary consideration to length of
+variable/constant name.</p>
+
+<h3>Internal-Use Objects</h3>
+<p>Sometimes is is appropriate to define objects which are only used by the
+library routines and are not visible to the programmer using DeskLib. These
+objects should be distinguished by including a double underline in their name.
+They should follow the standard naming conventions in all other ways.</p>
+
+
+</td></tr>
+</table>
+</body>
+</html>

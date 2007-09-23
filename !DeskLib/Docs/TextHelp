@@ -1,65 +1,110 @@
-        Help for !DeskLib (Desklib compile-time resources)
-        ˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
 
 
-        Note: This is an old file. To see the full documentation,
-              please load a web browser and try again.
+
+ IMPORTANT: This is a brief plain-text summary of the main DeskLib
+ =========  documentation, and is likely to be out of date.
+            To see the up to date documentation, please load a web
+            browser and try again.
 
 
-This application contains everything you need to write programs using
-functions from the DeskLib library - the library itself, plus the
-DeskLib header (.h) files. 
-
-Once the filer has 'seen' this application, everything is set up ready
-for you to use it.
-
-To see the header files, simply double-click the application - a filer
-window will appear in a convenient position at the right of the screen,
-containing all the header files (if you don't like the layout, it can
-be changed by editing the !Run file [hint: *help filer_opendir])
-
-To #include the header files in your own code, use the form:
-  #include "DeskLib:Header.h"
-
-To link with the DeskLib library, use something like:
-  link $(linkflags) C:o.Stubs DeskLib:o.DeskLib
-
-For examples of this, look in the Examples directory.
-
-Jason Williams May 1993
-Julian Smith May 1995
-Peter Naulls Nov 2002-2006
-
-Contact: peter@chocky.org
 
 
-About This Version
-˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
 
-This is version 2.80 of DeskLib.
+About DeskLib
+----- -------
 
-It is designed for use with Castle's 32-bit C/C++ tools, or GCC 3.x version.
-This is the *last* version of DeskLib that is suitable for use with these
-compilers.  DeskLib version 3 onwards will require use of GCC 4 version
-for RISC OS.
+DeskLib is a high-level library for use in the construction of C WIMP
+applications for RISC OS. It is designed to work with the Castle C/C++
+tools or GCC 4.x. The code in the library is designed to work on any
+version of RISC OS from 3.x onwards. By providing convenient functions
+to automate some of the routine tasks associated with a standard WIMP
+program, it enables the programmer to spend more time on the core
+functionality of their program and less on the finer details of
+interacting with the WIMP. By providing standard functions, it also
+helps to prevent the need to "reinvent the wheel" for common tasks. 
 
-DeskLib is suitable for all RISC OS 3.x, 4.x and 5 machines.
+DeskLib was originally written as a compliment (or alternative) to
+Acorn's RISC OS Lib and you can read more about the original motivations
+of the writers of large chunks of the library  here  . It is now hosted
+on  riscos.info  . 
 
-DeskLib's homepage is http://www.riscos.info/index.php/DeskLib/
-Check here for updates.
+DeskLib is split into functional "Modules" (which have nothing to do
+with  Relocatable Modules  ) which provide set of functions to perform
+different sets of tasks. Over time, different contributors have written
+different implimentations of specific modules, so some are duplicated
+(e.g. Font and Font2). Generally the duplicate modules will do the same
+jobs in slightly different ways, so pick the one which suits you. Often,
+the later modules (e.g. Font  2  ) provide a more sophisticated
+interface - but at the cost of increased complexity. 
 
+The DeskLib functions, types and variables follow a consistent naming
+style, which should become apparent quite quickly. For more details, see
+the  source documentation  . 
 
-DeskLib is currently maintained by:
+The sources for the library are freely available, either via SVN access
+at  riscos.info  or as a  complete archive  . You're welcome to alter
+and improve any part of the library, and even more welcome to send in
+your alterations so others can benefit. 
 
-Peter Naulls
+Licence
+-------
 
+Note that although this software is supplied free of charge, copyright
+applies to it. All rights are reserved, except for the following: 
 
-DeskLib StrongHelp
-˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜
+This software may be copied and distributed without restriction so long
+as the following conditions are met: 
 
-The file '!DeskLib.Help' is a StrongHelp help-directory. This has been
-automatically generated from the DeskLib header files. The formatting is
-rather crude in places, but there is a help page for every DeskLib
-function, typedef and global variable mentioned in the header files.
-This file may lag behind the current implementation.
+- The copyright messages and these conditions are distributed intact in
+all such copies 
+- Only original, unaltered copies of this software are to be distributed
+so that this library retains consistent over time -  please don't  alter
+the library and pass it on; alter it and send alterations back to the
+moderator (see below) so that your code becomes an official update
+rather than a hack. 
+- No profit is made through such distribution 
 
+This software may be used in the production of any piece of software so
+long as the authors acknowledge in the final product distribution that
+DeskLib (or parts thereof) was used. 
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. Bug reports, fixes,
+or any extra code may be sent to the moderator, who may or may not act
+on them as he deems fit. 
+
+NOTE that DeskLib is totally unaffiliated to anyone or anything. All
+comments about people and companies in this product are either personal
+opinion or were factual at the time of writing. Most such comments are
+included only so that the user knows the REASON for things having been
+done as they were. 
+
+Credits 
+-------
+
+This library has been built up by a group of authors. Individual files
+contain copyright notices for the author(s) who created them. Some of
+the authors (and other contributors) are, in alphabetical order: 
+
+Peter Arnold, Matthew Astley, Lee Atkinson, Philip Banks, Shaun
+Blackmore, Cy Booker, Tim Browse, Tony Bryant, Philip Colmer, Erik de
+Kort, Keith Hall, Tony Houghton, Jason Howat, Tony Howat, Peter Gaunt,
+Tom Kirby-Green, David Leftley, Lenny, David Lenthall, Keith Marlow,
+Stuart Martin, Sergio Monesi, Peter Naulls, Ernest Ong, Ainsley Pereira,
+David Pilling, Edouard Poor, Andrew Sellors, Andrew Sidwell, Antony
+Sidwell, Julian Smith, Ben Summers, Neil Tarrent, William Waghorn, Dave
+Ward, Robin Watts, Jason Williams, Mark H. Wilkinson and John Winters 
+
+Thanks also to the numerous others who have offered suggestions,
+constructive criticism, etc. If you feel you have been omitted from this
+list in error, then please get in touch so it can be fixed. 
+
+Contact
+-------
+
+If you find any bugs or problems in DeskLib, or if you can supply
+suggestions or code for alterations, additions, or tutorial
+applications, then please either write to Peter Naulls
+(peter@chocky.org), who is the current DeskLib moderator, or raise it on
+the DeskLib mailing list.

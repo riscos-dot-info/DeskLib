@@ -8,7 +8,7 @@
  * Module:  Resource
  * File:    InitAuto.c
  * Author:  Adam Richardson
- * Purpose: Simpler initialisation of resource_pathname
+ * Purpose: Simpler (for the user) initialisation of resource_pathname
  *
  * Version History
  * 01/09/2007: Creation
