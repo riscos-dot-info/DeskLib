@@ -7,9 +7,10 @@
 ;   ####   ### ####  #  # ##### # ###    documentation for conditions of use
 ;   ________________________________________________________________________
 ;
-;   File:    KernelSWIs.s.ReadModeVa
+;   File:    Environment.s.ReadModeVa
 ;   Author:  Copyright © 1994 Jason Howat
 ;   Version: 1.00 (24 Jun 1994)
+;            1.01 (10 Oct 2007) Moved to Screen module
 ;   Purpose: Generic veneer to the OS_ReadModeVariable SWI.
 
         GET     RegDefs.h

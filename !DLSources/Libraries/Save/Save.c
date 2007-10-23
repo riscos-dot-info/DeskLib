@@ -27,7 +27,6 @@
                   returned.
              03-Aug-2003 - Wimp_AddMessages which the Save__MessageHandler
                            listens for to be sure it'll always work
-             05-Sep-2007 Use snprintf rather than sprintf etc
 */
 
 #include "DeskLib:Event.h"

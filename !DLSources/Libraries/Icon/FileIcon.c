@@ -41,7 +41,7 @@ icon_handle Icon_FileIcon(window_handle window, icon_handle icon, int filetype)
 
   /* Put sprite name in name field */
   snprintf((char *)(int)iconcreate.icondata.data.indirectsprite.name,
-           sizeof((char *)(int)iconcreate.icondata.data.indirectsprite.name),
+           iconcreate.icondata.data.indirectsprite.nameisname,
            "file_%03x", filetype);
 
   /* Fill in sprite area */

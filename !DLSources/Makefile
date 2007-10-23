@@ -46,10 +46,10 @@ ifeq (gcc, $(COMPILER))
              -Winline -Wno-unused -Wno-long-long -W -Wcast-qual -Wshadow
 
   CC = $(PREFIX)gcc
-  CFLAGS = -mthrowback -O3 $(WARNINGS) -mpoke-function-name 
+  CFLAGS = -mthrowback -O3 $(WARNINGS) -mpoke-function-name -mlibscl
 
   AS = $(PREFIX)gcc
-  ASFLAGS = -Wa,-ILibraries,-I$(@D) -mthrowback -c
+  ASFLAGS = -Wa,-ILibraries,-I$(@D) -mthrowback -mlibscl -c
 
   AR = $(PREFIX)libfile
   ARFLAGS =

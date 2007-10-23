@@ -2,6 +2,8 @@
  * File: ColourMenu.Colourmenu.c
  * Author: Craig Beech, 27th August 1994
  *
+ * Version 1.01 (10 Oct 2007) Moved to Menu module
+ *
  * Abstract: Create a "colour selector" menu.  This is equivalent to the
  * RISC_OSLib colourmenu function.
  *

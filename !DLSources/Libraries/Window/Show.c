@@ -11,6 +11,8 @@
     File:    Window.Show.c
     Author:  Copyright © 1992 Jason Williams
     Version: 1.00 (19 Mar 1992)
+             1.01 (31 Aug 2007) Ensure window doesn't appear off-screen &
+                                bring to front if already open
     Purpose: High-level window management functions: Show a window
 */
 

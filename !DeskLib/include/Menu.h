@@ -356,6 +356,11 @@ extern menu_ptr menu_currentopen;
   will be invalid.  Use with caution.
 */
 
+extern menu_ptr ColourMenu_Create(const char *name);
+/*
+  This creates a menu containing the sixteen Wimp colours, with the title
+  for the menu given by 'name'.  It returns a pointer to the new menu.
+*/
 
 #ifdef __cplusplus
 }

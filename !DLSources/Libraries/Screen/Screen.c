@@ -11,6 +11,8 @@
     File:    Screen.c
     Author:  Copyright © 1992 Jason Williams
     Version: 1.00 (23 Mar 1992)
+             1.01 (10 Oct 2007) Changed mode variables from macros to enum
+                                & renamed dl_ReadModeVar
     Purpose: Screen functions (read size, eig factors, etc.)
 */
 
@@ -25,7 +27,7 @@ wimp_point     screen_delta;
 int            screen_bpp;
 
 
-#define ReadModeVar(m, v, r) \
+#define dl_ReadModeVar(m, v, r) \
   SWI(3, 3, SWI_OS_ReadModeVariable, (m), (v), 0,   0, 0, (r))
 
 extern BOOL Screen_CacheModeInfo(void)
@@ -37,19 +39,19 @@ extern BOOL Screen_CacheModeInfo(void)
   if (oldmode.screen_mode == screen_mode.screen_mode)
     return(FALSE);
 
-  ReadModeVar(-1, SCREEN_VAR_Log2BPP, &screen_bpp);
+  dl_ReadModeVar(-1, modevar_LOG2BPP, &screen_bpp);
   screen_bpp = 1 << screen_bpp;
 
-  ReadModeVar(-1, SCREEN_VAR_XEigFactor, &screen_eig.x);
-  ReadModeVar(-1, SCREEN_VAR_YEigFactor, &screen_eig.y);
+  dl_ReadModeVar(-1, modevar_XEIGFACTOR, &screen_eig.x);
+  dl_ReadModeVar(-1, modevar_YEIGFACTOR, &screen_eig.y);
 
   screen_delta.x = 1 << screen_eig.x;
   screen_delta.y = 1 << screen_eig.y;
 
-  ReadModeVar(-1, SCREEN_VAR_XWindLimit, &screen_size.x);
+  dl_ReadModeVar(-1, modevar_XWINDOWLIMIT, &screen_size.x);
   screen_size.x = (screen_size.x + 1) << screen_eig.x;
 
-  ReadModeVar(-1, SCREEN_VAR_YWindLimit, &screen_size.y);
+  dl_ReadModeVar(-1, modevar_YWINDOWLIMIT, &screen_size.y);
   screen_size.y = (screen_size.y + 1) << screen_eig.y;
 
   return(TRUE);
