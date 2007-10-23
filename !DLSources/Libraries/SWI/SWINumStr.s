@@ -10,6 +10,7 @@
 ;   File:    KernelSWIs.s.SWINumStr
 ;   Author:  Copyright © 1994, 1995 Sergio Monesi
 ;   Version: 1.01 (13 Jul 1995)
+;            1.02 (10 Oct 2007) Moved to SWI module, changed names
 ;   Purpose: Veneers for OS_SWINumber(To|From)String
 
         GET     RegDefs.h

@@ -31,10 +31,28 @@ extern "C" {
 
 /* Abstract */
 /*
-  This header provides one function - a general-purpose SWI calling veneer -
-  and many macros giving names to SWI numbers.
+  This header provides functions related to SWI handling - a general-purpose
+  SWI calling veneer and SWI name/number translation veneers. It also defines
+  many macros giving names to SWI numbers.
 */
 
+os_error *OS_SWINumberToString(int number, char *buffer, int size);
+/*
+  This converts the given SWI number to the corresponding SWI name.
+  The name is placed in the string pointed to by 'buffer' of length
+  'size'.
+
+  This returns NULL if there is no error.
+*/
+
+
+os_error *OS_SWINumberFromString(const char *string, int *number);
+/*
+  This converts the given SWI name to the corresponding SWI number.
+  The number is placed in 'number'.
+
+  This returns NULL if there is no error.
+*/
 
 os_error *SWI(int numregsin, int numregsout, int swicode, ... );
 /*
