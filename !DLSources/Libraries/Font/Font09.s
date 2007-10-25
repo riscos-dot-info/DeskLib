@@ -9,7 +9,7 @@
 
 
         PREAMBLE
-        STARTCODE Font_Converttopoints
+        STARTCODE Font_ConvertToPoints
 ;
         STMFD   sp!, {r4,lr}
         MOV     r4,r3

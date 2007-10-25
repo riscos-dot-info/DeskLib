@@ -1,5 +1,5 @@
 /*
- * File: ColourMenu.Colourmenu.c
+ * File: Menu/Colourmenu.c
  * Author: Craig Beech, 27th August 1994
  *
  * Version 1.01 (10 Oct 2007) Moved to Menu module
@@ -13,8 +13,6 @@
  */
 
 #include "DeskLib:Menu.h"
-#include "DeskLib:ColourMenu.h"
-
 
 /****************************************************************************
 

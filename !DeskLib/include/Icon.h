@@ -14,6 +14,8 @@
  * 17/04/2005, v1.15
  * 01/07/2007: Added Icon_SetDeleted
  * 10/08/2007: Tidied file header
+ * 22/10/2007: Commented out slider stuff for documentation - use Slider module instead
+ * 25/10/2007: Moved Validation_ScanString here
  *
  */
 
@@ -36,6 +38,8 @@ extern "C" {
 /* Abstract */
 /*
   This header defines some relatively high-level routines for handling icons.
+
+  For slider functionality, see the Slider module.
 */
 
 extern icon_handle Icon_BarIcon(const char *spritename, window_handle pos);
@@ -215,7 +219,7 @@ extern void Icon_SetTextRJ(window_handle w, icon_handle i, const char *text);
 */
 
 
-extern void Icon_printf(window_handle window, icon_handle icon,
+extern void Icon_Printf(window_handle window, icon_handle icon,
                         const char *format, ...);
 /*
   This "prints" text to the given icon under the control of the
@@ -226,6 +230,11 @@ extern void Icon_printf(window_handle window, icon_handle icon,
   be truncated, if the resulting string before truncation is longer than
   512 characters nastiness will occur (ie. your program will crash).
 */
+
+/* haddoc ignore on */
+#define Icon_printf Icon_Printf
+/* Compatibility with old name style */
+/* haddoc ignore off */
 
 
 extern double Icon_GetDouble(window_handle w, icon_handle i);
@@ -426,7 +435,8 @@ extern void Icon_ScreenPos(window_handle window,
   in 'rect'.
 */
 
-
+/* haddoc ignore on */
+/* This functionality replaced by Slider module */
 extern int Icon_SetSlider(window_handle window,
                           icon_handle baseicon, icon_handle slidericon,
                           int sliderpos);
@@ -504,7 +514,7 @@ extern int Icon_ReadSlider(window_handle window,
   and it returns the position of the slider in thousandths of the maximum
   width (a percentage * 10, if you will)
 */
-
+/* haddoc ignore off */
 
 typedef struct
 {
@@ -581,6 +591,16 @@ extern BOOL Icon_ButtonIsHeld(void);
   This returns TRUE if any mouse button is held down.
 */
 
+extern int Validation_ScanString(const char *string, char tag);
+/*
+  This scans the given string for the tag character given, and returns the
+  index of the *next* character, or zero if the tag character is not found.
+  The tag must be either the first character or directly follow a
+  semi-colon.
+
+  For instance, if you search for the tag 'r' in "sicon;r5", it will return
+  the index of '5' (7, in this example).
+*/
 
 #ifdef __cplusplus
 }

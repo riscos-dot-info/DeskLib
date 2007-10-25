@@ -15,6 +15,7 @@
              not used for this simple implementation, but may be used in
              the future.
     Version: 1.05 (17 Apr 2005)
+             1.06 (24 Oct 2007) Removed RO2 functions
     Purpose: Equivalent of RISC OS Lib's "menus" functions - Give a simple
              method for creating and showing menus.
 
@@ -308,17 +309,10 @@ extern menu_ptr Menu_FontMenu(BOOL sysfont, char *tick);
   menu.
 */
 
-
-extern menu_ptr Menu_FontMenu3(BOOL sysfont, char *tick);
-/*
-  This returns a pointer to a font menu, or zero if it couldn't make one.
-  If you want the system font at the top of the menu, set sysfont to TRUE.
-  Pass a font name in 'tick' to tick that font in the menu, or else
-  Menu_FontMenu_NOTICK or Menu_FontMenu_TICKSYSFONT.
-
-  It is probably not a good idea to attempt to free the memory for this
-  menu.
-*/
+/* haddoc ignore on */
+/* #define here to map old (RO2) function to RO3 one - we don't support RO2 any more */
+#define Menu_FontMenu3 Menu_FontMenu
+/* haddoc ignore off */
 
 
 extern char *Menu_FontMenuDecode(int *selection);
@@ -327,12 +321,10 @@ extern char *Menu_FontMenuDecode(int *selection);
   by the given menu selection, or NULL if an error occurred.
 */
 
-
-extern char *Menu_FontMenuDecode3(int *selection);
-/*
-  This returns a pointer to the name of the font which has been selected
-  by the given menu selection, or NULL if an error occurred.
-*/
+/* haddoc ignore on */
+/* #define here to map old (RO2) function to RO3 one - we don't support RO2 any more */
+#define Menu_FontMenuDecode3 Menu_FontMenuDecode
+/* haddoc ignore off */
 
 
 extern menu_ptr menu_fontmenu;

@@ -65,11 +65,12 @@ typedef enum
    present when the debug library is initialised (otherwise it
    will default to stderr).
    PIPETYPE writes to a file in Pipe: and displays it in a
-   taskwindow on screen
+   taskwindow on screen (so can only be initialised after
+   the program has called Wimp_Initialise).
    STDERR writes to the stderr output (usually specified by
    redirection in your !Run file).
    UNIQUEFILE writes to a unique file inside Scrap
-   UNIQUEPIPE is similar to PIPETYPE but creates aunique file in
+   UNIQUEPIPE is similar to PIPETYPE but creates a unique file in
    Pipe: and does not open it in a taskwindow.
    UNINITIALISED is only for use internally.
 */
@@ -91,7 +92,7 @@ typedef void (*debug_signalhandlerfn)( int sig, void *reference);
 
 	  Calling this function is not mandatory, as it will be
 	  automatically called if you don't do so. In this case,
-	  it is initialised to output to stderr.
+	  it is initialised to the STDERR output.
 	*/
 
 	void Debug_InitialiseSignal(void);
