@@ -13,6 +13,7 @@
              Concept by Edouard Poor
     Version: 1.02 (12 Mar 1994)
              1.03 (5 Sep 2007) Changed vsprintf to vsnprintf
+             1.04 (22 Oct 2007) Changes name to DeskLib style
     Purpose: Do a "printf" into an icon's indirected text string
 */
 
@@ -28,7 +29,7 @@
 #include "DeskLib:WimpSWIs.h"
 #include "DeskLib:Icon.h"
 
-extern void Icon_printf(window_handle window, icon_handle icon,
+extern void Icon_Printf(window_handle window, icon_handle icon,
                         const char *format, ...)
 {
   va_list    argp;

@@ -22,7 +22,6 @@
 #include "DeskLib:Event.h"
 #include "DeskLib:Error.h"
 #include "DeskLib:Handler.h"
-#include "DeskLib:Sound.h"
 #include "DeskLib:Template.h"
 #include "DeskLib:Dialog2.h"
 

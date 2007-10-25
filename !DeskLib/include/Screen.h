@@ -60,6 +60,23 @@ typedef enum
   dl_Screen_ReadModeInfo.
 */
 
+/* haddoc ignore on */
+/* These are here for legacy support - superceded by mode_variable enum */
+#define SCREEN_VAR_ModeFlags    0
+#define SCREEN_VAR_ScrRCol      1
+#define SCREEN_VAR_ScrBRow      2
+#define SCREEN_VAR_NColour      3
+#define SCREEN_VAR_XEigFactor   4
+#define SCREEN_VAR_YEigFactor   5
+#define SCREEN_VAR_LineLength   6
+#define SCREEN_VAR_ScreenSize   7
+#define SCREEN_VAR_YShiftFactor 8
+#define SCREEN_VAR_Log2BPP      9
+#define SCREEN_VAR_Log2BPC     10
+#define SCREEN_VAR_XWindLimit  11
+#define SCREEN_VAR_YWindLimit  12
+/* haddoc ignore off */
+
 /* Mode specifier */
 typedef struct {
   unsigned int flags;

@@ -9,7 +9,7 @@
 
 
         PREAMBLE
-        STARTCODE Font_ConverttoOS
+        STARTCODE Font_ConvertToOS
 ;
         STMFD   sp!, {r4,lr}
         MOV     r4,r3

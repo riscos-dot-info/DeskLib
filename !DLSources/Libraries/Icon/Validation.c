@@ -8,15 +8,15 @@
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
 
-    File:    Misc.Validation.c
+    File:    Icon/Validation.c
     Author:  Copyright © 1992 Jason Williams
     Version: 1.01 (12 Dec 1992)
+             1.02 (25 Oct 2007) Moved from Validation to Icon module
     Purpose: Scanning of validation strings for various fields
 */
 
 #include "DeskLib:Core.h"
-#include "DeskLib:Validation.h"
-
+#include "DeskLib:Icon.h"
 
 extern int Validation_ScanString(const char *string, char tag)
 {

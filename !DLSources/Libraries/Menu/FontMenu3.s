@@ -2,6 +2,7 @@
 ;       Title                  : Font menu creation for RISC OS 3
 ;       System                 : Menu library
 ;       Version                : 1.0
+;                              : 1.01 - Renamed to Menu_FontMenu
 ;       Copyright              : (c) Ben Summers
 ;       Date                   : 21 Oct 94
 ;       Author                 : Ben Summers
@@ -44,7 +45,7 @@ XFont_DecodeMenu EQU &400A0 + XOS_Bit
           ; a1 = BOOL sysfont
           ; a2 = char *tick
 
-        STARTCODE Menu_FontMenu3
+        STARTCODE Menu_FontMenu
 
         STMFD   sp!,{v1-v6,lr}
         MOV     v5,a1
@@ -114,10 +115,10 @@ free_data
         STR     a1,fontmenu_ind
         LDMFD   sp!,{pc}
 
-        EXPORT  Menu_FontMenuDecode3
+        EXPORT  Menu_FontMenuDecode
 
           ; a1 = pointer to selection
-Menu_FontMenuDecode3
+Menu_FontMenuDecode
         STMFD   sp!,{v1-v4,lr}
         MOV     v4,a1
         MOV     a3,a1

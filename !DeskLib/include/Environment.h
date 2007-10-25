@@ -12,6 +12,7 @@
  *
  * Version History
  * 18/08/2007: Creation
+ * 25/10/2007: Moved SysBeep function in
  *
  */
 
@@ -225,6 +226,11 @@ os_error *OS_CLI(const char *cmd);
   This is a veneer for the OS_CLI SWI, executing the given star command.
 */
 
+extern void Sound_SysBeep(void);
+/*
+  Simply writes a character 7 (system beep) to the VDU stream, in order
+  to sound a system beep. It sorta goes 'beep', really.
+*/
 
 #ifdef __cplusplus
 }
