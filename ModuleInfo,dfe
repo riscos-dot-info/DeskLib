@@ -59,7 +59,7 @@ Module,Authors,Date Created,Date last updated,Assembler?,Documentation,Functiona
 "Url","Antony Sidwell, Andrew Sidwell","04/07/2002","17/04/2005","No","Complete","Complete","No","",""
 "USB","Peter Naulls","01/01/2003","17/04/2005","No","Missing","None","Yes","",""
 "Validation","Jason Williams","12/12/1992","25/10/2007","No","Complete","Complete","No","Compatibility module - functionality moved to Icon module.",""
-"WAssert","Mark Wilkinson","05/09/1993","25/10/2007","No","Complete","Complete","No","Depreciated module. Use Debug_Assert instead.",""
+"WAssert","Mark Wilkinson","05/09/1993","25/10/2007","No","Complete","Complete","No","Deprecated module. Use Debug_Assert instead.",""
 "Wimp","John Winters, Jason Williams","01/01/1992","17/04/2005","No","Complete","Complete","No","",""
 "WimpMsg","Antony Sidwell","01/01/2003","01/01/2003","No","Complete","Complete","No","",""
 "WimpSWIs","John Winters, Jason Williams, Sergio Monesi, Julian Smith, Pater Naulls, Antony Sidwell","12/01/1990","17/04/2005","Yes","Complete","Complete","No","Could add Wimp_TextOp",""
