@@ -28,16 +28,6 @@
 #include "DeskLib:WimpSWIs.h"
 #include "DeskLib:WAssert.h"
 
-/*
-   This prototype is here to keep cross-compile happy. The Wassert.h file has
-   been moved to the oldinclude directory, which is OK for the RISC OS side
-   as that is put on DeskLib$Path. However, for GCCSDK DESKLIB_PATH only
-   points to the include directory, so it doesn't find the header file.
-*/
-#ifndef __dl_wassert_h
-extern void __wassert(const char *);
-#endif
-
 
 void __wassert(const char *message)
 {
