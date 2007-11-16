@@ -17,7 +17,7 @@
 */
 
 /*
-   NOTE: This module is depreciated. Use Debug_Assert from Debug module instead.
+   NOTE: This module is deprecated. Use Debug_Assert from Debug module instead.
 */
 
 

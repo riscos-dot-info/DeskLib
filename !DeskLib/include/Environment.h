@@ -13,6 +13,7 @@
  * Version History
  * 18/08/2007: Creation
  * 25/10/2007: Moved SysBeep function in
+ * 31/10/2007: Added OSVersion
  *
  */
 
@@ -37,14 +38,30 @@
 extern "C" {
 #endif
 
-#define dl_log_EMERGENCY   20
-#define dl_log_ALERT       30
-#define dl_log_CRITICAL    40
-#define dl_log_ERROR       60
-#define dl_log_WARNING     80
-#define dl_log_NOTICE      100
-#define dl_log_INFORMATION 150
-#define dl_log_DEBUG       200
+typedef enum
+{
+  dl_log_EMERGENCY   = 20,
+  dl_log_ALERT       = 30,
+  dl_log_CRITICAL    = 40,
+  dl_log_ERROR       = 60,
+  dl_log_WARNING     = 80,
+  dl_log_NOTICE      = 100,
+  dl_log_INFORMATION = 150,
+  dl_log_DEBUG       = 200
+} dl_log_LEVEL;
+/*
+   You can set the log level to any number from 0 to 255. To quote the
+   original Doggysoft SysLog help file:
+
+   "Day-to-day information should probably be logged at around level 100.
+    Certainly avoid levels of less than around 50 for non-critical messages.
+    Level 10 means that the message is of similar importance to "Government
+    declares war". Level 0 is of similar importance to "Armageddon imminent."
+    Level 255 is of similar importance to "Water detected in ocean". The
+    logging output of your program is much more useful if prorities are
+    used well."
+*/
+
 
 typedef struct
 {
@@ -108,23 +125,14 @@ os_error *dl_Environment_LogMessage(int level, const char *message, ...);
 /*
    Call this function to log a message via SysLog. "message" is formatted
    in the same way as printf and the expanded length islimited to 1024 characters.
-   "level" may be any number from 0 to 255. To quote the Doggysoft SysLog help file:
-
-   "Day-to-day information should probably be logged at around level 100.
-    Certainly avoid levels of less than around 50 for non-critical messages.
-    Level 10 means that the message is of similar importance to "Government
-    declares war". Level 0 is of similar importance to "Armageddon imminent."
-    Level 255 is of similar importance to "Water detected in ocean". The
-    logging output of your program is much more useful if prorities are
-    used well."
-
-   To help choose a logging level, a set of macros are provided which should
-   cater for most circumstances:
+   "level" may be any number from 0 to 255. A number of predefined values are
+   provided in dl_log_LEVEL to get you started.
 
    This function uses the name passed to Event_Initialise for the log name
-   (truncated to ten characters). If you wish to use a different name, call
-   dl_Environment_LogInitialise before using this function. If you want to
-   specify the log name for every call, use dl_Log_MessageWithName.
+   (truncated to ten characters). If you wish to use a different name or
+   use the function before you've called Event_Initialise, you should call
+   dl_Environment_LogInitialise first. If you want to specify the log name
+   for every call, use dl_Log_MessageWithName.
 */
 
 BOOL dl_Environment_LogInitialise(const char *name);
@@ -230,6 +238,18 @@ extern void Sound_SysBeep(void);
 /*
   Simply writes a character 7 (system beep) to the VDU stream, in order
   to sound a system beep. It sorta goes 'beep', really.
+*/
+
+int dl_Environment_OSVersion(void);
+/*
+   This function returns information on the OS version. Currently
+   it will only return one of the following values: 0 (Unknown), 100
+   (Arthur), 200 (RISC OS 2), 300 (RISC OS 3), 400 (RISC OS 4), 430
+   (RISC OS Select, Adjust and 6) or 500 (RISC OS 5).
+
+   However, the function may be extended in future to return the exact
+   OS version, so you should account for that eventuality in your
+   program design.
 */
 
 #ifdef __cplusplus

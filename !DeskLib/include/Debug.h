@@ -49,12 +49,12 @@ extern "C" {
 
 typedef enum
 {
-  dl_Debug_UNINITIALISED,
-  dl_Debug_REPORTER,
-  dl_Debug_PIPETYPE,
-  dl_Debug_STDERR,
-  dl_Debug_UNIQUEFILE,
-  dl_Debug_UNIQUEPIPE
+  dl_debug_UNINITIALISED,
+  dl_debug_REPORTER,
+  dl_debug_PIPETYPE,
+  dl_debug_STDERR,
+  dl_debug_UNIQUEFILE,
+  dl_debug_UNIQUEPIPE
 } dl_debug_type;
 /*
    This enum is used to specify which method of outputting debug
@@ -64,14 +64,19 @@ typedef enum
    REPORTER will output to Martin Avison's reporter if it's
    present when the debug library is initialised (otherwise it
    will default to stderr).
+
    PIPETYPE writes to a file in Pipe: and displays it in a
    taskwindow on screen (so can only be initialised after
-   the program has called Wimp_Initialise).
+   the program has called Event_Initialise).
+
    STDERR writes to the stderr output (usually specified by
    redirection in your !Run file).
+
    UNIQUEFILE writes to a unique file inside Scrap
+
    UNIQUEPIPE is similar to PIPETYPE but creates a unique file in
    Pipe: and does not open it in a taskwindow.
+
    UNINITIALISED is only for use internally.
 */
 
