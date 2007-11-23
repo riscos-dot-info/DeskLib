@@ -408,9 +408,9 @@ extern os_error *Wimp_WhichIcon(window_handle    window,
                                    unsigned int   settings);
 /*
   This function searches for icons that match a given flag word.  All icons
-  in the given window will be checks, and the list placed in the array pointed
-  to be 'icons'.  'mask' determines which which bits are to be checked,
-  'settings' says what should be looked for.
+  in the given window will be checked, and the list placed in the array pointed
+  to by 'icons'.  'mask' determines which bits are to be checked, 'settings'
+  says what should be looked for.
 
   It checks if: iconflags & mask == settings & mask.
 */
