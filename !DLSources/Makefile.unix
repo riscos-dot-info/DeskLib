@@ -23,11 +23,11 @@ lib_objects := $(addprefix Libraries.,$(addsuffix .o.*, $(libraries)))
 WARNINGS = -ansi -pedantic -Wall -Wundef -Wpointer-arith \
            -Wcast-align -Wwrite-strings -Wstrict-prototypes \
            -Wmissing-prototypes -Wmissing-declarations -Wnested-externs \
-           -Winline -Wno-unused -Wno-long-long -W -Wcast-qual -Wshadow
+           -Winline -Wno-unused -Wno-long-long -W -Wcast-qual -Wshadow -Werror
 
 # We ELF based builds only
 CC = $(GCCSDK_INSTALL_CROSSBIN)/arm-unknown-riscos-gcc
-CFLAGS = -O2 $(WARNINGS)
+CFLAGS = -O2 $(WARNINGS) -std=c99
 
 AS = $(CC)
 ASFLAGS = -Wa,-ILibraries,-I$(@D) -c
@@ -53,8 +53,8 @@ include OtherLibs/SmallError/Makefile.unix
 
 # Clean the whole library out in one go
 clean:
-	-find | grep "\.o$$" | xargs rm
-	-rm $(DESKLIB)
+	-find | grep "\.o$$" | xargs rm 2>/dev/null || true
+	-rm -f $(DESKLIB)
 
 .c.o:
 	DESKLIB_PATH=$(DESKLIB_PATH) $(CC) $(CFLAGS) -c $< -o $@
