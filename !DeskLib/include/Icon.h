@@ -16,6 +16,7 @@
  * 10/08/2007: Tidied file header
  * 22/10/2007: Commented out slider stuff for documentation - use Slider module instead
  * 25/10/2007: Moved Validation_ScanString here
+ * 06/12/2007: Icon_AlterValidation is now type int and returns info on buffer overrun
  *
  */
 
@@ -573,16 +574,32 @@ extern BOOL Icon_ReleaseIncDecHandler(icon_incdecblock *incdecblock);
 */
 
 
-extern void Icon_AlterValidation(window_handle window, icon_handle icon,
-                                 const char *newvalidation);
+int Icon_AlterValidation(window_handle window, icon_handle icon, const char *newvalidation);
 /*
   This alters the validation string of the given icon to hold the text
-  given in 'newvalidation', and redraws the icon.  If the validation
-  string is already set to the given value, it does nothing.
+  given in 'newvalidation', and redraws the icon. If the validation
+  string is already set to the given value (or if the icon is not
+  indirected), it does nothing (and returns 0).
 
-  The buffer for the validation string *must* be big enough to contain
-  the new value, or you will overwrite and corrupt other pieces of
-  memory.
+  ** Note **
+
+  This function will cause a buffer overrun if you pass a string
+  longer than the space allocated for the icon validation string,
+  so needs to be used with care.
+
+  There is no way to determine the size of the available buffer but
+  this function can help by returning some useful information.
+
+  If newvalidation is NULL, then the function will return the length
+  of the existing validation string. If this is done after the
+  icon is created and before any changes to the validation string,
+  this will be the minimum size of the buffer.
+
+  If newvalidation is non-NULL then the function will return the
+  difference (in bytes) between the length of the existing validation
+  string and the length of newvalidation. So if it returns a
+  negative number, it has written beyond the end of the existing
+  string.
 */
 
 

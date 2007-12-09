@@ -21,7 +21,7 @@
 <td class="maintext" style="padding:5mm;">
 <h2 style="margin-top: 0;">Using DeskLib</h2>
 <h3>Including the Library</h3>
-<p>The <em>!DeskLib</em> application contains everything you need to use the DeskLib functions in your programs - the library itself and the header (.h) files. When <em>!DeskLib</em> has been seen by the filer it sets up some system variables for use in referencing the library. To include the relevant headers in your own code use the form: <code>#include &quot;DeskLib:Header.h&quot;</code> and to link with the DeskLib library, use <code>-I DeskLib:o.DeskLib</code> when linking your code.</p>
+<p>The <em>!DeskLib</em> application contains everything you need to use the DeskLib functions in your programs - the library itself and the header (.h) files. When <em>!DeskLib</em> has been seen by the filer it sets up some system variables for use in referencing the library. To include the relevant headers in your own code use the form: <code>#include &quot;DeskLib:Header.h&quot;</code> and to link with the DeskLib library, use <code>DeskLib:DeskLib.o</code> when linking your code.</p>
 <p>The header files have been parsed to construct a <em>StrongHelp</em> reference file (see the <a href="Reference">Reference</a> section) but if you would like to <a href="DeskLibHTMLAction:/Filer_Run{}OpenDirH">examine the files yourself</a>, just double-click on <em>!DeskLib</em> and the relevant directory will open on screen. (The positioning etc can be modified by altering the <em>OpenDirH</em> file inside <em>!DeskLib</em>.)
 
 <h3>Writing an Application with DeskLib</h3>
