@@ -11,7 +11,7 @@
 
 DESKLIB = ../!DeskLib/DeskLib.o
 
-DESKLIB_PATH=$(shell realpath $$PWD/../\!DeskLib/include)/
+DESKLIB_PATH=$(shell realpath $$PWD/../\!DeskLib/include)/,$(shell realpath $$PWD/../\!DeskLib/oldinclude)/
 
 libraries := $(notdir $(filter-out Libraries/.svn Libraries/h \
                Libraries/Macros.h Libraries/RegDefs.h, $(wildcard Libraries/*)))
