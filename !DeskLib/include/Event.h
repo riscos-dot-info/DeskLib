@@ -14,8 +14,9 @@
     Purpose: High-level WIMP event dispatch to a hierarchy of user event
              handling functions.
     Mods:    14 July 1993 - Added Event_Initialise3
-             20 Mar 1995  - JPS Added veneers for global vars for use with DLLs
-             1 May 2007 - Tweaked documentation
+             20 Mar  1995 - JPS Added veneers for global vars for use with DLLs
+             1  May  2007 - Tweaked documentation
+             11 Dec  2007 - Added recommendation to use Event_InitNested
 */
 
 
@@ -168,7 +169,8 @@ extern void Event_PollIdle(unsigned int delay);
 
 extern void Event_Initialise3(const char *taskname, int version, int *messages);
 /*
-  This initialises the Wimp and the Event system for your task.
+  This initialises the Wimp and the Event system for your task, including
+  registering an exit event handler which calls the Wimp_CloseDown SWI.
 
   taskname should be your task name, version should be the Wimp version * 100
   required for your program to run. and messages should point to a
@@ -191,6 +193,10 @@ extern void Event_Initialise3(const char *taskname, int version, int *messages);
   earliest version supported by DeskLib), and expressing an interest in
   *no* messages.
 
+  Unless you have a good reason to support very old and non-updated
+  installations, you should call Event_InitNested instead, to unlock
+  some useful WIMP functionality.
+
   Note: in versions of DeskLib up to and including 2.40, this set the wimp
   version to 200 and got notified of *all* messages.
 */
@@ -198,8 +204,11 @@ extern void Event_Initialise3(const char *taskname, int version, int *messages);
 
 extern void Event_InitNested(const char *taskname);
 /*
-  Version of Event_Initialise to pass default values for a
+  This functions calls Event_Initialise3 with default values for a
   task under a Nested Wimp with no messages.
+
+  The nested wimp is available as a softload (in UniBoot) for very
+  old machines, so can be considered a sensible minimum requirement.
 */
 
 
