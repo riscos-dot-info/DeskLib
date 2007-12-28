@@ -256,7 +256,7 @@ extern void Icon_GetText(window_handle w, icon_handle i, char *text);
   Copies the text string from the icon (sprite name, text, or indirected)
   into the string pointed to by 'text'.
 
-  Note that 'text' must be big enough to hold the copied string, so the
+  Note that 'text' must be big enough to hold the icon buffer, so the
   minimum sizes are 12 characters for a non-indirected icon and the size of
   the icon's buffer for an indirected icon.
 */

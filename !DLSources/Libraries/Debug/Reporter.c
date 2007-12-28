@@ -17,8 +17,7 @@
 
 #include "DeskLib:Debug.h"
 #include "DeskLib:SWI.h"
-/* re-include this once the Environment module is published
-#include "DeskLib:Environment.h"*/
+#include "DeskLib:Environment.h"
 
 #include "DebugDefs.h"
 
@@ -26,9 +25,9 @@ extern dl_debug_type dl_debug__libraryinuse; /* Set up in Debug.c */
 
 void dl_Debug_InitialiseReporter(void)
 {
-/* re-include this once the Environment module is published
   if (!dl_Environment_TaskIsActive("Reporter"))
-     dl_debug__libraryinuse = dl_Debug_STDERR;*/
+    /* Reporter is not active, so default to stderr */
+    dl_debug__libraryinuse = dl_Debug_STDERR;
 }
 
 void dl_Debug_PrintReporter(const char *text)
