@@ -6,7 +6,7 @@
  *
  *
  * Module:  Debug
- * File:    reporter.c
+ * File:    Reporter.c
  * Author:  Adam Richardson
  * Purpose: Send debug output to Martin Avison's "Reporter"
  *
@@ -27,7 +27,7 @@ void dl_Debug_InitialiseReporter(void)
 {
   if (!dl_Environment_TaskIsActive("Reporter"))
     /* Reporter is not active, so default to stderr */
-    dl_debug__libraryinuse = dl_Debug_STDERR;
+    dl_debug__libraryinuse = dl_debug_STDERR;
 }
 
 void dl_Debug_PrintReporter(const char *text)
