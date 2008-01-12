@@ -34,19 +34,19 @@
 #include "DebugDefs.h"
 
 
-#define dl_Debug__ClosePipeFile(f) fclose(f)
+#define Debug__ClosePipeFile(f) fclose(f)
 
 extern char debug__filename[256]; /* Set up in Debug.c */
 
 
 
-void dl_Debug_InitialiseUniquePipe(void)
+void Debug_InitialiseUniquePipe(void)
 {
   snprintf(debug__filename, sizeof(debug__filename), "Pipe:$.DeskLib.%s", LeafName(tmpnam( NULL)));
 }
 
 
-static FILE *dl_Debug__OpenPipeFile(void)
+static FILE *Debug__OpenPipeFile(void)
 {
   FILE *file;
 
@@ -56,12 +56,12 @@ static FILE *dl_Debug__OpenPipeFile(void)
   return file;
 }
 
-void dl_Debug_PrintUniquePipe(const char *text)
+void Debug_PrintUniquePipe(const char *text)
 {
   FILE *f;
-  f = dl_Debug__OpenPipeFile();
+  f = Debug__OpenPipeFile();
   fputs(text, f);
-  dl_Debug__ClosePipeFile(f);
+  Debug__ClosePipeFile(f);
 }
 
 

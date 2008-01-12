@@ -19,7 +19,7 @@
 #include "DeskLib:KernelSWIs.h"
 #include <stdio.h>
 
-int dl_Environment_OSVersion(void)
+int Environment_OSVersion(void)
 {
   int version, dummy;
 

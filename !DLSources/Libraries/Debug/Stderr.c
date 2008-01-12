@@ -28,7 +28,7 @@
 
 #include "DebugDefs.h"
 
-void dl_Debug_PrintStderr(const char *text)
+void Debug_PrintStderr(const char *text)
 {
   fputs(text, stderr);
 }

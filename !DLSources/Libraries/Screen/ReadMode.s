@@ -20,7 +20,7 @@
 ; os_error *OS_ReadModeVariable(int mode, mode_variable variable, int *value);
 
         PREAMBLE
-        STARTCODE OS_ReadModeVariable
+        STARTCODE Screen_ReadModeVariable
 ;
         MOV     ip, sp
         STMFD   sp!, {lr}

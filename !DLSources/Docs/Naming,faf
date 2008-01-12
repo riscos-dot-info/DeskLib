@@ -29,8 +29,7 @@
 <p>In general the naming scheme follows the same style as the RISC OS SWI
  names (e.g. module-name underline function-name, where module-name
  and function-name are all lowercase except for the initial letters of
- words), though with a DeskLib-specific <code>dl_</code> prefixing everything
-to ensure a unique namespace. i.e. <code>dl_Wimp_OpenWindow(),</code>; <code>dl_Dialog_SaveAs()</code>; <code>dl_Icon_PlaceCaret()</code>;</p>
+ words). I.e. <code>Wimp_OpenWindow(),</code>; <code>Dialog_SaveAs()</code>; <code>Icon_PlaceCaret()</code>;</p>
 
 
 <h3>Variable/Type Names</h3>

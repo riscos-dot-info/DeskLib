@@ -76,7 +76,7 @@ extern void Resource_Initialise(const char *respath);
   it a lot easier to change the resource directory at a later time.
 
   Note that after calling this function, calls to
-  dl_Resource_InitialiseAuto will no longer have any effect.
+  Resource_InitialiseAuto will no longer have any effect.
 */
 
 
@@ -99,10 +99,10 @@ extern void Resource_InitialisePath(const char *respath);
   default files if they don't.
 
   Note that after calling this function, calls to
-  dl_Resource_InitialiseAuto will no longer have any effect.
+  Resource_InitialiseAuto will no longer have any effect.
 */
 
-extern BOOL dl_Resource_InitialiseAuto(void);
+extern BOOL Resource_InitialiseAuto(void);
 /*
   This function attempts to automatically set up resorce_pathname based
   on the task name passed to Event_Initialise. (If Event_Initialise

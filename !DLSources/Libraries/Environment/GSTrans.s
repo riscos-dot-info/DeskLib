@@ -21,7 +21,7 @@
 
 ; os_error *OS_GSTrans(char *string, char *buffer, int size, char **end);
 
-        STARTCODE OS_GSTrans
+        STARTCODE Environment_ExpandString
 
         MOV     ip, lr
         SWI     SWI_OS_GSTrans + XOS_Bit

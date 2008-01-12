@@ -37,7 +37,7 @@ os_error *MsgTrans_LoadFile(msgtrans_filedesc **filedesc,
   int size;
   os_error *swierr;
   msgtrans_file *block;
-  char namebuff[dl_wimp_MAXPATH];
+  char namebuff[wimp_MAXPATH];
 
   block = malloc(sizeof(msgtrans_file));
   if (!block)

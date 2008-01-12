@@ -24,7 +24,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-BOOL OS_ReadVarVal(const char *varname, char *buf, int bufsize)
+BOOL Environment_SysVarRead(const char *varname, char *buf, int bufsize)
 {
   BOOL returnvalue = FALSE;
   int result;
@@ -51,7 +51,7 @@ BOOL OS_ReadVarVal(const char *varname, char *buf, int bufsize)
   return returnvalue;
 }
 
-os_error *dl_Environment_SysVarSet(const char *varname, const char *value, dl_sysvar_type type)
+os_error *Environment_SysVarSet(const char *varname, const char *value, sysvar_type type)
 {
   os_error *error;
   int length, number;
@@ -60,7 +60,7 @@ os_error *dl_Environment_SysVarSet(const char *varname, const char *value, dl_sy
 
   switch (type)
   {
-    case dl_sysvar_NUMBER:
+    case sysvar_NUMBER:
       number = atoi(value);
       error = SWI(5, 0, SWI_OS_SetVarVal, varname, number, 4, 0, type);
       break;
@@ -71,7 +71,7 @@ os_error *dl_Environment_SysVarSet(const char *varname, const char *value, dl_sy
   return error;
 }
 
-os_error *dl_Environment_SysVarDelete(const char *varname)
+os_error *Environment_SysVarDelete(const char *varname)
 {
   os_error *error;
 

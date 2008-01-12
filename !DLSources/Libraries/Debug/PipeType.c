@@ -36,7 +36,7 @@
 
 extern char debug__filename[256]; /* Set up in Debug.c */
 
-void dl_Debug_InitialisePipetype(void)
+void Debug_InitialisePipetype(void)
 /* Simply redirect stderr to a unique file in pipe:, and	*/
 /* open a taskwindow which will *Type out stderr.		*/
 /* Aren't taskwindows wonderful?				*/
@@ -52,7 +52,7 @@ void dl_Debug_InitialisePipetype(void)
   Error_CheckFatal(Wimp_StartTask(command));
 }
 
-void dl_Debug_PrintPipetype(const char *text)
+void Debug_PrintPipetype(const char *text)
 {
   fputs(text, stderr);
 }

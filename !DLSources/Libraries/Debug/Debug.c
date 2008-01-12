@@ -32,7 +32,7 @@ int debug_level = 0;
   Programs can set this to 0-5, and Debug1_Printf statements will come into effect.
 */
 
-dl_debug_type dl_debug__libraryinuse = dl_debug_UNINITIALISED;
+debug_type debug__libraryinuse = debug_UNINITIALISED;
 
 char debug__filename[256] = "";
 
@@ -49,35 +49,35 @@ void Debug__Assert( const char *expression, char *sourcefile, int line)
   abort();
 }
 
-void Debug_Initialise(dl_debug_type type)
+void Debug_Initialise(debug_type type)
 {
-  if (dl_debug__libraryinuse == dl_debug_UNINITIALISED)
+  if (debug__libraryinuse == debug_UNINITIALISED)
   /* Can only initialise once per session */
   {
-    dl_debug__libraryinuse = type;
+    debug__libraryinuse = type;
 
     switch (type)
     {
-      case dl_debug_UNINITIALISED:
+      case debug_UNINITIALISED:
         /* In case user initialises with "unititialised" value or Debug_Printf
-           is called before dl_Debug_Initialise is - the default is stderr */
-        dl_debug__libraryinuse = dl_debug_STDERR;
+           is called before Debug_Initialise is - the default is stderr */
+        debug__libraryinuse = debug_STDERR;
         /* No initialisation needed for stderr */
         break;
-      case dl_debug_REPORTER:
-        dl_Debug_InitialiseReporter();
+      case debug_REPORTER:
+        Debug_InitialiseReporter();
         break;
-      case dl_debug_PIPETYPE:
-        dl_Debug_InitialisePipetype();
+      case debug_PIPETYPE:
+        Debug_InitialisePipetype();
         break;
-      case dl_debug_STDERR:
+      case debug_STDERR:
         /* No initialisation needed */
         break;
-      case dl_debug_UNIQUEFILE:
-        dl_Debug_InitialiseUniqueFile();
+      case debug_UNIQUEFILE:
+        Debug_InitialiseUniqueFile();
         break;
-      case dl_debug_UNIQUEPIPE:
-        dl_Debug_InitialiseUniquePipe();
+      case debug_UNIQUEPIPE:
+        Debug_InitialiseUniquePipe();
         break;
     }
   }
@@ -105,30 +105,30 @@ int Debug_Printf(const char *format, ...)
 void Debug_Print(const char *text)
 {
   /* Check we've been initialised */
-  if (dl_debug__libraryinuse == dl_debug_UNINITIALISED)
-    Debug_Initialise(dl_debug_UNINITIALISED);
+  if (debug__libraryinuse == debug_UNINITIALISED)
+    Debug_Initialise(debug_UNINITIALISED);
 
-  switch (dl_debug__libraryinuse)
+  switch (debug__libraryinuse)
   {
-    case dl_debug_UNINITIALISED:
+    case debug_UNINITIALISED:
       /* This case is dealt with above. After calling Debug_Initialise,
-         dl_debug__libraryinuse cannot be dl_Debug_UNINITIALISED.
+         debug__libraryinuse cannot be Debug_UNINITIALISED.
          This case statement is just here to suppress the compiler warning */
       break;
-    case dl_debug_REPORTER:
-      dl_Debug_PrintReporter(text);
+    case debug_REPORTER:
+      Debug_PrintReporter(text);
       break;
-    case dl_debug_PIPETYPE:
-     dl_Debug_PrintPipetype(text);
+    case debug_PIPETYPE:
+      Debug_PrintPipetype(text);
       break;
-    case dl_debug_STDERR:
-     dl_Debug_PrintStderr(text);
+    case debug_STDERR:
+      Debug_PrintStderr(text);
       break;
-    case dl_debug_UNIQUEFILE:
-     dl_Debug_PrintUniqueFile(text);
+    case debug_UNIQUEFILE:
+      Debug_PrintUniqueFile(text);
       break;
-    case dl_debug_UNIQUEPIPE:
-    dl_Debug_PrintUniquePipe(text);
+    case debug_UNIQUEPIPE:
+      Debug_PrintUniquePipe(text);
       break;
   }
 }

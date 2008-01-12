@@ -31,16 +31,16 @@ typedef struct
   char *name;
   unsigned int slotsize;
   unsigned int flags;
-} dl_enumeratetasks__block;
+} enumeratetasks__block;
 
-BOOL dl_Environment_TaskIsActive(const char *appname)
+BOOL Environment_TaskIsActive(const char *appname)
 {
   BOOL returnvalue = FALSE;
   int size;
   int seq = 0;
-  dl_enumeratetasks__block data;
+  enumeratetasks__block data;
 
-  size = sizeof(dl_enumeratetasks__block);
+  size = sizeof(enumeratetasks__block);
 
   while ((seq >= 0) && !returnvalue) /* SWI returns -ve seq if no more entries */
   {
@@ -51,21 +51,21 @@ BOOL dl_Environment_TaskIsActive(const char *appname)
   return returnvalue;
 }
 
-os_error *dl_Environment_TaskList(char ***ptrlist, int *numtasks)
+os_error *Environment_TaskList(char ***ptrlist, int *numtasks)
 {
   char **list;
   os_error *error;
-  dl_enumeratetasks__block data;
+  enumeratetasks__block data;
   int i, j, size, seq = 0;
   int totaltasks = -1; /* -1 because in while loop below it'll always end up one too big otherwise */
 
-  size = sizeof(dl_enumeratetasks__block);
+  size = sizeof(enumeratetasks__block);
 
   /* First, find number of tasks to list */
   while (seq >= 0) /* SWI returns -ve seq if no more entries */
   {
     error = SWI(3, 1, SWI_TaskManager_EnumerateTasks, seq, &data, size, &seq);
-    if (dl_Error_CheckSilent(error))
+    if (Error_CheckSilent(error))
       return error;
 
     totaltasks++;
@@ -76,7 +76,7 @@ os_error *dl_Environment_TaskList(char ***ptrlist, int *numtasks)
   if (!list)
   {
     error_global.errnum = 1;
-    snprintf(error_global.errmess, sizeof(error_global.errmess), "Unable to allocate memory in dl_Environment_TaskList");
+    snprintf(error_global.errmess, sizeof(error_global.errmess), "Unable to allocate memory in Environment_TaskList");
     return &error_global;
   }
 
@@ -89,7 +89,7 @@ os_error *dl_Environment_TaskList(char ***ptrlist, int *numtasks)
     if (!list[i])
     {
       error_global.errnum = 1;
-      snprintf(error_global.errmess, sizeof(error_global.errmess), "Unable to allocate memory in dl_Environment_TaskList");
+      snprintf(error_global.errmess, sizeof(error_global.errmess), "Unable to allocate memory in Environment_TaskList");
       for (j = 0; j < i; j++)
         free(list[i]);
 
@@ -106,7 +106,7 @@ os_error *dl_Environment_TaskList(char ***ptrlist, int *numtasks)
   return error;
 }
 
-void dl_Environment_TaskListFree(char **ptrlist, int numtasks)
+void Environment_TaskListFree(char **ptrlist, int numtasks)
 {
   int i;
 
@@ -118,7 +118,7 @@ void dl_Environment_TaskListFree(char **ptrlist, int numtasks)
   if (ptrlist) free(ptrlist);
 }
 
-os_error *dl_Environment_TaskNameFromHandle(task_handle task, char *buf, int bufsize)
+os_error *Environment_TaskNameFromHandle(task_handle task, char *buf, int bufsize)
 {
   char *result = 0;
   os_error *swierr;
@@ -131,15 +131,15 @@ os_error *dl_Environment_TaskNameFromHandle(task_handle task, char *buf, int buf
   return swierr;
 }
 
-os_error *dl_Environment_TaskInfo(const char *appname, dl_task_info *taskinfo)
+os_error *Environment_TaskInfo(const char *appname, task_info *taskinfo)
 {
   BOOL foundtask = FALSE, returnvalue = FALSE;
   int size;
   int seq = 0;
-  dl_enumeratetasks__block data;
+  enumeratetasks__block data;
   os_error *error;
 
-  size = sizeof(dl_enumeratetasks__block);
+  size = sizeof(enumeratetasks__block);
 
   while ((seq >= 0) && !foundtask) /* SWI returns -ve seq if no more entries */
   {
@@ -182,7 +182,7 @@ os_error *dl_Environment_TaskInfo(const char *appname, dl_task_info *taskinfo)
   {
     /* taskinfo parameter not passed correctly */
     error_global.errnum = 1;
-    snprintf(error_global.errmess, sizeof(error_global.errmess), "Invalid parameter passed to dl_Environment_TaskInfo function.");
+    snprintf(error_global.errmess, sizeof(error_global.errmess), "Invalid parameter passed to Environment_TaskInfo function.");
     error = &error_global;
   }
 

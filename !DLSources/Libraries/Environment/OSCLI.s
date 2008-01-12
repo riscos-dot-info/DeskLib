@@ -21,7 +21,7 @@
 
 ; os_error *OS_CLI(char *cmd);
 
-        STARTCODE OS_CLI
+        STARTCODE Environment_Command
 
         MOV     ip, lr
         SWI     SWI_OS_CLI + XOS_Bit

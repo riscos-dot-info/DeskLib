@@ -28,7 +28,7 @@ extern "C" {
 /* Abstract */
 /*
   Compatibility header. ColourMenu_Create has been renamed
-  dl_Menu_NewColourMenu and moved to the menu module
+  Menu_NewColourMenu and moved to the menu module
  */
 
 #ifdef __cplusplus

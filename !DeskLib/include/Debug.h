@@ -49,13 +49,13 @@ extern "C" {
 
 typedef enum
 {
-  dl_debug_UNINITIALISED,
-  dl_debug_REPORTER,
-  dl_debug_PIPETYPE,
-  dl_debug_STDERR,
-  dl_debug_UNIQUEFILE,
-  dl_debug_UNIQUEPIPE
-} dl_debug_type;
+  debug_UNINITIALISED,
+  debug_REPORTER,
+  debug_PIPETYPE,
+  debug_STDERR,
+  debug_UNIQUEFILE,
+  debug_UNIQUEPIPE
+} debug_type;
 /*
    This enum is used to specify which method of outputting debug
    information you'd like the debug functions to use. Pass one of
@@ -89,7 +89,7 @@ typedef void (*debug_signalhandlerfn)( int sig, void *reference);
 
 #if defined(DeskLib_DEBUG) || defined(_DeskLib_Debug_BUILD)
 
-        void Debug_Initialise(dl_debug_type type);
+        void Debug_Initialise(debug_type type);
 	/*
 	  Sets up the debug library. Call this before you use the
 	  Debug_Print or Debug_Printf functions. "type" specifies how

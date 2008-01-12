@@ -106,7 +106,7 @@ extern BOOL Error_Check(os_error *error);
   returned
 */
 
-extern BOOL dl_Error_CheckSilent(os_error *error);
+extern BOOL Error_CheckSilent(os_error *error);
 /*
   Used to encapsulate an OS call to automatically check for error return.
   If an error is encountered the function returns TRUE (but takes no other

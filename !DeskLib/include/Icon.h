@@ -608,7 +608,12 @@ extern BOOL Icon_ButtonIsHeld(void);
   This returns TRUE if any mouse button is held down.
 */
 
-extern int Validation_ScanString(const char *string, char tag);
+/* haddoc ignore on */
+/* Old name defined to maintain backwards compatibilty */
+#define Validation_ScanString(s,t) Icon_ScanValidationString(s,t)
+/* haddoc ignore off */
+
+extern int Icon_ScanValidationString(const char *string, char tag);
 /*
   This scans the given string for the tag character given, and returns the
   index of the *next* character, or zero if the tag character is not found.

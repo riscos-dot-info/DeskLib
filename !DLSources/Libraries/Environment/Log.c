@@ -26,39 +26,39 @@
 #include <stdio.h>
 
 /* Globals */
-BOOL dl_environment__syslogpresent = FALSE;
-BOOL dl_environment__loginitialised = FALSE;
-char dl_environment__logname[11] = "DeskLibLog"; /* DoggySoft limitiation: 10 chars (we add space for terminator) */
+BOOL environment__syslogpresent = FALSE;
+BOOL environment__loginitialised = FALSE;
+char environment__logname[11] = "DeskLibLog"; /* DoggySoft limitiation: 10 chars (we add space for terminator) */
 
-BOOL dl_Environment_LogInitialise(const char *name)
+BOOL Environment_LogInitialise(const char *name)
 {
   /* SysLog names can only be 10 characters long */
-  strncpy(dl_environment__logname, name, sizeof(dl_environment__logname)-1);
-  dl_environment__logname[sizeof(dl_environment__logname)-1] = '\0';
+  strncpy(environment__logname, name, sizeof(environment__logname)-1);
+  environment__logname[sizeof(environment__logname)-1] = '\0';
 
   /* Check for presence of module. Used in logging fn proper to prevent calls to non-existant SWI */
-  dl_environment__syslogpresent = dl_Environment_ModuleIsActive("Syslog");
+  environment__syslogpresent = Environment_ModuleIsActive("Syslog");
 
-  dl_environment__loginitialised = TRUE;
+  environment__loginitialised = TRUE;
 
-  return dl_environment__syslogpresent;
+  return environment__syslogpresent;
 }
 
-os_error *dl_Environment_LogMessage(int level, const char *message, ...)
+os_error *Environment_LogMessage(int level, const char *message, ...)
 {
   os_error *error;
-  char buffer[1024]; /* Doggysoft limitiation on size */
+  char buffer[1024]; /* DoggySoft limitiation on size */
   va_list argptr;
 
-  if (!dl_environment__loginitialised)
+  if (!environment__loginitialised)
   { /* Initialise function not called yet - do so now. */
 
     if (strcmp(event_taskname, ""))
       /* event_taskname has been filled with something (e.g. Event_Initialise has been called) */
-      dl_Environment_LogInitialise(event_taskname);
+      Environment_LogInitialise(event_taskname);
     else
-      /* Default log name (dl_environment__logname initialised to this anyway) */
-      dl_Environment_LogInitialise("DeskLibLog");
+      /* Default log name (environment__logname initialised to this anyway) */
+      Environment_LogInitialise("DeskLibLog");
   }
 
   va_start(argptr, message);
@@ -68,12 +68,12 @@ os_error *dl_Environment_LogMessage(int level, const char *message, ...)
   /* Ensure correct termination (in case where message is longer than buffer) */
   buffer[sizeof(buffer)-1] = '\0';
 
-  error = dl_Environment_LogMessageWithName(dl_environment__logname, level, buffer);
+  error = Environment_LogMessageWithName(environment__logname, level, buffer);
 
   return error;
 }
 
-os_error *dl_Environment_LogMessageWithName(const char *logname, int level, const char *message)
+os_error *Environment_LogMessageWithName(const char *logname, int level, const char *message)
 {
   os_error *error;
   char namebuffer[11], messagebuffer[1024];
@@ -89,7 +89,7 @@ os_error *dl_Environment_LogMessageWithName(const char *logname, int level, cons
   if (level < 0)   level = 0;
   if (level > 255) level = 255;
 
-  if (dl_environment__syslogpresent)
+  if (environment__syslogpresent)
   {
     error = SWI(3, 0, SWI_SysLog_LogMessage | XOS_Bit, namebuffer, messagebuffer, level);
   }
