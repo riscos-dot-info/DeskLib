@@ -21,16 +21,16 @@
 
 #include "DebugDefs.h"
 
-extern dl_debug_type dl_debug__libraryinuse; /* Set up in Debug.c */
+extern debug_type debug__libraryinuse; /* Set up in Debug.c */
 
-void dl_Debug_InitialiseReporter(void)
+void Debug_InitialiseReporter(void)
 {
-  if (!dl_Environment_TaskIsActive("Reporter"))
+  if (!Environment_TaskIsActive("Reporter"))
     /* Reporter is not active, so default to stderr */
-    dl_debug__libraryinuse = dl_debug_STDERR;
+    debug__libraryinuse = debug_STDERR;
 }
 
-void dl_Debug_PrintReporter(const char *text)
+void Debug_PrintReporter(const char *text)
 {
   SWI(1 ,0 , SWI_Reporter_Text0 | XOS_Bit, text);
 }

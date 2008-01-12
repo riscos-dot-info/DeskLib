@@ -114,7 +114,7 @@ extern BOOL Error_Check(os_error *error)
 }
 
 
-extern BOOL dl_Error_CheckSilent(os_error *error)
+extern BOOL Error_CheckSilent(os_error *error)
 {
   if (error != NULL)
     return(TRUE);

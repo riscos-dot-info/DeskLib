@@ -24,7 +24,7 @@
 
 ****************************************************************************/
 
-extern menu_ptr ColourMenu_Create(const char *name)
+extern menu_ptr Menu_NewColourMenu(const char *name)
 { menu_ptr menu;
   menu_item *item;
 

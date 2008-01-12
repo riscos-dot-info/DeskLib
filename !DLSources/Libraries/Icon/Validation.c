@@ -18,7 +18,7 @@
 #include "DeskLib:Core.h"
 #include "DeskLib:Icon.h"
 
-extern int Validation_ScanString(const char *string, char tag)
+extern int Icon_ScanValidationString(const char *string, char tag)
 {
   register int  index;
   register char trytag;

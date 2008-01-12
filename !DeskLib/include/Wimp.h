@@ -37,7 +37,7 @@ extern "C" {
   Event, Menu, Coord, and so on.
 */
 
-#define dl_wimp_MAXPATH 1024
+#define wimp_MAXPATH 1024
 /*
   The maximum length of a file path used in various parts of the library.
 */
@@ -294,7 +294,7 @@ typedef struct
 #define icon_ALLOWADJUST 0x00000400      /* Allow multiple select with adjust */
 #define icon_HALVESPRITE 0x00000800      /* plot sprites half-size            */
 #define icon_BUTTONTYPE  0x00001000      /* 4-bit field: button type          */
-#define dl_icon_NUMERIC  0x00100000      /* icon contains only 'numeric' data */
+#define icon_NUMERIC     0x00100000      /* icon contains only 'numeric' data */
 #define icon_SELECTED    0x00200000      /* icon selected by user (inverted)  */
 #define icon_SHADED      0x00400000      /* icon cannot be selected (shaded)  */
 #define icon_DELETED     0x00800000      /* icon has been deleted             */

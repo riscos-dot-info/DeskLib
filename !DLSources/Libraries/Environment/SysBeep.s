@@ -19,7 +19,7 @@
 
 
   PREAMBLE
-  STARTCODE Sound_SysBeep
+  STARTCODE Environment_SysBeep
 
     STMFD   sp!, {lr}
     SWI     OS_WriteI + 7 + XOS_Bit

@@ -36,7 +36,11 @@ extern "C" {
   many macros giving names to SWI numbers.
 */
 
-os_error *OS_SWINumberToString(int number, char *buffer, int size);
+/* haddoc ignore on */
+/* Old name defined to maintain backwards compatibilty */
+#define OS_SWINumberToString(n,b,s) SWI_SWINumberToString(n,b,s)
+/* haddoc ignore off */
+os_error *SWI_SWINumberToString(int number, char *buffer, int size);
 /*
   This converts the given SWI number to the corresponding SWI name.
   The name is placed in the string pointed to by 'buffer' of length
@@ -45,8 +49,11 @@ os_error *OS_SWINumberToString(int number, char *buffer, int size);
   This returns NULL if there is no error.
 */
 
-
-os_error *OS_SWINumberFromString(const char *string, int *number);
+/* haddoc ignore on */
+/* Old name defined to maintain backwards compatibilty */
+#define OS_SWINumberFromString(s,n) SWI_SWINumberFromString(s,n)
+/* haddoc ignore off */
+os_error *SWI_SWINumberFromString(const char *string, int *number);
 /*
   This converts the given SWI name to the corresponding SWI number.
   The number is placed in 'number'.

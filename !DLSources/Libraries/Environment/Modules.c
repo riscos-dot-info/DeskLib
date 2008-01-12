@@ -19,11 +19,11 @@
 #include "DeskLib:SWI.h"
 #include "DeskLib:Error.h"
 
-BOOL dl_Environment_ModuleIsActive(const char *modulename)
+BOOL Environment_ModuleIsActive(const char *modulename)
 {
   BOOL returnvalue = FALSE;
 
-  returnvalue = !(dl_Error_CheckSilent(SWI(2, 0, SWI_OS_Module | XOS_Bit, 18, modulename)));
+  returnvalue = !(Error_CheckSilent(SWI(2, 0, SWI_OS_Module | XOS_Bit, 18, modulename)));
 
   return returnvalue;
 }

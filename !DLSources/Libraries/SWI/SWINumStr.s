@@ -21,7 +21,7 @@
 
 ; os_error *OS_SWINumberToString(int number, char *buffer, int size);
 
-        STARTCODE OS_SWINumberToString
+        STARTCODE SWI_SWINumberToString
 
         MOV     ip, lr
         SWI     SWI_OS_SWINumberToString + XOS_Bit
@@ -31,7 +31,7 @@
 
 ; os_error *OS_SWINumberFromString(char *string, int *number);
 
-        STARTCODE OS_SWINumberFromString
+        STARTCODE SWI_SWINumberFromString
 
         MOV     ip, lr
         MOV     r2, r1

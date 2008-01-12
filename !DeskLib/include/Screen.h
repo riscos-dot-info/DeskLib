@@ -57,7 +57,7 @@ typedef enum
 } mode_variable;
 /*
   This gives useful names to the various mode variables you can read with
-  dl_Screen_ReadModeInfo.
+  Screen_ReadModeInfo.
 */
 
 /* haddoc ignore on */
@@ -131,9 +131,11 @@ extern int screen_bpp;
   ie. the colour "depth".
 */
 
-
-os_error *OS_ReadModeVariable(int mode, mode_variable variable,
-                                             int *value);
+/* haddoc ignore on */
+/* Old name defined to maintain backwards compatibilty */
+#define OS_ReadModeVariable(m,v,r) Screen_ReadModeVariable(m,v,r)
+/* haddoc ignore off */
+os_error *Screen_ReadModeVariable(int mode, mode_variable variable, int *value);
 /*
   This function reads a mode variable for the mode 'mode', or the current
   screen mode if 'mode' is -1.  The value is returned in 'value'.

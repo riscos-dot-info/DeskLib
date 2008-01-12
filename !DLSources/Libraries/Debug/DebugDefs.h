@@ -22,19 +22,19 @@
 
 void Debug__Assert(const char *expression, char *sourcefile, int line);
 
-void dl_Debug_InitialisePipetype(void);
-void dl_Debug_PrintPipetype(const char *text);
+void Debug_InitialisePipetype(void);
+void Debug_PrintPipetype(const char *text);
 
-void dl_Debug_InitialiseReporter(void);
-void dl_Debug_PrintReporter(const char *text);
+void Debug_InitialiseReporter(void);
+void Debug_PrintReporter(const char *text);
 
-void dl_Debug_PrintStderr(const char *text);
+void Debug_PrintStderr(const char *text);
 
-void dl_Debug_InitialiseUniqueFile(void);
-void dl_Debug_PrintUniqueFile(const char *text);
+void Debug_InitialiseUniqueFile(void);
+void Debug_PrintUniqueFile(const char *text);
 
-void dl_Debug_InitialiseUniquePipe(void);
-static FILE *dl_Debug__OpenPipeFile(void);
-void dl_Debug_PrintUniquePipe(const char *text);
+void Debug_InitialiseUniquePipe(void);
+static FILE *Debug__OpenPipeFile(void);
+void Debug_PrintUniquePipe(const char *text);
 
 #endif

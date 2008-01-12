@@ -24,15 +24,15 @@
 #include "DeskLib:File.h"
 #include "DeskLib:Event.h"       /* For event_taskname declaration */
 
-BOOL dl_resource__autoinited = FALSE;
+BOOL resource__autoinited = FALSE;
 
-BOOL dl_Resource_InitialiseAuto(void)
+BOOL Resource_InitialiseAuto(void)
 {
   char buffer[100];
   BOOL returnvalue = FALSE;
 
   /* Check for a name in event_taskname, otherwise give up and return FALSE */
-  if ((strcmp(event_taskname, "")) && (!dl_resource__autoinited))
+  if ((strcmp(event_taskname, "")) && (!resource__autoinited))
   {
     /* Check for AppName$Dir */
     snprintf(buffer, sizeof(buffer), "%s$Dir", event_taskname);
@@ -66,7 +66,7 @@ BOOL dl_Resource_InitialiseAuto(void)
       snprintf(resource_pathname, sizeof(resource_pathname), "%sRes:", event_taskname);
     }
 
-    dl_resource__autoinited = TRUE;
+    resource__autoinited = TRUE;
   }
 
   return returnvalue;

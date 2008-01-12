@@ -12,18 +12,17 @@
     Author:  Copyright © 1992 Jason Williams
     Version: 1.01 (06 May 1993)
              1.02 (01 Sep 2007) incorporate dl_resource_inited, use snprintf instead of strcat etc.
-    Purpose: Resource file (files within user application directory)
-             management functions
+    Purpose: Resource file (files within user application directory) management functions
 */
 
 
 #include <stdio.h>
 #include "DeskLib:Resource.h"
 
-extern BOOL dl_resource__autoinited; /* Set up in InitAuto.c */
+extern BOOL resource__autoinited; /* Set up in InitAuto.c */
 
 extern void Resource_Initialise(const char *respath)
 {
   snprintf(resource_pathname, sizeof(resource_pathname), "<%s$Dir>.",respath);
-  dl_resource__autoinited = TRUE;
+  resource__autoinited = TRUE;
 }

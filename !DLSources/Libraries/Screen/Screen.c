@@ -26,8 +26,8 @@ wimp_point     screen_eig;
 wimp_point     screen_delta;
 int            screen_bpp;
 
-
-#define dl_ReadModeVar(m, v, r) \
+/* This is also defined in BarIcon.c as Icon_ReadModeVar */
+#define Screen_ReadModeVar(m, v, r) \
   SWI(3, 3, SWI_OS_ReadModeVariable, (m), (v), 0,   0, 0, (r))
 
 extern BOOL Screen_CacheModeInfo(void)
@@ -39,19 +39,19 @@ extern BOOL Screen_CacheModeInfo(void)
   if (oldmode.screen_mode == screen_mode.screen_mode)
     return(FALSE);
 
-  dl_ReadModeVar(-1, modevar_LOG2BPP, &screen_bpp);
+  Screen_ReadModeVar(-1, modevar_LOG2BPP, &screen_bpp);
   screen_bpp = 1 << screen_bpp;
 
-  dl_ReadModeVar(-1, modevar_XEIGFACTOR, &screen_eig.x);
-  dl_ReadModeVar(-1, modevar_YEIGFACTOR, &screen_eig.y);
+  Screen_ReadModeVar(-1, modevar_XEIGFACTOR, &screen_eig.x);
+  Screen_ReadModeVar(-1, modevar_YEIGFACTOR, &screen_eig.y);
 
   screen_delta.x = 1 << screen_eig.x;
   screen_delta.y = 1 << screen_eig.y;
 
-  dl_ReadModeVar(-1, modevar_XWINDOWLIMIT, &screen_size.x);
+  Screen_ReadModeVar(-1, modevar_XWINDOWLIMIT, &screen_size.x);
   screen_size.x = (screen_size.x + 1) << screen_eig.x;
 
-  dl_ReadModeVar(-1, modevar_YWINDOWLIMIT, &screen_size.y);
+  Screen_ReadModeVar(-1, modevar_YWINDOWLIMIT, &screen_size.y);
   screen_size.y = (screen_size.y + 1) << screen_eig.y;
 
   return(TRUE);

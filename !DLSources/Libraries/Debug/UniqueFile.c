@@ -36,7 +36,7 @@ static FILE *debug__file;
 
 extern char debug__filename[256]; /* Set up in Debug.c */
 
-void dl_Debug_InitialiseUniqueFile(void)
+void Debug_InitialiseUniqueFile(void)
 {
   tmpnam(debug__filename);
   debug__file = fopen(debug__filename, "w");
@@ -48,7 +48,7 @@ void dl_Debug_InitialiseUniqueFile(void)
 }
 
 
-void dl_Debug_PrintUniqueFile(const char *text)
+void Debug_PrintUniqueFile(const char *text)
 {
   fputs(text, debug__file);
 }

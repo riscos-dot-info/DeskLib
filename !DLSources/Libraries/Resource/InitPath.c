@@ -20,11 +20,11 @@
 #include <stdio.h>
 #include "DeskLib:Resource.h"
 
-extern BOOL dl_resource__autoinited; /* Set up in InitAuto.c */
+extern BOOL resource__autoinited; /* Set up in InitAuto.c */
 
 extern void Resource_InitialisePath(const char *respath)
 {
   snprintf(resource_pathname, sizeof(resource_pathname), "%s:", respath);
 
-  dl_resource__autoinited = TRUE;
+  resource__autoinited = TRUE;
 }
