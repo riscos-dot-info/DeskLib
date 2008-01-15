@@ -11,7 +11,7 @@ Echo
 
 | Change these as needed
 Set DeskLib_GenRelease$Version "2.80"
-Set DeskLib_GenRelease$svnlocation "svn://svn.riscos.info/DeskLib/tags/release-2.80/"
+Set DeskLib_GenRelease$svnlocation "svn://svn.riscos.info/DeskLib/aof/"
 | The repository uses ,ext format for storing filetypes. We only change it for the duration of this script.
 If "<svn$filetypeext>" = "" Then Set DeskLib_GenRelease$svnextunset "True"
 Set svn$filetypeext "yes"
@@ -23,7 +23,7 @@ Echo SVN location: <DeskLib_GenRelease$svnlocation>
 | First, we wipe anything left over (by mistake or deliberately) from last time
 Echo
 Echo -> Wiping old data...
-|IfThere <DeskLib_GenRelease$Dir>.Output.!DeskLib Then Wipe <DeskLib_GenRelease$Dir>.Output.!DeskLib ~C R ~V
+IfThere <DeskLib_GenRelease$Dir>.Output.!DeskLib Then Wipe <DeskLib_GenRelease$Dir>.Output.!DeskLib ~C R ~V
 IfThere <DeskLib_GenRelease$Dir>.Output.!DLSources Then Wipe <DeskLib_GenRelease$Dir>.Output.!DLSources ~C R ~V
 IfThere <DeskLib_GenRelease$Dir>.Output.!DLUser Then Wipe <DeskLib_GenRelease$Dir>.Output.!DLUser ~C R ~V
 IfThere <DeskLib_GenRelease$Dir>.Output.Examples Then Wipe <DeskLib_GenRelease$Dir>.Output.Examples ~C R ~V
@@ -41,13 +41,13 @@ If "<DeskLib_GenRelease$Dir>" LEFT 6 = "HostFS" Then Set DeskLib_TempExport$Dir 
 Echo -> Exporting from riscos.info svn...
 If "<SVN$Dir>" = "" Then Error SVN not found
 Set Alias$DeskLib_svnexport svn export <DeskLib_GenRelease$svnlocation>%%*0 |<DeskLib_TempExport$Dir|>/%%*0 -q
-|DeskLib_svnexport !DeskLib
+DeskLib_svnexport !DeskLib
 Echo    !DeskLib exported
 DeskLib_svnexport !DLUser
 Echo    !DLUser exported
-|DeskLib_svnexport !DLSources
+DeskLib_svnexport !DLSources
 Echo    !DLSources exported
-|DeskLib_svnexport Examples
+DeskLib_svnexport Examples
 Echo    Examples exported
 
 
