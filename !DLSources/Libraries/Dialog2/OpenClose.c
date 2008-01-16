@@ -65,7 +65,7 @@ if ( dialog2->window)	{
 	if ( !dialog2->flags.data.keepwindow)	{
 		if ( deletewindow)	{
 			Window_Delete( dialog2->window);
-			dialog2->window = NULL;
+			dialog2->window = (window_handle)0;
 			}
 		else	Event_ReleaseWindow( dialog2->window);
 		}

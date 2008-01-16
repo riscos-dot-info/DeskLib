@@ -9,11 +9,9 @@
 # Uncomment the following line if you have not already set GCCSDK_INSTALL_CROSSBIN
 #GCCSDK_INSTALL_CROSSBIN ?= /home/riscos/cross/bin
 
-DESKLIB = ../!DeskLib/DeskLib.o
+DESKLIB = ../!DeskLib/DeskLib.a
 
-DESKLIB_INCLUDE=$(shell realpath $$PWD/../\!DeskLib/include)/
-DESKLIB_OLD_INCLUDE=$(shell realpath $$PWD/../\!DeskLib/oldinclude)/
-DESKLIB_PATH=$(DESKLIB_INCLUDE)/,$(DESKLIB_OLD_INCLUDE)
+DESKLIB_PATH=$(shell realpath $$PWD/../\!DeskLib/include)/
 
 libraries := $(notdir $(filter-out Libraries/.svn Libraries/h \
                Libraries/Macros.h Libraries/RegDefs.h, $(wildcard Libraries/*)))
@@ -22,31 +20,20 @@ all_objects := $(patsubst %.s,%.o,$(patsubst %.c,%.o,$(filter %.c %.s,$(wildcard
 
 lib_objects := $(addprefix Libraries.,$(addsuffix .o.*, $(libraries)))
 
-WARNINGS = -std=c99 -pedantic -Wall -Wundef -Wpointer-arith \
+WARNINGS = -ansi -pedantic -Wall -Wundef -Wpointer-arith \
            -Wcast-align -Wwrite-strings -Wstrict-prototypes \
            -Wmissing-prototypes -Wmissing-declarations -Wnested-externs \
-           -Winline -Wno-unused -Wno-long-long -W -Wcast-qual -Wshadow
+           -Winline -Wno-unused -Wno-long-long -W -Wcast-qual -Wshadow -Werror
 
-# We support AOF and ELF based builds but the latter still needs 'as' from GCCSDK 3.4.6 AOF
-ifeq "$(AB_ELFBUILD)" "yes"
+# We ELF based builds only
 CC = $(GCCSDK_INSTALL_CROSSBIN)/arm-unknown-riscos-gcc
-CFLAGS = -O3 $(WARNINGS)
-
-AS = $(GCCSDK_INSTALL_CROSSBIN)/arm-riscos-aof-gcc -msoft-float
-ASFLAGS = -Wa,-elf,-ILibraries,-I$(@D) -c
-
-AR = $(GCCSDK_INSTALL_CROSSBIN)/arm-unknown-riscos-ar
-ARFLAGS = rcv
-else
-CC = $(GCCSDK_INSTALL_CROSSBIN)/gcc
-CFLAGS = -O3 $(WARNINGS)
+CFLAGS = -O2 $(WARNINGS) -std=c99
 
 AS = $(CC)
 ASFLAGS = -Wa,-ILibraries,-I$(@D) -c
 
-AR = $(GCCSDK_INSTALL_CROSSBIN)/ar
+AR = $(GCCSDK_INSTALL_CROSSBIN)/arm-unknown-riscos-ar
 ARFLAGS = rcv
-endif
 
 # Make the library
 all: $(DESKLIB)
@@ -55,10 +42,19 @@ all: $(DESKLIB)
 $(DESKLIB): $(all_objects)
 	$(AR) $(ARFLAGS) $@ $$(find | grep "\.o$$")
 
+# Insert all the Makefiles in the Otherlibs directory as well.
+# This provides the targets debugs and smerror
+
+DEBUGSDIR = ../!DeskLib/Debug
+OTHERDIR = ../!DeskLib/Other
+
+include OtherLibs/Debugs/Makefile.unix
+include OtherLibs/SmallError/Makefile.unix
+
 # Clean the whole library out in one go
 clean:
-	-find | grep "\.o$$" | xargs rm
-	-rm $(DESKLIB)
+	-find | grep "\.o$$" | xargs rm 2>/dev/null || true
+	-rm -f $(DESKLIB)
 
 .c.o:
 	DESKLIB_PATH=$(DESKLIB_PATH) $(CC) $(CFLAGS) -c $< -o $@
@@ -69,6 +65,6 @@ clean:
 
 install: $(DESKLIB)
 	mkdir -p $(GCCSDK_INSTALL_ENV)/include/DeskLib
-	$(GCCSDK_INSTALL_ENV)/ro-install $(DESKLIB_INCLUDE)/*.h $(DESKLIB_OLD_INCLUDE)/*.h $(GCCSDK_INSTALL_ENV)/include/DeskLib
+	$(GCCSDK_INSTALL_ENV)/ro-install $(DESKLIB_PATH)/*.h $(GCCSDK_INSTALL_ENV)/include/DeskLib
 	mkdir -p $(GCCSDK_INSTALL_ENV)/lib
 	$(GCCSDK_INSTALL_ENV)/ro-install $(DESKLIB) $(GCCSDK_INSTALL_ENV)/lib/libDesk.a
