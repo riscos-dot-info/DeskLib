@@ -2,6 +2,7 @@
 @       Title                  : Font menu creation for RISC OS 3
 @       System                 : Menu library
 @       Version                : 1.0
+@                              : 1.01 - Renamed to Menu_FontMenu
 @       Copyright              : (c) Ben Summers
 @       Date                   : 21 Oct 94
 @       Author                 : Ben Summers
@@ -41,8 +42,8 @@
           @ a1 = BOOL sysfont
           @ a2 = char *tick
 
-        .global Menu_FontMenu3
-Menu_FontMenu3:
+        .global Menu_FontMenu
+Menu_FontMenu:
 
         STMFD   sp!,{v1-v6,lr}
         MOV     v5,a1
@@ -112,10 +113,10 @@ free_data:
         STR     a1,fontmenu_ind
         LDMFD   sp!,{pc}
 
-        .global  Menu_FontMenuDecode3
+        .global  Menu_FontMenuDecode
 
           @ a1 = pointer to selection
-Menu_FontMenuDecode3:
+Menu_FontMenuDecode:
         STMFD   sp!,{v1-v4,lr}
         MOV     v4,a1
         MOV     a3,a1
@@ -168,4 +169,3 @@ answer_size:
 
           @ two seperate variables instead of one large block to help fit the blocks into
           @ odd places in the heap
-

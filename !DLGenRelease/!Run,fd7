@@ -11,7 +11,7 @@ Echo
 
 | Change these as needed
 Set DeskLib_GenRelease$Version "2.80"
-Set DeskLib_GenRelease$svnlocation "svn://svn.riscos.info/DeskLib/tags/release-2.80/"
+Set DeskLib_GenRelease$svnlocation "svn://svn.riscos.info/DeskLib/aof/"
 | The repository uses ,ext format for storing filetypes. We only change it for the duration of this script.
 If "<svn$filetypeext>" = "" Then Set DeskLib_GenRelease$svnextunset "True"
 Set svn$filetypeext "yes"
@@ -40,7 +40,7 @@ If "<DeskLib_GenRelease$Dir>" LEFT 6 = "HostFS" Then Set DeskLib_TempExport$Dir 
 
 Echo -> Exporting from riscos.info svn...
 If "<SVN$Dir>" = "" Then Error SVN not found
-Set Alias$DeskLib_svnexport svn export <DeskLib_GenRelease$svnlocation>%%*0 <DeskLib_TempExport$Dir>/%%*0 -q
+Set Alias$DeskLib_svnexport svn export <DeskLib_GenRelease$svnlocation>%%*0 |<DeskLib_TempExport$Dir|>/%%*0 -q
 DeskLib_svnexport !DeskLib
 Echo    !DeskLib exported
 DeskLib_svnexport !DLUser
@@ -70,9 +70,8 @@ Copy <DeskLib_GenRelease$Dir>.Output.DeskLibQR <DeskLib$Dir>.Docs.DeskLibQR ~C F
 
 Echo -> Copying in locally generated library & StrongHelp files...
 | You need to have made the library already
-IfThere <DeskLib$Dir>.o.DeskLib Then Copy <DeskLib$Dir>.o.DeskLib <DeskLib_TempExport$Dir>.!DeskLib.o.DeskLib ~C F ~V Else Error Main library not found
-IfThere <DeskLib$Dir>.o.Debug Then Copy <DeskLib$Dir>.o.Debug <DeskLib_TempExport$Dir>.!DeskLib.o.Debug ~C F ~V Else Error Debug library not found
-IfThere <DeskLib$Dir>.o.Other Then Copy <DeskLib$Dir>.o.Other <DeskLib_TempExport$Dir>.!DeskLib.o.Other ~C F ~V Else Error Other library not found
+CDir <DeskLib_TempExport$Dir>.!DeskLib.o
+IfThere <DeskLib$Dir>.DeskLib/o Then Copy <DeskLib$Dir>.DeskLib/o <DeskLib_TempExport$Dir>.!DeskLib.o.DeskLib ~C F ~V Else IfThere <DeskLib$Dir>.o.DeskLib Then Copy <DeskLib$Dir>.o.DeskLib <DeskLib_TempExport$Dir>.!DeskLib.o.DeskLib ~C F ~V Else Error Compiled library not found
 IfThere <DeskLib$Dir>.Docs.DeskLibQR Then Copy <DeskLib$Dir>.Docs.DeskLibQR <DeskLib_TempExport$Dir>.!DeskLib.Docs.DeskLibQR ~C F ~V Else Error StrongHelp documentation not found
 
 
@@ -113,7 +112,7 @@ Wipe <DeskLib_GenRelease$Dir>.Output.Packages.Examples R ~C ~V
 
 
 | Finally, we zip the svn-exported application directories (now containing the StrongHelp file and library binaries)
-Echo -> Generating release zipfiles...
+Echo -> Generating release zip files...
 CDir <DeskLib_GenRelease$Dir>.Output.ReleaseArchives
 Dir <DeskLib_TempExport$Dir>
 zip -9 <DeskLib_GenRelease$Dir>.Output.ReleaseArchives.core/zip -m -q -r -I !DeskLib !DLUser
@@ -122,7 +121,7 @@ zip -9 <DeskLib_GenRelease$Dir>.Output.ReleaseArchives.examples/zip -m -q -r -I 
 
 
 | Tidy up system variables
-If "<DeskLib_GenRelease$svnextunset>" <> "" Then Unset svn$filetypeext
+If "<DeskLib_GenRelease$svnextunset>" = "True" Then Unset svn$filetypeext
 Unset DeskLib_GenRelease$svnextunset
 Unset DeskLib_GenRelease$Version
 Unset DeskLib_GenRelease$svnlocation

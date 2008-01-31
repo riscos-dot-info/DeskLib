@@ -2,7 +2,7 @@
 # Make: make
 # Wimpslot: 5000k
 #
-# GNU Make makefile for DeskLib.  Defaults to using Norcroft as the compiler.
+# GNU Make makefile for DeskLib.  Defaults to using gcc as the compiler.
 #
 # Various things passed on the command line can alter this makefile's behaviour;
 # these are:
@@ -13,12 +13,11 @@
 #
 
 # Defaults
-COMPILER = norcroft
+COMPILER = gcc
 PREFIX = gccbin:
 
 DESKLIB = <DeskLib$$Dir>.o.DeskLib
 DESKLIBDIR = <DeskLib$$Dir>.o
-DEBUGS = <DeskLib$$Dir>.o.Debug
 
 libraries := $(notdir $(filter-out Libraries/.svn Libraries/h \
                Libraries/Macros.h Libraries/RegDefs.h, $(wildcard Libraries/*)))
@@ -41,33 +40,28 @@ endif
 
 # Defaults for gcc
 ifeq (gcc, $(COMPILER))
-  WARNINGS = -ansi -pedantic -Wall -Wundef -Wpointer-arith \
-             -Wcast-align -Wwrite-strings -Wstrict-prototypes \
+  WARNINGS = -std=c99 -pedantic -Wall -Wundef -Wpointer-arith -Wuninitialized\
+             -Wcast-align -Wwrite-strings -Wstrict-prototypes -Wunused\
              -Wmissing-prototypes -Wmissing-declarations -Wnested-externs \
              -Winline -Wno-unused -Wno-long-long -W -Wcast-qual -Wshadow
 
   CC = $(PREFIX)gcc
-  CFLAGS = -mlibscl -mthrowback -O2 $(WARNINGS) -mpoke-function-name 
+  CFLAGS = -mthrowback -O3 $(WARNINGS) -mpoke-function-name -mlibscl
 
   AS = $(PREFIX)gcc
-  ASFLAGS = -Wa,-ILibraries,-I$(@D) -mthrowback -c
+  ASFLAGS = -Wa,-ILibraries,-I$(@D) -mthrowback -mlibscl -c
 
   AR = $(PREFIX)libfile
   ARFLAGS =
 endif
 
 # Make the library
-all: $(DESKLIB) debugs smerror
+all: $(DESKLIB)
 
 # Link the objects together to make a new library
 $(DESKLIB): $(all_objects)
 	@mkdir -p $(basename $@)
 	$(AR) $(ARFLAGS) -c $@ $(lib_objects)
-
-# Insert all the Makefiles in the Otherlibs directory as well.
-# This provides the targets debugs and smerror                  
-
-include <DeskLib_Sources$$Dir>/OtherLibs/*/Makefile*
 
 # Clean the whole library out in one go
 clean:

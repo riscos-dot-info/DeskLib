@@ -4,13 +4,13 @@
         .include     "SwiNos.h"
         .include     "Macros.h"
 
-@os_error *Font_Converttopoints(int x, int y, int *xout, int *yout)
+@os_error *Font_ConvertTopoints(int x, int y, int *xout, int *yout)
 
 
 
         
-        .global Font_Converttopoints
-Font_Converttopoints:
+        .global Font_ConvertTopoints
+Font_ConvertTopoints:
 @
         STMFD   sp!, {r4,lr}
         MOV     r4,r3

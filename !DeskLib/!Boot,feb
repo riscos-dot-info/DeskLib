@@ -23,4 +23,4 @@ IconSprites <Obey$Dir>.!Sprites
 If "<DeskLib$Path>" = "" Then Set DeskLib$Path DeskLib_User:,DeskLib_Core:
 
 If "<DeskLib$Dir>" = "" Then Set DeskLib$Dir <Obey$Dir>
-If "<DeskLib_Core$Path>" = "" Then Set DeskLib_Core$Path <DeskLib$Dir>.,<DeskLib$Dir>.include.,
+If "<DeskLib_Core$Path>" = "" Then Set DeskLib_Core$Path <DeskLib$Dir>.,<DeskLib$Dir>.include.,<DeskLib$Dir>.oldinclude.
