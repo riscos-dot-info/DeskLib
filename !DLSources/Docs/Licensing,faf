@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>DeskLib Source Documentation</title>
+<link rel="stylesheet" type="text/css" href="styles">
+</head>
+<body>
+
+<table>
+<tr>
+<td colspan="2">
+<h1 style="padding-top: 3mm; padding-bottom: 3mm; margin-top: 0; margin-bottom: 0;">DeskLib Source Documentation</h1>
+</td></tr>
+<tr valign="top"><td>
+<table style="margin-left:3mm;">
+<tr>                 <td class="menu"><h3><a href="Introduction">Introduction</a></h3></td></tr>
+<tr>                 <td class="menu"><h3><a href="Design">Module<br>Design</a></h3></td></tr>
+<tr>                 <td class="menu"><h3><a href="Naming">Naming<br>Conventions</a></h3></td></tr>
+<tr>                 <td class="menu"><h3><a href="Structures">Structures<br>&amp; Types</a></h3></td></tr>
+<tr class="maintext"><td class="menu"><h3 class="menu">Licensing<br>&amp; Copyright</h3></td></tr>
+</table>
+</td>
+<td class="maintext" style="padding:5mm;">
+<h2 style="margin-top: 0;">Licensing and Copyright</h2>
+
+<p>If code you have written is incorporated into this library, you retain your copyright for it.  If you ever wish to retract copy-permission for a part of DeskLib you have written, then it will be removed from future releases of the distribuion, but not from previously released version of the library. If DeskLib is updated by someone writing code based upon your suggestions and/or code, then they retain copyright for that which they have written, though you will be credited in the updated file(s).</p>
+
+<p>DeskLib is currently licensed under a <a href="file://<DeskLib$Dir>/Docs/Introduction">bespoke license</a>. For the sake of clarity and transparency it would be better to change this to a comparable open source licence (perhaps MIT?). If you'd like to help with this process, please get in touch.</p> 
+
+</td></tr>
+</table>
+</body>
+</html>

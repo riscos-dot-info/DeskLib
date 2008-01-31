@@ -14,45 +14,23 @@
 <tr valign="top"><td>
 <table style="margin-left:3mm;">
 <tr class="maintext"><td class="menu">                       <h3 class="menu">Introduction</h3>          </td></tr>
-<tr>                 <td class="menu">                    <h3><a href="Using">Using&nbsp;Desklib</a></h3></td></tr>
+<tr>                 <td class="menu">                    <h3><a href="Using">Using&nbsp;DeskLib</a></h3></td></tr>
 <tr>                 <td class="menu">                <h3><a href="Reference">Reference</a></h3>         </td></tr>
-<tr>                 <td class="menu">                   <h3><a href="Future">Future</a></h3>            </td></tr>
 </table>
 </td>
 <td class="maintext" style="padding:5mm;">
 <h2 style="margin-top: 0;">Introduction</h2>
 <h3>About DeskLib</h3>
-<p><em>(The following was written mostly by Jason Williams, the original DeskLib moderator.)</em></p>
 
-<p>After some bad experiences with Acorn's RISC OS Lib, I decided that a new, well-written, professionally-finished library would be very useful.  Acorn appeared to be uninterested in fixing RISC OS Lib for me, so I managed to rustle up a band of merry programmers to help me write a completely new library, from scratch, and design things before they were written.</p>
+<p>DeskLib is a high-level library for use in the construction of C WIMP applications for RISC OS. It is designed to work with the Castle C/C++ tools or GCC 4.x. The code in the library is designed to work on any version of RISC OS from 3.x onwards. By providing convenient functions to automate some of the routine tasks associated with a standard WIMP program, it enables the programmer to spend more time on the core functionality of their program and less on the finer details of interacting with the WIMP. By providing standard functions, it also helps to prevent the need to &quot;reinvent the wheel&quot; for common tasks.</p>
 
-<p>The result is, as you probably guessed, DeskLib.</p>
+<p>DeskLib was originally written as a compliment (or alternative) to Acorn's RISC OS Lib and you can read more about the original motivations of the writers of large chunks of the library <a href="OldIntro">here</a>. It is now hosted on <a href="http://www.riscos.info/index.php/DeskLib">riscos.info</a>.
 
-<p>DeskLib is a set of ANSI C and ARM assembler sources intended to add to or replace PARTS of the libraries supplied with Acorn Desktop C.  Many parts of DeskLib replace parts of the Acorn Libraries, but many portions of the library code can be used in conjunction with Acorn's libraries, or as a base from which you will be able to more easily write code for use with Acorn's Libraries, so don't go away just yet!</p>
+<p>DeskLib is split into functional &quot;Modules&quot; (which have nothing to do with <em>Relocatable Modules</em>) which provide set of functions to perform different sets of tasks. Over time, different contributors have written different implimentations of specific modules, so some are duplicated (e.g. Font and Font2). Generally the duplicate modules will do the same jobs in slightly different ways, so pick the one which suits you. Often, the later modules (e.g. Font<strong>2</strong>) provide a more sophisticated interface - but at the cost of increased complexity.</p>
 
-<p>This library is intended both as an alternative to Acorn's RISC OS Lib as well as a useful source of fragments of code to include into your own sources.</p>
+<p>The DeskLib functions, types and variables follow a consistent naming style, which should become apparent quite quickly. For more details, see the <a href="file://<DeskLib_Sources$Dir>/Docs/Introduction">source documentation</a>.</p>
 
-<p>All efforts have been spent to make the library code as generic, robust, and useful as possible, as well as attempting to provide a comprehensive range of function calls, from basic SWI-level support to high-level functions such as automatic dialogue-box creation, handling and result-return in a single function.</p>
-
-<p>Where possible, routines have been optimised (to some extent) for efficiency, but the primary goals are high-level interfaces that make WIMP programming quick and easy.  (If the user wants to specifically do something special, and wants it fast, the source code for DeskLib is available, so any functions can be adapted for the user's needs as necessary...)</p>
-
-<p>All possible action is taken to keep code size down without adversely affecting the functionality of the library: Individual functions are added to the library separately, so that including one function in your code does NOT include the (unwanted and unneeded) code for several others.</p>
-
-<p>Where possible, code is written as a standalone unit to avoid pulling in too much other DeskLib code when you include a function.</p>
-
-<p>Attempts have also been made to rationalise the naming conventions used, while keeping as much compatibility with the Acorn libraries as possible.  Thus, data structures are as similar to Acorn conventions as possible, but with occasional names altered to improve readability and/or consistency.  We have reverted back to basing our naming on Acorn's very well designed SWI interfaces and their use, rather than sticking with Acorn's RISC OS Lib abstractions to keep this environment closer to its Assembler and BASIC cousins, which will make it easier to port programmers between environments.</p>
-
-<p>As a result, DeskLib has been developed by individual programmers working to some basic guidelines, with me, the moderator, taking in the code, tidying up any "loose ends" I find, and then including the final code in the Library.  This has helped to keep everything as consistent as possible throughout the library.  Though I can't guarantee that the library is perfect, I believe it is far superior to RISC OS Lib in the areas it currently covers.</p>
-
-<p>The code has been written to provide a high-level interface that supports, encourages, and all BUT forces programmers to use a more consistent interface design.</p>
-
-<p>The programmer using DeskLib is encouraged to use our more generic template and menu routines, so that the END USER of the product has more control of the look, feel, layout, and hotkeys used in the program.</p>
-
-<p>However, another important concept is that YOU are in charge, and DeskLib is just a tool for you to use, so it should not force you against your will if possible.  Thus, we provide unrestricted low-level access as well. And by providing the sources, we make it possible for you to do low-level "tweaks" on our high-level data structures without the fear that you might be treading on the toes of some other code.</p>
-
-<p>We also feel it is important to distribute the library sources freely, so that you may improve or alter the library to suit your own needs, and hopefully send back any improvements or bug fixes to me so that they may be officially incorporated into the DeskLib distribution.  Also, you can SEE what functions do, and thus KNOW what they do, and therefore be able to cope with what they do, rather than tripping over low-level implementation details/bugs that the author didn't bother to make you aware of.</p>
-
-<p>We have absolutely NO objection to including <em>several different</em> code modules that do essentially the same thing, so that you may CHOOSE the one that suits you best.</p>
+<p>The sources for the library are freely available, either via SVN access at <a href="http://www.riscos.info/index.php/Source_repositories_overview#DeskLib">riscos.info</a> or as a <a href="http://www.riscos.info/downloads/">complete archive</a>. You're welcome to alter and improve any part of the library, and even more welcome to send in your alterations so others can benefit.</p>
 
 <h3>Licence</h3>
 
@@ -72,33 +50,17 @@
 
 <p>NOTE that DeskLib is totally unaffiliated to anyone or anything.  All comments about people and companies in this product are either personal opinion or were factual at the time of writing. Most such comments are included only so that the user knows the REASON for things having been done as they were.</p>
 
-<h3>About This Version</h3>
-
-<p>This is version 2.80 of DeskLib.</p>
-
-<p>It is designed for use with Castle's 32-bit C/C++ tools, or GCC 3.x version.
-DeskLib version 3 onwards will require use of GCC 4 version for RISC OS.</p>
-
-<p>DeskLib is suitable for all RISC OS 3.x, 4.x and 5 machines.</p>
-
-<p>DeskLib's homepage is http://www.riscos.info/index.php/DeskLib/
-<br>Check here for updates.</p>
-
-
-<p>DeskLib is currently maintained by:
-<br>
-Peter Naulls</p>
 <h3>Credits</h3>
 
-<p>This library has been built up by a group of authors.  Individual files contain copyright notices for the author(s) who created them.  The authors (and other contributors) I've remembered to write down here are (alphabetically):</p>
+<p>This library has been built up by a group of authors.  Individual files contain copyright notices for the author(s) who created them. Some of the authors (and other contributors) are, in alphabetical order:</p>
 
 <p>Peter Arnold, Matthew Astley, Lee Atkinson, Philip Banks, Shaun Blackmore, Cy Booker, Tim Browse, Tony Bryant, Philip Colmer, Erik de Kort, Keith Hall, Tony Houghton, Jason Howat, Tony Howat, Peter Gaunt, Tom Kirby-Green, David Leftley, Lenny, David Lenthall, Keith Marlow, Stuart Martin, Sergio Monesi, Peter Naulls, Ernest Ong, Ainsley Pereira, David Pilling, Edouard Poor, Andrew Sellors, Andrew Sidwell, Antony Sidwell, Julian Smith, Ben Summers, Neil Tarrent, William Waghorn, Dave Ward, Robin Watts, Jason Williams, Mark H. Wilkinson and John Winters</p>
 
-<p>Thanks also to the numerous others who have offered suggestions, constructive criticism, etc.  If you feel you have been omitted from this list in error, then please contact a member of the DeskLib team so we can fix it.</p>
+<p>Thanks also to the numerous others who have offered suggestions, constructive criticism, etc.  If you feel you have been omitted from this list in error, then please get in touch so it can be fixed.</p>
 
-<h3>Contacting the moderators</h3>
+<h3>Contact</h3>
 
-<p>If you find any bugs or problems in DeskLib, or if you can supply suggestions or code for alterations, additions, or tutorial applications, then please write to Peter Naulls (<a href="peter@chocky.org">peter@chocky.org</a>), who is the current DeskLib moderator.</p>
+<p>If you find any bugs or problems in DeskLib, or if you can supply suggestions or code for alterations, additions, or tutorial applications, then please either write to Peter Naulls (<a href="peter@chocky.org">peter@chocky.org</a>), who is the current DeskLib moderator, or raise it on the <a href="http://groups.google.co.uk/group/desklib?hl=en">DeskLib mailing list</a>.</p>
 
 </td></tr>
 </table>

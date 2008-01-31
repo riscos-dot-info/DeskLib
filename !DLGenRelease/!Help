@@ -17,7 +17,6 @@ and:
  * an active internet connection (to export from the svn repository)
  * the RISC OS svn port - http://www.cp15.org/versioncontrol/
  * the RISC OS zip port - http://www.sbellon.de/sw-ports.html
- * an active Memphis drive (because HostFS here plays havoc with svn)
  * to not care that the CSD gets reset! ;)
 
 The version number and svn download location are set at the top of !Run.

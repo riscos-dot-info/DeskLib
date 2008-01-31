@@ -11,6 +11,8 @@
     File:    Wimp.h
     Author:  Copyright © 1992, 1993, 1994 John Winters and Jason Williams
     Version: 1.13 (17 Apr 2005)
+             1.14 (20 Nov 2007) Removed deprecated flag 20 from esg group in icon block and
+                                introduced "numeric" icon flag.
     Purpose: Type/structure definitions for Wimp SWI interface
 */
 
@@ -35,6 +37,10 @@ extern "C" {
   Event, Menu, Coord, and so on.
 */
 
+#define wimp_MAXPATH 1024
+/*
+  The maximum length of a file path used in various parts of the library.
+*/
 
 #define wimp_MAXNAME 12
 /*
@@ -275,22 +281,23 @@ typedef struct
 
 
 /* Icon flag bits */
-#define icon_TEXT        0x00000001      /* icon contains text               */
-#define icon_SPRITE      0x00000002      /* icon is a sprite                 */
-#define icon_BORDER      0x00000004      /* icon has a border                */
-#define icon_HCENTRE     0x00000008      /* text is horizontally centred     */
-#define icon_VCENTRE     0x00000010      /* text is vertically centred       */
-#define icon_FILLED      0x00000020      /* icon has a filled background     */
-#define icon_FONT        0x00000040      /* text is an anti-aliased font     */
-#define icon_NEEDSHELP   0x00000080      /* redraw needs application's help  */
-#define icon_INDIRECTED  0x00000100      /* icon data is 'indirected'        */
-#define icon_RJUSTIFY    0x00000200      /* text right justified in box      */
-#define icon_ALLOWADJUST 0x00000400      /* Allow multiple select with adjust*/
-#define icon_HALVESPRITE 0x00000800      /* plot sprites half-size           */
-#define icon_BUTTONTYPE  0x00001000      /* 4-bit field: button type         */
-#define icon_SELECTED    0x00200000      /* icon selected by user (inverted) */
-#define icon_SHADED      0x00400000      /* icon cannot be selected (shaded) */
-#define icon_DELETED     0x00800000      /* icon has been deleted            */
+#define icon_TEXT        0x00000001      /* icon contains text                */
+#define icon_SPRITE      0x00000002      /* icon is a sprite                  */
+#define icon_BORDER      0x00000004      /* icon has a border                 */
+#define icon_HCENTRE     0x00000008      /* text is horizontally centred      */
+#define icon_VCENTRE     0x00000010      /* text is vertically centred        */
+#define icon_FILLED      0x00000020      /* icon has a filled background      */
+#define icon_FONT        0x00000040      /* text is an anti-aliased font      */
+#define icon_NEEDSHELP   0x00000080      /* redraw needs application's help   */
+#define icon_INDIRECTED  0x00000100      /* icon data is 'indirected'         */
+#define icon_RJUSTIFY    0x00000200      /* text right justified in box       */
+#define icon_ALLOWADJUST 0x00000400      /* Allow multiple select with adjust */
+#define icon_HALVESPRITE 0x00000800      /* plot sprites half-size            */
+#define icon_BUTTONTYPE  0x00001000      /* 4-bit field: button type          */
+#define icon_NUMERIC     0x00100000      /* icon contains only 'numeric' data */
+#define icon_SELECTED    0x00200000      /* icon selected by user (inverted)  */
+#define icon_SHADED      0x00400000      /* icon cannot be selected (shaded)  */
+#define icon_DELETED     0x00800000      /* icon has been deleted             */
 
 #define icon_FORECOLOUR  0x01000000      /* 4-bit field: foreground colour   */
 #define icon_BACKCOLOUR  0x10000000      /* 4-bit field: background colour   */
@@ -357,8 +364,9 @@ typedef union
     unsigned int allowadjust   : 1;
     unsigned int halfsize      : 1;
     unsigned int buttontype    : 4;
-    unsigned int esg           : 5;
-    unsigned int selected      : 1;
+    unsigned int esg           : 4;
+    unsigned int numeric       : 1; /* Introduced with Ursula                                                  */
+    unsigned int selected      : 1; /*          - prevents numbers being reversed in right-to-left territories */
     unsigned int shaded        : 1;
     unsigned int deleted       : 1;
     unsigned int foreground    : 4;
@@ -446,18 +454,14 @@ typedef union
 {
   struct
   {
-    unsigned int hastitle          : 1;  /* This is an "old-style" flag -
-                                            don't use it */
+    unsigned int hastitle          : 1;  /* This is an "old-style" flag - don't use it */
     unsigned int moveable          : 1;
-    unsigned int hasvscroll        : 1;  /* This is an "old-style" flag -
-                                            don't use it */
-    unsigned int hashscroll        : 1;  /* This is an "old-style" flag -
-                                            don't use it */
+    unsigned int hasvscroll        : 1;  /* This is an "old-style" flag - don't use it */
+    unsigned int hashscroll        : 1;  /* This is an "old-style" flag - don't use it */
     unsigned int autoredraw        : 1;
     unsigned int pane              : 1;
     unsigned int nobounds          : 1;
-    unsigned int nobackclose       : 1;  /* This is an "old-style" flag -
-                                            don't use it */
+    unsigned int nobackclose       : 1;  /* This is an "old-style" flag - don't use it */
     unsigned int scrollrq          : 1;
     unsigned int scrollrqdebounced : 1;
     unsigned int realcolours       : 1;
@@ -496,7 +500,6 @@ typedef union
   setting the values in this form.
 */
 
-
 typedef struct                /* Minimum width/height of window. Used to be: */
 {                             /*   unsigned short minwidth, minheight;       */
   unsigned int x : 16;        /* This has been changed for compatability     */
@@ -524,6 +527,7 @@ typedef union
     unsigned int  never3d        : 1;  /* Always have a 3D border                */
     unsigned int  always3d       : 1;  /* Never have a 3D border                 */
     unsigned int  returnshaded   : 1;  /* Return shaded icons for GetPointerInfo */
+    unsigned int  padding        : 3;
   } cols;
 
   struct {
@@ -531,22 +535,26 @@ typedef union
     unsigned char extra;
   } vals;
 } wimp_colourflags;
+/*
+  This is used to specify the window colours in the window block, as well as some
+  misc extra window flags.
+*/
 
 
 typedef struct
 {
-  wimp_box         screenrect;
-  wimp_point       scroll;
-  window_handle    behind;
-  window_flags     flags;
-  wimp_colourflags colours;
-  wimp_box         workarearect;
-  icon_flags       titleflags;
-  icon_flags       workflags;
-  void             *spritearea;
-  window_minsize   minsize;
-  icon_data        title;
-  unsigned int     numicons;
+  wimp_box              screenrect;
+  wimp_point            scroll;
+  window_handle         behind;
+  window_flags          flags;
+  wimp_colourflags      colours;
+  wimp_box              workarearect;
+  icon_flags            titleflags;
+  icon_flags            workflags;
+  void                  *spritearea;
+  window_minsize        minsize;
+  icon_data             title;
+  unsigned int          numicons;
 
   /* ANSI C doesn't allow this.  For Norcroft, you can use -Ez */
 #if defined(DESKLIB_zeroarray)

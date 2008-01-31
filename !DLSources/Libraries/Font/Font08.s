@@ -4,13 +4,13 @@
         .include     "SwiNos.h"
         .include     "Macros.h"
 
-@os_error *Font_ConverttoOS(int x, int y, int *xout, int *yout)
+@os_error *Font_ConvertToOS(int x, int y, int *xout, int *yout)
 
 
 
         
-        .global Font_ConverttoOS
-Font_ConverttoOS:
+        .global Font_ConvertToOS
+Font_ConvertToOS:
 @
         STMFD   sp!, {r4,lr}
         MOV     r4,r3
