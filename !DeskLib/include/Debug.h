@@ -30,6 +30,11 @@
   So don't worry about debug calls taking up space in your finished
   project, they will disappear when you build a normal version of your
   project.
+
+  Thread Safety: Debug_Initialise is not thread-safe (though, in general
+  you should only need to call it once at the start of your app).
+  Debug_Printf may or may not be thread-safe, depending on the value
+  passed to Debug_Initialise.
 */
 
 #ifndef __dl_debug_h
@@ -61,9 +66,10 @@ typedef enum
    information you'd like the debug functions to use. Pass one of
    the values to Debug_Initialise.
 
-   REPORTER will output to Martin Avison's reporter if it's
+   REPORTER will output to Martin Avison's Reporter if it's
    present when the debug library is initialised (otherwise it
-   will default to stderr).
+   will return TRUE and the debug type will remain uninitialised).
+   Debug_Printf is thread-safe if this option is successful.
 
    PIPETYPE writes to a file in Pipe: and displays it in a
    taskwindow on screen (so can only be initialised after
@@ -85,19 +91,19 @@ typedef void (*debug_signalhandlerfn)( int sig, void *reference);
   This is a function type which is called when a signal happens.
 */
 
-/* This bit is ignored to avoid duplicate entries being written */
-
 #if defined(DeskLib_DEBUG) || defined(_DeskLib_Debug_BUILD)
 
-        void Debug_Initialise(debug_type type);
+        BOOL Debug_Initialise(debug_type type);
 	/*
 	  Sets up the debug library. Call this before you use the
 	  Debug_Print or Debug_Printf functions. "type" specifies how
 	  the debug functions will output the debug information.
 
-	  Calling this function is not mandatory, as it will be
-	  automatically called if you don't do so. In this case,
-	  it is initialised to the STDERR output.
+	  Calling this function is not mandatory (unless using threads),
+	  as it will be automatically called if you don't do so. In
+	  this case, it is initialised to the STDERR output.
+
+	  It returns TRUE if an error occurred.
 	*/
 
 	void Debug_InitialiseSignal(void);
@@ -170,6 +176,7 @@ typedef void (*debug_signalhandlerfn)( int sig, void *reference);
           source code.
         */
 
+        /* This bit is ignored to avoid duplicate entries being written */
         /* haddoc ignore on */
 
 	#define Debug_Initialise(choice)

@@ -36,15 +36,20 @@ static FILE *debug__file;
 
 extern char debug__filename[256]; /* Set up in Debug.c */
 
-void Debug_InitialiseUniqueFile(void)
+BOOL Debug_InitialiseUniqueFile(void)
 {
   tmpnam(debug__filename);
   debug__file = fopen(debug__filename, "w");
   if (!debug__file)
-    Error_ReportFatal(1, "Debug_Initialise can't open output file '%s'\n", debug__filename);
+  {
+    Error_Report(1, "Debug_Initialise can't open output file '%s'\n", debug__filename);
+    return TRUE;
+  }
 
   if (setvbuf(debug__file, NULL, _IONBF, 0)) /* Turn off buffering	*/
     Error_Report(1, error_PLACE "Couldn't turn buffering off for output debug file");
+
+  return FALSE;
 }
 
 

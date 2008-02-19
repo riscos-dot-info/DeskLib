@@ -36,6 +36,9 @@ extern "C" {
   This header file contains core definitions used by most of DeskLib.
 */
 
+/* This is an integer value representing the DeskLib version times 100. */
+#define DESKLIB_VERSION 300
+
 /* --- Boolean values */
 #ifndef BOOL
 #define BOOL  unsigned

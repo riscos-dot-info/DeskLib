@@ -79,7 +79,7 @@ typedef struct
 
 BOOL Environment_TaskIsActive(const char *appname);
 /*
-   This returns TRUE if another task called "appname" is already active.
+   This returns TRUE if a task called "appname" is active.
 */
 
 os_error *Environment_TaskList(char ***ptrlist, int *numtasks);
@@ -238,10 +238,14 @@ os_error *Environment_ExpandString(const char *string, char *buffer, int size, c
 /* haddoc ignore on */
 /* Old name defined to maintain backwards compatibilty */
 #define OS_CLI(c) Environment_Command(c)
+/* Actual SWI call - the user-facing command can take printf-like arguments */
+os_error *Environment__OS_CLI(const char *cmd);
 /* haddoc ignore off */
-os_error *Environment_Command(const char *cmd);
+os_error *Environment_Command(const char *format, ...);
 /*
-  This is a veneer for the OS_CLI SWI, executing the given star command.
+  This is a veneer for the OS_CLI SWI, executing the given star command. It
+  accepts a string formatted as per printf, which can expand to a maximum of
+  1024 characters.
 */
 
 /* haddoc ignore on */

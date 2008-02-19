@@ -7,7 +7,7 @@
 # Defaults
 
 # Uncomment the following line if you have not already set GCCSDK_INSTALL_CROSSBIN
-GCCSDK_INSTALL_CROSSBIN ?= /home/adamr/gccsdk/gcc/cross/bin
+#GCCSDK_INSTALL_CROSSBIN ?= /home/riscos/cross/bin
 
 DESKLIB = ../!DeskLib/DeskLib.a
 

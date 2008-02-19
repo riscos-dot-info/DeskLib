@@ -21,13 +21,13 @@
 
 #include "DebugDefs.h"
 
-extern debug_type debug__libraryinuse; /* Set up in Debug.c */
-
-void Debug_InitialiseReporter(void)
+BOOL Debug_InitialiseReporter(void)
 {
-  if (!Environment_TaskIsActive("Reporter"))
-    /* Reporter is not active, so default to stderr */
-    debug__libraryinuse = debug_STDERR;
+  if (Environment_TaskIsActive("Reporter"))
+    return FALSE;
+  else
+    /* Reporter is not active, so return fail code */
+    return TRUE;
 }
 
 void Debug_PrintReporter(const char *text)
