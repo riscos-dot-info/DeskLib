@@ -32,7 +32,8 @@ int debug_level = 0;
   Programs can set this to 0-5, and Debug1_Printf statements will come into effect.
 */
 
-debug_type debug__libraryinuse = debug_UNINITIALISED;
+/* Debug type starts off uninitialised */
+debug_type debug__outputtype = debug_UNINITIALISED;
 
 char debug__filename[256] = "";
 
@@ -49,38 +50,47 @@ void Debug__Assert( const char *expression, char *sourcefile, int line)
   abort();
 }
 
-void Debug_Initialise(debug_type type)
+BOOL Debug_Initialise(debug_type type)
 {
-  if (debug__libraryinuse == debug_UNINITIALISED)
+  BOOL returnvalue = FALSE;
+
+  if (debug__outputtype == debug_UNINITIALISED)
   /* Can only initialise once per session */
   {
-    debug__libraryinuse = type;
-
     switch (type)
     {
       case debug_UNINITIALISED:
         /* In case user initialises with "unititialised" value or Debug_Printf
            is called before Debug_Initialise is - the default is stderr */
-        debug__libraryinuse = debug_STDERR;
+        debug__outputtype = debug_STDERR;
         /* No initialisation needed for stderr */
         break;
       case debug_REPORTER:
-        Debug_InitialiseReporter();
+        returnvalue = Debug_InitialiseReporter();
+        if (!returnvalue) debug__outputtype = debug_REPORTER;
         break;
       case debug_PIPETYPE:
-        Debug_InitialisePipetype();
+        returnvalue = Debug_InitialisePipetype();
+        if (!returnvalue) debug__outputtype = debug_PIPETYPE;
         break;
       case debug_STDERR:
         /* No initialisation needed */
+        if (!returnvalue) debug__outputtype = debug_STDERR;
         break;
       case debug_UNIQUEFILE:
-        Debug_InitialiseUniqueFile();
+        returnvalue = Debug_InitialiseUniqueFile();
+        if (!returnvalue) debug__outputtype = debug_UNIQUEFILE;
         break;
       case debug_UNIQUEPIPE:
-        Debug_InitialiseUniquePipe();
+        returnvalue = Debug_InitialiseUniquePipe();
+        if (!returnvalue) debug__outputtype = debug_UNIQUEPIPE;
         break;
     }
+    return returnvalue;
   }
+  else
+    /* Attempted to change debug type after it's been successfuly set already */
+    return TRUE;
 }
 
 int Debug_Printf(const char *format, ...)
@@ -105,14 +115,14 @@ int Debug_Printf(const char *format, ...)
 void Debug_Print(const char *text)
 {
   /* Check we've been initialised */
-  if (debug__libraryinuse == debug_UNINITIALISED)
+  if (debug__outputtype == debug_UNINITIALISED)
     Debug_Initialise(debug_UNINITIALISED);
 
-  switch (debug__libraryinuse)
+  switch (debug__outputtype)
   {
     case debug_UNINITIALISED:
       /* This case is dealt with above. After calling Debug_Initialise,
-         debug__libraryinuse cannot be Debug_UNINITIALISED.
+         debug__outputtype cannot be Debug_UNINITIALISED.
          This case statement is just here to suppress the compiler warning */
       break;
     case debug_REPORTER:

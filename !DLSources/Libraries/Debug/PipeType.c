@@ -36,7 +36,7 @@
 
 extern char debug__filename[256]; /* Set up in Debug.c */
 
-void Debug_InitialisePipetype(void)
+BOOL Debug_InitialisePipetype(void)
 /* Simply redirect stderr to a unique file in pipe:, and	*/
 /* open a taskwindow which will *Type out stderr.		*/
 /* Aren't taskwindows wonderful?				*/
@@ -49,7 +49,7 @@ void Debug_InitialisePipetype(void)
            "taskwindow \"type %s\" -wimpslot 16k -name \"Debug output\" -quit",
            debug__filename);
 
-  Error_CheckFatal(Wimp_StartTask(command));
+  return Error_CheckSilent(Wimp_StartTask(command));
 }
 
 void Debug_PrintPipetype(const char *text)

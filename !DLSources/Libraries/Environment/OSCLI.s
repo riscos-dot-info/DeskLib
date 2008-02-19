@@ -20,10 +20,10 @@
 
 
 
-@ os_error *OS_CLI(char *cmd);
+@ os_error *Environment__OS_CLI(char *cmd);
 
         .global OS_CLI
-OS_CLI:
+Environment__OS_CLI:
 
         MOV     ip, lr
         SWI     SWI_OS_CLI + XOS_Bit

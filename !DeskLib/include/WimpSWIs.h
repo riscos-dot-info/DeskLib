@@ -88,7 +88,7 @@ extern os_error *Wimp_CloseDown(task_handle task);
 extern os_error *Wimp_StartTask(const char *command);
 /*
   This function is used to start a task from within a program.
-  The text in 'command' can be any * command which will case a Wimp
+  The text in 'command' can be any * command which will cause a Wimp
   program to be executed.  Control will be returned to your program when
   the new task exits, or when it first calls Wimp_Poll.
 */
@@ -97,7 +97,7 @@ extern os_error *Wimp_StartTask(const char *command);
 extern os_error *Wimp_StartTask3(const char *command, task_handle *newtask);
 /*
   This function is used to start a task from within a program.
-  The text in 'command' can be any * command which will case a Wimp
+  The text in 'command' can be any * command which will cause a Wimp
   program to be executed.  Control will be returned to your program when
   the new task exits, or when it first calls Wimp_Poll.
 
