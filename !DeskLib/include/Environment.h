@@ -237,7 +237,7 @@ os_error *Environment_ExpandString(const char *string, char *buffer, int size, c
 
 /* haddoc ignore on */
 /* Old name defined to maintain backwards compatibilty */
-#define OS_CLI(c) Environment_Command(c)
+#define OS_CLI(c) Environment__OS_CLI(c)
 /* Actual SWI call - the user-facing command can take printf-like arguments */
 os_error *Environment__OS_CLI(const char *cmd);
 /* haddoc ignore off */

@@ -20,9 +20,8 @@
 
 
 
-@ os_error *Environment__OS_CLI(char *cmd);
 
-        .global OS_CLI
+        .global Environment__OS_CLI
 Environment__OS_CLI:
 
         MOV     ip, lr
