@@ -12,12 +12,16 @@ SCL ?= false
 ifeq ($(SCL),true)
   SCLFLAGS=-mlibscl
   SCLNAME=-scl
+  DESKLIB = $(DESKLIB_STATIC)
+else
+  DESKLIB = $(DESKLIB_STATIC) $(DESKLIB_SHARED)
 endif
 
 # Uncomment the following line if you have not already set GCCSDK_INSTALL_CROSSBIN
 #GCCSDK_INSTALL_CROSSBIN ?= /home/riscos/cross/bin
 
-DESKLIB = ../!DeskLib/DeskLib.a
+DESKLIB_STATIC = ../!DeskLib/DeskLib.a
+DESKLIB_SHARED = ../!DeskLib/libDesk.so
 
 DESKLIB_INCLUDE=$(shell realpath $$PWD/../\!DeskLib/include)/
 DESKLIB_OLD_INCLUDE=$(shell realpath $$PWD/../\!DeskLib/oldinclude)/
@@ -49,23 +53,35 @@ ARFLAGS = rcv
 all: $(DESKLIB)
 
 # Link the objects together to make a new library
-$(DESKLIB): $(all_objects)
+$(DESKLIB_STATIC): $(all_objects)
 	$(AR) $(ARFLAGS) $@ $$(find | grep "\.o$$")
+
+$(DESKLIB_SHARED): $(subst .o,.os,$(all_objects))
+	$(CC) -shared -Wl,-z,defs -Wl,-h,libDesk.so -o $@ $$(find | grep "\.os$$")
 
 # Clean the whole library out in one go
 clean:
 	-find | grep "\.o$$" | xargs rm 2>/dev/null || true
 	-rm -f $(DESKLIB)
 
-.c.o:
+%.o: %.c
 	DESKLIB_PATH=$(DESKLIB_PATH) $(CC) $(CFLAGS) -c $< -o $@
 
-.s.o:
+%.o: %.s
 	$(AS) $(ASFLAGS) $< -o $@
 
+%.os: %.c
+	DESKLIB_PATH=$(DESKLIB_PATH) $(CC) $(CFLAGS) -c $< -o $@ -fPIC
+
+%.os: %.s
+	$(AS) $(ASFLAGS) $< -o $@ -fPIC
 
 install: $(DESKLIB)
 	mkdir -p $(GCCSDK_INSTALL_ENV)/include/DeskLib
 	$(GCCSDK_INSTALL_ENV)/ro-install $(DESKLIB_INCLUDE)/*.h $(DESKLIB_OLD_INCLUDE)/*.h $(GCCSDK_INSTALL_ENV)/include/DeskLib
 	mkdir -p $(GCCSDK_INSTALL_ENV)/lib
-	$(GCCSDK_INSTALL_ENV)/ro-install $(DESKLIB) $(GCCSDK_INSTALL_ENV)/lib/libDesk$(SCLNAME).a
+	if [ "$(SCL)" == "true" ] ; then \
+	  $(GCCSDK_INSTALL_ENV)/ro-install $(DESKLIB) $(GCCSDK_INSTALL_ENV)/lib/libDesk$(SCLNAME).a; \
+	else \
+	  $(GCCSDK_INSTALL_ENV)/ro-install $(DESKLIB) $(GCCSDK_INSTALL_ENV)/lib/ ; \
+	fi
