@@ -17,8 +17,8 @@
      
      
        
-       .global Tinct_PlotAlpha
-Tinct_PlotAlpha:
+       .global Tinct_PlotScaledAlpha
+Tinct_PlotScaledAlpha:
    
        MOV     ip, sp
        STMFD   sp!, {r4-r7,lr}
