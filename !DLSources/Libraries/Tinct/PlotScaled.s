@@ -14,19 +14,17 @@
        .include     "RegDefs.h"
        .include     "SwiNos.h"
        .include     "Macros.h"
-     
-     
-       
+
        .global Tinct_PlotScaled
 Tinct_PlotScaled:
-   
+
        MOV     ip, sp
        STMFD   sp!, {r4-r7,lr}
-       MOV     r7, r3
+       MOV     r5, r3
        MOV     r4, r2
        MOV     r3, r1
        MOV     r2, r0
-       LDMIA   ip, {r5, r6}
+       LDMIA   ip, {r6, r7}
        SWI     SWI_Tinct_PlotScaled + XOS_Bit
        MOVVC   r0, #0
        LDMFD   sp!, {r4-r7,pc}
