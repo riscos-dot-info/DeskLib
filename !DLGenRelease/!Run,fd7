@@ -10,7 +10,7 @@ Echo    read the accompanying !Help file
 Echo
 
 | Change these as needed
-Set DeskLib_GenRelease$Version "2.80"
+Set DeskLib_GenRelease$Version "3.00"
 Set DeskLib_GenRelease$svnlocation "svn://svn.riscos.info/DeskLib/aof/"
 | The repository uses ,ext format for storing filetypes. We only change it for the duration of this script.
 If "<svn$filetypeext>" = "" Then Set DeskLib_GenRelease$svnextunset "True"
