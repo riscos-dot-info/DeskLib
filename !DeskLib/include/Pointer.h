@@ -9,8 +9,9 @@
     ________________________________________________________________________
 
     File:    Pointer.h
-    Author:  Copyright ï¿½ 1994 Lee Atkinson
+    Author:  Copyright © 1994, 2020 Lee Atkinson and Stephen Fryatt
     Version: 1.01 (17 Apr 2005)
+             1.02 (16 Jun 2020) Added Pointer_SetPosition()
     Purpose: high level pointer handling routines
 */
 

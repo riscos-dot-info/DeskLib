@@ -9,7 +9,7 @@
     ________________________________________________________________________
 
     File:    Pointer.Set.c
-    Author:  Copyright ï¿½ 2020 Stephen Fryatt
+    Author:  Copyright © 2020 Stephen Fryatt
     Version: 1.00 (16 Jun 2020)
     Purpose: Set the pointer position
 */
