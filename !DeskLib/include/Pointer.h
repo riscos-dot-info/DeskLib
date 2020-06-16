@@ -9,7 +9,7 @@
     ________________________________________________________________________
 
     File:    Pointer.h
-    Author:  Copyright © 1994 Lee Atkinson
+    Author:  Copyright ï¿½ 1994 Lee Atkinson
     Version: 1.01 (17 Apr 2005)
     Purpose: high level pointer handling routines
 */
@@ -61,6 +61,11 @@ extern os_error *Pointer_Unrestrict(void);
   This removes any restriction on the pointer.
 */
 
+
+extern os_error *Pointer_SetPosition(wimp_point position);
+/*
+  This sets the position of the pointer.
+*/
 
 #ifdef __cplusplus
 }
