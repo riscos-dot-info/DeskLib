@@ -10,7 +10,7 @@
 
     File:    MsgTrans.LookupPS.c
     Author:  Copyright © 1994 Tony Houghton
-    Version: 1.02 (18 Jun 2020)
+    Version: 1.01 (05 Nov 1994)
     Purpose: Match a token in a Messages file
 */
 
@@ -32,7 +32,7 @@ os_error *MsgTrans_LookupPS(msgtrans_filedesc *filedesc,
     return (swierr);
 
   /* NULL-terminate string */
-  buffer[bufflen - 1] = '\0';
+  buffer[bufflen] = '\0';
 
   return NULL;
 }
