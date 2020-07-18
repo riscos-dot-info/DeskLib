@@ -8,10 +8,10 @@
     ####   ### ####  #  # ##### # ###    documentation for conditions of use
     ________________________________________________________________________
 
-    File:    Pointer.Set.c
+    File:    Pointer.Get.c
     Author:  Copyright © 2020 Stephen Fryatt
-    Version: 1.00 (16 Jun 2020)
-    Purpose: Set the pointer position
+    Version: 1.00 (18 Jul 2020)
+    Purpose: Get the pointer position
 */
 
 #include "DeskLib:KernelSWIs.h"
@@ -19,14 +19,20 @@
 
 typedef char byte;
 
-os_error *Pointer_SetPosition(wimp_point position)
+os_error *Pointer_GetPosition(wimp_point *position)
 {
- byte         box[5]={3};
+ byte         box[5]={6};
+ os_error     *error = NULL;
 
- box[1] = (position.x & 0x00ff);
- box[2] = (position.x & 0xff00) >> 8;
- box[3] = (position.y & 0x00ff);
- box[4] = (position.y & 0xff00) >> 8;
+ if (position == NULL)
+  return NULL;
 
- return OS_Word(osword_DEFINEPOINTERANDMOUSE,box);
+ error = OS_Word(osword_DEFINEPOINTERANDMOUSE,box);
+ if (error != NULL)
+  return error;
+
+ position->x = box[1] + (box[2] << 8);
+ position->y = box[3] + (box[4] << 8);
+
+ return NULL;
 }
