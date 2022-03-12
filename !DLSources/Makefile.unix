@@ -62,6 +62,7 @@ $(DESKLIB_SHARED): $(subst .o,.os,$(all_objects))
 # Clean the whole library out in one go
 clean:
 	-find | grep "\.o$$" | xargs rm 2>/dev/null || true
+	-find | grep "\.os$$" | xargs rm 2>/dev/null || true
 	-rm -f $(DESKLIB)
 
 %.o: %.c
