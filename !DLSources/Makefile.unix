@@ -20,7 +20,7 @@ endif
 # Uncomment the following line if you have not already set GCCSDK_INSTALL_CROSSBIN
 #GCCSDK_INSTALL_CROSSBIN ?= /home/riscos/cross/bin
 
-DESKLIB_STATIC = ../!DeskLib/DeskLib.a
+DESKLIB_STATIC = ../!DeskLib/libDesk$(SCLNAME).a
 DESKLIB_SHARED = ../!DeskLib/libDesk.so
 
 DESKLIB_INCLUDE=$(realpath ../!DeskLib/include/)
@@ -62,6 +62,7 @@ $(DESKLIB_SHARED): $(subst .o,.os,$(all_objects))
 # Clean the whole library out in one go
 clean:
 	-find | grep "\.o$$" | xargs rm 2>/dev/null || true
+	-find | grep "\.os$$" | xargs rm 2>/dev/null || true
 	-rm -f $(DESKLIB)
 
 %.o: %.c
@@ -80,9 +81,9 @@ install: $(DESKLIB)
 	mkdir -p $(GCCSDK_INSTALL_ENV)/include/DeskLib
 	$(GCCSDK_INSTALL_ENV)/ro-install $(DESKLIB_INCLUDE)/*.h $(DESKLIB_OLD_INCLUDE)/*.h $(GCCSDK_INSTALL_ENV)/include/DeskLib
 	mkdir -p $(GCCSDK_INSTALL_ENV)/lib
-	if [ "$(SCL)" == "true" ] ; then \
-	  $(GCCSDK_INSTALL_ENV)/ro-install $(DESKLIB) $(GCCSDK_INSTALL_ENV)/lib/libDesk$(SCLNAME).a; \
-	else \
-	  $(GCCSDK_INSTALL_ENV)/ro-install $(DESKLIB_STATIC) $(GCCSDK_INSTALL_ENV)/lib/libDesk.a; \
-	  $(GCCSDK_INSTALL_ENV)/ro-install $(DESKLIB_SHARED) $(GCCSDK_INSTALL_ENV)/lib/; \
-	fi
+ifeq ($(SCL),true)
+	$(GCCSDK_INSTALL_ENV)/ro-install $(DESKLIB_STATIC) $(GCCSDK_INSTALL_ENV)/lib/libDesk$(SCLNAME).a
+else
+	$(GCCSDK_INSTALL_ENV)/ro-install $(DESKLIB_STATIC) $(GCCSDK_INSTALL_ENV)/lib/libDesk.a
+	$(GCCSDK_INSTALL_ENV)/ro-install $(DESKLIB_SHARED) $(GCCSDK_INSTALL_ENV)/lib/
+endif
