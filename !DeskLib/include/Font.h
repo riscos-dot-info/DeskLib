@@ -52,8 +52,10 @@ typedef unsigned char font_handle;
 typedef struct
 {
   char name[128];
-  unsigned int xsize, ysize;
-  unsigned int xres, yres;
+  unsigned int xsize;
+  unsigned int ysize;
+  unsigned int xres;
+  unsigned int yres;
   unsigned int age;
   unsigned int usage;
 } font_defn;
@@ -71,7 +73,10 @@ typedef struct
 
 typedef struct
 {
-    int minx, miny, maxx, maxy;
+    int minx;
+    int miny;
+    int maxx;
+    int maxy;
 } font_info;
 /*
   This is used to give a bounding box for a font or a character in a
@@ -101,7 +106,8 @@ typedef struct
 
 typedef struct
 {
-  int background, foreground;
+  int background;
+  int foreground;
 } font_colours;
 /*
   The logical colours of the font.
