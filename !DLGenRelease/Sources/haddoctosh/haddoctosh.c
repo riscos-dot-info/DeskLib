@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "libxml:parser.h"
+#include "libxml/parser.h"
 
 #include "hparser.h"
 #include "haddoctosh.h"
