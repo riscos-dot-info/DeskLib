@@ -34,12 +34,12 @@
 #include <assert.h>
 
 
-#include "libxml:parser.h"
-#include "libxml:parserInternals.h"
+#include "libxml/parser.h"
+#include "libxml/parserInternals.h"
 #ifdef RISCOS
 //#include "libxml:riscos.h"
 #endif
-#include "libxml:tree.h"
+#include "libxml/tree.h"
 
 
 #include "haddoctosh.h"
