@@ -13,11 +13,11 @@
 
 #include <assert.h>
 
-#include "libxml:parser.h"
+#include "libxml/parser.h"
 
 #include "haddoctosh.h"
 #include "output.h"
-#include "parser.h"
+/* #include "parser.h" */
 
 #ifdef RISCOS
   #include "kernel.h"

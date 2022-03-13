@@ -7,7 +7,7 @@
 default: riscos
 
 # Set the default output executable
-TARGET = ^.^.haddoctosh
+TARGET = ../../haddoctosh
 
 # Warning options
 WARNINGS = \
