@@ -51,7 +51,8 @@ extern "C" {
 
 typedef struct
 {
-  int x, y;
+  int x
+  int y;
 } wimp_point;
 /*
   A C struct which corresponds with how the RISC OS Window Manager usually
@@ -593,7 +594,16 @@ typedef struct
 {
   window_openblock openblock;
   window_flags     flags;
-} window_state, window_openblocknest;
+} window_state;
+/*
+  This holds all the information about the current state of a window.
+
+  When used with Wimp_OpenWindowNest, the supplied flags will update
+  the window if 'updateflags' is set in the supplied nested flags
+*/
+
+
+typedef window_state window_openblocknest;
 /*
   This holds all the information about the current state of a window.
 
@@ -900,7 +910,10 @@ typedef struct
 typedef struct menu_block
 {
   char     title [wimp_MAXNAME];
-  char     titlefore, titleback, workfore, workback;
+  char     titlefore;
+  char     titleback;
+  char     workfore;
+  char     workback;
   unsigned int width;
   unsigned int height;
   unsigned int gap;
@@ -1287,7 +1300,8 @@ typedef struct
 {
   window_handle window;
   unsigned int  internal_handle;
-  int           x, y;
+  int           x;
+  int           y;
   int           dummy    : 2;
   int           senddata : 1;
   int           filetypes[1];
