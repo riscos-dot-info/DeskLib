@@ -592,26 +592,26 @@ int read_macro(object_info *object, FILE *fptr)
 	compress_macro(object->definition);
 
 	/* Extract name information and similar here */
-	no_results = pcre_exec(regexes_too[re_names_MACROFN], NULL,
+	no_results = pcre_exec(regexes_too[re_names_MACRO], NULL,
 						   object->definition, strlen(object->definition),
 						   0, 0, ovector, OVECTOR_SIZE);
 
 	if (ovector[2] != -1 && ovector[3] != -1)
 	{
-		object->type = obj_MACROFN;
+		object->type = obj_MACRO;
 
 	    add_name_n(object, object->definition + ovector[2],
 	    		   ovector[3] - ovector[2]);
 	}
 	else
 	{
-		no_results = pcre_exec(regexes_too[re_names_MACRO], NULL,
+		no_results = pcre_exec(regexes_too[re_names_MACROFN], NULL,
 							   object->definition, strlen(object->definition),
 							   0, 0, ovector, OVECTOR_SIZE);
 
 		if (ovector[2] != -1 && ovector[3] != -1)
 		{
-			object->type = obj_MACRO;
+			object->type = obj_MACROFN;
 
 	        add_name_n(object, object->definition + ovector[2],
 	        		   ovector[3] - ovector[2]);

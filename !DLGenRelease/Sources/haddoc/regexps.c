@@ -39,7 +39,7 @@ const char *patterns_too[NO_PATTERNS_TOO] =
 	"^\\s*((?:struct|enum|union) [A-Za-z_][A-Za-z0-9_]*)",   /* struct-like */
 	"^\\s*typedef\\s+((?:struct|enum|union)( [A-Za-z_][A-Za-z0-9_]*)?) ?{.*}\\s*(.*);",
 	"^\\s*#\\s*define\\s*([A-Za-z_][A-Za-z0-9_]*)\\(",
-	"^\\s*#\\s*define\\s*([A-Za-z_][A-Za-z0-9_]*)",
+	"^\\s*#\\s*define\\s*([A-Za-z_][A-Za-z0-9_]*)\\s*",
 
 	"^.*?(\\(\\s*\\*.*?)?([A-Za-z_][A-Za-z0-9_]*)(?:\\s*|\\))*\\($",
 
