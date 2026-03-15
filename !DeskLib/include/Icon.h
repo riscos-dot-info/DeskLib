@@ -613,8 +613,38 @@ extern BOOL Icon_ButtonIsHeld(void);
 #define Validation_ScanString(s,t) Icon_ScanValidationString(s,t)
 /* haddoc ignore off */
 
+#define Icon_NoValidationCommand (-1)
+/*
+  Index returned by Icon_FindValidationStringCommand() to indicate that no
+  matching validation command could be found.
+ */
+
+ extern int Icon_FindValidationStringCommand(const char *string, char tag, int *lenp);
+/*
+  This scans the given string for the tag character given, and returns the
+  index of the matched character within the string, or Icon_NoValidationCommand
+  if the tag character is nor found. The tag must be either the first character
+  of the string, or directly following an un-escaped semicolon.
+
+  If '\0' is passed as the tag character, the call will allow all of the tags in
+  a string to be enumerated.
+
+  If a pointer to an int is passed in lenp, then the length of the string from
+  the tag character (inclusive) to the next un-escaped semicolon or the end of
+  the string (exlusive; which ever comes first) will be returned. This allows
+  the caller to extract the whole of the validation command. If lenp is passed
+  as NULL, no length will be returned.
+
+  For instance, if you search for the tag 'r' in "sicon;r5", it will return
+  the index of 'r' (6, in this example). If a pointer is passed in to leno,
+  then 2 will be returned (for the two characters "r5").
+ */
+
 extern int Icon_ScanValidationString(const char *string, char tag);
 /*
+  Legacy interface; see Icon_FindValidationStringCommand() for a more complete
+  solution.
+
   This scans the given string for the tag character given, and returns the
   index of the *next* character, or zero if the tag character is not found.
   The tag must be either the first character or directly follow a
@@ -622,6 +652,11 @@ extern int Icon_ScanValidationString(const char *string, char tag);
 
   For instance, if you search for the tag 'r' in "sicon;r5", it will return
   the index of '5' (7, in this example).
+
+  Note that if the tag character is at the end of the string with no following
+  characters, an index of '0' will be returned. This interface retains the
+  previous behaviour, to avoid the risk of clients reading past the string
+  terminator by mistake if a pointer to that terminator were to be returned.
 */
 
 #ifdef __cplusplus
