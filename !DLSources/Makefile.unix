@@ -9,8 +9,15 @@
 # Do build against SharedCLibrary instead?
 SCL ?= false
 
+# Do hard-float build?
+HARD ?= false
+
 ifeq ($(SCL),true)
+ifeq ($(HARD), true)
+  SCLFLAGS=-mlibscl -mhard-float
+else
   SCLFLAGS=-mlibscl
+endif
   SCLNAME=-scl
   DESKLIB = $(DESKLIB_STATIC)
 else

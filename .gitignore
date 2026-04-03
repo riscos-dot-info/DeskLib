@@ -1,4 +1,5 @@
 *.o
 *.os
 \!DeskLib/DeskLib.a
+\!DeskLib/libDesk-scl.a
 \!DeskLib/libDesk.so
