@@ -61,15 +61,16 @@ all: $(DESKLIB)
 
 # Link the objects together to make a new library
 $(DESKLIB_STATIC): $(all_objects)
-	$(AR) $(ARFLAGS) $@ $$(find | grep "\.o$$")
+	$(AR) $(ARFLAGS) $@ $^
 
 $(DESKLIB_SHARED): $(subst .o,.os,$(all_objects))
-	$(CC) -shared -Wl,-z,defs -Wl,-h,libDesk.so -o $@ $$(find | grep "\.os$$")
+	$(CC) -shared -Wl,-z,defs -Wl,-h,libDesk.so -o $@ $^
 
 # Clean the whole library out in one go
 clean:
-	-find | grep "\.o$$" | xargs rm 2>/dev/null || true
-	-rm -f $(DESKLIB)
+	-$(RM) $(subst .o,.os,$(all_objects))
+	-$(RM) $(all_objects)
+	-$(RM) $(DESKLIB)
 
 %.o: %.c
 	DESKLIB_PATH=$(DESKLIB_PATH) $(CC) $(CFLAGS) -c $< -o $@
