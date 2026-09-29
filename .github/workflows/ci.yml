@@ -1,0 +1,25 @@
+name: Build
+
+on: [push, pull_request]
+
+# TODO: Set these in the docker image instead
+env:
+  GCCSDK_INSTALL_CROSSBIN: /home/riscos/cross/bin
+  GCCSDK_INSTALL_ENV: /home/riscos/env
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: riscosdotinfo/riscos-gccsdk-4.7:latest
+
+    strategy:
+      matrix:
+        options:
+        - { scl: false, hard: false }
+        - { scl: true,  hard: false }
+        - { scl: true,  hard: true  }
+
+    steps:
+    - uses: actions/checkout@v7
+    - name: make
+      run: make -C \!DLSources/ -f Makefile.unix SCL=${{matrix.options.scl}} HARD=${{matrix.options.hard}}

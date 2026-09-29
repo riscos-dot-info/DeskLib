@@ -51,7 +51,7 @@ extern "C" {
 
 typedef struct
 {
-  int x
+  int x;
   int y;
 } wimp_point;
 /*
