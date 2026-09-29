@@ -35,7 +35,7 @@ ifeq (norcroft, $(COMPILER))
   ASFLAGS = -ILibraries -I$(@D) -throwback
 
   AR = libfile
-  ARFLAGS =
+  ARFLAGS = -c -o
 endif
 
 # Defaults for gcc
@@ -48,32 +48,43 @@ ifeq (gcc, $(COMPILER))
   CC = $(PREFIX)gcc
   CFLAGS = -mthrowback -O3 $(WARNINGS) -mpoke-function-name -mlibscl
 
-  AS = $(PREFIX)gcc
-  ASFLAGS = -Wa,-ILibraries,-I$(@D) -mthrowback -mlibscl -c
+  AS = $(PREFIX)asasm
+  ASFLAGS = -ILibraries -I$(@D) -throwback
 
   AR = $(PREFIX)libfile
   ARFLAGS =
 endif
 
 # Make the library
-all: $(DESKLIB)
+all: init $(DESKLIB)
 
 # Link the objects together to make a new library
 $(DESKLIB): $(all_objects)
 	@mkdir -p $(basename $@)
-	$(AR) $(ARFLAGS) -c $@ $(lib_objects)
+	$(AR) $(ARFLAGS) $@ $(lib_objects)
+
+# Create the 'o' directories
+init:
+	-@$(makedirs)
+
+define makedir
+$(info CDir Libraries.$(library).o)
+$(shell CDir Libraries.$(library).o)
+endef
+
+makedirs = $(foreach library, $(libraries), $(makedir))
 
 # Clean the whole library out in one go
 clean:
 	-@$(cleanlibs)
-	Remove $(DESKLIB) 
+	Remove $(DESKLIB)
 
 # To empty the 'o' directories for each library
 # This a hack, we'd be much better off with a "rm" command that could take
 # a list of things to delete.  
 
 define cleanlib                     
-$(shell Echo Wipe Libraries.$(library).o.* ~C~VF~R)
+$(info Wipe Libraries.$(library).o.* ~C~VF~R)
 $(shell X Wipe Libraries.$(library).o.* ~C~VF~R)
 endef
 
@@ -89,10 +100,8 @@ ziptargets:
 	zip -9r RAM::RamDisc0.$$.examples/zip DeskLib.Examples -x *./svn.* 
 
 .c.o:
-	@mkdir -p $(@D)/o
 	$(CC) $(CFLAGS) -c $< -o $@
 
 .s.o:
-	@mkdir -p $(@D)/o
 	$(AS) $(ASFLAGS) $< -o $@
 

@@ -520,9 +520,9 @@ typedef union
     unsigned char titleback;
     unsigned char workfore;
     unsigned char workback;  /* 0xff means Wimp won't clear              */
-    unsigned char scrollouter;
-    unsigned char scrollinner;
-    unsigned char titlefocus;
+    unsigned int  scrollouter    : 8;
+    unsigned int  scrollinner    : 8;
+    unsigned int  titlefocus     : 8;
     unsigned int  fullcolour     : 1;  /* Use 24 bit colour                      */
     unsigned int  extendedscroll : 1;  /* Use extended scroll requests           */
     unsigned int  never3d        : 1;  /* Always have a 3D border                */

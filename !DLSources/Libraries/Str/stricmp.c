@@ -18,7 +18,7 @@
 
 #include "DeskLib:Str.h"
 
-#ifdef __TARGET_SCL__
+#ifndef __TARGET_UNIXLIB__
 
 int stricmp(const char *s1, const char *s2)
 {

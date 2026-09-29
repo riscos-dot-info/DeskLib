@@ -50,8 +50,8 @@ WARNINGS = -std=c99 -pedantic -Wall -Wundef -Wpointer-arith \
 CC = $(GCCSDK_INSTALL_CROSSBIN)/arm-unknown-riscos-gcc
 CFLAGS = -O2 $(WARNINGS) -std=c99 $(SCLFLAGS)
 
-AS = $(CC)
-ASFLAGS = -Wa,-ILibraries,-I$(@D) -c $(SCLFLAGS)
+AS = asasm
+ASFLAGS = -ILibraries -I$(@D)
 
 AR = $(GCCSDK_INSTALL_CROSSBIN)/arm-unknown-riscos-ar
 ARFLAGS = rcv
