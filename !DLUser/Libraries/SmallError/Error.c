@@ -23,8 +23,8 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "DeskLib:Error.h"
-#include "DeskLib:Event.h"
+#include "DeskLib/Error.h"
+#include "DeskLib/Event.h"
 
 
 

@@ -16,7 +16,7 @@
 
 #include <ctype.h>
 
-#include "DeskLib:Str.h"
+#include "DeskLib/Str.h"
 
 #ifdef __TARGET_SCL__
 

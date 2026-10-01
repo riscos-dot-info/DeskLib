@@ -11,11 +11,11 @@
 
 #include <stdlib.h>
 
-#include "DeskLib:Event.h"
-#include "DeskLib:EventMsg.h"
-#include "DeskLib:Wimp.h"
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Url.h"
+#include "DeskLib/Event.h"
+#include "DeskLib/EventMsg.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Url.h"
     
 #include "Url.h"
 

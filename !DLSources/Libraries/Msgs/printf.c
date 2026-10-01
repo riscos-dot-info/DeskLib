@@ -16,7 +16,7 @@
 
 #undef vsprintf
 
-#include "DeskLib:Msgs.h"
+#include "DeskLib/Msgs.h"
 
 extern BOOL Msgs_printf(char *result, const char *formattag, ...)
 {

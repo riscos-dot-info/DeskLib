@@ -16,7 +16,7 @@
 
 #include "kernel.h"
 
-#include "DeskLib:File.h"
+#include "DeskLib/File.h"
 
 extern void File_SetType(const char *filename, int type)
 {

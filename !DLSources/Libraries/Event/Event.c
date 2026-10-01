@@ -31,9 +31,9 @@
 #include <stdarg.h>
 #include <string.h>
 
-#include "DeskLib:Error.h"
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Time.h"
+#include "DeskLib/Error.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Time.h"
 
 #include "EventDefs.h"
 

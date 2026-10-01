@@ -15,8 +15,8 @@
  *
  */
 
-#include "DeskLib:Environment.h"
-#include "DeskLib:KernelSWIs.h"
+#include "DeskLib/Environment.h"
+#include "DeskLib/KernelSWIs.h"
 #include <stdio.h>
 
 int Environment_OSVersion(void)

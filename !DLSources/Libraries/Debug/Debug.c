@@ -24,7 +24,7 @@
 #define _DeskLib_Debug_BUILD
 
 #include "DebugDefs.h"
-#include "DeskLib:Debug.h"
+#include "DeskLib/Debug.h"
 
 
 int debug_level = 0;

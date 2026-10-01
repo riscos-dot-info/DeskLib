@@ -16,8 +16,8 @@
                            DeskLib-compliant style
 */
 
-#include "DeskLib:Core.h"
-#include "DeskLib:Filing.h"
+#include "DeskLib/Core.h"
+#include "DeskLib/Filing.h"
 
 os_error *Filing_SingleFullDirEntry(const char *filename,
                                     filing_fulldirentry *buf, int size)

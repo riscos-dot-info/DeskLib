@@ -16,7 +16,7 @@
 */
 
 
-#include "DeskLib:File.h"
+#include "DeskLib/File.h"
 #include "kernel.h"
 
 

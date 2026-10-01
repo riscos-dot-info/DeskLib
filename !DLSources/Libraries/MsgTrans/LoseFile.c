@@ -16,8 +16,8 @@
 
 #include <stdlib.h>
 
-#include "DeskLib:LinkList.h"
-#include "DeskLib:MsgTrans.h"
+#include "DeskLib/LinkList.h"
+#include "DeskLib/MsgTrans.h"
 
 #include "MTDefs.h"
 

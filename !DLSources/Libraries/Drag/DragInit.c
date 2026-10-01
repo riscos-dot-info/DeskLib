@@ -16,12 +16,12 @@
              two handlers in an appropriate manner for yourself.
 */
 
-#include "DeskLib:Core.h"
-#include "DeskLib:Wimp.h"
+#include "DeskLib/Core.h"
+#include "DeskLib/Wimp.h"
 
-#include "DeskLib:Drag.h"
-#include "DeskLib:Event.h"
-#include "DeskLib:Handler.h"
+#include "DeskLib/Drag.h"
+#include "DeskLib/Event.h"
+#include "DeskLib/Handler.h"
 
 
 extern void Drag_Initialise(BOOL attachNULLhandler)

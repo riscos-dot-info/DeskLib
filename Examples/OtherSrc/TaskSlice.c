@@ -82,8 +82,8 @@
  *  how lucky you are that you didn't have to go to all that bother ;-)
  */
 
-#include "DeskLib:Core.h"
-#include "DeskLib:SWI.h"
+#include "DeskLib/Core.h"
+#include "DeskLib/SWI.h"
 
 
 static int CallAfterCode[2] = {0xe58cc000, 0xe1a0f00e};

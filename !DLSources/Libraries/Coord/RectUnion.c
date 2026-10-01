@@ -15,9 +15,9 @@
 */
 
 
-#include "DeskLib:Core.h"
-#include "DeskLib:Wimp.h"
-#include "DeskLib:Coord.h"
+#include "DeskLib/Core.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/Coord.h"
 
 
 extern void Coord_RectUnion(wimp_rect *dest, wimp_rect *src1, wimp_rect *src2)

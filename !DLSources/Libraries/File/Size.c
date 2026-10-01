@@ -16,7 +16,7 @@
 
 #include "kernel.h"
 
-#include "DeskLib:File.h"
+#include "DeskLib/File.h"
 
 extern signed int File_Size(const char *filename)
 {

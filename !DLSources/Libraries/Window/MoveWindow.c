@@ -14,9 +14,9 @@
     Purpose: Move window by icon dragging
 */
 
-#include "DeskLib:Wimp.h"
-#include "DeskLib:Window.h"
-#include "DeskLib:Error.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/Window.h"
+#include "DeskLib/Error.h"
 
 BOOL Window_MoveWindow(event_pollblock *e, void *r)
 {

@@ -20,10 +20,10 @@
 #include <stdio.h>
 #include "string.h"
 
-#include "DeskLib:Event.h"
-#include "DeskLib:Window.h"
-#include "DeskLib:Msgs.h"
-#include "DeskLib:WimpSWIs.h"
+#include "DeskLib/Event.h"
+#include "DeskLib/Window.h"
+#include "DeskLib/Msgs.h"
+#include "DeskLib/WimpSWIs.h"
 
 
 

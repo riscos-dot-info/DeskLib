@@ -15,9 +15,9 @@
 */
 
 
-#include "DeskLib:Core.h"
-#include "DeskLib:Coord.h"
-#include "DeskLib:Wimp.h"
+#include "DeskLib/Core.h"
+#include "DeskLib/Coord.h"
+#include "DeskLib/Wimp.h"
 
 
 extern void Coord_RectToScreen(wimp_rect *rect, convert_block *convert)

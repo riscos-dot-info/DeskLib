@@ -56,10 +56,10 @@ Echo    Examples exported
 Set DeskLib_Headers$Dir <DeskLib_TempExport$Dir>.!DeskLib
 Echo -> Writing XML docs...
 Echo
-Set Alias$DeskLib_haddoc <DeskLib_GenRelease$Dir>.haddoc %%*0 -v -o <DeskLib_GenRelease$Dir>.Output.XMLDocs -n |"DeskLib <DeskLib_GenRelease$Version>|" -x "_dl_.*_h" |<DeskLib_Headers$Dir|>/include/*
-| The precise layout of !DeskLib.include can vary depending on your setup so this can handle two different layouts
+Set Alias$DeskLib_haddoc <DeskLib_GenRelease$Dir>.haddoc %%*0 -v -o <DeskLib_GenRelease$Dir>.Output.XMLDocs -n |"DeskLib <DeskLib_GenRelease$Version>|" -x "_dl_.*_h" |<DeskLib_Headers$Dir|>/DeskLib/*
+| The precise layout of !DeskLib.DeskLib can vary depending on your setup so this can handle two different layouts
 | (For instance, checked out using the RISC OS svn port vs. accessed in a remote unix enviroment.)
-IfThere <DeskLib_Headers$Dir>.include.h Then DeskLib_haddoc Else DeskLib_haddoc --native
+IfThere <DeskLib_Headers$Dir>.DeskLib.h Then DeskLib_haddoc Else DeskLib_haddoc --native
 
 Echo
 Echo -> Writing StrongHelp quick reference file...

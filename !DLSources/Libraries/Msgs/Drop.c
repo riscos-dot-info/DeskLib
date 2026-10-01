@@ -20,7 +20,7 @@
 #include <stdlib.h>
 
 #include "MsgsDefs.h"
-#include "DeskLib:Msgs.h"
+#include "DeskLib/Msgs.h"
 
 
 

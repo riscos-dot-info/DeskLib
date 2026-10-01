@@ -16,10 +16,10 @@
 
 #include <stdlib.h>
 
-#include "DeskLib:Error.h"
-#include "DeskLib:Screen.h"
-#include "DeskLib:Wimp.h"
-#include "DeskLib:Menu.h"
+#include "DeskLib/Error.h"
+#include "DeskLib/Screen.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/Menu.h"
 
 #include "MenuDefs.h"
 

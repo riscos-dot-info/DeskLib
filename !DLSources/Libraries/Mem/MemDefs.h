@@ -18,7 +18,7 @@
 #ifndef __dl_memdef_h
 #define __dl_memdef_h
 
-#include "DeskLib:Mem.h"
+#include "DeskLib/Mem.h"
 
 typedef struct
 {

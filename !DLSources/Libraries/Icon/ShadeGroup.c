@@ -15,9 +15,9 @@
              icon handles (-1 terminated).
 */
 
-#include "DeskLib:Wimp.h"
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Icon.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Icon.h"
 
 
 extern void Icon_ShadeGroup(window_handle window,

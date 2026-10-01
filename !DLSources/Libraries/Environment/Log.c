@@ -14,12 +14,12 @@
  * 27/08/2007: Creation
  *
  */
-#include "DeskLib:Debug.h"
-#include "DeskLib:Core.h"
-#include "DeskLib:Environment.h"
-#include "DeskLib:SWI.h"
-#include "DeskLib:Error.h"
-#include "DeskLib:Event.h" /* For event_taskname declaration */
+#include "DeskLib/Debug.h"
+#include "DeskLib/Core.h"
+#include "DeskLib/Environment.h"
+#include "DeskLib/SWI.h"
+#include "DeskLib/Error.h"
+#include "DeskLib/Event.h" /* For event_taskname declaration */
 #include <string.h>
 #include <stdlib.h>
 #include <stdarg.h>

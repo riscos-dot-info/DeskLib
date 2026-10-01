@@ -18,8 +18,8 @@
 */
 
 
-#include "DeskLib:Sprite.h"
-#include "DeskLib:SWI.h"
+#include "DeskLib/Sprite.h"
+#include "DeskLib/SWI.h"
 
 
 extern int Sprite_IconMemorySize(window_block *pWinBlock, icon_handle icon,

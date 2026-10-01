@@ -15,7 +15,7 @@
 */
 
 
-#include "DeskLib:WimpSWIs.h"
+#include "DeskLib/WimpSWIs.h"
 
 
 #include "Defs.h"

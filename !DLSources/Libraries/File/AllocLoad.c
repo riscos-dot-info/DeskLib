@@ -16,7 +16,7 @@
 
 #include <stdlib.h>
 
-#include "DeskLib:File.h"
+#include "DeskLib/File.h"
 
 
 char	*File_AllocLoad0(const char *filename)

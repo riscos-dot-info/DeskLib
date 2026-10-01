@@ -15,8 +15,8 @@
              This should really be done in ASM eventually
 */
 
-#include "DeskLib:GFX.h"
-#include "DeskLib:SWI.h"    
+#include "DeskLib/GFX.h"
+#include "DeskLib/SWI.h"    
 
 #ifndef SWI_OS_ReadPoint
 #define SWI_OS_ReadPoint 0x32

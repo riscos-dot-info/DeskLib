@@ -17,9 +17,9 @@
 
 #include <stdlib.h>
 
-#include "DeskLib:Error.h"
-#include "DeskLib:Template.h"
-#include "DeskLib:Dialog2.h"
+#include "DeskLib/Error.h"
+#include "DeskLib/Template.h"
+#include "DeskLib/Dialog2.h"
 
 
 dialog2_block	*Dialog2_CreateDialogBlock(

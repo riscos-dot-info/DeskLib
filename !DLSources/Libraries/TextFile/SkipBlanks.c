@@ -17,8 +17,8 @@
 
 #include <stdio.h>
 
-#include "DeskLib:Core.h"
-#include "DeskLib:TextFile.h"
+#include "DeskLib/Core.h"
+#include "DeskLib/TextFile.h"
 
 /* Avoid problems with macros accessing FILE * internals, that would
    make Desklib tied to either SharedCLibrary or Unixlib */

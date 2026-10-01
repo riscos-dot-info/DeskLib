@@ -26,9 +26,9 @@
 #include <string.h>
 #include <stdio.h>
 
-#include "DeskLib:Core.h"
-#include "DeskLib:Filing.h"
-#include "DeskLib:Error.h"
+#include "DeskLib/Core.h"
+#include "DeskLib/Filing.h"
+#include "DeskLib/Error.h"
 
 #include "Errors.h"
 

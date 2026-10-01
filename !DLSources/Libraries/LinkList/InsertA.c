@@ -18,7 +18,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "DeskLib:LinkList.h"
+#include "DeskLib/LinkList.h"
 
 extern void LinkList_InsertAfter(linklist_header *anchor,
                                  linklist_header *pos,

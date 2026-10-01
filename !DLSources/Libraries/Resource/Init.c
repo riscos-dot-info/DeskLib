@@ -17,7 +17,7 @@
 
 
 #include <stdio.h>
-#include "DeskLib:Resource.h"
+#include "DeskLib/Resource.h"
 
 extern BOOL resource__autoinited; /* Set up in InitAuto.c */
 

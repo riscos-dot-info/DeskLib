@@ -16,10 +16,10 @@
 */
 
 
-#include "DeskLib:Wimp.h"
-#include "DeskLib:WimpSWIs.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/WimpSWIs.h"
 
-#include "DeskLib:Dialog.h"
+#include "DeskLib/Dialog.h"
 
 
 /* Similar to Dialog_Show but opens dialogue at x/y */

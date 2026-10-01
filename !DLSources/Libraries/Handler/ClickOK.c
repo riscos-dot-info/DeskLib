@@ -1,6 +1,6 @@
-#include "DeskLib:Wimp.h"
-#include "DeskLib:Icon.h"
-#include "DeskLib:Handler.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/Icon.h"
+#include "DeskLib/Handler.h"
 
 
 extern BOOL Handler_ClickOK(event_pollblock *event, void *reference)

@@ -14,7 +14,7 @@
     Purpose: Dynamic memory manager - reallocation
 */
 
-#include "Desklib:Error.h"
+#include "DeskLib/Error.h"
 #define __dl_mem_c
 #include "MemDefs.h"
 

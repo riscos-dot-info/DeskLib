@@ -11,9 +11,9 @@
 
 #include <string.h>
 
-#include "DeskLib:Clear.h"
-#include "DeskLib:File.h"
-#include "DeskLib:Wimp.h"
+#include "DeskLib/Clear.h"
+#include "DeskLib/File.h"
+#include "DeskLib/Wimp.h"
 
 
 void Clear_Save(clear_picture *picture, const char *filename)

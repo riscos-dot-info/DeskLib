@@ -14,9 +14,9 @@
     Purpose: Adds one menu to another as a submenu
 */
 
-#include "DeskLib:Wimp.h"
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Menu.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Menu.h"
 
 
 wimp_point menu_currentpos;

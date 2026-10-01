@@ -18,11 +18,11 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "DeskLib:Wimp.h"
-#include "DeskLib:LinkList.h"
-#include "DeskLib:MsgTrans.h"
-#include "DeskLib:File.h"
-#include "DeskLib:Resource.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/LinkList.h"
+#include "DeskLib/MsgTrans.h"
+#include "DeskLib/File.h"
+#include "DeskLib/Resource.h"
 #include "MTDefs.h"
 
 linklist_header msgtrans__list = {NULL,NULL};

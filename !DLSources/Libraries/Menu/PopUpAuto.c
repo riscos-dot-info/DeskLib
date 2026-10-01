@@ -15,9 +15,9 @@
              event_lastevent
 */
 
-#include "DeskLib:Menu.h"
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Event.h"
+#include "DeskLib/Menu.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Event.h"
 
 void Menu_PopUpAuto(menu_ptr menu)
 {

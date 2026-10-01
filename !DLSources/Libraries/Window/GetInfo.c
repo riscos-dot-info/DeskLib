@@ -17,8 +17,8 @@
                                 now returns an (os_error *)
 */
 
-#include "DeskLib:Window.h"
-#include "DeskLib:WimpSWIs.h"
+#include "DeskLib/Window.h"
+#include "DeskLib/WimpSWIs.h"
 
 
 extern os_error *Window_GetInfo(window_handle window, window_info *result)

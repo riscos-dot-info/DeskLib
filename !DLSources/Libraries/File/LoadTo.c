@@ -16,9 +16,9 @@
 
 #include "kernel.h"
 
-#include "DeskLib:Core.h"
-#include "DeskLib:SWI.h"
-#include "DeskLib:File.h"
+#include "DeskLib/Core.h"
+#include "DeskLib/SWI.h"
+#include "DeskLib/File.h"
 /*
  * Loads a file at an address
  *

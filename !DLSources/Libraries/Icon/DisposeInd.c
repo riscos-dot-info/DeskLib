@@ -17,8 +17,8 @@
 
 #include <stdlib.h>
 
-#include "DeskLib:Wimp.h"
-#include "DeskLib:Icon.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/Icon.h"
 
 
 extern void Icon_DisposeIndData(icon_data *data, icon_flags flags)

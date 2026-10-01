@@ -14,10 +14,10 @@
     Purpose: Retrieve the foreground colour of an icon.
 */
 
-#include "DeskLib:Wimp.h"
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Icon.h"
-#include "DeskLib:Str.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Icon.h"
+#include "DeskLib/Str.h"
 
 
 int Icon_GetFgCol(icon_block *icon)

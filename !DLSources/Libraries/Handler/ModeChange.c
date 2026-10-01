@@ -1,7 +1,7 @@
-#include "Desklib:Wimp.h"
-#include "Desklib:Screen.h"
-#include "Desklib:Window.h"
-#include "DeskLib:Handler.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/Screen.h"
+#include "DeskLib/Window.h"
+#include "DeskLib/Handler.h"
 
 
 extern BOOL Handler_ModeChange(event_pollblock *event, void *reference)

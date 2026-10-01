@@ -15,9 +15,9 @@
  *
  */
 
-#include "DeskLib:Debug.h"
-#include "DeskLib:SWI.h"
-#include "DeskLib:Environment.h"
+#include "DeskLib/Debug.h"
+#include "DeskLib/SWI.h"
+#include "DeskLib/Environment.h"
 
 #include "DebugDefs.h"
 

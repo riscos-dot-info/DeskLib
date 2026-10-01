@@ -18,8 +18,8 @@
 #include <stdarg.h>
 #include <stdio.h>
 
-#include "DeskLib:Error.h"
-#include "DeskLib:Msgs.h"
+#include "DeskLib/Error.h"
+#include "DeskLib/Msgs.h"
 
 
 extern void Msgs_Report(int errornum, const char *tag, ...)

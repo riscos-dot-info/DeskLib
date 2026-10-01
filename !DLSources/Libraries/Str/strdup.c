@@ -17,7 +17,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "DeskLib:Str.h"
+#include "DeskLib/Str.h"
 
 char *strdup(const char *src)
 {

@@ -1,6 +1,6 @@
 #include "kernel.h"
 
-#include "DeskLib:BackTrace.h"
+#include "DeskLib/BackTrace.h"
 
 #include "BackDefs.h"
 

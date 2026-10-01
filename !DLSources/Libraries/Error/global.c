@@ -16,6 +16,6 @@
              15 Mar 2003 AS - removed DLL veneer
 */
 
-#include "DeskLib:Error.h"
+#include "DeskLib/Error.h"
 
 os_error error_global;

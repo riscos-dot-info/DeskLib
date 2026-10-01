@@ -17,7 +17,7 @@
 
 #include "TempDefs.h"
 
-#include "DeskLib:Font.h"
+#include "DeskLib/Font.h"
 
 
 static void Template_ExitHandler(void)

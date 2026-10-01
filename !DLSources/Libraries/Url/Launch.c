@@ -21,12 +21,12 @@
  *    user feedback.
  */
 
-#include "DeskLib:Url.h"
-#include "DeskLib:Wimp.h"
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:EventMsg.h"
-#include "DeskLib:SWI.h"
-#include "DeskLib:Module.h"
+#include "DeskLib/Url.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/EventMsg.h"
+#include "DeskLib/SWI.h"
+#include "DeskLib/Module.h"
 
 #include <stdlib.h>
 #include <string.h>

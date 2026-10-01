@@ -18,9 +18,9 @@
 #include <stdarg.h>
 #include <stdlib.h>
 
-#include "DeskLib:Core.h"
-#include "DeskLib:File.h"
-#include "DeskLib:Sprite.h"
+#include "DeskLib/Core.h"
+#include "DeskLib/File.h"
+#include "DeskLib/Sprite.h"
 
 extern sprite_area Sprite_LoadFiles(unsigned int nooffiles,...)
 /* loads any number of sprite files into a sprite area (allocated by malloc()),

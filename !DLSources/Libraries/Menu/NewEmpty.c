@@ -12,8 +12,8 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "DeskLib:Menu.h"
-#include "DeskLib:Wimp.h"
+#include "DeskLib/Menu.h"
+#include "DeskLib/Wimp.h"
 
 /* -------------------------------------------------- ajps, 01/01/03 ---
  * This creates an empty menu with the given title and number of entries.

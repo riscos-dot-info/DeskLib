@@ -18,6 +18,6 @@
 
 */
 
-#include "DeskLib:Event.h"
+#include "DeskLib/Event.h"
 
 char            event_taskname[40] = "";

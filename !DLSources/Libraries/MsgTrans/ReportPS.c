@@ -15,8 +15,8 @@
 
 */
 
-#include "DeskLib:Error.h"
-#include "DeskLib:MsgTrans.h"
+#include "DeskLib/Error.h"
+#include "DeskLib/MsgTrans.h"
 
 os_error *MsgTrans_ReportPS(msgtrans_filedesc *filedesc, char *token,
                             BOOL fatal,

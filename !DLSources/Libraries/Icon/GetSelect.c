@@ -14,9 +14,9 @@
     Purpose: Returns the selection status of an icon
 */
 
-#include "DeskLib:Wimp.h"
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Icon.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Icon.h"
 
 
 extern BOOL Icon_GetSelect(window_handle window, icon_handle icon)

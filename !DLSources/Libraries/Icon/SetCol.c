@@ -14,9 +14,9 @@
     Purpose: Set-colour routines for non-outline-font icons
 */
 
-#include "DeskLib:Wimp.h"
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Icon.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Icon.h"
 
 
 extern void Icon_SetForeColour(window_handle window, icon_handle icon,

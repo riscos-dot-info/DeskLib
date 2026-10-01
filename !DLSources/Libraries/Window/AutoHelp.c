@@ -1,6 +1,6 @@
-#include "DeskLib:Wimp.h"
-#include "DeskLib:Event.h"
-#include "DeskLib:Window.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/Event.h"
+#include "DeskLib/Window.h"
 
 
 extern BOOL Window_HelpHandler(event_pollblock *event, void *reference);

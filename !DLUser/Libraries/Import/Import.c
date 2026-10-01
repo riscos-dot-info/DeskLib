@@ -18,12 +18,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Error.h"
-#include "DeskLib:Event.h"
-#include "DeskLib:File.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Error.h"
+#include "DeskLib/Event.h"
+#include "DeskLib/File.h"
 
-#include "DeskLib:Import.h"
+#include "DeskLib/Import.h"
 
 
 

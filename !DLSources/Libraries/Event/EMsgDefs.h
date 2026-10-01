@@ -17,10 +17,10 @@
 */
 
 #include <stdlib.h>
-#include "DeskLib:LinkList.h"
-#include "DeskLib:Error.h"
-#include "DeskLib:Event.h"
-#include "DeskLib:EventMsg.h"
+#include "DeskLib/LinkList.h"
+#include "DeskLib/Error.h"
+#include "DeskLib/Event.h"
+#include "DeskLib/EventMsg.h"
 
 
 typedef struct

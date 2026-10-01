@@ -29,14 +29,14 @@
                            listens for to be sure it'll always work
 */
 
-#include "DeskLib:Event.h"
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Icon.h"
-#include "DeskLib:KeyCodes.h"
-#include "DeskLib:Error.h"
-#include "DeskLib:Save.h"
-#include "DeskLib:Str.h"
-#include "Desklib:File.h"
+#include "DeskLib/Event.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Icon.h"
+#include "DeskLib/KeyCodes.h"
+#include "DeskLib/Error.h"
+#include "DeskLib/Save.h"
+#include "DeskLib/Str.h"
+#include "DeskLib/File.h"
 
 #include <stdio.h>
 #include <string.h>

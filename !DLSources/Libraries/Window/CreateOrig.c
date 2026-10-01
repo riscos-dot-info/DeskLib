@@ -18,13 +18,13 @@
 */
 
 
-#include "DeskLib:LinkList.h"
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Template.h"
-#include "DeskLib:Event.h"
-#include "DeskLib:Window.h"
-#include "DeskLib:Screen.h"
-#include "DeskLib:Error.h"
+#include "DeskLib/LinkList.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Template.h"
+#include "DeskLib/Event.h"
+#include "DeskLib/Window.h"
+#include "DeskLib/Screen.h"
+#include "DeskLib/Error.h"
 
 #include "WindowDefs.h"
 

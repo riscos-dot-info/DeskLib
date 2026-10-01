@@ -15,8 +15,8 @@
 */
 
 
-#include "DeskLib:Event.h"
-#include "DeskLib:Menu2.h"
+#include "DeskLib/Event.h"
+#include "DeskLib/Menu2.h"
 
 
 

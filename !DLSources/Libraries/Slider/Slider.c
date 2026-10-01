@@ -14,16 +14,16 @@
     Purpose: Encapsulate slider-type icons in an easy-to-use system.
 */
 
-#include "DeskLib:Core.h"
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Event.h"
-#include "DeskLib:GFX.h"
-#include "DeskLib:Sprite.h"
-#include "DeskLib:Screen.h"
-#include "DeskLib:ColourTran.h"
-#include "DeskLib:Coord.h"
-#include "DeskLib:Icon.h"
-#include "DeskLib:Slider.h"
+#include "DeskLib/Core.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Event.h"
+#include "DeskLib/GFX.h"
+#include "DeskLib/Sprite.h"
+#include "DeskLib/Screen.h"
+#include "DeskLib/ColourTran.h"
+#include "DeskLib/Coord.h"
+#include "DeskLib/Icon.h"
+#include "DeskLib/Slider.h"
 
 
 /****************************************************************************

@@ -14,7 +14,7 @@
     Purpose: Convert a number to a hex digit character.
 */
 
-#include "DeskLib:Str.h"
+#include "DeskLib/Str.h"
 
 char Str_MakeHex(int n)
 {

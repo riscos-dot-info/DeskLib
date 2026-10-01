@@ -23,12 +23,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "DeskLib:Core.h"
-#include "DeskLib:Error.h"
-#include "DeskLib:Event.h"
-#include "DeskLib:Screen.h"
-#include "DeskLib:Wimp.h"
-#include "DeskLib:Menu.h"
+#include "DeskLib/Core.h"
+#include "DeskLib/Error.h"
+#include "DeskLib/Event.h"
+#include "DeskLib/Screen.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/Menu.h"
 
 #include "MenuDefs.h"
 

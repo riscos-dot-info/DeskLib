@@ -18,8 +18,8 @@
 */
 
 
-#include "DeskLib:Wimp.h"
-#include "DeskLib:Menu.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/Menu.h"
 
 #include <string.h>
 

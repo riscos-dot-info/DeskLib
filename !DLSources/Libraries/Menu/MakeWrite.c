@@ -15,9 +15,9 @@
 */
 
 
-#include "DeskLib:Core.h"
-#include "DeskLib:Wimp.h"
-#include "DeskLib:Menu.h"
+#include "DeskLib/Core.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/Menu.h"
 
 
 void Menu_MakeWritable(menu_ptr menu, int entry,

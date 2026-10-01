@@ -1,5 +1,5 @@
 #ifndef __dl_Core_h
-#include "DeskLib:Core.h"
+#include "DeskLib/Core.h"
 #endif
 
 

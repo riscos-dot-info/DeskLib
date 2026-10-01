@@ -17,12 +17,12 @@
 
 #include <stdlib.h>
 
-#include "DeskLib:Wimp.h"
-#include "DeskLib:WimpSWIs.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/WimpSWIs.h"
 
-#include "DeskLib:Dialog.h"
-#include "DeskLib:Event.h"
-#include "DeskLib:Window.h"
+#include "DeskLib/Dialog.h"
+#include "DeskLib/Event.h"
+#include "DeskLib/Window.h"
 
 
 static BOOL EventHandler(event_pollblock *event, void *reference)

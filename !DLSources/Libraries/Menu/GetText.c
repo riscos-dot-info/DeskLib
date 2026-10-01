@@ -17,8 +17,8 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "DeskLib:Wimp.h"
-#include "DeskLib:Menu.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/Menu.h"
 
 
 char *Menu_GetText(menu_ptr menu, int entry)

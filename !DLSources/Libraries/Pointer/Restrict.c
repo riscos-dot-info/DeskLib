@@ -14,13 +14,13 @@
     Purpose: Restrict pointer to window or icon
 */
 
-#include "DeskLib:Error.h"
-#include "DeskLib:Icon.h"
-#include "DeskLib:KernelSWIs.h"
-#include "DeskLib:Screen.h"
-#include "DeskLib:Wimp.h"
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Pointer.h"
+#include "DeskLib/Error.h"
+#include "DeskLib/Icon.h"
+#include "DeskLib/KernelSWIs.h"
+#include "DeskLib/Screen.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Pointer.h"
 
 
 typedef char byte;

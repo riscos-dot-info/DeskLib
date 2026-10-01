@@ -16,11 +16,11 @@
 */
 
 
-#include "DeskLib:Wimp.h"
-#include "DeskLib:WimpSWIs.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/WimpSWIs.h"
 
-#include "DeskLib:Dialog.h"
-#include "DeskLib:Screen.h"
+#include "DeskLib/Dialog.h"
+#include "DeskLib/Screen.h"
 
 
 extern void Dialog_Hide(dialog d)

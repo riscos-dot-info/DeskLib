@@ -18,18 +18,18 @@ sometime.
 
 #include <string.h>
 
-#include "DeskLib:Event.h"
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Hourglass.h"
-#include "DeskLib:PDriver.h"
-#include "DeskLib:Error.h"
-#include "DeskLib:Kbd.h"
+#include "DeskLib/Event.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Hourglass.h"
+#include "DeskLib/PDriver.h"
+#include "DeskLib/Error.h"
+#include "DeskLib/Kbd.h"
 
 #include "Shell.Shell.h"
 #include "Shell.FindWind.h"
 #include "Shell.Redraw2.h"
 
-#include "DeskLib:Print.h"
+#include "DeskLib/Print.h"
 
 
 

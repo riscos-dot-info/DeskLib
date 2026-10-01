@@ -19,7 +19,7 @@
 #define __Debug_Defs_h
 
 #include <stdio.h>
-#include "DeskLib:Core.h"
+#include "DeskLib/Core.h"
 
 void Debug__Assert(const char *expression, char *sourcefile, int line);
 

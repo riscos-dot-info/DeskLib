@@ -32,9 +32,9 @@ undef commented out 5/9/07 - not sure what it was for?
 #undef vsprintf
 */
 
-#include "DeskLib:Error.h"
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Event.h"
+#include "DeskLib/Error.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Event.h"
 
 
 extern void Error_Report(int errornum, const char *report, ...)

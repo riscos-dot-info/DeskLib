@@ -32,31 +32,31 @@
 #include <string.h>
 
 #ifndef __dl_linklist_h
-#include "DeskLib:LinkList.h"
+#include "DeskLib/LinkList.h"
 #endif
 
 #ifndef __dl_wimpswis_h
-#include "DeskLib:WimpSWIs.h"
+#include "DeskLib/WimpSWIs.h"
 #endif
 
 #ifndef __dl_error_h
-#include "DeskLib:Error.h"
+#include "DeskLib/Error.h"
 #endif
 
 #ifndef __resource_h
-#include "DeskLib:Resource.h"
+#include "DeskLib/Resource.h"
 #endif
 
 #ifndef __dl_template_h
-#include "DeskLib:Template.h"
+#include "DeskLib/Template.h"
 #endif
 
 #ifndef __dl_strlencr_h
-#include "DeskLib:Str.h"
+#include "DeskLib/Str.h"
 #endif
 
 #ifndef __dl_sprite_h
-#include "DeskLib:Sprite.h"
+#include "DeskLib/Sprite.h"
 #endif
 
 #define ERRBASE 1

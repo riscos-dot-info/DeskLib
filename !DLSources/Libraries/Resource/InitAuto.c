@@ -18,11 +18,11 @@
 
 #include <string.h>
 #include <stdio.h>
-#include "DeskLib:KernelSWIs.h"
-#include "DeskLib:Resource.h"
-#include "DeskLib:Str.h"
-#include "DeskLib:File.h"
-#include "DeskLib:Event.h"       /* For event_taskname declaration */
+#include "DeskLib/KernelSWIs.h"
+#include "DeskLib/Resource.h"
+#include "DeskLib/Str.h"
+#include "DeskLib/File.h"
+#include "DeskLib/Event.h"       /* For event_taskname declaration */
 
 BOOL resource__autoinited = FALSE;
 

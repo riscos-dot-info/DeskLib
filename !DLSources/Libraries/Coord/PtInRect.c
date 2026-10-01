@@ -15,9 +15,9 @@
 */
 
 
-#include "DeskLib:Core.h"
-#include "DeskLib:Wimp.h"
-#include "DeskLib:Coord.h"
+#include "DeskLib/Core.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/Coord.h"
 
 
 BOOL Coord_PointInRect(wimp_coord *point, wimp_rect *rectangle)

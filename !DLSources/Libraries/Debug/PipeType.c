@@ -25,12 +25,12 @@
 #undef vsprintf
 */
 
-#include "DeskLib:Error.h"
-#include "DeskLib:WimpSWIs.h"
+#include "DeskLib/Error.h"
+#include "DeskLib/WimpSWIs.h"
 
-#include "DeskLib:Debug.h"
+#include "DeskLib/Debug.h"
 
-#include "DeskLib:Str.h"
+#include "DeskLib/Str.h"
 
 #include "DebugDefs.h"
 

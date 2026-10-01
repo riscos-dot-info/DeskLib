@@ -16,8 +16,8 @@
 
 #include <stdio.h>
 #include <string.h>
-#include "DeskLib:Core.h"
-#include "DeskLib:Filing.h"
+#include "DeskLib/Core.h"
+#include "DeskLib/Filing.h"
 
 #define BUF__SIZE 2048      /* size of the buffer where the directory entries are read every time */
 

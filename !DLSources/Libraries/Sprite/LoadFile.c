@@ -16,9 +16,9 @@
 
 #include <stdlib.h>
 
-#include "DeskLib:Core.h"
-#include "DeskLib:File.h"
-#include "DeskLib:Sprite.h"
+#include "DeskLib/Core.h"
+#include "DeskLib/File.h"
+#include "DeskLib/Sprite.h"
 
 extern sprite_area Sprite_LoadFile(const char *filename)
 /*

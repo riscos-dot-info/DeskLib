@@ -1,6 +1,6 @@
-#include "DeskLib:Wimp.h"
-#include "DeskLib:Window.h"
-#include "DeskLib:Handler.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/Window.h"
+#include "DeskLib/Handler.h"
 
 
 extern BOOL Handler_DeleteWindow(event_pollblock *event, void *reference)

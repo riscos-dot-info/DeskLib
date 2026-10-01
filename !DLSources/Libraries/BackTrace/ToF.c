@@ -14,9 +14,9 @@
 #include <assert.h>
 #include <stdio.h>
 
-#include "DeskLib:BackTrace.h"
-#include "DeskLib:Debug.h"
-#include "DeskLib:Error.h"
+#include "DeskLib/BackTrace.h"
+#include "DeskLib/Debug.h"
+#include "DeskLib/Error.h"
 
 #include "BackDefs.h"
 

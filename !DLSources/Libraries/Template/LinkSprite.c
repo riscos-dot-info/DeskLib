@@ -21,9 +21,9 @@
 /* --- LOAD HEADERS ------------------------------------------------------ */
 
 /* --- DeskLib ----------------------------------------------------------- */
-#include "DeskLib:Wimp.h"
-#include "DeskLib:Sprite.h"            /* Sprite handling                  */
-#include "DeskLib:Template.h"          /* Template loading and caching     */
+#include "DeskLib/Wimp.h"
+#include "DeskLib/Sprite.h"            /* Sprite handling                  */
+#include "DeskLib/Template.h"          /* Template loading and caching     */
 
 /* === FUNCTION DEFINITIONS ============================================== */
 

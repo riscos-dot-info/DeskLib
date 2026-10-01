@@ -14,9 +14,9 @@
     Purpose: Pop up a menu to the right of a button icon.
 */
 
-#include "DeskLib:Menu.h"
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Coord.h"
+#include "DeskLib/Menu.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Coord.h"
 
 
 void Menu_PopUp(menu_ptr menu,window_handle window,icon_handle icon)

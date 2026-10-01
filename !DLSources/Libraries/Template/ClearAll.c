@@ -17,7 +17,7 @@
 */
 
 #include "TempDefs.h"
-#include "DeskLib:Font.h"
+#include "DeskLib/Font.h"
 
 
 extern void Template_ClearAll(void)

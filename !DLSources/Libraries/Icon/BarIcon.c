@@ -18,13 +18,13 @@
 
 #include <string.h>
 
-#include "DeskLib:Error.h"
-#include "DeskLib:Wimp.h"
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Sprite.h"
-#include "DeskLib:Screen.h"
-#include "DeskLib:SWI.h"
-#include "DeskLib:Icon.h"
+#include "DeskLib/Error.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Sprite.h"
+#include "DeskLib/Screen.h"
+#include "DeskLib/SWI.h"
+#include "DeskLib/Icon.h"
 
 /* This is also defined in Screen.c as Screen_ReadModeVar */
 #define Icon_ReadModeVar(m, v, r) SWI(3, 3, 0x20035, (m), (v), 0,   0, 0, (r))

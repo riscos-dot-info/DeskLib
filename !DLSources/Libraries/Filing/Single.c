@@ -14,8 +14,8 @@
     Purpose: Reads a single directory entry
 */
 
-#include "DeskLib:Core.h"
-#include "DeskLib:Filing.h"
+#include "DeskLib/Core.h"
+#include "DeskLib/Filing.h"
 
 os_error *Filing_SingleDirEntry(const char *filename, filing_direntry *buf,
                                 int size)

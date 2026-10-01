@@ -2,7 +2,7 @@
 #define __dl_menudefs_h
 
 #ifndef __dl_wimp_h
-#include "DeskLib:Wimp.h"
+#include "DeskLib/Wimp.h"
 #endif
 
 extern void Menu__CountItems(const char *description, unsigned int *numitems,

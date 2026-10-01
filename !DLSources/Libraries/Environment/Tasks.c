@@ -15,11 +15,11 @@
  *
  */
 
-#include "DeskLib:Environment.h"
-#include "DeskLib:SWI.h"
-#include "DeskLib:Error.h"
-#include "DeskLib:Str.h"
-#include "DeskLib:Wimp.h"        /* For task_handle */
+#include "DeskLib/Environment.h"
+#include "DeskLib/SWI.h"
+#include "DeskLib/Error.h"
+#include "DeskLib/Str.h"
+#include "DeskLib/Wimp.h"        /* For task_handle */
 
 #include <stdio.h>
 #include <stdlib.h>

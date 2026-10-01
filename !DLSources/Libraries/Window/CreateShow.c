@@ -14,7 +14,7 @@
     Purpose: High-level window management functions: Show/hide a window
 */
 
-#include "DeskLib:Window.h"
+#include "DeskLib/Window.h"
 
 extern window_handle Window_CreateAndShow(const char    *windowname,
                                           int            maxtitlesize,

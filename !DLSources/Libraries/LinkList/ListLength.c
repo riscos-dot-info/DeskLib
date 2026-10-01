@@ -18,7 +18,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "DeskLib:LinkList.h"
+#include "DeskLib/LinkList.h"
 
 extern int LinkList_ListLength(linklist_header *anchor)
 {

@@ -16,7 +16,7 @@
              Template loading process. (See Font.h, Template.h, Window.h)
 */
 
-#include "DeskLib:Font.h"
+#include "DeskLib/Font.h"
 
 extern void Font_LoseAllFonts(font_array *fonts)
 {

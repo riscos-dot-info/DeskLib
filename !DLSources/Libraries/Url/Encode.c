@@ -8,8 +8,8 @@
  * RISC OS.  Please refer to the accompanying documentation for conditions
  * of use.
  */
-#include "DeskLib:Core.h"
-#include "DeskLib:Url.h"
+#include "DeskLib/Core.h"
+#include "DeskLib/Url.h"
 
 /* -------------------------------------------- takkaria, 2002-09-09 ---
  * Encode a set of characters ready for inclusion into an URL.

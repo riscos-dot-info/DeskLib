@@ -19,7 +19,7 @@
 
 
 #include "TempDefs.h"
-#include "DeskLib:Core.h" /* For BOOL */
+#include "DeskLib/Core.h" /* For BOOL */
 
 BOOL template_initialised = FALSE;
 

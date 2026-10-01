@@ -14,9 +14,9 @@
     Purpose: Retrieve the current 'shading' state of the given icon.
 */
 
-#include "DeskLib:Wimp.h"
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Icon.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Icon.h"
 
 
 extern BOOL Icon_GetShade(window_handle window, icon_handle icon)

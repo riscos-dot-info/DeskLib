@@ -19,9 +19,9 @@
 
 #include <string.h>
 
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Icon.h"
-#include "DeskLib:Str.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Icon.h"
+#include "DeskLib/Str.h"
 
 
 int Icon_AlterValidation(window_handle window, icon_handle icon,

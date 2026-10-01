@@ -1,11 +1,11 @@
 #include <stdlib.h>
 
-#include "DeskLib:Error.h"
-#include "DeskLib:Event.h"
-#include "DeskLib:SWI.h"
-#include "DeskLib:Debug.h"
+#include "DeskLib/Error.h"
+#include "DeskLib/Event.h"
+#include "DeskLib/SWI.h"
+#include "DeskLib/Debug.h"
 
-#include "DeskLib:Font2.h"
+#include "DeskLib/Font2.h"
 
 
 typedef struct font2__block	*font2__blockptr;

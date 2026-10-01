@@ -19,8 +19,8 @@
 /* --- LOAD HEADERS ------------------------------------------------------ */
 
 /* --- DeskLib ----------------------------------------------------------- */
-#include "DeskLib:Wimp.h"
-#include "DeskLib:Menu.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/Menu.h"
 
 /* === FUNCTION DEFINITIONS ============================================== */
 

@@ -19,14 +19,14 @@
 */
 
 
-#include "Desklib:Error.h"
-#include "Desklib:Event.h"
-#include "Desklib:Font.h"
-#include "Desklib:LinkList.h"
-#include "Desklib:Screen.h"
-#include "Desklib:Template.h"
-#include "Desklib:Window.h"
-#include "Desklib:WimpSWIs.h"
+#include "DeskLib/Error.h"
+#include "DeskLib/Event.h"
+#include "DeskLib/Font.h"
+#include "DeskLib/LinkList.h"
+#include "DeskLib/Screen.h"
+#include "DeskLib/Template.h"
+#include "DeskLib/Window.h"
+#include "DeskLib/WimpSWIs.h"
 
 #include "WindowDefs.h"
 

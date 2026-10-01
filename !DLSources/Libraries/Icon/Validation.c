@@ -22,8 +22,8 @@
     Purpose: Scanning of validation strings for various fields
 */
 
-#include "DeskLib:Core.h"
-#include "DeskLib:Icon.h"
+#include "DeskLib/Core.h"
+#include "DeskLib/Icon.h"
 
 extern int Icon_FindValidationStringCommand(const char *string, char tag, int *lenp)
 {

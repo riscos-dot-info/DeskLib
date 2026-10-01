@@ -1,4 +1,4 @@
-#include "DeskLib:Sprite.h"
+#include "DeskLib/Sprite.h"
 
 /*
  *  ATrans.h Header for Andrew's Transfer library

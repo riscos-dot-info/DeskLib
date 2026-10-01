@@ -15,9 +15,9 @@
 */
 
 
-#include "DeskLib:Core.h"
-#include "DeskLib:Wimp.h"
-#include "DeskLib:Coord.h"
+#include "DeskLib/Core.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/Coord.h"
 
 
 extern BOOL Coord_RectContained(wimp_rect *inside, wimp_rect *outside)

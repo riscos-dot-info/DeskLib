@@ -14,7 +14,7 @@
     Purpose: Convert a CR-terminated string to be 0-terminated (ASCIIZ).
 */
 
-#include "DeskLib:Str.h"
+#include "DeskLib/Str.h"
 
 
 void Str_MakeASCIIZ(char *s, int max_len)

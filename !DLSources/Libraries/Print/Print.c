@@ -1,14 +1,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "DeskLib:Wimp.h"
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:PDriver.h"
-#include "DeskLib:Error.h"
-#include "DeskLib:File.h"
-#include "DeskLib:Event.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/PDriver.h"
+#include "DeskLib/Error.h"
+#include "DeskLib/File.h"
+#include "DeskLib/Event.h"
 
-#include "DeskLib:Print.h"
+#include "DeskLib/Print.h"
 
 
 

@@ -15,10 +15,10 @@
              submenu.
 */
 
-#include "DeskLib:Wimp.h"
-#include "DeskLib:Event.h"
-#include "DeskLib:EventMsg.h"
-#include "DeskLib:Menu.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/Event.h"
+#include "DeskLib/EventMsg.h"
+#include "DeskLib/Menu.h"
 
 
 extern void Menu_Warn(menu_ptr menu, int entry, BOOL yesno,

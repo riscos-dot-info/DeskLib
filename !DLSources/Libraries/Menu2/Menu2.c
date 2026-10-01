@@ -17,13 +17,13 @@
 
 #include <stdlib.h>
 
-#include "DeskLib:Icon.h"
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Event.h"
-#include "DeskLib:Menu.h"
-#include "DeskLib:Error.h"
-#include "DeskLib:Debug.h"
-#include "DeskLib:Menu2.h"
+#include "DeskLib/Icon.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Event.h"
+#include "DeskLib/Menu.h"
+#include "DeskLib/Error.h"
+#include "DeskLib/Debug.h"
+#include "DeskLib/Menu2.h"
 
 
 

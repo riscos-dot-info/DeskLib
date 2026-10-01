@@ -16,9 +16,9 @@
 */
 
 
-#include "DeskLib:Core.h"
-#include "DeskLib:Wimp.h"
-#include "DeskLib:Coord.h"
+#include "DeskLib/Core.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/Coord.h"
 
 
 extern BOOL Coord_RectsOverlap(wimp_rect *rect1, wimp_rect *rect2)

@@ -14,7 +14,7 @@
     Purpose: Get the state of all modifier keys in one go.
 */
 
-#include "DeskLib:Kbd.h"
+#include "DeskLib/Kbd.h"
 
 
 extern kbd_modifiers Kbd_GetModifiers(BOOL detailed)

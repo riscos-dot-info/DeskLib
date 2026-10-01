@@ -19,11 +19,11 @@
 
 #include <string.h>
 
-#include "DeskLib:Wimp.h"
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Window.h"
-#include "DeskLib:SWI.h"
-#include "DeskLib:Event.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Window.h"
+#include "DeskLib/SWI.h"
+#include "DeskLib/Event.h"
 
 
 extern void Window_SetTitle(window_handle window, const char *title)

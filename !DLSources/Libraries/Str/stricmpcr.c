@@ -16,7 +16,7 @@
 
 #include <ctype.h>
 
-#include "DeskLib:Str.h"
+#include "DeskLib/Str.h"
 
 int stricmpcr(const char *s1, const char *s2)
 {

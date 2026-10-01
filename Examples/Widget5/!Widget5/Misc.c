@@ -7,12 +7,12 @@
  *                                                                      *
  ************************************************************************/
 
-#include "DeskLib:WimpSWIs.h"          /* Low-level WIMP commands         */
-#include "DeskLib:Window.h"            /* Window handling automation      */
-#include "DeskLib:Icon.h"              /* Icon handling automation        */
-#include "DeskLib:Menu.h"              /* Menu create & show support      */
-#include "DeskLib:Screen.h"
-#include "DeskLib:SWI.h"
+#include "DeskLib/WimpSWIs.h"          /* Low-level WIMP commands         */
+#include "DeskLib/Window.h"            /* Window handling automation      */
+#include "DeskLib/Icon.h"              /* Icon handling automation        */
+#include "DeskLib/Menu.h"              /* Menu create & show support      */
+#include "DeskLib/Screen.h"
+#include "DeskLib/SWI.h"
 
 #include "kernel.h"
 

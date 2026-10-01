@@ -14,7 +14,7 @@
     Purpose: Plot command: Rectangle outline
 */
 
-#include "DeskLib:GFX.h"
+#include "DeskLib/GFX.h"
 
 extern void GFX_Rectangle(int x, int y, int w, int h)
 {

@@ -18,8 +18,8 @@
 
 #include <string.h>
 
-#include "DeskLib:Core.h"
-#include "DeskLib:Filing.h"
+#include "DeskLib/Core.h"
+#include "DeskLib/Filing.h"
 
 char *Filing_GetPathname(const char *filename, char *pathname)
 {

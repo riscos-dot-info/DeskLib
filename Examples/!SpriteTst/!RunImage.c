@@ -1,24 +1,24 @@
 
-#include "DeskLib:WimpSWIs.h"          /* Low-level WIMP commands         */
-#include "DeskLib:Window.h"            /* Window handling automation      */
-#include "DeskLib:Dialog.h"            /* High-level dialogue windows     */
-#include "DeskLib:DragASpr.h"          /* DragASprite veneers             */
-#include "DeskLib:Error.h"             /* Error despatcher                */
-#include "DeskLib:Event.h"             /* Event despatcher                */
-#include "DeskLib:EventMsg.h"          /* Wimp Message event dispatcher   */
-#include "DeskLib:File.h"              /* Low level file handling         */
-#include "DeskLib:GFX.h"               /* Graphics routines (GFX_Wait)    */
-#include "DeskLib:Handler.h"           /* Default/example event handlers  */
-#include "DeskLib:Hourglass.h"         /* Hourglass module interfaces     */
-#include "DeskLib:Icon.h"              /* Icon handling automation        */
-#include "DeskLib:Menu.h"              /* Menu create & show support      */
-#include "DeskLib:Msgs.h"              /* Message translation code        */
-#include "DeskLib:Pane.h"              /* Pane window handling            */
-#include "DeskLib:Resource.h"          /* Handles finding resource files  */
-#include "DeskLib:Screen.h"            /* Getting screen size info, etc   */
-#include "DeskLib:Sound.h"             /* Sound System control            */
-#include "DeskLib:Template.h"          /* Template loading and caching    */
-#include "DeskLib:Sprite.h"
+#include "DeskLib/WimpSWIs.h"          /* Low-level WIMP commands         */
+#include "DeskLib/Window.h"            /* Window handling automation      */
+#include "DeskLib/Dialog.h"            /* High-level dialogue windows     */
+#include "DeskLib/DragASpr.h"          /* DragASprite veneers             */
+#include "DeskLib/Error.h"             /* Error despatcher                */
+#include "DeskLib/Event.h"             /* Event despatcher                */
+#include "DeskLib/EventMsg.h"          /* Wimp Message event dispatcher   */
+#include "DeskLib/File.h"              /* Low level file handling         */
+#include "DeskLib/GFX.h"               /* Graphics routines (GFX_Wait)    */
+#include "DeskLib/Handler.h"           /* Default/example event handlers  */
+#include "DeskLib/Hourglass.h"         /* Hourglass module interfaces     */
+#include "DeskLib/Icon.h"              /* Icon handling automation        */
+#include "DeskLib/Menu.h"              /* Menu create & show support      */
+#include "DeskLib/Msgs.h"              /* Message translation code        */
+#include "DeskLib/Pane.h"              /* Pane window handling            */
+#include "DeskLib/Resource.h"          /* Handles finding resource files  */
+#include "DeskLib/Screen.h"            /* Getting screen size info, etc   */
+#include "DeskLib/Sound.h"             /* Sound System control            */
+#include "DeskLib/Template.h"          /* Template loading and caching    */
+#include "DeskLib/Sprite.h"
 
 /*
  * ANSI includes

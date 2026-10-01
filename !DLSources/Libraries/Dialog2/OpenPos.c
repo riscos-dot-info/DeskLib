@@ -15,9 +15,9 @@
 */
 
 
-#include "DeskLib:Window.h"
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Dialog2.h"
+#include "DeskLib/Window.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Dialog2.h"
 
 
 void	Dialog2_Window_GetWindowOpenPos(

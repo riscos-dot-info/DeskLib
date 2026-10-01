@@ -14,12 +14,12 @@
     Purpose: Handles windows with panes.
 */
 
-#include "DeskLib:Pane2.h"
+#include "DeskLib/Pane2.h"
 #include "Pane2Defs.h"
-#include "Desklib:Event.h"
-#include "DeskLib:Template.h"
-#include "Desklib:EventMsg.h"
-#include "Desklib:Error.h"
+#include "DeskLib/Event.h"
+#include "DeskLib/Template.h"
+#include "DeskLib/EventMsg.h"
+#include "DeskLib/Error.h"
 
 #include <stdlib.h>
 

@@ -15,9 +15,9 @@
 */
 
 
-#include "DeskLib:Wimp.h"
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Window.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Window.h"
 
 
 extern os_error *Window_ForceWholeRedraw(window_handle window)

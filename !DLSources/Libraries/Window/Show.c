@@ -18,9 +18,9 @@
 */
 
 
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Window.h"
-#include "DeskLib:Screen.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Window.h"
+#include "DeskLib/Screen.h"
 
 static wimp_point lastopenpos = {-1, -1};
 

@@ -1,11 +1,11 @@
-#include "DeskLib:Dialog2.h"
-#include "DeskLib:Event.h"
-#include "DeskLib:Resource.h"
-#include "DeskLib:Template.h"
-#include "DeskLib:Icon.h"
-#include "DeskLib:Error.h"
-#include "DeskLib:Menu2.h"
-#include "DeskLib:Debug.h"
+#include "DeskLib/Dialog2.h"
+#include "DeskLib/Event.h"
+#include "DeskLib/Resource.h"
+#include "DeskLib/Template.h"
+#include "DeskLib/Icon.h"
+#include "DeskLib/Error.h"
+#include "DeskLib/Menu2.h"
+#include "DeskLib/Debug.h"
 
 
 

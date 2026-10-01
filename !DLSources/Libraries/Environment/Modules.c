@@ -15,9 +15,9 @@
  *
  */
 
-#include "DeskLib:Environment.h"
-#include "DeskLib:SWI.h"
-#include "DeskLib:Error.h"
+#include "DeskLib/Environment.h"
+#include "DeskLib/SWI.h"
+#include "DeskLib/Error.h"
 
 BOOL Environment_ModuleIsActive(const char *modulename)
 {

@@ -24,9 +24,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "DeskLib:Event.h"
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:WAssert.h"
+#include "DeskLib/Event.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/WAssert.h"
 
 
 void __wassert(const char *message)

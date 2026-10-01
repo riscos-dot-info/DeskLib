@@ -19,9 +19,9 @@
 
 #include <stdlib.h>     /* malloc */
 
-#include "DeskLib:Window.h"
-#include "DeskLib:Icon.h"
-#include "DeskLib:WimpSWIs.h"
+#include "DeskLib/Window.h"
+#include "DeskLib/Icon.h"
+#include "DeskLib/WimpSWIs.h"
 
 
 extern os_error *Window_GainCaret(window_handle window) {

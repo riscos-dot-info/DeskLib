@@ -18,8 +18,8 @@
 
 #include "kernel.h"
 
-#include "DeskLib:Core.h"
-#include "DeskLib:SWI.h"
+#include "DeskLib/Core.h"
+#include "DeskLib/SWI.h"
 
 
 

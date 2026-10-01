@@ -16,18 +16,18 @@
 
 */
 
-#include "DeskLib:Core.h"
-#include "DeskLib:Window.h"            /* Window handling automation      */
-#include "DeskLib:Error.h"             /* Error despatcher                */
-#include "DeskLib:Event.h"             /* Event despatcher                */
-#include "DeskLib:EventMsg.h"          /* Wimp Message event dispatcher   */
-#include "DeskLib:Handler.h"           /* Default/example event handlers  */
-#include "DeskLib:Icon.h"              /* Icon handling automation        */
-#include "DeskLib:Resource.h"          /* Handles finding resource files  */
-#include "DeskLib:Screen.h"            /* Getting screen size info, etc   */
-#include "DeskLib:Template.h"          /* Template loading and caching    */
+#include "DeskLib/Core.h"
+#include "DeskLib/Window.h"            /* Window handling automation      */
+#include "DeskLib/Error.h"             /* Error despatcher                */
+#include "DeskLib/Event.h"             /* Event despatcher                */
+#include "DeskLib/EventMsg.h"          /* Wimp Message event dispatcher   */
+#include "DeskLib/Handler.h"           /* Default/example event handlers  */
+#include "DeskLib/Icon.h"              /* Icon handling automation        */
+#include "DeskLib/Resource.h"          /* Handles finding resource files  */
+#include "DeskLib/Screen.h"            /* Getting screen size info, etc   */
+#include "DeskLib/Template.h"          /* Template loading and caching    */
 
-#include "DeskLib:Slider.h"
+#include "DeskLib/Slider.h"
 
 
 

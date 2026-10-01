@@ -16,7 +16,7 @@
 
 #include <stdlib.h>
 
-#include "DeskLib:Menu.h"
+#include "DeskLib/Menu.h"
 
 #define ENTRY(menu) ((menu_item *) ((int) (menu) + sizeof(menu_block)))
 

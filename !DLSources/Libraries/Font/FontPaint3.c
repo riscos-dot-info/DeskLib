@@ -16,8 +16,8 @@
 */
 
 
-#include "DeskLib:Font.h"
-#include "DeskLib:SWI.h"
+#include "DeskLib/Font.h"
+#include "DeskLib/SWI.h"
 
 #ifndef SWI_Font_Paint
 #define SWI_Font_Paint	0x40086

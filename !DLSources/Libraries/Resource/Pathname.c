@@ -14,7 +14,7 @@
     Purpose: Global variable - Resource filename prefix string
 */
 
-#include "DeskLib:Resource.h"
+#include "DeskLib/Resource.h"
 
 
 char resource_pathname[32] = "\0";      /* no path (use CSD) if user not set */

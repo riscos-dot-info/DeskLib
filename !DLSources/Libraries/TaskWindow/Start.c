@@ -3,15 +3,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "DeskLib:Event.h"
-#include "DeskLib:EventMsg.h"
-#include "DeskLib:SWI.h"
-#include "DeskLib:Wimp.h"
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Error.h"
-#include "DeskLib:Time.h"
+#include "DeskLib/Event.h"
+#include "DeskLib/EventMsg.h"
+#include "DeskLib/SWI.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Error.h"
+#include "DeskLib/Time.h"
 
-#include "DeskLib:TaskWindow.h"
+#include "DeskLib/TaskWindow.h"
 
 #define SWI_Wimp_StartTask 0x400DE
 

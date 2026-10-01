@@ -5,7 +5,7 @@
  * gcc -mlibscl HashTest.o DeskLib:o.DeskLib DeskLib:o.DLUser
  * to compile.
  */
-#include "DeskLib:Hash.h"
+#include "DeskLib/Hash.h"
 
 #include <stdio.h>
 

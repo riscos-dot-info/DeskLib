@@ -2,11 +2,11 @@
 #define __dl_dialog2_defs_h
 
 #ifndef __dl_event_h
-#include "DeskLib:Event.h"
+#include "DeskLib/Event.h"
 #endif
 
 #ifndef __dl_dialog2_h
-#include "DeskLib:Dialog2.h"
+#include "DeskLib/Dialog2.h"
 #endif
 
 

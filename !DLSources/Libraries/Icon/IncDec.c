@@ -20,11 +20,11 @@
 
 #include <stdlib.h>
 
-#include "DeskLib:Core.h"
-#include "DeskLib:Event.h"
-#include "DeskLib:Icon.h"
-#include "DeskLib:Window.h"
-#include "DeskLib:WimpSWIs.h"
+#include "DeskLib/Core.h"
+#include "DeskLib/Event.h"
+#include "DeskLib/Icon.h"
+#include "DeskLib/Window.h"
+#include "DeskLib/WimpSWIs.h"
 
 
 

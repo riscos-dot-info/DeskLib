@@ -19,7 +19,7 @@
 
 #include <ctype.h>
 
-#include "DeskLib:Str.h"
+#include "DeskLib/Str.h"
 
 extern int strnicmpcr(const char *s1, const char *s2, size_t n)
 {

@@ -17,8 +17,8 @@
 
 #include <stdlib.h>
 
-#include "DeskLib:Error.h"
-#include "DeskLib:Dialog2.h"
+#include "DeskLib/Error.h"
+#include "DeskLib/Dialog2.h"
 
 
 BOOL	Dialog2_DeleteDialog( dialog2_block *dialog2)

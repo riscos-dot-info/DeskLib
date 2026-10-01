@@ -4,9 +4,9 @@
 
 #include <string.h>
 
-#include "DeskLib:Icon.h"
-#include "DeskLib:Wimp.h"
-#include "DeskLib:WimpSWIs.h"
+#include "DeskLib/Icon.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/WimpSWIs.h"
 
 
 extern void Icon_SetTextRJ(window_handle w, icon_handle i, const char *text)

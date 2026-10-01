@@ -66,8 +66,8 @@
 #include <stdio.h>
 #endif
 
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Error.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Error.h"
 
 
 /* --- External interface - global variables ------------------------------- */

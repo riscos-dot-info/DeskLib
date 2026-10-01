@@ -16,11 +16,11 @@
 */
 
 
-#include "DeskLib:Wimp.h"
-#include "DeskLib:WimpSWIs.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/WimpSWIs.h"
 
-#include "DeskLib:Dialog.h"
-#include "DeskLib:Event.h"
+#include "DeskLib/Dialog.h"
+#include "DeskLib/Event.h"
 
 
 extern icon_handle Dialog_WaitForClick(dialog dbox)

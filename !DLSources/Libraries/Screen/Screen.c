@@ -16,9 +16,9 @@
     Purpose: Screen functions (read size, eig factors, etc.)
 */
 
-#include "DeskLib:Wimp.h"
-#include "DeskLib:SWI.h"
-#include "DeskLib:Screen.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/SWI.h"
+#include "DeskLib/Screen.h"
 
 screen_modeval screen_mode  = { -1 };
 wimp_point     screen_size;

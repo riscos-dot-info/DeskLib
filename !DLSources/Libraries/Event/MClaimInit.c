@@ -18,7 +18,7 @@
 
 #include "EMsgDefs.h"
 
-#include "DeskLib:WimpSWIs.h"
+#include "DeskLib/WimpSWIs.h"
 
 #define ERRBASE 1
 #define ERR1 ERRBASE+0

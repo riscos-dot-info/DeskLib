@@ -14,7 +14,7 @@
     Purpose: Compare two CR-terminated strings to see if they match
 */
 
-#include "DeskLib:Str.h"
+#include "DeskLib/Str.h"
 
    /*
     * compares the string pointed to by s1 to the string pointed to by s2.

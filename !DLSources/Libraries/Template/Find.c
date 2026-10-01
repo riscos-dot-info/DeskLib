@@ -17,7 +17,7 @@
     Purpose: Loading, cacheing, and retrieval of window templates
 */
 
-#include "DeskLib:GFX.h"
+#include "DeskLib/GFX.h"
 
 #define __dl_tempfind_c
 

@@ -10,10 +10,10 @@
  */
 
 #include <stdlib.h>
-#include "DeskLib:Clear.h"
-#include "DeskLib:Mem.h"
+#include "DeskLib/Clear.h"
+#include "DeskLib/Mem.h"
 
-#include "DeskLib:Clear.h"
+#include "DeskLib/Clear.h"
 #include "ClearDefs.h"
 
 

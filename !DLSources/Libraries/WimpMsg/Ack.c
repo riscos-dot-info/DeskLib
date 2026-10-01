@@ -9,10 +9,10 @@
  * of use.
  */
 
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Wimp.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Wimp.h"
 
-#include "Desklib:WimpMsg.h"
+#include "DeskLib/WimpMsg.h"
 
 void WimpMsg_Ack(message_block *previous)
 {

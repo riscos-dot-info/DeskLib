@@ -24,7 +24,7 @@
 #include "cl.h"
 
 #ifdef RISCOS_TIMINGS
-  #include "DeskLib:SWI.h"
+  #include "DeskLib/SWI.h"
 #endif
 
 /* Unique id for each object we store */

@@ -12,8 +12,8 @@
 
 #include <stdlib.h>
 
-#include "DeskLib:Clear.h"
-#include "DeskLib:Mem.h"
+#include "DeskLib/Clear.h"
+#include "DeskLib/Mem.h"
 
 
 void Clear_Free(clear_picture *picture)

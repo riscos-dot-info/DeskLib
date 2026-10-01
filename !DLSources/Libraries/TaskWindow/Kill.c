@@ -1,8 +1,8 @@
 
-#include "DeskLib:Wimp.h"
-#include "DeskLib:WimpSWIs.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/WimpSWIs.h"
 
-#include "DeskLib:TaskWindow.h"
+#include "DeskLib/TaskWindow.h"
 
 /*
   This sends a message to the specified taskwindow task in

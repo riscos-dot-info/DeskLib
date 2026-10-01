@@ -14,7 +14,7 @@
     Purpose: Match a token in a Messages file
 */
 
-#include "DeskLib:MsgTrans.h"
+#include "DeskLib/MsgTrans.h"
 
 os_error *MsgTrans_LookupPS(msgtrans_filedesc *filedesc,
                             const char *token,

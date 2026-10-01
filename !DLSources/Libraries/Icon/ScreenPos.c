@@ -14,9 +14,9 @@
     Purpose: Get the position of an icon in screen coordinates.
 */
 
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Coord.h"
-#include "DeskLib:Icon.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Coord.h"
+#include "DeskLib/Icon.h"
 
 
 extern void Icon_ScreenPos(window_handle window,

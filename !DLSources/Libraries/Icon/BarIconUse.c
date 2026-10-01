@@ -19,10 +19,10 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "DeskLib:Wimp.h"
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Error.h"
-#include "DeskLib:Icon.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Error.h"
+#include "DeskLib/Icon.h"
 
 #define BARICON_XSIZE 68
 #define BARICON_YSIZE 68

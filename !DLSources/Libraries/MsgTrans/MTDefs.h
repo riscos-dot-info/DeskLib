@@ -14,8 +14,8 @@
     Purpose: Definitions for internal use by some MsgTrans functions
 */
 
-#include "DeskLib:LinkList.h"
-#include "DeskLib:MsgTrans.h"
+#include "DeskLib/LinkList.h"
+#include "DeskLib/MsgTrans.h"
 
 typedef struct {
   linklist_header list;

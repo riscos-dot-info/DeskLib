@@ -16,8 +16,8 @@
 */
 
 
-#include "DeskLib:Wimp.h"
-#include "DeskLib:Menu.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/Menu.h"
 
 
 void Menu_RemoveItem(menu_ptr menu, int entry)

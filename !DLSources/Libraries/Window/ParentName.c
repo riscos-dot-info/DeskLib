@@ -18,8 +18,8 @@
 
 #include <string.h>
 
-#include "DeskLib:LinkList.h"
-#include "DeskLib:Window.h"
+#include "DeskLib/LinkList.h"
+#include "DeskLib/Window.h"
 
 #include "WindowDefs.h"
 

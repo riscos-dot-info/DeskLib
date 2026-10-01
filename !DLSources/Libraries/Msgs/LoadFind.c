@@ -27,11 +27,11 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "DeskLib:Core.h"
-#include "DeskLib:Error.h"
-#include "DeskLib:Resource.h"
-#include "DeskLib:TextFile.h"
-#include "DeskLib:Msgs.h"
+#include "DeskLib/Core.h"
+#include "DeskLib/Error.h"
+#include "DeskLib/Resource.h"
+#include "DeskLib/TextFile.h"
+#include "DeskLib/Msgs.h"
 
 #include "MsgsDefs.h"
 

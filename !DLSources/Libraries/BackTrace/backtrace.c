@@ -7,7 +7,7 @@
 #include <assert.h>
 #include <stdio.h>
 
-#include "DeskLib:BackTrace.h"
+#include "DeskLib/BackTrace.h"
 
 #include "BackDefs.h"
 

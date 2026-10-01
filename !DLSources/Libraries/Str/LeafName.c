@@ -16,7 +16,7 @@
 */
 
 
-#include "DeskLib:Str.h"
+#include "DeskLib/Str.h"
 
 
 /* Str_LeafName() ----------------------------------------------------------

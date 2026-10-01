@@ -11,9 +11,9 @@
 
 #include <stdlib.h>
 
-#include "DeskLib:Clear.h"
-#include "DeskLib:File.h"
-#include "DeskLib:Mem.h"
+#include "DeskLib/Clear.h"
+#include "DeskLib/File.h"
+#include "DeskLib/Mem.h"
 
 
 static clear_picture *Clear__AbortLoad(file_handle in, clear_picture *temp)

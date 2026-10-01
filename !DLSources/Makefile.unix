@@ -30,8 +30,8 @@ endif
 DESKLIB_STATIC = ../!DeskLib/libDesk$(SCLNAME).a
 DESKLIB_SHARED = ../!DeskLib/libDesk.so
 
-DESKLIB_INCLUDE=$(realpath ../!DeskLib/include/)
-DESKLIB_OLD_INCLUDE=$(realpath ../!DeskLib/oldinclude/)
+DESKLIB_INCLUDE=$(realpath ../!DeskLib/DeskLib/)
+DESKLIB_OLD_INCLUDE=$(realpath ../!DeskLib/old/DeskLib/)
 DESKLIB_PATH=$(DESKLIB_INCLUDE)/,$(DESKLIB_OLD_INCLUDE)
 
 libraries := $(notdir $(filter-out Libraries/.svn Libraries/h \

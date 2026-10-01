@@ -15,10 +15,10 @@
 */
 
 
-#include "DeskLib:Wimp.h"
-#include "DeskLib:Clipboard.h"
-#include "DeskLib:WimpMsg.h"
-#include "DeskLib:WimpSWIs.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/Clipboard.h"
+#include "DeskLib/WimpMsg.h"
+#include "DeskLib/WimpSWIs.h"
 
 #include <string.h>
 

@@ -17,7 +17,7 @@
 #define __dl_mem_c
 #include "MemDefs.h"
 
-#include "DeskLib:Error.h"
+#include "DeskLib/Error.h"
 
 #ifdef MEM__DEBUG
 #include <stdio.h>

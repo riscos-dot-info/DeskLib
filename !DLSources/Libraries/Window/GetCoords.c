@@ -20,10 +20,10 @@
 /* --- LOAD HEADERS ------------------------------------------------------ */
 
 /* --- DeskLib ----------------------------------------------------------- */
-#include "DeskLib:WimpSWIs.h"          /* Low-level WIMP commands          */
+#include "DeskLib/WimpSWIs.h"          /* Low-level WIMP commands          */
 
-#include "DeskLib:Coord.h"             /* OS - workarea coord conversion   */
-#include "DeskLib:Window.h"
+#include "DeskLib/Coord.h"             /* OS - workarea coord conversion   */
+#include "DeskLib/Window.h"
 
 /* === FUNCTION DEFINITIONS ============================================== */
 

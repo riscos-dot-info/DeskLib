@@ -25,9 +25,9 @@
 #undef vsprintf
 */
 
-#include "DeskLib:Error.h"
-#include "DeskLib:Str.h"
-#include "DeskLib:Debug.h"
+#include "DeskLib/Error.h"
+#include "DeskLib/Str.h"
+#include "DeskLib/Debug.h"
 
 #include "DebugDefs.h"
 

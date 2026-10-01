@@ -17,9 +17,9 @@
 */
 
 
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:GFX.h"
-#include "DeskLib:Handler.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/GFX.h"
+#include "DeskLib/Handler.h"
 
 #define hatch_size 48
 

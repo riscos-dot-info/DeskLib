@@ -18,9 +18,9 @@
  *
  */
 
-#include "DeskLib:Core.h"
-#include "DeskLib:Environment.h"
-#include "DeskLib:SWI.h"
+#include "DeskLib/Core.h"
+#include "DeskLib/Environment.h"
+#include "DeskLib/SWI.h"
 #include <stdlib.h>
 #include <string.h>
 

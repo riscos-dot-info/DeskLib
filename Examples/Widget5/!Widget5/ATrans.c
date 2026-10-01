@@ -4,15 +4,15 @@
  *  Provides very simple routines for loading and saving in the desktop
  */
 
-#include "DeskLib:Event.h"
-#include "DeskLib:EventMsg.h"
-#include "DeskLib:Msgs.h"
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Error.h"
-#include "DeskLib:StringCR.h"
-#include "DeskLib:KernelSWIs.h"
-#include "DeskLib:DragASpr.h"
-#include "DeskLib:SWI.h"
+#include "DeskLib/Event.h"
+#include "DeskLib/EventMsg.h"
+#include "DeskLib/Msgs.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Error.h"
+#include "DeskLib/StringCR.h"
+#include "DeskLib/KernelSWIs.h"
+#include "DeskLib/DragASpr.h"
+#include "DeskLib/SWI.h"
 #include "ATrans.h"
 /* #include "MyHeader.h" */
 #include "MySwis.h"

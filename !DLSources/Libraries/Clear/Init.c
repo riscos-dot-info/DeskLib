@@ -9,7 +9,7 @@
  * of use.
  */
 
-#include "DeskLib:Clear.h"
+#include "DeskLib/Clear.h"
 
 #include "ClearDefs.h"
 

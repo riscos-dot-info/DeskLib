@@ -1,7 +1,7 @@
 
-#include "DeskLib:Msgs.h"
-#include "DeskLib:Error.h"
-#include "DeskLib:WimpSWIs.h"
+#include "DeskLib/Msgs.h"
+#include "DeskLib/Error.h"
+#include "DeskLib/WimpSWIs.h"
 
 #include <stdarg.h>
 

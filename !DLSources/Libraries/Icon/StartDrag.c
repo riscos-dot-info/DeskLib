@@ -15,10 +15,10 @@
 */
 
 
-#include "DeskLib:Wimp.h"
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Screen.h"
-#include "DeskLib:Icon.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Screen.h"
+#include "DeskLib/Icon.h"
 
 
 /*  Note: Use Icon_StartSolidDrag() or DragASprite_DragIcon() to start

@@ -18,10 +18,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "DeskLib:Core.h"
-#include "DeskLib:SWI.h"
-#include "DeskLib:Error.h"
-#include "DeskLib:Serial.h"
+#include "DeskLib/Core.h"
+#include "DeskLib/SWI.h"
+#include "DeskLib/Error.h"
+#include "DeskLib/Serial.h"
 
 
 static unsigned *serial__RMAblock = NULL;

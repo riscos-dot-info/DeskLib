@@ -14,8 +14,8 @@
     Purpose: Gets ticked/shaded flags for a menu item
 */
 
-#include "DeskLib:Wimp.h"
-#include "DeskLib:Menu.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/Menu.h"
 
 void Menu_GetFlags(menu_ptr menu, int entry, int *ticked, int *shaded)
 {

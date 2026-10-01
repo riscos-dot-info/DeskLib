@@ -20,10 +20,10 @@
 
 #define _DeskLib_Debug_BUILD
 
-#include "DeskLib:Debug.h"
+#include "DeskLib/Debug.h"
 
-#include "DeskLib:Event.h"	/* for event_taskname	*/
-#include "DeskLib:Error.h"
+#include "DeskLib/Event.h"	/* for event_taskname	*/
+#include "DeskLib/Error.h"
 
 
 

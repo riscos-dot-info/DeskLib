@@ -1,6 +1,6 @@
-#include "DeskLib:Wimp.h"
-#include "DeskLib:Drag.h"
-#include "DeskLib:Handler.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/Drag.h"
+#include "DeskLib/Handler.h"
 
 /*  Attach this handler to NULL events while dragging, after registering your
  *  handlers with Drag_SetHandlers (See drag.h)

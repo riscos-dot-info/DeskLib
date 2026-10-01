@@ -25,11 +25,11 @@
 #undef vsprintf
 */
 
-#include "DeskLib:Error.h"
+#include "DeskLib/Error.h"
 
-#include "DeskLib:Debug.h"
+#include "DeskLib/Debug.h"
 
-#include "DeskLib:Str.h"
+#include "DeskLib/Str.h"
 
 #include "DebugDefs.h"
 

@@ -18,7 +18,7 @@
              and Drag-Finished events) to operate. (See Drag.h)
 */
 
-#include "DeskLib:Drag.h"
+#include "DeskLib/Drag.h"
 
 drag_handler drag_currentupdate    = NULL;
 drag_handler drag_currentcomplete  = NULL;

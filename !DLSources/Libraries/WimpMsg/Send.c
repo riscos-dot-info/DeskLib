@@ -11,10 +11,10 @@
 
 #include <string.h>
 
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Wimp.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Wimp.h"
 
-#include "Desklib:WimpMsg.h"
+#include "DeskLib/WimpMsg.h"
 
 int WimpMsg_Send(event_type type, message_action action, void *message_body, size_t datalen, message_destinee dest, icon_handle icon)
 {

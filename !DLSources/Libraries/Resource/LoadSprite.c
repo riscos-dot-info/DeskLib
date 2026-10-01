@@ -21,11 +21,11 @@
 /* --- LOAD HEADERS ------------------------------------------------------ */
 
 /* --- DeskLib ----------------------------------------------------------- */
-#include "DeskLib:Error.h"             /* Error despatcher                 */
-#include "DeskLib:File.h"              /* Low level file handling          */
-#include "DeskLib:Resource.h"          /* Handles finding resource files   */
-#include "DeskLib:Screen.h"            /* Getting screen size info, etc    */
-#include "DeskLib:Sprite.h"            /* Sprite handling                  */
+#include "DeskLib/Error.h"             /* Error despatcher                 */
+#include "DeskLib/File.h"              /* Low level file handling          */
+#include "DeskLib/Resource.h"          /* Handles finding resource files   */
+#include "DeskLib/Screen.h"            /* Getting screen size info, etc    */
+#include "DeskLib/Sprite.h"            /* Sprite handling                  */
 
 /* --- CLib -------------------------------------------------------------- */
 #include <stdlib.h>      /*  Standard library routines                     */

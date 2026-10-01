@@ -14,8 +14,8 @@
     Purpose: Get the pointer position
 */
 
-#include "DeskLib:KernelSWIs.h"
-#include "DeskLib:Pointer.h"
+#include "DeskLib/KernelSWIs.h"
+#include "DeskLib/Pointer.h"
 
 typedef char byte;
 

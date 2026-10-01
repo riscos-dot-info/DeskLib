@@ -16,11 +16,11 @@
 */
 
 
-#include "DeskLib:Wimp.h"
-#include "DeskLib:WimpSWIs.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/WimpSWIs.h"
 
-#include "DeskLib:Dialog.h"
-#include "DeskLib:Window.h"
+#include "DeskLib/Dialog.h"
+#include "DeskLib/Window.h"
 
 
 extern void Dialog_ShowStatic(dialog dbox, window_openpos openpos)

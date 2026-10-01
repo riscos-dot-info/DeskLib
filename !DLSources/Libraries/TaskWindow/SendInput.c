@@ -1,10 +1,10 @@
 
 #include <string.h>
 
-#include "DeskLib:Wimp.h"
-#include "DeskLib:WimpSWIs.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/WimpSWIs.h"
 
-#include "DeskLib:TaskWindow.h"
+#include "DeskLib/TaskWindow.h"
 
 /*
   This sends "input" (i.e. keypresses) to the specified taskwindow task.

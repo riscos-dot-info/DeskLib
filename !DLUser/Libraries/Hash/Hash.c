@@ -25,8 +25,8 @@
  */
 #include <string.h>
 
-#include "DeskLib:Hash.h"
-/*#include "DeskLib:Malloc.h"*/
+#include "DeskLib/Hash.h"
+/*#include "DeskLib/Malloc.h"*/
 
 /* Malloc will not return if it fails to get enough memory it will try to
  * call a global error handler.

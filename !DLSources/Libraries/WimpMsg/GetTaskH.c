@@ -9,10 +9,10 @@
  * of use.
  */
 
-#include "DeskLib:SWI.h"
-#include "DeskLib:Wimp.h"
+#include "DeskLib/SWI.h"
+#include "DeskLib/Wimp.h"
 
-#include "Desklib:WimpMsg.h"
+#include "DeskLib/WimpMsg.h"
 
 #ifndef SWI_Wimp_SendMessage
 #define SWI_Wimp_SendMessage ((message_action) 0x400E7)

@@ -15,9 +15,9 @@
     Mods:    Returns TRUE for images as well as directories.
 */
 
-#include "DeskLib:Core.h"
-#include "DeskLib:File.h"
-#include "DeskLib:SWI.h"
+#include "DeskLib/Core.h"
+#include "DeskLib/File.h"
+#include "DeskLib/SWI.h"
 
 extern BOOL File_IsDirectory(const char *pathname)
 {

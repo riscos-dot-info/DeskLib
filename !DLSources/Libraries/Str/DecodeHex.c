@@ -16,7 +16,7 @@
 
 #include <ctype.h>
 
-#include "DeskLib:Str.h"
+#include "DeskLib/Str.h"
 
 
 int Str_DecodeHex(char digit)

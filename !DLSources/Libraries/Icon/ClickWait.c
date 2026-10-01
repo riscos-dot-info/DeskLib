@@ -1,8 +1,8 @@
-#include "DeskLib:Wimp.h"
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Time.h"
-#include "DeskLib:Event.h"
-#include "DeskLib:Icon.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Time.h"
+#include "DeskLib/Event.h"
+#include "DeskLib/Icon.h"
 
 
 extern void Icon_ClickWait(int waittime)

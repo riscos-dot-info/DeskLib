@@ -24,7 +24,7 @@
 #undef vsprintf
 */
 
-#include "DeskLib:Debug.h"
+#include "DeskLib/Debug.h"
 
 #include "DebugDefs.h"
 

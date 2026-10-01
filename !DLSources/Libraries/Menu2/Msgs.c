@@ -15,9 +15,9 @@
              specification
 */
 
-#include "DeskLib:Msgs.h"
-#include "DeskLib:Menu2.h"
-#include "DeskLib:Str.h"
+#include "DeskLib/Msgs.h"
+#include "DeskLib/Menu2.h"
+#include "DeskLib/Str.h"
 
 
 menu2_handle	Menu2_CreateFromMsgs(

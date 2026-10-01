@@ -1,6 +1,6 @@
-#include "DeskLib:Wimp.h"
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Icon.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Icon.h"
 
 extern void Icon_SetShade(window_handle window, icon_handle icon, int flag)
 /* If flag == 0, (and the icon is currently shaded) it will be un-shaded

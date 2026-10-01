@@ -8,22 +8,22 @@
  *                                                                      *
  ************************************************************************/
 
-#include "DeskLib:WimpSWIs.h"          /* Low-level WIMP commands         */
-#include "DeskLib:Window.h"            /* Window handling automation      */
-#include "DeskLib:Core.h"              /* usefull core functions          */
-#include "DeskLib:Error.h"             /* Error despatcher                */
-#include "DeskLib:Event.h"             /* Event despatcher                */
-#include "DeskLib:EventMsg.h"          /* Wimp Message event dispatcher   */
-#include "DeskLib:File.h"              /* Low level file handling         */
-#include "DeskLib:Msgs.h"              /* Message translation code        */
-#include "DeskLib:Resource.h"          /* Handles finding resource files  */
-#include "DeskLib:Sound.h"             /* Beep!                           */
-#include "DeskLib:Icon.h"              /* Icon handling automation        */
-#include "DeskLib:Menu.h"              /* Menu create & show support      */
-#include "DeskLib:Screen.h"            /* Caching screen info             */
-#include "DeskLib:Sprite.h"            /* Sprite handling routines        */
-#include "DeskLib:File.h"              /* OS file IO                      */
-#include "DeskLib:KeyCodes.h"          /* Codes for wimp returned keys    */
+#include "DeskLib/WimpSWIs.h"          /* Low-level WIMP commands         */
+#include "DeskLib/Window.h"            /* Window handling automation      */
+#include "DeskLib/Core.h"              /* usefull core functions          */
+#include "DeskLib/Error.h"             /* Error despatcher                */
+#include "DeskLib/Event.h"             /* Event despatcher                */
+#include "DeskLib/EventMsg.h"          /* Wimp Message event dispatcher   */
+#include "DeskLib/File.h"              /* Low level file handling         */
+#include "DeskLib/Msgs.h"              /* Message translation code        */
+#include "DeskLib/Resource.h"          /* Handles finding resource files  */
+#include "DeskLib/Sound.h"             /* Beep!                           */
+#include "DeskLib/Icon.h"              /* Icon handling automation        */
+#include "DeskLib/Menu.h"              /* Menu create & show support      */
+#include "DeskLib/Screen.h"            /* Caching screen info             */
+#include "DeskLib/Sprite.h"            /* Sprite handling routines        */
+#include "DeskLib/File.h"              /* OS file IO                      */
+#include "DeskLib/KeyCodes.h"          /* Codes for wimp returned keys    */
 
 #include "flex.h"                      /* Flexible malloc                 */
 

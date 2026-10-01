@@ -15,8 +15,8 @@
 */
 
 
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Window.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Window.h"
 
 extern void Window_BringToFront(window_handle window)
 /* Pulls the window to the front of the window stack */

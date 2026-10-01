@@ -15,7 +15,7 @@
  *
  */
 
-#include "DeskLib:Window.h"
+#include "DeskLib/Window.h"
 
 extern BOOL Window_IsOpen(window_handle window)
 {

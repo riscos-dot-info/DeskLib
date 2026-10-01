@@ -1,7 +1,7 @@
-#include "DeskLib:Debug.h"
-#include "DeskLib:Error.h"
+#include "DeskLib/Debug.h"
+#include "DeskLib/Error.h"
 
-#include "DeskLib:BackTrace.h"
+#include "DeskLib/BackTrace.h"
 
 #include "BackDefs.h"
 

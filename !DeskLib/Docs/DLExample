@@ -4,14 +4,14 @@
      iconbar menu including a "proginfo" box
 */
 
-#include "DeskLib:Core.h"     /* Core DeskLib definitions etcd    */
-#include "DeskLib:Window.h"   /* Window manipulation routines     */
-#include "DeskLib:Menu.h"     /* Menu manipulation routines       */
-#include "DeskLib:Event.h"    /* Event handling library           */
-#include "DeskLib:Template.h" /* For loading templates            */
-#include "DeskLib:Handler.h"  /* Provides some default handlers   */
-#include "DeskLib:Icon.h"     /* Used to create iconbar icon      */
-#include "DeskLib:WimpSWIs.h" /* Used to call Wimp_GetPointerInfo */
+#include "DeskLib/Core.h"     /* Core DeskLib definitions etcd    */
+#include "DeskLib/Window.h"   /* Window manipulation routines     */
+#include "DeskLib/Menu.h"     /* Menu manipulation routines       */
+#include "DeskLib/Event.h"    /* Event handling library           */
+#include "DeskLib/Template.h" /* For loading templates            */
+#include "DeskLib/Handler.h"  /* Provides some default handlers   */
+#include "DeskLib/Icon.h"     /* Used to create iconbar icon      */
+#include "DeskLib/WimpSWIs.h" /* Used to call Wimp_GetPointerInfo */
 
 /* Function prototypes */
 BOOL Click_Handler(event_pollblock *event, void *reference);

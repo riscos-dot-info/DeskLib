@@ -19,8 +19,8 @@
 /* --- LOAD HEADERS ------------------------------------------------------ */
 
 /* --- DeskLib ----------------------------------------------------------- */
-#include "DeskLib:WimpSWIs.h"          /* Low-level WIMP commands          */
-#include "DeskLib:Window.h"
+#include "DeskLib/WimpSWIs.h"          /* Low-level WIMP commands          */
+#include "DeskLib/Window.h"
 
 /* === FUNCTION DEFINITIONS ============================================== */
 

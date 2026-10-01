@@ -14,8 +14,8 @@
     Purpose: Adds a window to a menu as a "submenu"
 */
 
-#include "DeskLib:Wimp.h"
-#include "DeskLib:Menu.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/Menu.h"
 
 
 void Menu_AddSubWindow(menu_ptr menu, int entry, window_handle window)

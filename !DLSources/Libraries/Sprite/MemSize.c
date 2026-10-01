@@ -19,9 +19,9 @@
 */
 
 
-#include "DeskLib:Sprite.h"
-#include "DeskLib:SWI.h"
-#include "DeskLib:KernelSWIs.h"
+#include "DeskLib/Sprite.h"
+#include "DeskLib/SWI.h"
+#include "DeskLib/KernelSWIs.h"
 
 
 /* Macro to round a number of BITS up to a multiple of words */

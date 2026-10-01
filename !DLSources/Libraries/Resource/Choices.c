@@ -29,11 +29,11 @@
 /* --- LOAD HEADERS ------------------------------------------------------ */
 
 /* --- DeskLib ----------------------------------------------------------- */
-#include "DeskLib:Error.h"          /* Centralised error reporting         */
-#include "DeskLib:KernelSWIs.h"     /* General low level SWI veneers       */
-#include "DeskLib:Resource.h"       /* Handles finding resource files      */
-#include "DeskLib:File.h"           /* Filing system functions             */
-#include "DeskLib:Event.h"          /* For event_taskname                  */
+#include "DeskLib/Error.h"          /* Centralised error reporting         */
+#include "DeskLib/KernelSWIs.h"     /* General low level SWI veneers       */
+#include "DeskLib/Resource.h"       /* Handles finding resource files      */
+#include "DeskLib/File.h"           /* Filing system functions             */
+#include "DeskLib/Event.h"          /* For event_taskname                  */
 
 /* --- CLib -------------------------------------------------------------- */
 #include <stdio.h>      /*  General I/O routines                           */

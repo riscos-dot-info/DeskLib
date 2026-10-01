@@ -1,5 +1,5 @@
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Handler.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Handler.h"
 
 
 extern BOOL Handler_NullRedraw(event_pollblock *event, void *reference)

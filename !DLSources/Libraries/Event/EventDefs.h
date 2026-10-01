@@ -20,19 +20,19 @@
 #define __dl_eventdefs_h
 
 #ifndef __dl_core_h
-#include "DeskLib:Core.h"
+#include "DeskLib/Core.h"
 #endif
 
 #ifndef __dl_linklist_h
-#include "DeskLib:LinkList.h"
+#include "DeskLib/LinkList.h"
 #endif
 
 #ifndef __dl_wimp_h
-#include "DeskLib:Wimp.h"
+#include "DeskLib/Wimp.h"
 #endif
 
 #ifndef __dl_event_h
-#include "DeskLib:Event.h"
+#include "DeskLib/Event.h"
 #endif
 
 

@@ -16,7 +16,7 @@
 
 #include <stdlib.h>
 
-#include "DeskLib:Pane.h"
+#include "DeskLib/Pane.h"
 
 #include "PaneDefs.h"
 

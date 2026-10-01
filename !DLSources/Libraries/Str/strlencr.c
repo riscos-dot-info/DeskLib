@@ -17,7 +17,7 @@
 */
 
 
-#include "DeskLib:Str.h"
+#include "DeskLib/Str.h"
 
 extern int strlencr(const char *s)
 /* return number of bytes needed to store this string, including terminator */

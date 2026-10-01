@@ -15,9 +15,9 @@
 */
 
 
-#include "DeskLib:Core.h"
-#include "DeskLib:Wimp.h"
-#include "DeskLib:Coord.h"
+#include "DeskLib/Core.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/Coord.h"
 
 /*  Note: The window workarea origin (0,0) is at the TOP LEFT corner of the
  *        work area.

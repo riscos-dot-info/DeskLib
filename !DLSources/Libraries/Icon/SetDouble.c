@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "DeskLib:Wimp.h"
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:Icon.h"
+#include "DeskLib/Wimp.h"
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/Icon.h"
 
 
 extern void Icon_SetDouble(window_handle w, icon_handle i,

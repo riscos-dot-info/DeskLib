@@ -18,7 +18,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "DeskLib:LinkList.h"
+#include "DeskLib/LinkList.h"
 
 extern BOOL LinkList_InList(linklist_header *anchor, linklist_header *item)
 {

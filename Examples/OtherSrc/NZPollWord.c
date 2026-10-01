@@ -18,9 +18,9 @@
 #include <stdio.h>
 #include "string.h"
 
-#include "DeskLib:WimpSWIs.h"
-#include "DeskLib:SWI.h"
-#include "DeskLib:Sound.h" 
+#include "DeskLib/WimpSWIs.h"
+#include "DeskLib/SWI.h"
+#include "DeskLib/Sound.h" 
 
 
 /*  Code pinched from OtherSrc.TaskSlice.c:
